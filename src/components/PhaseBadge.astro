@@ -1,0 +1,30 @@
+---
+// PhaseBadge — badge de fase procesal.
+// Mapea los 10 valores del enum `fase_actual` a los 3 buckets de UI
+// disponibles (instr / juicio / firme). Los archivos van al bucket firme con
+// label "Archivado" como estado de cierre neutral; convendrá añadir un
+// badge propio cuando entren casos archivados al inventario.
+interface Props {
+  fase: string;
+}
+const { fase } = Astro.props;
+
+function mapFase(f: string): { kind: 'instr' | 'juicio' | 'firme'; label: string } {
+  if (f === 'instruccion' || f === 'fase_intermedia' || f === 'denuncia_o_querella') {
+    return { kind: 'instr', label: 'Instrucción' };
+  }
+  if (f === 'juicio_oral' || f === 'sentencia_primera_instancia' || f === 'recurso') {
+    return { kind: 'juicio', label: 'Juicio oral' };
+  }
+  if (f === 'sentencia_firme' || f === 'ejecucion') {
+    return { kind: 'firme', label: 'Sentencia firme' };
+  }
+  if (f === 'archivo_provisional' || f === 'archivo_libre') {
+    return { kind: 'firme', label: 'Archivado' };
+  }
+  return { kind: 'instr', label: f };
+}
+
+const { kind, label } = mapFase(fase);
+---
+<span class:list={['badge', `badge--phase-${kind}`]}>{label}</span>

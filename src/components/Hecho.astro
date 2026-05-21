@@ -1,0 +1,103 @@
+---
+// Hecho — card de afirmación verificable.
+// Regla P-02: cada Hecho lleva su(s) fuente(s) y nivel **visibles en línea**,
+// no escondidos. Borde-izquierda coloreado por estado epistémico para
+// transmitir el tipo en tres canales simultáneos (color + label + dot + label
+// del badge).
+
+import EpistemicBadge from './EpistemicBadge.astro';
+import LevelBadge from './LevelBadge.astro';
+
+interface Fuente {
+  nivel: 1 | 2 | 3 | 4;
+  titulo: string;
+  href?: string;
+  pasaje?: string;
+}
+
+interface Props {
+  tipo: 'acreditado' | 'investigado' | 'atribuido' | 'exculpatorio' | 'desmentido' | 'no_concluyente';
+  enunciado: string;
+  fechaTexto?: string;
+  fuentes: Fuente[];
+}
+
+const { tipo, enunciado, fechaTexto, fuentes } = Astro.props;
+---
+<article class:list={['hecho', `hecho--${tipo}`]}>
+  <header class="hecho__head">
+    <EpistemicBadge tipo={tipo} />
+    {fechaTexto && <span class="hecho__date">{fechaTexto}</span>}
+  </header>
+  <p class="hecho__text">{enunciado}</p>
+  <ul class="hecho__sources">
+    {fuentes.map((f) => (
+      <li class="hecho__source">
+        <LevelBadge nivel={f.nivel} />
+        {f.href ? (
+          <a href={f.href}>{f.titulo}</a>
+        ) : (
+          <span>{f.titulo}</span>
+        )}
+        {f.pasaje && <span class="hecho__pasaje">{f.pasaje}</span>}
+      </li>
+    ))}
+  </ul>
+</article>
+
+<style>
+  .hecho {
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-border-strong);
+    background: var(--color-surface);
+    padding: 14px 16px;
+  }
+  .hecho--acreditado    { border-color: var(--color-acreditado-border);   border-left-color: var(--color-acreditado); }
+  .hecho--investigado   { border-color: var(--color-investigado-border);  border-left-color: var(--color-investigado); }
+  .hecho--atribuido     { border-color: var(--color-investigado-border);  border-left-color: var(--color-investigado); }
+  .hecho--exculpatorio  { border-color: var(--color-exculpatorio-border); border-left-color: var(--color-exculpatorio); }
+  .hecho--desmentido    { border-color: var(--color-desmentido-border);   border-left-color: var(--color-desmentido); }
+  .hecho--no_concluyente{ border-color: var(--color-desmentido-border);   border-left-color: var(--color-desmentido); }
+
+  .hecho__head {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .hecho__date {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-fg-muted);
+  }
+  .hecho__text {
+    font: 400 15px/1.6 var(--font-sans);
+    color: var(--color-fg);
+    margin: 0 0 10px;
+  }
+  .hecho__sources {
+    list-style: none;
+    padding: 8px 0 0;
+    margin: 0;
+    border-top: 1px dashed var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hecho__source {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-fg-muted);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .hecho__source a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .hecho__pasaje { color: var(--color-fg-subtle); }
+</style>

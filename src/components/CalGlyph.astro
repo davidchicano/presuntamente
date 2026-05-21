@@ -1,0 +1,77 @@
+---
+// CalGlyph — hoja de calendario administrativa.
+// Tres variantes según `fecha_precision`:
+//   - dia : banda navy + mes ES + día + año
+//   - mes : banda navy + mes + "––" (día desconocido) + año
+//   - anio: banda mostaza + año grande (sin pie)
+// Canónico en preview/comp_hito.html.
+
+interface Props {
+  fecha: string; // YYYY-MM[-DD]
+  precision: 'dia' | 'mes' | 'anio';
+}
+const { fecha, precision } = Astro.props;
+
+const MESES_ES = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+
+function parts(f: string) {
+  const [y, m, d] = f.split('-');
+  return { y, m: m ? MESES_ES[parseInt(m, 10) - 1] ?? '' : '', d: d ?? '' };
+}
+const { y, m, d } = parts(fecha);
+const variant = precision === 'anio' ? 'anio' : precision === 'mes' ? 'mes' : 'dia';
+---
+<div class={`cal cal--${variant}`} title={`${fecha} · precisión: ${precision}`}>
+  <div class="cal__band">{precision === 'anio' ? 'AÑO' : m}</div>
+  <div class="cal__day">
+    {precision === 'anio' ? y : precision === 'mes' ? '––' : d}
+  </div>
+  {precision !== 'anio' && <div class="cal__year">{y}</div>}
+</div>
+
+<style>
+  .cal {
+    width: 56px;
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .cal__band {
+    background: var(--color-accent);
+    color: #fff;
+    font: 700 9px/1 var(--font-sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 0 3px;
+  }
+  .cal__day {
+    font: 700 26px/1 var(--font-sans);
+    letter-spacing: -0.01em;
+    color: var(--color-fg);
+    padding: 6px 0 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .cal__year {
+    font: 400 10px/1 var(--font-mono);
+    color: var(--color-fg-muted);
+    border-top: 1px solid var(--color-border);
+    padding: 3px 0 4px;
+  }
+  .cal--mes .cal__day {
+    color: var(--color-fg-muted);
+    letter-spacing: -0.04em;
+    padding: 6px 0 6px;
+  }
+  .cal--anio .cal__band {
+    background: var(--color-accent-secondary);
+    color: #fff;
+  }
+  .cal--anio .cal__day {
+    font-size: 22px;
+    padding: 14px 0 12px;
+  }
+</style>

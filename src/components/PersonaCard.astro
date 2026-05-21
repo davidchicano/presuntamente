@@ -1,0 +1,129 @@
+---
+// PersonaCard — card de persona dentro de una ficha de caso.
+// Distinguible de OrgCard a primera vista: iniciales en cuadrado a la
+// izquierda (la marca visual de Persona, ver DESIGN.md §4).
+// El swimlane de trayectoria queda fuera del MVP de este lote (lo añade el
+// Lote 4 con la ficha individual de Persona); aquí mostramos rol activo +
+// metadata.
+
+interface RolView {
+  rol: string;
+  rolLabel: string;
+  fecha_inicio: string;
+  fecha_fin?: string;
+  delitos?: string[];
+}
+
+interface Props {
+  nombre: string;
+  cargo?: string;
+  esFiguraPublica: boolean;
+  iniciales: string;
+  href?: string;
+  roles: RolView[];
+  notas?: string;
+}
+
+const { nombre, cargo, esFiguraPublica, iniciales, href, roles, notas } = Astro.props;
+---
+<article class="pcard">
+  <div class="pcard__init" aria-hidden="true">{iniciales}</div>
+  <div class="pcard__body">
+    <h4 class="pcard__name">
+      {href ? <a href={href}>{nombre}</a> : nombre}
+    </h4>
+    <p class="pcard__meta">
+      {cargo && <span>{cargo}</span>}
+      {cargo && <span class="pcard__sep">·</span>}
+      <span>{esFiguraPublica ? 'Figura pública' : 'Privado'}</span>
+    </p>
+    <ul class="pcard__roles">
+      {roles.map((r) => (
+        <li class="pcard__role">
+          <span class:list={['badge', `badge--rol-${r.rol}`]}>{r.rolLabel}</span>
+          <span class="pcard__role-dates">
+            {r.fecha_inicio}
+            {r.fecha_fin ? ` → ${r.fecha_fin}` : ' → vigente'}
+          </span>
+          {r.delitos && r.delitos.length > 0 && (
+            <span class="pcard__delitos">
+              {r.delitos.map((d) => <span class="pcard__delito">{d}</span>)}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+    {notas && <p class="pcard__notas">{notas}</p>}
+  </div>
+</article>
+
+<style>
+  .pcard {
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface);
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+  }
+  .pcard__init {
+    width: 44px;
+    height: 44px;
+    background: var(--color-accent-soft);
+    border: 1px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 700 16px/1 var(--font-sans);
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .pcard__name {
+    font: 700 16px/1.2 var(--font-sans);
+    margin: 0 0 4px;
+    letter-spacing: -0.005em;
+  }
+  .pcard__name a { color: inherit; text-decoration: none; }
+  .pcard__name a:hover { text-decoration: underline; }
+  .pcard__meta {
+    font: 400 12px/1.4 var(--font-sans);
+    color: var(--color-fg-muted);
+    margin: 0 0 10px;
+  }
+  .pcard__sep { color: var(--color-border); margin: 0 6px; }
+  .pcard__roles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .pcard__role {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .pcard__role-dates {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-fg-muted);
+  }
+  .pcard__delitos { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+  .pcard__delito {
+    font: 400 10px/1 var(--font-mono);
+    background: var(--color-surface-muted);
+    color: var(--color-fg-muted);
+    padding: 2px 5px;
+    border: 1px solid var(--color-border);
+  }
+  .pcard__notas {
+    margin: 10px 0 0;
+    padding-top: 8px;
+    border-top: 1px dashed var(--color-border);
+    font: 400 12px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+</style>

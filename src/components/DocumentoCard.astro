@@ -1,0 +1,125 @@
+---
+// DocumentoCard — card de documento en la biblioteca de la ficha.
+// Markup canónico en preview/comp_documento.html.
+
+import LevelBadge from './LevelBadge.astro';
+
+interface Props {
+  titulo: string;
+  tipo: string;
+  tipoLabel: string;
+  nivel: 1 | 2 | 3 | 4;
+  productor?: string;
+  fecha: string;
+  urlCanonica?: string;
+  urlArchivo?: string;
+  citadoEn?: number;
+}
+
+const {
+  titulo,
+  tipoLabel,
+  nivel,
+  productor,
+  fecha,
+  urlCanonica,
+  urlArchivo,
+  citadoEn,
+} = Astro.props;
+---
+<article class="docard">
+  <div class="docard__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <path d="M9 13h6" />
+      <path d="M9 17h6" />
+    </svg>
+  </div>
+  <div class="docard__body">
+    <h4 class="docard__title">{titulo}</h4>
+    <div class="docard__meta">
+      <LevelBadge nivel={nivel} />
+      <span>{tipoLabel}</span>
+      {productor && <><span class="docard__sep">·</span><span>{productor}</span></>}
+      <span class="docard__sep">·</span>
+      <span>{fecha}</span>
+      {citadoEn !== undefined && citadoEn > 0 && (
+        <>
+          <span class="docard__sep">·</span>
+          <span>Citado en {citadoEn} hecho{citadoEn === 1 ? '' : 's'}</span>
+        </>
+      )}
+    </div>
+  </div>
+  {(urlCanonica || urlArchivo) && (
+    <div class="docard__links">
+      {urlCanonica && <a href={urlCanonica} target="_blank" rel="noopener">Original ↗</a>}
+      {urlArchivo && <a href={urlArchivo} target="_blank" rel="noopener">Archive.org ↗</a>}
+    </div>
+  )}
+</article>
+
+<style>
+  .docard {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: start;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface);
+  }
+  .docard:hover { background: var(--color-bg-muted); }
+  .docard__icon {
+    width: 36px;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-fg-muted);
+  }
+  .docard__icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .docard__title {
+    font: 600 14px/1.35 var(--font-sans);
+    margin: 0 0 4px;
+  }
+  .docard__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-fg-muted);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .docard__sep { color: var(--color-border); }
+  .docard__links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .docard__links a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  @media (max-width: 720px) {
+    .docard { grid-template-columns: 36px 1fr; }
+    .docard__links { grid-column: 1 / -1; flex-direction: row; align-items: center; flex-wrap: wrap; }
+  }
+</style>

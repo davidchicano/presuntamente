@@ -1,0 +1,34 @@
+---
+// EpistemicBadge — badge de estado epistémico de un Hecho.
+// 6 valores en el modelo (doc 01 §2.6), 4 con clase propia + 2 que reutilizan
+// la más cercana semánticamente:
+//   - acreditado    → verde sobrio
+//   - investigado   → ámbar
+//   - atribuido     → mismo amarillo apagado que investigado (atribución sin
+//                     acreditación; visualmente equivalentes para el lector)
+//   - exculpatorio  → gris azulado
+//   - desmentido    → gris neutro
+//   - no_concluyente→ gris neutro (mismo que desmentido)
+// El estado se transmite por TRES canales: color + label + dot. Nunca solo
+// color (DESIGN.md §7 "Do").
+
+interface Props {
+  tipo: 'acreditado' | 'investigado' | 'atribuido' | 'exculpatorio' | 'desmentido' | 'no_concluyente';
+}
+const { tipo } = Astro.props;
+
+const VARIANT = {
+  acreditado:     { cls: 'acreditado',   label: 'Acreditado' },
+  investigado:    { cls: 'investigado',  label: 'Investigado' },
+  atribuido:      { cls: 'investigado',  label: 'Atribuido' },
+  exculpatorio:   { cls: 'exculpatorio', label: 'Exculpatorio' },
+  desmentido:     { cls: 'desmentido',   label: 'Desmentido' },
+  no_concluyente: { cls: 'desmentido',   label: 'No concluyente' },
+} as const;
+
+const { cls, label } = VARIANT[tipo];
+---
+<span class:list={['badge', `badge--${cls}`]}>
+  <span class="dot" aria-hidden="true"></span>
+  {label}
+</span>

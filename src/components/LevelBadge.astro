@@ -1,0 +1,13 @@
+---
+// LevelBadge — badge de nivel de fuente N1-N4.
+// Gradient de fill sobre el mismo navy institucional (ver DESIGN.md §2).
+// Nunca colores distintos por nivel — eso introduciría semántica accidental.
+interface Props {
+  nivel: 1 | 2 | 3 | 4;
+  title?: string;
+}
+const { nivel, title } = Astro.props;
+---
+<span class:list={['badge', `badge--n${nivel}`]} title={title} aria-label={`Nivel de fuente ${nivel}`}>
+  N{nivel}
+</span>

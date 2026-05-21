@@ -1,0 +1,17 @@
+---
+// SectionH — encabezado de sección administrativo numerado.
+// Markup canónico en /.claude/skills/presuntamente-design/preview/comp_section_h.html.
+// Usa la regla del global.css; este componente sólo asegura la estructura.
+interface Props {
+  num: string;
+  title: string;
+  right?: string;
+  id?: string;
+}
+const { num, title, right, id } = Astro.props;
+---
+<header class="sec-h" id={id}>
+  <span class="num">{num}</span>
+  <h2>{title}</h2>
+  {right && <span class="right">{right}</span>}
+</header>

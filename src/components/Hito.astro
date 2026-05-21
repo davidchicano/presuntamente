@@ -1,0 +1,111 @@
+---
+// Hito — fila de la timeline cronológica de la ficha de caso.
+// Markup canónico en preview/comp_hito.html. Estructura:
+//   [date-cell con CalGlyph]  [hito: badge tipo + ind hechos · título · desc]
+
+import CalGlyph from './CalGlyph.astro';
+
+interface Props {
+  fecha: string;
+  precision: 'dia' | 'mes' | 'anio';
+  tipo: string;
+  tipoLabel: string;
+  tipoFamilia: 'jurisdiccional' | 'politico' | 'mediatico';
+  titulo: string;
+  descripcion?: string;
+  documentoTitulo?: string;
+  documentoHref?: string;
+  documentoNivel?: 1 | 2 | 3 | 4;
+}
+
+const {
+  fecha,
+  precision,
+  tipoLabel,
+  tipoFamilia,
+  titulo,
+  descripcion,
+  documentoTitulo,
+  documentoHref,
+  documentoNivel,
+} = Astro.props;
+---
+<div class="hito-item">
+  <div class="hito-item__date">
+    <CalGlyph fecha={fecha} precision={precision} />
+  </div>
+  <div class="hito-item__body">
+    <div class="hito-item__head">
+      <span class:list={['badge', `badge--hito-${tipoFamilia}`]}>
+        {tipoLabel}
+      </span>
+      {documentoTitulo && documentoNivel && (
+        <span class="hito-item__doc">
+          <span class:list={['badge', `badge--n${documentoNivel}`]}>N{documentoNivel}</span>
+          {documentoHref ? (
+            <a href={documentoHref}>{documentoTitulo}</a>
+          ) : (
+            <span>{documentoTitulo}</span>
+          )}
+        </span>
+      )}
+    </div>
+    <h4 class="hito-item__title">{titulo}</h4>
+    {descripcion && <p class="hito-item__desc">{descripcion}</p>}
+  </div>
+</div>
+
+<style>
+  .hito-item {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border);
+    align-items: stretch;
+  }
+  .hito-item:last-child { border-bottom: 0; }
+  .hito-item__date {
+    background: var(--color-surface-muted);
+    border-right: 1px solid var(--color-border);
+    padding: 14px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .hito-item__body { padding: 14px 16px; }
+  .hito-item__head {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .hito-item__title {
+    font: 700 14px/1.3 var(--font-sans);
+    margin: 4px 0;
+  }
+  .hito-item__desc {
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--color-fg-muted);
+    margin: 0;
+  }
+  .hito-item__doc {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-fg-muted);
+  }
+  .hito-item__doc a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  /* Badges de familia de hito; reusan la regla .badge del global.css y
+     sólo afinan el color por familia para que el lector distinga de un
+     vistazo qué tipo de evento es. */
+  .badge--hito-jurisdiccional { color: var(--color-accent); border-color: var(--color-accent); background: var(--color-accent-soft); }
+  .badge--hito-politico       { color: #6b4d00; border-color: var(--color-accent-secondary-border); background: var(--color-accent-secondary-soft); }
+  .badge--hito-mediatico      { color: var(--color-fg); border-color: var(--color-border-strong); background: var(--color-surface-muted); }
+</style>

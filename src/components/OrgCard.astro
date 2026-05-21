@@ -1,0 +1,101 @@
+---
+// OrgCard — card de organización implicada.
+// Distinguible de PersonaCard a primera vista: glyph geométrico por tipo
+// a la izquierda (NO iniciales — esa es la marca de Persona).
+
+import OrgGlyph from './OrgGlyph.astro';
+
+interface RolView {
+  rol: string;
+  rolLabel: string;
+  fecha_inicio: string;
+  fecha_fin?: string;
+}
+
+interface Props {
+  nombre: string;
+  tipo: string;
+  tipoLabel: string;
+  localidad?: string;
+  href?: string;
+  roles: RolView[];
+  notas?: string;
+}
+
+const { nombre, tipo, tipoLabel, localidad, href, roles, notas } = Astro.props;
+---
+<article class="ocard">
+  <OrgGlyph tipo={tipo} size={44} />
+  <div class="ocard__body">
+    <h4 class="ocard__name">
+      {href ? <a href={href}>{nombre}</a> : nombre}
+    </h4>
+    <p class="ocard__meta">
+      <span>{tipoLabel}</span>
+      {localidad && <><span class="ocard__sep">·</span><span>{localidad}</span></>}
+    </p>
+    <ul class="ocard__roles">
+      {roles.map((r) => (
+        <li class="ocard__role">
+          <span class="badge">{r.rolLabel}</span>
+          <span class="ocard__role-dates">
+            {r.fecha_inicio}
+            {r.fecha_fin ? ` → ${r.fecha_fin}` : ' → vigente'}
+          </span>
+        </li>
+      ))}
+    </ul>
+    {notas && <p class="ocard__notas">{notas}</p>}
+  </div>
+</article>
+
+<style>
+  .ocard {
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent-secondary-border);
+    background: var(--color-surface);
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+  }
+  .ocard__name {
+    font: 700 16px/1.2 var(--font-sans);
+    margin: 0 0 4px;
+    letter-spacing: -0.005em;
+  }
+  .ocard__name a { color: inherit; text-decoration: none; }
+  .ocard__name a:hover { text-decoration: underline; }
+  .ocard__meta {
+    font: 400 12px/1.4 var(--font-sans);
+    color: var(--color-fg-muted);
+    margin: 0 0 10px;
+  }
+  .ocard__sep { color: var(--color-border); margin: 0 6px; }
+  .ocard__roles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ocard__role {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .ocard__role-dates {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-fg-muted);
+  }
+  .ocard__notas {
+    margin: 10px 0 0;
+    padding-top: 8px;
+    border-top: 1px dashed var(--color-border);
+    font: 400 12px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+</style>
