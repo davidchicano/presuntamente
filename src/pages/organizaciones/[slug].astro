@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import PgOrganizacionDetalle from '@/components/pages/PgOrganizacionDetalle.astro';
+
+export async function getStaticPaths() {
+  const organizaciones = await getCollection('organizaciones');
+  return organizaciones.map((organizacion) => ({
+    params: { slug: organizacion.id },
+    props: { organizacion },
+  }));
+}
+
+const { organizacion } = Astro.props;
+---
+<PgOrganizacionDetalle lang="es" organizacion={organizacion} />

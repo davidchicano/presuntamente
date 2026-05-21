@@ -1,0 +1,179 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { tipoOrgLabel, type Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; }
+const { lang = 'es' } = Astro.props;
+
+const [organizacionesCol, rolesCol, casosCol, hechosCol, hitosCol] = await Promise.all([
+  getCollection('organizaciones'),
+  getCollection('roles'),
+  getCollection('casos'),
+  getCollection('hechos'),
+  getCollection('hitos'),
+]);
+
+const orgs = organizacionesCol
+  .map((o) => {
+    // Casos donde esta organización aparece (como órgano judicial,
+    // querellante, en hechos o como afectada en hitos).
+    const casosIds = new Set<string>();
+    for (const c of casosCol) if (c.data.organo_judicial_id === o.data.id || c.data.querellante_inicial_id === o.data.id) casosIds.add(c.data.id);
+    for (const r of rolesCol) if (r.data.sujeto_tipo === 'organizacion' && r.data.sujeto_organizacion_id === o.data.id) casosIds.add(r.data.caso_id);
+    for (const h of hechosCol) {
+      const orgs = (h.data as { organizaciones_implicadas?: string[] }).organizaciones_implicadas;
+      if (orgs?.includes(o.data.id)) casosIds.add(h.data.caso_id);
+    }
+    for (const h of hitosCol) {
+      if (h.data.organizaciones_afectadas?.includes(o.data.id)) casosIds.add(h.data.caso_id);
+    }
+    return {
+      slug: o.data.id,
+      nombre: o.data.nombre,
+      tipo: o.data.tipo,
+      tipoLabel: tipoOrgLabel(o.data.tipo),
+      localidad: (o.data as { localidad?: string }).localidad,
+      casosCount: casosIds.size,
+    };
+  })
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+
+const strings = {
+  title: 'Organizaciones citadas',
+  description:
+    'Listado de organizaciones (órganos judiciales, fiscalías, partidos, empresas, organismos públicos, asociaciones) referenciadas en los procedimientos.',
+  eyebrow: 'Sección 3 · Organizaciones',
+  sub:
+    'Entidades colectivas con relevancia procesal en los casos: órganos judiciales, fiscalías, ' +
+    'unidades policiales, organismos públicos, empresas investigadas, partidos, asociaciones de acusación popular y medios.',
+};
+
+function searchBlob(o: (typeof orgs)[number]): string {
+  return [o.nombre, o.tipoLabel, o.localidad].filter(Boolean).join(' ').toLowerCase();
+}
+
+// Lista única de tipos presentes hoy para alimentar el filtro.
+const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
+  .map((t) => ({ valor: t, label: tipoOrgLabel(t) }))
+  .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+---
+
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  activeNav="organizaciones"
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'Organizaciones' },
+  ]}
+>
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.title}</h1>
+      <p class="page-id__sub">{strings.sub}</p>
+    </div>
+    <div class="page-id__meta">
+      <span>Total: <span data-total>{orgs.length}</span></span>
+      <span>·</span>
+      <span>Mostrando: <span data-shown>{orgs.length}</span></span>
+    </div>
+  </section>
+
+  <header class="sec-h">
+    <span class="num">3.1</span>
+    <h2>Filtros</h2>
+  </header>
+
+  <form class="filter-bar" method="get" role="search" aria-label="Filtrar organizaciones" data-orgs-filters>
+    <div class="field">
+      <label for="q">Buscar</label>
+      <input id="q" name="q" type="search" placeholder="Nombre, tipo, localidad…" autocomplete="off" />
+    </div>
+    <div class="field">
+      <label for="tipo">Tipo</label>
+      <select id="tipo" name="tipo">
+        <option value="all">Todos</option>
+        {tiposPresentes.map((t) => <option value={t.valor}>{t.label}</option>)}
+      </select>
+    </div>
+    <button class="btn" type="reset">Limpiar</button>
+  </form>
+
+  <header class="sec-h">
+    <span class="num">3.2</span>
+    <h2>Listado</h2>
+    <span class="right">orden: alfabético</span>
+  </header>
+
+  <table class="tbl" data-orgs>
+    <thead>
+      <tr>
+        <th style="width: 50%;">Organización</th>
+        <th style="width: 25%;">Tipo</th>
+        <th style="width: 15%;">Localidad</th>
+        <th style="width: 10%;" class="c-num">Casos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {orgs.map((o) => (
+        <tr class="is-link" data-row data-tipo={o.tipo} data-search={searchBlob(o)}>
+          <td>
+            <a href={`/organizaciones/${o.slug}`}>
+              <span class="c-name">{o.nombre}</span>
+            </a>
+          </td>
+          <td><span class="badge">{o.tipoLabel}</span></td>
+          <td class="c-mono">{o.localidad ?? '—'}</td>
+          <td class="c-num">{o.casosCount}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <p class="empty-state" data-empty hidden>Sin resultados para los filtros actuales.</p>
+</BaseLayout>
+
+<script is:inline>
+  (() => {
+    const form = document.querySelector('[data-orgs-filters]');
+    const table = document.querySelector('[data-orgs]');
+    if (!form || !table) return;
+    const rows = Array.from(table.querySelectorAll('[data-row]'));
+    const shown = document.querySelector('[data-shown]');
+    const empty = document.querySelector('[data-empty]');
+    const qInput = form.querySelector('#q');
+    const tipoSel = form.querySelector('#tipo');
+    function apply() {
+      const q = (qInput.value || '').trim().toLowerCase();
+      const tipo = tipoSel.value;
+      let visible = 0;
+      for (const row of rows) {
+        const matchQ = !q || (row.dataset.search || '').includes(q);
+        const matchT = tipo === 'all' || row.dataset.tipo === tipo;
+        const show = matchQ && matchT;
+        row.hidden = !show;
+        if (show) visible++;
+      }
+      if (shown) shown.textContent = String(visible);
+      if (empty) empty.hidden = visible !== 0;
+    }
+    form.addEventListener('input', apply);
+    form.addEventListener('change', apply);
+    form.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
+    form.addEventListener('reset', () => setTimeout(apply, 0));
+  })();
+</script>
+
+<style>
+  .empty-state {
+    border: 1px dashed var(--color-border-strong);
+    background: var(--color-surface-muted);
+    padding: var(--space-4);
+    text-align: center;
+    font: 400 var(--font-size-1)/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+</style>
