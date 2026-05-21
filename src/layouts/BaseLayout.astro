@@ -1,18 +1,47 @@
 ---
 import '@/styles/global.css';
 import 'open-props/style';
+import PresuntamenteLogo from '@/components/PresuntamenteLogo.astro';
+
+type NavKey = 'home' | 'personas' | 'organizaciones' | 'biblioteca' | 'sobre';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
 
 interface Props {
   title: string;
   lang: 'es' | 'ca';
   description?: string;
+  /** Pestaña de navegación marcada como activa en el header. */
+  activeNav?: NavKey;
+  /** Migas administrativas para la sub-banda gris. Por defecto solo "Inicio". */
+  breadcrumb?: BreadcrumbItem[];
+  /** Permite ocultar la sub-banda en páginas que ya tienen su propio breadcrumb (p.ej. ficha). */
+  hideSubstrip?: boolean;
 }
 
 const {
   title,
   lang,
   description = 'Inventario interactivo de casos de corrupción en España.',
+  activeNav,
+  breadcrumb = [{ label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' }],
+  hideSubstrip = false,
 } = Astro.props;
+
+// TODO i18n: cuando se active el catalán, traducir nav y subtítulo institucional.
+const tabs: { key: NavKey; label: string; href: string }[] = [
+  { key: 'home',           label: 'Casos',          href: lang === 'ca' ? '/cat' : '/' },
+  { key: 'personas',       label: 'Personas',       href: lang === 'ca' ? '/cat/personas' : '/personas' },
+  { key: 'organizaciones', label: 'Organizaciones', href: lang === 'ca' ? '/cat/organizaciones' : '/organizaciones' },
+  { key: 'biblioteca',     label: 'Biblioteca',     href: lang === 'ca' ? '/cat/biblioteca' : '/biblioteca' },
+  { key: 'sobre',          label: 'Sobre',          href: lang === 'ca' ? '/cat/sobre' : '/sobre' },
+];
+
+const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+const brandSub = 'Inventario público de casos de corrupción · v0.0.0-alpha';
 ---
 
 <!doctype html>
@@ -22,31 +51,88 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · presuntamente</title>
     <meta name="description" content={description} />
+
+    <link rel="icon" type="image/png" href="/branding/logo.png" />
+    <link rel="apple-touch-icon" href="/branding/logo.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    />
   </head>
-  <body>
+  <body class="page">
+    <a href="#main" class="skip">Saltar al contenido</a>
+
     <header class="site-header">
-      <a href={lang === 'ca' ? '/cat/' : '/'} class="site-logo">
-        <strong>presuntamente</strong>
-      </a>
-      <nav class="site-nav">
-        <a href="/" lang="es">ES</a>
-        <a href="/cat/" lang="ca">CA</a>
-      </nav>
+      <div class="site-header__inner">
+        <a href={lang === 'ca' ? '/cat' : '/'} class="site-brand" aria-label="Ir a la portada">
+          <PresuntamenteLogo variant="wordmark+isotipo" sub={brandSub} />
+        </a>
+        <nav class="site-nav" aria-label="Principal">
+          {tabs.map((t) => (
+            <a href={t.href} class:list={[activeNav === t.key && 'is-active']}>
+              {t.label}
+            </a>
+          ))}
+        </nav>
+        <div class="site-lang" aria-label="Idioma">
+          <a href="/" class:list={[lang === 'es' && 'is-on']} lang="es">ES</a>
+          <span class="sep">/</span>
+          <a href="/cat" class:list={[lang === 'ca' && 'is-on']} lang="ca">CAT</a>
+        </div>
+      </div>
     </header>
-    <main class="site-main">
+
+    {!hideSubstrip && (
+      <div class="site-substrip">
+        <div class="site-substrip__inner">
+          <span>
+            {breadcrumb.map((c, i) => (
+              <>
+                {i > 0 && <span> / </span>}
+                {i === breadcrumb.length - 1 || !c.href
+                  ? <span style="color: var(--color-fg);">{c.label}</span>
+                  : <a href={c.href}>{c.label}</a>}
+              </>
+            ))}
+          </span>
+          <span>Última actualización · {buildTime}</span>
+        </div>
+      </div>
+    )}
+
+    <main id="main" class="main">
       <slot />
     </main>
+
     <footer class="site-footer">
-      <p>
-        Contenido bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> ·
-        Código bajo <a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL-3.0</a> ·
-        <a href="https://github.com/davidchicano/presuntamente">Repositorio</a>
-      </p>
-      <p>
-        <a href="/aviso-legal">Aviso legal</a>
-        ·
-        <a href="/rectificar">Solicitar rectificación</a>
-      </p>
+      <div class="site-footer__inner">
+        <div>
+          <h6>presuntamente</h6>
+          <p>Inventario público, interactivo y open-source de los casos de corrupción más relevantes en España.</p>
+          <p class="meta">© 2026 · v0.0.0-alpha · build {buildTime}</p>
+        </div>
+        <div>
+          <h6>Marco</h6>
+          <a href="/aviso-legal">Aviso legal</a>
+          <a href="/sobre">Política editorial</a>
+          <a href="/sobre#redaccion">Cómo se redacta esto</a>
+        </div>
+        <div>
+          <h6>Licencias</h6>
+          <a href="https://www.gnu.org/licenses/agpl-3.0.html">Código · AGPL-3.0</a>
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/">Contenido · CC BY-SA 4.0</a>
+          <a href="https://github.com/davidchicano/presuntamente">Repositorio público</a>
+        </div>
+        <div>
+          <h6>Rectificación</h6>
+          <a href="/rectificar">Proponer corrección ↗</a>
+          <a href="https://github.com/davidchicano/presuntamente/issues">Abrir issue</a>
+          <a href="https://github.com/davidchicano/presuntamente/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
