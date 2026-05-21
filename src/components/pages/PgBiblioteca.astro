@@ -1,0 +1,197 @@
+---
+// PgBiblioteca — listado de todos los Documentos del inventario.
+// Filtros client-side: búsqueda + nivel + tipo. Orden por defecto: nivel
+// ascendente (más oficiales primero) y fecha descendente.
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { tipoDocLabel, type Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; }
+const { lang = 'es' } = Astro.props;
+
+const [documentosCol, organizacionesCol, hechosCol] = await Promise.all([
+  getCollection('documentos'),
+  getCollection('organizaciones'),
+  getCollection('hechos'),
+]);
+
+const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
+
+const documentos = documentosCol
+  .map((d) => {
+    // Citado en N hechos
+    let citado = 0;
+    for (const h of hechosCol) {
+      const ds = (h.data as { documentos_respaldo?: { documento_id: string }[] }).documentos_respaldo;
+      if (ds?.some((x) => x.documento_id === d.data.id)) citado++;
+    }
+    return {
+      slug: d.data.id,
+      titulo: d.data.titulo,
+      tipo: d.data.tipo,
+      tipoLabel: tipoDocLabel(d.data.tipo),
+      nivel: d.data.nivel_fuente,
+      productor: d.data.productor_organizacion_id ? orgIndex.get(d.data.productor_organizacion_id)?.nombre : undefined,
+      fecha: d.data.fecha_documento,
+      urlCanonica: d.data.url_canonica,
+      citado,
+    };
+  })
+  .sort((a, b) => {
+    if (a.nivel !== b.nivel) return a.nivel - b.nivel;
+    return b.fecha.localeCompare(a.fecha);
+  });
+
+const strings = {
+  title: 'Biblioteca documental',
+  description:
+    'Sentencias, autos, informes UDEF/UCO, notas institucionales y coberturas periodísticas que respaldan cada hecho del inventario.',
+  eyebrow: 'Sección 4 · Biblioteca',
+  sub:
+    'Documentos primarios y secundarios que respaldan los hechos del inventario. Cada documento ' +
+    'lleva su nivel de fuente (N1-N4) visible. Cobertura periodística (N4) se admite siempre que ' +
+    'no sea soporte único (V-13).',
+};
+
+function searchBlob(d: (typeof documentos)[number]): string {
+  return [d.titulo, d.tipoLabel, d.productor].filter(Boolean).join(' ').toLowerCase();
+}
+
+const tiposPresentes = Array.from(new Set(documentos.map((d) => d.tipo)))
+  .map((t) => ({ valor: t, label: tipoDocLabel(t) }))
+  .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+---
+
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  activeNav="biblioteca"
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'Biblioteca' },
+  ]}
+>
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.title}</h1>
+      <p class="page-id__sub">{strings.sub}</p>
+    </div>
+    <div class="page-id__meta">
+      <span>Total: <span data-total>{documentos.length}</span></span>
+      <span>·</span>
+      <span>Mostrando: <span data-shown>{documentos.length}</span></span>
+    </div>
+  </section>
+
+  <header class="sec-h">
+    <span class="num">4.1</span>
+    <h2>Filtros</h2>
+  </header>
+
+  <form class="filter-bar" method="get" role="search" aria-label="Filtrar documentos" data-docs-filters>
+    <div class="field">
+      <label for="q">Buscar</label>
+      <input id="q" name="q" type="search" placeholder="Título, tipo, productor…" autocomplete="off" />
+    </div>
+    <div class="field">
+      <label for="nivel">Nivel de fuente</label>
+      <select id="nivel" name="nivel">
+        <option value="all">Todos</option>
+        <option value="1">N1 — Oficial primaria</option>
+        <option value="2">N2 — Oficial secundaria</option>
+        <option value="3">N3 — Institucional / pericial</option>
+        <option value="4">N4 — Cobertura periodística</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="tipo">Tipo</label>
+      <select id="tipo" name="tipo">
+        <option value="all">Todos</option>
+        {tiposPresentes.map((t) => <option value={t.valor}>{t.label}</option>)}
+      </select>
+    </div>
+    <button class="btn" type="reset">Limpiar</button>
+  </form>
+
+  <header class="sec-h">
+    <span class="num">4.2</span>
+    <h2>Listado</h2>
+    <span class="right">orden: nivel ↑ · fecha ↓</span>
+  </header>
+
+  <table class="tbl" data-docs>
+    <thead>
+      <tr>
+        <th style="width: 8%;" class="c-num">Nivel</th>
+        <th style="width: 50%;">Documento</th>
+        <th style="width: 20%;">Productor</th>
+        <th style="width: 12%;">Fecha</th>
+        <th style="width: 10%;" class="c-num">Citado en</th>
+      </tr>
+    </thead>
+    <tbody>
+      {documentos.map((d) => (
+        <tr data-row data-nivel={String(d.nivel)} data-tipo={d.tipo} data-search={searchBlob(d)}>
+          <td class="c-num"><span class:list={['badge', `badge--n${d.nivel}`]}>N{d.nivel}</span></td>
+          <td>
+            <span class="c-name">{d.titulo}</span>
+            <span class="c-name__sub">{d.tipoLabel}</span>
+          </td>
+          <td class="c-mono">{d.productor ?? '—'}</td>
+          <td class="c-date">{d.fecha}</td>
+          <td class="c-num">{d.citado}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <p class="empty-state" data-empty hidden>Sin resultados para los filtros actuales.</p>
+</BaseLayout>
+
+<script is:inline>
+  (() => {
+    const form = document.querySelector('[data-docs-filters]');
+    const table = document.querySelector('[data-docs]');
+    if (!form || !table) return;
+    const rows = Array.from(table.querySelectorAll('[data-row]'));
+    const shown = document.querySelector('[data-shown]');
+    const empty = document.querySelector('[data-empty]');
+    const qInput = form.querySelector('#q');
+    const nivelSel = form.querySelector('#nivel');
+    const tipoSel = form.querySelector('#tipo');
+    function apply() {
+      const q = (qInput.value || '').trim().toLowerCase();
+      const nivel = nivelSel.value;
+      const tipo = tipoSel.value;
+      let visible = 0;
+      for (const row of rows) {
+        const matchQ = !q || (row.dataset.search || '').includes(q);
+        const matchN = nivel === 'all' || row.dataset.nivel === nivel;
+        const matchT = tipo === 'all' || row.dataset.tipo === tipo;
+        const show = matchQ && matchN && matchT;
+        row.hidden = !show;
+        if (show) visible++;
+      }
+      if (shown) shown.textContent = String(visible);
+      if (empty) empty.hidden = visible !== 0;
+    }
+    form.addEventListener('input', apply);
+    form.addEventListener('change', apply);
+    form.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
+    form.addEventListener('reset', () => setTimeout(apply, 0));
+  })();
+</script>
+
+<style>
+  .empty-state {
+    border: 1px dashed var(--color-border-strong);
+    background: var(--color-surface-muted);
+    padding: var(--space-4);
+    text-align: center;
+    font: 400 var(--font-size-1)/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+</style>
