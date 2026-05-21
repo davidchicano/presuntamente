@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
   lang?: 'es' | 'ca';
@@ -9,8 +10,7 @@ const { lang = 'es' } = Astro.props;
 
 // TODO i18n: cuando se active el catalán, añadir la rama 'ca' en strings y
 // crear los wrappers en /src/pages/cat/ que llamen a este componente con
-// lang="ca". El Lote 2 reemplazará la fila hardcoded por una iteración sobre
-// las Content Collections de YAML.
+// lang="ca".
 const strings = {
   title: 'Catálogo de casos',
   description:
@@ -21,22 +21,106 @@ const strings = {
     'enlaza con su ficha completa, sus personas implicadas y los documentos primarios que lo respaldan.',
 };
 
-// Fila hardcoded del Lote 1 — sustituida por la lectura de Content Collections en el Lote 2.
-const casos = [
-  {
-    slug: 'plus-ultra',
-    mediatico: 'Caso Plus Ultra',
-    oficial: 'DP — JCI nº 4 AN',
-    fase: 'Instrucción',
-    phaseKind: 'instr' as const,
-    organo: 'JCI nº 4, AN',
-    implicados: 1,
-    ultimo_hito: {
-      fecha: '2026-05-19',
-      titulo: 'Auto de imputación · Zapatero',
-    },
-  },
-];
+// --- Carga desde Content Collections ----------------------------------------
+
+const [casosCol, hitosCol, rolesCol, organizacionesCol] = await Promise.all([
+  getCollection('casos'),
+  getCollection('hitos'),
+  getCollection('roles'),
+  getCollection('organizaciones'),
+]);
+
+// Helper: mapeo de fase_actual (10 valores) → bucket de UI (3 valores).
+// Sólo tenemos 3 badges de fase en global.css (instr / juicio / firme); los
+// archivos van al bucket "firme" como estado neutral de cierre — convendrá
+// añadir badge propio cuando entren casos archivados al inventario.
+function mapFase(fase: string): { kind: 'instr' | 'juicio' | 'firme'; label: string } {
+  if (fase === 'instruccion' || fase === 'fase_intermedia' || fase === 'denuncia_o_querella') {
+    return { kind: 'instr', label: 'Instrucción' };
+  }
+  if (fase === 'juicio_oral' || fase === 'sentencia_primera_instancia' || fase === 'recurso') {
+    return { kind: 'juicio', label: 'Juicio oral' };
+  }
+  if (fase === 'sentencia_firme' || fase === 'ejecucion') {
+    return { kind: 'firme', label: 'Sentencia firme' };
+  }
+  if (fase === 'archivo_provisional' || fase === 'archivo_libre') {
+    return { kind: 'firme', label: 'Archivado' };
+  }
+  return { kind: 'instr', label: fase };
+}
+
+// "Implicados con rol activo": personas con rol de imputación (investigado,
+// procesado, acusado, condenado) cuyo rol no tenga fecha_fin. Decisión
+// editorial razonada: en cultura periodística española "implicado" se usa
+// específicamente para investigados/imputados, no para todo agente formal
+// del procedimiento (juez instructor, fiscal, acusación popular). Si más
+// adelante el maintainer prefiere otra definición, ajustar aquí.
+const ROLES_IMPUTACION = new Set(['investigado', 'procesado', 'acusado', 'condenado']);
+
+const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
+
+const casos = casosCol
+  .map((c) => {
+    const caso = c.data;
+    const hitosDelCaso = hitosCol
+      .filter((h) => h.data.caso_id === caso.id)
+      .sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+    const ultimo = hitosDelCaso[0]?.data;
+    const implicados = rolesCol.filter(
+      (r) =>
+        r.data.caso_id === caso.id &&
+        r.data.sujeto_tipo === 'persona' &&
+        ROLES_IMPUTACION.has(r.data.rol) &&
+        !r.data.fecha_fin,
+    ).length;
+    const org = orgIndex.get(caso.organo_judicial_id);
+    // Para la columna "Órgano" preferimos el acrónimo cuando existe (AN, JCI 4),
+    // y si no, una versión corta del nombre. El detalle pasa a la ficha.
+    const organoCorto =
+      org?.nombres_alternativos?.[0] ??
+      org?.siglas ??
+      org?.nombre ??
+      caso.organo_judicial_id;
+    const fase = mapFase(caso.fase_actual);
+    return {
+      slug: caso.id,
+      mediatico: caso.nombre_mediatico,
+      oficial: caso.nombre_oficial,
+      fase: fase.label,
+      phaseKind: fase.kind,
+      organo: organoCorto,
+      organoFull: org?.nombre ?? caso.organo_judicial_id,
+      numero: caso.numero_procedimiento ?? '',
+      implicados,
+      ultimo_hito: ultimo
+        ? { fecha: ultimo.fecha, titulo: ultimo.titulo }
+        : null,
+    };
+  })
+  // Orden por defecto: último hito ↓ (más reciente primero). Los casos sin
+  // hitos quedan al final.
+  .sort((a, b) => {
+    const fa = a.ultimo_hito?.fecha ?? '';
+    const fb = b.ultimo_hito?.fecha ?? '';
+    return fb.localeCompare(fa);
+  });
+
+// Texto plano para la búsqueda client-side. Agrupamos en un único campo
+// data-search lower-case con todo lo indexable, evitando JS pesado en el
+// cliente.
+function buildSearchBlob(c: (typeof casos)[number]): string {
+  return [
+    c.mediatico,
+    c.oficial,
+    c.organo,
+    c.organoFull,
+    c.numero,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+}
 ---
 
 <BaseLayout
@@ -56,9 +140,9 @@ const casos = [
       <p class="page-id__sub">{strings.sub}</p>
     </div>
     <div class="page-id__meta">
-      <span>Total: {casos.length}</span>
+      <span>Total: <span data-total>{casos.length}</span></span>
       <span>·</span>
-      <span>Mostrando: {casos.length}</span>
+      <span>Mostrando: <span data-shown>{casos.length}</span></span>
     </div>
   </section>
 
@@ -67,14 +151,20 @@ const casos = [
     <h2>Filtros</h2>
   </header>
 
-  <form class="filter-bar" method="get" role="search" aria-label="Filtrar catálogo">
+  <form
+    class="filter-bar"
+    method="get"
+    role="search"
+    aria-label="Filtrar catálogo"
+    data-catalog-filters
+  >
     <div class="field">
       <label for="q">Buscar</label>
-      <input id="q" name="q" type="search" placeholder="Caso, organización, número de procedimiento…" disabled />
+      <input id="q" name="q" type="search" placeholder="Caso, organización, número de procedimiento…" autocomplete="off" />
     </div>
     <div class="field">
       <label for="phase">Fase procesal</label>
-      <select id="phase" name="phase" disabled>
+      <select id="phase" name="phase">
         <option value="all">Todas</option>
         <option value="instr">Instrucción</option>
         <option value="juicio">Juicio oral</option>
@@ -83,22 +173,20 @@ const casos = [
     </div>
     <div class="field">
       <label for="order">Ordenar por</label>
-      <select id="order" name="order" disabled>
+      <select id="order" name="order">
         <option value="hito">Último hito ↓</option>
         <option value="implicados">Implicados ↓</option>
       </select>
     </div>
-    <button class="btn" type="submit" disabled>Aplicar</button>
+    <button class="btn" type="reset">Limpiar</button>
   </form>
-
-  <p class="muted filters-note">
-    Filtros en preparación · disponibles cuando el catálogo crezca a partir del Lote 2.
-  </p>
 
   <header class="sec-h">
     <span class="num">1.2</span>
     <h2>Listado</h2>
-    <span class="right">{casos.length} caso{casos.length === 1 ? '' : 's'} · orden: último hito</span>
+    <span class="right" data-listado-meta>
+      {casos.length} caso{casos.length === 1 ? '' : 's'} · orden: último hito
+    </span>
   </header>
 
   <div class="tbl-caption">
@@ -106,7 +194,7 @@ const casos = [
     <span>Última actualización del listado: 2026-05-21</span>
   </div>
 
-  <table class="tbl">
+  <table class="tbl" data-catalog>
     <thead>
       <tr>
         <th style="width: 34%;">Caso</th>
@@ -118,7 +206,14 @@ const casos = [
     </thead>
     <tbody>
       {casos.map((c) => (
-        <tr class="is-link">
+        <tr
+          class="is-link"
+          data-row
+          data-phase={c.phaseKind}
+          data-implicados={c.implicados}
+          data-fecha={c.ultimo_hito?.fecha ?? ''}
+          data-search={buildSearchBlob(c)}
+        >
           <td>
             <a href={`/casos/${c.slug}`}>
               <span class="c-name">{c.mediatico}</span>
@@ -128,28 +223,112 @@ const casos = [
           <td>
             <span class:list={['badge', `badge--phase-${c.phaseKind}`]}>{c.fase}</span>
           </td>
-          <td class="c-mono">{c.organo}</td>
+          <td class="c-mono" title={c.organoFull}>{c.organo}</td>
           <td class="c-num">{c.implicados}</td>
           <td>
-            <div class="c-date">{c.ultimo_hito.fecha}</div>
-            <div class="c-hito-title">{c.ultimo_hito.titulo}</div>
+            {c.ultimo_hito ? (
+              <>
+                <div class="c-date">{c.ultimo_hito.fecha}</div>
+                <div class="c-hito-title">{c.ultimo_hito.titulo}</div>
+              </>
+            ) : (
+              <span class="muted">Sin hitos registrados</span>
+            )}
           </td>
         </tr>
       ))}
     </tbody>
   </table>
+
+  <p class="empty-state" data-empty hidden>
+    Sin resultados para los filtros actuales.
+  </p>
 </BaseLayout>
 
+<script is:inline>
+  (() => {
+    const form = document.querySelector('[data-catalog-filters]');
+    const table = document.querySelector('[data-catalog]');
+    if (!form || !table) return;
+
+    const rows = Array.from(table.querySelectorAll('[data-row]'));
+    const tbody = table.querySelector('tbody');
+    const shown = document.querySelector('[data-shown]');
+    const empty = document.querySelector('[data-empty]');
+    const meta = document.querySelector('[data-listado-meta]');
+
+    const qInput = form.querySelector('#q');
+    const phaseSel = form.querySelector('#phase');
+    const orderSel = form.querySelector('#order');
+
+    const ORDER_LABEL = {
+      hito: 'último hito',
+      implicados: 'implicados',
+    };
+
+    function apply() {
+      const q = (qInput.value || '').trim().toLowerCase();
+      const phase = phaseSel.value;
+      const order = orderSel.value;
+
+      const visible = [];
+      for (const row of rows) {
+        const blob = row.dataset.search || '';
+        const rowPhase = row.dataset.phase || '';
+        const matchQ = !q || blob.includes(q);
+        const matchPhase = phase === 'all' || rowPhase === phase;
+        const show = matchQ && matchPhase;
+        row.hidden = !show;
+        if (show) visible.push(row);
+      }
+
+      visible.sort((a, b) => {
+        if (order === 'implicados') {
+          const ia = parseInt(a.dataset.implicados || '0', 10);
+          const ib = parseInt(b.dataset.implicados || '0', 10);
+          if (ib !== ia) return ib - ia;
+        }
+        const fa = a.dataset.fecha || '';
+        const fb = b.dataset.fecha || '';
+        return fb.localeCompare(fa);
+      });
+      for (const row of visible) tbody.appendChild(row);
+
+      if (shown) shown.textContent = String(visible.length);
+      if (empty) empty.hidden = visible.length !== 0;
+      if (meta) {
+        const word = visible.length === 1 ? 'caso' : 'casos';
+        meta.textContent = `${visible.length} ${word} · orden: ${ORDER_LABEL[order] || 'último hito'}`;
+      }
+    }
+
+    form.addEventListener('input', apply);
+    form.addEventListener('change', apply);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      apply();
+    });
+    form.addEventListener('reset', () => {
+      // Diferir al siguiente tick para que los valores ya estén reset.
+      setTimeout(apply, 0);
+    });
+  })();
+</script>
+
 <style>
-  .filters-note {
-    font-size: var(--font-size-0);
-    font-family: var(--font-mono);
-    margin-top: calc(-1 * var(--space-2));
-    margin-bottom: var(--space-4);
-  }
   .c-hito-title {
     font-size: var(--font-size-0);
     color: var(--color-fg-muted);
     margin-top: 2px;
+  }
+  .empty-state {
+    border: 1px dashed var(--color-border-strong);
+    background: var(--color-surface-muted);
+    padding: var(--space-4);
+    margin-top: 0;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-1);
+    color: var(--color-fg-muted);
   }
 </style>
