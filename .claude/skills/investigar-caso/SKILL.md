@@ -123,6 +123,94 @@ Tras cada caso real arrancado con esta skill, añadir aquí una entrada en `## H
 
 ## Histórico
 
+### Begoña Gómez (2026-05-22) — primer arranque real con la skill
+
+Primer caso arrancado de cero con la skill `/investigar-caso` v0 desde
+un prompt del maintainer que sólo aportaba nombre mediático y la
+hipótesis del órgano titular ("probablemente Juzgado de Instrucción
+nº 41 de Madrid, Juan Carlos Peinado, pero VERIFÍCALO"). El caso se
+seleccionó deliberadamente porque testea trayectoria con
+desimputaciones que Plus Ultra no tiene.
+
+Resultado PR1: 5 personas, 8 organizaciones (incluyendo 5 medios
+nuevos), 8 documentos, 5 hitos, 6 hechos, 11 roles. Validado con
+`pnpm validate` 92 OK + `astro check` 0/0/0 + `pnpm build` 40 páginas.
+Ficha verificada con la trayectoria `investigado → desimputado`
+visible en la sección "ABSUELTOS / DESIMPUTADOS" para el rector UCM
+Joaquín Goyache.
+
+Lecciones:
+
+- **El par `investigado → desimputado` con `fecha_fin` + `hito_fin_id`
+  funciona en datos reales.** Validado por primera vez con Goyache:
+  se modela como dos `RolEnCaso` consecutivos del mismo sujeto. La
+  card de Persona renderiza ambos roles en una micro-tabla
+  cronológica y la sección de personas implicadas del caso agrupa
+  correctamente el rol vigente en "ABSUELTOS / DESIMPUTADOS". Patrón
+  reusable: una desimputación es un cierre de rol + apertura de
+  otro, nunca una modificación destructiva del rol previo.
+- **Sobreseimientos parciales de delito (no de procedimiento) se
+  modelan como `Hecho(tipo=exculpatorio)`, no como `Hito` separado.**
+  El auto del 2026-04-13 archiva el delito de intrusismo profesional
+  contra Begoña Gómez manteniendo los otros cuatro delitos. El
+  procedimiento continúa, así que no aplica `archivo_provisional`
+  ni `sobreseimiento_libre` (sugerirían cierre total). Se modela
+  como un `Hecho(tipo=exculpatorio)` colgado del hito principal
+  (auto procesamiento) con cita literal al pasaje del auto que
+  archiva ese delito.
+- **`hito_origen_id` falla cuando no se ha modelado el hito específico
+  de imputación.** En PR1 el rol `goyache-investigado` apunta al hito
+  de origen del procedimiento (denuncia Manos Limpias) y NO al auto
+  específico de imputación del rector. Razón: el auto que elevó a
+  Goyache a investigado no se ha localizado todavía con URL canónica
+  y modelar un hito sin documento exige usar tipos no jurisdiccionales
+  del enum (que no encajan semánticamente). Patrón aceptado para PR1:
+  apuntar al hito de origen del procedimiento + nota en NOTES.md de
+  que se sustituirá por el hito específico cuando se localice fuente.
+  Aprendizaje: el "hito de origen" de un rol no siempre tiene que ser
+  el auto específico que lo abrió — puede ser el hito que da carta
+  de naturaleza al procedimiento en su conjunto, hasta que aparezca
+  el auto más fino.
+- **El doc principal de un hito puede ser un documento posterior** que
+  documenta retroactivamente lo ocurrido, NO necesariamente coetáneo.
+  Caso ejemplo: la imputación de Cristina Álvarez (2025-08-18) tiene
+  como `documento_principal_id` el auto de procesamiento del
+  2026-04-13 — porque el auto recoge la imputación previa y la
+  confirma. Funciona dentro del modelo. Sin embargo, **cuando hay
+  cobertura coetánea N4 disponible es preferible usarla como
+  `documento_principal_id` y referenciar el doc posterior en
+  `documentos_relacionados`** (es lo que se hizo con la imputación
+  de Barrabés, 2024-07-19, apoyada en Libertad Digital del mismo día).
+  Refuerza la trazabilidad temporal.
+- **Personas con rol procesal de "testigo" pero figura pública NO se
+  modelan como `Persona` en PR1.** Caso de Pedro Sánchez en el caso
+  Begoña Gómez: compareció como testigo el 2024-07-22 acogiéndose a
+  su derecho a no declarar. Aunque el schema admite rol "testigo",
+  editorialmente entra en la categoría de "familiar de implicada con
+  rol no imputador" y no aporta valor al inventario. Se menciona como
+  contexto en la biografía corta de la investigada (esposa del
+  presidente) y en la descripción del caso. Patrón reusable: el rol
+  "testigo" se reserva para personas cuyo testimonio sea materialmente
+  relevante para el modelado de hechos o cuya identificación sea
+  relevante editorialmente, no para todos los que comparezcan ante
+  el juzgado.
+- **Cobertura de medios con orientación editorial dispar es el
+  estándar de cruce V-13.** Para los hitos sin documento oficial
+  localizable se necesitaron al menos dos líneas editoriales
+  distintas. Para Begoña Gómez PR1 se cruzaron: Infobae + Libertad
+  Digital (giro derechista) con El Español + Maldita.es + The
+  Objective + Moncloa.com (con perfiles editoriales heterogéneos).
+  La P-10 de neutralidad política se garantiza no por la línea
+  editorial de cada medio (que es la que es) sino por **cuántas
+  líneas se cruzan** y por el lenguaje del proyecto, que aplica los
+  verbos del doc 04 §3 con independencia de la cobertura.
+- **El nº exacto del procedimiento (Diligencias Previas xxxx/2024)
+  no siempre es público.** En Begoña Gómez PR1 una fuente lo da como
+  "DP Previas 1146" pero no se ha podido cruzar oficialmente. Patrón:
+  poner en `numero_procedimiento` un texto que explicite la
+  incertidumbre ("Diligencias Previas (número exacto pendiente de
+  confirmación pública)") en lugar de un número no verificable.
+
 ### Plus Ultra (2026-05-21) — caso bautismo (no usó la skill formalmente)
 
 El caso Plus Ultra se arrancó manualmente antes de que existiera esta skill, en sesión directa con el maintainer. Lecciones que han informado la v0:
