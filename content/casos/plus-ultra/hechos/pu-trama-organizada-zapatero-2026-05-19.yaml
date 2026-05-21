@@ -1,0 +1,29 @@
+id: pu-trama-organizada-zapatero-2026-05-19
+caso_id: plus-ultra
+enunciado: |
+  Consta en el auto del Juzgado Central de Instrucción nº 4 de la
+  Audiencia Nacional del 19 de mayo de 2026, conforme a la nota
+  institucional del Consejo General del Poder Judicial, que la
+  investigación ha identificado indiciariamente una "red organizada
+  para el ejercicio ilícito de influencia, estructurada y liderada por
+  José Luis Rodríguez Zapatero", según la calificación indiciaria del
+  magistrado instructor. La existencia y los contornos de esa
+  estructura están bajo investigación y no han sido acreditados por
+  sentencia firme.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2021-03-09"
+  hasta: "2026-05-19"
+  precision: rango
+personas_implicadas:
+  - jose-luis-rodriguez-zapatero
+organizaciones_implicadas:
+  - juzgado-central-instruccion-4
+documentos_respaldo:
+  - documento_id: auto-jci4-plus-ultra-2026-05-19
+    pasaje: "Calificación indiciaria del magistrado instructor recogida en la nota institucional del CGPJ del 19 de mayo de 2026"
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

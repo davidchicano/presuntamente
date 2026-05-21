@@ -1,0 +1,29 @@
+id: pu-detenciones-ejecutivos-2025-12-11
+caso_id: plus-ultra
+enunciado: |
+  Según la información publicada de forma cruzada por Infobae y Libertad
+  Digital, el 11 de diciembre de 2025 agentes de la Unidad de
+  Delincuencia Económica y Fiscal (UDEF) de la Policía Nacional
+  procedieron al registro de la sede de Plus Ultra Líneas Aéreas y a
+  la detención del presidente y dueño de la compañía, Julio Martínez
+  Sola; del director ejecutivo, Roberto Roselli; y del empresario
+  Javier Martínez Martínez. Los tres detenidos fueron puestos
+  posteriormente en libertad con medidas cautelares.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2025-12-11"
+  precision: dia
+personas_implicadas:
+  - julio-martinez-sola
+  - roberto-roselli
+  - javier-martinez-martinez
+organizaciones_implicadas:
+  - plus-ultra-lineas-aereas
+documentos_respaldo:
+  - documento_id: infobae-operacion-udef-2025-12-11
+  - documento_id: libertaddigital-detencion-plus-ultra-2025-12-11
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"
