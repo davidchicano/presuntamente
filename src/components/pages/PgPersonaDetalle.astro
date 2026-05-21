@@ -1,0 +1,243 @@
+---
+// PgPersonaDetalle — ficha individual de una Persona.
+// Sin swimlane gráfico todavía (queda para Fase 2); lista cronológica de
+// todos los roles que la persona ha tenido en cualquier caso.
+
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionH from '@/components/SectionH.astro';
+import { rolLabel, iniciales, type Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; persona: CollectionEntry<'personas'>; }
+const { lang = 'es', persona } = Astro.props;
+const data = persona.data;
+
+const [rolesCol, casosCol, delitosCol] = await Promise.all([
+  getCollection('roles'),
+  getCollection('casos'),
+  getCollection('delitos'),
+]);
+
+const casoIndex = new Map(casosCol.map((c) => [c.data.id, c.data]));
+const delitoIndex = new Map(delitosCol.map((d) => [d.data.id, d.data]));
+
+const rolesPersona = rolesCol
+  .filter((r) => r.data.sujeto_tipo === 'persona' && r.data.sujeto_persona_id === data.id)
+  .map((r) => ({
+    caso_id: r.data.caso_id,
+    rol: r.data.rol,
+    rolLabel: rolLabel(r.data.rol),
+    fecha_inicio: r.data.fecha_inicio,
+    fecha_fin: r.data.fecha_fin,
+    activo: !r.data.fecha_fin,
+    delitos: (r.data.delitos_atribuidos ?? []).map((d) => delitoIndex.get(d)?.nombre_tipico ?? d),
+    notas: r.data.notas,
+  }))
+  .sort((a, b) => b.fecha_inicio.localeCompare(a.fecha_inicio));
+
+const casosUnicos = Array.from(new Set(rolesPersona.map((r) => r.caso_id)))
+  .map((id) => casoIndex.get(id))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+const breadcrumb = [
+  { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+  { label: 'Personas', href: lang === 'ca' ? '/cat/personas' : '/personas' },
+  { label: data.nombre_completo },
+];
+
+const strings = {
+  eyebrow: data.es_figura_publica ? 'Ficha de persona · Figura pública' : 'Ficha de persona · Privada',
+  disclaimer:
+    'La condición de investigado, procesado o acusado no implica valoración de culpabilidad. ' +
+    'Rige el principio de presunción de inocencia mientras no recaiga sentencia firme.',
+};
+---
+
+<BaseLayout
+  title={data.nombre_completo}
+  lang={lang}
+  description={data.biografia_corta ?? data.nombre_completo}
+  activeNav="personas"
+  breadcrumb={breadcrumb}
+>
+  <section class="entity-mast">
+    <div class="entity-mast__init" aria-hidden="true">{iniciales(data.nombre_completo)}</div>
+    <div class="entity-mast__body">
+      <p class="entity-mast__eye">{strings.eyebrow}</p>
+      <h1 class="entity-mast__name">{data.nombre_completo}</h1>
+      {data.cargo_publico_actual && (
+        <p class="entity-mast__sub">{data.cargo_publico_actual}</p>
+      )}
+      <div class="entity-mast__row">
+        {data.fallecido && <span class="badge">Fallecido</span>}
+        <span><strong>{casosUnicos.length}</strong> caso{casosUnicos.length === 1 ? '' : 's'} referenciado{casosUnicos.length === 1 ? '' : 's'}</span>
+        <span class="entity-mast__sep">·</span>
+        <span><strong>{rolesPersona.length}</strong> rol{rolesPersona.length === 1 ? '' : 'es'} en total</span>
+      </div>
+    </div>
+  </section>
+
+  {data.biografia_corta && (
+    <>
+      <SectionH num="1." title="Biografía" id="biografia" />
+      <div class="prose">
+        <p>{data.biografia_corta}</p>
+      </div>
+    </>
+  )}
+
+  <SectionH
+    num="2."
+    title="Casos donde aparece"
+    id="casos"
+    right={`${casosUnicos.length} caso${casosUnicos.length === 1 ? '' : 's'}`}
+  />
+  {casosUnicos.length === 0 ? (
+    <p class="muted">Sin casos registrados.</p>
+  ) : (
+    <ul class="casos-list">
+      {casosUnicos.map((c) => (
+        <li class="casos-list__item">
+          <a href={`/casos/${c.id}`}>
+            <span class="c-name">{c.nombre_mediatico}</span>
+            <span class="c-name__sub">{c.nombre_oficial}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <SectionH
+    num="3."
+    title="Trayectoria procesal completa"
+    id="trayectoria"
+    right={`${rolesPersona.length} rol${rolesPersona.length === 1 ? '' : 'es'}`}
+  />
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th style="width: 22%;">Periodo</th>
+        <th style="width: 20%;">Rol</th>
+        <th style="width: 28%;">Caso</th>
+        <th style="width: 30%;">Delitos atribuidos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rolesPersona.map((r) => (
+        <tr>
+          <td class="c-mono">
+            {r.fecha_inicio}
+            {r.fecha_fin ? ` → ${r.fecha_fin}` : ' → vigente'}
+          </td>
+          <td>
+            <span class:list={['badge', !r.activo && 'badge--ghost']}>{r.rolLabel}</span>
+          </td>
+          <td>
+            <a href={`/casos/${r.caso_id}`}>{casoIndex.get(r.caso_id)?.nombre_mediatico ?? r.caso_id}</a>
+          </td>
+          <td>
+            {r.delitos.length === 0 ? (
+              <span class="muted">—</span>
+            ) : (
+              <ul class="delitos">{r.delitos.map((d) => <li>{d}</li>)}</ul>
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <SectionH num="4." title="Cómo se ha redactado esta ficha" id="redaccion" />
+  <div class="prose">
+    <p>
+      Los datos personales se limitan a lo procesalmente relevante (V-17). Si esta persona ha cerrado todos
+      sus roles activos y no es figura pública, su entrada quedará revisada conforme al protocolo de
+      anonimización del repositorio.
+    </p>
+    <ul class="meta-list">
+      <li><strong>Estado de publicación:</strong> {data.estado_publicacion}</li>
+      {data.ultima_revision_editorial && (
+        <li><strong>Última revisión editorial:</strong> <span class="mono">{data.ultima_revision_editorial}</span></li>
+      )}
+    </ul>
+  </div>
+
+  <div class="aviso aviso--accent mt-6">{strings.disclaimer}</div>
+</BaseLayout>
+
+<style>
+  .entity-mast {
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent);
+    background: var(--color-surface);
+    padding: 18px 20px;
+    margin-bottom: var(--space-4);
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 18px;
+  }
+  .entity-mast__init {
+    width: 64px;
+    height: 64px;
+    background: var(--color-accent-soft);
+    border: 1px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 700 22px/1 var(--font-sans);
+    color: var(--color-accent);
+  }
+  .entity-mast__eye {
+    font: 700 11px/1 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent-secondary-hover);
+    margin: 0 0 6px;
+  }
+  .entity-mast__name {
+    font: 700 clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem)/1.15 var(--font-sans);
+    letter-spacing: -0.005em;
+    margin: 0 0 4px;
+  }
+  .entity-mast__sub {
+    font: 400 13px/1.4 var(--font-sans);
+    color: var(--color-fg-muted);
+    margin: 0 0 10px;
+  }
+  .entity-mast__row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+    font: 400 12px/1 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .entity-mast__row strong { color: var(--color-fg); font-weight: 600; }
+  .entity-mast__sep { color: var(--color-border); }
+
+  .casos-list { list-style: none; padding: 0; margin: 0 0 var(--space-4); border: 1px solid var(--color-border); background: var(--color-surface); }
+  .casos-list__item { padding: 12px 16px; border-bottom: 1px solid var(--color-border); }
+  .casos-list__item:last-child { border-bottom: 0; }
+  .casos-list__item a { color: inherit; text-decoration: none; display: flex; flex-direction: column; gap: 2px; }
+  .casos-list__item a:hover { text-decoration: underline; }
+  .casos-list__item .c-name { font-weight: 600; }
+  .casos-list__item .c-name__sub { font-size: var(--font-size-0); color: var(--color-fg-muted); }
+
+  .delitos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+  .delitos li {
+    font: 400 11px/1 var(--font-mono);
+    background: var(--color-surface-muted);
+    color: var(--color-fg-muted);
+    padding: 3px 6px;
+    border: 1px solid var(--color-border);
+  }
+
+  .meta-list { margin: 0; padding-left: 18px; }
+  .meta-list li { margin: 4px 0; }
+  .meta-list .mono { font-family: var(--font-mono); font-size: 12px; }
+
+  .badge--ghost { opacity: 0.65; }
+</style>

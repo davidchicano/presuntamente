@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import PgPersonaDetalle from '@/components/pages/PgPersonaDetalle.astro';
+
+export async function getStaticPaths() {
+  const personas = await getCollection('personas');
+  return personas.map((persona) => ({
+    params: { slug: persona.id },
+    props: { persona },
+  }));
+}
+
+const { persona } = Astro.props;
+---
+<PgPersonaDetalle lang="es" persona={persona} />

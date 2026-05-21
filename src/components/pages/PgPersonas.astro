@@ -1,0 +1,191 @@
+---
+// PgPersonas — listado tabular de Personas con rol en algún caso.
+// Filtros client-side: búsqueda + figura pública. Misma estética
+// administrativa que PgCasos.
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { rolLabel, rolGrupo, type Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; }
+const { lang = 'es' } = Astro.props;
+
+const [personasCol, rolesCol] = await Promise.all([
+  getCollection('personas'),
+  getCollection('roles'),
+]);
+
+const personas = personasCol
+  .map((p) => {
+    const rolesPersona = rolesCol.filter(
+      (r) => r.data.sujeto_tipo === 'persona' && r.data.sujeto_persona_id === p.data.id,
+    );
+    // Rol "más fuerte" para mostrar como badge principal: si tiene
+    // condenado vigente, eso; si tiene imputación activa, eso; etc.
+    const roles = rolesPersona.map((r) => r.data);
+    const activos = roles.filter((r) => !r.fecha_fin);
+    const referencia = activos.length > 0
+      ? (activos.find((r) => rolGrupo(r.rol) === 'condenado')
+        ?? activos.find((r) => rolGrupo(r.rol) === 'imputacion_activa')
+        ?? activos.find((r) => rolGrupo(r.rol) === 'funcional')
+        ?? activos[0])
+      : roles[roles.length - 1];
+    const casosUnicos = new Set(roles.map((r) => r.caso_id));
+    return {
+      slug: p.data.id,
+      nombre: p.data.nombre_completo,
+      cargo: p.data.cargo_publico_actual,
+      esFigura: p.data.es_figura_publica,
+      rolPrincipal: referencia ? { rol: referencia.rol, label: rolLabel(referencia.rol) } : null,
+      casosCount: casosUnicos.size,
+    };
+  })
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+
+const strings = {
+  title: 'Personas implicadas',
+  description:
+    'Listado de personas con rol formal en algún procedimiento registrado en el sistema.',
+  eyebrow: 'Sección 2 · Personas',
+  sub:
+    'Personas físicas que aparecen con rol procesal (investigado, procesado, condenado, ' +
+    'absuelto, desimputado, testigo, denunciante, juez, fiscal…) en alguno de los casos del ' +
+    'inventario. No se incluyen personas privadas sin rol formal.',
+};
+
+function searchBlob(p: (typeof personas)[number]): string {
+  return [p.nombre, p.cargo, p.rolPrincipal?.label].filter(Boolean).join(' ').toLowerCase();
+}
+---
+
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  activeNav="personas"
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'Personas' },
+  ]}
+>
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.title}</h1>
+      <p class="page-id__sub">{strings.sub}</p>
+    </div>
+    <div class="page-id__meta">
+      <span>Total: <span data-total>{personas.length}</span></span>
+      <span>·</span>
+      <span>Mostrando: <span data-shown>{personas.length}</span></span>
+    </div>
+  </section>
+
+  <header class="sec-h">
+    <span class="num">2.1</span>
+    <h2>Filtros</h2>
+  </header>
+
+  <form class="filter-bar" method="get" role="search" aria-label="Filtrar personas" data-personas-filters>
+    <div class="field">
+      <label for="q">Buscar</label>
+      <input id="q" name="q" type="search" placeholder="Nombre, cargo, rol…" autocomplete="off" />
+    </div>
+    <div class="field">
+      <label for="figura">Figura pública</label>
+      <select id="figura" name="figura">
+        <option value="all">Todas</option>
+        <option value="publica">Sí, figura pública</option>
+        <option value="privada">No, persona privada</option>
+      </select>
+    </div>
+    <button class="btn" type="reset">Limpiar</button>
+  </form>
+
+  <header class="sec-h">
+    <span class="num">2.2</span>
+    <h2>Listado</h2>
+    <span class="right">orden: alfabético</span>
+  </header>
+
+  <table class="tbl" data-personas>
+    <thead>
+      <tr>
+        <th style="width: 44%;">Persona</th>
+        <th style="width: 20%;">Rol procesal principal</th>
+        <th style="width: 26%;">Cargo público actual</th>
+        <th style="width: 10%;" class="c-num">Casos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {personas.map((p) => (
+        <tr
+          class="is-link"
+          data-row
+          data-figura={p.esFigura ? 'publica' : 'privada'}
+          data-search={searchBlob(p)}
+        >
+          <td>
+            <a href={`/personas/${p.slug}`}>
+              <span class="c-name">{p.nombre}</span>
+              <span class="c-name__sub">{p.esFigura ? 'Figura pública' : 'Privado'}</span>
+            </a>
+          </td>
+          <td>
+            {p.rolPrincipal ? (
+              <span class="badge">{p.rolPrincipal.label}</span>
+            ) : (
+              <span class="muted">—</span>
+            )}
+          </td>
+          <td class="c-mono">{p.cargo ?? '—'}</td>
+          <td class="c-num">{p.casosCount}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <p class="empty-state" data-empty hidden>Sin resultados para los filtros actuales.</p>
+</BaseLayout>
+
+<script is:inline>
+  (() => {
+    const form = document.querySelector('[data-personas-filters]');
+    const table = document.querySelector('[data-personas]');
+    if (!form || !table) return;
+    const rows = Array.from(table.querySelectorAll('[data-row]'));
+    const shown = document.querySelector('[data-shown]');
+    const empty = document.querySelector('[data-empty]');
+    const qInput = form.querySelector('#q');
+    const figura = form.querySelector('#figura');
+    function apply() {
+      const q = (qInput.value || '').trim().toLowerCase();
+      const fig = figura.value;
+      let visible = 0;
+      for (const row of rows) {
+        const matchQ = !q || (row.dataset.search || '').includes(q);
+        const matchF = fig === 'all' || row.dataset.figura === fig;
+        const show = matchQ && matchF;
+        row.hidden = !show;
+        if (show) visible++;
+      }
+      if (shown) shown.textContent = String(visible);
+      if (empty) empty.hidden = visible !== 0;
+    }
+    form.addEventListener('input', apply);
+    form.addEventListener('change', apply);
+    form.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
+    form.addEventListener('reset', () => setTimeout(apply, 0));
+  })();
+</script>
+
+<style>
+  .empty-state {
+    border: 1px dashed var(--color-border-strong);
+    background: var(--color-surface-muted);
+    padding: var(--space-4);
+    text-align: center;
+    font: 400 var(--font-size-1)/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+</style>
