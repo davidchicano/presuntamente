@@ -1,0 +1,115 @@
+---
+// Contraposicion — bloque de hechos contrapuestos en dos columnas
+// visualmente equivalentes (doc 02 §2.7.3 y §3.2).
+// La página no decide quién tiene razón: mismo ancho, mismo orden, mismo
+// tipo de cita. Cada columna identifica al actor que sostiene el hecho.
+
+import LevelBadge from './LevelBadge.astro';
+
+interface Fuente {
+  nivel: 1 | 2 | 3 | 4;
+  titulo: string;
+  href?: string;
+}
+
+interface Columna {
+  actor: string;
+  enunciado: string;
+  fuentes: Fuente[];
+}
+
+interface Props {
+  titulo: string;
+  columnaA: Columna;
+  columnaB: Columna;
+}
+
+const { titulo, columnaA, columnaB } = Astro.props;
+---
+<div class="contrap">
+  <div class="contrap__head">{titulo}</div>
+  <div class="contrap__cols">
+    <div class="contrap__col">
+      <div class="contrap__actor">{columnaA.actor}</div>
+      <p class="contrap__text">{columnaA.enunciado}</p>
+      <ul class="contrap__sources">
+        {columnaA.fuentes.map((f) => (
+          <li>
+            <LevelBadge nivel={f.nivel} />
+            {f.href ? <a href={f.href}>{f.titulo}</a> : <span>{f.titulo}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="contrap__sep" aria-hidden="true"></div>
+    <div class="contrap__col">
+      <div class="contrap__actor">{columnaB.actor}</div>
+      <p class="contrap__text">{columnaB.enunciado}</p>
+      <ul class="contrap__sources">
+        {columnaB.fuentes.map((f) => (
+          <li>
+            <LevelBadge nivel={f.nivel} />
+            {f.href ? <a href={f.href}>{f.titulo}</a> : <span>{f.titulo}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  .contrap {
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+  }
+  .contrap__head {
+    padding: 6px 14px;
+    background: var(--color-fg);
+    color: #fff;
+    font: 700 11px/1.4 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .contrap__cols {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+  }
+  .contrap__col { padding: 14px 18px; }
+  .contrap__sep { background: var(--color-border-strong); }
+  .contrap__actor {
+    font: 700 10px/1 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .contrap__text {
+    font: 400 13px/1.55 var(--font-sans);
+    margin: 0 0 10px;
+    color: var(--color-fg);
+  }
+  .contrap__sources {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .contrap__sources li {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-fg-muted);
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .contrap__sources a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+  @media (max-width: 720px) {
+    .contrap__cols { grid-template-columns: 1fr; }
+    .contrap__sep { height: 1px; }
+  }
+</style>

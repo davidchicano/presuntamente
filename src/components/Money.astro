@@ -1,0 +1,27 @@
+---
+// Money — chip inline para valores monetarios citados en prosa.
+// Markup canónico en preview/comp_money_acronym.html.
+// Uso: <Money amount="53,5 M€" /> dentro de un párrafo de descripción /
+// enunciado de hecho / resumen ejecutivo.
+interface Props { amount: string; title?: string; }
+const { amount, title } = Astro.props;
+---
+<span class="money" title={title}>{amount}</span>
+
+<style>
+  .money {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 5px;
+    border: 1px solid var(--color-accent);
+    background: var(--color-surface-muted);
+    border-radius: 0;
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    font-weight: 600;
+    color: var(--color-fg);
+    white-space: nowrap;
+    vertical-align: 1px;
+    line-height: 1.5;
+  }
+</style>

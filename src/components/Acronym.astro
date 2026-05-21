@@ -1,0 +1,80 @@
+---
+// Acronym — referencia inline a una Organización con lookup automático.
+// Resuelve `ref` (slug) o el texto del slot contra la collection
+// `organizaciones`. Si existe el slug equivalente, genera link interno
+// a /organizaciones/<slug>. Si NO existe, span con tooltip del nombre
+// completo (cuando se pasa `tooltip`) sin link. NUNCA enlaza a Wikipedia
+// ni a fuentes externas no controladas (DESIGN.md §4 "Micro-componentes
+// de citación inline").
+
+import { getCollection } from 'astro:content';
+
+interface Props {
+  /** Slug explícito de la Organización en /content/organizaciones/. Si
+   *  no se pasa, se intenta resolver por el texto del slot. */
+  ref?: string;
+  /** Fallback tooltip cuando no hay slug equivalente (texto descriptivo
+   *  del acrónimo). Se ignora si el lookup encuentra organización. */
+  tooltip?: string;
+  lang?: 'es' | 'ca';
+}
+
+const { ref, tooltip, lang = 'es' } = Astro.props;
+
+// Una sola pasada a getCollection por render — Astro deduplica entre
+// componentes en el mismo build.
+const orgs = await getCollection('organizaciones');
+const labelHtml = await Astro.slots.render('default');
+const labelText = labelHtml.replace(/<[^>]+>/g, '').trim();
+
+// Lookup: ref explícito > slug derivado del texto > búsqueda por
+// nombre/nombres_alternativos exactos > sin match.
+function slugify(s: string) {
+  return s
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function findOrg() {
+  if (ref) {
+    const byRef = orgs.find((o) => o.data.id === ref);
+    if (byRef) return byRef.data;
+  }
+  const slug = slugify(labelText);
+  const bySlug = orgs.find((o) => o.data.id === slug);
+  if (bySlug) return bySlug.data;
+  const byName = orgs.find((o) => {
+    if (o.data.nombre === labelText) return true;
+    const alts = (o.data as { nombres_alternativos?: string[] }).nombres_alternativos ?? [];
+    return alts.includes(labelText);
+  });
+  return byName?.data ?? null;
+}
+
+const org = findOrg();
+const href = org ? (lang === 'ca' ? `/cat/organizaciones/${org.id}` : `/organizaciones/${org.id}`) : undefined;
+const finalTooltip = org?.nombre ?? tooltip;
+---
+{href ? (
+  <a class="acron" href={href} title={finalTooltip}>{labelText}</a>
+) : (
+  <span class="acron" title={finalTooltip}>{labelText}</span>
+)}
+
+<style>
+  .acron {
+    text-decoration: underline dotted 1px;
+    text-decoration-color: var(--color-fg-muted);
+    text-underline-offset: 3px;
+    color: inherit;
+  }
+  a.acron { cursor: pointer; }
+  a.acron:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+  span.acron { cursor: help; }
+</style>
