@@ -1,0 +1,18 @@
+id: querella-manos-limpias-presentada-2025-12-23
+caso_id: plus-ultra
+tipo: querella_presentada
+fecha: "2025-12-23"
+fecha_precision: dia
+titulo: "Manos Limpias presenta querella ante el JI nº 15 de Madrid en el caso Plus Ultra"
+descripcion: |
+  La asociación Manos Limpias presenta una querella ante el Juzgado de
+  Instrucción nº 15 de Madrid en relación con el rescate público de la
+  aerolínea Plus Ultra. La querella se incorpora a unas diligencias
+  previas ya abiertas por el mismo juzgado a petición de la Fiscalía
+  Anticorrupción tras peticiones de cooperación internacional
+  procedentes de Francia y Suiza en 2024.
+organizaciones_afectadas:
+  - manos-limpias
+  - juzgado-instruccion-15-madrid
+documento_principal_id: querella-manos-limpias-plus-ultra-2025-12
+fase_resultante: instruccion

@@ -1,0 +1,13 @@
+id: falsedad-documental
+nombre_tipico: "Falsedad documental"
+articulos_cp:
+  - "art. 390 CP"
+  - "art. 392 CP"
+  - "art. 395 CP"
+familia: falsedad_documental
+descripcion_breve: |
+  Conjunto de tipos penales que sancionan la alteración, simulación o
+  suposición de intervenciones o de declaraciones en documentos
+  públicos, oficiales, mercantiles o privados, así como su uso a
+  sabiendas de la falsedad por particulares.
+enlace_boe: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444"

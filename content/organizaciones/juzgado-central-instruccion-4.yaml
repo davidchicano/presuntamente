@@ -1,0 +1,18 @@
+id: juzgado-central-instruccion-4
+nombre: "Juzgado Central de Instrucción nº 4"
+nombres_alternativos:
+  - "JCI nº 4"
+  - "JCI 4 AN"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado Central de Instrucción nº 4 de la Audiencia Nacional. Tramita
+  diligencias previas en materia penal con ámbito nacional. Desde 2018
+  está titular el magistrado José Luis Calama Teixeira.
+jurisdiccion: penal
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+organo_superior_id: audiencia-nacional
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

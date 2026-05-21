@@ -1,0 +1,13 @@
+id: calama-juez-instructor-plus-ultra
+caso_id: plus-ultra
+sujeto_tipo: persona
+sujeto_persona_id: jose-luis-calama
+rol: juez_instructor
+fecha_inicio: "2026-03-01"
+notas: |
+  El magistrado José Luis Calama, titular del Juzgado Central de
+  Instrucción nº 4 de la Audiencia Nacional, asume la instrucción del
+  caso Plus Ultra cuando la causa se traslada desde el Juzgado de
+  Instrucción nº 15 de Madrid. Día exacto de la asunción de competencia
+  pendiente de verificar con el auto correspondiente; se utiliza el
+  primero del mes con anotación interna en NOTES.md.

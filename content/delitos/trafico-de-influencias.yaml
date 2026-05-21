@@ -1,0 +1,15 @@
+id: trafico-de-influencias
+nombre_tipico: "Tráfico de influencias"
+articulos_cp:
+  - "art. 428 CP"
+  - "art. 429 CP"
+  - "art. 430 CP"
+familia: cohecho_y_trafico_influencias
+descripcion_breve: |
+  El Código Penal castiga al funcionario público o al particular que
+  influya en otro funcionario, prevaliéndose del ejercicio de las
+  facultades de su cargo o de cualquier situación derivada de su
+  relación personal o jerárquica, para conseguir una resolución que le
+  pueda generar directa o indirectamente un beneficio económico para sí
+  o para un tercero.
+enlace_boe: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444"

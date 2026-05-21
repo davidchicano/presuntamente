@@ -1,0 +1,44 @@
+# Caso Plus Ultra — esqueleto inicial (PR1 Fase 1).
+# Esta primera versión es deliberadamente conservadora: schema validable,
+# datos verificables a partir de fuentes oficiales y prensa multi-medio, y
+# decisiones editoriales sensibles diferidas a PR2 (ver NOTES.md).
+
+id: plus-ultra
+nombre_oficial: "Diligencias Previas — JCI nº 4 de la Audiencia Nacional"
+nombre_mediatico: "Caso Plus Ultra"
+nombres_alternativos:
+  - "Rescate Plus Ultra"
+  - "Préstamo SEPI a Plus Ultra"
+
+descripcion_corta: |
+  Procedimiento penal en instrucción en la Audiencia Nacional sobre el
+  préstamo de 53 millones de euros concedido por la SEPI a la aerolínea
+  Plus Ultra Líneas Aéreas en marzo de 2021, a través del Fondo de Apoyo a
+  la Solvencia de Empresas Estratégicas. La causa, originada por una
+  petición de cooperación internacional procedente de Francia y Suiza,
+  investiga el presunto uso irregular de esos fondos y su posible relación
+  con esquemas de blanqueo de capitales con origen en Venezuela.
+
+organo_judicial_id: juzgado-central-instruccion-4
+numero_procedimiento: "DP (pendiente de confirmar número exacto público)"
+tipo_procedimiento: diligencias_previas
+
+fase_actual: instruccion
+fecha_apertura: "2024-07-01"
+
+origen_denuncia: fiscalia_anticorrupcion
+querellante_inicial_id: fiscalia-anticorrupcion
+
+delitos_atribuidos_en_la_causa:
+  - trafico-de-influencias
+  - organizacion-criminal
+  - falsedad-documental
+  - blanqueo-de-capitales
+
+resumen_cifras: |
+  Préstamo público de 53 millones de euros aprobado el 9 de marzo de 2021
+  por el Consejo de Ministros a través de la SEPI.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"
+nivel_relevancia_editorial: capital

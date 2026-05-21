@@ -1,0 +1,19 @@
+id: fiscalia-anticorrupcion
+nombre: "Fiscalía Especial contra la Corrupción y la Criminalidad Organizada"
+nombres_alternativos:
+  - "Fiscalía Anticorrupción"
+  - "Anticorrupción"
+tipo: fiscalia
+descripcion_corta: |
+  Fiscalía especializada del Ministerio Fiscal con competencia nacional
+  para procedimientos por delitos económicos y de corrupción de especial
+  trascendencia. Promovió las diligencias previas iniciales sobre el
+  rescate de Plus Ultra tras la cooperación internacional con Francia y
+  Suiza en 2024.
+jurisdiccion: penal
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.fiscal.es/fiscalia-especial-contra-la-corrupcion-y-la-criminalidad-organizada"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

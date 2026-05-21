@@ -2,28 +2,125 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://presuntamente.org/schemas/documento.schema.json",
   "title": "Documento",
-  "description": "Documento concreto y citable que sostiene Hechos. Ver docs/diseno/01-modelo-de-datos.md §2.7. Schema completo se materializa en Fase 1.",
+  "description": "Documento concreto y citable que sostiene Hechos. Ver docs/diseno/01-modelo-de-datos.md §2.7. Validaciones V-12 (nivel 1 con dominio oficial), V-13 (prensa no es soporte único).",
   "type": "object",
-  "required": ["id", "titulo", "tipo", "nivel_fuente", "estado_publicacion"],
-  "additionalProperties": true,
+  "required": [
+    "id",
+    "titulo",
+    "tipo",
+    "nivel_fuente",
+    "nivel_fuente_justificacion",
+    "fecha_documento",
+    "estado_acceso",
+    "idioma",
+    "estado_publicacion"
+  ],
+  "additionalProperties": false,
   "properties": {
     "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
     "titulo": { "type": "string", "minLength": 1 },
-    "tipo": { "type": "string" },
-    "nivel_fuente": { "type": "integer", "minimum": 1, "maximum": 4 },
-    "nivel_fuente_justificacion": { "type": "string" },
-    "fecha_documento": { "type": "string", "format": "date" },
+    "tipo": {
+      "type": "string",
+      "enum": [
+        "auto_judicial",
+        "sentencia",
+        "escrito_fiscalia",
+        "dictamen_fiscal",
+        "escrito_defensa",
+        "escrito_acusacion_particular",
+        "escrito_acusacion_popular",
+        "atestado_policial",
+        "informe_uco",
+        "informe_udef",
+        "informe_pericial",
+        "acta_congreso",
+        "acta_senado",
+        "video_comparecencia_congreso",
+        "informe_tribunal_cuentas",
+        "informe_airef",
+        "informe_cgpj",
+        "dictamen_consejo_estado",
+        "boletin_oficial",
+        "articulo_prensa",
+        "reportaje_audiovisual",
+        "libro",
+        "paper_academico",
+        "nota_prensa_institucional",
+        "comunicado_partido",
+        "declaracion_jurada",
+        "otro"
+      ]
+    },
+    "nivel_fuente": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4,
+      "description": "1: oficial primaria · 2: oficial secundaria / instructora · 3: institucional o pericial · 4: cobertura periodística."
+    },
+    "nivel_fuente_justificacion": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Breve markdown: por qué se asigna ese nivel. Para filtrado_verificado debe explicitar verificación cruzada."
+    },
+    "productor_organizacion_id": {
+      "type": "string",
+      "description": "Entidad que produce o publica el documento (juzgado, fiscalía, medio, etc.)."
+    },
+    "productor_personas_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "Slugs de personas firmantes (periodistas, peritos)."
+    },
+    "fecha_documento": {
+      "type": "string",
+      "format": "date",
+      "description": "Fecha del evento que el documento recoge."
+    },
     "fecha_publicacion": { "type": "string", "format": "date" },
-    "url_canonica": { "type": "string", "format": "uri" },
-    "url_archivo": { "type": "string", "format": "uri" },
-    "ruta_local": { "type": "string" },
+    "url_canonica": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL oficial. V-12: si nivel_fuente=1, debe estar en lista blanca DominiosOficiales o existir ruta_local con hash."
+    },
+    "url_archivo": {
+      "type": "string",
+      "format": "uri",
+      "description": "Mirror en archive.org / archive.ph (recomendado para Nivel 4)."
+    },
+    "ruta_local": {
+      "type": "string",
+      "description": "Path en el repo si tenemos copia almacenada (típicamente bajo /public/documentos/)."
+    },
     "hash_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
     "estado_acceso": {
       "type": "string",
-      "enum": ["publico", "acceso_restringido_pero_citable", "filtrado_verificado", "retirado"]
+      "enum": [
+        "publico",
+        "acceso_restringido_pero_citable",
+        "filtrado_verificado",
+        "retirado"
+      ]
     },
-    "idioma": { "type": "string" },
-    "estado_publicacion": { "type": "string" },
+    "idioma": {
+      "type": "string",
+      "enum": ["es", "ca", "eu", "gl", "en", "fr", "pt", "it", "de", "otro"]
+    },
+    "caso_principal_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9-]+)*$",
+      "description": "Si el documento 'pertenece' a un caso, cuál (un mismo documento puede aparecer en varios casos)."
+    },
+    "estado_publicacion": {
+      "type": "string",
+      "enum": [
+        "borrador",
+        "en_revision",
+        "publicado",
+        "retirado_temporalmente",
+        "retirado_definitivamente"
+      ]
+    },
     "ultima_revision_editorial": { "type": "string", "format": "date" }
   }
 }

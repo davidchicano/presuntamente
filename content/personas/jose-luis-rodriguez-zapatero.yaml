@@ -1,0 +1,29 @@
+id: jose-luis-rodriguez-zapatero
+nombre_completo: "José Luis Rodríguez Zapatero"
+nombres_alternativos:
+  - "Zapatero"
+  - "JLRZ"
+  - "Rodríguez Zapatero"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Diputado en el Congreso por León"
+    desde: "1986-07-15"
+    hasta: "2011-12-22"
+  - cargo: "Secretario General del PSOE"
+    desde: "2000-07-22"
+    hasta: "2012-02-04"
+  - cargo: "Presidente del Gobierno de España"
+    desde: "2004-04-17"
+    hasta: "2011-12-21"
+fecha_nacimiento: "1960-08-04"
+nacionalidad: "española"
+biografia_corta: |
+  Político español. Fue Presidente del Gobierno de España entre 2004 y
+  2011, tras dos victorias del PSOE en las elecciones generales de 2004
+  y 2008. Antes ocupó la Secretaría General del PSOE (2000-2012) y fue
+  diputado por León durante más de dos décadas. Desde su salida del
+  cargo ha participado en actividades de mediación internacional,
+  especialmente vinculadas a América Latina.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

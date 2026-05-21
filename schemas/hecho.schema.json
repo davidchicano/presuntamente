@@ -2,32 +2,113 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://presuntamente.org/schemas/hecho.schema.json",
   "title": "Hecho",
-  "description": "Afirmación verificable sobre un caso. Ver docs/diseno/01-modelo-de-datos.md §2.6. Schema completo se materializa en Fase 1.",
+  "description": "Afirmación verificable sobre un caso. Tiene estado epistémico (tipo) y fuentes (documentos_respaldo). Ver docs/diseno/01-modelo-de-datos.md §2.6. Validaciones V-04 a V-08, V-13, V-16, V-19.",
   "type": "object",
-  "required": ["id", "caso_id", "enunciado", "tipo", "documentos_respaldo"],
-  "additionalProperties": true,
+  "required": [
+    "id",
+    "caso_id",
+    "enunciado",
+    "tipo",
+    "fecha_o_periodo",
+    "documentos_respaldo",
+    "vigencia",
+    "estado_publicacion"
+  ],
+  "additionalProperties": false,
   "properties": {
-    "id": { "type": "string" },
-    "caso_id": { "type": "string" },
-    "enunciado": { "type": "string", "minLength": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "caso_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9-]+)*$"
+    },
+    "enunciado": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Markdown. Redacción neutra (impersonal/pasiva cuando corresponda). Verbos preferidos: 'se investiga', 'se atribuye', 'consta'. Verbos prohibidos para hechos no acreditados (doc 04 §3)."
+    },
     "tipo": {
       "type": "string",
-      "enum": ["acreditado", "investigado", "atribuido", "exculpatorio", "desmentido", "no_concluyente"]
+      "enum": [
+        "acreditado",
+        "investigado",
+        "atribuido",
+        "exculpatorio",
+        "desmentido",
+        "no_concluyente"
+      ]
+    },
+    "fecha_o_periodo": {
+      "type": "object",
+      "required": ["desde", "precision"],
+      "additionalProperties": false,
+      "properties": {
+        "desde": { "type": "string", "format": "date" },
+        "hasta": { "type": "string", "format": "date" },
+        "precision": {
+          "type": "string",
+          "enum": ["dia", "mes", "anio", "rango"]
+        }
+      }
+    },
+    "personas_implicadas": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "organizaciones_implicadas": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
     },
     "documentos_respaldo": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
         "required": ["documento_id"],
         "additionalProperties": false,
         "properties": {
           "documento_id": { "type": "string" },
-          "pasaje": { "type": "string" }
+          "pasaje": {
+            "type": "string",
+            "description": "Localización dentro del documento: 'Fundamento de Derecho Tercero', 'pp. 23-25', etc."
+          }
         }
-      },
-      "minItems": 1
+      }
     },
-    "nivel_fuente_efectivo": { "type": "integer", "minimum": 1, "maximum": 4 },
-    "vigencia": { "type": "string", "enum": ["vigente", "superado", "retirado"] }
+    "nivel_fuente_efectivo": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4,
+      "description": "Cache: el mejor (menor) nivel entre los documentos_respaldo. V-19 valida coherencia."
+    },
+    "contraposicion_a": {
+      "type": "string",
+      "description": "Slug de otro Hecho que este rebate o contrasta."
+    },
+    "corregido_por": {
+      "type": "string",
+      "description": "Slug de un Hecho posterior que supera a éste (típico al introducir un exculpatorio sobre un investigado previo)."
+    },
+    "vigencia": {
+      "type": "string",
+      "enum": ["vigente", "superado", "retirado"]
+    },
+    "redaccion_neutra_revisada": {
+      "type": "boolean",
+      "default": false,
+      "description": "V-16: debe ser true antes de estado_publicacion=publicado."
+    },
+    "estado_publicacion": {
+      "type": "string",
+      "enum": [
+        "borrador",
+        "en_revision",
+        "publicado",
+        "retirado_temporalmente",
+        "retirado_definitivamente"
+      ]
+    },
+    "ultima_revision_editorial": { "type": "string", "format": "date" }
   }
 }

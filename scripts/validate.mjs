@@ -15,18 +15,38 @@ import { parse as parseYaml } from 'yaml';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 
-const SCHEMA_FOR_ENTITY = {
-  casos: 'caso.schema.json',
-  personas: 'persona.schema.json',
-  organizaciones: 'organizacion.schema.json',
-  documentos: 'documento.schema.json',
-  delitos: 'delito.schema.json',
-};
+// Mapeo entidad-en-path → schema. La entidad se identifica por:
+//   - content/<entidad>/<slug>.yaml                          (entidades planas)
+//   - content/casos/<slug>/caso.yaml                         (raíz del caso)
+//   - content/casos/<slug>/{hitos,hechos,roles}/<slug>.yaml  (subentidades del caso)
+const SCHEMA_FOR_PATH = [
+  { match: (p) => p.startsWith('content/casos/') && p.endsWith('/caso.yaml'), schema: 'caso.schema.json' },
+  { match: (p) => /^content\/casos\/[^/]+\/hitos\//.test(p) && p.endsWith('.yaml'), schema: 'hito.schema.json' },
+  { match: (p) => /^content\/casos\/[^/]+\/hechos\//.test(p) && p.endsWith('.yaml'), schema: 'hecho.schema.json' },
+  { match: (p) => /^content\/casos\/[^/]+\/roles\//.test(p) && p.endsWith('.yaml'), schema: 'rol-en-caso.schema.json' },
+  { match: (p) => p.startsWith('content/personas/') && p.endsWith('.yaml'), schema: 'persona.schema.json' },
+  { match: (p) => p.startsWith('content/organizaciones/') && p.endsWith('.yaml'), schema: 'organizacion.schema.json' },
+  { match: (p) => p.startsWith('content/documentos/') && p.endsWith('.yaml'), schema: 'documento.schema.json' },
+  { match: (p) => p.startsWith('content/delitos/') && p.endsWith('.yaml'), schema: 'delito.schema.json' },
+  { match: (p) => p.startsWith('content/relaciones-entre-casos/') && p.endsWith('.yaml'), schema: 'relacion-entre-casos.schema.json' },
+];
+
+const SCHEMA_FILES = [
+  'caso.schema.json',
+  'persona.schema.json',
+  'organizacion.schema.json',
+  'documento.schema.json',
+  'delito.schema.json',
+  'hito.schema.json',
+  'hecho.schema.json',
+  'rol-en-caso.schema.json',
+  'relacion-entre-casos.schema.json',
+];
 
 const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
 
-for (const file of Object.values(SCHEMA_FOR_ENTITY)) {
+for (const file of SCHEMA_FILES) {
   const schema = JSON.parse(await readFile(`schemas/${file}`, 'utf-8'));
   ajv.addSchema(schema, file);
 }
@@ -42,20 +62,9 @@ for (const filepath of files) {
     continue;
   }
 
-  const segments = filepath.split('/');
-  const entity = segments[1];
-  const schemaFile = SCHEMA_FOR_ENTITY[entity];
-
-  if (!schemaFile) {
-    console.warn(`⚠️  ${filepath} — entidad "${entity}" sin schema, saltando.`);
-    skipped++;
-    continue;
-  }
-
-  // Para casos jerárquicos, sólo validamos el fichero caso.yaml en cada slug.
-  // Hitos, hechos, etc. dentro de /casos/<slug>/ se validan con sus propios schemas
-  // cuando lleguen (Fase 1+).
-  if (entity === 'casos' && !filepath.endsWith('/caso.yaml')) {
+  const entry = SCHEMA_FOR_PATH.find((e) => e.match(filepath));
+  if (!entry) {
+    console.warn(`⚠️  ${filepath} — sin schema asignado, saltando.`);
     skipped++;
     continue;
   }
@@ -70,7 +79,7 @@ for (const filepath of files) {
     continue;
   }
 
-  const validateFn = ajv.getSchema(schemaFile);
+  const validateFn = ajv.getSchema(entry.schema);
   const valid = validateFn(data);
   validated++;
 

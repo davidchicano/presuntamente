@@ -1,0 +1,12 @@
+id: organizacion-criminal
+nombre_tipico: "Pertenencia a organización criminal"
+articulos_cp:
+  - "art. 570 bis CP"
+familia: pertenencia_organizacion_criminal
+descripcion_breve: |
+  Tipo penal que castiga la pertenencia, promoción, dirección o
+  coordinación de una organización criminal, entendida como agrupación
+  formada por más de dos personas con carácter estable o por tiempo
+  indefinido que, de manera concertada y coordinada, se repartan
+  diversas tareas o funciones con el fin de cometer delitos.
+enlace_boe: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444"

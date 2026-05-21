@@ -1,0 +1,18 @@
+id: juzgado-instruccion-15-madrid
+nombre: "Juzgado de Instrucción nº 15 de Madrid"
+nombres_alternativos:
+  - "JI nº 15 Madrid"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado de Instrucción nº 15 de los de Madrid. Tramitó inicialmente las
+  diligencias previas relacionadas con el caso Plus Ultra a petición de
+  la Fiscalía Anticorrupción tras peticiones de cooperación
+  internacional procedentes de Francia y Suiza en 2024. La competencia
+  pasó posteriormente al JCI nº 4 de la Audiencia Nacional.
+jurisdiccion: penal
+ambito_territorial: local
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

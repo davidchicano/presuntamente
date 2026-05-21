@@ -526,7 +526,16 @@ Los enums siguientes son la lista cerrada inicial. Ampliarlos requiere PR razona
 **`FamiliaDelito`** (catálogo abierto, derivado del CP): `contra_administracion_publica`, `contra_patrimonio_y_orden_socioeconomico`, `falsedad_documental`, `delitos_electorales`, `blanqueo_capitales`, `pertenencia_organizacion_criminal`, `cohecho_y_trafico_influencias`, `otros`
 
 **`DominiosOficiales`** (lista blanca para Nivel 1)
-`poderjudicial.es`, `cendoj.es`, `boe.es`, `congreso.es`, `senado.es`, `fiscal.es`, `tcu.es` (Tribunal de Cuentas), `airef.es`, `defensordelpueblo.es`, `tribunalconstitucional.es`, `cgpj.es`, dominios `.gob.es` de ministerios.
+
+Criterio: organismos públicos con personalidad jurídica propia y publicaciones institucionales trazables a un órgano oficial del Estado o de la UE. Lista ampliable mediante PR razonado.
+
+- Poder judicial y fiscalía: `poderjudicial.es`, `cendoj.es`, `cgpj.es`, `fiscal.es`, `tribunalconstitucional.es`.
+- Boletines y diarios oficiales: `boe.es`, `eur-lex.europa.eu`.
+- Parlamento: `congreso.es`, `senado.es`.
+- Órganos consultivos y de control: `tcu.es` (Tribunal de Cuentas), `airef.es`, `defensordelpueblo.es`, `consejo-estado.es`.
+- Entidades públicas empresariales y organismos del Estado dependientes del Ministerio de Hacienda u otros ministerios, con personalidad jurídica propia y comunicación institucional pública: `sepi.es` (Sociedad Estatal de Participaciones Industriales), `agenciatributaria.es`, `igae.pap.hacienda.gob.es`.
+- Reguladores y supervisores con personalidad jurídica propia: `bde.es` (Banco de España), `cnmv.es` (Comisión Nacional del Mercado de Valores), `cnmc.es` (Comisión Nacional de los Mercados y la Competencia).
+- Administración General del Estado: dominios `.gob.es` de ministerios y organismos autónomos.
 
 ---
 

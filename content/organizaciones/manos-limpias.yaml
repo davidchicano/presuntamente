@@ -1,0 +1,13 @@
+id: manos-limpias
+nombre: "Asociación Manos Limpias"
+nombres_alternativos:
+  - "Manos Limpias"
+tipo: asociacion_acusacion_popular
+descripcion_corta: |
+  Asociación que actúa habitualmente como acusación popular en
+  procedimientos penales de relevancia pública en España. Presentó el 23
+  de diciembre de 2025 una querella ante el Juzgado de Instrucción nº 15
+  de Madrid en relación con el caso Plus Ultra.
+ambito_territorial: nacional
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

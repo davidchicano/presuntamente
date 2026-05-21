@@ -2,14 +2,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://presuntamente.org/schemas/organizacion.schema.json",
   "title": "Organizacion",
-  "description": "Entidad colectiva relevante para un caso. Polimórfica por tipo. Ver docs/diseno/01-modelo-de-datos.md §2.3. Schema completo se materializa en Fase 1.",
+  "description": "Entidad colectiva relevante para un caso. Polimórfica por tipo (juzgado, tribunal, fiscalía, partido, empresa, asociación, organismo público, unidad policial, medio, etc.). Ver docs/diseno/01-modelo-de-datos.md §2.3.",
   "type": "object",
   "required": ["id", "nombre", "tipo", "estado_publicacion"],
-  "additionalProperties": true,
+  "additionalProperties": false,
   "properties": {
     "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
     "nombre": { "type": "string", "minLength": 1 },
-    "nombres_alternativos": { "type": "array", "items": { "type": "string" } },
+    "nombres_alternativos": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
     "tipo": {
       "type": "string",
       "enum": [
@@ -30,7 +34,83 @@
       ]
     },
     "descripcion_corta": { "type": "string" },
-    "estado_publicacion": { "type": "string" },
+
+    "jurisdiccion": {
+      "type": "string",
+      "enum": [
+        "penal",
+        "civil",
+        "mercantil",
+        "contencioso_administrativa",
+        "social",
+        "militar",
+        "constitucional"
+      ],
+      "description": "Sólo si tipo ∈ {juzgado, tribunal, fiscalia}."
+    },
+    "ambito_territorial": {
+      "type": "string",
+      "enum": [
+        "local",
+        "provincial",
+        "autonomico",
+        "nacional",
+        "europeo",
+        "internacional"
+      ]
+    },
+    "localidad": { "type": "string" },
+    "provincia": { "type": "string" },
+    "comunidad_autonoma": { "type": "string" },
+    "organo_superior_id": {
+      "type": "string",
+      "description": "Slug de otra Organizacion (ej. AP Madrid → TSJ Madrid → TS)."
+    },
+
+    "siglas": {
+      "type": "string",
+      "description": "Para partidos políticos, sindicatos, asociaciones."
+    },
+    "fundacion": { "type": "string", "format": "date" },
+
+    "cif": {
+      "type": "string",
+      "description": "Sólo si es público y verificado en registros oficiales."
+    },
+    "sector": { "type": "string" },
+
+    "url_canonica": {
+      "type": "string",
+      "format": "uri",
+      "description": "Para medios o entidades con web oficial."
+    },
+    "linea_editorial_declarada": {
+      "type": "string",
+      "description": "Sólo para medio_comunicacion. Se cita literal a la propia 'Quiénes somos' del medio."
+    },
+
+    "estado_publicacion": {
+      "type": "string",
+      "enum": [
+        "borrador",
+        "en_revision",
+        "publicado",
+        "retirado_temporalmente",
+        "retirado_definitivamente"
+      ]
+    },
     "ultima_revision_editorial": { "type": "string", "format": "date" }
-  }
+  },
+  "allOf": [
+    {
+      "description": "Juzgados/tribunales/fiscalías exigen jurisdiccion y ambito_territorial (ver regla en doc 01 §2.3).",
+      "if": {
+        "properties": {
+          "tipo": { "enum": ["juzgado", "tribunal", "fiscalia"] }
+        },
+        "required": ["tipo"]
+      },
+      "then": { "required": ["jurisdiccion", "ambito_territorial"] }
+    }
+  ]
 }

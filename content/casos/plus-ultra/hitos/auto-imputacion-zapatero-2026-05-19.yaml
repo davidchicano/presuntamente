@@ -1,0 +1,29 @@
+id: auto-imputacion-zapatero-2026-05-19
+caso_id: plus-ultra
+tipo: imputacion
+fecha: "2026-05-19"
+fecha_precision: dia
+titulo: "El JCI nº 4 de la Audiencia Nacional levanta el secreto del sumario y cita como investigado a José Luis Rodríguez Zapatero"
+descripcion: |
+  El magistrado José Luis Calama, titular del Juzgado Central de
+  Instrucción nº 4 de la Audiencia Nacional, dicta auto en el que
+  acuerda el levantamiento del secreto del sumario del procedimiento y
+  cita como investigado al expresidente del Gobierno José Luis
+  Rodríguez Zapatero, fijando su declaración para el 2 de junio de
+  2026. En el auto, conforme a la nota oficial del CGPJ, se le atribuye
+  indiciariamente la presunta jefatura de una estructura estable y
+  jerárquica de tráfico de influencias dirigida a obtener beneficios
+  económicos mediante la intermediación ante organismos públicos en
+  favor de terceros, principalmente Plus Ultra Líneas Aéreas. La
+  citación lo es por presuntos delitos de tráfico de influencias,
+  pertenencia a organización criminal y falsedad documental. Conforme
+  al principio de presunción de inocencia, la condición de investigado
+  no implica valoración de culpabilidad y persiste mientras no recaiga
+  resolución firme en contrario.
+personas_afectadas:
+  - jose-luis-rodriguez-zapatero
+organizaciones_afectadas:
+  - juzgado-central-instruccion-4
+  - audiencia-nacional
+documento_principal_id: auto-jci4-plus-ultra-2026-05-19
+fase_resultante: instruccion

@@ -2,19 +2,138 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://presuntamente.org/schemas/hito.schema.json",
   "title": "Hito",
-  "description": "Evento cronológico puntual en un Caso. Ver docs/diseno/01-modelo-de-datos.md §2.5. Schema completo se materializa en Fase 1.",
+  "description": "Evento cronológico puntual que ocurre en un Caso. Cambia su Fase, introduce o modifica Hechos, abre o cierra RolEnCaso. Ver docs/diseno/01-modelo-de-datos.md §2.5.",
   "type": "object",
-  "required": ["id", "caso_id", "tipo", "fecha", "titulo"],
-  "additionalProperties": true,
+  "required": ["id", "caso_id", "tipo", "fecha", "fecha_precision", "titulo"],
+  "additionalProperties": false,
   "properties": {
-    "id": { "type": "string" },
-    "caso_id": { "type": "string" },
-    "tipo": { "type": "string" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Slug human-readable. Convención sugerida: <caso>-<tipo>-<fecha-corta>."
+    },
+    "caso_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9-]+)*$",
+      "description": "Slug del Caso (puede ser jerárquico padre/hijo)."
+    },
+    "tipo": {
+      "type": "string",
+      "enum": [
+        "denuncia_presentada",
+        "querella_presentada",
+        "querella_admitida",
+        "querella_inadmitida",
+        "imputacion",
+        "declaracion_imputado",
+        "auto_procesamiento",
+        "auto_transformacion",
+        "apertura_juicio_oral",
+        "inicio_vista_oral",
+        "sentencia_primera_instancia",
+        "recurso_apelacion",
+        "sentencia_apelacion",
+        "recurso_casacion",
+        "sentencia_firme",
+        "archivo_provisional",
+        "sobreseimiento_libre",
+        "desimputacion",
+        "cambio_juez",
+        "cambio_organo",
+        "acumulacion_causas",
+        "separacion_pieza",
+        "comparecencia_congreso",
+        "comision_investigacion_creada",
+        "informe_organismo_publico",
+        "dimision",
+        "cese",
+        "aforamiento_perdido_o_ganado",
+        "publicacion_investigacion_periodistica"
+      ]
+    },
     "fecha": { "type": "string", "format": "date" },
-    "fecha_precision": { "type": "string", "enum": ["dia", "mes", "anio"] },
+    "fecha_precision": {
+      "type": "string",
+      "enum": ["dia", "mes", "anio"],
+      "description": "Granularidad real de la fecha. Si la fuente sólo da el mes, fecha_precision=mes y fecha=YYYY-MM-01."
+    },
     "titulo": { "type": "string", "minLength": 1 },
-    "descripcion": { "type": "string" },
-    "personas_afectadas": { "type": "array", "items": { "type": "string" } },
-    "documento_principal_id": { "type": "string" }
-  }
+    "descripcion": {
+      "type": "string",
+      "description": "Markdown. Redacción neutra y citable. Lenguaje de presunción de inocencia (doc 04 §3)."
+    },
+    "personas_afectadas": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "Slugs de Persona sobre las que recae el hito."
+    },
+    "organizaciones_afectadas": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "documento_principal_id": {
+      "type": "string",
+      "description": "Documento que documenta el hito. Obligatorio para hitos jurisdiccionales (V-14)."
+    },
+    "documentos_relacionados": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "hechos_introducidos": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "hechos_modificados": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "fase_resultante": {
+      "type": "string",
+      "enum": [
+        "denuncia_o_querella",
+        "instruccion",
+        "fase_intermedia",
+        "juicio_oral",
+        "sentencia_primera_instancia",
+        "recurso",
+        "sentencia_firme",
+        "ejecucion",
+        "archivo_provisional",
+        "archivo_libre"
+      ],
+      "description": "Fase del Caso tras este hito (informativo / cache)."
+    }
+  },
+  "allOf": [
+    {
+      "description": "V-14: hitos jurisdiccionales exigen documento_principal_id.",
+      "if": {
+        "properties": {
+          "tipo": {
+            "enum": [
+              "querella_admitida",
+              "querella_inadmitida",
+              "imputacion",
+              "auto_procesamiento",
+              "auto_transformacion",
+              "apertura_juicio_oral",
+              "sentencia_primera_instancia",
+              "sentencia_apelacion",
+              "sentencia_firme",
+              "archivo_provisional",
+              "sobreseimiento_libre",
+              "desimputacion"
+            ]
+          }
+        },
+        "required": ["tipo"]
+      },
+      "then": { "required": ["documento_principal_id"] }
+    }
+  ]
 }

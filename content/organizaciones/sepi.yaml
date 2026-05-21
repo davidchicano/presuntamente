@@ -1,0 +1,18 @@
+id: sepi
+nombre: "Sociedad Estatal de Participaciones Industriales"
+nombres_alternativos:
+  - "SEPI"
+tipo: organismo_publico
+descripcion_corta: |
+  Entidad de Derecho Público adscrita al Ministerio de Hacienda. Gestiona
+  participaciones empresariales del Estado y, desde 2020, el Fondo de
+  Apoyo a la Solvencia de Empresas Estratégicas, creado por Real
+  Decreto-ley 25/2020. A través de ese Fondo, el Consejo de Ministros
+  autorizó el 9 de marzo de 2021 un préstamo de 53 millones de euros a
+  Plus Ultra Líneas Aéreas.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.sepi.es"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

@@ -1,0 +1,23 @@
+id: pu-prestamo-sepi-2021-03-09
+caso_id: plus-ultra
+enunciado: |
+  Según la SEPI, el Consejo de Ministros autorizó el 9 de marzo de 2021
+  un préstamo de 53 millones de euros a Plus Ultra Líneas Aéreas, S.A.
+  a través del Fondo de Apoyo a la Solvencia de Empresas Estratégicas,
+  creado en 2020 para canalizar ayudas públicas a empresas no
+  financieras consideradas estratégicas por su impacto en la economía
+  española.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2021-03-09"
+  precision: dia
+organizaciones_implicadas:
+  - sepi
+  - plus-ultra-lineas-aereas
+documentos_respaldo:
+  - documento_id: nota-sepi-aprobacion-plus-ultra-2021-03
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

@@ -2,18 +2,84 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://presuntamente.org/schemas/relacion-entre-casos.schema.json",
   "title": "RelacionEntreCasos",
-  "description": "Conexión no jerárquica entre casos. Ver docs/diseno/01-modelo-de-datos.md §2.8. Schema completo se materializa en Fase 1.",
+  "description": "Conexión no jerárquica entre casos. La jerarquía (pieza separada) vive en Caso.caso_padre_id. Ver docs/diseno/01-modelo-de-datos.md §2.8. Validación V-15.",
   "type": "object",
-  "required": ["id", "caso_a_id", "caso_b_id", "tipo"],
-  "additionalProperties": true,
+  "required": [
+    "id",
+    "caso_a_id",
+    "caso_b_id",
+    "tipo",
+    "descripcion",
+    "estado_publicacion"
+  ],
+  "additionalProperties": false,
   "properties": {
-    "id": { "type": "string" },
-    "caso_a_id": { "type": "string" },
-    "caso_b_id": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "caso_a_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9-]+)*$"
+    },
+    "caso_b_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9-]+)*$"
+    },
     "tipo": {
       "type": "string",
-      "enum": ["derivado_de", "comparte_actor_con", "conexion_factual", "misma_trama", "contradiccion_factual"]
+      "enum": [
+        "derivado_de",
+        "comparte_actor_con",
+        "conexion_factual",
+        "misma_trama",
+        "contradiccion_factual"
+      ]
     },
-    "descripcion": { "type": "string" }
-  }
+    "descripcion": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Markdown neutro y citable: qué relación hay y por qué."
+    },
+    "documentos_respaldo": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "V-15: ≥1 documento salvo si tipo = comparte_actor_con."
+    },
+    "fecha_inicio": { "type": "string", "format": "date" },
+    "fecha_fin": { "type": "string", "format": "date" },
+    "estado_publicacion": {
+      "type": "string",
+      "enum": [
+        "borrador",
+        "en_revision",
+        "publicado",
+        "retirado_temporalmente",
+        "retirado_definitivamente"
+      ]
+    },
+    "ultima_revision_editorial": { "type": "string", "format": "date" }
+  },
+  "allOf": [
+    {
+      "description": "V-15: si tipo ≠ comparte_actor_con, exige al menos un documento de respaldo.",
+      "if": {
+        "properties": {
+          "tipo": {
+            "enum": [
+              "derivado_de",
+              "conexion_factual",
+              "misma_trama",
+              "contradiccion_factual"
+            ]
+          }
+        },
+        "required": ["tipo"]
+      },
+      "then": {
+        "properties": {
+          "documentos_respaldo": { "type": "array", "minItems": 1 }
+        },
+        "required": ["documentos_respaldo"]
+      }
+    }
+  ]
 }

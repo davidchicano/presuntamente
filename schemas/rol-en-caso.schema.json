@@ -2,19 +2,132 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://presuntamente.org/schemas/rol-en-caso.schema.json",
   "title": "RolEnCaso",
-  "description": "Conexión persona × caso × periodo × rol × delitos. Ver docs/diseno/01-modelo-de-datos.md §2.4. Schema completo se materializa en Fase 1.",
+  "description": "Conexión persona × caso × periodo × rol × delitos. Corazón del modelo. Ver docs/diseno/01-modelo-de-datos.md §2.4. Validaciones V-09, V-10, V-11.",
   "type": "object",
   "required": ["id", "caso_id", "sujeto_tipo", "rol", "fecha_inicio"],
-  "additionalProperties": true,
+  "additionalProperties": false,
   "properties": {
-    "id": { "type": "string" },
-    "caso_id": { "type": "string" },
-    "sujeto_tipo": { "type": "string", "enum": ["persona", "organizacion"] },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "caso_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(/[a-z0-9-]+)*$"
+    },
+    "sujeto_tipo": {
+      "type": "string",
+      "enum": ["persona", "organizacion"]
+    },
     "sujeto_persona_id": { "type": "string" },
     "sujeto_organizacion_id": { "type": "string" },
-    "rol": { "type": "string" },
-    "delitos_atribuidos": { "type": "array", "items": { "type": "string" } },
+    "rol": {
+      "type": "string",
+      "enum": [
+        "denunciante",
+        "querellante",
+        "acusacion_particular",
+        "acusacion_popular",
+        "investigado",
+        "procesado",
+        "acusado",
+        "condenado",
+        "absuelto",
+        "desimputado",
+        "testigo",
+        "perjudicado",
+        "juez_instructor",
+        "juez_ponente",
+        "fiscal",
+        "abogado_defensa",
+        "abogado_acusacion",
+        "perito_judicial",
+        "perito_parte",
+        "secretario_judicial"
+      ]
+    },
+    "delitos_atribuidos": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "Slugs de Delito. V-09: sólo permitido si rol ∈ {investigado, procesado, acusado, condenado}."
+    },
+    "delitos_codigo_penal": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "Artículos concretos del CP atribuidos. Ej. 'art. 432.1 CP'."
+    },
     "fecha_inicio": { "type": "string", "format": "date" },
-    "fecha_fin": { "type": "string", "format": "date" }
-  }
+    "fecha_fin": { "type": "string", "format": "date" },
+    "hito_origen_id": {
+      "type": "string",
+      "description": "Hito que abre el rol (auto de imputación, designación, etc.). V-10: requerido si rol=condenado."
+    },
+    "hito_fin_id": {
+      "type": "string",
+      "description": "Hito que cierra el rol (auto de desimputación, archivo, sentencia firme)."
+    },
+    "notas": {
+      "type": "string",
+      "description": "Markdown. Aclaraciones editoriales neutras y citables."
+    }
+  },
+  "allOf": [
+    {
+      "description": "Exactamente uno de sujeto_persona_id / sujeto_organizacion_id, según sujeto_tipo.",
+      "oneOf": [
+        {
+          "properties": { "sujeto_tipo": { "const": "persona" } },
+          "required": ["sujeto_persona_id"],
+          "not": { "required": ["sujeto_organizacion_id"] }
+        },
+        {
+          "properties": { "sujeto_tipo": { "const": "organizacion" } },
+          "required": ["sujeto_organizacion_id"],
+          "not": { "required": ["sujeto_persona_id"] }
+        }
+      ]
+    },
+    {
+      "description": "V-11: organizacion sólo en roles de parte (acusación/querella/denuncia).",
+      "if": {
+        "properties": { "sujeto_tipo": { "const": "organizacion" } },
+        "required": ["sujeto_tipo"]
+      },
+      "then": {
+        "properties": {
+          "rol": {
+            "enum": [
+              "acusacion_popular",
+              "acusacion_particular",
+              "querellante",
+              "denunciante"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "description": "V-09: delitos_atribuidos sólo en roles de imputación.",
+      "if": {
+        "properties": {
+          "delitos_atribuidos": { "type": "array", "minItems": 1 }
+        },
+        "required": ["delitos_atribuidos"]
+      },
+      "then": {
+        "properties": {
+          "rol": {
+            "enum": ["investigado", "procesado", "acusado", "condenado"]
+          }
+        }
+      }
+    },
+    {
+      "description": "V-10: rol=condenado requiere hito_origen_id (debe apuntar a un Hito tipo sentencia).",
+      "if": {
+        "properties": { "rol": { "const": "condenado" } },
+        "required": ["rol"]
+      },
+      "then": { "required": ["hito_origen_id"] }
+    }
+  ]
 }

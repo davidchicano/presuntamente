@@ -1,0 +1,19 @@
+id: audiencia-nacional
+nombre: "Audiencia Nacional"
+nombres_alternativos:
+  - "AN"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional con sede en Madrid y competencia en todo el
+  territorio nacional para ciertos delitos de especial entidad (entre
+  ellos los delitos económicos de alcance estatal, terrorismo y
+  narcotráfico). Integra Juzgados Centrales de Instrucción y Salas de lo
+  Penal, Contencioso-Administrativo y Social.
+jurisdiccion: penal
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Audiencia-Nacional"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"

@@ -10,9 +10,9 @@
 
 ## Estado actual
 
-- **Fase activa**: Fase 0 ✅ completada · Fase 1 (MVP Plus Ultra) en preparación.
-- **Último hito**: Fase 0 committeada (scaffolding Astro + schemas + CI + AGENTS.md). Doc 07 (prompt branding) escrito y pasado por el maintainer a una plataforma externa de diseño basada en Claude. Push hecho para que esa plataforma vea el repo.
-- **Próximo paso comprometido**: arrancar Fase 1 iterando entre componentes / contenido del caso Plus Ultra y la skill `incorporar-hito`, ambas moldeándose en paralelo.
+- **Fase activa**: Fase 0 ✅ completada · Fase 1 (MVP Plus Ultra) en marcha — PR1 de contenido en rama `fase-1/plus-ultra-content`.
+- **Último hito**: schemas Hito/Hecho/Documento/RolEnCaso/Organizacion/RelacionEntreCasos cerrados con `additionalProperties:false` + reglas if/then derivadas de V-09/V-10/V-11/V-14/V-15; caso Plus Ultra con 1 caso, 7 organizaciones, 2 personas (juez Calama + Zapatero), 5 delitos, 3 documentos, 2 hitos (querella Manos Limpias 2025-12-23 + auto imputación 2026-05-19), 3 hechos (1 atribuido + 2 investigados sostenidos por el auto), 3 roles. NOTES.md detallado, skill `incorporar-hito` v0, lista blanca DominiosOficiales del doc 01 §3 ampliada con sepi.es, AEAT, Banco de España, CNMV, CNMC, IGAE. CI verde (26 entidades validadas).
+- **Próximo paso comprometido**: PR1 sale del maintainer con revisión y merge. PR2 incorporará operación UDEF 2025-12-11 con ejecutivos de Plus Ultra como investigados, cambio_organo JI 15 Madrid → JCI 4 AN (marzo 2026), e informes UDEF que aporten hechos adicionales — todo a partir de localización de documentos con URL canónica verificable.
 - **Dev server local**: `pnpm dev` en `http://localhost:4321` (config en [`.claude/launch.json`](.claude/launch.json)).
 
 ---
@@ -28,17 +28,17 @@ Una idea, un bullet. `[ ]` pendiente, `[x]` hecho. Items completados se eliminan
 - [ ] Resultado de Claude Design aplicado al sistema visual del repo: `src/styles/global.css` y componentes en `src/components/`.
 
 ### Fase 1 — MVP Plus Ultra
-- [ ] Completar schemas con todas las propiedades: `hito`, `hecho`, `documento`, `rol-en-caso`, `organizacion` (los que ahora son skeletons con `additionalProperties: true`).
-- [ ] Skill `incorporar-hito` v0 — toma PDF de auto, propone YAML de `Hito` + `Hecho`(s) + `Documento`(s) + cambios en `RolEnCaso`. Aplica los guardarraíles del doc 03 §4.
+- [x] Completar schemas con todas las propiedades: `hito`, `hecho`, `documento`, `rol-en-caso`, `organizacion`, `relacion-entre-casos`. Cerrados con `additionalProperties: false` + reglas if/then para V-09, V-10, V-11, V-14, V-15 (rama `fase-1/plus-ultra-content`).
+- [x] Skill `incorporar-hito` v0 — toma PDF de auto, propone YAML de `Hito` + `Hecho`(s) + `Documento`(s) + cambios en `RolEnCaso`. Guardarraíles del doc 03 §4 explícitos. Marcada explícitamente como v0 iterativa (rama `fase-1/plus-ultra-content`).
 - [ ] YAMLs del caso Plus Ultra:
-  - [ ] `Caso` raíz.
-  - [ ] 4-8 `Persona` implicadas.
-  - [ ] 5-10 `Organizacion`.
-  - [ ] 8-15 `RolEnCaso`.
-  - [ ] 8-15 `Hito`.
-  - [ ] 15-25 `Hecho`.
-  - [ ] 10-20 `Documento`.
-- [ ] Delitos del catálogo aplicables a Plus Ultra.
+  - [x] `Caso` raíz.
+  - [ ] 4-8 `Persona` implicadas — **2/4 en PR1** (juez Calama, José Luis Rodríguez Zapatero). 2-6 pendientes para PR2 (ejecutivos PU detenidos en operación UDEF de 2025-12-11).
+  - [x] 5-10 `Organizacion` — 7 en PR1 (AN, JCI 4, JI 15 Madrid, Fiscalía Anticorrupción, SEPI, Plus Ultra, Manos Limpias).
+  - [ ] 8-15 `RolEnCaso` — **3/8 en PR1** (Calama juez_instructor, Manos Limpias acusacion_popular, Zapatero investigado). Resto pendiente PR2.
+  - [ ] 8-15 `Hito` — **2/8 en PR1** (querella Manos Limpias 2025-12-23, auto imputación Zapatero 2026-05-19). Pendiente PR2: operación UDEF 2025-12-11, cambio_organo JI 15 Madrid → JCI 4 AN (marzo 2026).
+  - [ ] 15-25 `Hecho` — **3/15 en PR1** (préstamo SEPI atribuido, presunta trama de tráfico de influencias investigada, rescate por cauces irregulares investigado). Resto pendiente PR2.
+  - [ ] 10-20 `Documento` — **3/10 en PR1** (querella Manos Limpias, nota SEPI 2021-03, auto JCI 4 del 2026-05-19). Resto pendiente PR2.
+- [x] Delitos del catálogo aplicables a Plus Ultra — 5 en PR1 (tráfico de influencias, organización criminal, falsedad documental, blanqueo de capitales, malversación).
 - [ ] Componentes Astro de la ficha (siguiendo doc 02): `PgCasoDetalle`, encabezado, resumen ejecutivo, estado procesal, personas implicadas con micro-swimlane, cronología, hechos clasificados por estado epistémico, biblioteca de documentos, sección "cómo se ha redactado".
 - [ ] Pagefind integrado y funcionando con el caso indexado.
 - [ ] Página principal con listado básico (un caso).
@@ -59,7 +59,7 @@ Una idea, un bullet. `[ ]` pendiente, `[x]` hecho. Items completados se eliminan
 
 Sólo cosas que requieren input humano, no del asistente.
 
-- *(ninguna activa hoy)*
+- *(ninguna activa hoy — las tres del 2026-05-21 se resolvieron en el mismo PR1: Zapatero incorporado conforme al auto del 19 may 2026, lista blanca ampliada con sepi.es y otros organismos oficiales, auto del 2026-05-19 citado vía la nota CGPJ en poderjudicial.es).*
 
 ---
 
@@ -91,6 +91,9 @@ Cosas que aprendemos por el camino y conviene recordar más allá de los docs de
 - **pnpm 11 bloquea install scripts por defecto** (medida contra supply-chain attacks). Aprobar las deps necesarias en `pnpm-workspace.yaml` → `allowBuilds`. Para este proyecto: `esbuild` y `sharp` (ambas indirectas vía Astro).
 - **pnpm 11 requiere Node ≥ 22**. Por eso `.nvmrc` está en `24` y la CI usa `node-version: 24` en `setup-node`.
 - **Pendiente futuro próximo**: las actions `actions/checkout@v4`, `pnpm/action-setup@v4`, `actions/setup-node@v4` corren INTERNAMENTE sobre Node 20, deprecadas el 2 jun 2026 y retiradas el 16 sept 2026. Bumpear a `@v5` cuando salga estable de cada una. (El `node-version` del runner ya está en 24; esto sólo afecta al runtime interno de los propios actions.)
+- **Tensión brief vs realidad procesal en casos vivos.** Al fichar Plus Ultra el 2026-05-21 surgió la primera tensión entre lo que decía el brief (sin Zapatero como investigado) y la realidad procesal verificable (auto del 2026-05-19 que sí le imputa). Decisión operativa: respetar el brief, dejar la discrepancia documentada en `NOTES.md` del caso + `ROADMAP.md → Decisiones pendientes`, y deferir al maintainer. Reutilizar el patrón en futuros casos donde brief y fuente diverjan: registrar primero, no improvisar.
+- **La V-04 no encaja con hechos administrativos no controvertidos** (ej. un Real Decreto en BOE, una nota institucional sobre una decisión del Consejo de Ministros). Al no haber sentencia firme, no pueden ser `acreditado` aunque sean factualmente verificables. Se modelan como `atribuido` con el organismo emisor como actor en el enunciado. Funciona pero sugiere que en Fase 2 conviene revisar si el modelo necesita una etiqueta extra para "factual no controvertido" o si `atribuido` cubre suficientemente.
+- **`incorporar-hito` se queda en v0 deliberadamente.** Sólo documenta los guardarraíles y el flujo; tras cada PDF real, ampliar la sección "Histórico" del SKILL.md con lecciones aprendidas. No anticipar plantillas hasta tener uso real.
 
 ---
 

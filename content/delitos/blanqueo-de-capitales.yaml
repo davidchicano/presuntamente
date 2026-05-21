@@ -1,0 +1,15 @@
+id: blanqueo-de-capitales
+nombre_tipico: "Blanqueo de capitales"
+articulos_cp:
+  - "art. 301 CP"
+  - "art. 302 CP"
+  - "art. 303 CP"
+familia: blanqueo_capitales
+descripcion_breve: |
+  Castiga la adquisición, posesión, utilización, conversión o
+  transmisión de bienes a sabiendas de que tienen su origen en una
+  actividad delictiva, así como la realización de cualquier acto
+  destinado a ocultar o encubrir su origen ilícito o a ayudar a quien
+  haya participado en el delito a eludir las consecuencias legales de
+  sus actos.
+enlace_boe: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444"

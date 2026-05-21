@@ -1,0 +1,13 @@
+id: malversacion-caudales-publicos
+nombre_tipico: "Malversación de caudales públicos"
+articulos_cp:
+  - "art. 432 CP"
+  - "art. 433 CP"
+familia: contra_administracion_publica
+descripcion_breve: |
+  Tipo penal que sanciona a la autoridad o funcionario público que,
+  con ánimo de lucro, sustrae o consiente que un tercero sustraiga los
+  caudales o efectos públicos que tenga a su cargo por razón de sus
+  funciones, así como otras modalidades de gestión desleal del
+  patrimonio público.
+enlace_boe: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444"

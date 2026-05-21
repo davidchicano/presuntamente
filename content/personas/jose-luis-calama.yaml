@@ -1,0 +1,18 @@
+id: jose-luis-calama
+nombre_completo: "José Luis Calama Teixeira"
+nombres_alternativos:
+  - "José Luis Calama"
+es_figura_publica: true
+cargo_publico_actual: "Magistrado titular del Juzgado Central de Instrucción nº 4 de la Audiencia Nacional"
+cargos_publicos_historicos:
+  - cargo: "Magistrado titular del Juzgado Central de Instrucción nº 4 de la Audiencia Nacional"
+    organizacion_id: juzgado-central-instruccion-4
+    desde: "2018-01-01"
+biografia_corta: |
+  Magistrado especializado en delitos económicos. Es titular del Juzgado
+  Central de Instrucción nº 4 de la Audiencia Nacional desde 2018. Es el
+  juez instructor de las diligencias previas del caso Plus Ultra desde
+  que el órgano asumió la competencia.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-21"
