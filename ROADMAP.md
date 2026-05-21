@@ -86,6 +86,8 @@ Cosas que aprendemos por el camino y conviene recordar más allá de los docs de
 - **Branding lo hace Claude Design** (plataforma de Anthropic, separada de Claude Code). El lenguaje visual canónico vive en [`/DESIGN.md`](DESIGN.md) en raíz, formato estándar que Claude Design lee del repo conectado y que Claude Code consumirá en el Handoff. Cuando vuelva el resultado de Claude Design, se integra en `src/styles/global.css` y componentes en `src/components/`, respetando el patrón `Pg*`.
 - **El maintainer no quiere revisar docs largos por defecto.** Resumir, decidir, preguntar sólo cuando es genuinamente bloqueante.
 - **`additionalProperties: true` en schemas skeleton es intencional**; se cierra a `false` cuando la propiedad final del schema se conozca al fichar Plus Ultra.
+- **Versión de pnpm solo en `package.json`** (`packageManager`). No duplicar en `.github/workflows/`; `pnpm/action-setup` la lee del package.json automáticamente. Duplicar dispara `ERR_PNPM_BAD_PM_VERSION` y rompe CI.
+- **Pendiente futuro próximo**: GitHub avisa que actions @v4 con Node 20 quedan deprecadas a partir del 2 jun 2026 (forzadas a Node 24) y se retiran el 16 sept 2026. Bumpear `actions/checkout`, `pnpm/action-setup`, `actions/setup-node` cuando salga v5 estable de cada uno.
 
 ---
 
