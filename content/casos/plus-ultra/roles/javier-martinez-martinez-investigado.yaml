@@ -1,0 +1,16 @@
+id: javier-martinez-martinez-investigado-plus-ultra
+caso_id: plus-ultra
+sujeto_tipo: persona
+sujeto_persona_id: javier-martinez-martinez
+rol: investigado
+delitos_atribuidos:
+  - blanqueo-de-capitales
+fecha_inicio: "2025-12-11"
+hito_origen_id: operacion-udef-detenciones-2025-12-11
+notas: |
+  Javier Martínez Martínez es detenido junto al presidente y al director
+  ejecutivo de Plus Ultra en la operación UDEF del 11 de diciembre de
+  2025 y posteriormente puesto en libertad con medidas cautelares. Mantiene
+  la condición de investigado por presunto blanqueo de capitales. La
+  condición de investigado no implica valoración de culpabilidad: rige el
+  principio de presunción de inocencia mientras no recaiga resolución firme.

@@ -1,0 +1,17 @@
+id: roberto-roselli-investigado-plus-ultra
+caso_id: plus-ultra
+sujeto_tipo: persona
+sujeto_persona_id: roberto-roselli
+rol: investigado
+delitos_atribuidos:
+  - blanqueo-de-capitales
+fecha_inicio: "2025-12-11"
+hito_origen_id: operacion-udef-detenciones-2025-12-11
+notas: |
+  Roberto Roselli, director ejecutivo (CEO) de Plus Ultra Líneas Aéreas,
+  es detenido el 11 de diciembre de 2025 por la UDEF en el registro de
+  la sede de la compañía. Tras pasar a disposición judicial es puesto
+  en libertad con medidas cautelares y mantiene la condición de
+  investigado por presunto blanqueo de capitales. La condición de
+  investigado no implica valoración de culpabilidad: rige el principio
+  de presunción de inocencia mientras no recaiga resolución firme.
