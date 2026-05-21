@@ -30,11 +30,26 @@ Tres valores que el sistema visual debe reflejar:
 ### Anti-referencias
 
 - News media moderno (NYT, El País) — demasiado editorial, fotográfico.
+- **Magazine minimalista (Substack, Medium, blogs editoriales modernos)** — whitespace generoso, titulares gigantes, contenido espaciado. **Si una pantalla parece un blog editorial, es incorrecto.**
 - Startup moderna (Linear, Vercel) — demasiado limpia, futurista.
 - Investigative journalism dramático (ProPublica) — demasiado teatral.
 - Gradientes, glassmorphism, neumorfismo, soft shadows.
 - Paletas saturadas o vibrantes.
 - Iconografía decorativa o ilustraciones.
+
+### Importante: sobriedad NO es minimalismo editorial
+
+Las webs institucionales españolas son sobrias pero **estructuralmente cargadas**:
+
+- Bandas de color en headers (azul institucional, mostaza identitaria).
+- Bloques con fondo (gris, mostaza, azul claro) que estructuran la página.
+- Formularios con fondo gris claro y formato de oficina.
+- Badges rectangulares con borde fino, **no** píldoras redondeadas.
+- Identificadores en monoespaciada visibles.
+- Tablas densas con bordes finos.
+- Numeración explícita de secciones (1., 1.1., 1.1.1.).
+
+Si la pantalla parece un expediente de oficina o un portal ministerial (Junta Consultiva, Sede Electrónica de la AEAT, antiguas webs de Moncloa, BOE), va bien. Si parece Substack, va mal.
 
 ---
 
@@ -44,10 +59,13 @@ Cada color como variable CSS. Cada slot define equivalente en dark mode.
 
 ### Slots base
 
-- `--color-bg` — fondo principal. **Blanco roto** (off-white), referencia `#fafafa` o `#fbfbfb`. **NO beige, NO gris claro**: las webs institucionales españolas antiguas (BOE, Moncloa, antiguos portales ministeriales) usan fondo prácticamente blanco. La sensación retro la cargan la tipografía, los bordes finos y la sobriedad del layout, no un fondo coloreado.
+- `--color-bg` — fondo principal. **Blanco roto** (off-white), referencia `#fafafa` o `#fbfbfb`. **NO beige (#f5f4f0 ya es demasiado cremoso), NO gris claro**: las webs institucionales españolas usan fondo prácticamente blanco. La sensación retro la cargan tipografía, bordes finos y densidad administrativa, no un fondo coloreado.
 - `--color-fg` — texto principal. Gris muy oscuro o negro.
 - `--color-fg-muted` — texto secundario / muted. Gris medio.
-- `--color-accent` — único acento institucional. **Una sola elección entre**: rojo administrativo apagado (referencia BOE) o azul oscuro institucional. NO ambos. Justificar la decisión.
+- `--color-accent` — acento institucional primario, **azul oscuro `#1f3a68`** (confirmado).
+- `--color-accent-secondary` — **mostaza / ocre institucional apagado**, referencia `#c89b00` aprox. Para badges de fase, sub-headings de sección estructural, bandas decorativas. NO el amarillo literal del badge "Gobierno de España" — un tono propio en la misma familia. Es el **segundo color estructural** del sistema, no decorativo.
+- `--color-surface` — **blanco puro** `#ffffff` para cards y bloques sobre el fondo `--color-bg`. Da el efecto de "papel" encima de la página.
+- `--color-surface-muted` — **gris claro frío** `#f0f0f0` o `#eeeeee` (NO beige, NO cremoso) para fondos de formularios, filtros, áreas de utilidad administrativa.
 - `--color-border` — líneas y bordes. Gris claro.
 
 ### Slots funcionales — estados epistémicos de los hechos
@@ -106,7 +124,19 @@ Estrategia: **luminosidad invertida manteniendo identidad**. Mismos roles, mismo
 
 ## 4. Component Stylings
 
-Componentes prioritarios (orden de implementación recomendado):
+### Principio guía
+
+**Densidad administrativa > generosidad editorial.** Cada componente debe transmitir "expediente de oficina" antes que "magazine digital". Esto se materializa en:
+
+- Listados como **tablas con bordes finos visibles**, no cards estilo blog post.
+- Filtros con fondo `--color-surface-muted` y aspecto de formulario administrativo.
+- Badges **rectangulares con borde fino**, no píldoras redondeadas.
+- Identificadores judiciales (número de procedimiento, hash, slug) en monoespaciada visibles, no escondidos.
+- Numeración explícita de secciones donde aporte (1., 1.1., 1.1.1.).
+- Headers con franja de color y bloque identitario a la izquierda (similar al patrón ministerio: logo + nombre + subtítulo institucional dentro de una caja con borde).
+- Titulares editoriales presentes pero **no dominantes** — la página tiene muchos sub-titulares, identificadores y celdas informativas, no un único H1 gigante que ocupa media pantalla.
+
+### Componentes prioritarios (orden de implementación recomendado)
 
 1. **Header del sitio** — logo `presuntamente` en sans-serif sólido + nav ES / CAT.
 2. **Card de Caso en listado** — nombre mediático prominente, badge de fase, último hito con fecha, número de implicados con rol activo. Borde fino 1px, sin sombra.
