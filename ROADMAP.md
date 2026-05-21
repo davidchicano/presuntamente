@@ -4,15 +4,15 @@
 >
 > El roadmap **conceptual** — razonamiento de las fases, criterios de salida, esfuerzo estimado — vive en [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Este fichero es la versión **operativa**: dónde estamos, qué hay encima de la mesa, qué se ha aprendido.
 
-**Última actualización:** 2026-05-21 (noche — cierre del Lote 2 de integración del design system).
+**Última actualización:** 2026-05-21 (noche — Fase 1.0 ✅ completa, Lotes 3, 4 y 5 entregados en una sola sesión).
 
 ---
 
 ## Estado actual
 
-- **Fase activa**: Fase 0 ✅ · Fase 1.0 (integración del design system) **Lotes 1 y 2 ✅ en main**. Lotes 3-5 pendientes en próximas sesiones. PR1 de contenido Plus Ultra ya en main.
-- **Último hito**: Lote 2 entregado directamente en `main`. Configuradas las 8 Content Collections de Astro 5 (`casos`, `personas`, `organizaciones`, `documentos`, `delitos`, y anidadas `hitos`/`hechos`/`roles` con globs `casos/*/{hitos,hechos,roles}/*.yaml`) con Zod schemas mínimos viables + `.passthrough()`. Las cifras de `PgInicio` y la tabla de `PgCasos` se leen ya de las collections; los filtros del catálogo (búsqueda, fase, orden) son interactivos con un `<script is:inline>` vanilla. `pnpm validate` 26 OK, `pnpm build` 2 páginas, `astro check` 0 errores, screenshots verificados.
-- **Próximo paso comprometido**: Lote 3 — `PgCasoDetalle` con la ficha completa de Plus Ultra (componentes compartidos `Badge`, `LevelBadge`, `PhaseBadge`, `Cite`, `Hito`, `Hecho`, `Contraposicion`, etc., migrados desde `preview/comp_*.html`).
+- **Fase activa**: Fase 0 ✅ · Fase 1.0 (integración del design system) **completa en main, 5 lotes** ✅. Próxima fase: Fase 1 (MVP Plus Ultra) — completar los YAMLs pendientes (PR2 con operación UDEF de 2025-12-11 y cambio_organo a JCI 4) y publicar el primer caso real.
+- **Último hito**: Lotes 3, 4 y 5 entregados en main en una sola sesión. Ficha completa de caso en `/casos/[slug]` con 8 secciones canónicas siguiendo doc 02. Listados + fichas individuales de personas y organizaciones. Biblioteca documental. Página institucional `/sobre`. Pagefind integrado: 17 páginas indexadas, 682 palabras, búsqueda funcional en `/buscar`. `pnpm validate` 26 OK, `pnpm build` 17 páginas, `astro check` 0/0/0, mobile y desktop verificados visualmente.
+- **Próximo paso comprometido**: PR2 de contenido Plus Ultra — operación UDEF 2025-12-11, cambio_organo JI 15 Madrid → JCI 4 AN (marzo 2026), 2-6 ejecutivos PU detenidos, resto de hitos/hechos/documentos pendientes (ver §"Fase 1 — MVP Plus Ultra"). Tras eso, primer caso adicional sugerido: Begoña Gómez (testea trayectoria con desimputaciones).
 - **Dev server local**: `pnpm dev` en `http://localhost:4321` (config en [`.claude/launch.json`](.claude/launch.json)).
 - **Workflow git**: **commits directos a `main`**, sin ramas ni PRs, decidido por el maintainer el 2026-05-21 mientras dure el MVP. Detalle en [`AGENTS.md` §"Workflow de rama y PRs"](AGENTS.md). PR #2 (Lote 1 de integración) es el último PR formal mientras esta política esté activa.
 
@@ -45,20 +45,29 @@ Trabajando en rama `fase-1/integrar-design-system` ([PR #2](https://github.com/d
 - [x] Cablear contadores hardcoded de `PgInicio` (cifras del inventario: 1/2/7/3) y la fila hardcoded de `PgCasos` a las collections reales. La tabla de casos lee `casos`, deriva el último hito de cada caso por fecha máxima en su carpeta `/hitos/`, cuenta personas con rol de imputación activo (investigado/procesado/acusado/condenado sin `fecha_fin`) y resuelve el órgano judicial al primer acrónimo de `nombres_alternativos`.
 - [x] Activar filtros de `PgCasos` — búsqueda por texto sobre nombre mediático + nombre oficial + órgano (incluido acrónimo) + nº de procedimiento, filtro por fase (instr / juicio / firme), orden por último hito ↓ o por implicados ↓. Vanilla JS sobre `data-*` attributes (sin frameworks reactivos); empty state "Sin resultados para los filtros actuales." cuando ninguna fila pasa.
 
-**Lote 3 — `PgCasoDetalle` con ficha completa de Plus Ultra** ⏳
-- [ ] Componentes compartidos: `Badge`, `LevelBadge`, `PhaseBadge`, `Cite`, `CalGlyph`, `Money`, `Acronym`, `Hito`, `Hecho`, `Contraposicion`, `DocumentoCard`, `PersonaCard`, `OrgGlyph`, `SectionH`. Migrar desde `ui_kits/web/Components.jsx` y `preview/comp_*.html` (los `preview/` son los canónicos; ver Aprendizajes).
-- [ ] Página `/casos/[slug].astro` → `PgCasoDetalle` siguiendo `docs/diseno/02-ficha-de-caso.md` §2 (encabezado, resumen, estado, cronología, personas con micro-swimlane, hechos clasificados por estado epistémico, biblioteca, cómo se redacta).
+**Lote 3 — `PgCasoDetalle` con ficha completa de Plus Ultra** ✅
+- [x] Componentes compartidos creados en `/src/components/`: `SectionH`, `LevelBadge`, `PhaseBadge`, `EpistemicBadge`, `CalGlyph`, `Cite`, `OrgGlyph`, `PersonaCard`, `OrgCard`, `Hito`, `Hecho`, `DocumentoCard`. Módulo `/src/lib/labels.ts` con mappings enum→label centralizados (preparado para i18n con firma `_lang`). Migrados desde `preview/comp_*.html`.
+- [x] Página `/casos/[slug].astro` → `PgCasoDetalle` siguiendo doc 02 §2 en 8 secciones numeradas administrativamente: resumen ejecutivo, estado procesal, personas implicadas (agrupadas por grupo procesal con aviso de presunción de inocencia), organizaciones implicadas, cronología, hechos por estado epistémico (4 grupos: acreditado · investigado/atribuido · exculpatorio · desmentido/no_concluyente), biblioteca documental con ancla por documento, y "cómo se ha redactado". Cierra con disclaimer.
+- (Sin swimlane gráfico de trayectoria — queda para Fase 2; el flujo cronológico de roles se muestra como tabla en la ficha individual de Persona).
 
-**Lote 4 — Resto de páginas + estructura /cat/ paralela** ⏳
-- [ ] `/personas`, `/personas/[slug]`, `/organizaciones`, `/organizaciones/[slug]`, `/biblioteca`, `/sobre`. Estructura `/src/pages/cat/...` con `.gitkeep` para todas.
+**Lote 4 — Resto de páginas + estructura /cat/ paralela** ✅
+- [x] `/personas` (listado tabular con filtros texto + figura pública), `/personas/[slug]` (ficha entity-mast con iniciales en cuadrado navy, biografía, casos donde aparece, trayectoria procesal completa, meta).
+- [x] `/organizaciones` (listado tabular con filtros texto + tipo dinámico), `/organizaciones/[slug]` (ficha entity-mast con OrgGlyph 64px, descripción, casos, roles asumidos, documentos producidos).
+- [x] `/biblioteca` con todos los documentos del inventario, filtros texto + nivel + tipo, orden nivel↑ · fecha↓, count "citado en N hechos".
+- [x] `/sobre` con misión, 6 principios editoriales, escala N1-N4, cómo rectificar, licencias.
+- [x] Estructura `/src/pages/cat/` paralela con `.gitkeep` para todas las rutas.
 
-**Lote 5 — Validación final + Pagefind** ⏳
-- [ ] Pagefind integrado e indexado.
-- [ ] `pnpm validate` + `pnpm build` + revisión visual integral en desktop y mobile.
+**Lote 5 — Validación final + Pagefind** ✅
+- [x] Pagefind 1.5.2 integrado. `data-pagefind-body` en `<main>` del BaseLayout para indexar sólo contenido principal. Build pasa a `astro build && pagefind --site dist`. UI Default en `/buscar` con script inline (Pagefind UI no es ESM), traducciones a castellano, overrides CSS alineados con paleta. Icono lupa en header con label "Buscar" (colapsa a solo lupa en mobile). 17 páginas, 682 palabras indexadas en 0.02s. Búsqueda probada con "plus ultra" → 15 resultados con Plus Ultra Líneas Aéreas en primer puesto.
+- [x] Revisión visual desktop + mobile (resize 360px) — header colapsa a 2 filas con search/lang en la primera, todas las páginas legibles, filtros apilan vertical correctamente.
 
-**Asuntos visuales pendientes (no bloquean Lote 2)**
+**Asuntos visuales pendientes (no bloquean siguientes fases)**
 - [ ] Reemplazar `/branding/wordmark.svg` (y la versión `-inverso`) por SVGs con paths outlined (font-independent), para que el wordmark sea usable como vector en favicon, social cards o impresos. El placeholder actual (`<text>presuntamente</text>` sin font-family) solo funciona si el navegador tiene la fuente del sistema — no fiable.
 - [ ] Decidir si el subtítulo institucional del header se muestra o no en mobile (ahora oculto).
+- [ ] Badge `--phase-archivo` propio (gris desaturado distinto a `--phase-firme`) cuando entre el primer caso archivado, para evitar confusión "sentencia firme" vs "archivado".
+- [ ] Swimlane gráfico de trayectoria por persona en `PgPersonaDetalle` (hoy se renderiza como tabla cronológica; la versión SVG queda para Fase 2 según doc 02 §3.1).
+- [ ] Componente `Contraposicion` para hechos con `contraposicion_a` (no usado todavía en Plus Ultra; añadir cuando entre un primer hecho contrapuesto real).
+- [ ] `Money` y `Acronym` para citación inline auto-resoluble en prosa (no usado todavía; añadir cuando los Hechos se redacten con valores monetarios y acrónimos institucionales linkeables).
 
 ### Fase 1 — MVP Plus Ultra
 - [x] Completar schemas con todas las propiedades: `hito`, `hecho`, `documento`, `rol-en-caso`, `organizacion`, `relacion-entre-casos`. Cerrados con `additionalProperties: false` + reglas if/then para V-09, V-10, V-11, V-14, V-15 (rama `fase-1/plus-ultra-content`).
@@ -72,9 +81,9 @@ Trabajando en rama `fase-1/integrar-design-system` ([PR #2](https://github.com/d
   - [ ] 15-25 `Hecho` — **3/15 en PR1** (préstamo SEPI atribuido, presunta trama de tráfico de influencias investigada, rescate por cauces irregulares investigado). Resto pendiente PR2.
   - [ ] 10-20 `Documento` — **3/10 en PR1** (querella Manos Limpias, nota SEPI 2021-03, auto JCI 4 del 2026-05-19). Resto pendiente PR2.
 - [x] Delitos del catálogo aplicables a Plus Ultra — 5 en PR1 (tráfico de influencias, organización criminal, falsedad documental, blanqueo de capitales, malversación).
-- [ ] Componentes Astro de la ficha (siguiendo doc 02): `PgCasoDetalle`, encabezado, resumen ejecutivo, estado procesal, personas implicadas con micro-swimlane, cronología, hechos clasificados por estado epistémico, biblioteca de documentos, sección "cómo se ha redactado". *(Lote 3 de la integración del design system.)*
-- [ ] Pagefind integrado y funcionando con el caso indexado. *(Lote 5.)*
-- [x] Página principal con listado básico (un caso). *(Lote 1 — fila hardcoded en `/casos`; Lote 2 lo cablea a Content Collections.)*
+- [x] Componentes Astro de la ficha (siguiendo doc 02): `PgCasoDetalle`, encabezado, resumen ejecutivo, estado procesal, personas implicadas (sin micro-swimlane gráfico, ese queda para Fase 2), cronología, hechos clasificados por estado epistémico, biblioteca de documentos, sección "cómo se ha redactado". *(Lote 3 de la integración del design system.)*
+- [x] Pagefind integrado y funcionando con el caso indexado. *(Lote 5.)*
+- [x] Página principal con listado básico (un caso). *(Lote 1 — fila hardcoded en `/casos`; Lote 2 lo cablea a Content Collections; Lote 3 añade `/casos/plus-ultra` con la ficha completa.)*
 - [ ] `/aviso-legal` con texto completo (a partir del borrador en doc 04 §8).
 - [ ] `/rectificar` con instrucciones funcionales (formulario opcional vía Cloudflare Workers).
 - [ ] `NOTES.md` del caso Plus Ultra con metadata, decisiones tomadas, referencias.
@@ -138,6 +147,14 @@ Cosas que aprendemos por el camino y conviene recordar más allá de los docs de
 - **Zod schemas mínimos viables con `.passthrough()`.** En vez de duplicar los 9 JSON Schemas de `/schemas/` (que siguen siendo la validación canónica vía `pnpm validate`), los Zod schemas de `content.config.ts` sólo declaran los campos que las páginas consumen hoy. `.passthrough()` evita que Zod elimine campos no listados, así que los YAML pueden tener atributos extra sin romper el typecheck. División de responsabilidades clara: AJV/JSON Schema valida estructura editorial completa (V-01..V-21), Zod sólo aporta tipos a Astro en build.
 - **Mapeo `fase_actual` (10 valores) → `phaseKind` UI (3 buckets).** El badge de fase del global.css sólo tiene 3 variantes (`instr`/`juicio`/`firme`). El mapeo actual en `PgCasos.astro` agrupa: instrucción/fase intermedia/denuncia → `instr`; juicio oral/sentencia 1ª inst./recurso → `juicio`; sentencia firme/ejecución → `firme`; archivo → `firme` con label "Archivado". Cuando entren casos archivados al inventario conviene añadir un badge `--phase-archivo` propio (gris desaturado distinto al firme) para evitar confusión visual entre "cerrado con sentencia firme" y "archivado sin condena".
 - **"Implicados" = personas con rol de imputación activo, no todo agente del procedimiento.** Decisión editorial razonada en `PgCasos.astro`: la columna "Implic." cuenta personas con `sujeto_tipo='persona'` y `rol ∈ {investigado, procesado, acusado, condenado}` sin `fecha_fin`. Sin esa restricción Plus Ultra daría 2 (Zapatero + Calama, juez instructor) en vez de 1, divergiendo de la cultura periodística española donde "implicado" = imputado, no = juez/fiscal/acusación popular. Reutilizar el patrón cuando entren más casos.
+- **Iniciales españolas: primera + última palabra significativa, no las dos primeras.** El helper `iniciales(nombre)` en `lib/labels.ts` toma `palabra[0][0] + palabra[última][0]`. Para nombres compuestos típicos ("José Luis Rodríguez Zapatero", "José Luis Calama Teixeira") esto da JZ vs JT — distinguibles. Tomar las dos primeras palabras daría JL para ambos, perdiendo la diferenciación visual de la card. Stop-words simples (`de`, `del`, `la`, `el`, `los`, `las`, `y`, `i`, `da`, `do`, `van`, `von`) se descartan antes del cálculo.
+- **`lib/labels.ts` centraliza mappings enum → label** para roles, tipos de hito/organización/documento, fases y origen. Firma con `_lang` parámetro inicial, así el día que se active el catalán solo hay que añadir la rama. Las páginas no deberían inline-handle estos mappings; pasar siempre por `lib/labels.ts`.
+- **Pagefind UI 1.5 no es ESM.** El bundle `pagefind-ui.js` expone `window.PagefindUI` como global, no como módulo. `await import('/pagefind/pagefind-ui.js')` no funciona — el módulo no exporta nada y aunque carga, `mod.PagefindUI` es undefined. Solución: `<script src="/pagefind/pagefind-ui.js" is:inline></script>` (script tag normal) seguido de otro script que llame a `new PagefindUI({...})` en `DOMContentLoaded`. La docs oficial usa exactamente este patrón.
+- **Pagefind necesita un build previo para servir su índice; `pnpm dev` no lo construye.** El script `build` ejecuta `astro build && pagefind --site dist`; el dev server (`astro dev`) no construye `dist/` ni el índice. Resultado práctico: `/buscar` funciona en `pnpm preview` o en producción, pero no en `pnpm dev`. La página detecta la ausencia con `typeof PagefindUI === 'undefined'` y muestra un fallback con instrucciones. Existe un script paralelo `build:no-index` (sólo `astro build`) por si en algún momento se quiere construir sin indexar.
+- **`data-pagefind-body` en `<main>` para excluir chrome.** Sin el marcador, Pagefind indexa todo el HTML — header, sub-strip, footer — y los resultados aparecen plagados de "presuntamente.org · Inventario público…" repetido. Con el marcador en `<main>`, Pagefind reporta "Ignoring pages without this tag" + indexa sólo el contenido principal. Para `/buscar` se añade `data-pagefind-ignore` al `<div id="pagefind-search">` para que los resultados que renderiza la propia UI no se indexen en pasadas posteriores.
+- **PersonaCard vs OrgCard — la distinción visual obligatoria es iniciales-en-cuadrado vs glyph-geométrico.** DESIGN.md §4 lo declara duro: Persona = iniciales, Organización = símbolo por tipo. Implementado en los componentes con borde-izquierdo coloreado distinto (navy para persona, mostaza para org) además del glyph diferente, para que las cards en una sección mixta (p.ej. "personas y organizaciones implicadas" lado a lado en la ficha de caso) sean discernibles incluso en escaneo rápido.
+- **El badge epistémico mapea 6 valores a 4 estilos.** `EpistemicBadge` reusa la clase `--investigado` para `atribuido` (mismo color amarillo apagado, label distinto) y `--desmentido` para `no_concluyente`. Razón: el sistema solo tiene 4 colores epistémicos en la paleta (acreditado/investigado/exculpatorio/desmentido). Las dos categorías extra del modelo son semánticamente cercanas a las existentes; introducir colores nuevos confundiría más que ayudaría. Si el modelo evoluciona en Fase 2 con una distinción visual real (p.ej. "factual no controvertido"), revisar.
+- **`getStaticPaths()` con params = entry.id.** Astro 5 rutas dinámicas `[slug].astro` usan `getStaticPaths` que devuelve `{ params: { slug }, props }`. Como nuestros `generateId` ya devuelven `data.id`, basta con `caso.id` como slug — coincide naturalmente con el slug humano del YAML. Patrón reusado en `/casos/[slug]`, `/personas/[slug]`, `/organizaciones/[slug]`.
 
 ---
 
