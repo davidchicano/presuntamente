@@ -41,7 +41,9 @@ const tabs: { key: NavKey; label: string; href: string }[] = [
 ];
 
 const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
-const brandSub = 'Inventario público de casos de corrupción · v0.0.0-alpha';
+// El subtítulo del bloque de marca es sólo el descriptor institucional;
+// la versión y el build hash viven exclusivamente en el footer (.site-footer .meta).
+const brandSub = 'Inventario público de casos de corrupción';
 ---
 
 <!doctype html>

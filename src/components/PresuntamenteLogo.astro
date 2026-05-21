@@ -3,24 +3,37 @@
  * PresuntamenteLogo — wordmark + isótipo del proyecto.
  *
  * Variantes:
- *   - "wordmark+isotipo" (defecto): isótipo (silueta España) + wordmark al lado.
- *     Uso típico: bloque de marca en el header del sitio.
- *   - "wordmark": solo el wordmark vectorial. Uso: footers, pies de página.
- *   - "isotipo": solo el isótipo (logo.png). Uso: favicon, header móvil
+ *   - "wordmark+isotipo" (defecto): isótipo (silueta España) + wordmark
+ *     tipográfico al lado, con subtítulo institucional opcional debajo.
+ *     Uso típico: bloque de marca del header del sitio.
+ *   - "wordmark": sólo el wordmark tipográfico. Uso: pie de página, contextos
+ *     donde el isótipo no es necesario.
+ *   - "isotipo": sólo el isótipo (logo.png). Uso: favicon, header móvil
  *     compacto, social cards, contextos donde el wordmark no cabe.
  *
- * `inverse` selecciona la variante clara del wordmark para fondos oscuros
- * (banda navy). El isótipo PNG es el mismo (silueta navy sobre transparente);
- * sobre banda oscura, el bloque de marca va dentro de una caja blanca para
- * mantener el patrón ministerial (logo + wordmark sobre fondo blanco).
+ * Decisión (Lote 1, ronda 2): el wordmark "presuntamente" se renderiza como
+ * texto estilado con la fuente sans institucional, NO como <img> de la SVG
+ * en /branding/. El SVG en /public/branding/wordmark.svg es un placeholder
+ * minimalista (un <text> sin font-family ni fill) pensado para favicon o
+ * social cards donde un vector outline sea necesario; en el header se usa
+ * texto estilado siguiendo el patrón del UI kit del bundle (SiteChrome.jsx →
+ * .site-brand__name). Cuando el SVG se reemplace por una versión outlined
+ * usable como pieza vectorial, esta decisión puede revisarse.
+ *
+ * `inverse` invierte el color del wordmark a blanco/claro para fondo oscuro.
+ * Sobre la banda navy del header, sin embargo, el bloque de marca va dentro
+ * de una caja blanca (patrón ministerial), así que la variante inverse rara
+ * vez se usa en este contexto.
  */
 interface Props {
   variant?: 'wordmark+isotipo' | 'wordmark' | 'isotipo';
   inverse?: boolean;
-  /** Subtítulo institucional opcional, solo aplica a "wordmark+isotipo". */
+  /** Subtítulo institucional opcional, sólo aplica a "wordmark+isotipo". */
   sub?: string;
-  /** alt text override para accesibilidad. */
+  /** alt text override para accesibilidad del bloque entero. */
   alt?: string;
+  /** Tamaño del isótipo en px. Defecto 52 para el bloque de marca del header. */
+  isoSize?: number;
   class?: string;
 }
 
@@ -29,29 +42,50 @@ const {
   inverse = false,
   sub,
   alt = 'presuntamente — inventario público de casos de corrupción en España',
+  isoSize = 52,
   class: className,
 } = Astro.props;
 
-const wordmarkSrc = inverse ? '/branding/wordmark-inverso.svg' : '/branding/wordmark.svg';
 const isotipoSrc = '/branding/logo.png';
+const wordmarkText = 'presuntamente';
 ---
 
 {variant === 'wordmark+isotipo' && (
-  <span class:list={['p-logo', 'p-logo--wm-iso', className]} aria-label={alt}>
-    <img src={isotipoSrc} alt="" class="p-logo__iso" width="40" height="40" loading="eager" decoding="sync" />
+  <span class:list={['p-logo', 'p-logo--wm-iso', inverse && 'is-inverse', className]} aria-label={alt}>
+    <img
+      src={isotipoSrc}
+      alt=""
+      class="p-logo__iso"
+      width={isoSize}
+      height={isoSize}
+      style={`width: ${isoSize}px; height: ${isoSize}px;`}
+      loading="eager"
+      decoding="sync"
+    />
     <span class="p-logo__text">
-      <img src={wordmarkSrc} alt="" class="p-logo__wm" width="140" height="22" loading="eager" decoding="sync" />
+      <span class="p-logo__wm">{wordmarkText}</span>
       {sub && <span class="p-logo__sub">{sub}</span>}
     </span>
   </span>
 )}
 
 {variant === 'wordmark' && (
-  <img src={wordmarkSrc} alt={alt} class:list={['p-logo', 'p-logo--wm', className]} width="140" height="22" loading="eager" decoding="sync" />
+  <span class:list={['p-logo', 'p-logo--wm-only', inverse && 'is-inverse', className]} aria-label={alt}>
+    <span class="p-logo__wm">{wordmarkText}</span>
+  </span>
 )}
 
 {variant === 'isotipo' && (
-  <img src={isotipoSrc} alt={alt} class:list={['p-logo', 'p-logo--iso', className]} width="40" height="40" loading="eager" decoding="sync" />
+  <img
+    src={isotipoSrc}
+    alt={alt}
+    class:list={['p-logo', 'p-logo--iso-only', className]}
+    width={isoSize}
+    height={isoSize}
+    style={`width: ${isoSize}px; height: ${isoSize}px;`}
+    loading="eager"
+    decoding="sync"
+  />
 )}
 
 <style>
@@ -62,8 +96,6 @@ const isotipoSrc = '/branding/logo.png';
     line-height: 1;
   }
   .p-logo__iso {
-    width: 40px;
-    height: 40px;
     flex-shrink: 0;
     display: block;
   }
@@ -72,12 +104,18 @@ const isotipoSrc = '/branding/logo.png';
     flex-direction: column;
     gap: 4px;
     line-height: 1;
+    min-width: 0;
   }
   .p-logo__wm {
-    height: 22px;
-    width: auto;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--color-accent);
+    line-height: 1;
     display: block;
   }
+  .is-inverse .p-logo__wm { color: #ffffff; }
   .p-logo__sub {
     font-family: var(--font-sans);
     font-weight: 400;
@@ -85,17 +123,15 @@ const isotipoSrc = '/branding/logo.png';
     color: var(--color-fg-muted);
     letter-spacing: 0;
     text-transform: none;
+    line-height: 1.3;
+    white-space: nowrap;
   }
-  .p-logo--iso {
-    width: 40px;
-    height: 40px;
-  }
-  .p-logo--wm {
-    height: 22px;
-    width: auto;
-  }
+  .is-inverse .p-logo__sub { color: rgba(255, 255, 255, 0.78); }
+
+  .p-logo--iso-only { display: inline-block; }
 
   @media (max-width: 720px) {
     .p-logo__sub { display: none; }
+    .p-logo__wm { font-size: 20px; }
   }
 </style>
