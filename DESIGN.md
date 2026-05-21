@@ -74,8 +74,26 @@ Cuatro colores apagados, **nunca asociables a partidos políticos**, para difere
 
 - `--color-hecho-acreditado` — verde sobrio (no flúor, no neón).
 - `--color-hecho-investigado` — ámbar / amarillo apagado.
-- `--color-hecho-exculpatorio` — gris azulado neutro.
+- `--color-hecho-exculpatorio` — gris azulado neutro (sutil tono cool que sugiere "liberado/cerrado", sin saturación).
+- `--color-hecho-desmentido` — gris claro neutro, sin saturación.
 - Hechos en **contraposición** no tienen color propio; se gestionan con estructura (dos cajas visualmente equivalentes lado a lado).
+
+**Restricción dura: NUNCA rojo en estados epistémicos.** Razones:
+
+1. **Político.** Rojo en España se asocia a PSOE / IU / Sumar coloquialmente. Cualquier rojo en la UI tiene riesgo de lectura partidista, lo que viola el principio nº 3 del proyecto (neutralidad política).
+2. **Semántico.** Rojo connota "malo". Pero "desmentido" significa que la **afirmación** está desmentida, lo que **EXCULPA** a la persona afectada. Pintar de rojo un Hecho desmentido sería un error semántico.
+3. **Presunción de inocencia.** "Investigado" en rojo pre-juzga culpabilidad antes de sentencia firme. Es exactamente lo que el modelo evita en datos y en lenguaje (doc 04 §3).
+
+### Slots visuales para niveles de fuente (N1-N4)
+
+Los `Documento` tienen `nivel_fuente` ∈ {1, 2, 3, 4}. Los badges N1-N4 deben transmitir **gradient de oficialidad** sin introducir colores nuevos. Estrategia: variar **fill y peso del mismo navy institucional**, NUNCA colores distintos por nivel (introduciría semántica accidental tipo "verde=bueno / rojo=malo").
+
+- **N1 (oficial primaria — sentencia, auto firme, BOE)**: fill sólido `--color-accent` con texto blanco. Máximo peso visual.
+- **N2 (oficial secundaria / instructora — informes UDEF/UCO, escritos fiscalía)**: fill sólido azul medio (~50% lightness sobre el accent) con texto blanco. Sólido pero menos intenso.
+- **N3 (institucional / pericial / cita oficial — Tribunal de Cuentas, nota organismo público, medio con cita)**: fill claro azul muy suave con texto navy. Identificable pero ligero.
+- **N4 (cobertura periodística cruzada)**: outline navy sin fill, texto navy. El más "ligero" visualmente. Comunica "informativo, no oficial".
+
+Misma forma (rectángulo) en los cuatro. La forma comunica categoría; el llenado comunica intensidad. Más oficial = más peso visual.
 
 ### Dark mode
 
@@ -155,6 +173,51 @@ Estrategia: **luminosidad invertida manteniendo identidad**. Mismos roles, mismo
 - **Focus**: `:focus-visible` con outline claramente visible (2px sólido en `--color-accent`).
 - **Active**: feedback inmediato, sin delay.
 
+### Diferenciación Persona vs Organización
+
+Las Cards de Persona y Organización deben ser **visualmente distinguibles a primera vista**, tanto en listados como en encabezados de ficha. NO pueden ser idénticas en estructura.
+
+**Card de Persona**:
+- Glyph izquierdo: **iniciales en cuadrado con borde fino** (ej. "FC" para Francisco Correa). Tamaño mayor en el encabezado de ficha; compacto en listado.
+- Metadata-line: `<cargo público actual> · figura pública | privada`.
+- Badge derecho: **rol procesal actual** (CONDENADO, INVESTIGADO, PROCESADO, ABSUELTO, DESIMPUTADO, TESTIGO…).
+- Foto solo en ficha individual de Persona, nunca en cards. Reglas en §"Política de imágenes en fichas de Persona".
+
+**Card de Organización**:
+- Glyph izquierdo: **símbolo geométrico o mini-icono según `tipo`** (gavel para `juzgado` / `tribunal`, edificio para `empresa` / `organismo_publico`, asterisco/asociación para `asociacion_acusacion_popular`, columna para `partido_politico`, etc.). **Sin iniciales** — esa es la marca visual de Persona.
+- Metadata-line: `<tipo> · <localidad si aplica> · <fundación si aplica>`.
+- Badge derecho: **tipo de entidad** (ÓRGANO JUDICIAL, FISCALÍA, PARTIDO POLÍTICO, EMPRESA, ORGANISMO PÚBLICO, ASOCIACIÓN…).
+- Nunca foto.
+
+### Política de imágenes en fichas de Persona
+
+Las fotografías **sólo aparecen en la ficha individual de Persona**, NO en cards de listado, NO en cards de Persona dentro de una ficha de Caso. Reglas obligatorias:
+
+- Sólo si `es_figura_publica = true`. Personas privadas: jamás.
+- Sólo imágenes con **licencia verificada libre**: Wikimedia Commons (CC), dominio público, retrato institucional oficial publicado por la propia institución (foto del Congreso, foto ministerial, foto del CGPJ).
+- **Nunca fotografías de detención, juicio dramático, paseíllo, o momentos humillantes**, ni siquiera si la licencia lo permite. Decisión editorial alineada con doc 04 §11.
+- Si no hay imagen libre disponible, fallback a las **iniciales** (mismo glyph que en la card).
+- Pie de foto obligatorio: autor + licencia + año.
+
+### Micro-componentes de citación inline
+
+Dentro del cuerpo de un Hecho, descripción de Hito o resumen ejecutivo, ciertos tipos de información tienen tratamiento visual estandarizado:
+
+**`<Money amount="…">`** — chip de dinero.
+
+- Ejemplo: "el préstamo de [53,5 M€] aprobado el…".
+- Estilo: borde fino 1px `--color-accent`, fill `--color-surface-muted`, texto en monoespaciada, padding mínimo, sin radius o muy bajo.
+- Aplica a cualquier cantidad citable (préstamos, comisiones, fianzas, multas).
+- Renderizado siempre idéntico, no negociable por contexto.
+
+**`<Acronym ref="…">`** — referencia auto-resoluble a Organización.
+
+- Ejemplo: "según el informe [UDEF] de fecha…".
+- Lookup: el componente busca `ref` (o el texto del acrónimo) en `/content/organizaciones/`. Si existe slug equivalente, **link interno** a `/organizaciones/<slug>`. Si no existe, span con **tooltip** que muestra el nombre completo (no link).
+- **NUNCA link a Wikipedia** ni a fuentes externas no controladas. Razón: tracking, pérdida de control editorial, saca al lector del inventario propio.
+- Estilo: subrayado punteado fino sutil, mismo color que el texto del párrafo. Hover: cursor pointer + color → `--color-accent` si tiene link; sin cambio si solo tooltip.
+- Lista de acrónimos auto-detectables (mantenida en código): UDEF, UCO, AN, TS, TC, TSJ, AP, JCI, JI, BOE, CGPJ, SEPI, AEAT, FGE, CIS, AIReF, Tribunal de Cuentas, etc.
+
 ---
 
 ## 5. Layout Principles
@@ -192,9 +255,14 @@ Estrategia: **luminosidad invertida manteniendo identidad**. Mismos roles, mismo
 - Tailwind. El proyecto usa CSS nativo + Open Props (ver §9).
 - Gradientes, glassmorphism, neumorfismo, soft shadows.
 - Paletas saturadas, vibrantes, o que evoquen partido político.
+- **Rojo en estados epistémicos** (semánticamente erróneo + riesgo político partisano; ver §2).
+- **Colores arbitrariamente distintos para niveles de fuente** (introduce semántica accidental; usar gradient de fill del mismo navy; ver §2).
 - Iconografía decorativa, ilustraciones, fotografías sin función informativa.
 - Animaciones decorativas, parallax, scroll-jacking.
-- Fotografías de personas mencionadas como investigadas (salvo retratos institucionales libres de derechos para cargos públicos vigentes).
+- **Fotografías de personas en cards de listado** o en cards de Persona dentro de una ficha de Caso (sólo en ficha individual de Persona).
+- Fotografías humillantes (paseíllo, detención, momento dramático) aunque la licencia las permita.
+- **Links externos automáticos a Wikipedia** desde acrónimos. Preferir referencia interna al inventario propio (§4 "Micro-componentes").
+- **Card de Persona y Card de Organización con la misma estructura visual**. Deben distinguirse a primera vista (iniciales vs símbolo geométrico; ver §4).
 
 ---
 
