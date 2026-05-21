@@ -118,9 +118,11 @@ Este repo es público. **No incluyas datos personales del maintainer** (direcci�
 
 ### Workflow de rama y PRs
 
-**Política actual (decidida por el maintainer el 2026-05-21):** trabajar **directamente sobre `main`**, sin ramas ni Pull Requests, mientras dure el MVP y hasta que el maintainer indique lo contrario. Push directo a `origin/main` tras `pnpm validate` + `pnpm build` verdes.
+**Política actual (decidida por el maintainer el 2026-05-21):** trabajar **directamente sobre `main`**, sin ramas ni Pull Requests, mientras dure el MVP y hasta que el maintainer indique lo contrario.
 
-Razón: en fase MVP el repo tiene un solo maintainer y los ciclos de feedback se hacen en sesiones de Claude Code, no en una review formal de GitHub. Las ramas + PRs ralentizan sin aportar.
+**El agente HACE commits, NUNCA HACE push** (norma reforzada por el maintainer el 2026-05-21). El push a `origin/main` lo decide y lo lanza el maintainer cuando le viene bien. El agente acumula commits coherentes en la rama local y se detiene antes de `git push`. Si necesita publicar algo, **pregunta primero**. Esta norma vale igual aunque `pnpm validate` y `pnpm build` estén verdes.
+
+Razón: en fase MVP el repo tiene un solo maintainer y los ciclos de feedback se hacen en sesiones de Claude Code, no en una review formal de GitHub. Las ramas + PRs ralentizan sin aportar, pero el push sí es un acto editorial que decide el maintainer (puede querer revisar el árbol de commits, esperar a juntar varios bloques, o vetar uno antes de que salga al repositorio público).
 
 **Cuando el maintainer reactive el modelo de ramas + PRs** (esperable cuando entren contribuyentes externos o cuando se establezcan CODEOWNERS), volver a:
 - Una rama por unidad de cambio coherente.
@@ -149,7 +151,7 @@ En Fase 0 son placeholders; se implementan según se necesiten.
 
 0. **Lee [`/ROADMAP.md`](ROADMAP.md)** antes de hacer cualquier otra cosa. Es el estado vivo del proyecto: dónde estamos, qué toca, decisiones pendientes, aprendizajes. **Obligatorio.**
 1. **Antes de cambiar algo no trivial**: lee el doc de diseño correspondiente en `docs/diseno/`. Si tocas algo visual o de marca, además [`/DESIGN.md`](DESIGN.md). Si el cambio contradice un principio o regla, NO lo hagas; pregunta.
-2. **Para crear/modificar contenido**: por defecto, commit directo a `main` (ver §"Workflow de rama y PRs"). Si el cambio es arriesgado o amplio, propón rama puntual antes de tocar nada.
+2. **Para crear/modificar contenido**: por defecto, commit directo a `main` (ver §"Workflow de rama y PRs"). **No hagas `git push`** — espera a que el maintainer lo decida. Si el cambio es arriesgado o amplio, propón rama puntual antes de tocar nada.
 3. **Valida localmente** antes de pushear: `pnpm validate` y `pnpm build`.
 4. **Commits descriptivos**: explica qué, por qué, y cita fuentes en el mensaje.
 5. **Si encuentras un dato sensible**: NO lo publiques sin consultar `docs/diseno/04-riesgos-legales-y-eticos.md`.
