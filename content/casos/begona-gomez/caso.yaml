@@ -1,0 +1,59 @@
+# Caso Begoña Gómez — esqueleto inicial (PR1 — primer caso de arranque
+# con la skill /investigar-caso v0).
+#
+# Esta primera versión es deliberadamente conservadora: schema validable,
+# datos verificables a partir de cobertura multimedio cruzada y de los
+# datos oficiales publicados por la UCM. Decisiones editoriales
+# sensibles y hitos sin documento N1 localizado quedan anotados en
+# NOTES.md para PR2.
+
+id: begona-gomez
+nombre_oficial: "Diligencias Previas — Juzgado de Instrucción nº 41 de Madrid"
+nombre_mediatico: "Caso Begoña Gómez"
+nombres_alternativos:
+  - "Caso de la Cátedra de Begoña Gómez"
+  - "Caso Begoña"
+
+descripcion_corta: |
+  Procedimiento penal seguido ante el Juzgado de Instrucción nº 41 de
+  Madrid, instruido por el magistrado Juan Carlos Peinado, sobre la
+  presunta utilización por Begoña Gómez —esposa del presidente del
+  Gobierno Pedro Sánchez— de su posición institucional en relación con
+  la creación y gestión de la Cátedra Extraordinaria de Transformación
+  Social Competitiva de la Universidad Complutense de Madrid y con
+  contratos públicos vinculados al empresario Juan Carlos Barrabés. El
+  procedimiento se incoó tras denuncia presentada por la asociación
+  Manos Limpias el 8 de abril de 2024. Por auto de 13 de abril de 2026
+  el instructor cerró la instrucción y propuso enjuiciamiento ante
+  Tribunal del Jurado por presuntos delitos de tráfico de influencias,
+  corrupción en los negocios, malversación de caudales públicos y
+  apropiación indebida, archivando el delito de intrusismo profesional.
+  La Fiscalía Provincial de Madrid ha sostenido desde la apertura, de
+  forma reiterada, que no concurren indicios de delito y ha solicitado
+  el archivo.
+
+organo_judicial_id: juzgado-instruccion-41-madrid
+numero_procedimiento: "Diligencias Previas (número exacto pendiente de confirmación pública)"
+tipo_procedimiento: diligencias_previas
+
+fase_actual: fase_intermedia
+fecha_apertura: "2024-04-16"
+
+origen_denuncia: querella_asociacion_acusacion_popular
+querellante_inicial_id: manos-limpias
+
+delitos_atribuidos_en_la_causa:
+  - trafico-de-influencias
+  - corrupcion-en-los-negocios
+  - malversacion-caudales-publicos
+  - apropiacion-indebida
+
+resumen_cifras: |
+  La UCM ha cifrado en 113.509,32 € el gasto total imputado al
+  desarrollo del software de la Cátedra de Transformación Social
+  Competitiva codirigida por la investigada (datos institucionales de
+  la propia universidad).
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"
+nivel_relevancia_editorial: capital

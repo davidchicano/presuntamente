@@ -1,0 +1,28 @@
+id: imputacion-cristina-alvarez-bg-2025-08-18
+caso_id: begona-gomez
+tipo: imputacion
+fecha: "2025-08-18"
+fecha_precision: dia
+titulo: "El Juzgado de Instrucción nº 41 de Madrid cita como investigada por malversación a la asesora de Begoña Gómez en Moncloa, Cristina Álvarez"
+descripcion: |
+  El Juzgado de Instrucción nº 41 de Madrid acuerda el 18 de agosto de
+  2025 la imputación como investigada de María Cristina Álvarez
+  Fernández, asesora de Begoña Gómez en el Complejo de la Moncloa, por
+  un presunto delito de malversación de caudales públicos. La
+  imputación se asienta indiciariamente, según el instructor, en la
+  presunta utilización por parte de Álvarez de medios públicos
+  asociados a su puesto de asesora para tareas vinculadas a la
+  actividad privada de Gómez (entre otras, en relación con la Cátedra
+  de Transformación Social Competitiva de la UCM). Álvarez había
+  comparecido previamente como testigo el 20 de diciembre de 2024. La
+  condición de investigada no implica valoración de culpabilidad: rige
+  el principio de presunción de inocencia mientras no recaiga
+  resolución firme en contrario.
+personas_afectadas:
+  - cristina-alvarez-fernandez
+organizaciones_afectadas:
+  - juzgado-instruccion-41-madrid
+documento_principal_id: auto-procesamiento-bg-2026-04-13
+documentos_relacionados:
+  - infobae-procesamiento-bg-2026-04-13
+fase_resultante: instruccion

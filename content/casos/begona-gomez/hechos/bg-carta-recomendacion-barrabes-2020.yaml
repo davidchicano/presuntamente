@@ -1,0 +1,28 @@
+id: bg-carta-recomendacion-barrabes-2020
+caso_id: begona-gomez
+enunciado: |
+  Se atribuye en la denuncia presentada por Manos Limpias el 8 de abril
+  de 2024 y se recoge indiciariamente en el auto de procesamiento del
+  13 de abril de 2026 que Begoña Gómez Fernández habría firmado en 2020
+  cartas de recomendación favorables al empresario Juan Carlos Barrabés
+  en relación con sociedades de su grupo que posteriormente habrían
+  resultado adjudicatarias de contratos públicos por importe superior
+  a diez millones de euros. El instructor considera indiciariamente
+  que dichas cartas habrían sido emitidas prevaliéndose la firmante
+  de su posición como esposa del presidente del Gobierno.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2020-01-01"
+  hasta: "2020-12-31"
+  precision: anio
+personas_implicadas:
+  - begona-gomez
+  - juan-carlos-barrabes
+documentos_respaldo:
+  - documento_id: maldita-explica-denuncia-bg-2024-04-25
+  - documento_id: auto-procesamiento-bg-2026-04-13
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

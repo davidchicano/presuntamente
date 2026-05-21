@@ -1,0 +1,31 @@
+id: denuncia-manos-limpias-bg-2024-04-08
+caso_id: begona-gomez
+tipo: denuncia_presentada
+fecha: "2024-04-08"
+fecha_precision: dia
+titulo: "Manos Limpias presenta denuncia ante el Juzgado de Instrucción nº 41 de Madrid contra Begoña Gómez por presunto tráfico de influencias y corrupción en los negocios"
+descripcion: |
+  La asociación Manos Limpias presenta el 8 de abril de 2024 una
+  denuncia ante el Juzgado de Instrucción nº 41 de Madrid contra
+  Begoña Gómez, esposa del presidente del Gobierno, por presuntos
+  delitos de tráfico de influencias y corrupción en el sector privado.
+  La denuncia sostiene, en síntesis, que la denunciada se habría
+  prevalido de su posición como esposa del jefe del Ejecutivo para
+  intervenir ante terceros en relación con la actividad del empresario
+  Juan Carlos Barrabés y con un convenio entre la fundación que
+  dirigía y el grupo aerocomercial Globalia. El Juzgado de Instrucción
+  nº 41 de Madrid, a cuyo cargo está el magistrado Juan Carlos Peinado,
+  incoa diligencias previas por auto de 16 de abril de 2024 y declara
+  la causa bajo secreto sumarial. La Fiscalía Provincial de Madrid
+  presenta recurso de apelación contra la apertura el 25 de abril de
+  2024 solicitando el archivo, recurso desestimado por el instructor.
+personas_afectadas:
+  - begona-gomez
+organizaciones_afectadas:
+  - manos-limpias
+  - juzgado-instruccion-41-madrid
+  - fiscalia-provincial-madrid
+documento_principal_id: maldita-explica-denuncia-bg-2024-04-25
+documentos_relacionados:
+  - infobae-apertura-diligencias-bg-2024-04-24
+fase_resultante: instruccion

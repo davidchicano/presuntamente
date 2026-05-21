@@ -1,0 +1,28 @@
+id: goyache-investigado-bg-2024
+caso_id: begona-gomez
+sujeto_tipo: persona
+sujeto_persona_id: joaquin-goyache
+rol: investigado
+delitos_atribuidos:
+  - malversacion-caudales-publicos
+fecha_inicio: "2024-10-29"
+fecha_fin: "2025-05-16"
+hito_origen_id: denuncia-manos-limpias-bg-2024-04-08
+hito_fin_id: desimputacion-goyache-bg-2025-05-16
+notas: |
+  Joaquín Goyache, rector de la Universidad Complutense de Madrid, fue
+  llamado a declarar como investigado por el Juzgado de Instrucción
+  nº 41 de Madrid tras la ampliación de delitos del 29 de octubre de
+  2024 (apropiación indebida e intrusismo profesional), con
+  responsabilidad indiciaria por la creación y financiación de la
+  Cátedra Extraordinaria de Transformación Social Competitiva. El
+  auto específico de imputación del rector no se ha localizado todavía
+  con URL canónica; `hito_origen_id` apunta provisionalmente al hito
+  de origen del procedimiento (denuncia de Manos Limpias) hasta que
+  se localice el documento concreto, conforme se anota en NOTES.md
+  para su revisión en PR2. La condición de investigado se extinguió
+  el 16 de mayo de 2025 cuando la Audiencia Provincial de Madrid
+  revocó la imputación al no apreciar indicios racionales de
+  criminalidad. La condición de investigado no implica valoración de
+  culpabilidad: rige el principio de presunción de inocencia mientras
+  no recaiga resolución firme en contrario.

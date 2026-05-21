@@ -1,0 +1,25 @@
+id: imputacion-barrabes-bg-2024-07-19
+caso_id: begona-gomez
+tipo: imputacion
+fecha: "2024-07-19"
+fecha_precision: dia
+titulo: "El Juzgado de Instrucción nº 41 de Madrid cita como investigado al empresario Juan Carlos Barrabés en el caso Begoña Gómez"
+descripcion: |
+  El Juzgado de Instrucción nº 41 de Madrid, tras la declaración como
+  testigo del empresario Juan Carlos Barrabés celebrada el 15 de julio
+  de 2024, eleva su condición a la de investigado en las diligencias
+  previas seguidas por la presunta utilización por parte de Begoña
+  Gómez de su posición institucional para favorecer intereses
+  empresariales vinculados al primero. La imputación se produce por
+  presuntos delitos de tráfico de influencias y corrupción en los
+  negocios. La condición de investigado no implica valoración de
+  culpabilidad: rige el principio de presunción de inocencia mientras
+  no recaiga resolución firme en contrario.
+personas_afectadas:
+  - juan-carlos-barrabes
+organizaciones_afectadas:
+  - juzgado-instruccion-41-madrid
+documento_principal_id: libertaddigital-imputacion-barrabes-2024-07-19
+documentos_relacionados:
+  - auto-procesamiento-bg-2026-04-13
+fase_resultante: instruccion

@@ -1,0 +1,30 @@
+id: bg-software-catedra-coste
+caso_id: begona-gomez
+enunciado: |
+  Según los datos institucionales facilitados por la Universidad
+  Complutense de Madrid y recogidos en la cobertura de Noticias de
+  Navarra del 23 de enero de 2026, la propia UCM cifra en 113.509,32
+  euros el gasto total imputado al desarrollo del software de la
+  Cátedra Extraordinaria de Transformación Social Competitiva
+  codirigida por Begoña Gómez. Del importe, 108.765,79 euros
+  correspondieron a contratos administrativos suscritos por la
+  universidad (entre otros, con Deloitte y con Making Science) y
+  4.743,53 euros a costes de personal. El control y la titularidad
+  efectiva del software resultante constituyen uno de los objetos
+  centrales de la causa.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2022-01-01"
+  hasta: "2024-12-31"
+  precision: rango
+personas_implicadas:
+  - begona-gomez
+organizaciones_implicadas:
+  - universidad-complutense-madrid
+documentos_respaldo:
+  - documento_id: noticiasdenavarra-software-catedra-bg-2026-01-23
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

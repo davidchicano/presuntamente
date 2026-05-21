@@ -1,0 +1,27 @@
+id: desimputacion-goyache-bg-2025-05-16
+caso_id: begona-gomez
+tipo: desimputacion
+fecha: "2025-05-16"
+fecha_precision: dia
+titulo: "La Audiencia Provincial de Madrid revoca la condición de investigado del rector de la UCM Joaquín Goyache"
+descripcion: |
+  La Audiencia Provincial de Madrid, conociendo del recurso de
+  apelación interpuesto contra la imputación acordada por el Juzgado
+  de Instrucción nº 41 de Madrid, dicta auto el 16 de mayo de 2025 por
+  el que estima el recurso del rector de la Universidad Complutense
+  de Madrid, Joaquín Goyache, y deja sin efecto su condición de
+  investigado al considerar que no concurren indicios racionales de
+  criminalidad. La resolución cierra el rol procesal de imputación de
+  Goyache, que recupera su condición ordinaria en relación con esta
+  causa. Conforme al principio de presunción de inocencia, rige la
+  inocencia mientras no recaiga resolución firme en contrario.
+personas_afectadas:
+  - joaquin-goyache
+organizaciones_afectadas:
+  - audiencia-provincial-madrid
+  - juzgado-instruccion-41-madrid
+  - universidad-complutense-madrid
+documento_principal_id: auto-audiencia-desimputa-goyache-2025-05-16
+documentos_relacionados:
+  - moncloacom-desimputa-goyache-2025-10-13
+fase_resultante: instruccion

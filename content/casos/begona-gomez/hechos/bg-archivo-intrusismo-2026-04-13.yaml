@@ -1,0 +1,27 @@
+id: bg-archivo-intrusismo-2026-04-13
+caso_id: begona-gomez
+enunciado: |
+  Consta en el auto del Juzgado de Instrucción nº 41 de Madrid del
+  13 de abril de 2026 que el instructor acuerda el archivo del delito
+  de intrusismo profesional respecto de Begoña Gómez, al considerar que
+  no concurren indicios sólidos para sostenerlo. Los otros cuatro
+  delitos investigados (tráfico de influencias, corrupción en los
+  negocios, malversación de caudales públicos y apropiación indebida)
+  se mantienen y el procedimiento continúa por ellos. El archivo del
+  delito de intrusismo profesional no afecta a la condición procesal de
+  los demás investigados ni a los demás objetos de la causa.
+tipo: exculpatorio
+fecha_o_periodo:
+  desde: "2026-04-13"
+  precision: dia
+personas_implicadas:
+  - begona-gomez
+documentos_respaldo:
+  - documento_id: auto-procesamiento-bg-2026-04-13
+    pasaje: "Parte dispositiva — archivo del delito de intrusismo profesional"
+  - documento_id: infobae-procesamiento-bg-2026-04-13
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

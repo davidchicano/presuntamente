@@ -1,0 +1,24 @@
+id: cristina-alvarez-investigada-bg-2025-08
+caso_id: begona-gomez
+sujeto_tipo: persona
+sujeto_persona_id: cristina-alvarez-fernandez
+rol: investigado
+delitos_atribuidos:
+  - malversacion-caudales-publicos
+fecha_inicio: "2025-08-18"
+fecha_fin: "2026-04-13"
+hito_origen_id: imputacion-cristina-alvarez-bg-2025-08-18
+hito_fin_id: auto-procesamiento-bg-2026-04-13
+notas: |
+  María Cristina Álvarez Fernández, asesora de Begoña Gómez en el
+  Complejo de la Moncloa, es citada como investigada por presunta
+  malversación de caudales públicos por auto del Juzgado de Instrucción
+  nº 41 de Madrid del 18 de agosto de 2025, tras haber comparecido como
+  testigo el 20 de diciembre de 2024. La imputación se asienta
+  indiciariamente en la presunta utilización de medios públicos
+  asociados a su puesto de asesora para tareas vinculadas a la
+  actividad privada de Gómez. Por auto de 13 de abril de 2026 esta
+  condición se transforma en la de procesada. La condición de
+  investigada no implica valoración de culpabilidad: rige el principio
+  de presunción de inocencia mientras no recaiga resolución firme en
+  contrario.

@@ -1,0 +1,30 @@
+id: bg-desimputacion-goyache-2025-05-16
+caso_id: begona-gomez
+enunciado: |
+  Consta en el auto de la Audiencia Provincial de Madrid del 16 de mayo
+  de 2025 que el tribunal estima el recurso de apelación interpuesto
+  por la defensa del rector de la Universidad Complutense de Madrid,
+  Joaquín Goyache, y revoca su condición de investigado en el
+  procedimiento, al considerar que no concurren indicios racionales de
+  criminalidad. La resolución cierra el rol procesal de imputación del
+  rector y deja sin efecto las diligencias dirigidas personalmente
+  contra él. Conforme al principio de presunción de inocencia, rige
+  la inocencia mientras no recaiga resolución firme en contrario.
+tipo: exculpatorio
+fecha_o_periodo:
+  desde: "2025-05-16"
+  precision: dia
+personas_implicadas:
+  - joaquin-goyache
+organizaciones_implicadas:
+  - audiencia-provincial-madrid
+  - universidad-complutense-madrid
+documentos_respaldo:
+  - documento_id: auto-audiencia-desimputa-goyache-2025-05-16
+    pasaje: "Fundamentos jurídicos — falta de indicios racionales de criminalidad"
+  - documento_id: moncloacom-desimputa-goyache-2025-10-13
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

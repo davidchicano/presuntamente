@@ -1,0 +1,16 @@
+id: hazte-oir-acusacion-popular-bg-2024-04
+caso_id: begona-gomez
+sujeto_tipo: organizacion
+sujeto_organizacion_id: hazte-oir
+rol: acusacion_popular
+fecha_inicio: "2024-04-24"
+hito_origen_id: denuncia-manos-limpias-bg-2024-04-08
+notas: |
+  La asociación HazteOír.org se persona como acusación popular en el
+  procedimiento poco después de la apertura de diligencias, en torno
+  al 24 de abril de 2024 conforme a la cobertura periodística. La
+  fecha exacta del auto de admisión de su personación queda pendiente
+  de localizar para PR2; `fecha_inicio` se aproxima conforme a la
+  cobertura disponible. Otras acusaciones populares personadas
+  posteriormente (Vox, Iustitia Europa, Movimiento de Regeneración
+  Política de España) se modelarán también en PR2.
