@@ -1,0 +1,14 @@
+# Configuración de pnpm para este proyecto.
+# A partir de pnpm 11, los settings que antes vivían en `pnpm` dentro de package.json
+# se han migrado aquí (ver https://pnpm.io/settings).
+#
+# Aunque presuntamente no es un monorepo, pnpm 11 espera que las settings vivan
+# en pnpm-workspace.yaml igualmente.
+
+# Dependencias autorizadas a ejecutar install scripts.
+# pnpm 11 los bloquea por defecto (medida contra supply-chain attacks).
+# esbuild es usado por Astro para bundling. sharp es para image optimization
+# (aún no usamos imágenes, pero Astro lo carga en build).
+allowBuilds:
+  esbuild: true
+  sharp: true
