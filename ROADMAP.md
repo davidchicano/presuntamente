@@ -10,9 +10,9 @@
 
 ## Estado actual
 
-- **Fase activa**: Fase 0 ✅ completada · Fase 1 (MVP Plus Ultra) en marcha — PR1 de contenido en rama `fase-1/plus-ultra-content`.
-- **Último hito**: schemas Hito/Hecho/Documento/RolEnCaso/Organizacion/RelacionEntreCasos cerrados con `additionalProperties:false` + reglas if/then derivadas de V-09/V-10/V-11/V-14/V-15; caso Plus Ultra con 1 caso, 7 organizaciones, 2 personas (juez Calama + Zapatero), 5 delitos, 3 documentos, 2 hitos (querella Manos Limpias 2025-12-23 + auto imputación 2026-05-19), 3 hechos (1 atribuido + 2 investigados sostenidos por el auto), 3 roles. NOTES.md detallado, skill `incorporar-hito` v0, lista blanca DominiosOficiales del doc 01 §3 ampliada con sepi.es, AEAT, Banco de España, CNMV, CNMC, IGAE. CI verde (26 entidades validadas).
-- **Próximo paso comprometido**: PR1 sale del maintainer con revisión y merge. PR2 incorporará operación UDEF 2025-12-11 con ejecutivos de Plus Ultra como investigados, cambio_organo JI 15 Madrid → JCI 4 AN (marzo 2026), e informes UDEF que aporten hechos adicionales — todo a partir de localización de documentos con URL canónica verificable.
+- **Fase activa**: Fase 0 ✅ completada · Fase 1 (MVP Plus Ultra) en marcha — PR1 de contenido ya mergeado en main. Sistema de diseño de Claude Design entregado e importado al repo como skill local en `/.claude/skills/presuntamente-design/`.
+- **Último hito**: handoff de Claude Design importado a `.claude/skills/presuntamente-design/` (README + SKILL.md + colors_and_type.css + 30+ previews HTML + UI kit JSX completo). Wordmarks SVG en `/public/branding/`. Pendientes anteriores ya cerrados: schemas H/Hch/Doc/RolEnCaso/Org/Rel con `additionalProperties:false`, caso Plus Ultra con 1 caso, 7 organizaciones, 2 personas, 5 delitos, 3 documentos, 2 hitos, 3 hechos, 3 roles + skill `incorporar-hito` v0, lista blanca `DominiosOficiales` ampliada.
+- **Próximo paso comprometido**: **nueva sesión de Claude Code** para integrar el design system al codebase Astro — portar `colors_and_type.css` del bundle a `/src/styles/global.css`, integrar wordmarks en BaseLayout, portar componentes JSX del UI kit a Astro `.astro` siguiendo el patrón Pg*, hasta tener ficha de Plus Ultra renderizando. En paralelo (futuro, no esta sesión): PR2 de contenido con operación UDEF 2025-12-11, cambio_organo marzo 2026, informes UDEF.
 - **Dev server local**: `pnpm dev` en `http://localhost:4321` (config en [`.claude/launch.json`](.claude/launch.json)).
 
 ---
@@ -25,7 +25,14 @@ Una idea, un bullet. `[ ]` pendiente, `[x]` hecho. Items completados se eliminan
 - [x] Configurar git con email noreply.
 - [x] Commit y push inicial del scaffolding.
 - [x] Lenguaje visual canónico en [`/DESIGN.md`](DESIGN.md) (formato esperado por Claude Design + Claude Code).
-- [ ] Resultado de Claude Design aplicado al sistema visual del repo: `src/styles/global.css` y componentes en `src/components/`.
+- [x] Sistema de diseño completado por Claude Design e importado al repo como skill local en `/.claude/skills/presuntamente-design/` (README + SKILL.md + `colors_and_type.css` + 30+ previews HTML + UI kit JSX). Wordmarks SVG en `/public/branding/`. Inconsistencia "rojo=político" corregida a "rojo=semántico" en README y SKILL del bundle para alinearlos con DESIGN.md.
+
+### Integración del design system — Fase 1.0 (nueva sesión de Claude Code)
+- [ ] Portar `colors_and_type.css` del bundle (`/.claude/skills/presuntamente-design/colors_and_type.css`) a `/src/styles/global.css`. Los tokens del bundle prevalecen sobre los placeholder actuales. Mantener Open Props como capa base.
+- [ ] Integrar wordmark (`/public/branding/wordmark.svg`) + isótipo (`/public/branding/logo.png`) en `BaseLayout.astro` o componente nuevo `PresuntamenteLogo.astro` (uso del logo según contexto: header normal → wordmark+isótipo, header móvil compacto → solo isótipo, favicon → solo isótipo).
+- [ ] Portar componentes JSX del UI kit (`/.claude/skills/presuntamente-design/ui_kits/web/`) a Astro `.astro` siguiendo el patrón Pg* en `/src/components/pages/`: `PgHome`, `PgCasoDetalle`, `PgPersona`, `PgOrganizacion`, `PgBiblioteca`, `PgSobre`.
+- [ ] Renderizar la ficha de Plus Ultra (ya en `/content/casos/plus-ultra/`) con la nueva UI. Validar visualmente y con `pnpm validate` + `pnpm build`.
+- [ ] Confirmar que la skill `/presuntamente-design` queda invocable desde Claude Code en este repo.
 
 ### Fase 1 — MVP Plus Ultra
 - [x] Completar schemas con todas las propiedades: `hito`, `hecho`, `documento`, `rol-en-caso`, `organizacion`, `relacion-entre-casos`. Cerrados con `additionalProperties: false` + reglas if/then para V-09, V-10, V-11, V-14, V-15 (rama `fase-1/plus-ultra-content`).
@@ -83,7 +90,7 @@ Detalle en [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fa
 Cosas que aprendemos por el camino y conviene recordar más allá de los docs de diseño.
 
 - **Las skills se moldean con la experiencia.** No fijar las skills upfront; iterarlas mientras se investiga cada caso. Cada nuevo caso refina la skill correspondiente.
-- **Branding lo hace Claude Design** (plataforma de Anthropic, separada de Claude Code). El lenguaje visual canónico vive en [`/DESIGN.md`](DESIGN.md) en raíz, formato estándar que Claude Design lee del repo conectado y que Claude Code consumirá en el Handoff. Cuando vuelva el resultado de Claude Design, se integra en `src/styles/global.css` y componentes en `src/components/`, respetando el patrón `Pg*`.
+- **Branding lo hace Claude Design** (plataforma de Anthropic, separada de Claude Code). El lenguaje visual canónico vive en [`/DESIGN.md`](DESIGN.md) en raíz; Claude Design lo lee del repo conectado, lo traduce a un bundle (tokens + componentes + UI kit), y Claude Code consume el bundle vía el Handoff. **El Handoff ya llegó** el 2026-05-21 e importado a [`/.claude/skills/presuntamente-design/`](.claude/skills/presuntamente-design/). La skill es `user-invocable: true`, se invoca con `/presuntamente-design` desde futuras sesiones. **DESIGN.md prevalece** sobre cualquier doc del bundle en caso de conflicto (lo dice el SKILL.md del bundle explícitamente).
 - **El maintainer no quiere revisar docs largos por defecto.** Resumir, decidir, preguntar sólo cuando es genuinamente bloqueante.
 - **`additionalProperties: true` en schemas skeleton es intencional**; se cierra a `false` cuando la propiedad final del schema se conozca al fichar Plus Ultra.
 - **Versión de pnpm solo en `package.json`** (`packageManager`). No duplicar en `.github/workflows/`; `pnpm/action-setup` la lee del package.json automáticamente. Duplicar dispara `ERR_PNPM_BAD_PM_VERSION` y rompe CI.
