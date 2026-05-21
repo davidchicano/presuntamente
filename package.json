@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
+    "build:no-index": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
@@ -23,6 +24,7 @@
     "ajv": "^8.17.0",
     "ajv-formats": "^3.0.0",
     "glob": "^13.0.0",
+    "pagefind": "^1.5.2",
     "typescript": "^5.7.0",
     "yaml": "^2.6.0"
   },

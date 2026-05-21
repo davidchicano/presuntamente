@@ -81,6 +81,13 @@ const brandSub = 'Inventario público de casos de corrupción en España';
             </a>
           ))}
         </nav>
+        <a class="site-search" href={lang === 'ca' ? '/cat/buscar' : '/buscar'} aria-label="Buscar">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <span>Buscar</span>
+        </a>
         <div class="site-lang" aria-label="Idioma">
           <a href="/" class:list={[lang === 'es' && 'is-on']} lang="es">ES</a>
           <span class="sep">/</span>
@@ -107,7 +114,7 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       </div>
     )}
 
-    <main id="main" class="main">
+    <main id="main" class="main" data-pagefind-body>
       <slot />
     </main>
 

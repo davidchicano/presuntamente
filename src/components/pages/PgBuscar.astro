@@ -1,0 +1,122 @@
+---
+// PgBuscar — búsqueda full-text vía Pagefind.
+// El índice se construye en `pnpm build` (astro build && pagefind --site dist)
+// y se sirve estáticamente desde /pagefind/. En `pnpm dev` el índice no
+// existe; la página avisa al lector.
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import type { Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; }
+const { lang = 'es' } = Astro.props;
+
+const strings = {
+  title: 'Buscar',
+  description: 'Búsqueda full-text sobre todas las fichas del inventario.',
+  eyebrow: 'Búsqueda',
+  sub:
+    'Búsqueda full-text en el inventario: nombres mediáticos, oficiales, hechos, hitos, organizaciones, ' +
+    'documentos y biografías. El índice se construye con Pagefind sobre el contenido estático ' +
+    'generado por Astro; nunca envía datos a un servicio externo.',
+};
+---
+
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'Buscar' },
+  ]}
+>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.title}</h1>
+      <p class="page-id__sub">{strings.sub}</p>
+    </div>
+  </section>
+
+  <header class="sec-h">
+    <span class="num">B.1</span>
+    <h2>Buscar en el inventario</h2>
+  </header>
+
+  <div id="pagefind-search" data-pagefind-ignore></div>
+
+  <noscript>
+    <p class="aviso aviso--accent">
+      La búsqueda requiere JavaScript activo. Si tienes JavaScript desactivado, navega por las
+      secciones del menú principal.
+    </p>
+  </noscript>
+
+  <p id="pagefind-fallback" class="aviso aviso--accent" hidden>
+    El índice de búsqueda no está disponible en el servidor de desarrollo. Ejecuta
+    <code>pnpm build</code> y luego <code>pnpm preview</code> para verla operativa.
+  </p>
+
+  <script src="/pagefind/pagefind-ui.js" is:inline></script>
+  <script is:inline>
+    (() => {
+      const mount = document.getElementById('pagefind-search');
+      const fallback = document.getElementById('pagefind-fallback');
+      function init() {
+        if (typeof PagefindUI === 'undefined') {
+          if (mount) mount.hidden = true;
+          if (fallback) fallback.hidden = false;
+          return;
+        }
+        new PagefindUI({
+          element: '#pagefind-search',
+          showImages: false,
+          resetStyles: false,
+          showEmptyFilters: false,
+          excerptLength: 24,
+          translations: {
+            placeholder: 'Buscar caso, persona, organización…',
+            clear_search: 'Limpiar',
+            load_more: 'Cargar más resultados',
+            search_label: 'Buscar en presuntamente',
+            filters_label: 'Filtros',
+            zero_results: 'Sin resultados para [SEARCH_TERM]',
+            many_results: '[COUNT] resultados para [SEARCH_TERM]',
+            one_result: 'Un resultado para [SEARCH_TERM]',
+            alt_search: 'Sin resultados para [SEARCH_TERM]. Mostrando resultados para [DIFFERENT_TERM] en su lugar',
+            search_suggestion: 'Sin resultados para [SEARCH_TERM]. Prueba con uno de estos:',
+            searching: 'Buscando [SEARCH_TERM]…',
+          },
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  /* Pagefind UI overrides — alinear con la estética administrativa. */
+  :global(.pagefind-ui) {
+    --pagefind-ui-primary: var(--color-accent);
+    --pagefind-ui-text: var(--color-fg);
+    --pagefind-ui-background: var(--color-surface);
+    --pagefind-ui-border: var(--color-border);
+    --pagefind-ui-tag: var(--color-surface-muted);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 0;
+    --pagefind-ui-font: var(--font-sans);
+  }
+
+  .aviso code {
+    font-family: var(--font-mono);
+    background: var(--color-bg-muted);
+    padding: 1px 4px;
+    border: 1px solid var(--color-border);
+  }
+</style>

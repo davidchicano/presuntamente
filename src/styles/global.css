@@ -353,7 +353,7 @@ li { margin: var(--space-1) 0; }
 }
 .site-header__inner {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: stretch;
   gap: 0;
   max-width: var(--container-max);
@@ -454,6 +454,31 @@ li { margin: var(--space-1) 0; }
 .site-nav a:hover::after,
 .site-nav a.is-active::after { transform: scaleX(1); }
 
+.site-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font: 700 11px/1 var(--font-sans);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  align-self: stretch;
+  transition: color var(--motion-duration) var(--motion-ease), background var(--motion-duration) var(--motion-ease);
+}
+.site-search:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
+.site-search svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .site-lang {
   display: flex; align-items: center; gap: 8px;
   padding: 0 var(--space-4);
@@ -492,7 +517,7 @@ li { margin: var(--space-1) 0; }
    * Mantiene la estética ministerial: bandas horizontales visibles,
    * nada oculto detrás de widgets. */
   .site-header__inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     grid-template-rows: auto auto;
   }
   .site-brand {
@@ -501,8 +526,15 @@ li { margin: var(--space-1) 0; }
     min-height: 64px;
     padding: var(--space-2) var(--space-4);
   }
-  .site-lang {
+  .site-search {
     grid-column: 2;
+    grid-row: 1;
+    border-left: 0;
+    padding: 0 10px;
+  }
+  .site-search span { display: none; }
+  .site-lang {
+    grid-column: 3;
     grid-row: 1;
   }
   .site-nav {
