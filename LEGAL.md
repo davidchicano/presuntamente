@@ -1,37 +1,23 @@
 # Aviso legal
 
-> **Estado:** placeholder. El texto definitivo (con responsable identificado a efectos LSSI) se activa cuando el sitio se publique con dominio propio. Borrador en [`docs/diseno/04-riesgos-legales-y-eticos.md`](docs/diseno/04-riesgos-legales-y-eticos.md) §8.
+> **Texto vigente del aviso legal en el sitio:** [`PgAvisoLegal.astro`](src/components/pages/PgAvisoLegal.astro). Cuando el dominio `presuntamente.org` esté operativo, la URL pública será `https://presuntamente.org/aviso-legal`.
+>
+> **Borrador editorial fuente** (con justificación de cada cláusula): [`docs/diseno/04-riesgos-legales-y-eticos.md`](docs/diseno/04-riesgos-legales-y-eticos.md) §8.
 
-## Presunción de inocencia
+Este `LEGAL.md` queda como **índice corto** del aviso legal, con la información mínima que cualquier visitante del repositorio público debe poder consultar sin entrar al sitio. El texto íntegro y vivo del aviso vive en `PgAvisoLegal.astro` para que evolucione como parte del propio sitio. Si hay discrepancia entre los dos, **prevalece la versión del sitio**.
 
-Toda persona mencionada en este sitio o repositorio como **investigada, procesada, acusada o relacionada con un procedimiento penal en curso** se presume inocente hasta que recaiga sentencia firme condenatoria.
+## Resumen mínimo
 
-La inclusión de su nombre en una ficha responde exclusivamente al hecho de que figura formalmente en un procedimiento de relevancia pública, no a una valoración de culpabilidad.
+- **presuntamente.org** es un sitio de información ciudadana sobre procedimientos judiciales relevantes en España. No es medio de comunicación tradicional ni órgano oficial.
+- Toda persona mencionada como **investigada, procesada o acusada se presume inocente** hasta sentencia firme.
+- Las afirmaciones llevan **nivel de fuente N1–N4 visible** y se categorizan por estado epistémico (acreditadas, bajo investigación, atribuidas, exculpatorias, desmentidas).
+- **Rectificación**: vía [`PgRectificar.astro`](src/components/pages/PgRectificar.astro) → issue con etiqueta `rectificacion` (template en [`.github/ISSUE_TEMPLATE/rectificacion.yml`](.github/ISSUE_TEMPLATE/rectificacion.yml)) o correo a `rectificacion@presuntamente.org` (canal activo cuando el dominio esté operativo).
+- **Responsable a efectos LSSI**: identificación pendiente hasta activación del dominio; ver `PgAvisoLegal` §5.
+- **Licencias**: contenido editorial bajo [CC BY-SA 4.0](LICENSE-CONTENT.md); código bajo [AGPL-3.0](LICENSE).
 
-## Categorización de afirmaciones
+## Detalle completo
 
-Las afirmaciones de cada ficha están categorizadas según su **estado epistémico** (acreditadas, bajo investigación, atribuidas por un actor identificado, exculpatorias, desmentidas) y cada afirmación cita la fuente y nivel de fuente que la sostiene.
-
-## Rectificación
-
-Cualquier persona que se considere afectada por una información publicada puede solicitar rectificación:
-
-- **Vía issue** en este repositorio con etiqueta `rectificacion`.
-- **Vía correo** a `rectificacion@presuntamente.org` (activo cuando se compre el dominio).
-- **Vía burofax / postal** cuando aplique formalmente la LO 2/1984.
-
-Plazos comprometidos:
-- Acuse de recibo: 48 horas hábiles.
-- Resolución provisional: 7 días hábiles.
-- Publicación de rectificación si procede: dentro del plazo legal.
-
-Detalle completo del procedimiento: `docs/diseno/04-riesgos-legales-y-eticos.md` §6.
-
-## Responsable
-
-(Identificación a efectos LSSI pendiente; se publica cuando el sitio esté operativo con dominio propio.)
-
-## Licencias
-
-- Contenido editorial bajo **CC BY-SA 4.0** ([`LICENSE-CONTENT.md`](LICENSE-CONTENT.md)).
-- Código bajo **AGPL-3.0** ([`LICENSE`](LICENSE)).
+- **Sitio (versión vigente):** [`src/components/pages/PgAvisoLegal.astro`](src/components/pages/PgAvisoLegal.astro).
+- **Borrador editorial fuente:** [`docs/diseno/04-riesgos-legales-y-eticos.md`](docs/diseno/04-riesgos-legales-y-eticos.md) §8.
+- **Procedimiento de rectificación operativo:** [`docs/diseno/04-riesgos-legales-y-eticos.md`](docs/diseno/04-riesgos-legales-y-eticos.md) §6 y [`src/components/pages/PgRectificar.astro`](src/components/pages/PgRectificar.astro).
+- **Catálogo de riesgos analizados:** [`docs/diseno/04-riesgos-legales-y-eticos.md`](docs/diseno/04-riesgos-legales-y-eticos.md) §2.
