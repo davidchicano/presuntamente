@@ -78,11 +78,13 @@ Cuatro colores apagados, **nunca asociables a partidos políticos**, para difere
 - `--color-hecho-desmentido` — gris claro neutro, sin saturación.
 - Hechos en **contraposición** no tienen color propio; se gestionan con estructura (dos cajas visualmente equivalentes lado a lado).
 
-**Restricción dura: NUNCA rojo en estados epistémicos.** Razones:
+**Restricción dura: NUNCA rojo en estados epistémicos.** Razones (todas semánticas, no políticas):
 
-1. **Político.** Rojo en España se asocia a PSOE / IU / Sumar coloquialmente. Cualquier rojo en la UI tiene riesgo de lectura partidista, lo que viola el principio nº 3 del proyecto (neutralidad política).
-2. **Semántico.** Rojo connota "malo". Pero "desmentido" significa que la **afirmación** está desmentida, lo que **EXCULPA** a la persona afectada. Pintar de rojo un Hecho desmentido sería un error semántico.
-3. **Presunción de inocencia.** "Investigado" en rojo pre-juzga culpabilidad antes de sentencia firme. Es exactamente lo que el modelo evita en datos y en lenguaje (doc 04 §3).
+1. **Convención UI universal**: rojo en interfaces significa "error / peligro / destrucción". Usarlo para clasificar un estado epistémico (acreditado, investigado, exculpatorio, desmentido) viola la convención y confunde al lector.
+2. **Desmentido en rojo invierte el mensaje**: "desmentido" significa que la afirmación es falsa, lo que **EXCULPA** a la persona afectada. Pintar de rojo (=malo) un hecho que de hecho exonera al sujeto invierte el significado.
+3. **Investigado en rojo viola presunción de inocencia**: rojo pre-juzga culpabilidad antes de sentencia firme. Es exactamente lo que el modelo evita en datos y en lenguaje (doc 04 §3).
+
+> **Sobre asociaciones partidarias de los colores:** en política española casi todo color tiene asociación con algún partido (rojo PSOE/IU/Sumar, azul PP, verde Vox flúor, naranja Cs/Sumar, morado Podemos, amarillo ERC/Junts, etc.). El proyecto **no** evita colores por su asociación política — sería imposible — sino que usa **siempre tonos muted / institucionales / desaturados**, jamás los tonos saturados de campaña. El verde acreditado es un verde sobrio (no el flúor de Vox). El ámbar investigado es un ocre apagado (no el amarillo brillante de Junts). El navy del accent es navy institucional (no el azul claro del PP). Esta es la regla unificadora real del sistema cromático.
 
 ### Slots visuales para niveles de fuente (N1-N4)
 
@@ -255,7 +257,7 @@ Dentro del cuerpo de un Hecho, descripción de Hito o resumen ejecutivo, ciertos
 - Tailwind. El proyecto usa CSS nativo + Open Props (ver §9).
 - Gradientes, glassmorphism, neumorfismo, soft shadows.
 - Paletas saturadas, vibrantes, o que evoquen partido político.
-- **Rojo en estados epistémicos** (semánticamente erróneo + riesgo político partisano; ver §2).
+- **Rojo en estados epistémicos** (semánticamente erróneo: convención UI "rojo=error" + invierte el mensaje en "desmentido" + viola presunción de inocencia en "investigado"; ver §2). La razón es semántica, no política — las asociaciones partidarias del color son inevitables y se mitigan con saturación baja, no evitando colores concretos.
 - **Colores arbitrariamente distintos para niveles de fuente** (introduce semántica accidental; usar gradient de fill del mismo navy; ver §2).
 - Iconografía decorativa, ilustraciones, fotografías sin función informativa.
 - Animaciones decorativas, parallax, scroll-jacking.
