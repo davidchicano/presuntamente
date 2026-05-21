@@ -4,7 +4,7 @@
 >
 > El roadmap **conceptual** — razonamiento de las fases, criterios de salida, esfuerzo estimado — vive en [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Este fichero es la versión **operativa**: dónde estamos, qué hay encima de la mesa, qué se ha aprendido.
 
-**Última actualización:** 2026-05-21 (noche — Fase 1.0 ✅ completa, Lotes 3, 4 y 5 entregados en una sola sesión).
+**Última actualización:** 2026-05-21 (noche tardía — Fase 1.0 ✅ completa; añadidos /aviso-legal, /rectificar, templates de issue, CODEOWNERS, badge phase-archivo, componentes Money/Acronym/Contraposicion preparados).
 
 ---
 
@@ -64,10 +64,10 @@ Trabajando en rama `fase-1/integrar-design-system` ([PR #2](https://github.com/d
 **Asuntos visuales pendientes (no bloquean siguientes fases)**
 - [ ] Reemplazar `/branding/wordmark.svg` (y la versión `-inverso`) por SVGs con paths outlined (font-independent), para que el wordmark sea usable como vector en favicon, social cards o impresos. El placeholder actual (`<text>presuntamente</text>` sin font-family) solo funciona si el navegador tiene la fuente del sistema — no fiable.
 - [ ] Decidir si el subtítulo institucional del header se muestra o no en mobile (ahora oculto).
-- [ ] Badge `--phase-archivo` propio (gris desaturado distinto a `--phase-firme`) cuando entre el primer caso archivado, para evitar confusión "sentencia firme" vs "archivado".
+- [x] Badge `--phase-archivo` propio (gris desaturado, peso normal, distinto de firme). `PhaseBadge` y `PgCasos` mapean ahora `archivo_provisional` y `archivo_libre` a este bucket con labels distinguibles. Filtro de fase del catálogo añade opción "Archivado".
 - [ ] Swimlane gráfico de trayectoria por persona en `PgPersonaDetalle` (hoy se renderiza como tabla cronológica; la versión SVG queda para Fase 2 según doc 02 §3.1).
-- [ ] Componente `Contraposicion` para hechos con `contraposicion_a` (no usado todavía en Plus Ultra; añadir cuando entre un primer hecho contrapuesto real).
-- [ ] `Money` y `Acronym` para citación inline auto-resoluble en prosa (no usado todavía; añadir cuando los Hechos se redacten con valores monetarios y acrónimos institucionales linkeables).
+- [x] Componente `Contraposicion` preparado (dos columnas equivalentes con actor + enunciado + fuentes, sin tratamiento visual que sugiera ganador). Mobile: las columnas apilan vertical con separador horizontal. Disponible para usarse en `PgCasoDetalle` cuando entre un primer hecho con `contraposicion_a`.
+- [x] `Money` (chip 1px navy, mono, surface-muted) y `Acronym` (con lookup automático contra collection `organizaciones`, link interno si existe el slug; tooltip sin link si no — nunca link a Wikipedia) preparados. Disponibles para reescribir enunciados de hechos con citación inline.
 
 ### Fase 1 — MVP Plus Ultra
 - [x] Completar schemas con todas las propiedades: `hito`, `hecho`, `documento`, `rol-en-caso`, `organizacion`, `relacion-entre-casos`. Cerrados con `additionalProperties: false` + reglas if/then para V-09, V-10, V-11, V-14, V-15 (rama `fase-1/plus-ultra-content`).
@@ -84,15 +84,15 @@ Trabajando en rama `fase-1/integrar-design-system` ([PR #2](https://github.com/d
 - [x] Componentes Astro de la ficha (siguiendo doc 02): `PgCasoDetalle`, encabezado, resumen ejecutivo, estado procesal, personas implicadas (sin micro-swimlane gráfico, ese queda para Fase 2), cronología, hechos clasificados por estado epistémico, biblioteca de documentos, sección "cómo se ha redactado". *(Lote 3 de la integración del design system.)*
 - [x] Pagefind integrado y funcionando con el caso indexado. *(Lote 5.)*
 - [x] Página principal con listado básico (un caso). *(Lote 1 — fila hardcoded en `/casos`; Lote 2 lo cablea a Content Collections; Lote 3 añade `/casos/plus-ultra` con la ficha completa.)*
-- [ ] `/aviso-legal` con texto completo (a partir del borrador en doc 04 §8).
-- [ ] `/rectificar` con instrucciones funcionales (formulario opcional vía Cloudflare Workers).
-- [ ] `NOTES.md` del caso Plus Ultra con metadata, decisiones tomadas, referencias.
+- [x] `/aviso-legal` con texto completo (borrador del doc 04 §8). Página `PgAvisoLegal.astro` en 7 secciones: qué es el sitio, presunción de inocencia, categorización de afirmaciones, rectificación (enlaza a `/rectificar`), responsable LSSI (placeholder hasta dominio), tratamiento de datos personales, licencias. Disclaimer final.
+- [x] `/rectificar` con instrucciones funcionales (`PgRectificar.astro`). 5 secciones: vías habilitadas (issue recomendado, correo, burofax), información necesaria (5 campos), plazos comprometidos (tabla), tipos de respuesta (5 opciones), otras vías de mejora (sugerencia de fuente). El formulario opcional vía Cloudflare Workers se evaluará en Fase 2 si el flujo issue resulta insuficiente.
+- [x] `NOTES.md` del caso Plus Ultra con metadata, decisiones tomadas, referencias *(ya estaba en main desde PR1; queda actualizado en cuanto entren los YAMLs pendientes en PR2)*.
 
 ### Después de Fase 1, antes de Fase 2
 - [ ] Revisar y consolidar `incorporar-hito` con lo aprendido al fichar Plus Ultra.
 - [ ] Crear `investigar-caso` v0 con lo aprendido.
-- [ ] Templates de issue (`rectificacion`, `sugerencia-fuente`).
-- [ ] `CODEOWNERS` placeholder.
+- [x] Templates de issue (`rectificacion`, `sugerencia-fuente`) en `.github/ISSUE_TEMPLATE/` con `config.yml` que enlaza a LEGAL.md y CONTRIBUTING.md.
+- [x] `CODEOWNERS` placeholder con `@davidchicano` como maintainer único hasta entrar contribuyentes externos.
 - [ ] Primer caso adicional sugerido: Begoña Gómez (testea trayectoria con desimputaciones).
 
 ---
