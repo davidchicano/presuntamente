@@ -7,46 +7,149 @@ interface Props {
 
 const { lang = 'es' } = Astro.props;
 
-// TODO i18n: cuando se active el catalán, añadir la rama 'ca' en strings y crear
-// los wrappers en /src/pages/cat/ que llamen a este componente con lang="ca".
+// TODO i18n: cuando se active el catalán, añadir la rama 'ca' en strings y
+// crear los wrappers en /src/pages/cat/ que llamen a este componente con
+// lang="ca". El Lote 2 reemplazará la fila hardcoded por una iteración sobre
+// las Content Collections de YAML.
 const strings = {
-  title: 'presuntamente',
-  tagline: 'Inventario interactivo de casos de corrupción en España.',
-  body:
-    'Sitio en construcción. La versión inicial está en preparación. ' +
-    'El objetivo es ofrecer una referencia objetiva y trazable de los procedimientos ' +
-    'judiciales relevantes, separando lo acreditado de lo investigado y citando cada afirmación.',
-  repo_link_text: 'Repositorio público (AGPL-3.0)',
-  docs_link_text: 'Diseño y principios del proyecto',
+  title: 'Catálogo de casos',
+  description:
+    'Listado público de los procedimientos judiciales relevantes registrados en el sistema.',
+  eyebrow: 'Sección 1 · Casos',
+  sub:
+    'Listado de los procedimientos judiciales relevantes registrados en el sistema. Cada caso ' +
+    'enlaza con su ficha completa, sus personas implicadas y los documentos primarios que lo respaldan.',
 };
+
+// Fila hardcoded del Lote 1 — sustituida por la lectura de Content Collections en el Lote 2.
+const casos = [
+  {
+    slug: 'plus-ultra',
+    mediatico: 'Caso Plus Ultra',
+    oficial: 'DP — JCI nº 4 AN',
+    fase: 'Instrucción',
+    phaseKind: 'instr' as const,
+    organo: 'JCI nº 4, AN',
+    implicados: 1,
+    ultimo_hito: {
+      fecha: '2026-05-19',
+      titulo: 'Auto de imputación · Zapatero',
+    },
+  },
+];
 ---
 
-<BaseLayout title={strings.title} lang={lang} description={strings.tagline}>
-  <h1>{strings.title}</h1>
-  <p class="lede">{strings.tagline}</p>
-  <p>{strings.body}</p>
-  <ul class="links">
-    <li>
-      <a href="https://github.com/davidchicano/presuntamente">{strings.repo_link_text}</a>
-    </li>
-    <li>
-      <a href="https://github.com/davidchicano/presuntamente/tree/main/docs/diseno">{strings.docs_link_text}</a>
-    </li>
-  </ul>
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  activeNav="home"
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'Casos' },
+  ]}
+>
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.title}</h1>
+      <p class="page-id__sub">{strings.sub}</p>
+    </div>
+    <div class="page-id__meta">
+      <span>Total: {casos.length}</span>
+      <span>·</span>
+      <span>Mostrando: {casos.length}</span>
+    </div>
+  </section>
+
+  <header class="sec-h">
+    <span class="num">1.1</span>
+    <h2>Filtros</h2>
+  </header>
+
+  <form class="filter-bar" method="get" role="search" aria-label="Filtrar catálogo">
+    <div class="field">
+      <label for="q">Buscar</label>
+      <input id="q" name="q" type="search" placeholder="Caso, organización, número de procedimiento…" disabled />
+    </div>
+    <div class="field">
+      <label for="phase">Fase procesal</label>
+      <select id="phase" name="phase" disabled>
+        <option value="all">Todas</option>
+        <option value="instr">Instrucción</option>
+        <option value="juicio">Juicio oral</option>
+        <option value="firme">Sentencia firme</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="order">Ordenar por</label>
+      <select id="order" name="order" disabled>
+        <option value="hito">Último hito ↓</option>
+        <option value="implicados">Implicados ↓</option>
+      </select>
+    </div>
+    <button class="btn" type="submit" disabled>Aplicar</button>
+  </form>
+
+  <p class="muted filters-note">
+    Filtros en preparación · disponibles cuando el catálogo crezca a partir del Lote 2.
+  </p>
+
+  <header class="sec-h">
+    <span class="num">1.2</span>
+    <h2>Listado</h2>
+    <span class="right">{casos.length} caso{casos.length === 1 ? '' : 's'} · orden: último hito</span>
+  </header>
+
+  <div class="tbl-caption">
+    <span>Tabla 1 · Catálogo de casos</span>
+    <span>Última actualización del listado: 2026-05-21</span>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th style="width: 34%;">Caso</th>
+        <th style="width: 14%;">Fase</th>
+        <th style="width: 22%;">Órgano</th>
+        <th style="width: 8%;" class="c-num">Implic.</th>
+        <th style="width: 22%;">Último hito</th>
+      </tr>
+    </thead>
+    <tbody>
+      {casos.map((c) => (
+        <tr class="is-link">
+          <td>
+            <a href={`/casos/${c.slug}`}>
+              <span class="c-name">{c.mediatico}</span>
+              <span class="c-name__sub">{c.oficial}</span>
+            </a>
+          </td>
+          <td>
+            <span class:list={['badge', `badge--phase-${c.phaseKind}`]}>{c.fase}</span>
+          </td>
+          <td class="c-mono">{c.organo}</td>
+          <td class="c-num">{c.implicados}</td>
+          <td>
+            <div class="c-date">{c.ultimo_hito.fecha}</div>
+            <div class="c-hito-title">{c.ultimo_hito.titulo}</div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 </BaseLayout>
 
 <style>
-  .lede {
-    font-size: var(--font-size-3);
+  .filters-note {
+    font-size: var(--font-size-0);
+    font-family: var(--font-mono);
+    margin-top: calc(-1 * var(--space-2));
+    margin-bottom: var(--space-4);
+  }
+  .c-hito-title {
+    font-size: var(--font-size-0);
     color: var(--color-fg-muted);
-    margin-block-end: var(--size-5);
-  }
-  .links {
-    list-style: none;
-    padding: 0;
-    margin-block-start: var(--size-5);
-  }
-  .links li {
-    margin-block: var(--size-2);
+    margin-top: 2px;
   }
 </style>
