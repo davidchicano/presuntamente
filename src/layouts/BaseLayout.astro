@@ -3,7 +3,7 @@ import '@/styles/global.css';
 import 'open-props/style';
 import PresuntamenteLogo from '@/components/PresuntamenteLogo.astro';
 
-type NavKey = 'home' | 'personas' | 'organizaciones' | 'biblioteca' | 'sobre';
+type NavKey = 'casos' | 'personas' | 'organizaciones' | 'biblioteca' | 'sobre';
 
 interface BreadcrumbItem {
   label: string;
@@ -32,12 +32,14 @@ const {
 } = Astro.props;
 
 // TODO i18n: cuando se active el catalán, traducir nav y subtítulo institucional.
+// Convención ministerial: el brand block del header es el ancla a "/"
+// (la landing PgInicio). El nav lista SECCIONES, no incluye "Inicio".
 const tabs: { key: NavKey; label: string; href: string }[] = [
-  { key: 'home',           label: 'Casos',          href: lang === 'ca' ? '/cat' : '/' },
-  { key: 'personas',       label: 'Personas',       href: lang === 'ca' ? '/cat/personas' : '/personas' },
+  { key: 'casos',          label: 'Casos',          href: lang === 'ca' ? '/cat/casos'          : '/casos' },
+  { key: 'personas',       label: 'Personas',       href: lang === 'ca' ? '/cat/personas'       : '/personas' },
   { key: 'organizaciones', label: 'Organizaciones', href: lang === 'ca' ? '/cat/organizaciones' : '/organizaciones' },
-  { key: 'biblioteca',     label: 'Biblioteca',     href: lang === 'ca' ? '/cat/biblioteca' : '/biblioteca' },
-  { key: 'sobre',          label: 'Sobre',          href: lang === 'ca' ? '/cat/sobre' : '/sobre' },
+  { key: 'biblioteca',     label: 'Biblioteca',     href: lang === 'ca' ? '/cat/biblioteca'     : '/biblioteca' },
+  { key: 'sobre',          label: 'Sobre',          href: lang === 'ca' ? '/cat/sobre'          : '/sobre' },
 ];
 
 const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';

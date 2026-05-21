@@ -1,0 +1,267 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+interface Props {
+  lang?: 'es' | 'ca';
+}
+
+const { lang = 'es' } = Astro.props;
+
+// TODO i18n: cuando se active el catalán, añadir la rama 'ca' en strings y
+// crear el wrapper en /src/pages/cat/index.astro que llame con lang="ca".
+const strings = {
+  title: 'Inicio',
+  description:
+    'Inventario público, interactivo y open-source de los casos de corrupción más relevantes en España.',
+  eyebrow: 'Portada · v0.0.0-alpha',
+  hero: {
+    title: 'Inventario público de casos de corrupción en España',
+    lede:
+      'Referencia objetiva y trazable de los procedimientos judiciales relevantes. ' +
+      'Cada afirmación cita su fuente y su nivel de fuente. Imputación nunca equivale a condena.',
+  },
+  // Lote 2 reemplazará el contador hardcoded por una cifra leída de las
+  // Content Collections (casos.length, personas.length, etc.).
+  contadores: [
+    { label: 'Casos catalogados',     value: '1' },
+    { label: 'Personas con rol',       value: '2' },
+    { label: 'Organizaciones citadas', value: '7' },
+    { label: 'Documentos primarios',   value: '3' },
+  ],
+  secciones: [
+    {
+      key: 'casos',
+      num: '01',
+      title: 'Catálogo de casos',
+      desc:
+        'Listado tabular de los procedimientos judiciales relevantes, con fase, ' +
+        'órgano y último hito visibles.',
+      href: '/casos',
+      cta: 'Ver catálogo',
+    },
+    {
+      key: 'personas',
+      num: '02',
+      title: 'Personas implicadas',
+      desc:
+        'Índice de personas con rol formal en algún caso. Trayectoria procesal ' +
+        'completa visible. Sin exposición de personas privadas no implicadas.',
+      href: '/personas',
+      cta: 'Ver personas',
+    },
+    {
+      key: 'organizaciones',
+      num: '03',
+      title: 'Organizaciones citadas',
+      desc:
+        'Órganos judiciales, fiscalías, partidos, empresas y organismos públicos ' +
+        'referenciados en los procedimientos.',
+      href: '/organizaciones',
+      cta: 'Ver organizaciones',
+    },
+    {
+      key: 'biblioteca',
+      num: '04',
+      title: 'Biblioteca documental',
+      desc:
+        'Sentencias, autos, informes UDEF/UCO, notas institucionales y coberturas ' +
+        'periodísticas que respaldan cada hecho. Nivel de fuente visible (N1-N4).',
+      href: '/biblioteca',
+      cta: 'Ver documentos',
+    },
+  ],
+  redaccion: {
+    title: 'Cómo se redacta este inventario',
+    body:
+      'Cada caso se documenta a partir de fuentes oficiales (BOE, CENDOJ, autos, ' +
+      'sentencias) y, complementariamente, de cobertura periodística cruzada. La ' +
+      'política editorial completa, incluyendo el protocolo de rectificación y la ' +
+      'lista de verbos prohibidos en redacción, vive en el repositorio público.',
+    cta: { label: 'Política editorial', href: '/sobre' },
+    cta2: { label: 'Repositorio público', href: 'https://github.com/davidchicano/presuntamente' },
+  },
+  disclaimer:
+    'Este sitio publica información sobre procedimientos judiciales en curso. ' +
+    'Las personas mencionadas como investigadas o procesadas se presumen inocentes ' +
+    'hasta que recaiga sentencia firme.',
+};
+---
+
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  breadcrumb={[{ label: 'Inicio' }]}
+>
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.hero.title}</h1>
+      <p class="page-id__sub">{strings.hero.lede}</p>
+    </div>
+    <div class="page-id__meta">
+      <span>Estado: borrador</span>
+      <span>·</span>
+      <span>Fase 1 — MVP Plus Ultra</span>
+    </div>
+  </section>
+
+  <header class="sec-h">
+    <span class="num">0.1</span>
+    <h2>Cifras del inventario</h2>
+    <span class="right">Actualizado al cierre de cada PR</span>
+  </header>
+
+  <ul class="cifras">
+    {strings.contadores.map((c) => (
+      <li class="cifras__item">
+        <span class="cifras__value">{c.value}</span>
+        <span class="cifras__label">{c.label}</span>
+      </li>
+    ))}
+  </ul>
+
+  <header class="sec-h">
+    <span class="num">0.2</span>
+    <h2>Secciones del sitio</h2>
+  </header>
+
+  <ul class="secciones">
+    {strings.secciones.map((s) => (
+      <li class="seccion">
+        <span class="seccion__num">{s.num}</span>
+        <div class="seccion__body">
+          <h3 class="seccion__title">{s.title}</h3>
+          <p class="seccion__desc">{s.desc}</p>
+          <a class="seccion__cta" href={s.href}>{s.cta} →</a>
+        </div>
+      </li>
+    ))}
+  </ul>
+
+  <header class="sec-h">
+    <span class="num">0.3</span>
+    <h2>{strings.redaccion.title}</h2>
+  </header>
+
+  <div class="prose">
+    <p>{strings.redaccion.body}</p>
+    <p class="redaccion__ctas">
+      <a class="btn" href={strings.redaccion.cta.href}>{strings.redaccion.cta.label}</a>
+      <a class="btn" href={strings.redaccion.cta2.href}>{strings.redaccion.cta2.label} ↗</a>
+    </p>
+  </div>
+
+  <div class="aviso aviso--accent mt-6">
+    {strings.disclaimer}
+  </div>
+</BaseLayout>
+
+<style>
+  .cifras {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .cifras__item {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cifras__item:last-child { border-right: 0; }
+  .cifras__value {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--font-size-5);
+    line-height: 1;
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .cifras__label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: var(--ls-caps);
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+  @media (max-width: 720px) {
+    .cifras__item { border-right: 0; border-bottom: 1px solid var(--color-border); }
+    .cifras__item:last-child { border-bottom: 0; }
+  }
+
+  .secciones {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  @media (max-width: 720px) {
+    .secciones { grid-template-columns: 1fr; }
+  }
+  .seccion {
+    margin: 0;
+    padding: var(--space-4);
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: var(--space-3);
+    align-items: start;
+  }
+  .seccion:nth-child(2n) { border-right: 0; }
+  .seccion:nth-last-child(-n+2) { border-bottom: 0; }
+  @media (max-width: 720px) {
+    .seccion { border-right: 0; }
+    .seccion:nth-last-child(-n+2) { border-bottom: 1px solid var(--color-border); }
+    .seccion:last-child { border-bottom: 0; }
+  }
+  .seccion__num {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: var(--font-size-3);
+    color: var(--color-accent-secondary-hover);
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .seccion__title {
+    font: 700 var(--font-size-3)/1.2 var(--font-sans);
+    margin: 0 0 var(--space-2);
+    color: var(--color-fg);
+  }
+  .seccion__desc {
+    font-size: var(--font-size-1);
+    color: var(--color-fg-muted);
+    line-height: 1.5;
+    margin: 0 0 var(--space-3);
+  }
+  .seccion__cta {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--font-size-1);
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 1px;
+  }
+  .seccion__cta:hover { color: var(--color-accent-hover); border-bottom-color: var(--color-accent-hover); }
+
+  .redaccion__ctas {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+    flex-wrap: wrap;
+  }
+</style>
