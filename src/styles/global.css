@@ -319,11 +319,37 @@ li { margin: var(--space-1) 0; }
 
 /* =========================================================================
  * Header ministerial — banda navy + bloque identitario
+ *
+ * Sigue /.claude/skills/presuntamente-design/preview/comp_header.html como
+ * componente canónico:
+ *   · Banda navy con doble trim inferior — línea oscura 1px + filete mostaza
+ *     2px construido con linear-gradient en .site-header::after, no como
+ *     border-bottom plano (esto da el "expediente sellado" ministerial).
+ *   · Brand block blanco con trim mostaza interno tipo "placa sellada"
+ *     (.site-brand::after — línea 1px mostaza a 35% opacidad cerca del borde
+ *     inferior interno).
+ *   · Nav: subrayado mostaza animado izq→der en hover (transform scaleX,
+ *     180ms ease-out). Estado activo mantiene la barra visible.
+ *   · Lang: misma barra animada bajo la opción activa.
+ *   · prefers-reduced-motion deshabilita transiciones.
  * ========================================================================= */
 .site-header {
   background: var(--color-accent);
   color: #fff;
-  border-bottom: 3px solid var(--color-accent-secondary);
+  position: relative;
+}
+/* Doble trim inferior: línea navy oscura + mostaza institucional. */
+.site-header::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  background:
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.25) 0 1px,
+      transparent 1px 1px,
+      var(--color-accent-secondary) 1px 3px);
+  pointer-events: none;
 }
 .site-header__inner {
   display: grid;
@@ -344,8 +370,21 @@ li { margin: var(--space-1) 0; }
   text-decoration: none;
   color: var(--color-fg);
   min-height: 78px;
+  position: relative;
+  transition: background var(--motion-duration) var(--motion-ease);
 }
 .site-brand:hover { background: var(--color-surface-muted); }
+/* Trim mostaza interno — "placa sellada" institucional */
+.site-brand::after {
+  content: '';
+  position: absolute;
+  left: 10px; right: 10px;
+  bottom: 5px;
+  height: 1px;
+  background: var(--color-accent-secondary);
+  opacity: 0.35;
+  pointer-events: none;
+}
 .site-brand__logo {
   width: 40px; height: 40px;
   display: block;
@@ -382,37 +421,68 @@ li { margin: var(--space-1) 0; }
   display: flex;
   align-items: stretch;
   gap: 0;
-  padding-left: var(--space-4);
+  padding-left: var(--space-3);
 }
 .site-nav a {
   display: flex;
   align-items: center;
   padding: 0 var(--space-4);
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   font: 600 13px/1 var(--font-sans);
   letter-spacing: 0.01em;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -3px;
   position: relative;
+  transition: color var(--motion-duration) var(--motion-ease),
+              background var(--motion-duration) var(--motion-ease);
 }
 .site-nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
-.site-nav a.is-active {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border-bottom-color: var(--color-accent-secondary);
+.site-nav a.is-active { color: #fff; background: rgba(255, 255, 255, 0.10); }
+
+/* Subrayado mostaza animado izq→der bajo el tab en hover/activo. */
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  left: var(--space-4); right: var(--space-4);
+  bottom: 0;
+  height: 3px;
+  background: var(--color-accent-secondary);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 180ms ease-out;
+  z-index: 1;
 }
+.site-nav a:hover::after,
+.site-nav a.is-active::after { transform: scaleX(1); }
 
 .site-lang {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 8px;
   padding: 0 var(--space-4);
   font: 700 11px/1 var(--font-sans);
   letter-spacing: var(--ls-caps);
   text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
 }
-.site-lang a { color: rgba(255, 255, 255, 0.6); text-decoration: none; }
-.site-lang a.is-on { color: #fff; }
-.site-lang .sep { color: rgba(255, 255, 255, 0.3); }
+.site-lang a {
+  color: inherit;
+  text-decoration: none;
+  padding: 4px 2px;
+  position: relative;
+  transition: color var(--motion-duration) var(--motion-ease);
+}
+.site-lang a:hover, .site-lang a.is-on { color: #fff; }
+.site-lang a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--color-accent-secondary);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 180ms ease-out;
+}
+.site-lang a:hover::after,
+.site-lang a.is-on::after { transform: scaleX(1); }
+.site-lang .sep { color: rgba(255, 255, 255, 0.25); }
 
 @media (max-width: 720px) {
   /* En mobile el header se reorganiza en dos filas:
@@ -476,12 +546,50 @@ li { margin: var(--space-1) 0; }
 
 /* =========================================================================
  * Footer institucional (4 columnas)
+ *
+ * Sigue /.claude/skills/presuntamente-design/preview/comp_footer.html:
+ *   · Filete tricolor administrativo arriba: rojo BOE apagado (#8e2424) 25%
+ *     + mostaza institucional (#c89b00) 50% + rojo BOE apagado 25%. Tonos
+ *     muted del sistema institucional, NO la bandera saturada. Es la
+ *     interpretación administrativa de los colores de España permitida por
+ *     DESIGN.md §"Sobre asociaciones partidarias" (muted > saturado de
+ *     campaña). El "no rojo" de DESIGN.md aplica sólo a estados epistémicos
+ *     (acreditado/investigado/desmentido), no a decoración institucional.
+ *   · Eco MUY desaturado del filete (4-5% opacidad) detrás del contenido.
+ *   · Cada h6 abre con border-top navy 2px (el patrón de los .gob.es).
  * ========================================================================= */
 .site-footer {
+  position: relative;
   background: var(--color-surface-muted);
   border-top: 1px solid var(--color-border);
-  padding: var(--space-6) var(--space-5);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  overflow: hidden;
 }
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    #8e2424 0 25%,
+    var(--color-accent-secondary) 25% 75%,
+    #8e2424 75% 100%
+  );
+}
+.site-footer::after {
+  content: '';
+  position: absolute;
+  top: 6px; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(142, 36, 36, 0.04) 0 25%,
+    rgba(200, 155, 0, 0.05) 25% 75%,
+    rgba(142, 36, 36, 0.04) 75% 100%
+  );
+  pointer-events: none;
+}
+.site-footer > * { position: relative; z-index: 1; }
 .site-footer__inner {
   max-width: var(--container-max);
   margin: 0 auto;
