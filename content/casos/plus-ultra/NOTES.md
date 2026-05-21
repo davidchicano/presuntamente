@@ -8,41 +8,29 @@ Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes 
 
 ## Estado editorial
 
-- **PR1 (esta entrega):** esqueleto deliberadamente conservador. Schemas cerrados, caso plano, una persona (juez instructor), 7 organizaciones, catálogo de delitos aplicables, 2 documentos verificables, 1 hito (querella Manos Limpias), 1 hecho atribuido (préstamo SEPI), 2 roles (juez instructor y acusación popular). El caso queda **publicable cuando se den los siguientes pasos**.
-- **PR2 pendiente:** decisión editorial del maintainer sobre Zapatero (ver §Discrepancia con el brief), incorporación del auto del 19 may 2026 y los hitos asociados, ejecutivos de Plus Ultra como personas con `RolEnCaso=investigado` desde 2025-12-11, hechos investigados del informe UDEF.
+- **PR1 (esta entrega):** schemas cerrados, caso, 2 personas (juez instructor + Zapatero como investigado conforme al auto del 19 may 2026), 7 organizaciones, catálogo de delitos aplicables, 3 documentos verificables (querella Manos Limpias, nota SEPI, auto JCI 4), 2 hitos (querella 23 dic 2025 y auto de imputación 19 may 2026), 3 hechos (préstamo SEPI atribuido + 2 investigados sostenidos por el auto), 3 roles (Calama juez instructor, Manos Limpias acusación popular, Zapatero investigado).
+- **PR2 pendiente:** ejecutivos de Plus Ultra detenidos en la operación UDEF de 2025-12-11 como `Persona` + `RolEnCaso=investigado`, cuando se localice documento procesal con URL canónica. Cambio_organo JI 15 Madrid → JCI 4 AN (marzo 2026) cuando se localice el auto. Informes UDEF que aporten hechos adicionales.
 
-## Discrepancia con el brief recibido
+## Resolución de la discrepancia inicial con el brief
 
-El brief de la sesión de Claude Code instruía expresamente:
+El brief de sesión instruía no imputar formalmente a Zapatero. Al
+investigar el caso quedó claro que el auto del JCI nº 4 del 2026-05-19
+sí le cita como investigado (declaración fijada para el 2026-06-02 por
+tráfico de influencias, pertenencia a organización criminal y falsedad
+documental). El maintainer ha confirmado el 2026-05-21 que se incorpore
+conforme a la realidad procesal.
 
-> "Plus Ultra" NUNCA se etiqueta como "caso Zapatero". Zapatero NO está
-> imputado formalmente en esta causa. Su mención puede vivir en
-> nombres_alternativos del Caso o en NOTES.md, nunca como
-> investigado_formal.
+Por tanto, en PR1 se ha creado:
 
-Las fuentes consultadas el 2026-05-21 (≥ 4 medios, multi-línea editorial)
-confirman que el juez José Luis Calama del JCI nº 4 de la Audiencia
-Nacional dictó el **2026-05-19** un auto que:
+- `Persona(id=jose-luis-rodriguez-zapatero, es_figura_publica=true)`.
+- `Documento(id=auto-jci4-plus-ultra-2026-05-19, tipo=auto_judicial, nivel_fuente=1)` con `url_canonica` a la nota oficial del CGPJ en `poderjudicial.es` (dominio en la lista blanca DominiosOficiales del doc 01 §3).
+- `Hito(id=auto-imputacion-zapatero-2026-05-19, tipo=imputacion)` con `documento_principal_id` apuntando al auto.
+- `RolEnCaso(id=zapatero-investigado-plus-ultra-2026-05, rol=investigado, fecha_inicio=2026-05-19, hito_origen_id=auto-imputacion-zapatero-2026-05-19, delitos_atribuidos=[trafico-de-influencias, organizacion-criminal, falsedad-documental])`.
+- Dos `Hecho` tipo `investigado` sostenidos por el auto (V-05 cumplido, Nivel 1).
 
-1. Levanta el secreto del sumario.
-2. Cita a José Luis Rodríguez Zapatero como **investigado** para el
-   2026-06-02 por presuntos delitos de tráfico de influencias,
-   organización criminal y falsedad documental.
-
-Esto sí encaja con la definición de "investigado_formal" del modelo
-(`RolEnCaso.rol = investigado` con `hito_origen_id` apuntando al auto).
-**El brief está desactualizado o el maintainer desea retrasar la
-incorporación por cautela editorial.** Se respeta la instrucción del
-brief: en PR1 no se crea la Persona Zapatero ni su RolEnCaso ni el Hito
-de 2026-05-19.
-
-**Decisión pendiente del maintainer** (decisiones pendientes en
-`ROADMAP.md`):
-
-- ¿Se incorpora a Zapatero como `Persona` y `RolEnCaso=investigado` en
-  PR2, como sostiene la documentación judicial pública?
-- En caso afirmativo, redacción neutra del Hito 2026-05-19 conforme al
-  doc 04 §3 (verbos "se investiga", "se atribuye", nunca "es culpable").
+Toda la redacción aplica los verbos del doc 04 §3 ("consta en el auto
+que…", "se atribuye indiciariamente", "según el magistrado instructor")
+y recoge expresamente la presunción de inocencia.
 
 ## Correcciones a datos del brief
 
@@ -97,11 +85,11 @@ de 2026-05-19.
 - **Documento de la querella de Manos Limpias**: nivel de fuente 3
   (documento de parte filtrado_verificado, publicado íntegro por medio
   identificable). NO Nivel 1: no es producto del órgano judicial.
-- **Documento nota SEPI 2021-03-09**: nivel de fuente 3.
-  `sepi.es` NO está en la lista blanca `DominiosOficiales` del doc 01
-  §3; no se puede marcar como Nivel 1. Pendiente decisión del maintainer
-  si se amplía la lista blanca incluyendo `sepi.es` y otros organismos
-  públicos dependientes del Ministerio de Hacienda.
+- **Documento nota SEPI 2021-03-09**: nivel de fuente 1.
+  `sepi.es` se incorpora a la lista blanca `DominiosOficiales` del doc
+  01 §3 (decisión del maintainer del 2026-05-21), junto con otros
+  organismos públicos con personalidad jurídica propia (AEAT, Banco de
+  España, CNMV, CNMC, IGAE, BOE, EUR-Lex).
 - **El Hecho `pu-prestamo-sepi-2021-03-09` se marca `tipo=atribuido`**
   porque V-04 exige documento jurisdiccional firme para `acreditado`.
   Un comunicado SEPI no es jurisdiccional. La redacción cita

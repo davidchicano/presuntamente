@@ -11,8 +11,8 @@
 ## Estado actual
 
 - **Fase activa**: Fase 0 ✅ completada · Fase 1 (MVP Plus Ultra) en marcha — PR1 de contenido en rama `fase-1/plus-ultra-content`.
-- **Último hito**: schemas Hito/Hecho/Documento/RolEnCaso/Organizacion/RelacionEntreCasos cerrados con `additionalProperties:false` + reglas if/then derivadas de V-09/V-10/V-11/V-14/V-15; esqueleto del caso Plus Ultra con 1 caso, 7 organizaciones, 1 persona (juez Calama), 5 delitos, 2 documentos, 1 hito (querella Manos Limpias 2025-12-23), 1 hecho atribuido, 2 roles, NOTES.md detallado y skill `incorporar-hito` v0. CI verde (20 entidades validadas).
-- **Próximo paso comprometido**: PR1 sale del maintainer con revisión; resolver decisiones pendientes (Zapatero, ampliación lista blanca SEPI) antes de PR2 que incorporará operación UDEF 2025-12-11, cambio_organo 2026-03, auto 2026-05-19 con personas y roles que el maintainer apruebe.
+- **Último hito**: schemas Hito/Hecho/Documento/RolEnCaso/Organizacion/RelacionEntreCasos cerrados con `additionalProperties:false` + reglas if/then derivadas de V-09/V-10/V-11/V-14/V-15; caso Plus Ultra con 1 caso, 7 organizaciones, 2 personas (juez Calama + Zapatero), 5 delitos, 3 documentos, 2 hitos (querella Manos Limpias 2025-12-23 + auto imputación 2026-05-19), 3 hechos (1 atribuido + 2 investigados sostenidos por el auto), 3 roles. NOTES.md detallado, skill `incorporar-hito` v0, lista blanca DominiosOficiales del doc 01 §3 ampliada con sepi.es, AEAT, Banco de España, CNMV, CNMC, IGAE. CI verde (26 entidades validadas).
+- **Próximo paso comprometido**: PR1 sale del maintainer con revisión y merge. PR2 incorporará operación UDEF 2025-12-11 con ejecutivos de Plus Ultra como investigados, cambio_organo JI 15 Madrid → JCI 4 AN (marzo 2026), e informes UDEF que aporten hechos adicionales — todo a partir de localización de documentos con URL canónica verificable.
 - **Dev server local**: `pnpm dev` en `http://localhost:4321` (config en [`.claude/launch.json`](.claude/launch.json)).
 
 ---
@@ -31,13 +31,13 @@ Una idea, un bullet. `[ ]` pendiente, `[x]` hecho. Items completados se eliminan
 - [x] Completar schemas con todas las propiedades: `hito`, `hecho`, `documento`, `rol-en-caso`, `organizacion`, `relacion-entre-casos`. Cerrados con `additionalProperties: false` + reglas if/then para V-09, V-10, V-11, V-14, V-15 (rama `fase-1/plus-ultra-content`).
 - [x] Skill `incorporar-hito` v0 — toma PDF de auto, propone YAML de `Hito` + `Hecho`(s) + `Documento`(s) + cambios en `RolEnCaso`. Guardarraíles del doc 03 §4 explícitos. Marcada explícitamente como v0 iterativa (rama `fase-1/plus-ultra-content`).
 - [ ] YAMLs del caso Plus Ultra:
-  - [x] `Caso` raíz (esqueleto en `fase-1/plus-ultra-content`).
-  - [ ] 4-8 `Persona` implicadas — **1/4 en PR1** (juez Calama). 3-7 pendientes para PR2 (ejecutivos PU + decisión editorial Zapatero).
+  - [x] `Caso` raíz.
+  - [ ] 4-8 `Persona` implicadas — **2/4 en PR1** (juez Calama, José Luis Rodríguez Zapatero). 2-6 pendientes para PR2 (ejecutivos PU detenidos en operación UDEF de 2025-12-11).
   - [x] 5-10 `Organizacion` — 7 en PR1 (AN, JCI 4, JI 15 Madrid, Fiscalía Anticorrupción, SEPI, Plus Ultra, Manos Limpias).
-  - [ ] 8-15 `RolEnCaso` — **2/8 en PR1** (Calama juez_instructor, Manos Limpias acusacion_popular). Resto pendiente PR2.
-  - [ ] 8-15 `Hito` — **1/8 en PR1** (querella Manos Limpias 2025-12-23). Pendiente PR2: operación UDEF 2025-12-11, cambio_organo 2026-03, auto 2026-05-19 (este último sujeto a decisión editorial Zapatero, ver `decisiones pendientes`).
-  - [ ] 15-25 `Hecho` — **1/15 en PR1** (préstamo SEPI 2021-03-09, atribuido). Resto pendiente PR2.
-  - [ ] 10-20 `Documento` — **2/10 en PR1** (querella Manos Limpias, nota SEPI 2021-03). Resto pendiente PR2.
+  - [ ] 8-15 `RolEnCaso` — **3/8 en PR1** (Calama juez_instructor, Manos Limpias acusacion_popular, Zapatero investigado). Resto pendiente PR2.
+  - [ ] 8-15 `Hito` — **2/8 en PR1** (querella Manos Limpias 2025-12-23, auto imputación Zapatero 2026-05-19). Pendiente PR2: operación UDEF 2025-12-11, cambio_organo JI 15 Madrid → JCI 4 AN (marzo 2026).
+  - [ ] 15-25 `Hecho` — **3/15 en PR1** (préstamo SEPI atribuido, presunta trama de tráfico de influencias investigada, rescate por cauces irregulares investigado). Resto pendiente PR2.
+  - [ ] 10-20 `Documento` — **3/10 en PR1** (querella Manos Limpias, nota SEPI 2021-03, auto JCI 4 del 2026-05-19). Resto pendiente PR2.
 - [x] Delitos del catálogo aplicables a Plus Ultra — 5 en PR1 (tráfico de influencias, organización criminal, falsedad documental, blanqueo de capitales, malversación).
 - [ ] Componentes Astro de la ficha (siguiendo doc 02): `PgCasoDetalle`, encabezado, resumen ejecutivo, estado procesal, personas implicadas con micro-swimlane, cronología, hechos clasificados por estado epistémico, biblioteca de documentos, sección "cómo se ha redactado".
 - [ ] Pagefind integrado y funcionando con el caso indexado.
@@ -59,9 +59,7 @@ Una idea, un bullet. `[ ]` pendiente, `[x]` hecho. Items completados se eliminan
 
 Sólo cosas que requieren input humano, no del asistente.
 
-- **Zapatero como `RolEnCaso=investigado` en Plus Ultra.** El brief de la sesión de Claude Code vetaba imputarlo formalmente, pero las fuentes confirman que el auto del 2026-05-19 del JCI nº 4 (AN) le cita como investigado. ¿Se incorpora en PR2 conforme a la realidad procesal documentada? Detalle y fuentes en `content/casos/plus-ultra/NOTES.md` § Discrepancia con el brief.
-- **Ampliar `DominiosOficiales` (lista blanca V-12) con `sepi.es` y/u otros organismos públicos dependientes del Ministerio de Hacienda.** La nota SEPI sobre el préstamo Plus Ultra es Nivel 3 hoy; con la ampliación pasaría a Nivel 1. Decisión de doc 01 §3.
-- **Política de citación del auto del 2026-05-19** (nota CGPJ en `poderjudicial.es`) cuando contiene a Zapatero por nombre. Atado a la decisión anterior.
+- *(ninguna activa hoy — las tres del 2026-05-21 se resolvieron en el mismo PR1: Zapatero incorporado conforme al auto del 19 may 2026, lista blanca ampliada con sepi.es y otros organismos oficiales, auto del 2026-05-19 citado vía la nota CGPJ en poderjudicial.es).*
 
 ---
 
