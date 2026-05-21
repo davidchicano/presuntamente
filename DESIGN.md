@@ -44,7 +44,7 @@ Cada color como variable CSS. Cada slot define equivalente en dark mode.
 
 ### Slots base
 
-- `--color-bg` — fondo principal. Beige claro o gris muy claro tipo "papel oficial". Sin amarillento.
+- `--color-bg` — fondo principal. **Blanco roto** (off-white), referencia `#fafafa` o `#fbfbfb`. **NO beige, NO gris claro**: las webs institucionales españolas antiguas (BOE, Moncloa, antiguos portales ministeriales) usan fondo prácticamente blanco. La sensación retro la cargan la tipografía, los bordes finos y la sobriedad del layout, no un fondo coloreado.
 - `--color-fg` — texto principal. Gris muy oscuro o negro.
 - `--color-fg-muted` — texto secundario / muted. Gris medio.
 - `--color-accent` — único acento institucional. **Una sola elección entre**: rojo administrativo apagado (referencia BOE) o azul oscuro institucional. NO ambos. Justificar la decisión.
@@ -67,7 +67,19 @@ Estrategia: **luminosidad invertida manteniendo identidad**. Mismos roles, mismo
 
 ## 3. Typography Rules
 
-- **Sans-serif base**: stack del sistema o fuente con peso editorial. Opciones razonables: stack del sistema (`ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`), Inter, IBM Plex Sans, Source Sans 3. Justificar la elección con referencia a la sobriedad institucional.
+- **Sans-serif base**: la tipografía institucional oficial del Gobierno de España desde 1999 es **Gill Sans** (presente en los logos del Estado y en portales ministeriales). Como es comercial (Monotype / Adobe Fonts) y no podemos servirla libremente, se usa stack con fallback abierto y del sistema:
+
+  ```css
+  font-family:
+    "Gill Sans Nova",          /* Adobe Fonts si el visitante la tiene */
+    "Gill Sans",               /* Apple users la tienen nativa */
+    "Lato",                    /* fallback abierto humanista */
+    "Source Sans 3",           /* otra alternativa humanista abierta */
+    ui-sans-serif, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  ```
+
+  Esto conecta directamente con la tradición visual de los portales institucionales españoles (Moncloa, ministerios, BOE) sin depender de una fuente comercial.
 - **Serif opcional** para titulares grandes o citas extensas: si se usa, clásica (Source Serif, Charter, Lora). Decisión binaria: o se usa con criterio o no se usa.
 - **Monospace** para identificadores judiciales (número de procedimiento, hash de documento, slug): JetBrains Mono o stack del sistema (`ui-monospace, "Cascadia Code", "Roboto Mono", monospace`).
 
