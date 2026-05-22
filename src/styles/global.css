@@ -650,13 +650,17 @@ li { margin: var(--space-1) 0; }
 .site-lang a.is-on::after { transform: scaleX(1); }
 .site-lang .sep { color: rgba(255, 255, 255, 0.25); }
 
-@media (max-width: 720px) {
-  /* En mobile el header se reorganiza en dos filas:
-   *   fila 1 → brand block (blanco) + ES/CAT a la derecha
-   *   fila 2 → nav horizontal a todo el ancho sobre la banda navy,
-   *            scrollable si los items no caben. Sin hamburger.
-   * Mantiene la estética ministerial: bandas horizontales visibles,
-   * nada oculto detrás de widgets. */
+@media (max-width: 1080px) {
+  /* Colapso a 2 filas. El umbral 1080 corresponde al ancho mínimo en el que
+   * el grid `auto 1fr auto auto` del desktop sigue cabiendo: brand 347 +
+   * nav 513 + search 98 + lang 103 ≈ 1061. Por debajo de eso, el nav (con
+   * 6 items) empuja a search/lang fuera del viewport y rompe el documento
+   * con scroll horizontal. La reorganización es:
+   *   fila 1 → brand block (blanco) + buscar + ES/CAT a la derecha
+   *   fila 2 → nav horizontal a todo el ancho sobre la banda navy, con
+   *            flex-wrap a 2 líneas si los 6 items no caben.
+   * Mantiene la estética ministerial: bandas horizontales visibles, nada
+   * oculto detrás de hamburger. */
   .site-header__inner {
     /* minmax(0, 1fr) en lugar de 1fr evita que el grid item se expanda al
      * min-content de su hijo (escudo + wordmark del brand) y fuerce un
@@ -677,7 +681,6 @@ li { margin: var(--space-1) 0; }
     border-left: 0;
     padding: 0 10px;
   }
-  .site-search span { display: none; }
   .site-lang {
     grid-column: 3;
     grid-row: 1;
@@ -687,11 +690,12 @@ li { margin: var(--space-1) 0; }
     grid-row: 2;
     padding: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.18);
-    overflow-x: auto;
-    scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch;
-    /* min-width:0 evita que el grid item se expanda al tamaño natural de
-     * sus hijos (5 links con flex-shrink:0) y desborde el viewport. */
+    /* flex-wrap permite que los items pasen a una segunda línea si no caben
+     * en una sola, en lugar de generar scroll horizontal dentro del nav.
+     * Decisión tomada en sesión 5d (2026-05-22) — el scroll era confuso
+     * visualmente y poco descubrible. min-width:0 evita que el grid item
+     * se expanda al tamaño natural de sus hijos y desborde el viewport. */
+    flex-wrap: wrap;
     min-width: 0;
   }
   .site-nav a {
@@ -702,6 +706,11 @@ li { margin: var(--space-1) 0; }
     border-bottom-width: 2px;
     margin-bottom: -2px;
   }
+}
+@media (max-width: 720px) {
+  /* En mobile real ocultamos el texto "Buscar" para ceder espacio. La lupa
+   * sola es suficiente con `aria-label` para accesibilidad. */
+  .site-search span { display: none; }
 }
 
 /* Sub-strip beneath header — breadcrumb / utility */
