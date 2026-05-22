@@ -76,9 +76,9 @@ Esta skill es **una copia local** del design system. La fuente original vive en 
 
 **Regla operativa para el agente:** después de cerrar un cambio sustancial de diseño en el repo, recordar explícitamente al maintainer:
 
-> "Acabo de cambiar el sistema de [badges / tokens / componente X / etc.] en `DESIGN.md` y `global.css`. Si quieres mantener Claude Design sincronizado, te pego abajo un prompt para que se lo pases a la plataforma y regenere el bundle. Cuando Claude Design devuelva el bundle actualizado, dímelo y lo importo aquí (`/.claude/skills/presuntamente-design/`) con un `git diff` para revisar."
+> "Acabo de cambiar el sistema de [badges / tokens / componente X / etc.] en `DESIGN.md` y `global.css`. Si quieres mantener Claude Design sincronizado, te pego abajo un prompt para que se lo pases a la plataforma y regenere el bundle. Cuando Claude Design devuelva el bundle actualizado, dímelo y lo importo aquí (`/.agents/skills/presuntamente-design/`) con un `git diff` para revisar."
 
-Y entregar al maintainer un prompt autocontenido (siguiendo el formato del que está en `/.claude/skills/presuntamente-design/sync-prompt-template.md` cuando exista, o redactando uno ad-hoc). El prompt debe:
+Y entregar al maintainer un prompt autocontenido (siguiendo el formato del que está en `/.agents/skills/presuntamente-design/sync-prompt-template.md` cuando exista, o redactando uno ad-hoc). El prompt debe:
 
 1. Pedirle a Claude Design que **lea el repo actualizado** (DESIGN.md + global.css + componentes).
 2. Resumir qué subsistema ha cambiado y qué hay que regenerar (tokens, previews, UI kit, assets).

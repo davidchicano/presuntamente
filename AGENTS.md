@@ -67,7 +67,8 @@ Si vas a tocar algo no trivial, consulta primero el doc correspondiente.
     pages/                  ← Pg* — lógica real de cada página
   layouts/
   styles/
-/.claude/skills/            ← skills locales del proyecto
+/.agents/skills/            ← skills locales del proyecto (canónico)
+/.claude/skills/            ← symlinks de compatibilidad → /.agents/skills/
 /.github/workflows/         ← CI
 ```
 
@@ -177,7 +178,7 @@ Comandos relacionados:
 - `pnpm archive:dry` — Lista qué documentos N4 del repo no tienen `url_archivo` (dry-run, no llama a archive.org).
 - `pnpm archive:catchup` — Archiva TODO el backlog pendiente del repo (no solo lo del staging). Útil al activar el hook por primera vez o cuando se acumula backlog por sesiones con archive.org caído.
 
-## Skills locales (`.claude/skills/`)
+## Skills locales (`.agents/skills/`)
 
 Skills planeadas para usar con Claude Code en este repo:
 
@@ -191,6 +192,8 @@ Skills planeadas para usar con Claude Code en este repo:
 En Fase 0 son placeholders; se implementan según se necesiten.
 
 **Convención clave**: las skills se moldean con la experiencia, **no se fijan upfront**. Cada caso investigado refina la skill correspondiente. La primera versión es la mínima útil; cada uso aporta mejoras. No esperar a "diseñar la skill perfecta" antes de usarla.
+
+**Ubicación canónica:** las skills viven en `/.agents/skills/`. Para mantener compatibilidad con Claude Code, cada entrada de `/.claude/skills/` debe ser un symlink relativo a su equivalente en `/.agents/skills/`.
 
 ## Workflow para agentes
 
