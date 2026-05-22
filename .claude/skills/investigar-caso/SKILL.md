@@ -247,6 +247,98 @@ Tras cada caso real arrancado con esta skill, añadir aquí una entrada en `## H
 
 ## Histórico
 
+### González Amador PR1 + PR2 + PR3 (2026-05-22) — segundo caso real arrancado con la skill, en sesión paralela
+
+Primer caso del inventario arrancado por un segundo agente trabajando
+sobre la misma working copy en paralelo al maintainer (que cerraba
+PR3 Begoña Gómez). Tres PRs en una sola sesión.
+
+PR1: 9 personas + 10 organizaciones nuevas + 9 documentos + 7 hitos
++ 5 hechos + 14 roles + nuevo delito `delito-contra-hacienda-publica`
+(art. 305 CP). PR2: pieza separada Quirón (3 docs, 1 hito, 1 org, 2
+hechos). PR3: ampliación V-11 + N1 BOE para cambio de juez + Maxwell
+Cremona persona jurídica procesada + encargo UCO + delito
+`administracion-desleal`.
+
+Lecciones operativas:
+
+- **Sesiones paralelas multiagéntico**. La operación más delicada es
+  `git add`: si arrastra archivos modificados por el otro agente,
+  acabas commiteando trabajo ajeno. Norma incorporada a `AGENTS.md`:
+  antes de cada `git commit`, ejecutar `git status -s` y stagear
+  sólo por ruta explícita (nunca `git add .`, `-A` ni patrones
+  genéricos); justo después de `git add` y antes del commit,
+  segundo `git status -s` para confirmar que sólo lo propio aparece
+  como `A`. La recuperación cuando se mete la pata: `git reset
+  HEAD~1` no destructivo y rehacer con `git add` explícito.
+- **Granularidad de commits**. Como no se hace push hasta que el
+  maintainer decide, el log local lo lee el maintainer por sesión,
+  no por bloque. Norma incorporada a `AGENTS.md`: un commit por PR
+  coherente, no por sub-bloque interno (delitos / orgs / personas /
+  docs / caso). Excepción legítima: cambios mixtos que mezclen
+  schema + datos, o cambios editorialmente delicados que el
+  maintainer pueda querer revertir aisladamente. PR1 se dividió en
+  5 commits y PR3 en 1; el segundo formato es claramente preferible
+  en revisión.
+- **Persona jurídica investigada / procesada existe en el ordenamiento
+  español desde la LO 5/2010**. La regla V-11, ya ampliada en
+  Begoña PR2 para admitir `perjudicado` a organizaciones, ha
+  necesitado segunda ampliación para admitir los roles imputadores
+  cuando el procedimiento sigue formalmente contra una mercantil
+  (caso Maxwell Cremona S.L. en este procedimiento). El cambio se
+  documenta en el propio schema con remisión histórica al caso
+  motivador. **Patrón reusable**: cuando una validación del schema
+  choca con un dato real verificable y procesalmente legítimo,
+  revisar la validación, no forzar el dato.
+- **CENDOJ no publica autos de instrucción de Juzgados ordinarios**.
+  Lección reaplicada de Plus Ultra y Begoña Gómez: los autos del
+  Juzgado de Instrucción nº 19 de Madrid (29-may-2025
+  procesamiento; 22-sept-2025 apertura juicio oral; 14-abr-2025
+  imputación Gómez Fidalgo; 27-jun-2025 encomienda UCO) NO están
+  publicados en CENDOJ ni en la web del CGPJ. Los autos sólo suben
+  a CENDOJ cuando recaen sobre causas de aforados (TS), órganos
+  centrales (AN) o cuando llegan a una instancia superior por
+  recurso. El auto de la AP Madrid Sección 3ª del 7-nov-2025
+  ratificando el procesamiento sí podría aparecer (tribunal
+  colegiado de Audiencia Provincial), pero a fecha de PR3 no se
+  localiza con búsqueda pública. **Patrón estable**: no esperar
+  autos jurisdiccionales de instrucción ordinaria; cobertura
+  cruzada N4 con V-13 cubre operativamente el gap.
+- **BOE es N1 fiable para nombramientos / jubilaciones de magistrados**.
+  Reales Decretos de destinación de magistrados y Acuerdos de la
+  Comisión Permanente del CGPJ publicados en BOE son N1 puro
+  (boe.es está en la lista blanca). En este caso, dos documentos N1
+  sustituyen cobertura N4 inicial sobre el cambio de juez Iglesias
+  → Viejo: BOE-A-2025-19789 (RD 838/2025 destino Antonio Viejo
+  Llorente al JI 19) y BOE-A-2025-16497 (Acuerdo CGPJ jubilación
+  voluntaria de María Inmaculada Iglesias Sánchez). El rastreo del
+  BOE es eficaz para datos de relevo de plaza / comisión /
+  jubilación; conviene incluirlo siempre en la investigación de un
+  caso con cambio de juez documentado.
+- **Pieza separada NO siempre cambia de órgano titular**. En este
+  caso la pieza por presunta corrupción en los negocios y
+  administración desleal vinculada a Quirón Prevención es una pieza
+  separada *dentro del mismo JI 19 Madrid*, no una causa que escale
+  a la Audiencia Nacional. La intervención de la AN Sección 2ª en
+  la detención de David Herrera Lobato del 20-ene-2026 se limita a
+  la orden de detención y toma de declaración inicial; la
+  sustanciación sigue en el JI 19. La cobertura de Infobae del
+  20-ene-2026 inducía a confusión; sólo cruzando con la cobertura
+  de Público.es del 10-may-2026 y de Infobae del 27-jun-2025
+  (encomienda UCO por la jueza Iglesias del JI 19) se confirma quién
+  instruye la pieza. **Patrón reusable**: cuando un órgano emite una
+  orden de detención en un caso que se instruye en otro órgano, NO
+  se asume que el órgano detenedor sea el instructor; verificar con
+  segunda fuente.
+- **Personas físicas y jurídicas se modelan de forma simétrica una
+  vez V-11 está ampliada**. Maxwell Cremona aparece en `RolEnCaso`
+  con el mismo `rol=procesado` y los mismos `delitos_atribuidos` que
+  Alberto González Amador, su administrador único, y con el mismo
+  `hito_origen_id`. La distinción entre persona física y persona
+  jurídica vive en `sujeto_tipo`, no en el rol. Esto simplifica el
+  modelado y mejora la trazabilidad de la responsabilidad penal
+  societaria.
+
 ### Begoña Gómez PR2 (2026-05-22) — segundo PR del primer caso real
 
 PR2 del caso Begoña Gómez. Cierra los pendientes anotados en NOTES tras
