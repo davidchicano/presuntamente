@@ -225,6 +225,22 @@ export function tipoDocLabel(tipo: string): string {
   return TIPO_DOC_LABEL_ES[tipo] ?? tipo;
 }
 
+// --- Familia de Delito -------------------------------------------------------
+
+const FAMILIA_DELITO_LABEL_ES: Record<string, string> = {
+  contra_administracion_publica: 'Contra la Administración Pública',
+  contra_patrimonio_y_orden_socioeconomico: 'Contra el patrimonio y el orden socioeconómico',
+  falsedad_documental: 'Falsedad documental',
+  delitos_electorales: 'Delitos electorales',
+  blanqueo_capitales: 'Blanqueo de capitales',
+  pertenencia_organizacion_criminal: 'Pertenencia a organización criminal',
+  cohecho_y_trafico_influencias: 'Cohecho y tráfico de influencias',
+  otros: 'Otros',
+};
+export function familiaDelitoLabel(familia: string, _lang: Lang = 'es'): string {
+  return FAMILIA_DELITO_LABEL_ES[familia] ?? familia;
+}
+
 // --- Origen de denuncia ------------------------------------------------------
 
 const ORIGEN_LABEL_ES: Record<string, string> = {

@@ -4,7 +4,7 @@ import 'open-props/style';
 import { ClientRouter } from 'astro:transitions';
 import PresuntamenteLogo from '@/components/PresuntamenteLogo.astro';
 
-type NavKey = 'casos' | 'personas' | 'organizaciones' | 'biblioteca' | 'sobre';
+type NavKey = 'casos' | 'personas' | 'organizaciones' | 'delitos' | 'biblioteca' | 'sobre';
 
 interface BreadcrumbItem {
   label: string;
@@ -39,6 +39,7 @@ const tabs: { key: NavKey; label: string; href: string }[] = [
   { key: 'casos',          label: 'Casos',          href: lang === 'ca' ? '/cat/casos'          : '/casos' },
   { key: 'personas',       label: 'Personas',       href: lang === 'ca' ? '/cat/personas'       : '/personas' },
   { key: 'organizaciones', label: 'Organizaciones', href: lang === 'ca' ? '/cat/organizaciones' : '/organizaciones' },
+  { key: 'delitos',        label: 'Delitos',        href: lang === 'ca' ? '/cat/delitos'        : '/delitos' },
   { key: 'biblioteca',     label: 'Biblioteca',     href: lang === 'ca' ? '/cat/biblioteca'     : '/biblioteca' },
   { key: 'sobre',          label: 'Sobre',          href: lang === 'ca' ? '/cat/sobre'          : '/sobre' },
 ];

@@ -1,0 +1,325 @@
+---
+// PgDelitoDetalle — ficha de un tipo penal del catálogo.
+//
+// Importante editorialmente: este NO es un listado de "personas condenadas
+// por X delito". Es una ficha del tipo penal con dos bloques de cruce:
+//   - Casos cuyo procedimiento incluye este delito en la causa.
+//   - Atribuciones procesales: roles (persona u organización) a los que el
+//     delito se ha atribuido formalmente en algún momento (auto judicial,
+//     escrito de Fiscalía, etc.).
+// El badge de rol (investigado/procesado/acusado/condenado…) deja claro el
+// estado epistémico — la presunción de inocencia se preserva mientras no
+// haya sentencia firme.
+
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionH from '@/components/SectionH.astro';
+import RichProse from '@/components/RichProse.astro';
+import RolBadge from '@/components/RolBadge.astro';
+import { familiaDelitoLabel, rolLabel, type Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; delito: CollectionEntry<'delitos'>; }
+const { lang = 'es', delito } = Astro.props;
+const data = delito.data;
+
+const [casosCol, rolesCol, personasCol, organizacionesCol] = await Promise.all([
+  getCollection('casos'),
+  getCollection('roles'),
+  getCollection('personas'),
+  getCollection('organizaciones'),
+]);
+
+const casoIndex = new Map(casosCol.map((c) => [c.data.id, c.data]));
+const personaIndex = new Map(personasCol.map((p) => [p.data.id, p.data]));
+const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
+
+// Casos donde el delito aparece en la causa (vía caso.delitos_atribuidos_en_la_causa)
+// o en alguno de los roles del caso.
+const casoIds = new Set<string>();
+for (const c of casosCol) {
+  if (c.data.delitos_atribuidos_en_la_causa?.includes(data.id)) casoIds.add(c.data.id);
+}
+const rolesDelito = rolesCol.filter((r) => r.data.delitos_atribuidos?.includes(data.id));
+for (const r of rolesDelito) casoIds.add(r.data.caso_id);
+
+const casos = Array.from(casoIds)
+  .map((id) => casoIndex.get(id))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c))
+  .sort((a, b) => (b.fecha_apertura ?? '').localeCompare(a.fecha_apertura ?? ''));
+
+// Atribuciones agrupadas por sujeto + caso. Orden cronológico inverso para
+// que las imputaciones más recientes salgan arriba.
+type Atribucion = {
+  rol: string;
+  rolLabel: string;
+  caso_id: string;
+  caso_label: string;
+  fecha_inicio: string;
+  fecha_fin?: string;
+  activo: boolean;
+  sujeto_tipo: 'persona' | 'organizacion';
+  sujeto_id: string;
+  sujeto_label: string;
+  sujeto_href: string;
+};
+
+const atribuciones: Atribucion[] = rolesDelito.map((r) => {
+  const caso = casoIndex.get(r.data.caso_id);
+  const tipo = r.data.sujeto_tipo;
+  let sujetoId = '';
+  let sujetoLabel = '';
+  if (tipo === 'persona') {
+    sujetoId = r.data.sujeto_persona_id ?? '';
+    sujetoLabel = personaIndex.get(sujetoId)?.nombre_completo ?? sujetoId;
+  } else {
+    sujetoId = r.data.sujeto_organizacion_id ?? '';
+    sujetoLabel = orgIndex.get(sujetoId)?.nombre ?? sujetoId;
+  }
+  return {
+    rol: r.data.rol,
+    rolLabel: rolLabel(r.data.rol),
+    caso_id: r.data.caso_id,
+    caso_label: caso?.nombre_mediatico ?? r.data.caso_id,
+    fecha_inicio: r.data.fecha_inicio,
+    fecha_fin: r.data.fecha_fin,
+    activo: !r.data.fecha_fin,
+    sujeto_tipo: tipo,
+    sujeto_id: sujetoId,
+    sujeto_label: sujetoLabel,
+    sujeto_href: tipo === 'persona' ? `/personas/${sujetoId}` : `/organizaciones/${sujetoId}`,
+  };
+}).sort((a, b) => b.fecha_inicio.localeCompare(a.fecha_inicio));
+
+const breadcrumb = [
+  { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+  { label: 'Delitos', href: lang === 'ca' ? '/cat/delitos' : '/delitos' },
+  { label: data.nombre_tipico },
+];
+
+const strings = {
+  eyebrow: 'Ficha de tipo penal',
+  disclaimer:
+    'Que un delito conste como atribuido a una persona en este catálogo NO equivale a una condena. ' +
+    'Rige la presunción de inocencia mientras no recaiga sentencia firme. Las atribuciones que ' +
+    'desaparezcan tras un sobreseimiento, archivo o absolución se marcan con su rol final ' +
+    '(desimputado / absuelto).',
+};
+---
+
+<BaseLayout
+  title={data.nombre_tipico}
+  lang={lang}
+  description={data.descripcion_breve ?? data.nombre_tipico}
+  activeNav="delitos"
+  breadcrumb={breadcrumb}
+>
+  <section class="entity-mast">
+    <div class="entity-mast__glyph" aria-hidden="true">§</div>
+    <div class="entity-mast__body">
+      <p class="entity-mast__eye">{strings.eyebrow}</p>
+      <h1 class="entity-mast__name">{data.nombre_tipico}</h1>
+      <p class="entity-mast__sub">{familiaDelitoLabel(data.familia)}</p>
+      <div class="entity-mast__row">
+        <span><strong>{casos.length}</strong> caso{casos.length === 1 ? '' : 's'} en los que aparece</span>
+        <span class="entity-mast__sep">·</span>
+        <span>
+          <strong>{atribuciones.length}</strong>{' '}
+          {atribuciones.length === 1 ? 'atribución procesal' : 'atribuciones procesales'}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <SectionH num="1." title="Marco normativo" id="normativa" />
+  <div class="norm">
+    <dl>
+      <dt>Artículos del Código Penal</dt>
+      <dd>
+        <ul class="cp-list">
+          {data.articulos_cp.map((a) => <li class="cp-chip">{a}</li>)}
+        </ul>
+      </dd>
+      <dt>Familia</dt>
+      <dd>{familiaDelitoLabel(data.familia)}</dd>
+      {data.enlace_boe && (
+        <>
+          <dt>Fuente legal</dt>
+          <dd>
+            <a href={data.enlace_boe} target="_blank" rel="noopener">
+              Código Penal en el BOE ↗
+            </a>
+          </dd>
+        </>
+      )}
+    </dl>
+  </div>
+
+  {data.descripcion_breve && (
+    <>
+      <SectionH num="2." title="Descripción del tipo penal" id="descripcion" />
+      <div class="prose">
+        <RichProse text={data.descripcion_breve} lang={lang} />
+      </div>
+    </>
+  )}
+
+  <SectionH
+    num="3."
+    title="Casos donde se atribuye"
+    id="casos"
+    right={`${casos.length} caso${casos.length === 1 ? '' : 's'}`}
+  />
+  {casos.length === 0 ? (
+    <p class="muted">Sin casos registrados todavía.</p>
+  ) : (
+    <ul class="casos-list">
+      {casos.map((c) => (
+        <li class="casos-list__item">
+          <a href={`/casos/${c.id}`}>
+            <span class="c-name">{c.nombre_mediatico}</span>
+            <span class="c-name__sub">{c.nombre_oficial}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <SectionH
+    num="4."
+    title="Atribuciones procesales"
+    id="atribuciones"
+    right={`${atribuciones.length} rol${atribuciones.length === 1 ? '' : 'es'}`}
+  />
+  {atribuciones.length === 0 ? (
+    <p class="muted">Ningún rol procesal lo tiene atribuido actualmente.</p>
+  ) : (
+    <div class="tbl-scroll">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th style="width: 22%;">Periodo</th>
+          <th style="width: 18%;">Rol</th>
+          <th style="width: 30%;">Sujeto</th>
+          <th style="width: 30%;">Caso</th>
+        </tr>
+      </thead>
+      <tbody>
+        {atribuciones.map((a) => (
+          <tr>
+            <td class="c-mono">
+              {a.fecha_inicio}
+              {a.fecha_fin ? ` → ${a.fecha_fin}` : ' → vigente'}
+            </td>
+            <td><RolBadge rol={a.rol} label={a.rolLabel} ghost={!a.activo} /></td>
+            <td>
+              <a href={a.sujeto_href}>{a.sujeto_label}</a>
+              <span class="sujeto-tipo">
+                · {a.sujeto_tipo === 'persona' ? 'persona' : 'organización'}
+              </span>
+            </td>
+            <td>
+              <a href={`/casos/${a.caso_id}`}>{a.caso_label}</a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    </div>
+  )}
+
+  <div class="aviso aviso--accent mt-6">{strings.disclaimer}</div>
+</BaseLayout>
+
+<style>
+  .entity-mast {
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent);
+    background: var(--color-surface);
+    padding: 18px 20px;
+    margin-bottom: var(--space-4);
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 18px;
+  }
+  .entity-mast__glyph {
+    width: 64px;
+    height: 64px;
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 400 36px/1 var(--font-serif, var(--font-sans));
+    color: var(--color-fg);
+  }
+  .entity-mast__eye {
+    font: 700 11px/1 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent-secondary-hover);
+    margin: 0 0 6px;
+  }
+  .entity-mast__name {
+    font: 700 clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem)/1.15 var(--font-sans);
+    letter-spacing: -0.005em;
+    margin: 0 0 4px;
+  }
+  .entity-mast__sub {
+    font: 400 13px/1.4 var(--font-sans);
+    color: var(--color-fg-muted);
+    margin: 0;
+  }
+  .entity-mast__row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+    font: 400 12px/1 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .entity-mast__row strong { color: var(--color-fg); font-weight: 600; }
+  .entity-mast__sep { color: var(--color-border); }
+
+  .norm {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding: 14px 18px;
+    margin-bottom: var(--space-4);
+  }
+  .norm dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 18px;
+    font: 400 13px/1.5 var(--font-sans);
+  }
+  .norm dt {
+    font: 700 11px/1.5 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+  .norm dd { margin: 0; color: var(--color-fg); }
+
+  .cp-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .cp-chip {
+    font: 500 12px/1 var(--font-mono);
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+    padding: 4px 8px;
+    color: var(--color-fg);
+  }
+
+  .casos-list { list-style: none; padding: 0; margin: 0 0 var(--space-4); border: 1px solid var(--color-border); background: var(--color-surface); }
+  .casos-list__item { padding: 12px 16px; border-bottom: 1px solid var(--color-border); }
+  .casos-list__item:last-child { border-bottom: 0; }
+  .casos-list__item a { color: inherit; text-decoration: none; display: flex; flex-direction: column; gap: 2px; }
+  .casos-list__item a:hover { text-decoration: underline; }
+  .casos-list__item .c-name { font-weight: 600; }
+  .casos-list__item .c-name__sub { font-size: var(--font-size-0); color: var(--color-fg-muted); }
+
+  .sujeto-tipo { font-size: 11px; color: var(--color-fg-muted); margin-left: 4px; }
+</style>

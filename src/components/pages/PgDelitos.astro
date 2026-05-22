@@ -1,0 +1,223 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CustomSelect from '@/components/CustomSelect.astro';
+import { getCollection } from 'astro:content';
+import { familiaDelitoLabel, type Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; }
+const { lang = 'es' } = Astro.props;
+
+const [delitosCol, casosCol, rolesCol] = await Promise.all([
+  getCollection('delitos'),
+  getCollection('casos'),
+  getCollection('roles'),
+]);
+
+// Para cada delito calculamos:
+//   - casos: número de casos cuyos `delitos_atribuidos_en_la_causa` lo incluyen.
+//   - atribuciones: número de roles (persona+org) que se lo atribuyen formalmente.
+function countCasos(delitoId: string): number {
+  const set = new Set<string>();
+  for (const c of casosCol) {
+    if (c.data.delitos_atribuidos_en_la_causa?.includes(delitoId)) set.add(c.data.id);
+  }
+  for (const r of rolesCol) {
+    if (r.data.delitos_atribuidos?.includes(delitoId)) set.add(r.data.caso_id);
+  }
+  return set.size;
+}
+function countAtribuciones(delitoId: string): number {
+  return rolesCol.filter((r) => r.data.delitos_atribuidos?.includes(delitoId)).length;
+}
+
+const delitos = delitosCol
+  .map((d) => ({
+    slug: d.data.id,
+    nombre: d.data.nombre_tipico,
+    familia: d.data.familia,
+    familiaLabel: familiaDelitoLabel(d.data.familia),
+    articulos: d.data.articulos_cp,
+    casosCount: countCasos(d.data.id),
+    atribCount: countAtribuciones(d.data.id),
+  }))
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+
+const strings = {
+  title: 'Delitos del catálogo',
+  description:
+    'Catálogo de tipos penales referenciados en los procedimientos del inventario. ' +
+    'No es un listado de personas condenadas: cada ficha cuenta los casos y los roles donde el delito se ATRIBUYE.',
+  eyebrow: 'Sección 4 · Delitos',
+  sub:
+    'Tipos penales del Código Penal español que aparecen en los procedimientos: ' +
+    'cada ficha describe el tipo, lista los artículos aplicables y resume en qué casos y a qué sujetos se atribuye. ' +
+    'Que un delito aparezca atribuido a una persona NO equivale a condena.',
+};
+
+function searchBlob(d: (typeof delitos)[number]): string {
+  return [d.nombre, d.familiaLabel, ...d.articulos].join(' ').toLowerCase();
+}
+
+const familiasPresentes = Array.from(new Set(delitos.map((d) => d.familia)))
+  .map((f) => ({ valor: f, label: familiaDelitoLabel(f) }))
+  .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+---
+
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  activeNav="delitos"
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'Delitos' },
+  ]}
+>
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.title}</h1>
+      <p class="page-id__sub">{strings.sub}</p>
+    </div>
+    <div class="page-id__meta">
+      <span>Total: <span data-total>{delitos.length}</span></span>
+      <span>·</span>
+      <span>Mostrando: <span data-shown>{delitos.length}</span></span>
+    </div>
+  </section>
+
+  <header class="sec-h">
+    <span class="num">4.1</span>
+    <h2>Filtros</h2>
+  </header>
+
+  <form class="filter-bar" method="get" role="search" aria-label="Filtrar delitos" data-delitos-filters>
+    <div class="field">
+      <label for="q">Buscar</label>
+      <input id="q" name="q" type="search" placeholder="Nombre típico, familia, artículo…" autocomplete="off" />
+    </div>
+    <div class="field">
+      <label for="familia">Familia</label>
+      <CustomSelect
+        id="familia"
+        name="familia"
+        value="all"
+        ariaLabel="Filtrar por familia de delito"
+        options={[
+          { value: 'all', label: 'Todas' },
+          ...familiasPresentes.map((f) => ({ value: f.valor, label: f.label })),
+        ]}
+      />
+    </div>
+    <button class="btn" type="reset">Limpiar</button>
+  </form>
+
+  <header class="sec-h">
+    <span class="num">4.2</span>
+    <h2>Listado</h2>
+    <span class="right">orden: alfabético</span>
+  </header>
+
+  <div class="tbl-scroll">
+  <table class="tbl" data-delitos>
+    <thead>
+      <tr>
+        <th style="width: 36%;">Tipo penal</th>
+        <th style="width: 28%;">Familia</th>
+        <th style="width: 20%;">Artículos CP</th>
+        <th style="width: 8%;" class="c-num">Casos</th>
+        <th style="width: 8%;" class="c-num">Atribuciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {delitos.map((d) => (
+        <tr class="is-link" data-row data-familia={d.familia} data-search={searchBlob(d)}>
+          <td>
+            <a href={`/delitos/${d.slug}`}>
+              <span class="c-name">{d.nombre}</span>
+            </a>
+          </td>
+          <td><span class="badge badge--cat">{d.familiaLabel}</span></td>
+          <td class="c-mono c-arts">{d.articulos.join(' · ')}</td>
+          <td class="c-num">{d.casosCount}</td>
+          <td class="c-num">{d.atribCount}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  </div>
+
+  <p class="empty-state" data-empty hidden>Sin resultados para los filtros actuales.</p>
+
+  <p class="legal-note">
+    <strong>Aviso editorial.</strong> La columna «Atribuciones» cuenta los roles procesales (investigados, procesados,
+    acusados, condenados) a los que el delito ha sido formalmente atribuido en algún momento del procedimiento.
+    La presunción de inocencia se mantiene mientras no exista sentencia firme.
+  </p>
+</BaseLayout>
+
+<script is:inline>
+  (() => {
+    const form = document.querySelector('[data-delitos-filters]');
+    const table = document.querySelector('[data-delitos]');
+    if (!form || !table) return;
+    const rows = Array.from(table.querySelectorAll('[data-row]'));
+    const shown = document.querySelector('[data-shown]');
+    const empty = document.querySelector('[data-empty]');
+    const qInput = form.querySelector('#q');
+    const famSel = form.querySelector('input[name="familia"]');
+    function resyncCustomSelects() {
+      form.querySelectorAll('[data-csel]').forEach((csel) => {
+        const hidden = csel.querySelector('[data-csel-value]');
+        const label = csel.querySelector('[data-csel-label]');
+        if (!hidden || !label) return;
+        const opt = csel.querySelector(`[data-csel-opt][data-value="${hidden.value}"]`);
+        if (opt) {
+          label.textContent = opt.textContent.trim();
+          csel.querySelectorAll('[data-csel-opt]').forEach((o) =>
+            o.setAttribute('aria-selected', o === opt ? 'true' : 'false'),
+          );
+        }
+      });
+    }
+    function apply() {
+      const q = (qInput.value || '').trim().toLowerCase();
+      const fam = famSel.value;
+      let visible = 0;
+      for (const row of rows) {
+        const matchQ = !q || (row.dataset.search || '').includes(q);
+        const matchF = fam === 'all' || row.dataset.familia === fam;
+        const show = matchQ && matchF;
+        row.hidden = !show;
+        if (show) visible++;
+      }
+      if (shown) shown.textContent = String(visible);
+      if (empty) empty.hidden = visible !== 0;
+    }
+    form.addEventListener('input', apply);
+    form.addEventListener('change', apply);
+    form.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
+    form.addEventListener('reset', () => setTimeout(() => { resyncCustomSelects(); apply(); }, 0));
+  })();
+</script>
+
+<style>
+  .empty-state {
+    border: 1px dashed var(--color-border-strong);
+    background: var(--color-surface-muted);
+    padding: var(--space-4);
+    text-align: center;
+    font: 400 var(--font-size-1)/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .c-arts { font-size: 11px; color: var(--color-fg-muted); }
+  .legal-note {
+    margin: var(--space-4) 0 0;
+    padding: 12px 14px;
+    border-left: 3px solid var(--color-border-strong);
+    background: var(--color-surface-muted);
+    font: 400 12px/1.55 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .legal-note strong { color: var(--color-fg); font-weight: 600; }
+</style>

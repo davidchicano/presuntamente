@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import PgDelitoDetalle from '@/components/pages/PgDelitoDetalle.astro';
+
+export async function getStaticPaths() {
+  const delitos = await getCollection('delitos');
+  return delitos.map((delito) => ({
+    params: { slug: delito.id },
+    props: { delito },
+  }));
+}
+
+const { delito } = Astro.props;
+---
+<PgDelitoDetalle lang="es" delito={delito} />
