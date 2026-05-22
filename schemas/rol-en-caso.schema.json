@@ -87,7 +87,7 @@
       ]
     },
     {
-      "description": "V-11: organizacion sólo en roles de parte (acusación/querella/denuncia).",
+      "description": "V-11: organizacion sólo en roles de parte civil/penal (acusación/querella/denuncia/perjudicado). El rol perjudicado se añadió en mayo de 2026 al fichar la UCM como perjudicada en el caso Begoña Gómez (escritura del juez ofreciendo personación, 3-oct-2025; vista de personación, 6-oct-2025).",
       "if": {
         "properties": { "sujeto_tipo": { "const": "organizacion" } },
         "required": ["sujeto_tipo"]
@@ -99,7 +99,8 @@
               "acusacion_popular",
               "acusacion_particular",
               "querellante",
-              "denunciante"
+              "denunciante",
+              "perjudicado"
             ]
           }
         }
