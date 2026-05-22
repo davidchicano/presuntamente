@@ -1,0 +1,36 @@
+id: ga-rama-quiron-investigada
+caso_id: gonzalez-amador
+enunciado: |
+  En una pieza separada del procedimiento principal, tramitada por la
+  Sección Segunda de la Sala de lo Penal de la Audiencia Nacional, se
+  investiga indiciariamente que Alberto González Amador y David
+  Herrera Lobato habrían intervenido en operaciones de facturación de
+  Maxwell Cremona Ingeniería y Procesos S.L. a Quirón Prevención
+  S.L. en 2020 por importe próximo a 1,9 millones de euros, posibles
+  constitutivas de delitos de corrupción en los negocios y
+  administración desleal. La pieza se encuentra en fase de
+  instrucción, con prórroga acordada el 23 de octubre de 2025 y
+  petición de seis meses adicionales formulada por las acusaciones
+  populares del PSOE y Más Madrid el 9 de abril de 2026. Rige el
+  principio de presunción de inocencia.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2020-01-01"
+  hasta: "2020-12-31"
+  precision: rango
+personas_implicadas:
+  - alberto-gonzalez-amador
+  - david-herrera-lobato
+organizaciones_implicadas:
+  - maxwell-cremona
+  - quiron-prevencion
+  - audiencia-nacional
+documentos_respaldo:
+  - documento_id: infobae-detencion-herrera-lobato-ga-2026-01-20
+    pasaje: "Mención del importe próximo a 1,9 millones de euros y de los presuntos delitos investigados en la pieza separada."
+  - documento_id: infobae-prorroga-pieza-quiron-ga-2026-04-09
+    pasaje: "Confirmación de la naturaleza separada de la pieza y de los delitos investigados (corrupción en los negocios y administración desleal)."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

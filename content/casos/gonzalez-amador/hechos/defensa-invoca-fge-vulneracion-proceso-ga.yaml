@@ -1,0 +1,31 @@
+id: ga-defensa-invoca-fge-vulneracion-proceso
+caso_id: gonzalez-amador
+enunciado: |
+  Por escrito del 19 de febrero de 2026, la defensa de Alberto
+  González Amador invoca la sentencia firme dictada por el Tribunal
+  Supremo contra el ex-Fiscal General del Estado, Álvaro García
+  Ortiz, por revelación de secretos del correo electrónico remitido
+  el 2 de febrero de 2024 por el abogado del investigado al
+  Ministerio Fiscal, como vulneración del derecho fundamental a un
+  proceso penal justo y a la presunción de inocencia, y pide aplicar
+  sus consecuencias al procedimiento principal por presunto fraude
+  fiscal y falsedad documental. El escrito sostiene que "este
+  procedimiento penal constituye, desde antes de existir y durante
+  todo su desarrollo, la antítesis del procedimiento penal justo en
+  un Estado Constitucional". Su admisión y resolución por el órgano
+  competente está pendiente.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-02-19"
+  precision: dia
+personas_implicadas:
+  - alberto-gonzalez-amador
+organizaciones_implicadas:
+  - juzgado-instruccion-19-madrid
+documentos_respaldo:
+  - documento_id: elespanol-defensa-invoca-fge-ga-2026-02-19
+    pasaje: "Cita textual del escrito reproducida en la crónica de El Español."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

@@ -1,0 +1,28 @@
+id: detencion-herrera-lobato-quiron-ga-2026-01-20
+caso_id: gonzalez-amador
+tipo: imputacion
+fecha: "2026-01-20"
+fecha_precision: dia
+titulo: "La Policía Nacional detiene a David Herrera Lobato en Arahal (Sevilla) por orden de la Audiencia Nacional en la pieza separada por presunta corrupción en negocios con Quirón Prevención"
+descripcion: |
+  El 20 de enero de 2026 la Policía Nacional detiene a David Herrera
+  Lobato en Arahal (Sevilla) por orden de la Sección Segunda de la
+  Sala de lo Penal de la Audiencia Nacional. La detención se enmarca
+  en una pieza separada del procedimiento contra Alberto González
+  Amador en la que se investigan presuntos delitos de corrupción en
+  los negocios y administración desleal en relación con operaciones
+  facturadas por Maxwell Cremona Ingeniería y Procesos S.L. a Quirón
+  Prevención S.L. en 2020, por importe próximo a 1,9 millones de
+  euros. Herrera Lobato es trasladado a Madrid para comparecer ante
+  el órgano competente. Rige el principio de presunción de
+  inocencia mientras no recaiga resolución firme.
+personas_afectadas:
+  - david-herrera-lobato
+organizaciones_afectadas:
+  - audiencia-nacional
+  - quiron-prevencion
+  - maxwell-cremona
+documento_principal_id: infobae-detencion-herrera-lobato-ga-2026-01-20
+documentos_relacionados:
+  - elplural-rama-sevillana-ga-2026-01-24
+fase_resultante: instruccion
