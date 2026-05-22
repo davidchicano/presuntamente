@@ -2,18 +2,32 @@ id: quebrantamiento-deber-reserva-fge
 caso_id: fiscal-general-del-estado
 enunciado: |
   La Sentencia 1000/2025 del Tribunal Supremo, firme desde el 26 de
-  febrero de 2026, fundamenta la condena en el quebrantamiento del
-  "reforzado deber de reserva" que pesaba sobre el Fiscal General
-  del Estado en relación con los datos reservados obtenidos del
-  Ministerio Fiscal. La Sala sostiene que el Fiscal General "no
-  puede responder a una noticia falsa mediante la comisión de un
-  delito" y que la conducta es contraria al estándar de
-  comportamiento exigible al máximo responsable del Ministerio
-  Fiscal. La sentencia no atribuye un móvil económico ni cuantifica
-  un perjuicio patrimonial: la conducta queda calificada como
-  revelación de datos reservados del artículo 417.1 del Código
-  Penal por incumplimiento de un deber funcional cualificado.
-tipo: atribuido
+  febrero de 2026, declara probado y fundamenta jurídicamente que
+  el comportamiento de Álvaro García Ortiz quebrantó el deber legal
+  de confidencialidad y reserva exigible a todo miembro del
+  Ministerio Fiscal y, con mayor exigencia, al máximo responsable
+  del Ministerio Público. La Sala razona que «el deber de
+  confidencialidad de cualquier miembro de la Carrera Fiscal, en
+  relación con los datos de los que tenga conocimiento durante la
+  tramitación de un expediente de conformidad, no deriva de una
+  práctica protocolaria que aconseja no divulgar las propuestas de
+  la acusación pública y la defensa que preceden a la aceptación
+  de la autoría del delito» sino que «se trata de un deber legal
+  impuesto por el marco jurídico en el que esas negociaciones se
+  desarrollan» (FJ Tercero §3.2, p. 148), con anclaje en el
+  Protocolo de Actuación para Juicios de Conformidad de la
+  Fiscalía General del Estado y el CGAE de 1 de abril de 2009, la
+  Instrucción 2/2009 de la Fiscalía General del Estado y la
+  Directiva UE 2016/343 sobre presunción de inocencia. La Sala
+  concluye que «este deber de confidencialidad ha de ser
+  interpretado con mayor rigor, si cabe, cuando quien lo
+  quebranta es la cabeza jerárquica del Ministerio Público»
+  (FJ Tercero §3.2, p. 149). La revelación atribuida al condenado
+  comprometió «derechos fundamentales de la persona a la que se
+  refería y, por ello, comprometió o afectó al funcionamiento de
+  la institución misma, esto es, a la Fiscalía General del Estado,
+  garante de tales derechos» (FJ Tercero §3.1, p. 147).
+tipo: acreditado
 fecha_o_periodo:
   desde: "2025-12-09"
   precision: dia
@@ -24,10 +38,11 @@ organizaciones_implicadas:
   - fiscalia-general-del-estado
 documentos_respaldo:
   - documento_id: ts-sentencia-1000-2025-fge
-    pasaje: "Fundamento jurídico sobre el reforzado deber de reserva del Fiscal General del Estado."
+    pasaje: "FJ Tercero (Tipicidad de los hechos probados), pp. 146-149, sobre la subsunción típica en el art. 417.1 CP y el alcance del deber de confidencialidad de los miembros del Ministerio Fiscal."
   - documento_id: cgpj-notificacion-sentencia-fge-2025-12-09
-    pasaje: "Cita literal del fundamento: \"el Fiscal General no puede responder a una noticia falsa mediante la comisión de un delito\"."
+    pasaje: "Resumen del fundamento jurídico clave: \"el Fiscal General no puede responder a una noticia falsa mediante la comisión de un delito\" y referencia al \"reforzado deber de reserva\"."
 nivel_fuente_efectivo: 1
 vigencia: vigente
+redaccion_neutra_revisada: true
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-22"

@@ -1,0 +1,25 @@
+id: boe-nombramiento-peramato-fge-2025-12-10
+titulo: "BOE-A-2025-25144 — Real Decreto 1140/2025, de 9 de diciembre, por el que se nombra Fiscal General del Estado a doña Teresa Peramato Martín"
+tipo: boletin_oficial
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Disposición publicada en el Boletín Oficial del Estado el 10 de
+  diciembre de 2025 con el código BOE-A-2025-25144. Real Decreto
+  1140/2025, de 9 de diciembre, por el que se nombra Fiscal General
+  del Estado a Teresa Peramato Martín, formalizando la sucesión en
+  el cargo tras el cese del condenado por el Tribunal Supremo. Se
+  conservan copia local del PDF oficial (191 KB, una página, autor
+  PRESIDENCIA DEL GOBIERNO) y del XML estructurado del BOE, con
+  sus respectivos hashes sha256. `boe.es` está en la lista blanca
+  DominiosOficiales del doc 01 §3. Cumple V-12.
+productor_organizacion_id: fiscalia-general-del-estado
+fecha_documento: "2025-12-09"
+fecha_publicacion: "2025-12-10"
+url_canonica: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-25144"
+ruta_local: "/documentos/fiscal-general-del-estado/boe-nombramiento-peramato-fge-2025-12-10.pdf"
+hash_sha256: "40523d9ae28ce666d1e611576014b77482e5e0aa036983fa874df093f561fbb8"
+estado_acceso: publico
+idioma: es
+caso_principal_id: fiscal-general-del-estado
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

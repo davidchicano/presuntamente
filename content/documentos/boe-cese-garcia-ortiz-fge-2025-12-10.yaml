@@ -16,6 +16,8 @@ productor_organizacion_id: fiscalia-general-del-estado
 fecha_documento: "2025-12-09"
 fecha_publicacion: "2025-12-10"
 url_canonica: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-25142"
+ruta_local: "/documentos/fiscal-general-del-estado/boe-cese-garcia-ortiz-fge-2025-12-10.pdf"
+hash_sha256: "871cd42092a783d49c6e1176acd02029d5a2826e897e19e31c9ec9083a7364db"
 estado_acceso: publico
 idioma: es
 caso_principal_id: fiscal-general-del-estado

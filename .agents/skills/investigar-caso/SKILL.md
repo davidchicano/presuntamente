@@ -58,11 +58,29 @@ Si el procedimiento tiene una persona privada (no figura pública) con rol forma
 Para cada hito candidato, buscar el documento de mayor nivel de fuente disponible:
 
 - **N1 — preferido**: sentencia, auto, BOE, nota oficial CGPJ. URL canónica en lista blanca `DominiosOficiales` (doc 01 §3): `poderjudicial.es`, `cendoj.es`, `boe.es`, `congreso.es`, `senado.es`, `fiscal.es`, `tcu.es`, `airef.es`, `defensordelpueblo.es`, `tribunalconstitucional.es`, `cgpj.es`, subdominios `.gob.es`, organismos públicos con personalidad jurídica propia (SEPI, AEAT, CNMV, etc.).
-- **N2**: informe UCO/UDEF (a veces filtrado, a veces oficial), escrito de Fiscalía, nota institucional fuera de lista blanca.
-- **N3**: documento de parte, institucional no jurisdiccional, pericial de parte. Querella publicada íntegra por un medio identificable cuenta como N3 (filtrado_verificado).
+- **N2**: informe UCO/UDEF (a veces filtrado, a veces oficial), escrito de Fiscalía, nota institucional fuera de lista blanca, comunicado oficial de corporación de derecho público (Colegios profesionales como el ICAM, p. ej.).
+- **N3**: documento de parte, institucional no jurisdiccional, pericial de parte. Querella publicada íntegra por un medio identificable cuenta como N3 (filtrado_verificado). **Sentencias del TS no localizadas en CENDOJ pero accesibles vía mirrors periodísticos estables**, modeladas como N3 `filtrado_verificado` con verificación por triangulación entre al menos dos mirrors públicos coincidentes.
 - **N4**: cobertura periodística. Aceptable como soporte SI cumple V-13: al menos otra fuente en línea editorial distinta que cruce el hecho.
 
 Si un hito relevante NO tiene N1 disponible (típico en operaciones policiales o cambios de órgano cuando el auto aún no ha aparecido en CENDOJ), modelar con N4 como `documento_principal_id` + uno o más `documentos_relacionados` en distintas líneas editoriales. Anotar en `NOTES.md` del caso como pendiente para una pasada futura cuando aparezca el documento oficial.
+
+### 3.bis. Descarga y procesamiento de documentos primarios
+
+**Norma adoptada en PR2 del caso Fiscal General del Estado (2026-05-22).** Para documentos jurisdiccionales y oficiales clave del caso (sentencias, autos relevantes, BOE, informes públicos), no basta con citar la URL canónica: hay que **descargar copia íntegra al árbol del proyecto y procesarla** para extraer citas literales precisas. Convención completa en `AGENTS.md` §"Documentos primarios descargados a `/public/documentos/`".
+
+**Flujo recomendado por documento**:
+
+1. **Localizar el PDF/XML** en el dominio canónico (BOE: endpoints estables `boe.es/diario_boe/{txt,pdf,xml}.php?id=BOE-A-YYYY-XXXXX`) o en mirrors públicos cuando no esté en lista blanca.
+2. **Pedir autorización explícita al maintainer** antes de descargar de fuentes que no estén en la lista blanca y que el sandbox classifier vaya a bloquear. URLs del BOE no requieren consulta (es lista blanca); URLs de prensa o mirrors sí.
+3. **Descargar a `/public/documentos/<caso>/<id>.<ext>`**. Calcular `shasum -a 256` sobre el fichero descargado.
+4. **Verificar metadatos PDF** con `pdfinfo`: autor, fecha de creación, productor (Word, Antenna House, etc.). Si el autor pertenece al órgano emisor (p. ej. usuario `g.tejedor` del Tribunal Supremo en un PDF generado en Word), eso refuerza la confianza en el documento.
+5. **Si hay dos mirrors posibles**, descargar ambos y comparar hashes. Si difieren, comparar páginas y contenidos: distintos PDFs del mismo documento son frecuentes (uno con OCR, otro re-comprimido, uno con voto particular y otro sin él). Quedarse con el más completo y fiel al original (el del propio órgano).
+6. **Extraer texto con `pdftotext`** (depende de `poppler-utils`; `brew install poppler` una vez por máquina).
+7. **Mapear estructura de la sentencia / auto**: `grep -nE "^(HECHOS PROBADOS|FUNDAMENTOS|FALLO|VOTO PARTICULAR|PRIMERO|SEGUNDO|TERCERO|CUARTO)"`. Identificar líneas de inicio de cada sección y leer en bloques con `sed -n '<inicio>,<fin>p'`.
+8. **Para cada Hecho del caso**: buscar el pasaje literal que lo respalda, citarlo en `Hecho.documentos_respaldo[].pasaje` con localización precisa ("FALLO, p. 180", "Fundamento de Derecho Tercero §3.1, p. 147", "Hechos Probados pp. 18-21"). Si la sentencia es firme y el pasaje declara probado un hecho, **promover a `acreditado`** (con review humano explícito conforme al guardarraíl 3 cuando el caso es delicado).
+9. **Actualizar el YAML del `Documento`** con `ruta_local`, `hash_sha256` y reescribir `nivel_fuente_justificacion` para reflejar la metadata real del archivo descargado y el cruce con segundo mirror si aplica.
+
+**Beneficio editorial**: el sitio puede ofrecer al lector "URL canónica + copia local + cita exacta", elevando el rigor a nivel de citación académica. Y si la URL canónica desaparece, el documento se conserva. La trazabilidad de fidelidad es el `hash_sha256`.
 
 ### 4. Generación del esqueleto
 

@@ -1,0 +1,29 @@
+id: querella-gonzalez-amador-tsjm-fge-2024-04-03
+caso_id: fiscal-general-del-estado
+tipo: querella_presentada
+fecha: "2024-04-03"
+fecha_precision: dia
+titulo: "Alberto González Amador presenta querella ante el Tribunal Superior de Justicia de Madrid contra la Fiscal Jefa Provincial de Madrid y contra el Fiscal de Delitos Económicos por presunto delito de revelación de secretos"
+descripcion: |
+  Alberto González Amador presenta el 3 de abril de 2024 ante el
+  Tribunal Superior de Justicia de Madrid querella por presunto
+  delito de revelación de secretos contra la entonces Fiscal Jefa
+  Provincial de Madrid, Pilar Rodríguez Fernández, y contra el
+  Fiscal de Delitos Económicos del mismo órgano, Julián Salto
+  Torres, en relación con la divulgación del contenido del correo
+  electrónico remitido el 2 de febrero de 2024 por su letrado
+  Carlos Neira proponiendo un acuerdo de conformidad penal. La
+  querella sostiene la acción penal y la civil derivada del delito,
+  conforme al art. 270 LECrim. Rige el principio de presunción de
+  inocencia respecto de los querellados.
+personas_afectadas:
+  - alberto-gonzalez-amador
+  - pilar-rodriguez-fernandez
+  - carlos-neira
+organizaciones_afectadas:
+  - tribunal-superior-justicia-madrid
+  - fiscalia-provincial-madrid
+documento_principal_id: maldita-cronologia-fge-2025-10-21
+documentos_relacionados:
+  - elconfidencial-tsjm-admite-querella-fge-2024-05-08
+fase_resultante: denuncia_o_querella

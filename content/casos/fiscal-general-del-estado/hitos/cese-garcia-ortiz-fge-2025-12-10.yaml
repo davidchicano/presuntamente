@@ -21,4 +21,6 @@ personas_afectadas:
 organizaciones_afectadas:
   - fiscalia-general-del-estado
 documento_principal_id: boe-cese-garcia-ortiz-fge-2025-12-10
+documentos_relacionados:
+  - boe-nombramiento-peramato-fge-2025-12-10
 fase_resultante: sentencia_primera_instancia

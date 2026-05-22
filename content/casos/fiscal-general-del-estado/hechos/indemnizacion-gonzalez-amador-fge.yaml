@@ -1,17 +1,22 @@
 id: indemnizacion-gonzalez-amador-fge
 caso_id: fiscal-general-del-estado
 enunciado: |
-  La Sentencia 1000/2025 condena adicionalmente a Álvaro García
-  Ortiz a indemnizar al perjudicado Alberto González Amador en diez
-  mil euros por los daños morales causados por la revelación de
-  datos reservados. La indemnización se fija en concepto de
-  responsabilidad civil derivada del delito, sin que la sentencia
-  cuantifique daño patrimonial autónomo. El Tribunal Supremo ordena
-  el 17 de diciembre de 2025 la ejecución de la sentencia y remite
-  la causa a la Fiscalía a los efectos oportunos, debiendo el
-  condenado depositar los importes pecuniarios en la cuenta de
-  consignaciones del Tribunal Supremo.
-tipo: atribuido
+  La Sentencia 1000/2025 de la Sala Segunda del Tribunal Supremo
+  declara probada, como responsabilidad civil derivada del delito,
+  la obligación del condenado de indemnizar al perjudicado en una
+  cantidad fija. En el fallo dispositivo se establece literalmente:
+  «Como responsabilidad civil se declara que el condenado deberá
+  indemnizar a D. Alberto González Amador a 10.000 euros por daños
+  morales» (FALLO, p. 180). La sentencia identifica
+  inequívocamente a Alberto González Amador como perjudicado en el
+  procedimiento por la divulgación de datos reservados del
+  expediente de conformidad. La condena no cuantifica daño
+  patrimonial autónomo. El Tribunal Supremo ordena el 17 de
+  diciembre de 2025 la ejecución de la sentencia y remite la causa
+  a la Fiscalía a los efectos oportunos, debiendo el condenado
+  depositar los importes en la cuenta de consignaciones del
+  Tribunal Supremo.
+tipo: acreditado
 fecha_o_periodo:
   desde: "2025-12-09"
   precision: dia
@@ -22,10 +27,11 @@ organizaciones_implicadas:
   - tribunal-supremo
 documentos_respaldo:
   - documento_id: ts-sentencia-1000-2025-fge
-    pasaje: "Apartado de responsabilidad civil de la Sentencia 1000/2025."
+    pasaje: "FALLO de la Sentencia 1000/2025, p. 180, cláusula sobre responsabilidad civil."
   - documento_id: cgpj-condena-fge-2025-11-20
-    pasaje: "Mención del importe indemnizatorio y del perjudicado en la nota CGPJ."
+    pasaje: "Mención del importe indemnizatorio y del perjudicado en la nota CGPJ del 20 de noviembre de 2025."
 nivel_fuente_efectivo: 1
 vigencia: vigente
+redaccion_neutra_revisada: true
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-22"

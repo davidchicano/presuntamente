@@ -2,27 +2,41 @@ id: filtracion-correo-2feb-fge
 caso_id: fiscal-general-del-estado
 enunciado: |
   La Sentencia 1000/2025 de la Sala Segunda del Tribunal Supremo,
-  firme tras la desestimación del incidente de nulidad el 26 de
-  febrero de 2026, declara que Álvaro García Ortiz, o persona de su
-  entorno con su conocimiento, filtró a un medio de comunicación, en
-  la noche del 13 de marzo de 2024, el contenido del correo
-  electrónico remitido el 2 de febrero de 2024 por el abogado Carlos
-  Neira a la Fiscalía Provincial de Madrid, en el que se proponía a
-  la Fiscalía un acuerdo de conformidad reconociendo la existencia
-  de dos delitos contra la Hacienda Pública cometidos por Alberto
-  González Amador. Conforme al fallo, la conducta es subsumible en
-  el delito de revelación de datos reservados del artículo 417.1 del
-  Código Penal y quebranta un "reforzado deber de reserva" que
-  pesaba sobre el entonces Fiscal General del Estado. Dos votos
-  particulares disidentes, de las magistradas Ana María Ferrer
-  García y Susana Polo García, sostienen que no existe prueba
-  suficiente que permita atribuir la autoría de la filtración al
-  condenado más allá de toda duda razonable. La sentencia es
-  recurrida en amparo ante el Tribunal Constitucional.
-tipo: atribuido
+  firme desde el 26 de febrero de 2026, declara probado que el 13
+  de marzo de 2024 entre las 23:25 y las 23:51 horas, el correo
+  electrónico remitido el 2 de febrero de 2024 a las 12:45 horas
+  por el abogado Carlos Neira a la Sección de Delitos Económicos
+  de la Fiscalía Provincial de Madrid —en el que se manifestaba la
+  voluntad de Alberto González Amador de alcanzar un acuerdo de
+  conformidad penal reconociendo «dos delitos contra la Hacienda
+  Pública»— fue comunicado «desde la Fiscalía General del Estado,
+  con intervención directa, o a través de un tercero, pero con
+  pleno conocimiento y aceptación por parte del Sr. García Ortiz,
+  al periodista de la Cadena SER, D. Miguel Ángel Campos» (Hechos
+  Probados, p. 18). El programa Hora 25 difundió en directo el
+  contenido y la web de la emisora publicó a las 23:51 horas el
+  texto completo del correo, «la primera vez que se reproducía
+  públicamente el texto completo» (Hechos Probados, p. 19). La
+  divulgación se completó, conforme al fallo, con la nota
+  informativa de la Fiscalía del 14 de marzo de 2024 cuya redacción
+  fue dictada por el propio Fiscal General del Estado a su
+  directora de comunicación y filtrada anticipadamente al diario
+  EL PAÍS «con autorización del Fiscal General del Estado» (Hechos
+  Probados, p. 21). El Tribunal Supremo califica esta unidad de
+  acción (filtración del correo + nota oficial) como subsumible en
+  el delito de revelación de datos reservados del artículo 417.1
+  del Código Penal por afectar derechos fundamentales del
+  perjudicado y comprometer el funcionamiento de la Fiscalía
+  General del Estado como garante de tales derechos (FJ Tercero,
+  p. 147). El voto particular conjunto de las magistradas Susana
+  Polo García y Ana María Ferrer García sostiene en contra que
+  «no ha quedado probado que el Fiscal General del Estado filtrara
+  a la prensa el correo del día 2 de febrero de 2024» (voto
+  particular, p. 237).
+tipo: acreditado
 fecha_o_periodo:
   desde: "2024-02-02"
-  hasta: "2024-03-13"
+  hasta: "2024-03-14"
   precision: rango
 personas_implicadas:
   - alvaro-garcia-ortiz
@@ -35,12 +49,13 @@ organizaciones_implicadas:
   - cadena-ser
 documentos_respaldo:
   - documento_id: ts-sentencia-1000-2025-fge
-    pasaje: "Hechos probados y Fundamentos de Derecho de la Sentencia 1000/2025 que sostienen la autoría material e intelectual de la filtración."
+    pasaje: "Hechos Probados, pp. 18-21 (texto completo de los hechos declarados probados sobre la filtración) y Fundamento de Derecho Tercero, pp. 146-148 (subsunción típica)."
   - documento_id: cgpj-notificacion-sentencia-fge-2025-12-09
     pasaje: "Nota oficial del CGPJ del 9 de diciembre de 2025 que sintetiza el fallo: \"García Ortiz, o alguien de su entorno con su conocimiento, filtró el correo electrónico\"."
   - documento_id: confilegal-firmeza-fge-2026-02-26
-    pasaje: "Cobertura periodística confirmatoria de la firmeza tras la desestimación del incidente de nulidad."
+    pasaje: "Cobertura periodística confirmatoria de la firmeza tras la desestimación del incidente de nulidad el 26 de febrero de 2026."
 nivel_fuente_efectivo: 1
 vigencia: vigente
+redaccion_neutra_revisada: true
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-22"

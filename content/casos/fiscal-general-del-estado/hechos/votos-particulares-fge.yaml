@@ -1,19 +1,31 @@
 id: votos-particulares-fge
 caso_id: fiscal-general-del-estado
 enunciado: |
-  Las magistradas Ana María Ferrer García y Susana Polo García
-  formulan sendos votos particulares disidentes a la Sentencia
-  1000/2025 de la Sala Segunda del Tribunal Supremo. Ambas
-  magistradas sostienen, en síntesis recogida por el propio tribunal
-  y por la cobertura periodística cruzada, que la prueba indiciaria
-  practicada en el juicio no permite atribuir más allá de toda duda
-  razonable la autoría material o intelectual de la filtración al
-  condenado, y que el estándar de prueba aplicado por la mayoría
-  rebaja la exigencia constitucional de la presunción de inocencia
-  en perjuicio del Fiscal General del Estado en activo. Los votos
-  particulares no afectan a la firmeza ni a la ejecutividad de la
-  sentencia, pero alimentan los recursos de amparo presentados
-  posteriormente ante el Tribunal Constitucional.
+  Las magistradas Susana Polo García y Ana María Ferrer García
+  formulan voto particular conjunto, anejo a la Sentencia
+  1000/2025 (pp. 184-238), expresando su discrepancia con el
+  relato de hechos probados y con la subsunción típica de la
+  sentencia mayoritaria. Las magistradas sostienen que «no ha
+  quedado probado que el Fiscal General del Estado filtrara a la
+  prensa el correo del día 2 de febrero de 2024, además, los
+  hechos relatados en la nota informativa publicada por el mismo,
+  no constituyen el delito de revelación de secretos o
+  informaciones por el que se le condena en la sentencia
+  mayoritaria, por lo que mostramos nuestro desacuerdo con la
+  misma, indicando que lo procedente debería haber sido acordar
+  la libre absolución del Fiscal General del Estado del delito por
+  el que se le condena» (voto particular, conclusión V, p. 237).
+  Como argumento principal sostienen que la nota informativa
+  publicada por la Fiscalía el 14 de marzo de 2024 «solo contenía
+  consideraciones neutrales, exactas, y veraces, y se le dio
+  publicidad en un contexto de interés general», y que la actuación
+  del Fiscal General desmentía una «acusación falsa de actuación
+  ilícita de la Fiscalía —haber ofrecido un acuerdo y posteriormente
+  retirarlo por razones políticas— impulsada desde el aparato de
+  un poder público». La discrepancia no afecta a la firmeza ni a
+  la ejecutividad de la sentencia, pero sustenta los recursos de
+  amparo presentados posteriormente ante el Tribunal
+  Constitucional.
 tipo: atribuido
 fecha_o_periodo:
   desde: "2025-12-09"
@@ -24,11 +36,11 @@ organizaciones_implicadas:
   - tribunal-supremo
 documentos_respaldo:
   - documento_id: ts-sentencia-1000-2025-fge
-    pasaje: "Votos particulares anejos a la Sentencia 1000/2025."
+    pasaje: "Voto particular conjunto de las magistradas Susana Polo García y Ana María Ferrer García, pp. 184-238 de la Sentencia 1000/2025. Conclusión V en p. 237."
   - documento_id: cgpj-notificacion-sentencia-fge-2025-12-09
     pasaje: "Mención oficial de la mayoría \"de los miembros\" y de la presentación de votos particulares."
   - documento_id: elespanol-condena-5-2-fge-2025-11-20
-    pasaje: "Cobertura periodística que identifica nominalmente a las dos magistradas disidentes."
+    pasaje: "Cobertura periodística que identifica nominalmente a las dos magistradas disidentes y precisa el resultado 5-2."
 nivel_fuente_efectivo: 1
 vigencia: vigente
 estado_publicacion: borrador

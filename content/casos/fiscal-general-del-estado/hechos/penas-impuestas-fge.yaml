@@ -2,18 +2,24 @@ id: penas-impuestas-fge
 caso_id: fiscal-general-del-estado
 enunciado: |
   El fallo dispositivo de la Sentencia 1000/2025 de la Sala Segunda
-  del Tribunal Supremo, dictada por mayoría de cinco votos frente a
-  dos, impone a Álvaro García Ortiz como autor responsable de un
-  delito de revelación de datos reservados del artículo 417.1 del
-  Código Penal una pena de multa de doce meses con una cuota diaria
-  de veinte euros, equivalente a siete mil doscientos euros en
-  total, y la pena de inhabilitación especial para el cargo de
-  Fiscal General del Estado por tiempo de dos años, con condena en
-  costas procesales incluyendo las de la acusación particular. La
-  sentencia es firme desde el 26 de febrero de 2026 y la
-  inhabilitación se ejecuta desde el cese efectivo del condenado el
-  10 de diciembre de 2025.
-tipo: atribuido
+  del Tribunal Supremo, dictada por mayoría de cinco votos frente
+  a dos, condena a Álvaro García Ortiz «como autor de un delito de
+  revelación de datos reservados, art. 417.1 del Código Penal a la
+  pena de multa de 12 meses con una cuota diaria de 20 euros e
+  inhabilitación especial para el cargo de Fiscal General del
+  Estado por tiempo de 2 años, y al pago de las costas procesales
+  correspondientes incluyendo las de la acusación particular pero
+  con exclusión de la mitad de las restantes» (FALLO, p. 180). La
+  cuantía total de la multa asciende a 7.200 euros (12 meses × 20
+  euros × 30 días). La sentencia absuelve al condenado de los
+  restantes delitos objeto de la acusación. La condena es firme
+  desde el 26 de febrero de 2026, al desestimar la Sala los
+  incidentes de nulidad de actuaciones presentados por la defensa
+  y por el Ministerio Fiscal; la pena de inhabilitación se ejecuta
+  desde el cese efectivo del condenado el 10 de diciembre de 2025
+  mediante el Real Decreto 1138/2025, de 9 de diciembre (BOE-A-
+  2025-25142).
+tipo: acreditado
 fecha_o_periodo:
   desde: "2025-12-09"
   precision: dia
@@ -24,12 +30,15 @@ organizaciones_implicadas:
   - fiscalia-general-del-estado
 documentos_respaldo:
   - documento_id: ts-sentencia-1000-2025-fge
-    pasaje: "Fallo dispositivo de la Sentencia 1000/2025."
+    pasaje: "FALLO de la Sentencia 1000/2025, p. 180, parte dispositiva con identificación literal de penas y obligaciones."
   - documento_id: cgpj-condena-fge-2025-11-20
     pasaje: "Resumen oficial del fallo en la nota CGPJ del 20 de noviembre de 2025."
   - documento_id: elespanol-condena-5-2-fge-2025-11-20
-    pasaje: "Cobertura periodística con detalle del resultado de la votación 5-2."
+    pasaje: "Cobertura periodística con detalle del resultado de la votación 5-2 y desglose del fallo."
+  - documento_id: boe-cese-garcia-ortiz-fge-2025-12-10
+    pasaje: "Real Decreto 1138/2025 de 9 de diciembre, BOE-A-2025-25142, que ejecuta materialmente la pena de inhabilitación mediante el cese del condenado."
 nivel_fuente_efectivo: 1
 vigencia: vigente
+redaccion_neutra_revisada: true
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-22"

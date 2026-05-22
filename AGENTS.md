@@ -158,6 +158,45 @@ Como guía operativa:
 
 Excepción legítima al "uno por sesión": si la sesión incluye un cambio editorialmente delicado del que el maintainer podría querer revertir aisladamente (cambiar un nombre propio, modificar la calificación de un hecho de `acreditado` a `atribuido`, retirar una persona), aislar esa decisión en su propio commit ayuda al rollback selectivo. En el resto de los casos, un commit grande con un mensaje claro es preferible a cinco commits pequeños del mismo bloque.
 
+### Documentos primarios descargados a `/public/documentos/`
+
+**Norma incorporada el 2026-05-22 tras el PR2 del caso del Fiscal General del Estado.** Cuando un caso tiene asociado un documento jurisdiccional clave (sentencia, auto, BOE, informe oficial pericial), se descarga la copia íntegra al árbol del proyecto. El archivo del PDF/XML/etc. vive en:
+
+```
+/public/documentos/<slug-del-caso>/<id-del-documento>.<ext>
+```
+
+Y en el YAML del `Documento` se cumplimentan obligatoriamente los campos:
+
+- `ruta_local`: ruta servida estáticamente por el sitio (`/documentos/<slug-del-caso>/<id-del-documento>.<ext>`, **sin** el prefijo `/public`). Astro/Pagefind sirven `/public/` desde la raíz `/`.
+- `hash_sha256`: el hash SHA-256 calculado sobre el fichero descargado (`shasum -a 256`).
+
+**Cuándo descargar (SÍ)**:
+
+- Sentencias jurisdiccionales (1ª instancia, apelación, casación, firme) — siempre. Las sentencias son de dominio público (art. 13 LPI, art. 235.5 LOPJ).
+- Autos jurisdiccionales relevantes (procesamiento, apertura juicio oral, archivo, desimputación) cuando estén públicamente disponibles.
+- Disposiciones del BOE relacionadas con el procedimiento (Reales Decretos de cese, nombramiento, indulto; Acuerdos del CGPJ publicados). El BOE ofrece PDF estable y XML estructurado en endpoints estables (`boe.es/diario_boe/{txt,pdf,xml}.php?id=BOE-A-YYYY-XXXXX` y `boe.es/boe/dias/YYYY/MM/DD/pdfs/BOE-A-YYYY-XXXXX.pdf`).
+- Informes públicos de organismos oficiales (UCO, UDEF, Tribunal de Cuentas, AIReF) cuando hayan sido incorporados a la causa y sean accesibles.
+- Notas oficiales largas del CGPJ o de la Fiscalía (cuando el contenido pase de unos pocos KB y sea citable extensamente).
+
+**Cuándo NO descargar**:
+
+- Cobertura periodística N4. Para esto ya está el hook `pre-commit` que archiva en `archive.org` y añade `url_archivo`. No conviene duplicar capacidad.
+- Autos de instrucción ordinaria no localizados públicamente (no podemos descargar lo que no está accesible).
+- Documentos con `estado_acceso: acceso_restringido_pero_citable` o restricciones legales del art. 234 LOPJ / 301 LECrim (escritos de parte no notificados a terceros).
+
+**Convención de procesamiento**:
+
+- Antes de descargar, comprobar el destino de URL (no fetches a fuentes desconocidas sin autorización explícita del maintainer).
+- Cuando hay varios mirrors públicos posibles, **cruzar hashes con un segundo mirror** para verificar integridad. Si los hashes difieren, comparar metadatos PDF (`pdfinfo`) y autoría — distintos PDFs del mismo documento pueden coexistir si uno tiene OCR/anotaciones extra.
+- Calcular el hash sha256 del archivo final (`shasum -a 256 archivo`) y registrarlo en `hash_sha256` del YAML.
+- En el campo `nivel_fuente_justificacion` documentar: metadatos clave del PDF (autor, fecha de creación, productor), el mirror del que se descarga, el segundo mirror usado para cruce de fidelidad si aplica, y la razón del `nivel_fuente` asignado.
+- Si el documento debería ser N1 pero la URL oficial no existe todavía (caso típico: sentencia íntegra del TS antes de aparecer en CENDOJ), se modela como N3 `filtrado_verificado` con triangulación documentada; cuando aparezca en CENDOJ se eleva a N1 conservando el mismo `id` y el mismo `hash_sha256` (que sirve como prueba de fidelidad histórica).
+
+**Citas literales en `Hecho.documentos_respaldo[].pasaje`**: una vez el PDF está descargado, las citas en `pasaje` deben ser **precisas con localización** ("FALLO, p. 180", "Fundamento de Derecho Tercero §3.1, p. 147", "Hechos Probados pp. 18-21"), no genéricas. Esto permite al lector verificar la cita abriendo el PDF en la página exacta y eleva el rigor editorial al nivel de citación académica.
+
+**Dependencia de sistema**: la extracción de texto de PDFs requiere `poppler-utils` (`pdftotext`, `pdfinfo`). En macOS se instala con `brew install poppler` (una vez por máquina).
+
 ## Git hooks (`hooks/`)
 
 El repo trae hooks de git versionados en `/hooks/` (no `.git/hooks/`, que no se versiona). Para activarlos en una máquina nueva ejecuta una vez:

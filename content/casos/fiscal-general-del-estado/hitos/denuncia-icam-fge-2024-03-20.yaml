@@ -1,0 +1,26 @@
+id: denuncia-icam-fge-2024-03-20
+caso_id: fiscal-general-del-estado
+tipo: denuncia_presentada
+fecha: "2024-03-20"
+fecha_precision: dia
+titulo: "El Ilustre Colegio de la Abogacía de Madrid (ICAM) presenta denuncia ante el Tribunal Superior de Justicia de Madrid contra los responsables del Ministerio Fiscal por presunto delito de revelación de secretos"
+descripcion: |
+  El decano del Ilustre Colegio de la Abogacía de Madrid, Eugenio
+  Ribón, anuncia mediante comunicado institucional la presentación
+  de denuncia ante el Tribunal Superior de Justicia de Madrid
+  contra los responsables del Ministerio Fiscal por presunto
+  delito de revelación de secretos, en relación con la divulgación
+  del contenido del correo electrónico remitido el 2 de febrero de
+  2024 por el letrado colegiado Carlos Neira a la Fiscalía
+  Provincial de Madrid y con la nota informativa difundida por la
+  propia Fiscalía el 14 de marzo de 2024.
+personas_afectadas:
+  - carlos-neira
+  - alberto-gonzalez-amador
+organizaciones_afectadas:
+  - icam
+  - tribunal-superior-justicia-madrid
+  - fiscalia-provincial-madrid
+  - fiscalia-general-del-estado
+documento_principal_id: icam-denuncia-revelacion-secretos-fge-2024-03-20
+fase_resultante: denuncia_o_querella

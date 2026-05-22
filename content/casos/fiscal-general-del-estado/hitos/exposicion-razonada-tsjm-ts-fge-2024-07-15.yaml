@@ -1,0 +1,28 @@
+id: exposicion-razonada-tsjm-ts-fge-2024-07-15
+caso_id: fiscal-general-del-estado
+tipo: cambio_organo
+fecha: "2024-07-15"
+fecha_precision: dia
+titulo: "El Tribunal Superior de Justicia de Madrid eleva al Tribunal Supremo exposición razonada al apreciar que la imputación del Fiscal General del Estado escapa de su competencia por razón del aforamiento"
+descripcion: |
+  Por auto del 15 de julio de 2024, la Sala Civil y Penal del
+  Tribunal Superior de Justicia de Madrid, instructor Goyena
+  Salgado, acuerda elevar al Tribunal Supremo exposición razonada
+  por la que se declara incompetente para continuar la instrucción
+  del procedimiento al apreciar la condición de aforado del Fiscal
+  General del Estado, Álvaro García Ortiz, tras haber éste asumido
+  por escrito del 11 de junio de 2024 que la nota informativa de
+  la Fiscalía del 14 de marzo de 2024 no se habría difundido sin
+  su autorización expresa y directa. La causa se traslada al
+  órgano competente para enjuiciar al Fiscal General del Estado en
+  activo: la Sala Segunda del Tribunal Supremo. Rige el principio
+  de presunción de inocencia.
+personas_afectadas:
+  - alvaro-garcia-ortiz
+organizaciones_afectadas:
+  - tribunal-superior-justicia-madrid
+  - tribunal-supremo
+documento_principal_id: maldita-cronologia-fge-2025-10-21
+documentos_relacionados:
+  - cgpj-apertura-causa-fge-2024-10-16
+fase_resultante: instruccion

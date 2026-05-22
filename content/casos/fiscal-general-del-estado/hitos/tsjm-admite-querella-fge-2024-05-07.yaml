@@ -1,0 +1,26 @@
+id: tsjm-admite-querella-fge-2024-05-07
+caso_id: fiscal-general-del-estado
+tipo: querella_admitida
+fecha: "2024-05-07"
+fecha_precision: dia
+titulo: "La Sala Civil y Penal del Tribunal Superior de Justicia de Madrid admite a trámite la querella de Alberto González Amador y designa instructor al magistrado Francisco José Goyena"
+descripcion: |
+  Por auto del 7 de mayo de 2024, la Sala Civil y Penal del Tribunal
+  Superior de Justicia de Madrid admite a trámite la querella
+  interpuesta por Alberto González Amador contra Pilar Rodríguez
+  Fernández y Julián Salto Torres por presunto delito de revelación
+  de secretos. El mismo auto designa instructor de la causa al
+  magistrado Francisco José Goyena Salgado, integrante de la
+  propia Sala Civil y Penal, e incorpora la denuncia previa del
+  Ilustre Colegio de la Abogacía de Madrid del 20 de marzo de
+  2024. Rige el principio de presunción de inocencia respecto de
+  los querellados.
+personas_afectadas:
+  - pilar-rodriguez-fernandez
+organizaciones_afectadas:
+  - tribunal-superior-justicia-madrid
+  - fiscalia-provincial-madrid
+documento_principal_id: elconfidencial-tsjm-admite-querella-fge-2024-05-08
+documentos_relacionados:
+  - maldita-cronologia-fge-2025-10-21
+fase_resultante: instruccion
