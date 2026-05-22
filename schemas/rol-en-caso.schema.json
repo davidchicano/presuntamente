@@ -28,7 +28,8 @@
         "investigado",
         "procesado",
         "acusado",
-        "condenado",
+        "condenado_no_firme",
+        "condenado_firme",
         "absuelto",
         "desimputado",
         "testigo",
@@ -41,13 +42,14 @@
         "perito_judicial",
         "perito_parte",
         "secretario_judicial"
-      ]
+      ],
+      "description": "El rol procesal `condenado` se separa en dos sub-roles editorialmente porque la presunción de inocencia formal se mantiene hasta que la sentencia sea firme. `condenado_no_firme` cubre sentencia de instancia recurrible; `condenado_firme` cubre sentencia ejecutiva sin recurso pendiente. El badge UI distingue ambos visualmente."
     },
     "delitos_atribuidos": {
       "type": "array",
       "items": { "type": "string" },
       "default": [],
-      "description": "Slugs de Delito. V-09: sólo permitido si rol ∈ {investigado, procesado, acusado, condenado}."
+      "description": "Slugs de Delito. V-09: sólo permitido si rol ∈ {investigado, procesado, acusado, condenado_no_firme, condenado_firme}."
     },
     "delitos_codigo_penal": {
       "type": "array",
@@ -59,7 +61,7 @@
     "fecha_fin": { "type": "string", "format": "date" },
     "hito_origen_id": {
       "type": "string",
-      "description": "Hito que abre el rol (auto de imputación, designación, etc.). V-10: requerido si rol=condenado."
+      "description": "Hito que abre el rol (auto de imputación, designación, etc.). V-10: requerido si rol ∈ {condenado_no_firme, condenado_firme} (debe apuntar al Hito de sentencia correspondiente)."
     },
     "hito_fin_id": {
       "type": "string",
@@ -117,15 +119,15 @@
       "then": {
         "properties": {
           "rol": {
-            "enum": ["investigado", "procesado", "acusado", "condenado"]
+            "enum": ["investigado", "procesado", "acusado", "condenado_no_firme", "condenado_firme"]
           }
         }
       }
     },
     {
-      "description": "V-10: rol=condenado requiere hito_origen_id (debe apuntar a un Hito tipo sentencia).",
+      "description": "V-10: condenado_no_firme y condenado_firme requieren hito_origen_id (Hito tipo sentencia_primera_instancia / sentencia_apelacion / sentencia_firme).",
       "if": {
-        "properties": { "rol": { "const": "condenado" } },
+        "properties": { "rol": { "enum": ["condenado_no_firme", "condenado_firme"] } },
         "required": ["rol"]
       },
       "then": { "required": ["hito_origen_id"] }

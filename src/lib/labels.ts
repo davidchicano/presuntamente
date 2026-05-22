@@ -14,7 +14,8 @@ const ROL_LABEL_ES: Record<string, string> = {
   investigado: 'Investigado',
   procesado: 'Procesado',
   acusado: 'Acusado',
-  condenado: 'Condenado',
+  condenado_no_firme: 'Condenado (no firme)',
+  condenado_firme: 'Condenado (firme)',
   absuelto: 'Absuelto',
   desimputado: 'Desimputado',
   testigo: 'Testigo',
@@ -34,11 +35,14 @@ export function rolLabel(rol: string, _lang: Lang = 'es'): string {
 }
 
 // Agrupación por categoría que usa la ficha (§2.4 doc 02).
+// El grupo `condenado` cubre ambos sub-roles (firme y no firme): editorialmente
+// ambos van en la sección de condenados, pero el badge UI los distingue.
 const ROL_GRUPO: Record<string, 'imputacion_activa' | 'condenado' | 'exculpado' | 'otros' | 'funcional'> = {
   investigado: 'imputacion_activa',
   procesado: 'imputacion_activa',
   acusado: 'imputacion_activa',
-  condenado: 'condenado',
+  condenado_no_firme: 'condenado',
+  condenado_firme: 'condenado',
   absuelto: 'exculpado',
   desimputado: 'exculpado',
   testigo: 'otros',
@@ -59,6 +63,38 @@ const ROL_GRUPO: Record<string, 'imputacion_activa' | 'condenado' | 'exculpado' 
 
 export function rolGrupo(rol: string) {
   return ROL_GRUPO[rol] ?? 'otros';
+}
+
+// Familia visual del badge: F-estado (rol del lado acusado, con dot+color) vs
+// F-función (acusación civil, parte civil, aparato judicial, con border-left
+// grueso + glyph + fondo neutro). Centraliza la lógica para que RolBadge la
+// consulte y nadie más tenga que saberlo. Ver DESIGN.md §"Sistema de badges".
+const ROL_FAMILIA: Record<string, 'estado' | 'funcion-civil' | 'funcion-aparato'> = {
+  investigado: 'estado',
+  procesado: 'estado',
+  acusado: 'estado',
+  condenado_no_firme: 'estado',
+  condenado_firme: 'estado',
+  absuelto: 'estado',
+  desimputado: 'estado',
+  testigo: 'estado',
+  denunciante: 'funcion-civil',
+  querellante: 'funcion-civil',
+  acusacion_particular: 'funcion-civil',
+  acusacion_popular: 'funcion-civil',
+  perjudicado: 'funcion-civil',
+  juez_instructor: 'funcion-aparato',
+  juez_ponente: 'funcion-aparato',
+  fiscal: 'funcion-aparato',
+  abogado_defensa: 'funcion-aparato',
+  abogado_acusacion: 'funcion-aparato',
+  perito_judicial: 'funcion-aparato',
+  perito_parte: 'funcion-aparato',
+  secretario_judicial: 'funcion-aparato',
+};
+
+export function rolFamilia(rol: string) {
+  return ROL_FAMILIA[rol] ?? 'estado';
 }
 
 // --- Tipos de Organización ---------------------------------------------------

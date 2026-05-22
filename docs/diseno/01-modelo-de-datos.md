@@ -10,7 +10,7 @@
 
 Antes de las entidades, las cinco reglas que cualquier decisión de modelado debe respetar. Si una propuesta las viola, no entra.
 
-1. **Imputación ≠ condena, y el modelo lo refleja en datos, no en prosa.** No existe un campo `culpable: boolean`. Existen `RolEnCaso` con tipos discretos (investigado, procesado, acusado, condenado, absuelto, desimputado) y fechas. La trayectoria de una persona en un caso es una secuencia de roles, no un estado único.
+1. **Imputación ≠ condena, y el modelo lo refleja en datos, no en prosa.** No existe un campo `culpable: boolean`. Existen `RolEnCaso` con tipos discretos (investigado, procesado, acusado, condenado_no_firme, condenado_firme, absuelto, desimputado) y fechas. La trayectoria de una persona en un caso es una secuencia de roles, no un estado único. El rol `condenado` se separa en dos sub-roles porque la presunción de inocencia formal se mantiene hasta que la sentencia sea firme.
 2. **Cada afirmación tiene fuente y nivel.** Un `Hecho` sin al menos un `Documento` que lo respalde no es publicable. El nivel de fuente del documento condiciona qué tipos de `Hecho` puede sostener.
 3. **Lo coloquial y lo formal viven en campos distintos.** El nombre mediático ("caso Zapatero") nunca contamina el campo de investigados formales. Los buscadores leen el coloquial; los hechos jurídicos leen el formal.
 4. **Fases ≠ hitos.** Un caso está *en una fase* (instrucción, juicio oral, recurso, ejecución, firme). Una imputación, un procesamiento, una sentencia son *eventos puntuales* (Hitos) que cambian la fase. No mezclar.
@@ -217,10 +217,11 @@ interface RolEnCaso {
   sujeto_organizacion_id?: ref<Organizacion>;
   // Exactamente uno de los dos anteriores debe estar informado.
   
-  rol: enum<RolProcesal>;                // ver §3 (investigado, procesado, acusado, condenado,
+  rol: enum<RolProcesal>;                // ver §3 (investigado, procesado, acusado,
+                                         // condenado_no_firme, condenado_firme,
                                          // absuelto, desimputado, testigo, denunciante,
                                          // querellante, acusacion_popular, acusacion_particular,
-                                         // abogado, juez_instructor, fiscal, perito, etc.)
+                                         // perjudicado, abogado, juez_instructor, fiscal, perito, etc.)
   
   // Sólo si rol implica atribución penal a una persona
   delitos_atribuidos?: array<ref<Delito>>;
@@ -244,8 +245,9 @@ interface RolEnCaso {
 - Una misma `Persona` puede tener múltiples `RolEnCaso` en el mismo `Caso`, secuenciados en el tiempo. Ej: investigada → procesada → acusada → absuelta. O: investigada → desimputada → re-imputada (si la AP revoca).
 - Solapamiento de roles en la misma persona-caso está permitido (puede ser testigo en una pieza e investigada en otra del mismo caso padre).
 - Los roles `juez_instructor`, `fiscal`, `abogado`, `perito` son **rol funcional**, no procesal. No implican imputación. La UI los segrega visualmente del bloque de investigados.
-- `delitos_atribuidos` sólo puede estar informado si `rol ∈ {investigado, procesado, acusado, condenado}`.
-- Un `RolEnCaso` con `rol = condenado` exige existencia de `hito_origen_id` apuntando a un Hito tipo `sentencia_firme` o `sentencia_primera_instancia` (con anotación clara si no es firme).
+- `delitos_atribuidos` sólo puede estar informado si `rol ∈ {investigado, procesado, acusado, condenado_no_firme, condenado_firme}`.
+- El rol `condenado` se separa en dos sub-roles editorialmente: `condenado_no_firme` (sentencia recurrible) y `condenado_firme` (sentencia ejecutiva sin recurso pendiente). Razón: la presunción de inocencia formal se mantiene hasta firmeza. El badge UI distingue ambos visualmente.
+- Un `RolEnCaso` con `rol ∈ {condenado_no_firme, condenado_firme}` exige `hito_origen_id` apuntando al Hito de sentencia correspondiente (`sentencia_primera_instancia` / `sentencia_apelacion` para no firme; `sentencia_firme` para firme).
 - Un `RolEnCaso` con `sujeto_tipo = organizacion` sólo es válido si `rol ∈ {acusacion_popular, acusacion_particular, querellante, denunciante}` (asociaciones, partidos, organismos que ejercen acción legal).
 
 ### 2.5 Hito
@@ -480,7 +482,7 @@ Los enums siguientes son la lista cerrada inicial. Ampliarlos requiere PR razona
 - `fiscalia_anticorrupcion`, `fiscalia_ordinaria`, `oficio_judicial`, `querella_particular`, `querella_partido_politico`, `querella_asociacion_acusacion_popular`, `denuncia_organismo_publico` (Tribunal de Cuentas, AIReF, etc.), `denuncia_periodistica`, `comparecencia_congreso`, `otro`
 
 **`RolProcesal`**
-- Procesales: `denunciante`, `querellante`, `acusacion_particular`, `acusacion_popular`, `investigado`, `procesado`, `acusado`, `condenado`, `absuelto`, `desimputado`, `testigo`, `perjudicado`
+- Procesales: `denunciante`, `querellante`, `acusacion_particular`, `acusacion_popular`, `investigado`, `procesado`, `acusado`, `condenado_no_firme`, `condenado_firme`, `absuelto`, `desimputado`, `testigo`, `perjudicado`
 - Funcionales: `juez_instructor`, `juez_ponente`, `fiscal`, `abogado_defensa`, `abogado_acusacion`, `perito_judicial`, `perito_parte`, `secretario_judicial`
 
 **`TipoHito`**
@@ -553,8 +555,8 @@ Las reglas que CI ejecuta sobre los YAML antes de mergear cualquier PR. Cada una
 | V-06 | Un `Hecho` tipo `exculpatorio` cita ≥1 `Documento` de tipo sentencia absolutoria / auto de archivo / desimputación | bloqueante |
 | V-07 | Un `Hecho` tipo `desmentido` cita documentos cuya valoración editorial está justificada en `nivel_fuente_justificacion` | bloqueante |
 | V-08 | Una `Persona` con `es_figura_publica = false` no aparece en `Hecho` tipo `acreditado` ni `investigado` sin un `RolEnCaso` activo en el periodo del Hecho | bloqueante |
-| V-09 | Un `RolEnCaso` con `delitos_atribuidos` no vacío sólo es válido si `rol ∈ {investigado, procesado, acusado, condenado}` | bloqueante |
-| V-10 | Un `RolEnCaso` con `rol = condenado` requiere `hito_origen_id` de tipo sentencia | bloqueante |
+| V-09 | Un `RolEnCaso` con `delitos_atribuidos` no vacío sólo es válido si `rol ∈ {investigado, procesado, acusado, condenado_no_firme, condenado_firme}` | bloqueante |
+| V-10 | Un `RolEnCaso` con `rol ∈ {condenado_no_firme, condenado_firme}` requiere `hito_origen_id` apuntando al Hito de sentencia correspondiente | bloqueante |
 | V-11 | Un `RolEnCaso` con `sujeto_tipo = organizacion` sólo permite `rol ∈ {acusacion_popular, acusacion_particular, querellante, denunciante, perjudicado}`. El valor `perjudicado` se añadió en mayo de 2026 al fichar la UCM como perjudicada en el caso Begoña Gómez (responsabilidad civil derivada del delito; persona jurídica como parte civil del procedimiento penal). | bloqueante |
 | V-12 | Un `Documento` de `nivel_fuente = 1` tiene `url_canonica` en lista blanca `DominiosOficiales` o `ruta_local` con hash en repo | bloqueante |
 | V-13 | Un `Documento` de tipo `articulo_prensa` no es el único soporte de un `Hecho` tipo `acreditado` ni `investigado` | bloqueante |
@@ -589,7 +591,7 @@ Caso(id="koldo", caso_padre_id=null, fase_actual=juicio_oral, nombre_mediatico="
 - El padre `koldo` no tiene un `numero_procedimiento` propio si es una agrupación editorial; en ese caso su `organo_judicial_id` apunta al órgano del que parte la macrocausa (Sala Segunda TS) y `tipo_pieza = pieza_principal` en sus hijas indica cuál es la causa nuclear.
 - Cada hija tiene su propio `organo_judicial_id`, su propia `fase_actual`, su propia lista de `RolEnCaso`.
 - La UI del padre agrega los `RolEnCaso` de las hijas: Ábalos aparece como investigado en `koldo/mascarillas` y `koldo/financiacion-psoe`, no en `koldo/cerdan`.
-- Cerdán aparece como `condenado` o `investigado` (según pieza) en `koldo/cerdan`; el sistema NO infiere su rol en el padre.
+- Cerdán aparece como `condenado_firme` o `investigado` (según pieza) en `koldo/cerdan`; el sistema NO infiere su rol en el padre.
 
 ### 5.2 Persona con trayectoria: Begoña Gómez
 
