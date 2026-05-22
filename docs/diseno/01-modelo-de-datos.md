@@ -381,6 +381,10 @@ interface Documento {
   // Localización del documento
   url_canonica?: string;                 // URL oficial (CENDOJ, BOE, etc.)
   url_archivo?: string;                  // mirror en archive.org / archive.ph
+  url_archivo_no_disponible?: string;    // razón editorial: si el medio bloquea
+                                          // archive.org (p.ej. Cloudflare anti-bot),
+                                          // documentar aquí. El hook de archivado
+                                          // automático salta los docs con este campo.
   ruta_local?: string;                   // path en el repo si tenemos copia almacenada
   hash_sha256?: string;                  // si tenemos copia local
   
@@ -402,7 +406,7 @@ interface Documento {
 
 - Un Documento de `nivel_fuente = 1` debe tener `url_canonica` apuntando a un dominio de la lista blanca de fuentes oficiales (ver §3 → `DominiosOficiales`) o `ruta_local` con copia verificada hash en el repo.
 - Si `estado_acceso = filtrado_verificado`, el `nivel_fuente_justificacion` debe explicar quién verificó el contenido y por qué medios (multi-medio, verificación cruzada, autenticidad confirmada por las partes, etc.).
-- `url_archivo` (archivo.org / archive.ph) es **muy recomendado** para cualquier documento de Nivel 4 (cobertura periodística), por defensa frente a desaparición o edición silenciosa del original.
+- `url_archivo` (archivo.org / archive.ph) es **muy recomendado** para cualquier documento de Nivel 4 (cobertura periodística), por defensa frente a desaparición o edición silenciosa del original. El repo trae un hook (`hooks/pre-commit`) que rellena este campo automáticamente cuando entran docs N4 nuevos. Para docs que el medio bloquea al bot de archive.org (típicamente Cloudflare anti-bot devolviendo HTTP 520), se documenta la razón editorial en `url_archivo_no_disponible` y se confía en el respaldo cruzado de otros documentos N4 archivados para mantener V-13.
 - Un Documento de tipo `articulo_prensa` no puede ser citado como soporte único para un Hecho de tipo `acreditado` o `investigado`. Puede serlo para Hechos `atribuidos` o como cita adicional.
 
 ### 2.8 RelacionEntreCasos
