@@ -1,0 +1,34 @@
+id: anulacion-ap-madrid-jurado-bg-2026-02-23
+caso_id: begona-gomez
+tipo: sentencia_apelacion
+fecha: "2026-02-23"
+fecha_precision: dia
+titulo: "La Audiencia Provincial de Madrid anula los autos del Juzgado de Instrucción nº 41 que abrían vía a Tribunal del Jurado por falta de motivación"
+descripcion: |
+  La Sección competente de la Audiencia Provincial de Madrid dicta
+  auto el 23 de febrero de 2026 por el que estima los recursos de
+  apelación interpuestos por las defensas y anula cuatro autos del
+  Juzgado de Instrucción nº 41 de Madrid que abrían la vía al
+  enjuiciamiento de Begoña Gómez ante un Tribunal del Jurado. La
+  resolución considera que los autos del instructor carecen de la
+  motivación necesaria — en particular, se limitan a mencionar a las
+  personas a las que se dirigen sin un relato de los indicios
+  plausibles que sostengan la decisión — y recuerda al instructor
+  que, tras año y medio de instrucción, la mera plausibilidad inicial
+  de la denuncia ya no es suficiente y se requieren indicios
+  racionales de criminalidad suficientes. La resolución no descarta
+  que la causa pueda llegar a Tribunal del Jurado en el futuro, pero
+  ordena al instructor retrotraer las actuaciones a un momento
+  anterior a la transformación procedimental.
+personas_afectadas:
+  - begona-gomez
+  - cristina-alvarez-fernandez
+  - juan-carlos-barrabes
+organizaciones_afectadas:
+  - audiencia-provincial-madrid
+  - juzgado-instruccion-41-madrid
+documento_principal_id: auto-ap-madrid-anula-jurado-2026-02-23
+documentos_relacionados:
+  - infobae-anulacion-jurado-bg-2026-02-23
+  - theobjective-anulacion-jurado-bg-2026-02-23
+fase_resultante: instruccion

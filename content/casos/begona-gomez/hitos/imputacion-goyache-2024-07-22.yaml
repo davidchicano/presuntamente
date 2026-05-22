@@ -1,0 +1,28 @@
+id: imputacion-goyache-bg-2024-07-22
+caso_id: begona-gomez
+tipo: imputacion
+fecha: "2024-07-22"
+fecha_precision: dia
+titulo: "El Juzgado de Instrucción nº 41 de Madrid cita como investigado al rector de la Universidad Complutense, Joaquín Goyache"
+descripcion: |
+  El Juzgado de Instrucción nº 41 de Madrid, instruido por el
+  magistrado Juan Carlos Peinado, cita como investigado al rector de
+  la Universidad Complutense de Madrid, Joaquín Goyache, por su
+  presunta responsabilidad en la creación y financiación de la
+  Cátedra Extraordinaria de Transformación Social Competitiva
+  codirigida por Begoña Gómez. Goyache había comparecido previamente
+  como testigo el 5 de julio de 2024. La cobertura periodística del
+  22 de julio de 2024 documenta la citación; la fecha exacta del auto
+  específico de imputación queda pendiente de localización en
+  CENDOJ o nota institucional. La condición de investigado no implica
+  valoración de culpabilidad: rige el principio de presunción de
+  inocencia mientras no recaiga resolución firme en contrario.
+personas_afectadas:
+  - joaquin-goyache
+organizaciones_afectadas:
+  - juzgado-instruccion-41-madrid
+  - universidad-complutense-madrid
+documento_principal_id: eldiario-imputacion-goyache-bg-2024-07-22
+documentos_relacionados:
+  - newtral-perfil-goyache-bg-2024-07-22
+fase_resultante: instruccion

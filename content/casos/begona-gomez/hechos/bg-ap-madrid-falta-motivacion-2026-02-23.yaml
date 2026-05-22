@@ -1,0 +1,36 @@
+id: bg-ap-madrid-falta-motivacion-2026-02-23
+caso_id: begona-gomez
+enunciado: |
+  Consta en el auto de la Audiencia Provincial de Madrid del 23 de
+  febrero de 2026 que el tribunal de apelación considera que los
+  cuatro autos previos del Juzgado de Instrucción nº 41 de Madrid que
+  abrían la vía a enjuiciamiento ante un Tribunal del Jurado carecen
+  de la motivación necesaria: se limitan a mencionar a las personas
+  a las que se dirigen sin un relato de los indicios plausibles que
+  sostengan la decisión. La Audiencia Provincial recuerda al
+  instructor que, tras año y medio de instrucción, la mera
+  plausibilidad inicial de la denuncia ya no es suficiente y se
+  requieren indicios racionales de criminalidad. La resolución no
+  descarta que la causa pueda llegar a Tribunal del Jurado en el
+  futuro, pero ordena retrotraer las actuaciones a un momento
+  anterior a la transformación procedimental.
+tipo: exculpatorio
+fecha_o_periodo:
+  desde: "2026-02-23"
+  precision: dia
+personas_implicadas:
+  - begona-gomez
+  - cristina-alvarez-fernandez
+  - juan-carlos-barrabes
+organizaciones_implicadas:
+  - audiencia-provincial-madrid
+  - juzgado-instruccion-41-madrid
+documentos_respaldo:
+  - documento_id: auto-ap-madrid-anula-jurado-2026-02-23
+    pasaje: "Fundamentos jurídicos — falta de motivación de los autos recurridos"
+  - documento_id: infobae-anulacion-jurado-bg-2026-02-23
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

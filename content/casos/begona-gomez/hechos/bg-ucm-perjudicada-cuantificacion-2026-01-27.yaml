@@ -1,0 +1,28 @@
+id: bg-ucm-perjudicada-cuantificacion-2026-01-27
+caso_id: begona-gomez
+enunciado: |
+  Según el escrito presentado por la Universidad Complutense de Madrid
+  ya personada como perjudicada en la causa y recogido por Moncloa.com
+  el 27 de enero de 2026, la propia universidad cuantifica
+  indiciariamente en 113.509,32 euros el perjuicio económico que
+  habría sufrido como consecuencia de los hechos imputados a Begoña
+  Gómez en relación con la titularidad del software de la Cátedra
+  Extraordinaria de Transformación Social Competitiva. Ese importe
+  coincide con el coste de desarrollo del software financiado por la
+  propia universidad.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-01-27"
+  precision: dia
+personas_implicadas:
+  - begona-gomez
+organizaciones_implicadas:
+  - universidad-complutense-madrid
+documentos_respaldo:
+  - documento_id: moncloacom-ucm-perjuicio-bg-2026-01-27
+  - documento_id: noticiasdenavarra-software-catedra-bg-2026-01-23
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"
