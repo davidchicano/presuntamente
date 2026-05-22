@@ -1,0 +1,30 @@
+id: encargo-uco-ga-2025-06-27
+caso_id: gonzalez-amador
+tipo: informe_organismo_publico
+fecha: "2025-06-27"
+fecha_precision: dia
+titulo: "El Juzgado de Instrucción nº 19 de Madrid encomienda a la Unidad Central Operativa de la Guardia Civil la investigación de la pieza separada por presunta corrupción en los negocios y administración desleal vinculada a Quirón Prevención"
+descripcion: |
+  Por auto del 27 de junio de 2025, la magistrada Inmaculada Iglesias,
+  titular del Juzgado de Instrucción nº 19 de Madrid, encomienda a la
+  Unidad Central Operativa (UCO) de la Guardia Civil la investigación
+  de los hechos sustanciados en la pieza separada por presuntos
+  delitos de corrupción en los negocios y administración desleal en
+  relación con un pago encubierto presentado como comisión de 500.000
+  euros vinculado a la presidencia de Quirón Prevención S.L. y con
+  operaciones de facturación entre la mercantil y Maxwell Cremona
+  Ingeniería y Procesos S.L. La encomienda incluye el análisis
+  patrimonial de Alberto González Amador y sus sociedades, la
+  facultad de requerir documentación a otras administraciones y la
+  citación de testigos o posibles investigados adicionales. A la
+  fecha de redacción de esta ficha (mayo de 2026) el informe de la
+  UCO no ha sido entregado.
+personas_afectadas:
+  - alberto-gonzalez-amador
+organizaciones_afectadas:
+  - juzgado-instruccion-19-madrid
+  - quiron-prevencion
+documento_principal_id: infobae-encargo-uco-ga-2025-06-27
+documentos_relacionados:
+  - publico-uco-pendiente-ga-2026-05-10
+fase_resultante: instruccion

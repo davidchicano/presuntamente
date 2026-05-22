@@ -55,6 +55,8 @@ querellante_inicial_id: aeat
 delitos_atribuidos_en_la_causa:
   - delito-contra-hacienda-publica
   - falsedad-documental
+  - corrupcion-en-los-negocios
+  - administracion-desleal
   - organizacion-criminal
 
 resumen_cifras: |

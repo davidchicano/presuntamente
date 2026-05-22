@@ -1,6 +1,7 @@
 id: antonio-viejo
-nombre_completo: "Antonio Viejo"
+nombre_completo: "Antonio Viejo Llorente"
 nombres_alternativos:
+  - "Antonio Viejo"
   - "magistrado Viejo"
   - "juez Viejo"
 es_figura_publica: true
@@ -12,20 +13,27 @@ cargos_publicos_historicos:
   - cargo: "Secretario General de la Administración de Justicia"
     desde: "2018-01-01"
     hasta: "2020-02-29"
+  - cargo: "Magistrado en la Sección de la Audiencia Provincial de Madrid (orden penal)"
+    organizacion_id: audiencia-provincial-madrid
+    desde: "2020-03-01"
+    hasta: "2025-09-22"
   - cargo: "Magistrado-Juez titular del Juzgado de Instrucción nº 19 de Madrid"
     organizacion_id: juzgado-instruccion-19-madrid
-    desde: "2025-10-01"
+    desde: "2025-09-22"
 nacionalidad: "española"
 biografia_corta: |
   Antonio Viejo es magistrado español, miembro de la Asociación Judicial
   Francisco de Vitoria. Fue decano de los Juzgados de Plaza de Castilla
   de Madrid (2014-2018) y Secretario General de la Administración de
   Justicia entre 2018 y febrero de 2020 con la entonces ministra de
-  Justicia Dolores Delgado. Por acuerdo de la Comisión Permanente del
-  Consejo General del Poder Judicial de septiembre de 2025 fue designado
-  titular del Juzgado de Instrucción nº 19 de Madrid en sustitución de
-  Inmaculada Iglesias, asumiendo la instrucción del procedimiento contra
-  Alberto González Amador.
+  Justicia Dolores Delgado. Posteriormente magistrado del orden penal
+  de la Audiencia Provincial de Madrid hasta septiembre de 2025. Por
+  Real Decreto 838/2025, de 22 de septiembre, en virtud del concurso
+  resuelto por la Comisión Permanente del Consejo General del Poder
+  Judicial el 16 de septiembre de 2025, fue destinado al Juzgado de
+  Instrucción nº 19 de Madrid en sustitución de Inmaculada Iglesias,
+  asumiendo la instrucción del procedimiento contra Alberto González
+  Amador.
 fallecido: false
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-22"

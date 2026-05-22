@@ -4,14 +4,15 @@ sujeto_tipo: persona
 sujeto_persona_id: inmaculada-iglesias
 rol: juez_instructor
 fecha_inicio: "2024-04-01"
-fecha_fin: "2025-08-18"
+fecha_fin: "2025-08-10"
 hito_origen_id: denuncia-aeat-fiscalia-ga-2024-01-22
-hito_fin_id: cambio-juez-iglesias-viejo-ga-2025-10
+hito_fin_id: cambio-juez-iglesias-viejo-ga-2025-09-22
 notas: |
-  La magistrada Inmaculada Iglesias instruyó el procedimiento desde su
-  incoación tras la denuncia de la AEAT del 22 de enero de 2024 hasta
-  su jubilación voluntaria, efectiva el 18 de agosto de 2025 por
-  publicación en el Boletín Oficial del Estado. La fecha de inicio
+  La magistrada María Inmaculada Iglesias Sánchez instruyó el
+  procedimiento desde su incoación tras la denuncia de la AEAT del 22
+  de enero de 2024 hasta su jubilación voluntaria, con efectos del 10
+  de agosto de 2025 conforme al Acuerdo de la Comisión Permanente del
+  CGPJ del 13 de mayo de 2025 (BOE-A-2025-16497). La fecha de inicio
   aquí (2024-04-01) es aproximada por mes (precisión real:
   fecha_precision=mes); el procedimiento se incoó tras la denuncia y
   Iglesias instruyó hasta su jubilación. Pendiente de afinar la fecha

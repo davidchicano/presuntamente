@@ -1,0 +1,29 @@
+id: ga-informe-uco-pendiente
+caso_id: gonzalez-amador
+enunciado: |
+  A la fecha de redacción de esta ficha, transcurridos más de diez
+  meses desde la encomienda del 27 de junio de 2025, el informe de la
+  Unidad Central Operativa de la Guardia Civil sobre la pieza
+  separada por presunta corrupción en los negocios y administración
+  desleal continúa sin haber sido entregado al Juzgado de Instrucción
+  nº 19 de Madrid. Adicionalmente, la cobertura periodística
+  disponible apunta a que el nuevo titular del juzgado, Antonio
+  Viejo, mantiene desde diciembre de 2025 pendiente de resolución la
+  autorización solicitada por la UCO para el acceso a las cuentas
+  bancarias del investigado principal.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-05-10"
+  precision: dia
+personas_implicadas:
+  - alberto-gonzalez-amador
+  - antonio-viejo
+organizaciones_implicadas:
+  - juzgado-instruccion-19-madrid
+documentos_respaldo:
+  - documento_id: publico-uco-pendiente-ga-2026-05-10
+    pasaje: "Cobertura del 10 de mayo de 2026 que documenta el retraso del informe UCO y la falta de autorización para el acceso bancario."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

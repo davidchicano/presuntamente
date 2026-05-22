@@ -1,24 +1,33 @@
-id: cambio-juez-iglesias-viejo-ga-2025-10
+id: cambio-juez-iglesias-viejo-ga-2025-09-22
 caso_id: gonzalez-amador
 tipo: cambio_juez
-fecha: "2025-10-01"
-fecha_precision: mes
-titulo: "El magistrado Antonio Viejo asume la titularidad del Juzgado de Instrucción nº 19 de Madrid en sustitución de Inmaculada Iglesias, jubilada"
+fecha: "2025-09-22"
+fecha_precision: dia
+titulo: "El magistrado Antonio Viejo Llorente asume la titularidad del Juzgado de Instrucción nº 19 de Madrid en sustitución de Inmaculada Iglesias, jubilada"
 descripcion: |
-  Tras la jubilación voluntaria de la magistrada Inmaculada Iglesias,
-  efectiva el 18 de agosto de 2025 y publicada en el Boletín Oficial
-  del Estado, la Comisión Permanente del Consejo General del Poder
-  Judicial otorga en septiembre de 2025 al magistrado Antonio Viejo la
-  titularidad del Juzgado de Instrucción nº 19 de Madrid. Viejo se
-  incorpora a su nuevo destino en octubre de 2025 y asume la
-  instrucción del procedimiento contra Alberto González Amador y los
-  demás procesados, así como las piezas derivadas que la magistrada
-  saliente había abierto sobre presuntas irregularidades en contratos
-  con el grupo sanitario Quirón.
+  Tras la jubilación voluntaria de la magistrada María Inmaculada
+  Iglesias Sánchez, declarada por Acuerdo de la Comisión Permanente
+  del Consejo General del Poder Judicial del 13 de mayo de 2025
+  (BOE-A-2025-16497) con efectos del 10 de agosto de 2025, el Real
+  Decreto 838/2025, de 22 de septiembre (BOE-A-2025-19789), destina
+  al magistrado Antonio Viejo Llorente, hasta entonces magistrado del
+  orden penal de la Audiencia Provincial de Madrid, al Juzgado de
+  Instrucción nº 19 de Madrid (Instrucción y Control de los Centros
+  de Internamiento de Extranjeros y de las Salas de Inadmisión de
+  fronteras), conforme al concurso resuelto por la Comisión
+  Permanente del CGPJ el 16 de septiembre de 2025. Viejo asume la
+  instrucción del procedimiento principal contra Alberto González
+  Amador y los demás procesados, así como la pieza separada por
+  presuntos delitos de corrupción en los negocios y administración
+  desleal vinculados a operaciones de Quirón Prevención S.L. abierta
+  por la magistrada saliente.
 personas_afectadas:
   - inmaculada-iglesias
   - antonio-viejo
 organizaciones_afectadas:
   - juzgado-instruccion-19-madrid
-documento_principal_id: confilegal-nombramiento-viejo-ga-2025-09-16
+documento_principal_id: boe-rd838-nombramiento-viejo-ga-2025-09-22
+documentos_relacionados:
+  - boe-jubilacion-iglesias-ga-2025-05-13
+  - confilegal-nombramiento-viejo-ga-2025-09-16
 fase_resultante: fase_intermedia

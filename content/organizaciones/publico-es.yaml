@@ -1,0 +1,17 @@
+id: publico-es
+nombre: "Público"
+nombres_alternativos:
+  - "publico.es"
+  - "Diario Público"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Medio digital español fundado en 2007, perteneciente a la editora
+  Mediapubli S.L. En el inventario figura como productor de cobertura
+  periodística de seguimiento sobre el procedimiento contra Alberto
+  González Amador, en particular sobre el retraso del informe de la
+  Unidad Central Operativa de la Guardia Civil encargado el 27 de
+  junio de 2025.
+ambito_territorial: nacional
+url_canonica: "https://www.publico.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

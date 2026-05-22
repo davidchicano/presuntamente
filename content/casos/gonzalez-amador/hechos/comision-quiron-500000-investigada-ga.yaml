@@ -1,0 +1,29 @@
+id: ga-comision-quiron-500000-investigada
+caso_id: gonzalez-amador
+enunciado: |
+  En la pieza separada instruida por el Juzgado de Instrucción nº 19
+  de Madrid se investiga indiciariamente un pago encubierto, presentado
+  como "comisión" de 500.000 euros, vinculado a la presidencia de
+  Quirón Prevención S.L., como posible constitutivo de un delito de
+  corrupción en los negocios en concurso con administración desleal.
+  La encomienda del 27 de junio de 2025 a la Unidad Central Operativa
+  de la Guardia Civil tiene por objeto, entre otros, el análisis de
+  este pago y la determinación de su naturaleza efectiva. Rige el
+  principio de presunción de inocencia.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2020-01-01"
+  hasta: "2020-12-31"
+  precision: rango
+personas_implicadas:
+  - alberto-gonzalez-amador
+organizaciones_implicadas:
+  - quiron-prevencion
+  - maxwell-cremona
+documentos_respaldo:
+  - documento_id: infobae-encargo-uco-ga-2025-06-27
+    pasaje: "Mención del pago encubierto presentado como comisión de 500.000 euros vinculado a la presidencia de Quirón Prevención S.L."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

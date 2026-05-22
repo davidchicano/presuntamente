@@ -89,7 +89,7 @@
       ]
     },
     {
-      "description": "V-11: organizacion sólo en roles de parte civil/penal (acusación/querella/denuncia/perjudicado). El rol perjudicado se añadió en mayo de 2026 al fichar la UCM como perjudicada en el caso Begoña Gómez (escritura del juez ofreciendo personación, 3-oct-2025; vista de personación, 6-oct-2025).",
+      "description": "V-11: organizacion sólo en roles compatibles con personas jurídicas. Incluye los roles de parte civil/penal (acusación/querella/denuncia/perjudicado) y los roles imputadores aplicables a personas jurídicas conforme a la LO 5/2010 de responsabilidad penal de personas jurídicas (investigado/procesado/acusado/condenado_*/absuelto/desimputado). Excluye los roles del aparato judicial y de testigo, que sólo aplican a personas físicas. Historia del rule: el rol perjudicado se añadió en mayo de 2026 al fichar la UCM como perjudicada en el caso Begoña Gómez; los roles imputadores se añadieron en mayo de 2026 al fichar Maxwell Cremona S.L. como persona jurídica procesada en el caso González Amador (auto JI nº 19 Madrid de 29-may-2025 + ratificación AP Madrid Sección 3ª de 7-nov-2025).",
       "if": {
         "properties": { "sujeto_tipo": { "const": "organizacion" } },
         "required": ["sujeto_tipo"]
@@ -102,7 +102,14 @@
               "acusacion_particular",
               "querellante",
               "denunciante",
-              "perjudicado"
+              "perjudicado",
+              "investigado",
+              "procesado",
+              "acusado",
+              "condenado_no_firme",
+              "condenado_firme",
+              "absuelto",
+              "desimputado"
             ]
           }
         }

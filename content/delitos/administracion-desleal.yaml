@@ -1,0 +1,16 @@
+id: administracion-desleal
+nombre_tipico: "Administración desleal"
+articulos_cp:
+  - "art. 252 CP"
+familia: contra_patrimonio_y_orden_socioeconomico
+descripcion_breve: |
+  El Código Penal sanciona a quien, teniendo facultades para administrar
+  un patrimonio ajeno emanadas de la ley, encomendadas por la autoridad
+  o asumidas mediante un negocio jurídico, las infringe excediéndose en
+  el ejercicio de las mismas y, de esa manera, causa un perjuicio al
+  patrimonio administrado. Es un tipo penal autónomo desde la reforma
+  por LO 1/2015, separado de la apropiación indebida. Se gradúa por el
+  valor del perjuicio y por la concurrencia de circunstancias
+  agravantes (especial gravedad, abuso de relaciones personales,
+  acción patrimonial sobre la vivienda habitual, etc.).
+enlace_boe: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444"
