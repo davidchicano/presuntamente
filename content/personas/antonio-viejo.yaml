@@ -1,0 +1,31 @@
+id: antonio-viejo
+nombre_completo: "Antonio Viejo"
+nombres_alternativos:
+  - "magistrado Viejo"
+  - "juez Viejo"
+es_figura_publica: true
+cargo_publico_actual: "Magistrado-Juez titular del Juzgado de Instrucción nº 19 de Madrid"
+cargos_publicos_historicos:
+  - cargo: "Decano de los Juzgados de Plaza de Castilla (Madrid)"
+    desde: "2014-01-01"
+    hasta: "2018-12-31"
+  - cargo: "Secretario General de la Administración de Justicia"
+    desde: "2018-01-01"
+    hasta: "2020-02-29"
+  - cargo: "Magistrado-Juez titular del Juzgado de Instrucción nº 19 de Madrid"
+    organizacion_id: juzgado-instruccion-19-madrid
+    desde: "2025-10-01"
+nacionalidad: "española"
+biografia_corta: |
+  Antonio Viejo es magistrado español, miembro de la Asociación Judicial
+  Francisco de Vitoria. Fue decano de los Juzgados de Plaza de Castilla
+  de Madrid (2014-2018) y Secretario General de la Administración de
+  Justicia entre 2018 y febrero de 2020 con la entonces ministra de
+  Justicia Dolores Delgado. Por acuerdo de la Comisión Permanente del
+  Consejo General del Poder Judicial de septiembre de 2025 fue designado
+  titular del Juzgado de Instrucción nº 19 de Madrid en sustitución de
+  Inmaculada Iglesias, asumiendo la instrucción del procedimiento contra
+  Alberto González Amador.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

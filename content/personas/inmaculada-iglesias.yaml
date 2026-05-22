@@ -1,0 +1,25 @@
+id: inmaculada-iglesias
+nombre_completo: "Inmaculada Iglesias"
+nombres_alternativos:
+  - "Inmaculada Iglesias Carrasco"
+  - "magistrada Iglesias"
+  - "jueza Iglesias"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Magistrada-Juez titular del Juzgado de Instrucción nº 19 de Madrid"
+    organizacion_id: juzgado-instruccion-19-madrid
+    hasta: "2025-08-18"
+    desde: "2024-04-01"
+nacionalidad: "española"
+biografia_corta: |
+  Inmaculada Iglesias es magistrada española titular durante dieciséis
+  meses del Juzgado de Instrucción nº 19 de Madrid, en cuya jurisdicción
+  instruyó el procedimiento por presunto fraude fiscal y falsedad
+  documental contra Alberto González Amador y otras cuatro personas, así
+  como una pieza derivada en relación con presuntas irregularidades en
+  contratos con el grupo sanitario Quirón. El 18 de agosto de 2025 se
+  publicó en el Boletín Oficial del Estado su jubilación voluntaria,
+  efectiva esa misma fecha.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"
