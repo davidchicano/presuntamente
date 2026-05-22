@@ -1,0 +1,15 @@
+id: iustitia-europa
+nombre: "Asociación Iustitia Europa"
+nombres_alternativos:
+  - "Iustitia Europa"
+tipo: asociacion_acusacion_popular
+descripcion_corta: |
+  Asociación civil española que actúa habitualmente como acusación
+  popular en procedimientos penales de relevancia pública. Se personó
+  como acusación popular en el caso Begoña Gómez en torno a finales de
+  abril de 2024, conforme a la cobertura periodística de la apertura
+  del procedimiento.
+ambito_territorial: nacional
+localidad: "Madrid"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

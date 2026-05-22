@@ -1,0 +1,15 @@
+id: confilegal
+nombre: "Confilegal"
+nombres_alternativos:
+  - "Confilegal.com"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Diario digital español de información jurídica fundado en 2014.
+  Cubre con detalle resoluciones judiciales, actividad de la abogacía
+  y reformas legislativas; es referencia habitual en información
+  forense y procesal.
+ambito_territorial: nacional
+localidad: "Madrid"
+url_canonica: "https://confilegal.com/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

@@ -1,0 +1,15 @@
+id: eldiario-es
+nombre: "elDiario.es"
+nombres_alternativos:
+  - "El Diario"
+  - "elDiario"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Diario digital español fundado en 2012 por Ignacio Escolar. Cubre
+  política, sociedad y tribunales con presencia destacada en
+  información parlamentaria, judicial y de poder público.
+ambito_territorial: nacional
+localidad: "Madrid"
+url_canonica: "https://www.eldiario.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

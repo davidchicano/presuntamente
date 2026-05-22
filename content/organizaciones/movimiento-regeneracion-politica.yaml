@@ -1,0 +1,16 @@
+id: movimiento-regeneracion-politica
+nombre: "Movimiento de Regeneración Política de España"
+nombres_alternativos:
+  - "Movimiento de Regeneración Política"
+  - "MRPE"
+tipo: asociacion_acusacion_popular
+descripcion_corta: |
+  Asociación de ámbito nacional que actúa como acusación popular en
+  procedimientos penales de relevancia pública. En el caso Begoña
+  Gómez se persona como acusación popular en mayo de 2024 tras prestar
+  la fianza acordada por el Juzgado de Instrucción nº 41 de Madrid;
+  designa como letrado a Aitor Guisasola.
+ambito_territorial: nacional
+siglas: "MRPE"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

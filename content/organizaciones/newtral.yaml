@@ -1,0 +1,15 @@
+id: newtral
+nombre: "Newtral"
+nombres_alternativos:
+  - "Newtral.es"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Plataforma periodística española fundada en 2018 por Ana Pastor.
+  Especializada en verificación de discurso público y de datos en
+  formato audiovisual y digital. Forma parte de la red internacional
+  de verificadores asociada al International Fact-Checking Network.
+ambito_territorial: nacional
+localidad: "Madrid"
+url_canonica: "https://www.newtral.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"

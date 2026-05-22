@@ -1,0 +1,18 @@
+id: vox
+nombre: "Vox"
+nombres_alternativos:
+  - "VOX"
+tipo: partido_politico
+descripcion_corta: |
+  Partido político español fundado el 17 de diciembre de 2013. Tiene
+  representación en el Congreso de los Diputados, el Senado y diversos
+  parlamentos autonómicos. En el caso Begoña Gómez ejerce la
+  acusación popular conforme al artículo 125 de la Constitución
+  Española.
+ambito_territorial: nacional
+siglas: "Vox"
+localidad: "Madrid"
+fundacion: "2013-12-17"
+url_canonica: "https://www.voxespana.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-22"
