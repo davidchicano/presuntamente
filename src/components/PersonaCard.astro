@@ -66,6 +66,11 @@ const { nombre, cargo, esFiguraPublica, iniciales, href, roles, notas } = Astro.
     display: grid;
     grid-template-columns: 44px 1fr;
     gap: 14px;
+    transition: border-left-width 160ms ease-out, background 160ms ease-out;
+  }
+  .pcard:hover {
+    border-left-width: 5px;
+    background: var(--color-bg-muted);
   }
   .pcard__init {
     width: 44px;

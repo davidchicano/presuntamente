@@ -10,6 +10,7 @@ interface Props {
   tipoLabel: string;
   nivel: 1 | 2 | 3 | 4;
   productor?: string;
+  productorHref?: string;
   fecha: string;
   urlCanonica?: string;
   urlArchivo?: string;
@@ -21,6 +22,7 @@ const {
   tipoLabel,
   nivel,
   productor,
+  productorHref,
   fecha,
   urlCanonica,
   urlArchivo,
@@ -41,7 +43,14 @@ const {
     <div class="docard__meta">
       <LevelBadge nivel={nivel} />
       <span>{tipoLabel}</span>
-      {productor && <><span class="docard__sep">·</span><span>{productor}</span></>}
+      {productor && (
+        <>
+          <span class="docard__sep">·</span>
+          {productorHref
+            ? <a href={productorHref} class="docard__productor">{productor}</a>
+            : <span>{productor}</span>}
+        </>
+      )}
       <span class="docard__sep">·</span>
       <span>{fecha}</span>
       {citadoEn !== undefined && citadoEn > 0 && (
@@ -71,7 +80,13 @@ const {
     border-left: 3px solid var(--color-accent);
     background: var(--color-surface);
   }
-  .docard:hover { background: var(--color-bg-muted); }
+  .docard {
+    transition: border-left-width 160ms ease-out, background 160ms ease-out;
+  }
+  .docard:hover {
+    background: var(--color-bg-muted);
+    border-left-width: 5px;
+  }
   .docard__icon {
     width: 36px;
     height: 44px;
@@ -105,6 +120,16 @@ const {
     align-items: center;
   }
   .docard__sep { color: var(--color-border); }
+  .docard__productor {
+    color: inherit;
+    text-decoration: underline dotted 1px;
+    text-decoration-color: var(--color-fg-subtle);
+    text-underline-offset: 3px;
+  }
+  .docard__productor:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
   .docard__links {
     display: flex;
     flex-direction: column;

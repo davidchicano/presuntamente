@@ -239,9 +239,11 @@ const biblioteca = Array.from(docIds)
       const ds = (h.data as { documentos_respaldo?: { documento_id: string }[] }).documentos_respaldo;
       if (ds && ds.some((x) => x.documento_id === d.id)) citado++;
     }
+    const productorOrg = d.productor_organizacion_id ? orgIndex.get(d.productor_organizacion_id) : undefined;
     return {
       d,
-      productor: d.productor_organizacion_id ? orgIndex.get(d.productor_organizacion_id)?.nombre : undefined,
+      productor: productorOrg?.nombre,
+      productorId: productorOrg?.id,
       citadoEn: citado,
     };
   })
@@ -298,7 +300,7 @@ const breadcrumb = [
       {organo && (
         <div>
           <dt>Órgano judicial</dt>
-          <dd>{organo.nombre}</dd>
+          <dd><a href={lang === 'ca' ? `/cat/organizaciones/${organo.id}` : `/organizaciones/${organo.id}`}>{organo.nombre}</a></dd>
         </div>
       )}
       {data.numero_procedimiento && (
@@ -330,9 +332,11 @@ const breadcrumb = [
   <SectionH num="2." title="Estado procesal actual" id="estado" />
   <dl class="estado-grid">
     <div><dt>Fase</dt><dd>{faseLabel(data.fase_actual)}</dd></div>
-    {organo && <div><dt>Órgano</dt><dd>{organo.nombre}</dd></div>}
+    {organo && (
+      <div><dt>Órgano</dt><dd><a href={lang === 'ca' ? `/cat/organizaciones/${organo.id}` : `/organizaciones/${organo.id}`}>{organo.nombre}</a></dd></div>
+    )}
     {juezInstructorPersona && (
-      <div><dt>Juez instructor</dt><dd>{juezInstructorPersona.nombre_completo}</dd></div>
+      <div><dt>Juez instructor</dt><dd><a href={lang === 'ca' ? `/cat/personas/${juezInstructorPersona.id}` : `/personas/${juezInstructorPersona.id}`}>{juezInstructorPersona.nombre_completo}</a></dd></div>
     )}
     <div><dt>Origen del procedimiento</dt><dd>{origenLabel(data.origen_denuncia)}</dd></div>
     <div><dt>Fecha de apertura</dt><dd class="mono">{data.fecha_apertura}</dd></div>
@@ -362,6 +366,7 @@ const breadcrumb = [
               cargo={pv.persona!.cargo_publico_actual}
               esFiguraPublica={pv.persona!.es_figura_publica}
               iniciales={iniciales(pv.persona!.nombre_completo)}
+              href={lang === 'ca' ? `/cat/personas/${pv.persona!.id}` : `/personas/${pv.persona!.id}`}
               roles={pv.roles}
               notas={pv.roles[0]?.notas}
             />
@@ -387,6 +392,7 @@ const breadcrumb = [
             tipo={ov.org!.tipo}
             tipoLabel={tipoOrgLabel(ov.org!.tipo)}
             localidad={(ov.org as { localidad?: string }).localidad}
+            href={lang === 'ca' ? `/cat/organizaciones/${ov.org!.id}` : `/organizaciones/${ov.org!.id}`}
             roles={ov.roles}
             notas={ov.roles[0]?.notas}
           />
@@ -448,7 +454,7 @@ const breadcrumb = [
     right={`${biblioteca.length} documento${biblioteca.length === 1 ? '' : 's'}`}
   />
   <div class="grupo__cards" id="biblioteca-list">
-    {biblioteca.map(({ d, productor, citadoEn }) => (
+    {biblioteca.map(({ d, productor, productorId, citadoEn }) => (
       <div id={`doc-${d.id}`}>
         <DocumentoCard
           titulo={d.titulo}
@@ -456,6 +462,7 @@ const breadcrumb = [
           tipoLabel={tipoDocLabel(d.tipo)}
           nivel={d.nivel_fuente as 1 | 2 | 3 | 4}
           productor={productor}
+          productorHref={productorId ? (lang === 'ca' ? `/cat/organizaciones/${productorId}` : `/organizaciones/${productorId}`) : undefined}
           fecha={d.fecha_documento}
           urlCanonica={d.url_canonica}
           urlArchivo={(d as { url_archivo?: string }).url_archivo}
