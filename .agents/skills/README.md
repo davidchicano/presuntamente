@@ -6,6 +6,7 @@ Skills para usar con Claude Code en este repositorio. Se construyen iterativamen
 
 - **`investigar-caso`** v0 — arrancar un caso nuevo desde URL/nombre/brief. Localiza órgano titular, implicados con rol formal y hitos clave; genera el esqueleto YAML inicial (Caso + 1-2 Hitos + Documentos + 1-3 Roles + Hechos). Aplica los guardarraíles del doc 03 §4 + tensión brief/realidad procesal aprendida con Plus Ultra.
 - **`incorporar-hito`** v1 — añadir Hito + Hechos + Documento a un caso existente desde un PDF de auto, una nota CGPJ o cobertura cruzada. Nunca asigna `tipo = acreditado` automáticamente; nunca inventa. Histórico de uso real: Plus Ultra PR1 y PR2.
+- **`revisar-caso`** v0 — auditoría editorial cualitativa por LLM de un caso ya fichado. Cubre la capa B del diseño en cuatro capas (las reglas P-01..P-10 del doc 02 y los principios irrenunciables de AGENTS.md que no son chequeables con AJV). Output clasificado en `BLOQUEANTE` / `SUGERENCIA` / `OK`; sin auto-fix. User-invocable con `/revisar-caso <slug>`. Capa A queda cubierta por `pnpm validate`; capas C y D quedan diferidas a v2+.
 - **`presuntamente-design`** — diseño visual canónico del sitio. Tokens, componentes, lenguaje gov-retro. User-invocable con `/presuntamente-design`.
 
 ## Skills planeadas (placeholders)
