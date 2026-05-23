@@ -2,7 +2,7 @@
 
 Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes LLM que iteren sobre este caso. Convención en `AGENTS.md` § *NOTES.md por caso*.
 
-Última actualización: 2026-05-22 (PR3 — incorpora Juan José Güemes como persona desimputada, hitos posteriores al 21-abr-2026 hasta hoy, hito propio del ofrecimiento de personación a la UCM, y nuevo tipo de hito `escrito_conclusiones_provisionales` en el schema).
+Última actualización: 2026-05-23 (barrido retrospectivo de la convención "Documentos primarios descargados a `/public/documentos/`" sobre los 24 documentos catalogados del caso; ver §"Barrido primarios descargados — 2026-05-23"). Antes: 2026-05-22 (PR3 — incorpora Juan José Güemes como persona desimputada, hitos posteriores al 21-abr-2026 hasta hoy, hito propio del ofrecimiento de personación a la UCM, y nuevo tipo de hito `escrito_conclusiones_provisionales` en el schema).
 
 ---
 
@@ -42,10 +42,40 @@ Ambos cierres dejan en pie la presunción de inocencia y las trayectorias proces
 - **`goyache-investigado.yaml`**: delitos corregidos de `[malversacion-caudales-publicos]` a `[trafico-de-influencias, corrupcion-en-los-negocios]`. La malversación se introdujo en la causa en agosto de 2025 (imputación específica de Cristina Álvarez), pero Goyache fue citado en julio de 2024 antes de esa ampliación. `fecha_inicio` se ajusta a `2024-07-22` (la fecha del auto que documentan elDiario.es y Newtral.es el 22-jul-2024) y `hito_origen_id` ya apunta al hito específico `imputacion-goyache-bg-2024-07-22`.
 - **`hazte-oir-acusacion-popular.yaml`**: `fecha_inicio` corregida de `2024-04-24` (mejor aproximación inicial) a `2024-04-29` (cruzada con la fecha confirmada de Vox; las personaciones de Hazte Oír, Vox e Iustitia Europa son coetáneas según la cobertura).
 
+## Barrido primarios descargados — 2026-05-23
+
+**Contexto.** El 2026-05-22, tras el PR2 del Fiscal General del Estado, se incorporó al proyecto la convención "Documentos primarios descargados a `/public/documentos/<caso>/`" (`AGENTS.md` §correspondiente + `.agents/skills/investigar-caso/SKILL.md` §3.bis). El ROADMAP §"Trabajo paralelizable a otro agente" pide aplicar la convención retrospectivamente a los casos ya fichados antes de la norma. Este barrido cubre exclusivamente el caso `begona-gomez`.
+
+**Universo.** 24 documentos catalogados en `content/documentos/*.yaml` con `caso_principal_id: begona-gomez`:
+
+- 3 autos jurisdiccionales (`auto_judicial`): `auto-procesamiento-bg-2026-04-13`, `auto-audiencia-desimputa-goyache-2025-05-16`, `auto-ap-madrid-anula-jurado-2026-02-23` — todos con `nivel_fuente: 4` y `estado_acceso: acceso_restringido_pero_citable` (no localizables públicamente).
+- 1 escrito de la Fiscalía (`escrito_fiscalia`): `escrito-fiscalia-recurso-ap-bg-2026-04-21` — `nivel_fuente: 2`, `estado_acceso: acceso_restringido_pero_citable`.
+- 20 artículos de prensa (`articulo_prensa`): todos `nivel_fuente: 4`, gestionados por el hook `pre-commit` / `archive.org` (`url_archivo`).
+- 0 documentos del BOE (no hay nombramiento/cese de juez/fiscal específicos del caso) ni nota institucional con URL canónica en `poderjudicial.es` ni Acuerdo del CGPJ publicado relacionado con el caso.
+
+**Resultado del barrido.** Cero descargas aplicadas. Razón: a 2026-05-23 no se ha localizado en fuente oficial (BOE / CENDOJ / poderjudicial.es / fiscal.es) ninguno de los documentos candidatos a descarga primaria. Verificado vía WebSearch contra los buscadores institucionales y contra los acuerdos publicados del CGPJ; el barrido reproduce la misma conclusión de PR3 del 22-may, ampliada a las cuatro fuentes oficiales.
+
+**Candidatos prioritarios revisados uno a uno** (todos quedan `pendiente_primario`):
+
+1. **Auto del JI nº 41 del 13-abr-2026 — procesamiento.** Documento `auto-procesamiento-bg-2026-04-13.yaml`. NO publicado en CENDOJ (los Juzgados ordinarios no suben autos de instrucción). NO localizada nota institucional del CGPJ en `poderjudicial.es` al 23-may-2026. URL candidata: ninguna oficial; un mirror periodístico íntegro publicaría las 80+ páginas pero no se ha encontrado uno fiable. Estado: pendiente_primario.
+2. **Auto de la AP Madrid del 13-may-2025 — desimputación Goyache + Güemes.** Documento `auto-audiencia-desimputa-goyache-2025-05-16.yaml`. NO publicado en CENDOJ; las secciones de la AP no publican sistemáticamente sus autos. NO localizada nota institucional. El Independiente cita literalmente fragmentos del auto pero no aporta el PDF íntegro; existe un mirror en `wuolah.com` (plataforma de apuntes universitarios) que **no es fuente fiable ni está en lista blanca**, por lo que NO se descarga (la trazabilidad por `hash_sha256` exige procedencia verificable; descargar de Wuolah contradice el principio editorial). Estado: pendiente_primario.
+3. **Auto de la AP Madrid del 23-feb-2026 — anulación jurado popular.** Documento `auto-ap-madrid-anula-jurado-2026-02-23.yaml`. Mismo escenario que el anterior: cobertura cruzada con citas pero sin PDF íntegro publicado en fuente fiable. Estado: pendiente_primario.
+4. **Escrito de la Fiscalía del 21-abr-2026 — recurso de apelación.** Documento `escrito-fiscalia-recurso-ap-bg-2026-04-21.yaml`. NO publicado en `fiscal.es` (cuya práctica habitual es publicar memorias anuales y disposiciones generales, no escritos procesales concretos). Estado: pendiente_primario.
+5. **Escrito de conclusiones provisionales de la defensa del 18-may-2026.** Restringido a las partes por art. 234 LOPJ / 301 LECrim; no se publica en fuente oficial. Estado: no aplica para descarga primaria (es escrito de parte privado).
+6. **Autos de la AP Madrid (Sección 3ª/23ª) sobre el jurado popular.** Mismo escenario que (3). Estado: pendiente_primario, cubierto por (3).
+
+**Convención disparada al ver candidatos en mirrors no oficiales (Wuolah, scribd, etc.).** No descargar. La trazabilidad editorial del proyecto requiere proveniencia oficial o, en su defecto, segundo mirror cruzado de calidad periodística verificable (medios con redacción identificada). Plataformas como Wuolah no auditan la fidelidad del PDF subido por el usuario. Al ser PDF "anónimo en su origen", el `hash_sha256` no acredita fidelidad al original. Política operativa: si en el futuro aparece el auto íntegro publicado por un medio con redacción identificable (Infobae documentos, eldiario.es PDF embebido, etc.), entonces sí se descarga, se cruza con segundo mirror si existe, y se documenta el origen en `nivel_fuente_justificacion`.
+
+**Cuándo revisar de nuevo.** Trimestralmente, o cuando un hito procesal posterior dispare la publicación oficial de los autos íntegros (firmeza de la sentencia, llegada a TS por casación, indultos publicados en BOE, etc.). Mientras tanto, el modelo del caso ya cumple V-13 mediante cobertura cruzada N4 multimedio para cada hito.
+
+**No se hace ninguna mutación de YAML en este barrido.** No se añaden `ruta_local`, no se calcula `hash_sha256`, no se reescribe `nivel_fuente_justificacion`. Sólo se actualiza esta NOTES.md.
+
+---
+
 ## Pendiente para PR4 y siguientes
 
 - **Archive.org / archive.ph mirrors** para los documentos N4 (ahora 19 tras PR3: 6 de PR1 + 7 de PR2 + 6 de PR3; el escrito de la Fiscalía es N2 y no requiere mirror obligatorio aunque conviene). WebFetch no puede llamar a archive.org desde el entorno del agente; el maintainer debe lanzar el archivado y completar `url_archivo`. Mirror obligatorio para fuentes N4 según doc 01 §3.
-- **Localización de fuentes oficiales** (sustituir N4 por N1 cuando aparezcan). PR3 ha confirmado, vía WebSearch + WebFetch, que ninguno de los siguientes está disponible aún con URL canónica oficial en `poderjudicial.es` ni en CENDOJ a 22-may-2026:
+- **Localización de fuentes oficiales** (sustituir N4 por N1 cuando aparezcan). PR3 ha confirmado, vía WebSearch + WebFetch, que ninguno de los siguientes está disponible aún con URL canónica oficial en `poderjudicial.es` ni en CENDOJ — reconfirmado el 2026-05-23 durante el barrido de primarios descargados:
   - Nota CGPJ del auto del JI nº 41 de Madrid del 13 de abril de 2026 (auto de procesamiento).
   - Nota institucional del auto de la Audiencia Provincial de Madrid del 23 de febrero de 2026 (anulación jurado popular).
   - Auto del JI nº 41 que cita a Joaquín Goyache como investigado (22-jul-2024).
