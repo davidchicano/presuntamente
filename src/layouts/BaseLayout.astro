@@ -213,6 +213,54 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       }
       __ensureMenuListeners();
       document.addEventListener('astro:page-load', __ensureMenuListeners);
+
+      // Filas clicables de las tablas de listado. Cualquier `tr.is-link`
+      // navega al primer `<a href>` de la fila al hacer click en una celda
+      // no-interactiva. Clicks sobre anchors o controles dentro de la celda
+      // (un nombre de organización linkado, un badge accionable, etc.)
+      // siguen su comportamiento natural y NO se interceptan. Modifier keys
+      // y middle-click abren nueva pestaña.
+      let __rowLinkAttached = false;
+      function __ensureRowLinkListener() {
+        if (__rowLinkAttached) return;
+        __rowLinkAttached = true;
+        const navigate = (e: MouseEvent | KeyboardEvent, row: Element) => {
+          const sel = window.getSelection();
+          if (sel && sel.toString().length > 0) return;
+          const a = row.querySelector<HTMLAnchorElement>('a[href]');
+          if (!a) return;
+          const href = a.getAttribute('href');
+          if (!href) return;
+          const mouse = e instanceof MouseEvent;
+          if (mouse && (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1)) {
+            window.open(href, '_blank', 'noopener');
+          } else {
+            a.click();
+          }
+        };
+        const isInteractive = (el: Element | null) =>
+          !!el && !!el.closest('a, button, input, select, textarea, label, summary, [role="button"]');
+        document.addEventListener('click', (e) => {
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          if (isInteractive(target)) return;
+          const row = target.closest<HTMLTableRowElement>('.tbl tbody tr.is-link');
+          if (!row) return;
+          navigate(e, row);
+        });
+        document.addEventListener('auxclick', (e) => {
+          if (e.button !== 1) return;
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          if (isInteractive(target)) return;
+          const row = target.closest<HTMLTableRowElement>('.tbl tbody tr.is-link');
+          if (!row) return;
+          navigate(e, row);
+          e.preventDefault();
+        });
+      }
+      __ensureRowLinkListener();
+      document.addEventListener('astro:page-load', __ensureRowLinkListener);
     </script>
 
     <footer class="site-footer">

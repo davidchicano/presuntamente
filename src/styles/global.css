@@ -33,6 +33,19 @@
   --color-accent-soft:   #e3e8f1;
   --color-accent-fg:     #ffffff;
 
+  /* Quesitos del badge de fase (F4). Cuatro tonos fijos de navy diluido
+   * en escala creciente. El fondo del badge en cada fase iguala al quesito
+   * de su fase: en `instr` el fondo es seg-1 (azul muy tenue) y el quesito
+   * 1 se funde con él; en `firme` el fondo es seg-4 (azul más cargado) y
+   * todos los quesitos 1..4 están pintados con su propio tono. Los
+   * quesitos posteriores a la fase actual (los "no completados") se dejan
+   * en blanco para leer como "todavía por venir". El color del texto se
+   * adapta por fase (`--color-phase-fg`) para mantener contraste AA. */
+  --color-phase-seg-1: #ecf0f6;
+  --color-phase-seg-2: #c4d0e3;
+  --color-phase-seg-3: #a8b9d2;
+  --color-phase-seg-4: #5d7090;
+
   /* Acento secundario — mostaza institucional apagada, NO el amarillo
    * literal del badge "Gobierno de España". Segundo color estructural. */
   --color-accent-secondary:        #c89b00;
@@ -211,6 +224,14 @@
     --color-accent-hover: #a6c0e3;
     --color-accent-soft:  #1f2a3d;
     --color-accent-fg:    #15171a;
+
+    /* Quesitos en dark: ladder análogo pero sobre fondo oscuro. Todos los
+     * fondos quedan oscuros para que el texto en `--color-fg` mantenga
+     * contraste AA en las 4 fases. */
+    --color-phase-seg-1: #232a36;
+    --color-phase-seg-2: #2c3849;
+    --color-phase-seg-3: #364860;
+    --color-phase-seg-4: #415876;
 
     --color-accent-secondary:        #d4a93b;
     --color-accent-secondary-hover:  #e6c068;
@@ -1155,7 +1176,10 @@ body.has-menu-open { overflow: hidden; }
 .tbl tbody tr.is-link { cursor: pointer; }
 .tbl tbody tr.is-link:hover { background: var(--color-bg-muted); }
 .tbl tbody tr.is-link a { color: inherit; text-decoration: none; }
-.tbl tbody tr.is-link a:hover { text-decoration: underline; }
+/* No underline on hover: el fondo de la fila ya señala que TODA la fila
+ * es clicable. Subrayar solo el anchor de la primera celda sugeriría que
+ * esa parte concreta es "más clicable" que el resto, lo que contradice
+ * el modelo. El foco de teclado mantiene su outline propio. */
 
 .tbl .c-name { font-weight: 600; color: var(--color-fg); }
 .tbl .c-name__sub {
@@ -1397,21 +1421,55 @@ body.has-menu-open { overflow: hidden; }
       var(--seg-4, var(--color-surface)) 76% 100%
     );
 }
+/* Las 4 fases activas comparten contenedor idéntico en peso y borde 1px
+ * navy, y un vocabulario fijo de 4 quesitos en escala creciente de azul
+ * diluido (`--color-phase-seg-1..4`). La identidad de fase la cuenta:
+ *   - el FONDO DEL BADGE, igual al color del quesito de esa fase;
+ *   - cuántos quesitos están pintados (1..4); los posteriores quedan en
+ *     blanco (`--color-surface`) para leer como "todavía por venir";
+ *   - el COLOR DEL TEXTO, que se adapta para mantener contraste AA: navy
+ *     en las 3 primeras fases (fondos claros), blanco en `firme` (fondo
+ *     más cargado).
+ * Archivado queda fuera del gradiente (gris muted, peso normal). */
+.badge--phase-instr,
+.badge--phase-intermedia,
+.badge--phase-juicio,
+.badge--phase-firme {
+  border-color: var(--color-accent);
+}
 .badge--phase-instr {
-  color: var(--color-accent); border-color: var(--color-accent); background: var(--color-accent-soft);
-  --seg-1: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-phase-seg-1);
+  --seg-1: var(--color-phase-seg-1);
 }
 .badge--phase-intermedia {
-  color: var(--color-accent); border-color: var(--color-accent); background: var(--color-accent-soft);
-  --seg-1: var(--color-accent); --seg-2: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-phase-seg-2);
+  --seg-1: var(--color-phase-seg-1);
+  --seg-2: var(--color-phase-seg-2);
 }
 .badge--phase-juicio {
-  color: var(--color-accent); border-color: var(--color-accent); background: var(--color-accent-soft);
-  --seg-1: var(--color-accent); --seg-2: var(--color-accent); --seg-3: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-phase-seg-3);
+  --seg-1: var(--color-phase-seg-1);
+  --seg-2: var(--color-phase-seg-2);
+  --seg-3: var(--color-phase-seg-3);
 }
 .badge--phase-firme {
-  color: #fff; border-color: var(--color-accent); background: var(--color-accent);
-  --seg-1: #fff; --seg-2: #fff; --seg-3: #fff; --seg-4: #fff;
+  color: #fff;
+  background: var(--color-phase-seg-4);
+  --seg-1: var(--color-phase-seg-1);
+  --seg-2: var(--color-phase-seg-2);
+  --seg-3: var(--color-phase-seg-3);
+  --seg-4: var(--color-phase-seg-4);
+}
+@media (prefers-color-scheme: dark) {
+  /* En dark, todos los fondos son lo bastante oscuros como para que el
+   * texto en color-fg pase contraste en las 4 fases. */
+  .badge--phase-instr,
+  .badge--phase-intermedia,
+  .badge--phase-juicio,
+  .badge--phase-firme { color: var(--color-fg); }
 }
 .badge--phase-archivo {
   color: var(--color-fg-muted); border-color: var(--color-border); background: var(--color-bg-muted); font-weight: 500;

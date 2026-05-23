@@ -173,8 +173,16 @@ La fase es una secuencia ordenada: instrucción → fase intermedia → juicio o
 - Instrucción → `[█░░░]` (1/4)
 - Fase intermedia → `[██░░]` (2/4)
 - Juicio oral → `[███░]` (3/4)
-- Sentencia firme → `[████]` (4/4) — fill navy completo, texto blanco
+- Sentencia firme → `[████]` (4/4)
 - Archivado → `[░░░░]` (0/4, segmentos en gris) — peso normal, color desaturado, distinto del firme
+
+**Las 4 fases activas comparten contenedor idéntico en peso y borde** (mismo `font-weight`, mismo borde 1px navy). La identidad de fase la cuentan tres palancas combinadas:
+
+1. **El fondo del badge** iguala al color del quesito de su fase. Cuatro tonos fijos en escala creciente (`--color-phase-seg-1..4`): seg-1 azul muy tenue casi blanco, seg-4 azul cargado pero todavía legible. Como cada fase pinta su fondo con SU quesito, el quesito de la fase actual visualmente se funde con el fondo; los anteriores destacan más claros y los posteriores quedan en blanco (`--color-surface`) para leer como "todavía por venir".
+2. **El recuento de quesitos pintados**: 1/4 en instr, 2/4 en intermedia, 3/4 en juicio, 4/4 en firme. Confirmación visual de en qué peldaño estamos.
+3. **El color del texto** se adapta para mantener contraste AA: navy `--color-accent` en las 3 primeras fases (fondos claros), blanco en `firme` (fondo más cargado). En dark mode, las 4 fases usan `--color-fg` claro porque los fondos en dark son todos suficientemente oscuros.
+
+Archivado queda fuera del gradiente (gris muted, peso normal) porque "cerrado sin condena" no es el máximo de la escala procesal.
 
 La barra comunica "dónde estamos en el procedimiento" de un vistazo, sin que el lector tenga que recordar el orden de las fases procesales españolas.
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
+import PhaseBadge from '@/components/PhaseBadge.astro';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -93,7 +94,7 @@ const casos = casosCol
       slug: caso.id,
       mediatico: caso.nombre_mediatico,
       oficial: caso.nombre_oficial,
-      fase: fase.label,
+      fase_actual: caso.fase_actual,
       phaseKind: fase.kind,
       organo: organoCorto,
       organoFull: org?.nombre ?? caso.organo_judicial_id,
@@ -242,7 +243,7 @@ function buildSearchBlob(c: (typeof casos)[number]): string {
             </a>
           </td>
           <td>
-            <span class:list={['badge', `badge--phase-${c.phaseKind}`]}>{c.fase}</span>
+            <PhaseBadge fase={c.fase_actual} />
           </td>
           <td class="c-mono" title={c.organoFull}>{c.organo}</td>
           <td class="c-num">{c.implicados}</td>
