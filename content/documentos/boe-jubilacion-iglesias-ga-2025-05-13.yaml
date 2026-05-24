@@ -26,5 +26,6 @@ hash_sha256: "9fbd222846e7091897e2d0ecd30ae900db9628397d5294fc31504319c2018a2c"
 estado_acceso: publico
 idioma: es
 caso_principal_id: gonzalez-amador
+productor_organizacion_id: consejo-general-poder-judicial
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-23"
+ultima_revision_editorial: "2026-05-24"

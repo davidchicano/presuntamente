@@ -1,0 +1,20 @@
+id: jefatura-del-estado
+nombre: "Jefatura del Estado"
+nombres_alternativos:
+  - "Casa de S.M. el Rey"
+  - "La Corona"
+tipo: organismo_publico
+descripcion_corta: |
+  Órgano constitucional unipersonal previsto en el Título II de la
+  Constitución Española de 1978, ejercido por S.M. el Rey, que sanciona
+  y promulga las leyes y los Reales Decretos-leyes con el refrendo
+  correspondiente. En el inventario aparece como productor formal en
+  los metadatos del BOE de las disposiciones con rango de ley (Reales
+  Decretos-leyes y Reales Decretos legislativos) cuyo `Author` PDF es
+  `JEFATURA DEL ESTADO`. No interviene en la elaboración material de la
+  disposición, que corresponde al Gobierno; su rol en la cadena editorial
+  del BOE es el del firmante institucional.
+ambito_territorial: nacional
+url_canonica: "https://www.casareal.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-24"

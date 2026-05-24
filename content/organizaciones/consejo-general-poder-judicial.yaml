@@ -1,0 +1,21 @@
+id: consejo-general-poder-judicial
+nombre: "Consejo General del Poder Judicial"
+nombres_alternativos:
+  - "CGPJ"
+  - "Consejo General"
+tipo: organismo_publico
+descripcion_corta: |
+  Órgano constitucional de gobierno del Poder Judicial previsto en el
+  artículo 122 de la Constitución Española de 1978 y regulado en el
+  Libro VIII de la Ley Orgánica del Poder Judicial. Tiene atribuciones
+  exclusivas en materia de nombramientos, ascensos, inspección y régimen
+  disciplinario de jueces y magistrados. La Comisión Permanente del
+  CGPJ resuelve concursos de destinos y declara jubilaciones; sus
+  Acuerdos se publican íntegros en el BOE y aparecen en los metadatos
+  PDF con `Author: CONSEJO GENERAL DEL PODER JUDICIAL`. Los Reales
+  Decretos del Gobierno que destinan magistrados a plazas concretas
+  proceden formalmente del concurso resuelto previamente por el CGPJ.
+ambito_territorial: nacional
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Consejo-General-del-Poder-Judicial/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-24"

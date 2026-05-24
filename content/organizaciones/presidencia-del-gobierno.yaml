@@ -1,0 +1,18 @@
+id: presidencia-del-gobierno
+nombre: "Presidencia del Gobierno"
+nombres_alternativos:
+  - "Moncloa"
+  - "Presidencia del Gobierno de España"
+tipo: organismo_publico
+descripcion_corta: |
+  Departamento de la Administración General del Estado dependiente del
+  Presidente del Gobierno, con sede en el Complejo de la Moncloa. En la
+  cadena editorial del BOE figura como productor formal (`Author` PDF
+  `PRESIDENCIA DEL GOBIERNO`) de los Reales Decretos del Gobierno por
+  los que se acuerdan ceses, nombramientos y destinos de altos cargos
+  cuya designación corresponde al Consejo de Ministros y son refrendados
+  por el Presidente del Gobierno antes de la firma del Rey.
+ambito_territorial: nacional
+url_canonica: "https://www.lamoncloa.gob.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-24"

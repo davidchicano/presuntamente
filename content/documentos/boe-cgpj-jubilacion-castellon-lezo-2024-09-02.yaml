@@ -25,5 +25,6 @@ hash_sha256: "9e134c14856e173c1644c90b5438a46377e403d5348e8032096bc86b9db21ca0"
 estado_acceso: publico
 idioma: es
 caso_principal_id: lezo
+productor_organizacion_id: consejo-general-poder-judicial
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-23"
+ultima_revision_editorial: "2026-05-24"

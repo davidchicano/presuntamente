@@ -12,7 +12,7 @@ nivel_fuente_justificacion: |
   PRESIDENCIA DEL GOBIERNO) y del XML estructurado del BOE, con
   sus respectivos hashes sha256. `boe.es` está en la lista blanca
   DominiosOficiales del doc 01 §3. Cumple V-12.
-productor_organizacion_id: fiscalia-general-del-estado
+productor_organizacion_id: presidencia-del-gobierno
 fecha_documento: "2025-12-09"
 fecha_publicacion: "2025-12-10"
 url_canonica: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-25144"
@@ -22,4 +22,4 @@ estado_acceso: publico
 idioma: es
 caso_principal_id: fiscal-general-del-estado
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-24"
