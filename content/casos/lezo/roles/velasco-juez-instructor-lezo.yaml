@@ -1,0 +1,25 @@
+id: velasco-juez-instructor-lezo
+caso_id: lezo
+sujeto_tipo: persona
+sujeto_persona_id: eloy-velasco-nunez
+rol: juez_instructor
+fecha_inicio: "2017-04-19"
+fecha_fin: "2017-06-30"
+hito_origen_id: operacion-uco-detenciones-lezo-2017-04-19
+hito_fin_id: cambio-juez-velasco-castellon-lezo-2017-07-01
+notas: |
+  Magistrado titular del Juzgado Central de Instrucción nº 6 de
+  la Audiencia Nacional al momento de coordinar con la Unidad
+  Central Operativa de la Guardia Civil la operación policial
+  del 19 de abril de 2017 que abrió el procedimiento Lezo.
+  Tres días después, el 22 de abril de 2017, dictó auto de
+  prisión provisional incondicional sin fianza para Ignacio
+  González González y de prisión eludible con fianza de cien
+  mil euros para Ildefonso de Miguel Rodríguez. Cesó como
+  titular del JCI nº 6 a finales de junio de 2017 al ascender
+  por concurso a la Sala de Apelaciones de la Audiencia
+  Nacional, dejando la instrucción del procedimiento Lezo en
+  manos del magistrado Manuel María García-Castellón
+  García-Lomas. La modelación del rol cubre exclusivamente el
+  periodo de instrucción del caso Lezo bajo su titularidad
+  formal, no su trayectoria previa al frente del JCI nº 6.

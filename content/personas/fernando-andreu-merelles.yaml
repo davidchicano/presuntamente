@@ -1,0 +1,32 @@
+id: fernando-andreu-merelles
+nombre_completo: "Fernando Andreu Merelles"
+nombres_alternativos:
+  - "Fernando Andreu"
+  - "Andreu Merelles"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Magistrado titular del Juzgado Central de Instrucción nº 4 de la Audiencia Nacional"
+    organizacion_id: audiencia-nacional
+    desde: "2002-01-01"
+  - cargo: "Magistrado de la Sección Segunda de la Sala de lo Penal de la Audiencia Nacional"
+    organizacion_id: audiencia-nacional
+    desde: "2025-12-22"
+nacionalidad: "española"
+biografia_corta: |
+  Magistrado español, miembro de la Audiencia Nacional. Titular
+  del Juzgado Central de Instrucción nº 4 desde 2002, en cuya
+  etapa instruyó procedimientos de relevancia internacional
+  ligados a la jurisdicción universal española (crímenes contra
+  la humanidad, genocidio, terrorismo) e instruyó causas como
+  el procedimiento sobre las tarjetas «black» de Caja Madrid a
+  petición de la Fiscalía Anticorrupción a partir del 1 de
+  octubre de 2014, además del caso Bankia. Es asimismo
+  magistrado de la Sección Segunda de la Sala de lo Penal de la
+  Audiencia Nacional, en cuya condición ha sido designado
+  ponente del juicio oral de la pieza relativa a las
+  adjudicaciones del campo de golf del Canal de Isabel II del
+  caso Lezo, señalado entre el 13 y el 30 de septiembre de
+  2027.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-24"

@@ -1,0 +1,45 @@
+id: maria-tardon-olmos
+nombre_completo: "María Tardón Olmos"
+nombres_alternativos:
+  - "María Tardón"
+  - "Tardón Olmos"
+  - "magistrada Tardón"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Concejal del Ayuntamiento de Madrid (independiente en listas del PP), Tercera Tenencia de Alcaldía"
+    desde: "1999-06-13"
+    hasta: "2003-06-14"
+  - cargo: "Presidenta de la Sección 27ª de la Audiencia Provincial de Madrid (Violencia sobre la Mujer)"
+    desde: "2005-06-29"
+  - cargo: "Magistrada titular del Juzgado Central de Instrucción nº 3 de la Audiencia Nacional"
+    organizacion_id: audiencia-nacional
+    desde: "2018-10-01"
+fecha_nacimiento: "1957-10-01"
+nacionalidad: "española"
+biografia_corta: |
+  Magistrada española nacida en Zarzuela del Pinar (Segovia).
+  Licenciada en Derecho por la UNED en 1984; ingresó en la
+  Carrera Judicial mediante oposición libre en 1987. Primer
+  destino en los Juzgados de Distrito y de Primera Instancia e
+  Instrucción de La Carolina (Jaén); ascendió a la categoría de
+  magistrada en diciembre de 1989 al Juzgado de lo Penal nº 3
+  de Palma de Mallorca y concursó posteriormente al Juzgado de
+  Instrucción nº 11 de Madrid. En 1995 fue la primera mujer en
+  ejercer de portavoz de una asociación judicial (Asociación
+  Judicial Francisco de Vitoria), cargo que ocupó hasta 1999.
+  Entre 1999 y 2003 fue concejal independiente en las listas
+  del Partido Popular del Ayuntamiento de Madrid. Es titular de
+  la presidencia de la Sección 27ª de la Audiencia Provincial
+  de Madrid con competencias exclusivas en violencia sobre la
+  mujer desde su creación el 29 de junio de 2005, y desde el 1
+  de octubre de 2018 es titular del Juzgado Central de
+  Instrucción nº 3 de la Audiencia Nacional. Asumió de forma
+  interina las causas pendientes del Juzgado Central de
+  Instrucción nº 6 — incluido el procedimiento Lezo — entre la
+  jubilación forzosa por edad del magistrado Manuel María
+  García-Castellón García-Lomas el 2 de septiembre de 2024 y la
+  toma de posesión del nuevo titular Antonio Piña Alonso el 8
+  de enero de 2025.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-24"

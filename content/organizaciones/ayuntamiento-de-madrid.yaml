@@ -1,0 +1,22 @@
+id: ayuntamiento-de-madrid
+nombre: "Ayuntamiento de Madrid"
+nombres_alternativos:
+  - "Consistorio madrileño"
+  - "Cibeles"
+tipo: organismo_publico
+descripcion_corta: |
+  Administración local española correspondiente al municipio de
+  Madrid. Como entidad partícipe históricamente de la empresa
+  pública Canal de Isabel II junto con la Comunidad de Madrid,
+  se personó como acusación particular en el procedimiento Lezo
+  durante la alcaldía de Manuela Carmena para defender los
+  intereses patrimoniales municipales por los presuntos
+  perjuicios derivados de las adjudicaciones controvertidas en
+  la empresa pública.
+ambito_territorial: local
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+url_canonica: "https://www.madrid.es"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-24"

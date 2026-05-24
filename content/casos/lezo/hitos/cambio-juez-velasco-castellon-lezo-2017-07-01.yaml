@@ -1,0 +1,28 @@
+id: cambio-juez-velasco-castellon-lezo-2017-07-01
+caso_id: lezo
+tipo: cambio_juez
+fecha: "2017-07-01"
+fecha_precision: mes
+titulo: "El magistrado Manuel García-Castellón asume la titularidad del Juzgado Central de Instrucción nº 6 en sustitución de Eloy Velasco, que pasa a la Sala de Apelaciones de la Audiencia Nacional"
+descripcion: |
+  El magistrado titular hasta la fecha del Juzgado Central de
+  Instrucción nº 6 de la Audiencia Nacional, Eloy Velasco
+  Núñez, abandona la plaza al ascender por concurso a la Sala
+  de Apelaciones de la Audiencia Nacional, órgano de reciente
+  creación encargado de revisar las sentencias dictadas por la
+  Sala de lo Penal de la propia Audiencia. Le sucede en la
+  titularidad del JCI nº 6 Manuel María García-Castellón
+  García-Lomas, magistrado que regresa a España tras desempeñar
+  funciones jurisdiccionales como magistrado de enlace en
+  París. La asunción del juzgado por García-Castellón implica
+  la continuación de la instrucción del procedimiento Lezo, ya
+  iniciada por Velasco con la operación policial coordinada del
+  19 de abril de 2017 y los autos de prisión preventiva del 22
+  de abril, así como de la macrocausa Púnica.
+personas_afectadas:
+  - eloy-velasco-nunez
+  - manuel-garcia-castellon
+organizaciones_afectadas:
+  - juzgado-central-instruccion-6
+  - audiencia-nacional
+fase_resultante: instruccion

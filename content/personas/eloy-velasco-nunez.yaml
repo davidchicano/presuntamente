@@ -1,0 +1,40 @@
+id: eloy-velasco-nunez
+nombre_completo: "Eloy Velasco Núñez"
+nombres_alternativos:
+  - "Eloy Velasco"
+  - "Velasco Núñez"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Director de Justicia del Gobierno de la Comunidad Valenciana (gobiernos de Eduardo Zaplana)"
+    desde: "1995-01-01"
+    hasta: "2003-11-30"
+  - cargo: "Magistrado titular del Juzgado Central de Instrucción nº 6 de la Audiencia Nacional"
+    organizacion_id: juzgado-central-instruccion-6
+    desde: "2008-01-01"
+    hasta: "2017-06-30"
+  - cargo: "Magistrado de la Sala de Apelaciones de la Audiencia Nacional"
+    organizacion_id: audiencia-nacional
+    desde: "2017-07-01"
+fecha_nacimiento: "1963-01-01"
+nacionalidad: "española"
+biografia_corta: |
+  Magistrado español nacido en Bilbao. Licenciado en Derecho por la
+  Universidad de Deusto con especialidad jurídico-económica. Ingresó
+  en la Carrera Judicial en 1988 con destino inicial en la
+  Comunidad Valenciana (juzgados de Sagunto y Torrent). Entre
+  1995 y noviembre de 2003 fue director de Justicia en los
+  gobiernos del Partido Popular en la Comunidad Valenciana
+  presididos por Eduardo Zaplana. Titular del Juzgado Central de
+  Instrucción nº 6 de la Audiencia Nacional desde 2008, en cuya
+  etapa abrió y comenzó a instruir las macrocausas Lezo y Púnica.
+  En junio de 2017 cesó como titular del JCI nº 6 al ascender por
+  concurso a la Sala de Apelaciones de la Audiencia Nacional, de
+  reciente creación. En el caso Lezo dictó, entre otras
+  resoluciones, el auto de prisión provisional incondicional sin
+  fianza para Ignacio González el 22 de abril de 2017 y el auto
+  de prisión eludible con fianza de cien mil euros para
+  Ildefonso de Miguel. Ha sido corresponsal nacional de Eurojust
+  para asuntos de corrupción.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-24"
