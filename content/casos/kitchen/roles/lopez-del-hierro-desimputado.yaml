@@ -1,0 +1,23 @@
+id: lopez-del-hierro-desimputado-kitchen-2021
+caso_id: kitchen
+sujeto_tipo: persona
+sujeto_persona_id: ignacio-lopez-del-hierro
+rol: desimputado
+fecha_inicio: "2021-07-29"
+fecha_fin: "2023-07-25"
+hito_origen_id: auto-procesamiento-kitchen-2021-07-29
+hito_fin_id: revocacion-archivo-cospedal-kitchen-2023-07
+notas: |
+  Por auto del Juzgado Central de Instrucción nº 6 de la Audiencia
+  Nacional del 29 de julio de 2021, simultáneo a la transformación a
+  procedimiento abreviado y al procesamiento de los demás
+  investigados, se acuerda el sobreseimiento provisional respecto de
+  Ignacio López del Hierro Bravo y de su esposa María Dolores de
+  Cospedal García en la pieza separada nº 7 de las Diligencias
+  Previas 96/2017 (Operación Kitchen). El sobreseimiento es confirmado
+  por auto del mismo órgano del 7 de diciembre de 2022. El rol se
+  cierra el 25 de julio de 2023 con el auto de la Sala de Apelaciones
+  de la Audiencia Nacional que revoca el archivo y ordena la
+  reincorporación de la causa contra López del Hierro. La fecha de
+  cierre se modela con precisión de mes mientras no se localice
+  fuente con el día concreto del auto de la Sala.

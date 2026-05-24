@@ -17,6 +17,7 @@ fecha_o_periodo:
   precision: dia
 personas_implicadas:
   - maria-dolores-cospedal
+  - ignacio-lopez-del-hierro
 organizaciones_implicadas:
   - audiencia-nacional
   - juzgado-central-instruccion-6

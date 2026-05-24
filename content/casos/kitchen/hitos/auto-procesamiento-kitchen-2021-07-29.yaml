@@ -3,7 +3,7 @@ caso_id: kitchen
 tipo: auto_procesamiento
 fecha: "2021-07-29"
 fecha_precision: dia
-titulo: "El magistrado instructor del Juzgado Central de Instrucción nº 6 dicta auto de procedimiento abreviado y procesa al ex ministro Jorge Fernández Díaz, al ex secretario de Estado Francisco Martínez, al ex DAO Eugenio Pino, al comisario jubilado José Manuel Villarejo y a otros agentes, acordando simultáneamente el sobreseimiento provisional respecto de María Dolores de Cospedal e Ignacio López del Hierro"
+titulo: "El magistrado instructor del Juzgado Central de Instrucción nº 6 dicta auto de procedimiento abreviado y procesa al ex ministro Jorge Fernández Díaz, al ex secretario de Estado Francisco Martínez, al ex DAO Eugenio Pino, al comisario jubilado José Manuel Villarejo, al ex chófer del ex tesorero del PP Sergio Ríos y a otros agentes, acordando simultáneamente el sobreseimiento provisional respecto de María Dolores de Cospedal e Ignacio López del Hierro"
 descripcion: |
   El 29 de julio de 2021 el magistrado instructor del Juzgado Central
   de Instrucción nº 6 de la Audiencia Nacional dicta auto de
@@ -11,15 +11,15 @@ descripcion: |
   pieza separada nº 7 de las Diligencias Previas 96/2017 (Operación
   Kitchen). El auto acuerda el procesamiento de Jorge Fernández Díaz,
   Francisco Martínez Vázquez, Eugenio Pino Sánchez, José Manuel
-  Villarejo Pérez y otros agentes del Cuerpo Nacional de Policía por
-  su presunta participación en la operación parapolicial atribuida al
-  Ministerio del Interior contra el ex tesorero del Partido Popular
-  Luis Bárcenas entre 2013 y 2015, e indiciariamente refiere los
-  presuntos delitos de organización criminal, malversación de
-  caudales públicos, cohecho, prevaricación y revelación de secretos.
-  En la misma resolución se acuerda el sobreseimiento provisional
-  respecto de María Dolores de Cospedal García y de Ignacio López
-  del Hierro. La condición de procesados no implica valoración de
+  Villarejo Pérez, Sergio Ríos Esgueva y otros agentes del Cuerpo
+  Nacional de Policía por su presunta participación en la operación
+  parapolicial atribuida al Ministerio del Interior contra el ex
+  tesorero del Partido Popular Luis Bárcenas entre 2013 y 2015, e
+  indiciariamente refiere los presuntos delitos de organización
+  criminal, malversación de caudales públicos, cohecho, prevaricación
+  y revelación de secretos. En la misma resolución se acuerda el
+  sobreseimiento provisional respecto de María Dolores de Cospedal
+  García y de Ignacio López del Hierro. La condición de procesados no implica valoración de
   culpabilidad: rige el principio de presunción de inocencia mientras
   no recaiga sentencia firme en contrario.
 personas_afectadas:
@@ -27,7 +27,9 @@ personas_afectadas:
   - francisco-martinez-vazquez
   - eugenio-pino-sanchez
   - jose-manuel-villarejo
+  - sergio-rios-esgueva
   - maria-dolores-cospedal
+  - ignacio-lopez-del-hierro
 organizaciones_afectadas:
   - audiencia-nacional
   - juzgado-central-instruccion-6

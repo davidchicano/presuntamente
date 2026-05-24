@@ -3,23 +3,24 @@ caso_id: kitchen
 tipo: imputacion
 fecha: "2019-09-09"
 fecha_precision: mes
-titulo: "El magistrado instructor del Juzgado Central de Instrucción nº 6 de la Audiencia Nacional acuerda la imputación de María Dolores de Cospedal como investigada en la pieza Kitchen"
+titulo: "El magistrado instructor del Juzgado Central de Instrucción nº 6 de la Audiencia Nacional acuerda la imputación de María Dolores de Cospedal y de su esposo Ignacio López del Hierro como investigados en la pieza Kitchen"
 descripcion: |
-  Por auto del magistrado instructor del Juzgado Central de Instrucción
-  nº 6 de la Audiencia Nacional, dictado en septiembre de 2019, se
-  acuerda la imputación de María Dolores de Cospedal García, entonces
-  secretaria general del Partido Popular y previamente presidenta de
-  la Junta de Comunidades de Castilla-La Mancha (2011-2015) y
-  ministra de Defensa del Reino de España (2016-2018), como
-  investigada en la pieza separada nº 7 de las Diligencias Previas
-  96/2017 (Operación Kitchen). La condición de investigada no
+  Por sucesivos autos del magistrado instructor del Juzgado Central
+  de Instrucción nº 6 de la Audiencia Nacional dictados en septiembre
+  de 2019 se acuerda la imputación de María Dolores de Cospedal
+  García, entonces secretaria general del Partido Popular y
+  previamente presidenta de la Junta de Comunidades de Castilla-La
+  Mancha (2011-2015) y ministra de Defensa del Reino de España
+  (2016-2018), y de su esposo Ignacio López del Hierro Bravo, como
+  investigados en la pieza separada nº 7 de las Diligencias Previas
+  96/2017 (Operación Kitchen). La condición de investigados no
   implica valoración de culpabilidad: rige el principio de
   presunción de inocencia mientras no recaiga sentencia firme en
-  contrario. La fecha exacta del auto se modela con precisión de
-  mes mientras no se localice fuente directa con la fecha precisa
-  del auto.
+  contrario. La fecha exacta de los autos se modela con precisión de
+  mes mientras no se localice fuente directa con día concreto.
 personas_afectadas:
   - maria-dolores-cospedal
+  - ignacio-lopez-del-hierro
 organizaciones_afectadas:
   - audiencia-nacional
   - juzgado-central-instruccion-6

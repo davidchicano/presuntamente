@@ -4,7 +4,9 @@ Anotaciones internas. **No se publica.** Vive en el repo para humanos
 y agentes LLM que iteren sobre este caso. Convención en `AGENTS.md`
 § *NOTES.md por caso*.
 
-Última actualización: 2026-05-23 (PR1 inicial, sesión paralela).
+Última actualización: 2026-05-24 (PR2 — Ignacio López del Hierro como
+cadena triple paralela a Cospedal + Sergio Ríos Esgueva como
+investigado → procesado).
 
 ---
 
@@ -59,29 +61,47 @@ de diciembre de 2022 (el cual queda `vigencia: superado` tras la
 revocación de la Sala de Apelaciones de la AN en julio de 2023,
 encadenado vía `corregido_por`).
 
-### Ignacio López del Hierro queda para PR2
+### Ignacio López del Hierro y Sergio Ríos Esgueva — entregados en PR2
 
-López del Hierro, esposo de María Dolores de Cospedal, también figura
-en la pieza Kitchen con trayectoria paralela a la de Cospedal
-(investigado → desimputado por auto del 29-jul-2021 y confirmación
-del 7-dic-2022 → revocación del archivo por la Sala AN en julio de
-2023). En PR1 no se ficha como Persona para acotar el alcance del
-arranque del caso (cuota mínima 4-8 personas ya cubierta con 7) y
-porque su trayectoria es estrictamente paralela a la de Cospedal
-(misma cadena de hitos, mismos autos). Pendiente para PR2:
-crear `Persona(ignacio-lopez-del-hierro)` con biografía corta y tres
-roles paralelos a los de Cospedal (`investigado` 2019 → 2021-07-29,
-`desimputado` 2021-07-29 → 2023-07-25, `investigado` 2023-07-25 →
-vigente).
+**López del Hierro** entró en PR2 con la misma cadena triple
+`investigado → desimputado → investigado tras revocación AN` que
+Cospedal, apuntando a los mismos hitos compartidos (imputación
+sept-2019, auto procesamiento 29-jul-2021 que archiva, revocación
+Sala AN jul-2023). El hito `imputacion-cospedal-kitchen-2019-09-09`,
+el `archivo-cospedal-kitchen-2022-12-07`, el
+`revocacion-archivo-cospedal-kitchen-2023-07` y el auto de
+procesamiento se ampliaron en PR2 para listar a López del Hierro en
+`personas_afectadas`; los Hechos `archivo-cospedal-kitchen` y
+`revocacion-archivo-cospedal-kitchen` se ampliaron simétricamente
+en `personas_implicadas`. Patrón: cuando un mismo auto judicial
+afecta a varias personas con el mismo `tipo`, se mantiene un único
+hito con `personas_afectadas: [...]` y se crean pares de
+`RolEnCaso` por persona apuntando al mismo `hito_origen_id` /
+`hito_fin_id` (consistente con la lección aprendida en Begoña Gómez
+PR3 con el auto AP Madrid que desimputó a Goyache y Güemes).
 
-### Sergio Ríos Esgueva queda para PR2
+**Sergio Ríos Esgueva** entró en PR2 con la cadena
+`investigado → procesado` y un hito nuevo propio
+(`imputacion-rios-kitchen-2018-12`) por su perfil distinto (agente
+del CNP que actuaba simultáneamente como chófer del presunto
+perjudicado, según el instructor). La fecha de su imputación se
+sitúa en torno a diciembre de 2018, próxima a la del comisario
+Villarejo, con precisión de mes mientras no se localice fuente
+directa con día concreto. El hito del auto de procesamiento, el Hecho
+`procesamiento-multipartito-kitchen` y los Hechos
+`fondos-reservados-rios-kitchen` y `seguimientos-barcenas-kitchen`
+se ampliaron en PR2 para listar a Ríos en `personas_afectadas` /
+`personas_implicadas`.
 
-El chófer del entonces ex tesorero del Partido Popular Luis Bárcenas,
-Sergio Ríos Esgueva, figura en el sumario como presunto confidente
-policial retribuido con fondos reservados según el instructor.
-También está procesado por el auto del 29-jul-2021. No se ficha en
-PR1 para acotar el alcance del arranque del caso. Pendiente para
-PR2: persona + rol `investigado → procesado`.
+### Otros policías procesados — quedan para PR3+
+
+El auto del 29-jul-2021 procesó a varios agentes y altos cargos del
+Cuerpo Nacional de Policía adicionales a los cinco fichados ya en el
+caso (Fernández Díaz, Francisco Martínez, Pino, Villarejo, Ríos).
+Entre ellos suenan mediáticamente Enrique García Castaño, José Luis
+Olivera Serrano, Bonifacio Díez Sevillano, Marcelino Martín Blas y
+Andrés Manuel Gómez Gordo. Pendientes para PR3 conforme se localice
+cobertura verificable persona a persona.
 
 ### Otros policías procesados quedan para PR2
 
@@ -139,15 +159,15 @@ cercana del enum es `oficio_judicial`.
 
 ## Pendientes para PR2+
 
-- **Ignacio López del Hierro**: persona + tres roles (investigado →
+- ~~**Ignacio López del Hierro**: persona + tres roles (investigado →
   desimputado → investigado tras revocación). Patrón paralelo a
-  Cospedal.
-- **Sergio Ríos Esgueva**: persona + dos roles (investigado →
-  procesado).
+  Cospedal.~~ **Entregado en PR2 (2026-05-24).**
+- ~~**Sergio Ríos Esgueva**: persona + dos roles (investigado →
+  procesado).~~ **Entregado en PR2 (2026-05-24).**
 - **Otros policías procesados** (García Castaño, Olivera Serrano,
   Díez Sevillano, Martín Blas, Gómez Gordo): personas + dos roles
   cada uno conforme se localice cobertura verificable persona a
-  persona.
+  persona. **Pendiente para PR3+.**
 - **Manos Limpias** ya está fichada como organización en el inventario.
   Si se confirma su personación como acusación popular en la pieza
   Kitchen, crear rol `acusacion_popular` correspondiente.

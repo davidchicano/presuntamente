@@ -1,0 +1,35 @@
+id: imputacion-rios-kitchen-2018-12
+caso_id: kitchen
+tipo: imputacion
+fecha: "2018-12-01"
+fecha_precision: mes
+titulo: "El magistrado instructor del Juzgado Central de Instrucción nº 6 declara investigado al chófer del ex tesorero del Partido Popular Luis Bárcenas, Sergio Ríos Esgueva, en la pieza Kitchen del Caso Tándem"
+descripcion: |
+  Tras la apertura de la pieza séptima de las Diligencias Previas
+  96/2017 del Caso Tándem en julio de 2018, el magistrado instructor
+  del Juzgado Central de Instrucción nº 6 de la Audiencia Nacional
+  formaliza la condición de investigado de Sergio Ríos Esgueva,
+  agente del Cuerpo Nacional de Policía y chófer del ex tesorero del
+  Partido Popular Luis Bárcenas Gutiérrez durante el periodo 2013-2015,
+  en la pieza separada nº 7 conocida mediáticamente como Operación
+  Kitchen. La imputación se basa en el informe de la Unidad de
+  Asuntos Internos de la Dirección General de la Policía, que
+  atribuye a Ríos la presunta función de confidente policial
+  retribuido con cargo a fondos reservados del Ministerio del
+  Interior a cambio de información sobre el entorno familiar y los
+  movimientos del presunto perjudicado. La fecha exacta del auto se
+  modela con precisión de mes mientras no se localice fuente con el
+  día concreto. La condición de investigado no implica valoración de
+  culpabilidad: rige el principio de presunción de inocencia mientras
+  no recaiga sentencia firme en contrario.
+personas_afectadas:
+  - sergio-rios-esgueva
+  - luis-barcenas
+organizaciones_afectadas:
+  - audiencia-nacional
+  - juzgado-central-instruccion-6
+  - direccion-general-policia
+documento_principal_id: eldiario-apertura-pieza-kitchen-2018-07-19
+documentos_relacionados:
+  - infobae-apertura-pieza-kitchen-2018-07-19
+fase_resultante: instruccion

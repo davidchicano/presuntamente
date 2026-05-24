@@ -1,0 +1,27 @@
+id: rios-investigado-kitchen
+caso_id: kitchen
+sujeto_tipo: persona
+sujeto_persona_id: sergio-rios-esgueva
+rol: investigado
+delitos_atribuidos:
+  - organizacion-criminal
+  - malversacion-caudales-publicos
+  - cohecho
+  - revelacion-de-secretos
+fecha_inicio: "2018-12-01"
+fecha_fin: "2021-07-29"
+hito_origen_id: imputacion-rios-kitchen-2018-12
+hito_fin_id: auto-procesamiento-kitchen-2021-07-29
+notas: |
+  Tras la apertura de la pieza séptima en julio de 2018, Sergio Ríos
+  Esgueva, agente del Cuerpo Nacional de Policía y chófer del ex
+  tesorero del Partido Popular Luis Bárcenas durante el periodo
+  2013-2015, queda formalmente investigado en la pieza separada nº 7
+  de las Diligencias Previas 96/2017 (Operación Kitchen) por su
+  presunta función como confidente policial retribuido con cargo a
+  fondos reservados del Ministerio del Interior. La fecha exacta del
+  auto se modela con precisión de mes. La condición de investigado no
+  implica valoración de culpabilidad: rige el principio de presunción
+  de inocencia. El rol se cierra el 29 de julio de 2021 con el auto de
+  transformación a procedimiento abreviado del mismo órgano, que abre
+  el rol consecutivo de procesado.

@@ -1,0 +1,26 @@
+id: lopez-del-hierro-investigado-kitchen-2023
+caso_id: kitchen
+sujeto_tipo: persona
+sujeto_persona_id: ignacio-lopez-del-hierro
+rol: investigado
+delitos_atribuidos:
+  - organizacion-criminal
+  - malversacion-caudales-publicos
+  - cohecho
+  - prevaricacion
+  - revelacion-de-secretos
+fecha_inicio: "2023-07-25"
+hito_origen_id: revocacion-archivo-cospedal-kitchen-2023-07
+notas: |
+  Por auto de la Sala de Apelaciones de la Audiencia Nacional dictado
+  en julio de 2023 se revoca el sobreseimiento provisional respecto
+  de Ignacio López del Hierro Bravo y se ordena la reincorporación
+  de la causa contra él en la pieza separada nº 7 de las Diligencias
+  Previas 96/2017 (Operación Kitchen). La reapertura de la
+  investigación no implica valoración de culpabilidad: rige el
+  principio de presunción de inocencia mientras no recaiga sentencia
+  firme en contrario. La fecha exacta del auto se modela con precisión
+  de mes mientras no se localice fuente con el día concreto. El rol
+  permanece vigente; la posición procesal definitiva de López del
+  Hierro en la fase intermedia (procesado o sobreseído con carácter
+  firme) está pendiente de resolución por el órgano instructor.
