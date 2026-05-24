@@ -1,0 +1,41 @@
+id: archivo-gallardon-pieza-inassa-2019
+caso_id: lezo
+enunciado: |
+  El magistrado titular del Juzgado Central de Instrucción nº 6
+  de la Audiencia Nacional Manuel María García-Castellón
+  García-Lomas acuerda por auto del 30 de mayo de 2019 el
+  sobreseimiento provisional de la pieza Inassa del caso Lezo
+  respecto del ex presidente del Gobierno de la Comunidad de
+  Madrid y posterior alcalde de Madrid y ministro de Justicia
+  Alberto Ruiz-Gallardón Jiménez, así como respecto de otros
+  catorce investigados entre los que figuran el ex teniente de
+  alcalde de Madrid Manuel Cobo Vega. La decisión se adopta a
+  petición del Ministerio Fiscal mediante escrito del 22 de
+  mayo de 2019, en el que la Fiscalía Anticorrupción considera
+  agotada la instrucción de la pieza respecto de los catorce
+  desimputados. El sobreseimiento provisional no implica
+  condena ni absolución y queda sujeto a la posibilidad de
+  reapertura si aparecen nuevas pruebas relevantes. Ignacio
+  González González queda igualmente sobreseído de forma
+  provisional en esta pieza específica, manteniendo su
+  condición de procesado en las restantes piezas separadas
+  (Emissao y campo de golf).
+tipo: exculpatorio
+fecha_o_periodo:
+  desde: "2019-05-30"
+  precision: dia
+personas_implicadas:
+  - alberto-ruiz-gallardon
+  - ignacio-gonzalez
+organizaciones_implicadas:
+  - juzgado-central-instruccion-6
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: confilegal-archivo-gallardon-inassa-lezo-2019-05-30
+    pasaje: "Cobertura jurídica del auto del JCI nº 6 de 30 de mayo de 2019 que acuerda el sobreseimiento provisional respecto de los quince desimputados, incluido Ruiz-Gallardón."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-24"

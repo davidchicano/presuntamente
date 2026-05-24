@@ -1,0 +1,17 @@
+id: gallardon-desimputado-pieza-inassa
+caso_id: lezo
+sujeto_tipo: persona
+sujeto_persona_id: alberto-ruiz-gallardon
+rol: desimputado
+fecha_inicio: "2019-05-30"
+hito_origen_id: archivo-pieza-inassa-gallardon-lezo-2019-05-30
+notas: |
+  Por auto del titular del Juzgado Central de Instrucción nº 6
+  de la Audiencia Nacional Manuel María García-Castellón
+  García-Lomas de 30 de mayo de 2019, dictado a petición del
+  Ministerio Fiscal, se acordó el sobreseimiento provisional
+  de la pieza Inassa del caso Lezo respecto de Alberto
+  Ruiz-Gallardón Jiménez y otros catorce investigados. El
+  sobreseimiento provisional no implica condena ni absolución
+  y queda sujeto a la posibilidad de reapertura si aparecen
+  nuevas pruebas relevantes.
