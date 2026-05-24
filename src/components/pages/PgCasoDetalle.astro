@@ -463,7 +463,13 @@ const breadcrumb = [
   )}
 
   <!-- §2.6 — Cronología -->
-  <SectionH num="5." title="Cronología" id="cronologia" right={`${cronologia.length} hito${cronologia.length === 1 ? '' : 's'}`} />
+  <SectionH
+    num="5."
+    title="Cronología"
+    id="cronologia"
+    right={`${cronologia.length} hito${cronologia.length === 1 ? '' : 's'}`}
+    orderToggle={cronologia.length > 1}
+  />
   {cronologia.length === 0 ? (
     <p class="muted">Sin hitos registrados todavía.</p>
   ) : (
@@ -687,11 +693,31 @@ const breadcrumb = [
     .grupo__cards { grid-template-columns: 1fr; }
   }
 
-  /* Timeline contenedora (cada Hito ya trae su borde inferior) */
+  /* Timeline contenedora. El rail vertical es un ::before absoluto que
+     atraviesa el ancho de la columna de rail (32px en desktop, 24px en
+     mobile), centrado a 16px / 12px desde el borde izquierdo. Cada Hito
+     pinta su dot encima del rail. */
   .timeline {
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
+    position: relative;
+    padding: 0 0 0 0;
+    display: flex;
+    flex-direction: column;
   }
+  .timeline.is-reversed { flex-direction: column-reverse; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: var(--color-border);
+    border-radius: 1px;
+  }
+  @media (max-width: 560px) {
+    .timeline::before { left: 12px; }
+  }
+
 
   .aviso--mostaza {
     background: var(--color-accent-secondary-soft);

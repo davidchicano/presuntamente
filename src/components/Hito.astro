@@ -1,12 +1,11 @@
 ---
 // Hito — fila de la timeline cronológica de la ficha de caso.
-// Markup canónico en preview/comp_hito.html. Estructura:
-//   [date-cell con CalGlyph]  [hito: badge tipo + ind hechos · título · desc]
-//
-// El badge de familia (jurisdiccional / político / mediático) usa la
-// familia F5 del sistema de badges (DESIGN.md §"Sistema de badges"):
-// fondo neutro + glyph monocromo. No comparte paleta con la fase (F4)
-// para evitar la colisión visual previa.
+// Layout: [rail+dot] [CalGlyph] [body].
+// El rail es una línea vertical 2px que conecta todos los dots de la
+// cronología; cada dot se colorea por `tipoFamilia` (navy jurisdiccional /
+// mostaza político / gris mediático) y se alinea con el badge de categoría.
+// El rail visual lo pinta el contenedor `.timeline` en PgCasoDetalle.astro
+// como `::before` absoluto; aquí cada item solo dibuja su dot.
 
 import CalGlyph from './CalGlyph.astro';
 import RichProse from './RichProse.astro';
@@ -44,16 +43,15 @@ const {
   excludePersonaIds,
 } = Astro.props;
 
-// Glyph rendering por subfamilia:
-//   - jurisdiccional → SVG balanza inline (mismo que aparato judicial)
-//   - politico       → ◆ U+25C6 (diamond) — bien cubierto en fuentes humanistas
-//   - mediatico      → ¶ U+00B6 (pilcrow) — idem
 const FAMILIA_GLYPH_CHAR: Record<Exclude<Props['tipoFamilia'], 'jurisdiccional'>, string> = {
   politico:  '◆',
   mediatico: '¶',
 };
 ---
-<div class="hito-item" id={id ? `hito-${id}` : undefined}>
+<div class:list={['hito-item', `hito-item--${tipoFamilia}`]} id={id ? `hito-${id}` : undefined}>
+  <div class="hito-item__rail" aria-hidden="true">
+    <span class="hito-item__dot"></span>
+  </div>
   <div class="hito-item__date">
     <CalGlyph fecha={fecha} precision={precision} />
   </div>
@@ -99,23 +97,49 @@ const FAMILIA_GLYPH_CHAR: Record<Exclude<Props['tipoFamilia'], 'jurisdiccional'>
 <style>
   .hito-item {
     display: grid;
-    grid-template-columns: 84px 1fr;
+    grid-template-columns: 32px 84px 1fr;
     gap: 0;
-    border-bottom: 1px solid var(--color-border);
+    padding: 14px 0 18px;
     align-items: stretch;
-    transition: background 160ms ease-out;
+
+    --dot-color: var(--color-border-strong);
   }
-  .hito-item:last-child { border-bottom: 0; }
-  .hito-item:hover { background: var(--color-bg-muted); }
+  .hito-item--jurisdiccional { --dot-color: var(--color-accent); }
+  .hito-item--politico       { --dot-color: var(--color-accent-secondary); }
+  .hito-item--mediatico      { --dot-color: var(--color-border-strong); }
+
+  .hito-item:first-child { padding-top: 4px; }
+  .hito-item:last-child  { padding-bottom: 4px; }
+
+  /* Rail column: centra el dot a la altura del badge de categoría. */
+  .hito-item__rail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 2px;
+  }
+  .hito-item__dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 3px solid var(--dot-color);
+    box-shadow: 0 0 0 3px var(--color-surface);
+    /* el box-shadow "tapa" el rail detrás del dot para que la línea
+       no se vea cruzarlo */
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
   .hito-item__date {
-    background: var(--color-surface-muted);
-    border-right: 1px solid var(--color-border);
-    padding: 14px 12px;
+    padding: 0 16px 0 12px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
   }
-  .hito-item__body { padding: 14px 16px; }
+  .hito-item__body { padding: 0 4px 0 0; min-width: 0; }
   .hito-item__head {
     display: flex;
     gap: 10px;
@@ -144,5 +168,21 @@ const FAMILIA_GLYPH_CHAR: Record<Exclude<Props['tipoFamilia'], 'jurisdiccional'>
     color: var(--color-accent);
     text-decoration: underline;
     text-underline-offset: 2px;
+  }
+
+  /* Mobile: la columna del rail se mantiene pero más estrecha. El
+     CalGlyph y el body siguen renderizando sin colisión gracias al
+     min-width:0 en __body. */
+  @media (max-width: 560px) {
+    .hito-item {
+      grid-template-columns: 24px 64px 1fr;
+      padding: 14px 0;
+    }
+    .hito-item__date { padding: 0 10px 0 8px; }
+    .hito-item__dot {
+      width: 12px;
+      height: 12px;
+      border-width: 2.5px;
+    }
   }
 </style>

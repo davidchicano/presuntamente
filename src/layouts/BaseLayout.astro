@@ -319,6 +319,80 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       __ensureRowLinkListener();
       document.addEventListener('astro:page-load', __ensureRowLinkListener);
 
+      // Toggle de orden integrado en SectionH (`orderToggle` prop). El
+      // botón `.sec-h__order` vive dentro del .sec-h; al pulsarlo se invierte
+      // el orden visual del PRÓXIMO hermano del .sec-h (típicamente la
+      // `.timeline`, pero el patrón es agnóstico al tipo de contenedor:
+      // basta con que el target defina su regla `.is-reversed { … }`).
+      // Sin re-render, sin tocar DOM — sólo flex-direction.
+      let __orderToggleAttached = false;
+      function __ensureOrderToggleListener() {
+        if (__orderToggleAttached) return;
+        __orderToggleAttached = true;
+        document.addEventListener('click', (e) => {
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          const btn = target.closest<HTMLButtonElement>('.sec-h__order');
+          if (!btn) return;
+          const secH = btn.closest<HTMLElement>('.sec-h');
+          const container = secH?.nextElementSibling as HTMLElement | null;
+          if (!container) return;
+          const wasAsc = btn.dataset.order === 'asc';
+          const label = btn.querySelector<HTMLElement>('.sec-h__order-label');
+          if (wasAsc) {
+            btn.dataset.order = 'desc';
+            btn.setAttribute('aria-pressed', 'false');
+            container.classList.remove('is-reversed');
+            if (label) label.textContent = 'Más reciente primero';
+          } else {
+            btn.dataset.order = 'asc';
+            btn.setAttribute('aria-pressed', 'true');
+            container.classList.add('is-reversed');
+            if (label) label.textContent = 'Más antiguo primero';
+          }
+        });
+      }
+      __ensureOrderToggleListener();
+      document.addEventListener('astro:page-load', __ensureOrderToggleListener);
+
+      // Click sobre un `.sec-h[id]` lleva al inicio natural de la sección.
+      // Cuando el header sticky está pegado al top del viewport (se scrolleó
+      // dentro de su sección), pulsarlo devuelve al usuario al arranque de
+      // la sección. Si la sección ya está en su posición natural (no stuck),
+      // el scrollTo no causa movimiento; coste cero.
+      // Detalle clave: `sec.offsetTop` devuelve la posición *perturbada* del
+      // sticky cuando está stuck (≈ scrollY), no la natural. La posición
+      // natural se obtiene del wrapper `[data-toc-section]` que el JS del
+      // PageToc envuelve alrededor de cada .sec-h + siblings al cargar la
+      // página. Si el wrapper no existe todavía (página con <2 .sec-h, o
+      // listener de PageToc aún no corrido), fallback al `offsetTop` del
+      // sec-h restando scrollY (ajuste cuando está stuck).
+      // Skip si: hay selección de texto, el click salió de un descendiente
+      // interactivo, o se pulsa con modificador (Cmd/Ctrl/Shift/Alt).
+      let __secHAttached = false;
+      function __ensureSecHListener() {
+        if (__secHAttached) return;
+        __secHAttached = true;
+        document.addEventListener('click', (e) => {
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          if (target.closest('a, button, input, select, textarea, label, summary, [role="button"]')) return;
+          const sec = target.closest<HTMLElement>('.main .sec-h[id]');
+          if (!sec) return;
+          if (e instanceof MouseEvent && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) return;
+          const sel = window.getSelection();
+          if (sel && sel.toString().length > 0) return;
+          const wrapper = sec.closest<HTMLElement>('[data-toc-section]');
+          const naturalTop = wrapper
+            ? wrapper.offsetTop
+            : sec.getBoundingClientRect().top + window.scrollY;
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: naturalTop, behavior: prefersReduced ? 'auto' : 'smooth' });
+        });
+      }
+      __ensureSecHListener();
+      document.addEventListener('astro:page-load', __ensureSecHListener);
+
       // Índice de página (PageToc) — escanea los .sec-h[id] del <main>,
       // construye la lista, activa el scrollspy con IntersectionObserver y
       // gestiona el FAB en móvil. Se reejecuta en cada navegación porque

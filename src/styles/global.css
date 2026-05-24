@@ -1055,6 +1055,13 @@ body.has-menu-open { overflow: hidden; }
  * ========================================================================= */
 .sec-h {
   display: flex; align-items: baseline; gap: var(--space-3);
+  /* Wrap defensivo cuando los hijos (num + título + right + toggle de
+   * orden) no caben en una sola fila. Aplica sobre todo a viewports
+   * estrechos: el toggle, si lleva etiqueta visible, baja a una segunda
+   * fila en lugar de desbordar el header. Row-gap mantiene un respiro
+   * vertical cuando ocurre el wrap. */
+  flex-wrap: wrap;
+  row-gap: 6px;
   padding: var(--space-2) var(--space-3);
   border-top: 2px solid var(--color-accent);
   border-bottom: 1px solid var(--color-border);
@@ -1070,6 +1077,14 @@ body.has-menu-open { overflow: hidden; }
   z-index: 5;
   scroll-margin-top: var(--space-2);
 }
+/* Cuando el .sec-h tiene `id` (toda sección numerada de las fichas Pg*),
+ * un click sobre el header devuelve al usuario al inicio de la sección.
+ * Útil porque el header sticky permanece a la vista mientras se scrollea
+ * dentro de la sección — ofrecer un click-to-top sobre él es affordance
+ * natural. La lógica está en BaseLayout (event-delegation desde document).
+ * El cambio de cursor es la única señal visual; el subrayado u otra
+ * decoración añadirían ruido. */
+.sec-h[id] { cursor: pointer; }
 .sec-h .num {
   font-family: var(--font-mono);
   font-size: var(--font-size-1);
@@ -1082,6 +1097,51 @@ body.has-menu-open { overflow: hidden; }
   letter-spacing: -0.005em;
   color: var(--color-fg);
 }
+.sec-h__order {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: var(--space-3);
+  padding: 4px 10px 4px 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-fg-muted);
+  font: 600 11px/1 var(--font-sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 140ms ease-out, color 140ms ease-out, border-color 140ms ease-out;
+  align-self: center;
+}
+/* Si el .sec-h NO trae `.right` (count), el toggle se empuja al extremo
+ * derecho con margin-left:auto; cuando sí trae `.right`, se alinea junto
+ * a él con margin-left de var(--space-3). */
+.sec-h:not(:has(.right)) .sec-h__order { margin-left: auto; }
+.sec-h__order:hover,
+.sec-h__order:focus-visible {
+  background: var(--color-accent-secondary-soft);
+  border-color: var(--color-accent-secondary-border);
+  color: var(--color-fg);
+  outline: none;
+}
+.sec-h__order-icon {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-accent);
+}
+.sec-h__order[data-order="asc"] .sec-h__order-icon { color: var(--color-accent-secondary); }
+.sec-h__order-label { white-space: nowrap; }
+
+/* En viewports estrechos el toggle se reduce a icono. La aria-label del
+ * botón sigue siendo "Invertir orden cronológico" así que lectores de
+ * pantalla mantienen el contexto; un usuario táctil descubre el
+ * comportamiento al pulsar (el orden cambia visiblemente). */
+@media (max-width: 560px) {
+  .sec-h__order { padding: 5px 8px; gap: 0; }
+  .sec-h__order-label { display: none; }
+  .sec-h__order-icon { font-size: 15px; }
+}
+
 .sec-h .right {
   margin-left: auto;
   font-size: var(--font-size-1);
@@ -1762,29 +1822,10 @@ kbd.cite .n { font-weight: 700; }
 }
 
 /* =========================================================================
- * Cronología
+ * Cronología — el rendering vive en Hito.astro + .timeline scoped en
+ * PgCasoDetalle.astro. Reglas globales de timeline anteriores eliminadas
+ * tras el rediseño visual a rail + dots (sin caja, sin filas tabulares).
  * ========================================================================= */
-.timeline {
-  display: flex; flex-direction: column; gap: 0;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-}
-.timeline__item {
-  display: grid;
-  grid-template-columns: 84px 1fr;
-  gap: 0;
-  border-bottom: 1px solid var(--color-border);
-  align-items: stretch;
-}
-.timeline__item:last-child { border-bottom: 0; }
-.timeline__date {
-  background: var(--color-surface-muted);
-  padding: var(--space-3);
-  border-right: 1px solid var(--color-border);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
 
 .cal-glyph {
   width: 56px;
