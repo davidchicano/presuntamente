@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // presuntamente — configuración Astro
 // Decisiones de arquitectura: ver docs/diseno/05-arquitectura-tecnica.md
@@ -12,4 +13,7 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  integrations: [
+    sitemap(),
+  ],
 });

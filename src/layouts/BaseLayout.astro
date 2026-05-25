@@ -114,8 +114,10 @@ const brandSub = 'Inventario público de casos de corrupción en España';
     <title>{title} · presuntamente</title>
     <meta name="description" content={ogDescription} />
 
-    <link rel="icon" type="image/png" href="/branding/logo.png" />
-    <link rel="apple-touch-icon" href="/branding/logo.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <link rel="canonical" href={canonicalUrl} />
 
@@ -147,6 +149,14 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     />
     <ClientRouter fallback="animate" />
+
+    {import.meta.env.CF_ANALYTICS_TOKEN && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={`{"token":"${import.meta.env.CF_ANALYTICS_TOKEN}"}`}
+      ></script>
+    )}
   </head>
   <body class="page">
     <a href="#main" class="skip">Saltar al contenido</a>

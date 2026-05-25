@@ -1,0 +1,106 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import type { Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; }
+const { lang = 'es' } = Astro.props;
+---
+
+<BaseLayout
+  title="Página no encontrada"
+  lang={lang}
+  description="La página que buscas no existe o ha cambiado de dirección."
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'Página no encontrada' },
+  ]}
+>
+  <div class="pg404">
+    <div class="pg404__inner">
+      <p class="pg404__code" aria-hidden="true">404</p>
+      <h1 class="pg404__title">Página no encontrada</h1>
+      <p class="pg404__body">
+        La dirección que has solicitado no existe en este inventario o ha cambiado de ubicación.
+      </p>
+      <div class="pg404__actions">
+        <a href={lang === 'ca' ? '/cat' : '/'} class="btn-primary">Ir a la portada</a>
+        <a href={lang === 'ca' ? '/cat/casos' : '/casos'} class="btn-ghost">Ver los casos</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .pg404 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .pg404__inner {
+    max-width: 480px;
+    text-align: center;
+  }
+
+  .pg404__code {
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--color-accent-primary);
+    opacity: 0.15;
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-mono);
+    letter-spacing: -0.04em;
+  }
+
+  .pg404__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-fg);
+    margin: 0 0 var(--space-3);
+  }
+
+  .pg404__body {
+    color: var(--color-fg-muted);
+    line-height: 1.6;
+    margin: 0 0 var(--space-6);
+  }
+
+  .pg404__actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.6em 1.4em;
+    background: var(--color-accent-primary);
+    color: var(--color-surface);
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: opacity 150ms ease;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-ghost {
+    display: inline-block;
+    padding: 0.6em 1.4em;
+    border: 1.5px solid var(--color-border);
+    color: var(--color-fg);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: border-color 150ms ease, color 150ms ease;
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
+  }
+</style>
