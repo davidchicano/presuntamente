@@ -64,17 +64,40 @@ const ogDescription = (() => {
   return flat.slice(0, 219).trimEnd() + '…';
 })();
 
-// TODO i18n: cuando se active el catalán, traducir nav y subtítulo institucional.
+// TODO i18n: cuando se active el catalán, traducir nav, grupos y subtítulo institucional.
 // Convención ministerial: el brand block del header es el ancla a "/"
 // (la landing PgInicio). El nav lista SECCIONES, no incluye "Inicio".
-const tabs: { key: NavKey; label: string; href: string }[] = [
-  { key: 'casos',          label: 'Casos',          href: lang === 'ca' ? '/cat/casos'          : '/casos' },
-  { key: 'personas',       label: 'Personas',       href: lang === 'ca' ? '/cat/personas'       : '/personas' },
-  { key: 'organizaciones', label: 'Organizaciones', href: lang === 'ca' ? '/cat/organizaciones' : '/organizaciones' },
-  { key: 'delitos',        label: 'Delitos',        href: lang === 'ca' ? '/cat/delitos'        : '/delitos' },
-  { key: 'biblioteca',     label: 'Biblioteca',     href: lang === 'ca' ? '/cat/biblioteca'     : '/biblioteca' },
-  { key: 'cifras',         label: 'Cifras',         href: lang === 'ca' ? '/cat/cifras'         : '/cifras' },
-  { key: 'sobre',          label: 'Sobre',          href: lang === 'ca' ? '/cat/sobre'          : '/sobre' },
+// Agrupación IA: núcleo · entidades · referencia (incl. Sobre). Tres clusters
+// en desktop evitan que Sobre quede como grupo huérfano al hacer wrap.
+// Ver docs/web/features/navegacion-principal.md.
+interface NavTab { key: NavKey; label: string; href: string }
+interface NavGroup { id: string; heading?: string; items: NavTab[] }
+
+const navGroups: NavGroup[] = [
+  {
+    id: 'core',
+    items: [
+      { key: 'casos', label: 'Casos', href: lang === 'ca' ? '/cat/casos' : '/casos' },
+    ],
+  },
+  {
+    id: 'inventario',
+    heading: 'Inventario',
+    items: [
+      { key: 'personas',       label: 'Personas',       href: lang === 'ca' ? '/cat/personas'       : '/personas' },
+      { key: 'organizaciones', label: 'Organizaciones', href: lang === 'ca' ? '/cat/organizaciones' : '/organizaciones' },
+      { key: 'delitos',        label: 'Delitos',        href: lang === 'ca' ? '/cat/delitos'        : '/delitos' },
+    ],
+  },
+  {
+    id: 'referencia',
+    heading: 'Referencia',
+    items: [
+      { key: 'biblioteca', label: 'Biblioteca', href: lang === 'ca' ? '/cat/biblioteca' : '/biblioteca' },
+      { key: 'cifras',     label: 'Cifras',     href: lang === 'ca' ? '/cat/cifras'     : '/cifras' },
+      { key: 'sobre',      label: 'Sobre',      href: lang === 'ca' ? '/cat/sobre'      : '/sobre' },
+    ],
+  },
 ];
 
 const buildTime = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
@@ -134,10 +157,14 @@ const brandSub = 'Inventario público de casos de corrupción en España';
           <PresuntamenteLogo variant="wordmark+isotipo" sub={brandSub} />
         </a>
         <nav class="site-nav" aria-label="Principal">
-          {tabs.map((t) => (
-            <a href={t.href} class:list={[activeNav === t.key && 'is-active']}>
-              <span class="site-nav__label">{t.label}</span>
-            </a>
+          {navGroups.map((group) => (
+            <div class="site-nav__group" data-nav-group={group.id}>
+              {group.items.map((t) => (
+                <a href={t.href} class:list={[activeNav === t.key && 'is-active']}>
+                  <span class="site-nav__label">{t.label}</span>
+                </a>
+              ))}
+            </div>
           ))}
         </nav>
         <a class="site-search" href={lang === 'ca' ? '/cat/buscar' : '/buscar'} aria-label="Buscar">
@@ -205,20 +232,27 @@ const brandSub = 'Inventario público de casos de corrupción en España';
         aria-hidden="true"
       >
         <nav class="site-menu-panel__nav" aria-label="Principal (menú móvil)">
-          {tabs.map((t) => (
-            <a
-              href={t.href}
-              class:list={['site-menu-panel__link', activeNav === t.key && 'is-active']}
-            >
-              {t.label}
-            </a>
+          {navGroups.map((group) => (
+            <div class="site-menu-panel__group" data-nav-group={group.id}>
+              {group.heading && (
+                <p class="site-menu-panel__heading">{group.heading}</p>
+              )}
+              {group.items.map((t) => (
+                <a
+                  href={t.href}
+                  class:list={['site-menu-panel__link', activeNav === t.key && 'is-active']}
+                >
+                  {t.label}
+                </a>
+              ))}
+            </div>
           ))}
         </nav>
         <a
           class="site-menu-panel__aportar"
           href={lang === 'ca' ? '/cat/aportar' : '/aportar'}
         >
-          <span>Aportar al inventario</span>
+          <span>Aportar</span>
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
