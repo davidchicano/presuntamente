@@ -147,11 +147,43 @@ const brandSub = 'Inventario público de casos de corrupción en España';
           </svg>
           <span>Buscar</span>
         </a>
-        <div class="site-lang" aria-label="Idioma">
-          <a href="/" class:list={[lang === 'es' && 'is-on']} lang="es">ES</a>
-          <span class="sep">/</span>
-          <a href="/cat" class:list={[lang === 'ca' && 'is-on']} lang="ca">CAT</a>
+        <div class="site-lang-wrap">
+          <button
+            type="button"
+            class="site-lang-btn"
+            aria-controls="site-lang-panel"
+            aria-expanded="false"
+            aria-haspopup="menu"
+            aria-label="Cambiar idioma"
+          >
+            <span class="site-lang-btn__current">{lang === 'ca' ? 'CAT' : 'ES'}</span>
+            <svg class="site-lang-btn__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div
+            id="site-lang-panel"
+            class="site-lang-panel"
+            role="menu"
+            data-open="false"
+            aria-hidden="true"
+          >
+            <a href="/" class:list={[lang === 'es' && 'is-on']} lang="es" role="menuitem">
+              <span class="site-lang-panel__code">ES</span>
+              <span class="site-lang-panel__name">Castellano</span>
+            </a>
+            <a href="/cat" class:list={[lang === 'ca' && 'is-on']} lang="ca" role="menuitem">
+              <span class="site-lang-panel__code">CAT</span>
+              <span class="site-lang-panel__name">Català</span>
+            </a>
+          </div>
         </div>
+        <a class="site-aportar" href={lang === 'ca' ? '/cat/aportar' : '/aportar'}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          <span>Aportar</span>
+        </a>
         <button
           type="button"
           class="site-menu-btn"
@@ -185,6 +217,15 @@ const brandSub = 'Inventario público de casos de corrupción en España';
             </a>
           ))}
         </nav>
+        <a
+          class="site-menu-panel__aportar"
+          href={lang === 'ca' ? '/cat/aportar' : '/aportar'}
+        >
+          <span>Aportar al inventario</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
         <div class="site-menu-panel__lang" aria-label="Idioma">
           <a href="/" class:list={[lang === 'es' && 'is-on']} lang="es">ES</a>
           <span class="sep">/</span>
@@ -227,39 +268,70 @@ const brandSub = 'Inventario público de casos de corrupción en España';
         if (__menuListenersAttached) return;
         __menuListenersAttached = true;
 
+        // Selector unificado: hamburguesa del header móvil (.site-menu-btn) y
+        // dropdown del idioma (.site-lang-btn) comparten contrato (aria-controls
+        // → panel con data-open). El handler reusa el mismo listener para no
+        // duplicar lógica de click-fuera / ESC / before-preparation.
+        const TRIGGER_SEL = '.site-menu-btn, .site-lang-btn';
+        const PANEL_LINK_SEL = '.site-menu-panel a, .site-lang-panel a';
+
+        const isMenuBtn = (btn: Element) => btn.classList.contains('site-menu-btn');
         const setOpen = (btn: Element, open: boolean) => {
+          if (open) {
+            // Solo un trigger abierto a la vez: cierra los demás antes de abrir éste.
+            document.querySelectorAll(TRIGGER_SEL).forEach((other) => {
+              if (other !== btn && other.getAttribute('aria-expanded') === 'true') {
+                setOpen(other, false);
+              }
+            });
+          }
           btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+          if (isMenuBtn(btn)) {
+            // El a11y label del hamburguesa cambia ("Abrir menú" / "Cerrar menú");
+            // el botón de idioma mantiene su label fijo ("Cambiar idioma").
+            btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+          }
           const panel = document.getElementById(btn.getAttribute('aria-controls') ?? '');
           if (panel) {
             panel.dataset.open = open ? 'true' : 'false';
             panel.setAttribute('aria-hidden', open ? 'false' : 'true');
           }
-          document.body?.classList.toggle('has-menu-open', open);
+          // Bloqueo de scroll solo cuando el panel grande está abierto; el
+          // dropdown del idioma no debe bloquear scroll.
+          if (isMenuBtn(btn)) {
+            document.body?.classList.toggle('has-menu-open', open);
+          }
         };
         const closeAny = () => {
-          document.querySelectorAll('.site-menu-btn[aria-expanded="true"]').forEach((btn) => setOpen(btn, false));
+          document.querySelectorAll(TRIGGER_SEL).forEach((btn) => {
+            if (btn.getAttribute('aria-expanded') === 'true') setOpen(btn, false);
+          });
         };
 
         document.addEventListener('click', (e) => {
           const target = e.target;
           if (!(target instanceof Element)) return;
-          const btn = target.closest('.site-menu-btn');
+          const btn = target.closest(TRIGGER_SEL);
           if (btn) {
             setOpen(btn, btn.getAttribute('aria-expanded') !== 'true');
             return;
           }
-          // Click en un link del panel: dejar que navegue + cerrar inmediatamente
+          // Click en un link de cualquier panel: dejar que navegue + cerrar inmediatamente
           // (la transición de ClientRouter también dispara close vía before-preparation).
-          if (target.closest('.site-menu-panel a')) {
+          if (target.closest(PANEL_LINK_SEL)) {
             closeAny();
             return;
           }
-          // Click fuera del panel y fuera del botón → cerrar.
-          const openBtn = document.querySelector('.site-menu-btn[aria-expanded="true"]');
-          if (!openBtn) return;
-          const panel = document.getElementById(openBtn.getAttribute('aria-controls') ?? '');
-          if (panel && !panel.contains(target)) closeAny();
+          // Click fuera de cualquier panel y de su trigger → cerrar.
+          const openBtns = document.querySelectorAll(`${TRIGGER_SEL.split(', ').map((s) => `${s}[aria-expanded="true"]`).join(', ')}`);
+          if (openBtns.length === 0) return;
+          let shouldClose = true;
+          openBtns.forEach((openBtn) => {
+            const panel = document.getElementById(openBtn.getAttribute('aria-controls') ?? '');
+            if (panel && panel.contains(target)) shouldClose = false;
+            if (openBtn.contains(target)) shouldClose = false;
+          });
+          if (shouldClose) closeAny();
         });
 
         document.addEventListener('keydown', (e) => {
@@ -644,9 +716,10 @@ const brandSub = 'Inventario público de casos de corrupción en España';
           <a href="https://github.com/davidchicano/presuntamente">Repositorio público</a>
         </div>
         <div>
-          <h6>Rectificación</h6>
-          <a href="/rectificar">Proponer corrección ↗</a>
-          <a href="https://github.com/davidchicano/presuntamente/issues">Abrir issue</a>
+          <h6>Aportar y rectificar</h6>
+          <a href="/aportar">Aportar al inventario ↗</a>
+          <a href="/rectificar">Proponer rectificación ↗</a>
+          <a href="https://github.com/davidchicano/presuntamente/issues">Abrir issue en GitHub</a>
           <a href="https://github.com/davidchicano/presuntamente/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>
         </div>
         <div>

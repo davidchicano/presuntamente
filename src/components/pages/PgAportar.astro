@@ -1,0 +1,352 @@
+---
+// PgAportar — instrucciones operativas para aportar al inventario.
+// Cauce editorial separado del derecho de rectificación (que vive en
+// PgRectificar). Texto derivado de docs/diseno/04-riesgos-legales-y-eticos.md
+// §6bis. Email aportar@presuntamente.org operativo desde 2026-05-25 vía
+// Cloudflare Email Routing.
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionH from '@/components/SectionH.astro';
+import type { Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; }
+const { lang = 'es' } = Astro.props;
+
+const strings = {
+  title: 'Aportar al inventario',
+  description:
+    'Cómo aportar fuentes, correcciones fácticas o ideas al inventario presuntamente.org. Cauce editorial distinto del derecho de rectificación: para terceros con conocimiento útil del caso. Por defecto anónimo, plazos 5 / 30 días hábiles.',
+  eyebrow: 'Aportación editorial',
+  sub:
+    'Si tienes mejor acceso a fuentes o mejor conocimiento de un caso que nosotros, puedes ' +
+    'aportar al inventario sin saber git ni exponerte en un issue público. Este cauce es distinto ' +
+    'del de rectificación: no necesitas considerarte aludido, basta con que detectes algo que ' +
+    'falta o que está mal.',
+};
+
+const repoUrl = 'https://github.com/davidchicano/presuntamente';
+const issueSugerirUrl = `${repoUrl}/issues/new?template=sugerencia-fuente.yml`;
+const rectificarHref = lang === 'ca' ? '/cat/rectificar' : '/rectificar';
+---
+
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'Aportar' },
+  ]}
+>
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.title}</h1>
+      <p class="page-id__sub">{strings.sub}</p>
+    </div>
+    <div class="page-id__meta">
+      <span>Sin marco legal específico</span>
+      <span>·</span>
+      <span>Compromiso: 30 días hábiles</span>
+    </div>
+  </section>
+
+  <SectionH num="1." title="Qué puedes aportar" id="que" />
+  <ul class="carriles">
+    <li>
+      <h3>Pista a fuente o hito que falta</h3>
+      <p>
+        Sentencia publicada en CENDOJ, auto judicial relevante, disposición del BOE,
+        informe institucional (UCO, UDEF, Tribunal de Cuentas, AIReF), nota oficial del CGPJ o
+        Fiscalía, cobertura periodística cruzada de una línea editorial no representada.
+      </p>
+      <p class="meta">
+        <strong>Qué pedimos</strong>: URL canónica del documento o del evento procesal, fecha,
+        órgano, una línea sobre qué hecho introduce o modifica.
+      </p>
+    </li>
+    <li>
+      <h3>Corrección fáctica menor</h3>
+      <p>
+        Errata, fecha equivocada, órgano mal asignado, segundo apellido incorrecto, link roto a
+        fuente oficial, atribución de delito que no encaja con el auto, designación de juez o
+        fiscal desactualizada. No es rectificación legal: no hay aludido defendiéndose; es alguien
+        externo que detecta un error neutro.
+      </p>
+      <p class="meta">
+        <strong>Qué pedimos</strong>: URL de la ficha o sección afectada, qué dice ahora, qué
+        debería decir y por qué (fuente que lo respalda).
+      </p>
+    </li>
+    <li>
+      <h3>Idea o sugerencia sobre el sitio</h3>
+      <p>
+        Feature deseada, mejora de UX, observación editorial general, fuente que vale la pena
+        vigilar en el futuro, caso que crees que debería entrar en el inventario.
+      </p>
+      <p class="meta">
+        <strong>Qué pedimos</strong>: descripción breve y honesta. No hace falta que esté
+        priorizado ni argumentado: lo valoramos editorialmente.
+      </p>
+    </li>
+  </ul>
+
+  <SectionH num="2." title="Vías habilitadas" id="vias" />
+  <ul class="vias">
+    <li>
+      <h3>Correo electrónico <span class="vias__rec">recomendado</span></h3>
+      <p>
+        Envía la pista, corrección o idea a <code>aportar@presuntamente.org</code> (operativo
+        desde el 25 de mayo de 2026 vía Cloudflare Email Routing, reenviado al maintainer). Es
+        la vía más privada: no queda registro público hasta que el aporte se incorpore al
+        inventario.
+      </p>
+      <p>
+        <a class="btn btn--primary" href="mailto:aportar@presuntamente.org?subject=Aporte%20al%20inventario">
+          Escribir a aportar@presuntamente.org ↗
+        </a>
+      </p>
+    </li>
+    <li>
+      <h3>Issue público en GitHub</h3>
+      <p>
+        Si ya operas en GitHub y prefieres la transparencia de un issue público, usa el template
+        <code>sugerencia-fuente</code>. El issue queda visible en el repositorio.
+      </p>
+      <p>
+        <a class="btn" href={issueSugerirUrl} target="_blank" rel="noopener">
+          Abrir issue de sugerencia ↗
+        </a>
+      </p>
+    </li>
+    <li>
+      <h3>Vía postal</h3>
+      <p>
+        Cuando esté operativo el apartado de correos del responsable (gestión en curso a efectos
+        LSSI), la dirección postal se publicará en el aviso legal como alternativa para aportes
+        formales con copias certificadas o documentos físicos. Mientras tanto las vías
+        electrónicas son suficientes.
+      </p>
+    </li>
+  </ul>
+
+  <SectionH num="3." title="Plazos comprometidos" id="plazos" />
+  <div class="tbl-scroll">
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th style="width: 40%;">Hito</th>
+        <th style="width: 30%;">Plazo</th>
+        <th>Compromiso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Acuse de recibo</td>
+        <td class="c-mono">5 días hábiles</td>
+        <td>Confirmación de recepción y de qué carril editorial cubre tu aporte.</td>
+      </tr>
+      <tr>
+        <td>Resolución</td>
+        <td class="c-mono">30 días hábiles</td>
+        <td>Investigación, verificación contra fuentes públicas e incorporación al inventario si procede.</td>
+      </tr>
+      <tr>
+        <td>Respuesta motivada si no procede</td>
+        <td class="c-mono">30 días hábiles</td>
+        <td>Si el aporte no encaja con los criterios del inventario, respondemos explicando por qué.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <SectionH num="4." title="Qué no aceptamos depositar" id="no" />
+  <div class="prose">
+    <p>
+      El inventario <strong>solo cita fuentes públicas verificables</strong>. Tu aporte tiene
+      valor editorial en tanto nos ayuda a localizar y citar la fuente pública, no como fuente en
+      sí mismo. Esto desactiva el riesgo de convertirnos en depositarios de material restringido
+      y mantiene el rigor de los niveles de fuente N1-N4 del modelo.
+    </p>
+    <p>No podemos aceptar:</p>
+    <ul class="no-list">
+      <li>Documentos sometidos a <strong>secreto de sumario</strong> (art. 301 LECrim).</li>
+      <li>Escritos de parte <strong>no notificados a terceros</strong> (art. 234 LOPJ).</li>
+      <li>
+        <strong>Información personal de terceros no investigados</strong> en el procedimiento
+        (familiares, asesores externos sin rol formal, testigos no nombrados públicamente).
+      </li>
+      <li>
+        Documentos procedentes de <strong>mirrors no auditables</strong> (Wuolah, Scribd, blogs
+        personales sin cadena de custodia firmada) — sin procedencia verificable no podemos
+        archivar la copia.
+      </li>
+      <li>
+        Material <strong>doxxing</strong>, denuncias falsas, o contenido cuyo único propósito sea
+        perjudicar a una persona o partido específicos sin valor procesal verificable.
+      </li>
+    </ul>
+    <p>
+      <strong>Caso excepcional</strong>: cuando un primario debería existir pero no está
+      accesible aún (típicamente sentencia íntegra del Tribunal Supremo antes de CENDOJ), una
+      pista del aportante con copia que dice ser fiel <strong>no se publica como PDF</strong>,
+      pero la pista entra como señal interna y el agente la trata como Nivel 3
+      <code>filtrado_verificado</code> con triangulación; cuando aparezca el primario se eleva a
+      Nivel 1 conservando hash histórico. Mecanismo previsto en
+      <code>AGENTS.md</code> §"Documentos primarios descargados".
+    </p>
+  </div>
+
+  <SectionH num="5." title="Privacidad y acreditación" id="privacidad" />
+  <div class="prose">
+    <p>
+      <strong>Por defecto tu aporte es anónimo.</strong> El commit que incorpore tu pista al
+      inventario cita la fuente pública verificada, no a ti. Esta es la postura natural por dos
+      razones: protege a aportantes con vínculos institucionales sensibles (funcionarios,
+      periodistas que no quieren quemar fuentes) y refuerza el principio editorial de que las
+      afirmaciones se sostienen en sus documentos públicos.
+    </p>
+    <p>
+      <strong>Si quieres ser acreditado</strong>, dilo explícitamente en el correo y nos pondremos
+      de acuerdo en cómo aparece tu autoría. El commit llevará un trailer convencional:
+    </p>
+    <pre class="trailer">Aporte-externo: &lt;nombre o medio, según autorización&gt;</pre>
+    <p>
+      Nunca acreditamos a un aportante sin consentimiento documentado. Tampoco mencionamos
+      direcciones de email, datos de contacto u otra información identificativa más allá de lo
+      que tú autorices por escrito.
+    </p>
+    <p>
+      <strong>Tratamiento de tus datos</strong>: base jurídica art. 6.1.f RGPD (interés
+      legítimo). Extraemos el contenido editorial del correo a un fichero interno
+      (<code>content/aportes/YYYY-MM-DD-slug.md</code>, excluido del build público); los headers
+      identificativos del email (remitente, IP, metadatos del cliente) no se versionan y se
+      eliminan al cerrar el aporte. Puedes solicitar supresión de los datos asociados en
+      cualquier momento (art. 17 RGPD) sin afectar al diff editorial ya commiteado.
+    </p>
+  </div>
+
+  <SectionH num="6." title="Otra puerta: rectificación" id="rectificar" />
+  <div class="prose">
+    <p>
+      <strong>¿Te consideras aludido por una afirmación publicada y discrepas?</strong> El cauce
+      es distinto: es el derecho de rectificación de la
+      <abbr title="Ley Orgánica 2/1984 reguladora del derecho de rectificación">LO 2/1984</abbr>,
+      con plazos legales más cortos (acuse 48 horas, resolución 7 días) y procedimiento formal.
+    </p>
+    <p>
+      <a class="btn" href={rectificarHref}>
+        Ir a /rectificar →
+      </a>
+    </p>
+  </div>
+
+  <div class="aviso aviso--accent mt-6">
+    El procedimiento de aportación es el mismo independientemente del cargo o relevancia del
+    aportante. Los aportes se atienden por orden de entrada con prioridad a los que apuntan a
+    una fuente oficial firme o resuelven un error en un caso vivo. Más detalle editorial-legal
+    en
+    <code>docs/diseno/04-riesgos-legales-y-eticos.md</code> §6bis.
+  </div>
+</BaseLayout>
+
+<style>
+  .carriles {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .carriles > li {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .carriles > li:last-child { border-bottom: 0; }
+  .carriles h3 {
+    font: 700 var(--font-size-3)/1.2 var(--font-sans);
+    margin: 0 0 8px;
+  }
+  .carriles p {
+    margin: 0 0 6px;
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .carriles p:last-child { margin-bottom: 0; }
+  .carriles p.meta {
+    color: var(--color-fg-muted);
+    font-size: 12px;
+  }
+
+  .vias {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .vias > li {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .vias > li:last-child { border-bottom: 0; }
+  .vias h3 {
+    font: 700 var(--font-size-3)/1.2 var(--font-sans);
+    margin: 0 0 8px;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .vias__rec {
+    display: inline-flex;
+    padding: 1px 6px;
+    border: 1px solid var(--color-accent-secondary-border);
+    background: var(--color-accent-secondary-soft);
+    color: #6b4d00;
+    font: 700 10px/1.5 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .vias p {
+    margin: 0 0 8px;
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .vias p:last-child { margin-bottom: 0; }
+
+  .no-list {
+    margin: 0 0 var(--space-4);
+    padding-left: 22px;
+  }
+  .no-list li {
+    margin: 8px 0;
+    line-height: 1.55;
+    color: var(--color-fg);
+  }
+
+  .trailer {
+    font-family: var(--font-mono);
+    background: var(--color-surface-muted);
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    font-size: 12px;
+    margin: 0 0 var(--space-3);
+    white-space: pre-wrap;
+  }
+
+  .prose code {
+    font-family: var(--font-mono);
+    background: var(--color-surface-muted);
+    padding: 1px 4px;
+    border: 1px solid var(--color-border);
+    font-size: 0.9em;
+  }
+
+  abbr[title] {
+    text-decoration: underline dotted;
+    cursor: help;
+  }
+</style>

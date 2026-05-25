@@ -19,7 +19,7 @@ Si tienes mejor acceso a fuentes o mejor conocimiento de un caso que el equipo d
 - **Corrección fáctica menor**: errata, fecha equivocada, órgano mal asignado, segundo apellido incorrecto, link roto, atribución de delito que no encaja con el auto.
 - **Idea o sugerencia sobre el sitio**: feature deseada, mejora de UX, observación editorial general.
 
-**Cauce principal**: correo a `aportar@presuntamente.org` (Cloudflare Email Routing, reenviado al maintainer; pendiente de activar la dirección). Por defecto el aporte es **anónimo**: el commit que incorpore tu pista cita la fuente verificada, no a ti. Si quieres ser acreditado, pídelo explícitamente en el correo y se añadirá un trailer `Aporte-externo: <nombre o medio>` al commit.
+**Cauce principal**: correo a `aportar@presuntamente.org` (operativo desde el 25 de mayo de 2026 vía Cloudflare Email Routing, reenviado al maintainer). Por defecto el aporte es **anónimo**: el commit que incorpore tu pista cita la fuente verificada, no a ti. Si quieres ser acreditado, pídelo explícitamente en el correo y se añadirá un trailer `Aporte-externo: <nombre o medio>` al commit.
 
 **Alternativa para usuarios de GitHub**: issue con etiqueta `sugerencia-fuente` (template en [`.github/ISSUE_TEMPLATE/sugerencia-fuente.yml`](.github/ISSUE_TEMPLATE/sugerencia-fuente.yml)). El issue es público; si necesitas privacidad, usa el correo.
 

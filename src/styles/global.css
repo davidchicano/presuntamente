@@ -675,6 +675,172 @@ li { margin: var(--space-1) 0; }
 .site-lang a.is-on::after { transform: scaleX(1); }
 .site-lang .sep { color: rgba(255, 255, 255, 0.25); }
 
+/* =========================================================================
+ * Selector de idioma como dropdown (.site-lang-wrap + .site-lang-btn + .site-lang-panel)
+ *
+ * Sustituye al par horizontal ES | CAT del header (clase legacy .site-lang
+ * conservada por si algún Pg* la usara — el BaseLayout ya no la emite). El
+ * trigger comparte contrato con .site-menu-btn (aria-controls + aria-expanded
+ * + data-open en el panel) para reusar el listener global de menú.
+ * ========================================================================= */
+.site-lang-wrap {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+.site-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.65);
+  font: 700 11px/1 var(--font-sans);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: stretch;
+  transition: color var(--motion-duration) var(--motion-ease),
+              background var(--motion-duration) var(--motion-ease);
+}
+.site-lang-btn:hover,
+.site-lang-btn[aria-expanded="true"] {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+.site-lang-btn:focus-visible {
+  outline: 2px solid var(--color-accent-secondary);
+  outline-offset: -2px;
+}
+.site-lang-btn__chev {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 180ms ease;
+}
+.site-lang-btn[aria-expanded="true"] .site-lang-btn__chev {
+  transform: rotate(180deg);
+}
+.site-lang-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 200px;
+  margin-top: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent-secondary);
+  box-shadow: 0 6px 20px rgba(15, 30, 60, 0.10);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    visibility 0s linear 160ms;
+}
+.site-lang-panel[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    visibility 0s linear 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-lang-btn__chev,
+  .site-lang-panel,
+  .site-lang-panel[data-open="true"] {
+    transition: none;
+  }
+}
+.site-lang-panel a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 14px;
+  color: var(--color-fg);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--motion-duration) var(--motion-ease);
+}
+.site-lang-panel a:last-child { border-bottom: 0; }
+.site-lang-panel a:hover,
+.site-lang-panel a:focus-visible {
+  background: var(--color-surface-muted);
+  outline: 0;
+}
+.site-lang-panel a.is-on {
+  background: var(--color-surface-muted);
+  box-shadow: inset 3px 0 0 var(--color-accent-secondary);
+}
+.site-lang-panel__code {
+  font: 700 11px/1 var(--font-sans);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  min-width: 28px;
+}
+.site-lang-panel__name {
+  font: 500 13px/1.3 var(--font-sans);
+  color: var(--color-fg);
+}
+
+/* =========================================================================
+ * Botón CTA "Aportar" en el header (.site-aportar)
+ *
+ * CTA editorial visible junto al selector de idioma. Mostaza claro sobre el
+ * header navy para destacar como acción primaria sin caer en banner ruidoso.
+ * Coherente con el accent secundario del proyecto (mostaza institucional)
+ * usado también en .vias__rec y en el flash :target.
+ * ========================================================================= */
+.site-aportar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  background: var(--color-accent-secondary);
+  color: var(--color-accent);
+  text-decoration: none;
+  font: 800 12px/1 var(--font-sans);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  align-self: stretch;
+  border-left: 1px solid rgba(255, 255, 255, 0.20);
+  transition: background var(--motion-duration) var(--motion-ease),
+              color var(--motion-duration) var(--motion-ease);
+}
+.site-aportar:hover,
+.site-aportar:focus-visible {
+  background: #f0c450;
+  color: var(--color-accent);
+  outline: 0;
+}
+.site-aportar:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: -2px;
+}
+.site-aportar svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
 @media (max-width: 1080px) {
   /* Colapso a 2 filas. El umbral 1080 corresponde al ancho mínimo en el que
    * el grid `auto 1fr auto auto` del desktop sigue cabiendo: brand 347 +
@@ -690,7 +856,7 @@ li { margin: var(--space-1) 0; }
     /* minmax(0, 1fr) en lugar de 1fr evita que el grid item se expanda al
      * min-content de su hijo (escudo + wordmark del brand) y fuerce un
      * ancho total que desborda el viewport. */
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
     grid-template-rows: auto auto;
   }
   .site-brand {
@@ -706,9 +872,16 @@ li { margin: var(--space-1) 0; }
     border-left: 0;
     padding: 0 10px;
   }
-  .site-lang {
+  .site-lang-wrap {
     grid-column: 3;
     grid-row: 1;
+  }
+  .site-aportar {
+    grid-column: 4;
+    grid-row: 1;
+    /* Compacta padding en 720-1080 manteniendo legibilidad. */
+    padding: 0 12px;
+    font-size: 11px;
   }
   .site-nav {
     grid-column: 1 / -1;
@@ -860,6 +1033,39 @@ li { margin: var(--space-1) 0; }
   /* Filete mostaza a la izquierda — análogo al subrayado del nav desktop. */
   box-shadow: inset 3px 0 0 var(--color-accent-secondary);
 }
+.site-menu-panel__aportar {
+  /* CTA destacado dentro del panel móvil: mostaza claro sobre fondo navy del
+   * panel, equivalente al .site-aportar del header desktop. */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px var(--space-5);
+  background: var(--color-accent-secondary);
+  color: var(--color-accent);
+  text-decoration: none;
+  font: 800 13px/1 var(--font-sans);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  transition: background var(--motion-duration) var(--motion-ease);
+}
+.site-menu-panel__aportar:hover,
+.site-menu-panel__aportar:focus-visible {
+  background: #f0c450;
+  color: var(--color-accent);
+  outline: 0;
+}
+.site-menu-panel__aportar svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .site-menu-panel__lang {
   display: flex;
   align-items: center;
@@ -889,19 +1095,30 @@ body.has-menu-open { overflow: hidden; }
 
 @media (max-width: 720px) {
   /* En mobile real (<720px) el header colapsa de las 2 filas que tenía a
-   * 1 sola fila: brand + buscador + hamburguesa. El nav horizontal y el
-   * selector de idioma del header se ocultan; ambos viven dentro del panel
-   * desplegable. */
+   * 1 sola fila: brand + buscador + aportar + hamburguesa. El nav horizontal
+   * y el selector de idioma del header se ocultan; ambos viven dentro del
+   * panel desplegable. El CTA Aportar se MANTIENE visible en el header
+   * (compacto, sin icono) porque es CTA editorial primario; el panel
+   * desplegable lleva además una versión completa más prominente. */
   .site-header__inner {
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
     grid-template-rows: auto;
   }
   .site-nav { display: none; }
   .site-lang { display: none; }
+  .site-lang-wrap { display: none; }
   .site-search { grid-column: 2; grid-row: 1; }
+  .site-aportar {
+    grid-column: 3;
+    grid-row: 1;
+    padding: 0 10px;
+    font-size: 11px;
+    border-left: 0;
+  }
+  .site-aportar svg { display: none; }
   .site-menu-btn {
     display: inline-flex;
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 1;
   }
   /* La lupa sola es suficiente: el texto "Buscar" ya estorba en mobile. */
