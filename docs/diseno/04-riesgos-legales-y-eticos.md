@@ -135,6 +135,103 @@ Las rectificaciones se anotan visiblemente en la ficha ("Esta sección fue recti
 
 ---
 
+## 6bis. Mecanismo de aportación editorial
+
+**Norma incorporada el 2026-05-24** para responder a un riesgo asumido por el modelo de mantenimiento: el maintainer no es periodista ni jurista, y la investigación de cada caso se delega íntegramente en LLM (ver `AGENTS.md` §"División de trabajo: maintainer ↔ agente"). El inventario gana así en escala y trazabilidad, pero pierde la red de fuentes humanas que tendría un medio tradicional. Este §6bis abre formalmente ese canal: personas con mejor acceso a fuentes o mejor conocimiento del caso (periodistas, juristas, funcionarios, académicos, ciudadanos informados) pueden aportar al inventario sin necesidad de saber git ni de exponerse en un issue público.
+
+§6 y §6bis son cauces **complementarios, no alternativos**.
+
+### 6bis.1 Diferencia con §6 (rectificación)
+
+| Eje | §6 Rectificación | §6bis Aportación |
+|---|---|---|
+| Marco legal | LO 2/1984 (derecho de rectificación) | Sin marco legal específico — relación editorial voluntaria |
+| Quién la usa | Persona u organización aludida, o representante con interés legítimo | Tercero externo con conocimiento útil del caso (no necesariamente aludido) |
+| Naturaleza | Defensiva — "esto sobre mí está mal" | Proactiva — "os falta esto" / "esto está mal en general" / "tengo una idea" |
+| Plazo de acuse | 48 horas hábiles | 5 días hábiles (sin urgencia legal) |
+| Plazo de resolución | 7 días hábiles | 30 días hábiles |
+| Output editorial | Rectificación visible en la ficha si procede + respuesta motivada | Diff editorial (commit) o archivo razonado de la idea + respuesta al aportante con resultado |
+| Página pública | `/rectificar` | `/aportar` |
+
+Si una persona se considera aludida y discrepa de algo publicado, su vía natural es §6. Si la motivación es ampliar o corregir el inventario en general, su vía es §6bis. Las páginas `/aportar` y `/rectificar` reflejan esta separación claramente al lector y enlazan entre sí cuando el aportante llega a la puerta equivocada.
+
+### 6bis.2 Qué se acepta y qué no
+
+**Tres carriles editoriales aceptados**, todos bajo la misma puerta:
+
+1. **Pista a fuente o hito.** URL canónica de un documento oficial que falta en el inventario (sentencia, auto, BOE, informe institucional, cobertura periodística cruzada de una línea editorial no representada todavía). El aportante apunta dónde mirar; el agente verifica, descarga el primario si procede (norma `AGENTS.md` §"Documentos primarios descargados a `/public/documentos/`"), modela el `Documento` + `Hito` + `Hecho` correspondientes.
+2. **Corrección fáctica menor.** Errata, fecha equivocada, órgano mal asignado, segundo apellido incorrecto, link roto a fuente, atribución de delito que no encaja con el auto. **No es rectificación legal §6**: no hay persona aludida defendiéndose; es un tercero que detecta un error neutro. Se procesa como diff puntual sobre el YAML afectado.
+3. **Idea o sugerencia sobre el sitio.** Feature deseada, mejora de UX, observación editorial general, fuente que vale la pena vigilar en el futuro. No genera diff sobre `content/`; se archiva razonadamente en `docs/web/pages/<página>.md` o `docs/web/features/<feature>.md` según corresponda (convenciones de `AGENTS.md` §"Backlog por página" y §"Ficha por feature transversal"), manteniendo trazabilidad de la sugerencia y de su trato editorial posterior.
+
+**Qué NO se acepta depositar**:
+
+- Documentos sometidos a secreto de sumario (art. 301 LECrim).
+- Escritos de parte no notificados a terceros (art. 234 LOPJ).
+- Información personal de terceros no investigados en el procedimiento (familiares, asesores externos sin rol formal, testigos no nombrados públicamente).
+- Documentos procedentes de mirrors no auditables (Wuolah, Scribd, blogs personales sin cadena de custodia firmada), alineado con el aprendizaje del 2026-05-24 ya recogido en `AGENTS.md`.
+- Material doxxing, denuncias falsas, contenido cuyo único propósito sea perjudicar a una persona o partido específicos sin valor procesal verificable. La lectura editorial es la habitual de §3: ¿hay procedimiento real con relevancia pública detrás, o solo intención de daño?
+
+**Caso excepcional N3 `filtrado_verificado`**: cuando el primario debería existir y no está accesible aún (típicamente sentencia íntegra del TS antes de aparecer en CENDOJ, auto de procesamiento citado en notas CGPJ pero no publicado en `poderjudicial.es`), una pista del aportante con copia que dice ser fiel **no se publica como PDF en `/public/documentos/`**, pero la pista entra como señal interna; el agente la trata como N3 `filtrado_verificado` con triangulación documentada en `nivel_fuente_justificacion`, y eleva a N1 cuando aparezca el primario público (conservando hash histórico como prueba de fidelidad). Mecanismo ya previsto en `AGENTS.md` §"Documentos primarios descargados"; §6bis lo conecta con el canal externo.
+
+**Importante para el aportante**: el inventario **solo cita fuentes públicas verificables**. El aporte tiene valor editorial en tanto **ayuda a localizar y citar la fuente pública**, no como fuente en sí mismo. El aportante no figura como fuente de ningún `Hecho`; figura, si autoriza opt-in, como autor de la pista en el commit (ver §6bis.5). Esto desactiva el riesgo LSSI de convertirnos en depositarios de material restringido y mantiene el rigor de niveles de fuente del modelo.
+
+### 6bis.3 Canal y vías de entrada
+
+- **Vía principal**: email a `aportar@presuntamente.org`, operativo vía Cloudflare Email Routing con reenvío a la cuenta personal del maintainer, mismo mecanismo que `contacto@` y `rectificacion@`.
+- **Vía postal**: cuando esté operativo el apartado de correos del responsable (LSSI §6 del aviso legal), se incluirá la dirección postal como alternativa aceptable para aportes formales (sentencias en papel, copias certificadas, denuncias anónimas tradicionales).
+- **GitHub Issues** (`.github/ISSUE_TEMPLATE/sugerencia-fuente.yml`): se mantiene como cauce técnico interno para contribuyentes que ya operan en GitHub. **No se publicita en el sitio público**: la barrera de entrada (cuenta GitHub, exposición pública del aporte) es hostil para el perfil de aportante que queremos atraer (funcionarios, periodistas con fuentes, juristas que prefieren no firmar).
+
+El sitio público presenta el cauce con tres entradas visibles: página dedicada `/aportar` (hermana de `/rectificar`); CTA en la §2.11 "Cómo se ha redactado esta ficha" de cada caso, al lado del CTA de rectificar; link permanente en el footer; y un módulo institucional discreto en la home invitando al aporte. Detalle de implementación visual en `docs/web/pages/aportar.md` cuando se construya la página.
+
+### 6bis.4 Tratamiento de datos del aportante (RGPD)
+
+Base jurídica para el tratamiento del email entrante del aportante: **interés legítimo (art. 6.1.f RGPD)**, equivalente al de §6. Principios aplicados:
+
+- **Minimización**: el maintainer extrae del email el contenido editorial (pista, corrección, idea) y lo vuelca a un fichero interno `content/aportes/YYYY-MM-DD-<slug>.md` (excluido del build público, mismo tratamiento que `content/casos/<slug>/NOTES.md`). Los headers identificativos del email del aportante (`From`, `Reply-To`, IP, metadatos del cliente de correo) **no se versionan** en el repo; quedan únicamente en la bandeja personal del maintainer.
+- **Limitación del plazo**: el email entrante se conserva en la bandeja del maintainer hasta cerrar el aporte (commit + respuesta enviada). Salvo consentimiento expreso del aportante para archivo (ver §6bis.5), se elimina entonces.
+- **Derechos del afectado**: el aportante puede en cualquier momento solicitar supresión de los datos asociados a su aporte (art. 17 RGPD) sin afectar al diff editorial ya commiteado, que cita la fuente pública verificada, no al aportante (salvo opt-in).
+
+### 6bis.5 Acreditación del aportante en el commit
+
+**Default: anónimo.** El commit cita la fuente verificada (URL canónica, BOE, sentencia en CENDOJ), no al aportante. Esto es la postura natural por dos razones convergentes: (a) protege al aportante con vínculos institucionales sensibles (funcionarios, periodistas que no quieren quemar fuentes); (b) refuerza el principio editorial de que las afirmaciones del inventario se sostienen en sus documentos públicos, no en quien las apuntó.
+
+**Opt-in opcional**: si el aportante pide explícitamente ser acreditado, el commit incluye un trailer convencional:
+
+```
+Aporte-externo: <nombre o medio, según autorización>
+```
+
+Ejemplos posibles: `Aporte-externo: Periodista de medio X (autorizado)`, `Aporte-externo: Profesor de derecho penal Universidad Y (autorizado)`. La acreditación nunca menciona la dirección de email, datos de contacto ni información identificativa adicional más allá de lo que el aportante autoriza por escrito en el email original.
+
+**Nunca acreditamos a un aportante sin consentimiento documentado**, ni siquiera cuando el aporte resulta especialmente valioso. La trazabilidad pública del aporte vive en el git log; quien firmó la pista solo aparece si así lo pidió.
+
+### 6bis.6 Proceso post-recepción
+
+1. **Recepción**: el email aterriza en `aportar@presuntamente.org` → reenviado al Proton del maintainer.
+2. **Volcado**: el maintainer crea `content/aportes/YYYY-MM-DD-<slug>.md` con el contenido editorial del email (sin headers identificativos salvo opt-in expreso). Esta es la única intervención manual obligatoria del maintainer; el fichero queda fuera del build público.
+3. **Procesado por agente** con la skill `/incorporar-aporte` (placeholder en `.agents/skills/` hasta su implementación, alineada con `/investigar-caso` y `/incorporar-hito` ya planeadas). La skill lee el fichero, clasifica el tipo y aplica el flujo correspondiente:
+   - **Fuente o hito** → investigación según `AGENTS.md` §"División de trabajo" y guardarraíles de `/investigar-caso` (cruce con fuentes públicas, lista blanca de dominios oficiales, niveles de fuente, V-12), modelado de `Documento` + `Hito` + `Hecho` derivados, diff propuesto en el working tree del worktree.
+   - **Corrección fáctica** → verificación del dato contra fuentes públicas, diff puntual sobre el YAML afectado, con corrección por `corregido_por` cuando el cambio sea editorialmente sustantivo (no para errata mecánica).
+   - **Idea** → archivo razonado en `docs/web/pages/<página>.md` o `docs/web/features/<feature>.md` según corresponda, sin diff sobre `content/`. La idea queda documentada con su contexto y con valoración editorial inicial (encaja con principios, requiere reflexión, choca con regla X).
+4. **Revisión y commit por el maintainer** según workflow de `AGENTS.md` §"Workflow de rama y PRs". El commit lleva trailer `Aporte-externo:` si el aportante autorizó acreditación.
+5. **Respuesta al aportante** con borrador preparado por la skill: qué se incorporó, qué no y por qué, link al commit cuando aplique. Cierra el bucle editorial.
+
+El paso 3 es el único que requiere un agente activo; los pasos 1, 2, 4 y 5 son operaciones del maintainer (recepción, volcado, revisión y envío). Coherente con la división de trabajo "el maintainer aporta operaciones, no conocimiento".
+
+### 6bis.7 Plazos comprometidos públicamente
+
+- **Acuse de recibo**: 5 días hábiles. Distinto de las 48 horas de §6 porque §6bis no tiene obligación legal LO 2/1984; lo que comprometemos es respeto al aportante, no plazo legal.
+- **Resolución**: 30 días hábiles. Suficiente para que el agente investigue el aporte con calma y para que el maintainer revise sin presión. Si el aporte es trivial (corrección fáctica clara, link roto), suele resolverse en horas; si requiere triangulación o búsqueda profunda de cobertura cruzada puede acercarse al límite.
+- **Aportes que no resultan en cambio editorial**: se responden igual, motivadamente, citando por qué la pista no encaja con los criterios del inventario (fuente no auditable, no relevante a un caso vivo, ya recogida, fuera del alcance editorial del sitio, etc.). El aportante recibe respuesta siempre que haya facilitado contacto.
+
+### 6bis.8 Trazabilidad pública
+
+Los commits derivados de aportes externos son indistinguibles de los commits ordinarios del maintainer en el git log, **salvo por la presencia del trailer `Aporte-externo:` cuando el aportante autorizó acreditación**. El git log es así el changelog público del inventario y a la vez el reconocimiento honesto de que ciertas piezas vienen de manos externas.
+
+No se mantiene un "registro público de aportes" con estadísticas (cuántos aportes, de qué tipo, cuántos rechazados). Esa métrica sería editorialmente irrelevante para el lector y podría incentivar el aporte como vanidad. Internamente sí se conservan los ficheros `content/aportes/YYYY-MM-DD-<slug>.md` en el repo (excluidos del build) como histórico para auditoría editorial y para futura constatación si llegara a haber disputa.
+
+---
+
 ## 7. Identificación del responsable: anónimo vs identificado
 
 Análisis claro:
