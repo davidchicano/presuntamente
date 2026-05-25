@@ -3,7 +3,7 @@ name: rastrear-cobertura
 description: Rastrea la cobertura mediática general de un caso del inventario presuntamente.org. Construye un corpus separado de noticias publicadas sobre el caso (no de Documentos que respaldan Hechos) con metodología explícita, deduplicación, archivado en archive.org y clasificación por tipo de pieza. Trigger cuando el usuario pide "rastrea la cobertura mediática de <caso>", "analiza la cobertura pública de <caso>", "muestreo de prensa sobre <caso>" o invoca `/rastrear-cobertura <slug>`. Pensada para correr en sub-agente paralelo a la sesión principal, en un git worktree dedicado.
 ---
 
-# Skill `rastrear-cobertura` — v0
+# Skill `rastrear-cobertura` — v1
 
 ## Propósito
 
@@ -20,6 +20,16 @@ La feature canónica está descrita en [`docs/web/features/cobertura-mediatica-g
 - Si el slug no existe en `content/casos/`, error claro (no inventar).
 
 ## Proceso
+
+### 0. Preflight obligatorio de directorio
+
+Antes de leer o escribir cualquier archivo, validar el directorio real de trabajo:
+
+1. Ejecutar `pwd` y confirmar que apunta al worktree esperado para la sesión.
+2. Ejecutar `git rev-parse --show-toplevel` y comprobar que coincide con ese worktree, no con la working copy principal salvo que el maintainer haya pedido expresamente trabajar ahí.
+3. Ejecutar `git status --short` para detectar cambios ajenos antes de tocar rutas calientes.
+
+Si el CWD no coincide con el worktree de la sesión, parar y corregirlo antes de continuar. Aprendizaje incorporado tras la primera pasada real: el agente `cobertura-bg` trabajó íntegramente en el working tree principal por error.
 
 ### 1. Lectura del caso para anclar metodología
 
@@ -106,7 +116,7 @@ Informe en markdown impreso al final del turno:
 # Cobertura mediática general — caso `<slug>`
 
 Fecha: YYYY-MM-DD
-Skill: rastrear-cobertura v0
+Skill: rastrear-cobertura v1
 Material: <N> noticias recogidas, <N> medios cubiertos, <N> ventanas temporales.
 
 ## Metodología declarada
@@ -155,11 +165,19 @@ Material: <N> noticias recogidas, <N> medios cubiertos, <N> ventanas temporales.
 Esta skill está pensada para correr en **sub-agente paralelo** lanzado por el maintainer en un `git worktree` aislado. El sub-agente:
 
 1. Abre sesión propia en `.git/agents/sessions/<timestamp>-rastrear-cobertura-<caso>/`.
-2. Trabaja sólo en `content/cobertura-mediatica/<caso>.yaml`, en `content/organizaciones/<medio>.yaml` que cree (nuevos medios de comunicación), y en `content/casos/<slug>/caso.yaml` (sólo para `estado_ficha`).
-3. **NO toca** `content/documentos/`, ni `content/personas/`, ni el resto del caso. Si detecta una investigación periodística con valor probatorio para sostener un Hecho aún no modelado, la anota en `NOTES.md` del caso.
-4. Cierra sesión cuando el output final está completo y `pnpm validate` pasa.
+2. Valida CWD y toplevel de git antes de escribir nada. Si está en la working copy principal por accidente, corrige directorio o pide intervención.
+3. Trabaja sólo en `content/cobertura-mediatica/<caso>.yaml`, en `content/organizaciones/<medio>.yaml` que cree (nuevos medios de comunicación), y en `content/casos/<slug>/caso.yaml` (sólo para `estado_ficha`).
+4. **NO toca** `content/documentos/`, ni `content/personas/`, ni el resto del caso. Si detecta una investigación periodística con valor probatorio para sostener un Hecho aún no modelado, la anota en `NOTES.md` del caso.
+5. Cierra sesión cuando el output final está completo y `pnpm validate` pasa.
 
 ## Histórico
+
+### v1 — 2026-05-26
+
+Primera versión moldeada tras aplicar la skill al caso `begona-gomez`.
+
+- Añade preflight obligatorio de CWD y `git rev-parse --show-toplevel` antes de escribir, tras detectar que `cobertura-bg` trabajó íntegramente en la working copy principal por error.
+- Mantiene explícita la separación entre corpus de cobertura general y `Documento`: la UI entregada el 2026-05-26 consume `content/cobertura-mediatica/` en una sección propia y no infla la biblioteca probatoria.
 
 ### v0 — 2026-05-25
 

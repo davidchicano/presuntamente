@@ -1,0 +1,96 @@
+---
+// CoberturaMediaticaTable -- separate media corpus table.
+// These rows are not probative documents and must not use source-level badges.
+
+export interface CoberturaMediaticaRow {
+  id: string;
+  fecha: string;
+  medioLabel: string;
+  medioHref?: string;
+  tipoLabel: string;
+  titular: string;
+  resumen?: string;
+  relevanciaLabel?: string;
+  url: string;
+  urlArchivo?: string;
+}
+
+interface Props {
+  rows: CoberturaMediaticaRow[];
+}
+
+const { rows } = Astro.props;
+---
+
+<div class="tbl-scroll">
+  <table class="tbl cobertura-table">
+    <thead>
+      <tr>
+        <th style="width: 12%;">Fecha</th>
+        <th style="width: 16%;">Medio</th>
+        <th style="width: 16%;">Tipo</th>
+        <th>Pieza rastreada</th>
+        <th style="width: 12%;">Enlaces</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr id={`cobertura-${row.id}`}>
+          <td class="c-date">{row.fecha}</td>
+          <td class="c-mono">
+            {row.medioHref ? <a href={row.medioHref}>{row.medioLabel}</a> : row.medioLabel}
+          </td>
+          <td>
+            <span class="badge badge--cat badge--cat-mediatico">{row.tipoLabel}</span>
+            {row.relevanciaLabel && <span class="coverage-relevance">{row.relevanciaLabel}</span>}
+          </td>
+          <td>
+            <p class="coverage-title">{row.titular}</p>
+            {row.resumen && <p class="coverage-summary">{row.resumen}</p>}
+          </td>
+          <td>
+            <div class="coverage-links">
+              <a href={row.url} target="_blank" rel="noopener">Original ↗</a>
+              {row.urlArchivo && <a href={row.urlArchivo} target="_blank" rel="noopener">Archivo ↗</a>}
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .cobertura-table {
+    margin-bottom: var(--space-4);
+  }
+  .coverage-title {
+    margin: 0 0 4px;
+    font: 600 13px/1.35 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .coverage-summary {
+    margin: 0;
+    font: 400 12px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .coverage-relevance {
+    display: block;
+    margin-top: 5px;
+    font: 600 10.5px/1 var(--font-mono);
+    color: var(--color-fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .coverage-links {
+    display: grid;
+    gap: 5px;
+    font: 600 11px/1.2 var(--font-mono);
+  }
+  .coverage-links a,
+  .c-mono a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

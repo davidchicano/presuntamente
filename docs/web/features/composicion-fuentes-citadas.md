@@ -19,9 +19,11 @@ La version pre-launch deberia derivarse de datos ya existentes:
 - `Documento.nivel_fuente: 4` identifica cobertura periodistica.
 - `Documento.productor_organizacion_id` apunta al medio productor cuando este ya esta modelado.
 - `Organizacion.tipo: medio_comunicacion` identifica que la organizacion es un medio.
-- Campo nuevo pendiente: `Organizacion.orientacion_editorial`, con valores discretos y `sin_clasificar`.
+- Campo nuevo pendiente: `Organizacion.orientacion_editorial`, con valores discretos y `sin_clasificar`. Opcionalmente campos separados para **grupo de propiedad** o **financiación pública verificable** si el maintainer decide que aportan y no sustituyen la línea editorial.
 
 La ficha de caso agregara solo los documentos periodisticos efectivamente usados por sus hitos/hechos/documentos de respaldo. El resultado se renderizara como distribucion y conteo, no como juicio editorial.
+
+**Distinción con cobertura mediática general:** esta feature mide las N4 que presuntamente.org cita; [`cobertura-mediatica-general.md`](cobertura-mediatica-general.md) mide la muestra rastreada de noticias sobre el caso. Ambas pueden reutilizar la misma clasificación de medios, pero el gráfico y el copy deben decir qué corpus miden.
 
 ## Estado actual
 

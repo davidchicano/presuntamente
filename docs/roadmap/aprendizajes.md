@@ -19,6 +19,8 @@ Regla: si un aprendizaje se convierte en norma obligatoria, debe promoverse a `A
 - **Rojo del footer permitido.** La prohibición de rojo aplica a estados epistémicos o procesales, no a decoración institucional apagada.
 - **`/branding/wordmark.svg` es placeholder.** El header debe renderizar el wordmark como texto estilado hasta que exista SVG con paths.
 - **HMR de Astro puede no propagar CSS scoped.** Si el navegador parece conservar CSS viejo, reiniciar dev server antes de depurar.
+- **`ClientRouter` retirado (2026-05-26).** Provocaba desincronización URL/contenido al usar botón atrás. Navegación full-page otra vez; no reintroducir SPA routing sin resolver eso. Los scripts globales siguen usando delegación desde `document` en `BaseLayout.astro`.
+- **Flex en `<td>` rompe tablas densas.** Para columnas con enlaces apilados, usar contenedor interno (`div` con `grid`/`flex`), no estilos de layout sobre la celda.
 - **Header responsive.** `1fr` no se comprime por debajo del min-content; usar `minmax(0, 1fr)` o colapsar antes.
 - **Nav mobile.** Preferir `flex-wrap` a `overflow-x: auto`; el scroll horizontal en nav visible parece error.
 - **Iniciales españolas.** Usar primera y última palabra significativa, no las dos primeras.

@@ -14,6 +14,7 @@ import OrgCard from '@/components/OrgCard.astro';
 import Hito from '@/components/Hito.astro';
 import Hecho from '@/components/Hecho.astro';
 import DocumentoCard from '@/components/DocumentoCard.astro';
+import CoberturaMediaticaTable from '@/components/CoberturaMediaticaTable.astro';
 import RichProse from '@/components/RichProse.astro';
 import EstadoFichaBadge from '@/components/EstadoFichaBadge.astro';
 import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
@@ -35,11 +36,15 @@ import {
   tipoHitoLabel,
   tipoHitoFamilia,
   tipoDocLabel,
+  naturalezaVinculoLabel,
+  tipoPiezaMediaticaLabel,
+  relevanciaEditorialLabel,
   faseLabel,
   origenLabel,
   iniciales,
   type Lang,
 } from '@/lib/labels';
+import { documentoRespaldoHref } from '@/lib/documentos';
 
 interface Props {
   lang?: Lang;
@@ -95,7 +100,17 @@ const CHEQUEOS_FICHA: ReadonlyArray<readonly [keyof EstadoFicha, string]> = [
 
 // --- Collections relacionadas ------------------------------------------------
 
-const [hitosCol, hechosCol, rolesCol, personasCol, organizacionesCol, documentosCol, delitosCol] =
+const [
+  hitosCol,
+  hechosCol,
+  rolesCol,
+  personasCol,
+  organizacionesCol,
+  documentosCol,
+  delitosCol,
+  vinculosCol,
+  coberturaMediaticaCol,
+] =
   await Promise.all([
     getCollection('hitos'),
     getCollection('hechos'),
@@ -104,6 +119,8 @@ const [hitosCol, hechosCol, rolesCol, personasCol, organizacionesCol, documentos
     getCollection('organizaciones'),
     getCollection('documentos'),
     getCollection('delitos'),
+    getCollection('vinculos'),
+    getCollection('coberturaMediatica'),
   ]);
 
 const hitos = hitosCol
@@ -117,6 +134,49 @@ const personaIndex = new Map(personasCol.map((p) => [p.data.id, p.data]));
 const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
 const docIndex = new Map(documentosCol.map((d) => [d.data.id, d.data]));
 const delitoIndex = new Map(delitosCol.map((d) => [d.data.id, d.data]));
+
+function docHrefForCaso(docId: string): string | undefined {
+  const doc = docIndex.get(docId);
+  return documentoRespaldoHref(docId, doc);
+}
+
+function personaLabel(id: string): string {
+  return personaIndex.get(id)?.nombre_completo ?? id;
+}
+
+function orgLabel(id: string): string {
+  return orgIndex.get(id)?.nombre ?? id;
+}
+
+function personaHref(id: string): string {
+  return lang === 'ca' ? `/cat/personas/${id}` : `/personas/${id}`;
+}
+
+function orgHref(id: string): string {
+  return lang === 'ca' ? `/cat/organizaciones/${id}` : `/organizaciones/${id}`;
+}
+
+function formatVinculoDate(value: string, precision?: string): string {
+  if (precision === 'anio') return value.slice(0, 4);
+  if (precision === 'mes') return value.slice(0, 7);
+  return value;
+}
+
+function formatVinculoPeriodo(v: {
+  desde: string;
+  hasta?: string;
+  precision_desde?: string;
+  precision_hasta?: string;
+  vigente?: boolean;
+}): string {
+  const desde = formatVinculoDate(v.desde, v.precision_desde);
+  const hasta = v.hasta
+    ? formatVinculoDate(v.hasta, v.precision_hasta)
+    : v.vigente
+      ? 'vigente'
+      : 'sin fecha de cierre';
+  return `${desde} → ${hasta}`;
+}
 
 // --- 2.1 Encabezado / 2.3 Estado procesal ---------------------------------
 
@@ -239,6 +299,104 @@ for (const r of roles) {
 }
 const orgsImplicadas = Array.from(orgsMap.values());
 
+// --- Contexto institucional -------------------------------------------------
+
+const vinculosCasoEntries = vinculosCol
+  .filter((v) => v.data.relevancia_para_caso_ids?.includes(data.id))
+  .filter((v) => v.data.estado_publicacion !== 'retirado_definitivamente')
+  .sort((a, b) => {
+    const byNature = naturalezaVinculoLabel(a.data.naturaleza).localeCompare(
+      naturalezaVinculoLabel(b.data.naturaleza),
+      'es',
+    );
+    if (byNature !== 0) return byNature;
+    return b.data.desde.localeCompare(a.data.desde);
+  });
+
+function vinculoEntity(v: CollectionEntry<'vinculos'>['data'], side: 'sujeto' | 'objeto') {
+  if (side === 'sujeto') {
+    if (v.sujeto_persona_id) {
+      return {
+        label: personaLabel(v.sujeto_persona_id),
+        href: personaHref(v.sujeto_persona_id),
+      };
+    }
+    if (v.sujeto_organizacion_id) {
+      return {
+        label: orgLabel(v.sujeto_organizacion_id),
+        href: orgHref(v.sujeto_organizacion_id),
+      };
+    }
+  }
+  if (v.objeto_persona_id) {
+    return {
+      label: personaLabel(v.objeto_persona_id),
+      href: personaHref(v.objeto_persona_id),
+    };
+  }
+  if (v.objeto_organizacion_id) {
+    return {
+      label: orgLabel(v.objeto_organizacion_id),
+      href: orgHref(v.objeto_organizacion_id),
+    };
+  }
+  return { label: 'Entidad no resuelta' };
+}
+
+interface CardRelacion {
+  naturalezaLabel: string;
+  entidadLabel: string;
+  entidadHref?: string;
+  descripcion: string;
+  periodo: string;
+  documentoHref?: string;
+}
+
+function firstDocHref(v: CollectionEntry<'vinculos'>): string | undefined {
+  const docId = v.data.documentos_respaldo[0]?.documento_id;
+  return docId && docIndex.has(docId) ? docHrefForCaso(docId) : undefined;
+}
+
+function relacionParaCard(v: CollectionEntry<'vinculos'>, entityId: string, entityType: 'persona' | 'organizacion'): CardRelacion {
+  const subjectMatches =
+    entityType === 'persona'
+      ? v.data.sujeto_persona_id === entityId
+      : v.data.sujeto_organizacion_id === entityId;
+  const counterpart = subjectMatches ? vinculoEntity(v.data, 'objeto') : vinculoEntity(v.data, 'sujeto');
+  return {
+    naturalezaLabel: naturalezaVinculoLabel(v.data.naturaleza),
+    entidadLabel: counterpart.label,
+    entidadHref: counterpart.href,
+    descripcion: v.data.descripcion,
+    periodo: formatVinculoPeriodo(v.data),
+    documentoHref: firstDocHref(v),
+  };
+}
+
+const relacionesPorPersona = new Map<string, CardRelacion[]>();
+const relacionesPorOrg = new Map<string, CardRelacion[]>();
+
+function addRelacion(map: Map<string, CardRelacion[]>, id: string, rel: CardRelacion) {
+  const current = map.get(id) ?? [];
+  current.push(rel);
+  map.set(id, current);
+}
+
+for (const v of vinculosCasoEntries) {
+  if (v.data.sujeto_persona_id) {
+    addRelacion(relacionesPorPersona, v.data.sujeto_persona_id, relacionParaCard(v, v.data.sujeto_persona_id, 'persona'));
+  }
+  if (v.data.objeto_persona_id) {
+    addRelacion(relacionesPorPersona, v.data.objeto_persona_id, relacionParaCard(v, v.data.objeto_persona_id, 'persona'));
+  }
+  if (v.data.sujeto_organizacion_id) {
+    addRelacion(relacionesPorOrg, v.data.sujeto_organizacion_id, relacionParaCard(v, v.data.sujeto_organizacion_id, 'organizacion'));
+  }
+  if (v.data.objeto_organizacion_id) {
+    addRelacion(relacionesPorOrg, v.data.objeto_organizacion_id, relacionParaCard(v, v.data.objeto_organizacion_id, 'organizacion'));
+  }
+}
+
 // --- 2.6 Cronología ---------------------------------------------------------
 
 const cronologia = hitos.map((h) => {
@@ -281,7 +439,7 @@ const hechosViews: HechoView[] = hechos.map((h) => ({
     return {
       nivel: (doc?.nivel_fuente ?? 4) as 1 | 2 | 3 | 4,
       titulo: doc?.titulo ?? d.documento_id,
-      href: doc ? `#doc-${doc.id}` : undefined,
+      href: doc ? docHrefForCaso(doc.id) : undefined,
       pasaje: d.pasaje,
     };
   }),
@@ -321,6 +479,9 @@ for (const h of hechos) {
   const ds = (h.data as { documentos_respaldo?: { documento_id: string }[] }).documentos_respaldo;
   if (ds) for (const d of ds) docIds.add(d.documento_id);
 }
+for (const v of vinculosCasoEntries) {
+  for (const d of v.data.documentos_respaldo) docIds.add(d.documento_id);
+}
 
 const biblioteca = Array.from(docIds)
   .map((id) => docIndex.get(id))
@@ -344,6 +505,90 @@ const biblioteca = Array.from(docIds)
     if (a.d.nivel_fuente !== b.d.nivel_fuente) return a.d.nivel_fuente - b.d.nivel_fuente;
     return b.d.fecha_documento.localeCompare(a.d.fecha_documento);
   });
+
+// --- Cobertura mediática general --------------------------------------------
+
+const coberturaCaso = coberturaMediaticaCol.find((c) => c.data.caso_id === data.id)?.data;
+const noticiasCobertura = coberturaCaso?.noticias ?? [];
+
+function countBy<T>(items: T[], keyFn: (item: T) => string): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const item of items) {
+    const key = keyFn(item);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  return counts;
+}
+
+const coberturaPorTipo = Array.from(countBy(noticiasCobertura, (n) => n.tipo_pieza).entries())
+  .map(([tipo, total]) => ({
+    label: tipoPiezaMediaticaLabel(tipo),
+    total,
+  }))
+  .sort((a, b) => b.total - a.total || a.label.localeCompare(b.label, 'es'));
+
+const coberturaPorMedio = Array.from(countBy(noticiasCobertura, (n) => n.medio_id).entries())
+  .map(([medioId, total]) => ({
+    medioId,
+    label: orgLabel(medioId),
+    href: orgHref(medioId),
+    total,
+  }))
+  .sort((a, b) => b.total - a.total || a.label.localeCompare(b.label, 'es'));
+
+const coberturaMeses = Array.from(
+  countBy(noticiasCobertura, (n) => n.fecha_publicacion.slice(0, 7)).entries(),
+)
+  .map(([mes, total]) => {
+    const ejemplo = noticiasCobertura
+      .filter((n) => n.fecha_publicacion.startsWith(mes))
+      .sort((a, b) => a.fecha_publicacion.localeCompare(b.fecha_publicacion))[0];
+    return {
+      mes,
+      total,
+      ejemploTitulo: ejemplo?.titular,
+      ejemploMedio: ejemplo ? orgLabel(ejemplo.medio_id) : undefined,
+    };
+  })
+  .sort((a, b) => a.mes.localeCompare(b.mes));
+
+const coberturaPicos = [...coberturaMeses]
+  .sort((a, b) => b.total - a.total || a.mes.localeCompare(b.mes))
+  .slice(0, 3);
+
+const coberturaFechas = noticiasCobertura
+  .map((n) => n.fecha_publicacion)
+  .sort((a, b) => a.localeCompare(b));
+const coberturaDesde = coberturaFechas[0];
+const coberturaHasta = coberturaFechas[coberturaFechas.length - 1];
+const coberturaMedioPrincipal = coberturaPorMedio[0];
+const coberturaTipoPrincipal = coberturaPorTipo[0];
+const coberturaEstadoLabel = coberturaCaso?.estado === 'parcial'
+  ? 'Rastreo parcial: primera muestra útil, con medios pendientes por revisar.'
+  : coberturaCaso?.estado === 'completo'
+    ? 'Rastreo completo según la metodología declarada.'
+    : 'Rastreo pendiente de completar.';
+
+const coberturaVentanasTexto = coberturaCaso?.metodologia.ventanas_temporales
+  .map((v) => `${v.desde}${v.hasta ? ` a ${v.hasta}` : ''}`)
+  .join(' · ');
+
+const coberturaRows = [...noticiasCobertura]
+  .sort((a, b) => b.fecha_publicacion.localeCompare(a.fecha_publicacion))
+  .map((n) => ({
+    id: n.id,
+    fecha: n.fecha_publicacion,
+    medioLabel: orgLabel(n.medio_id),
+    medioHref: orgHref(n.medio_id),
+    tipoLabel: tipoPiezaMediaticaLabel(n.tipo_pieza),
+    titular: n.titular,
+    resumen: n.resumen,
+    relevanciaLabel: n.relevancia_editorial
+      ? relevanciaEditorialLabel(n.relevancia_editorial)
+      : undefined,
+    url: n.url,
+    urlArchivo: n.url_archivo,
+  }));
 
 // --- Strings de UI -----------------------------------------------------------
 
@@ -631,6 +876,7 @@ const breadcrumb = [
               iniciales={iniciales(pv.persona!.nombre_completo)}
               href={lang === 'ca' ? `/cat/personas/${pv.persona!.id}` : `/personas/${pv.persona!.id}`}
               roles={pv.roles}
+              relaciones={relacionesPorPersona.get(pv.persona!.id) ?? []}
               notas={pv.roles[0]?.notas}
             />
           ))}
@@ -657,6 +903,7 @@ const breadcrumb = [
             localidad={(ov.org as { localidad?: string }).localidad}
             href={lang === 'ca' ? `/cat/organizaciones/${ov.org!.id}` : `/organizaciones/${ov.org!.id}`}
             roles={ov.roles}
+            relaciones={relacionesPorOrg.get(ov.org!.id) ?? []}
             notas={ov.roles[0]?.notas}
           />
         ))}
@@ -687,7 +934,7 @@ const breadcrumb = [
           titulo={h.titulo}
           descripcion={h.descripcion}
           documentoTitulo={h.doc?.titulo}
-          documentoHref={h.doc ? `#doc-${h.doc.id}` : undefined}
+          documentoHref={h.doc ? docHrefForCaso(h.doc.id) : undefined}
           documentoNivel={h.doc?.nivel_fuente as 1 | 2 | 3 | 4 | undefined}
           excludePersonaIds={[data.id]}
           excludeOrgIds={[data.id]}
@@ -725,9 +972,115 @@ const breadcrumb = [
     );
   })}
 
+  {coberturaCaso && coberturaRows.length > 0 && (
+    <>
+      <SectionH
+        num="7."
+        title="Cobertura mediática general"
+        id="cobertura-mediatica"
+        right={`${coberturaRows.length} pieza${coberturaRows.length === 1 ? '' : 's'}`}
+      />
+      <div class="coverage-note">
+        <p>
+          Este bloque resume cómo aparece el caso en una muestra sistemática de prensa.
+          No prueba hechos del procedimiento: sirve para entender momentos de atención,
+          formatos dominantes y límites del rastreo.
+        </p>
+        <p class="coverage-note__meta">
+          Última revisión de cobertura: <span class="mono">{coberturaCaso.fecha_rastreo}</span>.
+          {` ${coberturaEstadoLabel}`}
+        </p>
+      </div>
+
+      <div class="coverage-findings" aria-label="Lecturas principales de la cobertura mediática">
+        <div class="coverage-finding">
+          <span class="coverage-finding__label">Periodo observado</span>
+          <strong>{coberturaDesde} → {coberturaHasta}</strong>
+          <span>Ventanas rastreadas: {coberturaVentanasTexto}</span>
+        </div>
+        {coberturaPicos[0] && (
+          <div class="coverage-finding">
+            <span class="coverage-finding__label">Mayor concentración de piezas</span>
+            <strong>{coberturaPicos[0].mes}</strong>
+            <span>{coberturaPicos[0].total} pieza{coberturaPicos[0].total === 1 ? '' : 's'} en la muestra.</span>
+          </div>
+        )}
+        {coberturaMedioPrincipal && (
+          <div class="coverage-finding">
+            <span class="coverage-finding__label">Medio más presente en la muestra</span>
+            <strong><a href={coberturaMedioPrincipal.href}>{coberturaMedioPrincipal.label}</a></strong>
+            <span>{coberturaMedioPrincipal.total} pieza{coberturaMedioPrincipal.total === 1 ? '' : 's'} rastreada{coberturaMedioPrincipal.total === 1 ? '' : 's'}.</span>
+          </div>
+        )}
+        {coberturaTipoPrincipal && (
+          <div class="coverage-finding">
+            <span class="coverage-finding__label">Formato dominante</span>
+            <strong>{coberturaTipoPrincipal.label}</strong>
+            <span>{coberturaTipoPrincipal.total} pieza{coberturaTipoPrincipal.total === 1 ? '' : 's'} de este tipo.</span>
+          </div>
+        )}
+      </div>
+
+      <section class="coverage-scope" aria-labelledby="coverage-scope-title">
+        <h3 id="coverage-scope-title">Alcance y límites del rastreo</h3>
+        <p>
+          Se incluyen piezas donde el caso aparece en titular o entradilla, con
+          una muestra de medios de líneas editoriales distintas. El estado es parcial:
+          varios diarios nacionales quedan pendientes de una segunda pasada por
+          limitaciones de acceso o por no haber entrado en este muestreo inicial.
+        </p>
+        <p>
+          No se muestra todavía reparto por bloque ideológico: los medios no tienen
+          una clasificación de orientación editorial revisada y documentada en el inventario.
+        </p>
+        <p><strong>Términos buscados:</strong> {coberturaCaso.metodologia.terminos_busqueda.join(' · ')}</p>
+      </section>
+
+      <div class="coverage-panels">
+        <section class="coverage-panel" aria-labelledby="coverage-picos">
+          <h3 id="coverage-picos">Picos rastreados</h3>
+          <ul class="coverage-counts coverage-counts--stacked">
+            {coberturaPicos.map((item) => (
+              <li>
+                <span>
+                  <strong>{item.mes}</strong>
+                  {item.ejemploTitulo && (
+                    <em>{item.ejemploMedio}: {item.ejemploTitulo}</em>
+                  )}
+                </span>
+                <strong>{item.total}</strong>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section class="coverage-panel" aria-labelledby="coverage-tipos">
+          <h3 id="coverage-tipos">Por tipo de pieza</h3>
+          <ul class="coverage-counts">
+            {coberturaPorTipo.map((item) => (
+              <li><span>{item.label}</span><strong>{item.total}</strong></li>
+            ))}
+          </ul>
+        </section>
+        <section class="coverage-panel" aria-labelledby="coverage-medios">
+          <h3 id="coverage-medios">Por medio</h3>
+          <ul class="coverage-counts">
+            {coberturaPorMedio.map((item) => (
+              <li><a href={item.href}>{item.label}</a><strong>{item.total}</strong></li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <details class="coverage-list">
+        <summary>Ver listado completo de piezas rastreadas ({coberturaRows.length})</summary>
+        <CoberturaMediaticaTable rows={coberturaRows} />
+      </details>
+    </>
+  )}
+
   <!-- 2.8 — Biblioteca documental -->
   <SectionH
-    num="7."
+    num="8."
     title="Biblioteca documental del caso"
     id="biblioteca"
     right={`${biblioteca.length} documento${biblioteca.length === 1 ? '' : 's'}`}
@@ -743,6 +1096,7 @@ const breadcrumb = [
           productor={productor}
           productorHref={productorId ? (lang === 'ca' ? `/cat/organizaciones/${productorId}` : `/organizaciones/${productorId}`) : undefined}
           fecha={d.fecha_documento}
+          rutaLocal={(d as { ruta_local?: string }).ruta_local}
           urlCanonica={d.url_canonica}
           urlArchivo={(d as { url_archivo?: string }).url_archivo}
           citadoEn={citadoEn}
@@ -1041,6 +1395,159 @@ const breadcrumb = [
     background: var(--color-accent-secondary-soft);
     border-left: 3px solid var(--color-accent-secondary-border);
     color: #6b4d00;
+  }
+
+  .coverage-note {
+    margin: 0 0 var(--space-4);
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-border-strong);
+    background: var(--color-surface-muted);
+    color: var(--color-fg);
+  }
+  .coverage-note p {
+    margin: 0;
+    font: 400 13px/1.55 var(--font-sans);
+  }
+  .coverage-note p + p {
+    margin-top: 6px;
+  }
+  .coverage-note__meta {
+    color: var(--color-fg-muted);
+    font-size: 12px !important;
+  }
+  .coverage-note .mono {
+    font-family: var(--font-mono);
+  }
+  .coverage-findings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    margin: 0 0 var(--space-4);
+  }
+  .coverage-finding {
+    padding: 12px 14px;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    display: grid;
+    gap: 5px;
+  }
+  .coverage-finding__label {
+    font: 700 10.5px/1.2 var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-fg-muted);
+  }
+  .coverage-finding strong {
+    font: 700 15px/1.25 var(--font-sans);
+    color: var(--color-accent);
+  }
+  .coverage-finding strong a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .coverage-finding span:not(.coverage-finding__label) {
+    font: 400 12px/1.45 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .coverage-scope {
+    margin: 0 0 var(--space-4);
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent-secondary-border);
+    background: var(--color-surface);
+  }
+  .coverage-scope h3 {
+    margin: 0 0 8px;
+    font: 700 11px/1.2 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent-secondary-hover);
+  }
+  .coverage-scope p {
+    margin: 0;
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .coverage-scope p + p {
+    margin-top: 6px;
+  }
+  .coverage-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-3);
+    margin: 0 0 var(--space-3);
+  }
+  .coverage-panel {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding: 12px 14px;
+  }
+  .coverage-panel--wide {
+    margin-bottom: var(--space-3);
+  }
+  .coverage-panel h3 {
+    margin: 0 0 10px;
+    font: 700 11px/1.2 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent-secondary-hover);
+  }
+  .coverage-counts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 7px;
+  }
+  .coverage-counts li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 6px;
+    font: 400 12px/1.35 var(--font-sans);
+  }
+  .coverage-counts li:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .coverage-counts strong {
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+  }
+  .coverage-counts--stacked li {
+    align-items: flex-start;
+  }
+  .coverage-counts--stacked li > span {
+    display: grid;
+    gap: 3px;
+  }
+  .coverage-counts--stacked em {
+    font-style: normal;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--color-fg-muted);
+  }
+  .coverage-list {
+    margin: 0 0 var(--space-4);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .coverage-list summary {
+    cursor: pointer;
+    padding: 10px 12px;
+    font: 700 11px/1.2 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: var(--color-surface-muted);
+  }
+  .coverage-list[open] summary {
+    border-bottom: 1px solid var(--color-border);
   }
 
   .meta-list { margin: 0; padding-left: 18px; }

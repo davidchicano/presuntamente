@@ -2,8 +2,8 @@
 // PageToc — índice interactivo de secciones para la página actual.
 //
 // El markup es un esqueleto vacío. El script al pie de BaseLayout escanea
-// los .sec-h[id] del <main> al cargar (y tras cada navegación de ClientRouter)
-// y rellena tanto la lista <ol> como activa o no el componente entero.
+// los .sec-h[id] del <main> al cargar y rellena tanto la lista <ol> como
+// activa o no el componente entero.
 //
 // En desktop (≥1280px) la cápsula vive sticky a la derecha del contenido,
 // fuera del flujo principal. En desktops más estrechos / móvil (<1280px) se
@@ -45,5 +45,11 @@
       </button>
     </div>
     <ol class="page-toc__list" role="list"></ol>
+    <button type="button" class="page-toc__top">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+      <span>Subir arriba</span>
+    </button>
   </div>
 </aside>

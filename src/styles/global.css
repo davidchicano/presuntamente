@@ -256,9 +256,9 @@
 /* =========================================================================
  * View Transitions API + micro-animaciones modernas
  *
- * Cuando Astro 5 navega entre páginas con <ClientRouter />, dispara la View
- * Transitions API nativa del navegador. Estas reglas definen el cross-fade
- * por defecto entre páginas (suave, 160ms) y las micro-anims de entrada de
+ * Las navegaciones completas pueden usar View Transitions API nativa del
+ * navegador cuando el UA lo soporte. Estas reglas definen el cross-fade
+ * suave y las micro-anims de entrada de
  * los elementos clave (fade-up del page-id y sec-h) y de hover de cards
  * interactivas. Todo respeta prefers-reduced-motion: con motion reducido,
  * @keyframes se anulan y las View Transitions usan la transición del UA.
@@ -1638,7 +1638,7 @@ body.has-menu-open { overflow: hidden; }
 /* ------------------------------------------------------------------------ *
  * F-función — Roles "de función en el procedimiento" (no son estado del
  * lado acusado): aparato judicial (juez/fiscal/magistrado/defensa/perito)
- * y acusación civil / parte civil (denunciante/querellante/acusacion_*/
+ * y acusación civil / parte civil (denunciante/querellante/acusación popular/
  * perjudicado). También aplica a categorías de Hito/Org/Doc.
  *
  * Vocabulario: contenedor con border-left 4px del color de la función,
@@ -2762,6 +2762,41 @@ kbd.cite .n { font-weight: 700; }
 }
 .page-toc__link.is-active .page-toc__num { color: var(--color-accent); }
 .page-toc__title { flex: 1; }
+
+.page-toc__top {
+  width: 100%;
+  margin: var(--space-3) 0 0;
+  padding: 7px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background: var(--color-surface-muted);
+  color: var(--color-accent);
+  cursor: pointer;
+  font: 700 11px/1 var(--font-sans);
+  letter-spacing: var(--ls-caps, 0.04em);
+  text-transform: uppercase;
+}
+.page-toc__top:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+}
+.page-toc__top:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.page-toc__top svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 /* Bloqueo de scroll del fondo cuando el panel está abierto en mobile. */
 body.has-toc-open { overflow: hidden; }

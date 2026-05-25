@@ -226,6 +226,61 @@ export function tipoDocLabel(tipo: string): string {
   return TIPO_DOC_LABEL_ES[tipo] ?? tipo;
 }
 
+// --- Vínculos institucionales -----------------------------------------------
+
+const NATURALEZA_VINCULO_LABEL_ES: Record<string, string> = {
+  cargo_publico_electo: 'Cargo público electo',
+  cargo_publico_designado: 'Cargo público designado',
+  cargo_judicial: 'Cargo judicial',
+  cargo_organico_partido: 'Cargo orgánico de partido',
+  cargo_directivo_empresa_publica: 'Cargo directivo en empresa pública',
+  cargo_directivo_organizacion_privada: 'Cargo directivo en organización privada',
+  cargo_academico_publico: 'Cargo académico público',
+  cargo_organizacion_civica: 'Cargo en organización cívica',
+  nombramiento_por_gobierno: 'Nombramiento por gobierno',
+  acusacion_institucional_en_caso: 'Acusación institucional en caso',
+  perjudicado_institucional_en_caso: 'Perjudicado institucional en caso',
+  entidad_investigada_en_caso: 'Entidad investigada en caso',
+  vinculo_familiar_publico: 'Vínculo familiar público',
+  vinculo_economico_documentado: 'Vínculo económico documentado',
+  vinculo_profesional_documentado: 'Vínculo profesional documentado',
+};
+
+export function naturalezaVinculoLabel(naturaleza: string, _lang: Lang = 'es'): string {
+  return NATURALEZA_VINCULO_LABEL_ES[naturaleza] ?? naturaleza;
+}
+
+// --- Cobertura mediática general --------------------------------------------
+
+const TIPO_PIEZA_MEDIATICA_LABEL_ES: Record<string, string> = {
+  noticia: 'Noticia',
+  reportaje: 'Reportaje',
+  entrevista: 'Entrevista',
+  analisis: 'Análisis',
+  editorial: 'Editorial',
+  opinion: 'Opinión',
+  columna: 'Columna',
+  pieza_agencia: 'Pieza de agencia',
+  suelto: 'Suelto',
+  tv_radio: 'TV / radio',
+  investigacion_periodistica: 'Investigación periodística',
+};
+
+export function tipoPiezaMediaticaLabel(tipo: string, _lang: Lang = 'es'): string {
+  return TIPO_PIEZA_MEDIATICA_LABEL_ES[tipo] ?? tipo;
+}
+
+const RELEVANCIA_EDITORIAL_LABEL_ES: Record<string, string> = {
+  capital: 'Capital',
+  alta: 'Alta',
+  media: 'Media',
+  baja: 'Baja',
+};
+
+export function relevanciaEditorialLabel(relevancia: string, _lang: Lang = 'es'): string {
+  return RELEVANCIA_EDITORIAL_LABEL_ES[relevancia] ?? relevancia;
+}
+
 // --- Familia de Delito -------------------------------------------------------
 
 const FAMILIA_DELITO_LABEL_ES: Record<string, string> = {

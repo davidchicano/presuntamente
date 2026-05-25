@@ -3,6 +3,7 @@
 // Markup canónico en preview/comp_documento.html.
 
 import LevelBadge from './LevelBadge.astro';
+import { documentoPrimaryHref } from '@/lib/documentos';
 
 interface Props {
   titulo: string;
@@ -12,6 +13,7 @@ interface Props {
   productor?: string;
   productorHref?: string;
   fecha: string;
+  rutaLocal?: string;
   urlCanonica?: string;
   urlArchivo?: string;
   citadoEn?: number;
@@ -24,10 +26,18 @@ const {
   productor,
   productorHref,
   fecha,
+  rutaLocal,
   urlCanonica,
   urlArchivo,
   citadoEn,
 } = Astro.props;
+
+const primaryHref = documentoPrimaryHref({
+  ruta_local: rutaLocal,
+  url_canonica: urlCanonica,
+  url_archivo: urlArchivo,
+});
+const hasLinks = Boolean(rutaLocal || urlCanonica || urlArchivo);
 ---
 <article class="docard">
   <div class="docard__icon" aria-hidden="true">
@@ -39,7 +49,19 @@ const {
     </svg>
   </div>
   <div class="docard__body">
-    <h4 class="docard__title">{titulo}</h4>
+    <h4 class="docard__title">
+      {primaryHref ? (
+        <a
+          href={primaryHref}
+          target={primaryHref.startsWith('http') ? '_blank' : undefined}
+          rel={primaryHref.startsWith('http') ? 'noopener' : undefined}
+        >
+          {titulo}
+        </a>
+      ) : (
+        titulo
+      )}
+    </h4>
     <div class="docard__meta">
       <LevelBadge nivel={nivel} />
       <span>{tipoLabel}</span>
@@ -61,8 +83,9 @@ const {
       )}
     </div>
   </div>
-  {(urlCanonica || urlArchivo) && (
+  {hasLinks && (
     <div class="docard__links">
+      {rutaLocal && <a href={rutaLocal}>Copia local</a>}
       {urlCanonica && <a href={urlCanonica} target="_blank" rel="noopener">Original ↗</a>}
       {urlArchivo && <a href={urlArchivo} target="_blank" rel="noopener">Archive.org ↗</a>}
     </div>
@@ -109,6 +132,16 @@ const {
   .docard__title {
     font: 600 14px/1.35 var(--font-sans);
     margin: 0 0 4px;
+  }
+  .docard__title a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-fg-subtle);
+    text-underline-offset: 3px;
+  }
+  .docard__title a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
   }
   .docard__meta {
     font-family: var(--font-mono);

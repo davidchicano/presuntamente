@@ -7,6 +7,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
 import { getCollection } from 'astro:content';
 import { tipoDocLabel, type Lang } from '@/lib/labels';
+import { documentoPrimaryHref } from '@/lib/documentos';
 
 interface Props { lang?: Lang; }
 const { lang = 'es' } = Astro.props;
@@ -35,7 +36,10 @@ const documentos = documentosCol
       nivel: d.data.nivel_fuente,
       productor: d.data.productor_organizacion_id ? orgIndex.get(d.data.productor_organizacion_id)?.nombre : undefined,
       fecha: d.data.fecha_documento,
+      rutaLocal: (d.data as { ruta_local?: string }).ruta_local,
       urlCanonica: d.data.url_canonica,
+      urlArchivo: (d.data as { url_archivo?: string }).url_archivo,
+      primaryHref: documentoPrimaryHref(d.data as { ruta_local?: string; url_canonica?: string; url_archivo?: string }),
       citado,
     };
   })
@@ -140,23 +144,38 @@ const tiposPresentes = Array.from(new Set(documentos.map((d) => d.tipo)))
     <thead>
       <tr>
         <th style="width: 8%;" class="c-num">Nivel</th>
-        <th style="width: 50%;">Documento</th>
-        <th style="width: 20%;">Productor</th>
+        <th style="width: 44%;">Documento</th>
+        <th style="width: 18%;">Productor</th>
         <th style="width: 12%;">Fecha</th>
-        <th style="width: 10%;" class="c-num">Citado en</th>
+        <th style="width: 8%;" class="c-num">Citado en</th>
+        <th style="width: 10%;" class="c-tight">Enlaces</th>
       </tr>
     </thead>
     <tbody>
       {documentos.map((d) => (
-        <tr data-row data-nivel={String(d.nivel)} data-tipo={d.tipo} data-search={searchBlob(d)}>
+        <tr id={`doc-${d.slug}`} data-row data-nivel={String(d.nivel)} data-tipo={d.tipo} data-search={searchBlob(d)}>
           <td class="c-num"><span class:list={['badge', `badge--n${d.nivel}`]}>N{d.nivel}</span></td>
           <td>
-            <span class="c-name">{d.titulo}</span>
+            {d.primaryHref ? (
+              <a class="c-name c-name--link" href={d.primaryHref} target={d.primaryHref.startsWith('http') ? '_blank' : undefined} rel={d.primaryHref.startsWith('http') ? 'noopener' : undefined}>
+                {d.titulo}
+              </a>
+            ) : (
+              <span class="c-name">{d.titulo}</span>
+            )}
             <span class="c-name__sub">{d.tipoLabel}</span>
           </td>
           <td class="c-mono">{d.productor ?? '—'}</td>
           <td class="c-date">{d.fecha}</td>
           <td class="c-num">{d.citado}</td>
+          <td class="c-tight">
+            <div class="doc-links">
+              {d.rutaLocal && <a href={d.rutaLocal}>Local</a>}
+              {d.urlCanonica && <a href={d.urlCanonica} target="_blank" rel="noopener">Original ↗</a>}
+              {d.urlArchivo && <a href={d.urlArchivo} target="_blank" rel="noopener">Archive ↗</a>}
+              {!d.rutaLocal && !d.urlCanonica && !d.urlArchivo && <span class="muted">—</span>}
+            </div>
+          </td>
         </tr>
       ))}
     </tbody>
@@ -213,6 +232,22 @@ const tiposPresentes = Array.from(new Set(documentos.map((d) => d.tipo)))
 </script>
 
 <style>
+  .c-name--link {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .doc-links {
+    display: grid;
+    gap: 5px;
+    font: 600 11px/1.2 var(--font-mono);
+  }
+  .doc-links a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+  }
   .empty-state {
     border: 1px dashed var(--color-border-strong);
     background: var(--color-surface-muted);

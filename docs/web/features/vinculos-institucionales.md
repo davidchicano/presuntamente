@@ -1,6 +1,6 @@
 # Vínculos institucionales documentados
 
-> Archivos clave: [`schemas/vinculo-institucional.schema.json`](../../../schemas/vinculo-institucional.schema.json) · [`src/content.config.ts`](../../../src/content.config.ts) (collection `vinculos`) · [`.agents/skills/documentar-vinculos/SKILL.md`](../../../.agents/skills/documentar-vinculos/SKILL.md) · directorio `content/vinculos/` (vacío en main hasta primer poblado real). · Relacionada con [`grafo-relaciones-caso.md`](grafo-relaciones-caso.md).
+> Archivos clave: [`schemas/vinculo-institucional.schema.json`](../../../schemas/vinculo-institucional.schema.json) · [`src/content.config.ts`](../../../src/content.config.ts) (collection `vinculos`) · [`.agents/skills/documentar-vinculos/SKILL.md`](../../../.agents/skills/documentar-vinculos/SKILL.md) · [`SourceLinkBadge.astro`](../../../src/components/SourceLinkBadge.astro) · [`src/lib/documentos.ts`](../../../src/lib/documentos.ts) · directorio `content/vinculos/` (primer corpus: `begona-gomez`). · Relacionada con [`grafo-relaciones-caso.md`](grafo-relaciones-caso.md).
 
 ## Qué hace
 
@@ -31,22 +31,23 @@ Entidad nueva `VinculoInstitucional` con schema en [`schemas/vinculo-institucion
 
 ### Skill productora
 
-[`/documentar-vinculos <slug-caso>`](../../../.agents/skills/documentar-vinculos/SKILL.md) v0 — pensada para correr en sub-agente paralelo en un git worktree dedicado, lanzada por el maintainer cuando quiera ampliar el contexto institucional de un caso. La skill recorre las personas con rol y las organizaciones implicadas del caso, propone vínculos con su naturaleza correspondiente, exige documento de respaldo y aplica guardarraíles editoriales (verbos prohibidos del P-09, minimización en vínculos familiares, exigencia de documentación en vínculos económicos).
+[`/documentar-vinculos <slug-caso>`](../../../.agents/skills/documentar-vinculos/SKILL.md) v1 — pensada para correr en sub-agente paralelo en un git worktree dedicado, lanzada por el maintainer cuando quiera ampliar el contexto institucional de un caso. La skill recorre las personas con rol y las organizaciones implicadas del caso, propone vínculos con su naturaleza correspondiente, exige documento de respaldo y aplica guardarraíles editoriales (verbos prohibidos del P-09, minimización en vínculos familiares, exigencia de documentación en vínculos económicos).
 
 ### Próximo paso
 
-Una vez existan `VinculoInstitucional` poblados en al menos un caso piloto, el render en UI puede ser:
+Una vez existan `VinculoInstitucional` poblados en al menos un caso piloto, el render en UI queda:
 
-- Bloque "Contexto institucional" en la ficha de caso (similar a "Personas implicadas" / "Organizaciones implicadas" pero específico para vínculos no procesales).
-- Listado paralelo de "vínculos formales del entorno" agrupados por naturaleza.
-- Reverso en ficha de Persona (todos los vínculos donde es sujeto) y de Organización (todos los vínculos donde es objeto).
+- Relaciones embebidas dentro de las propias cards de "Personas implicadas" y "Organizaciones implicadas" en la ficha de caso. No hay sección independiente de contexto institucional porque duplicaba contenido y añadía ruido.
+- Vista compacta en ficha de Persona y de Organización con los vínculos en los que aparece la entidad, separada del rol procesal pero sin tabla pesada.
 - Consumido también por [`grafo-relaciones-caso.md`](grafo-relaciones-caso.md) como fuente de aristas.
 
 ## Estado actual
 
-**Base entregada en main el 2026-05-25.** Schema canónico + collection en `content/vinculos/` + skill `/documentar-vinculos` v0 + ficha actualizada. **Datos vacíos** — los poblará un sub-agente paralelo lanzado por el maintainer con la skill, en un git worktree aislado. Render en UI de la ficha de caso, vista por Persona y vista por Organización pendientes de la primera oleada de datos reales.
+**Primer caso poblado + UI entregada el 2026-05-26.** Schema canónico + collection en `content/vinculos/` + skill `/documentar-vinculos` v1 + 16 vínculos institucionales de `begona-gomez`. La ficha de caso muestra las relaciones dentro de las cards de personas y organizaciones implicadas; las fichas de Persona y Organización muestran una lista compacta de vínculos donde la entidad aparece, separada de la trayectoria o rol procesal.
 
-Algunas relaciones afines aparecen ya dispersas en `Persona.cargos_publicos_historicos`, `RolEnCaso`, `Hito.organizaciones_afectadas` y descripciones de Hechos; el agente paralelo decidirá caso a caso si esos datos se promueven a `VinculoInstitucional` formal o se mantienen donde están como dato resumen.
+La biblioteca del caso incluye también los documentos que respaldan vínculos institucionales. En UI el tipo de vínculo se renderiza con [`SourceLinkBadge`](../../../src/components/SourceLinkBadge.astro): badge funcional distinto de los badges de estado/categoría (borde izquierdo acento + tipografía mono), con flecha de salida ↗ al final. El badge es clicable y abre el documento de respaldo vía [`documentoRespaldoHref`](../../../src/lib/documentos.ts) — copia local, URL canónica o archive.org, en ese orden; si ninguna existe, cae en ancla `#doc-<id>` de la biblioteca del caso o `/biblioteca#doc-<id>` en ficha de Persona/Organización.
+
+En las cards de persona/organización del caso, las relaciones van separadas del bloque de roles por una línea divisoria, sin título redundante ni viñetas: el badge ya aporta el contexto institucional.
 
 ## Decisiones editoriales y aprendizajes
 
@@ -58,13 +59,15 @@ Algunas relaciones afines aparecen ya dispersas en `Persona.cargos_publicos_hist
 - **Vínculos familiares minimizados.** `vinculo_familiar_publico` exige: (a) que la persona vinculada también sea figura pública; (b) que la relación sea citada en cobertura cruzada; (c) que sea factualmente relevante para el hecho investigado. `notas` obligatoria. Sin uno de los tres, no entra.
 - **Vínculos económicos sólo con documento.** "X es proveedor de Y" exige factura/contrato/registro mercantil/sentencia. Sin documento no entra. `notas` obligatoria.
 - **Entidad nueva, no campos en `Persona`/`Organizacion`.** Razones documentadas en el plan de sesión 2026-05-25: (a) cubre 15 naturalezas, demasiado para un solo subtipo; (b) un vínculo puede cruzar varios casos sin duplicar; (c) mismo patrón que `RelacionEntreCasos`; (d) `documentos_respaldo[]` obligatorio se exige por defecto.
+- **Naturalezas `*_en_caso`:** el enum incluye `acusacion_institucional_en_caso`, `perjudicado_institucional_en_caso` y `entidad_investigada_en_caso` para modelar quién actúa o resulta alcanzado institucionalmente sin confundirlo con imputación procesal directa. La skill `/documentar-vinculos` las recorre explícitamente al auditar organizaciones del caso. Precedente en `begona-gomez`: UCM como perjudicada, varias acusaciones populares (Manos Limpias, Vox, HazteOír…).
+- **Vista agregada "a quién le salpica" pendiente de UI.** Hoy esos vínculos sólo aparecen embebidos en cards o en la lista compacta de Persona/Organización; no hay bloque resumen en la ficha de caso que agrupe administraciones, partidos u organismos alcanzados. Eso es trabajo v1.x (posiblemente compartido con el grafo). El modelo y la documentación de skill ya lo contemplan; la ficha de feature lo dejaba implícito en el enum pero no como entregable UI.
 
 ## Ideas futuras
 
 ### v1 pre-launch
 
-- Render visible en ficha de caso ("Contexto institucional"), una vez el corpus tenga ≥ 1 caso poblado.
-- Vista en ficha de Persona y de Organización con los vínculos en los que aparece, separando rol procesal de contexto institucional.
+- Nota metodológica pública en `/sobre` o `/cifras` cuando haya al menos dos casos poblados y se pueda explicar el patrón sin depender de un único ejemplo.
+- Bloque resumen en ficha de caso: instituciones y actores institucionales alcanzados (acusación · perjudicado · ente investigado · nombramientos relevantes), agrupados por naturaleza y siempre con enlace al documento de respaldo.
 
 ### v1.x
 
@@ -84,6 +87,7 @@ Algunas relaciones afines aparecen ya dispersas en `Persona.cargos_publicos_hist
 - [x] Definir enum de `naturaleza` del vínculo. **Decisión 2026-05-25**: 15 valores cerrados (revisar tras primera ronda real de poblado).
 - [x] Definir requisito de fuente para cada vínculo. **Decisión 2026-05-25**: `documentos_respaldo[] minItems: 1` igual que `Hecho`.
 - [x] Revisar riesgos RGPD para vínculos familiares o de pareja. **Decisión 2026-05-25**: `vinculo_familiar_publico` con tres condiciones obligatorias + `notas` obligatoria + minimización máxima (no datos de hijos menores, no domicilios, no detalles privados).
-- [ ] Escribir nota metodológica pública en `/sobre` o `/cifras` cuando el corpus tenga ≥ 1 caso poblado.
-- [ ] Poblar el primer caso piloto con `/documentar-vinculos <slug>` lanzado en sub-agente paralelo.
-- [ ] Diseñar el render en UI ("Contexto institucional") una vez exista corpus.
+- [ ] Escribir nota metodológica pública en `/sobre` o `/cifras` cuando el corpus tenga masa suficiente para no parecer una nota ad hoc de un único caso.
+- [x] Poblar el primer caso piloto con `/documentar-vinculos <slug>` lanzado en sub-agente paralelo. **Entregado 2026-05-25**: `begona-gomez`, 16 vínculos.
+- [x] Diseñar el render en UI una vez exista corpus. **Entregado 2026-05-26**: relaciones embebidas en personas/organizaciones de la ficha de caso + vista compacta en Persona/Organización.
+- [ ] Diseñar bloque agregado "instituciones alcanzadas" en ficha de caso (acusación/perjudicado/nombramientos). Modelo y corpus piloto listos; falta UI y criterio de agrupación editorial.

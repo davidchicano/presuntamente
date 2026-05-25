@@ -5,21 +5,29 @@ import SectionH from '@/components/SectionH.astro';
 import OrgGlyph from '@/components/OrgGlyph.astro';
 import RichProse from '@/components/RichProse.astro';
 import RolBadge from '@/components/RolBadge.astro';
-import { tipoOrgLabel, rolLabel, type Lang } from '@/lib/labels';
+import VinculosInstitucionalesList from '@/components/VinculosInstitucionalesList.astro';
+import { tipoOrgLabel, rolLabel, naturalezaVinculoLabel, type Lang } from '@/lib/labels';
+import { documentoRespaldoHref } from '@/lib/documentos';
 
 interface Props { lang?: Lang; organizacion: CollectionEntry<'organizaciones'>; }
 const { lang = 'es', organizacion } = Astro.props;
 const data = organizacion.data;
 
-const [rolesCol, casosCol, hechosCol, hitosCol, documentosCol] = await Promise.all([
+const [rolesCol, casosCol, hechosCol, hitosCol, documentosCol, vinculosCol, personasCol, organizacionesCol] = await Promise.all([
   getCollection('roles'),
   getCollection('casos'),
   getCollection('hechos'),
   getCollection('hitos'),
   getCollection('documentos'),
+  getCollection('vinculos'),
+  getCollection('personas'),
+  getCollection('organizaciones'),
 ]);
 
 const casoIndex = new Map(casosCol.map((c) => [c.data.id, c.data]));
+const personaIndex = new Map(personasCol.map((p) => [p.data.id, p.data]));
+const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
+const docIndex = new Map(documentosCol.map((d) => [d.data.id, d.data]));
 
 // Casos donde aparece esta organización por cualquiera de las vías.
 const casoIds = new Set<string>();
@@ -48,6 +56,96 @@ const casos = Array.from(casoIds)
   .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
 const documentosProducidos = documentosCol.filter((d) => d.data.productor_organizacion_id === data.id);
+
+function personaLabel(id: string): string {
+  return personaIndex.get(id)?.nombre_completo ?? id;
+}
+
+function orgLabel(id: string): string {
+  return orgIndex.get(id)?.nombre ?? id;
+}
+
+function personaHref(id: string): string {
+  return lang === 'ca' ? `/cat/personas/${id}` : `/personas/${id}`;
+}
+
+function orgHref(id: string): string {
+  return lang === 'ca' ? `/cat/organizaciones/${id}` : `/organizaciones/${id}`;
+}
+
+function formatVinculoDate(value: string, precision?: string): string {
+  if (precision === 'anio') return value.slice(0, 4);
+  if (precision === 'mes') return value.slice(0, 7);
+  return value;
+}
+
+function formatVinculoPeriodo(v: {
+  desde: string;
+  hasta?: string;
+  precision_desde?: string;
+  precision_hasta?: string;
+  vigente?: boolean;
+}): string {
+  const desde = formatVinculoDate(v.desde, v.precision_desde);
+  const hasta = v.hasta
+    ? formatVinculoDate(v.hasta, v.precision_hasta)
+    : v.vigente
+      ? 'vigente'
+      : 'sin fecha de cierre';
+  return `${desde} → ${hasta}`;
+}
+
+function vinculoEntity(v: CollectionEntry<'vinculos'>['data'], side: 'sujeto' | 'objeto') {
+  if (side === 'sujeto') {
+    if (v.sujeto_persona_id) return { label: personaLabel(v.sujeto_persona_id), href: personaHref(v.sujeto_persona_id) };
+    if (v.sujeto_organizacion_id) return { label: orgLabel(v.sujeto_organizacion_id), href: orgHref(v.sujeto_organizacion_id) };
+  }
+  if (v.objeto_persona_id) return { label: personaLabel(v.objeto_persona_id), href: personaHref(v.objeto_persona_id) };
+  if (v.objeto_organizacion_id) return { label: orgLabel(v.objeto_organizacion_id), href: orgHref(v.objeto_organizacion_id) };
+  return { label: 'Entidad no resuelta' };
+}
+
+const vinculosOrg = vinculosCol
+  .filter((v) => v.data.sujeto_organizacion_id === data.id || v.data.objeto_organizacion_id === data.id)
+  .filter((v) => v.data.estado_publicacion !== 'retirado_definitivamente')
+  .sort((a, b) => b.data.desde.localeCompare(a.data.desde))
+  .map((v) => {
+    const sujeto = vinculoEntity(v.data, 'sujeto');
+    const objeto = vinculoEntity(v.data, 'objeto');
+    const primerCaso = v.data.relevancia_para_caso_ids?.[0];
+    const caso = primerCaso ? casoIndex.get(primerCaso) : undefined;
+    return {
+      id: v.data.id,
+      naturalezaLabel: naturalezaVinculoLabel(v.data.naturaleza),
+      sujetoLabel: sujeto.label,
+      sujetoHref: sujeto.href,
+      objetoLabel: objeto.label,
+      objetoHref: objeto.href,
+      descripcion: v.data.descripcion,
+      periodo: formatVinculoPeriodo(v.data),
+      gobierno: v.data.gobierno_o_legislatura,
+      casoLabel: caso?.nombre_mediatico ?? primerCaso,
+      casoHref: primerCaso ? `/casos/${primerCaso}` : undefined,
+      papel: v.data.sujeto_organizacion_id === data.id ? 'Sujeto' : 'Objeto',
+      documentos: v.data.documentos_respaldo.map((ref) => {
+        const doc = docIndex.get(ref.documento_id);
+        return {
+          titulo: doc?.titulo ?? ref.documento_id,
+          href: doc
+            ? documentoRespaldoHref(doc.id, doc, lang === 'ca' ? '/cat/biblioteca' : '/biblioteca')
+            : undefined,
+          pasaje: ref.pasaje,
+          nota: ref.nota,
+        };
+      }),
+    };
+  });
+
+let sectionCounter = 3;
+const rolesSectionNum = rolesOrg.length > 0 ? `${sectionCounter++}.` : undefined;
+const vinculosSectionNum = vinculosOrg.length > 0 ? `${sectionCounter++}.` : undefined;
+const documentosSectionNum = documentosProducidos.length > 0 ? `${sectionCounter++}.` : undefined;
+const redaccionSectionNum = `${sectionCounter}.`;
 
 const breadcrumb = [
   { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
@@ -111,7 +209,7 @@ const breadcrumb = [
 
   {rolesOrg.length > 0 && (
     <>
-      <SectionH num="3." title="Roles procesales asumidos" id="roles" right={`${rolesOrg.length} rol${rolesOrg.length === 1 ? '' : 'es'}`} />
+      <SectionH num={rolesSectionNum!} title="Roles procesales asumidos" id="roles" right={`${rolesOrg.length} rol${rolesOrg.length === 1 ? '' : 'es'}`} />
       <div class="tbl-scroll">
       <table class="tbl">
         <thead>
@@ -135,9 +233,25 @@ const breadcrumb = [
     </>
   )}
 
+  {vinculosOrg.length > 0 && (
+    <>
+      <SectionH
+        num={vinculosSectionNum!}
+        title="Relaciones institucionales documentadas"
+        id="contexto-institucional"
+        right={`${vinculosOrg.length} vínculo${vinculosOrg.length === 1 ? '' : 's'}`}
+      />
+      <p class="contexto-intro">
+        Vínculos formales documentados en los que aparece esta organización. Este bloque
+        queda separado de los roles procesales y de los documentos producidos.
+      </p>
+      <VinculosInstitucionalesList rows={vinculosOrg} />
+    </>
+  )}
+
   {documentosProducidos.length > 0 && (
     <>
-      <SectionH num="4." title="Documentos producidos" id="documentos" right={`${documentosProducidos.length} documento${documentosProducidos.length === 1 ? '' : 's'}`} />
+      <SectionH num={documentosSectionNum!} title="Documentos producidos" id="documentos" right={`${documentosProducidos.length} documento${documentosProducidos.length === 1 ? '' : 's'}`} />
       <ul class="docs-list">
         {documentosProducidos.map((d) => (
           <li>
@@ -150,7 +264,7 @@ const breadcrumb = [
     </>
   )}
 
-  <SectionH num="5." title="Cómo se ha redactado esta ficha" id="redaccion" />
+  <SectionH num={redaccionSectionNum} title="Cómo se ha redactado esta ficha" id="redaccion" />
   <div class="prose">
     <ul class="meta-list">
       <li><strong>Estado de publicación:</strong> {data.estado_publicacion}</li>
@@ -221,6 +335,15 @@ const breadcrumb = [
   .docs-list li:last-child { border-bottom: 0; }
   .docs-list__title { flex: 1 1 0; font-weight: 600; }
   .docs-list__date { font-family: var(--font-mono); font-size: 11px; color: var(--color-fg-muted); }
+
+  .contexto-intro {
+    margin: 0 0 var(--space-3);
+    padding: 10px 12px;
+    background: var(--color-surface-muted);
+    border-left: 3px solid var(--color-border-strong);
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--color-fg);
+  }
 
   .meta-list { margin: 0; padding-left: 18px; }
   .meta-list li { margin: 4px 0; }

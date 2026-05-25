@@ -1,6 +1,6 @@
 # Cobertura mediática general
 
-> Archivos clave: [`schemas/cobertura-mediatica.schema.json`](../../../schemas/cobertura-mediatica.schema.json) · [`src/content.config.ts`](../../../src/content.config.ts) (collection `coberturaMediatica`) · [`.agents/skills/rastrear-cobertura/SKILL.md`](../../../.agents/skills/rastrear-cobertura/SKILL.md) · directorio `content/cobertura-mediatica/` (vacío en main hasta primer poblado real). · Relacionada con [`composicion-fuentes-citadas.md`](composicion-fuentes-citadas.md).
+> Archivos clave: [`schemas/cobertura-mediatica.schema.json`](../../../schemas/cobertura-mediatica.schema.json) · [`src/content.config.ts`](../../../src/content.config.ts) (collection `coberturaMediatica`) · [`.agents/skills/rastrear-cobertura/SKILL.md`](../../../.agents/skills/rastrear-cobertura/SKILL.md) · directorio `content/cobertura-mediatica/` (primer corpus: `begona-gomez`). · Relacionada con [`composicion-fuentes-citadas.md`](composicion-fuentes-citadas.md).
 
 ## Qué hace
 
@@ -26,7 +26,7 @@ Entidad nueva con schema en [`schemas/cobertura-mediatica.schema.json`](../../..
 
 ### Skill productora
 
-[`/rastrear-cobertura <slug-caso>`](../../../.agents/skills/rastrear-cobertura/SKILL.md) v0 — pensada para correr en sub-agente paralelo en un git worktree dedicado. La skill diseña los términos a partir del propio caso, declara las ventanas, busca con `WebSearch` por fuente, archiva en `web.archive.org`, deduplica republicaciones marcando `pieza_referenciada_id`, tipifica con el enum cerrado, y al cerrar actualiza el `estado_ficha.cobertura_mediatica_general` del Caso.
+[`/rastrear-cobertura <slug-caso>`](../../../.agents/skills/rastrear-cobertura/SKILL.md) v1 — pensada para correr en sub-agente paralelo en un git worktree dedicado. La skill diseña los términos a partir del propio caso, declara las ventanas, busca con `WebSearch` por fuente, archiva en `web.archive.org`, deduplica republicaciones marcando `pieza_referenciada_id`, tipifica con el enum cerrado, y al cerrar actualiza el `estado_ficha.cobertura_mediatica_general` del Caso.
 
 ### Próximo paso
 
@@ -38,7 +38,13 @@ Una vez existan corpus poblados en al menos un caso piloto, los posibles renders
 
 ## Estado actual
 
-**Base entregada en main el 2026-05-25.** Schema canónico + collection en `content/cobertura-mediatica/` + skill `/rastrear-cobertura` v0 + ficha actualizada. **Datos vacíos** — los poblará un sub-agente paralelo lanzado por el maintainer con la skill, en un git worktree aislado. Render en UI pendiente de la primera oleada de datos reales.
+**Primer caso poblado + UI entregada el 2026-05-26.** Schema canónico + collection en `content/cobertura-mediatica/` + skill `/rastrear-cobertura` v1 + corpus inicial de `begona-gomez` con 29 piezas. La ficha de caso renderiza una sección propia "Cobertura mediática general" centrada en lecturas útiles: periodo observado, mayor concentración de piezas, medio más presente en la muestra, formato dominante, picos rastreados, distribución por tipo/medio y listado completo en desplegable.
+
+La UI mantiene la separación editorial clave: las piezas de cobertura general no entran en la "Biblioteca documental del caso" ni usan badges N1-N4. Se muestran como corpus mediático rastreado, con badge de `tipo_pieza` y enlaces al original o archivo cuando exista.
+
+No se muestra reparto por bloque ideológico: `Organizacion` no tiene todavía una clasificación revisada de orientación editorial, sólo `linea_editorial_declarada` para citas literales de "Quiénes somos" y casi no está poblada. Cualquier gráfico de bloques exigiría feature y metodología propias.
+
+**Próximo paso acordado (2026-05-26, pendiente de diseño):** barra horizontal proporcional por corriente editorial sobre el corpus rastreado (`noticias[]` → `medio_id` → clasificación del medio). **Viable técnicamente** una vez exista el campo en `Organizacion`; **viable editorialmente** sólo con metodología explícita, valores discretos conservadores, `sin_clasificar` obligatorio y copy que no prometa medir "sesgo" ni veracidad. Propiedad accionarial, financiación pública o subvenciones son dimensiones distintas de la línea editorial: conviene decidir si van en campos separados o fuera de scope v1. La skill `/rastrear-cobertura` no debe inferir orientación al rastrear; la clasificación vive en el mantenimiento de medios. Feature hermana [`composicion-fuentes-citadas.md`](composicion-fuentes-citadas.md): misma clasificación de medios, distinto corpus (N4 citadas en hechos vs muestra rastreada).
 
 ## Decisiones editoriales y aprendizajes
 
@@ -56,12 +62,12 @@ Una vez existan corpus poblados en al menos un caso piloto, los posibles renders
 
 ### v1 pre-launch
 
-- Probar el flujo en un caso piloto con cobertura abundante (begona-gomez o lezo son candidatos por volumen y transversalidad).
-- Mostrar en `Estado de la ficha` el estado del rastreo — **ya cableado**, el campo `estado_ficha.cobertura_mediatica_general` existe.
-- Mini-bloque "Cobertura mediática general" en la ficha de caso linkando al corpus por separado.
+- Completar una segunda pasada del caso piloto con los medios excluidos por limitaciones de acceso del primer rastreo (`El País`, `El Mundo`, `ABC`, `La Vanguardia`) si el entorno lo permite o mediante aporte operativo del maintainer.
+- Cerrar el copy público de "barómetro" junto con [`composicion-fuentes-citadas.md`](composicion-fuentes-citadas.md), para evitar prometer medición de sesgo antes de tener metodología suficiente.
 
 ### v1.x
 
+- Barra horizontal proporcional por corriente editorial (tras cerrar modelado de medios).
 - Página o sección por caso con picos de cobertura por fecha.
 - Agregado global por medio y por caso.
 - Comparativa entre cobertura citada por presuntamente.org y cobertura general rastreada.
@@ -79,5 +85,7 @@ Una vez existan corpus poblados en al menos un caso piloto, los posibles renders
 - [x] Crear skill `/rastrear-cobertura`. **Entregada v0** el 2026-05-25.
 - [x] Definir política de archivo para noticias que no respaldan hechos. **Decisión 2026-05-25**: archive.org obligatorio; paywall duro decidido caso a caso con el maintainer.
 - [ ] Decidir si "sesgo mediático" se usa sólo internamente o también como copy público. Posponer hasta que la feature hermana [`composicion-fuentes-citadas.md`](composicion-fuentes-citadas.md) esté entregada — ambas comparten metodología y conviene cerrar el copy a la vez.
-- [ ] Poblar el primer caso piloto con `/rastrear-cobertura <slug>` lanzado en sub-agente paralelo.
-- [ ] Diseñar el render en UI cuando exista corpus.
+- [ ] Diseñar e implementar barra horizontal por corriente editorial (depende de `Organizacion.orientacion_editorial` + metodología documentada).
+- [ ] Actualizar skill `/rastrear-cobertura` sólo si hace falta documentar el límite ("no clasificar medios") o el mantenimiento cruzado con medios del inventario.
+- [x] Poblar el primer caso piloto con `/rastrear-cobertura <slug>` lanzado en sub-agente paralelo. **Entregado 2026-05-25**: `begona-gomez`, 29 piezas.
+- [x] Diseñar el render en UI cuando exista corpus. **Entregado 2026-05-26**: sección propia en ficha de caso, separada de biblioteca documental.

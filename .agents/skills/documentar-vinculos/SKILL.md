@@ -3,7 +3,7 @@ name: documentar-vinculos
 description: Documenta los vínculos institucionales formales que rodean a un caso del inventario presuntamente.org. Crea entradas `VinculoInstitucional` en `content/vinculos/<id>.yaml` para cargos públicos, designaciones por gobierno, cargos orgánicos de partido, directivos públicos/privados, acusaciones/perjudicados/entes investigados como personas jurídicas, y vínculos familiares/económicos/profesionales públicos relevantes — siempre con `documentos_respaldo[]` ≥ 1 y aplicando los principios de presunción de inocencia y minimización. Trigger cuando el usuario pide "documenta los vínculos institucionales de <caso>", "qué entornos institucionales tocan a <caso>", "amplía el contexto institucional de <caso>" o invoca `/documentar-vinculos <slug>`. Pensada para correr en sub-agente paralelo a la sesión principal, en un git worktree dedicado.
 ---
 
-# Skill `documentar-vinculos` — v0
+# Skill `documentar-vinculos` — v1
 
 ## Propósito
 
@@ -20,6 +20,16 @@ La feature canónica está descrita en [`docs/web/features/vinculos-instituciona
 - Si el slug no existe en `content/casos/`, error claro (no inventar).
 
 ## Proceso
+
+### 0. Preflight obligatorio de directorio
+
+Antes de leer o escribir cualquier archivo, validar el directorio real de trabajo:
+
+1. Ejecutar `pwd` y confirmar que apunta al worktree esperado para la sesión.
+2. Ejecutar `git rev-parse --show-toplevel` y comprobar que coincide con ese worktree, no con la working copy principal salvo que el maintainer haya pedido expresamente trabajar ahí.
+3. Ejecutar `git status --short` para detectar cambios ajenos antes de tocar rutas calientes.
+
+Si el CWD no coincide con el worktree de la sesión, parar y corregirlo antes de continuar. Aprendizaje incorporado tras la primera pasada real: el agente `vinculos-bg` trabajó parcialmente en el working tree principal por error.
 
 ### 1. Carga del caso
 
@@ -108,7 +118,7 @@ Informe en markdown impreso al final del turno:
 # Vínculos institucionales — caso `<slug>`
 
 Fecha: YYYY-MM-DD
-Skill: documentar-vinculos v0
+Skill: documentar-vinculos v1
 Material revisado: <N> personas con rol, <N> organizaciones implicadas.
 
 ## Vínculos creados
@@ -140,7 +150,7 @@ Material revisado: <N> personas con rol, <N> organizaciones implicadas.
 2. **Cargo público formal ≠ cargo orgánico de partido ≠ nombramiento por gobierno.** Tres `VinculoInstitucional` separados si las tres dimensiones existen.
 3. **El partido es una organización más, no un color.** La UI no usará colores partidistas; el modelado tampoco etiqueta "ideología", sólo `naturaleza`.
 4. **Verbos prohibidos del P-09 vetados en `descripcion` y `notas`.** "Ostenta el cargo", "ocupa", "ejerce" sí; "manda", "controla", "domina" no — salvo cita literal de un Documento, marcada como tal.
-5. **Vínculos familiares minimizados.** No usar para hijos menores, parejas no públicas, familiares sin rol propio en el caso o en cargo público. Si en duda, anotar en `NOTES.md` del caso y **no crear el vínculo**.
+5. **Vínculos familiares minimizados, pero no invisibilizados cuando son el contexto público del caso.** No usar para hijos menores, parejas no públicas, familiares sin rol propio en el caso o en cargo público. Sí puede modelarse una relación familiar entre dos figuras públicas cuando la relación es pública, aparece citada de forma central en cobertura cruzada y explica el alcance institucional o mediático del procedimiento. Precedente 2026-05-25: `begona-gomez-esposa-pedro-sanchez`, modelado porque Pedro Sánchez es figura pública, la relación es el contexto institucional explícito del caso y se documenta con respaldo N4 cruzado. Mantener minimización máxima: no añadir detalles privados accesorios.
 6. **Vínculos económicos sólo con documento.** "X es proveedor de Y" exige factura/contrato/registro mercantil/sentencia. Sin documento no entra.
 7. **Fechas con precisión declarada.** Si sólo se conoce el año, `desde: YYYY-01-01` + `precision_desde: anio`. No fingir precisión.
 8. **`estado_publicacion: borrador` por defecto.** Al maintainer le toca elevar a `publicado` tras revisar.
@@ -150,11 +160,19 @@ Material revisado: <N> personas con rol, <N> organizaciones implicadas.
 Esta skill está pensada para correr en **sub-agente paralelo** lanzado por el maintainer en un `git worktree` aislado (ver [AGENTS.md — "Repositorio multiagéntico en paralelo"](../../../AGENTS.md#repositorio-multiagéntico-en-paralelo)). El sub-agente:
 
 1. Abre sesión propia en `.git/agents/sessions/<timestamp>-documentar-vinculos-<caso>/`.
-2. Trabaja sólo en `content/vinculos/<*.yaml>`, `content/documentos/<*.yaml>` que cree, `/public/documentos/<caso>/` si descarga primarios, y `content/casos/<slug>/caso.yaml` (sólo para `estado_ficha`).
-3. **NO toca** `content/personas/*.yaml`, `content/organizaciones/*.yaml`, ni `RolEnCaso`, ni el resto del caso. Si detecta inconsistencia en uno de esos, la anota en `NOTES.md` del caso para que el agente principal la revise.
-4. Cierra sesión cuando el output final está completo y `pnpm validate` pasa.
+2. Valida CWD y toplevel de git antes de escribir nada. Si está en la working copy principal por accidente, corrige directorio o pide intervención.
+3. Trabaja sólo en `content/vinculos/<*.yaml>`, `content/documentos/<*.yaml>` que cree, `/public/documentos/<caso>/` si descarga primarios, y `content/casos/<slug>/caso.yaml` (sólo para `estado_ficha`).
+4. **NO toca** `content/personas/*.yaml`, `content/organizaciones/*.yaml`, ni `RolEnCaso`, ni el resto del caso. Si detecta inconsistencia en uno de esos, la anota en `NOTES.md` del caso para que el agente principal la revise.
+5. Cierra sesión cuando el output final está completo y `pnpm validate` pasa.
 
 ## Histórico
+
+### v1 — 2026-05-26
+
+Primera versión moldeada tras aplicar la skill al caso `begona-gomez`.
+
+- Añade preflight obligatorio de CWD y `git rev-parse --show-toplevel` antes de escribir, tras detectar que `vinculos-bg` trabajó parcialmente en la working copy principal por error.
+- Matiza el guardarraíl de vínculos familiares: siguen minimizados, pero pueden modelarse entre figuras públicas cuando la relación sea pública, central para entender el contexto institucional del caso y esté respaldada por cobertura cruzada. Precedente: Pedro Sánchez como objeto de `begona-gomez-esposa-pedro-sanchez`.
 
 ### v0 — 2026-05-25
 

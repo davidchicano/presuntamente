@@ -13,6 +13,7 @@
 // tokens --color-rol-* del sistema de badges (DESIGN.md — "Sistema de badges").
 
 import RolBadge from './RolBadge.astro';
+import SourceLinkBadge from './SourceLinkBadge.astro';
 
 interface RolView {
   rol: string;
@@ -22,6 +23,15 @@ interface RolView {
   delitos?: string[];
 }
 
+interface RelacionView {
+  naturalezaLabel: string;
+  entidadLabel: string;
+  entidadHref?: string;
+  descripcion: string;
+  periodo: string;
+  documentoHref?: string;
+}
+
 interface Props {
   nombre: string;
   cargo?: string;
@@ -29,10 +39,11 @@ interface Props {
   iniciales: string;
   href?: string;
   roles: RolView[];
+  relaciones?: RelacionView[];
   notas?: string;
 }
 
-const { nombre, cargo, esFiguraPublica, iniciales, href, roles, notas } = Astro.props;
+const { nombre, cargo, esFiguraPublica, iniciales, href, roles, relaciones = [], notas } = Astro.props;
 
 // Rol más reciente: activos primero (sin fecha_fin), luego por fecha_inicio
 // descendente. Si no hay roles, fallback a navy (--color-accent) vía el
@@ -72,6 +83,22 @@ const rolReciente = rolMasReciente(roles);
         </li>
       ))}
     </ul>
+    {relaciones.length > 0 && (
+      <div class="pcard__relaciones">
+        <ul>
+          {relaciones.map((rel) => (
+            <li>
+              <SourceLinkBadge label={rel.naturalezaLabel} href={rel.documentoHref} />
+              <span class="pcard__relacion-body">
+                {rel.entidadHref ? <a href={rel.entidadHref}>{rel.entidadLabel}</a> : <span>{rel.entidadLabel}</span>}
+                <span class="pcard__relacion-date">{rel.periodo}</span>
+                <span class="pcard__relacion-desc">{rel.descripcion}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
     {notas && <p class="pcard__notas">{notas}</p>}
   </div>
 </article>
@@ -167,6 +194,43 @@ const rolReciente = rolMasReciente(roles);
     color: var(--color-fg-muted);
     padding: 2px 5px;
     border: 1px solid var(--color-border);
+  }
+  .pcard__relaciones {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-border);
+  }
+  .pcard__relaciones ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 7px;
+  }
+  .pcard__relaciones li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 10px;
+    align-items: flex-start;
+  }
+  .pcard__relacion-body {
+    display: grid;
+    gap: 2px;
+    font: 400 12px/1.45 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .pcard__relacion-body a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .pcard__relacion-date {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-fg-subtle);
+  }
+  .pcard__relacion-desc {
+    color: var(--color-fg-muted);
   }
   .pcard__notas {
     margin: 10px 0 0;

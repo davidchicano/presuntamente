@@ -1,0 +1,122 @@
+---
+// VinculosInstitucionalesList -- readable relation list for entity pages.
+// This avoids a heavy table when the reader is already focused on one entity.
+
+import SourceLinkBadge from './SourceLinkBadge.astro';
+
+interface VinculoDocumento {
+  titulo: string;
+  href?: string;
+  pasaje?: string;
+  nota?: string;
+}
+
+export interface VinculoInstitucionalRow {
+  id: string;
+  naturalezaLabel: string;
+  sujetoLabel: string;
+  sujetoHref?: string;
+  objetoLabel: string;
+  objetoHref?: string;
+  descripcion: string;
+  periodo: string;
+  gobierno?: string;
+  documentos: VinculoDocumento[];
+  casoLabel?: string;
+  casoHref?: string;
+  papel?: string;
+}
+
+interface Props {
+  rows: VinculoInstitucionalRow[];
+  emptyText?: string;
+}
+
+const { rows, emptyText = 'Sin vínculos institucionales documentados.' } = Astro.props;
+
+function firstHref(row: VinculoInstitucionalRow): string | undefined {
+  return row.documentos[0]?.href;
+}
+---
+
+{rows.length === 0 ? (
+  <p class="muted">{emptyText}</p>
+) : (
+  <div class="vlink-list">
+    {rows.map((row) => (
+      <article class="vlink-item" id={`vinculo-${row.id}`}>
+        <SourceLinkBadge label={row.naturalezaLabel} href={firstHref(row)} />
+        <div class="vlink-item__body">
+          <p class="vlink-item__headline">
+            {row.sujetoHref ? <a href={row.sujetoHref}>{row.sujetoLabel}</a> : <span>{row.sujetoLabel}</span>}
+            <span aria-hidden="true">→</span>
+            {row.objetoHref ? <a href={row.objetoHref}>{row.objetoLabel}</a> : <span>{row.objetoLabel}</span>}
+          </p>
+          <p class="vlink-item__desc">{row.descripcion}</p>
+          <p class="vlink-item__meta">
+            <span>{row.periodo}</span>
+            {row.gobierno && <><span aria-hidden="true">·</span><span>{row.gobierno}</span></>}
+            {row.casoLabel && (
+              <>
+                <span aria-hidden="true">·</span>
+                {row.casoHref ? <a href={row.casoHref}>{row.casoLabel}</a> : <span>{row.casoLabel}</span>}
+              </>
+            )}
+          </p>
+        </div>
+      </article>
+    ))}
+  </div>
+)}
+
+<style>
+  .vlink-list {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  .vlink-item {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 10px 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .vlink-item__body {
+    min-width: 0;
+  }
+  .vlink-item__headline {
+    margin: 0 0 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: baseline;
+    font: 700 14px/1.3 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .vlink-item__headline a,
+  .vlink-item__meta a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .vlink-item__desc {
+    margin: 0;
+    font: 400 13px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .vlink-item__meta {
+    margin: 6px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font: 400 11px/1.4 var(--font-mono);
+    color: var(--color-fg-subtle);
+  }
+  @media (max-width: 680px) {
+    .vlink-item {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

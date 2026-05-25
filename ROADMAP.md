@@ -4,9 +4,11 @@
 >
 > El roadmap conceptual vive en [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Este fichero es la versión operativa: estado actual, próximos pasos, backlog inmediato y aprendizajes recientes. El histórico largo se ha movido a [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-25. **Limpieza estructural del roadmap**: `ROADMAP.md` deja de funcionar como diario histórico completo y queda como documento operativo manejable. El histórico de cierres y sesiones largas vive en [`docs/roadmap/historial-2026-05.md`](docs/roadmap/historial-2026-05.md), las fases ya cerradas en [`docs/roadmap/fases-cerradas.md`](docs/roadmap/fases-cerradas.md) y los aprendizajes largos en [`docs/roadmap/aprendizajes.md`](docs/roadmap/aprendizajes.md). Objetivo: que el agente lea una fuente útil sin cargar un fichero de 200K caracteres.
+**Última actualización:** 2026-05-26. **Pulido post-UI Bloque D**: enlaces reales en biblioteca documental (caso + `/biblioteca`) vía `src/lib/documentos.ts`; `SourceLinkBadge` con flecha ↗ y destino al documento; fix de bordes en columna Enlaces; retirado `ClientRouter` (bug botón atrás); TOC con scroll al inicio del apartado y botón «Subir arriba». Fichas [`biblioteca.md`](docs/web/pages/biblioteca.md) y [`vinculos-institucionales.md`](docs/web/features/vinculos-institucionales.md) actualizadas.
 
-**Último hito de producto:** cierre sesión `vinculos-bg` (2026-05-25): vínculos institucionales de `begona-gomez` completados y mergeados a main, con 16 vínculos en `content/vinculos/`, organización `ie-business-school`, persona `pedro-sanchez` y documento UCO Cristina Álvarez. `estado_ficha.vinculos_institucionales: parcial`. Validate 527 OK.
+**Último hito de producto:** pulido UX/documentación tras la UI de vínculos y cobertura mediática (2026-05-26). Caso piloto sigue siendo `begona-gomez`. `pnpm validate` y `pnpm build` verdes.
+
+**Anterior inmediato:** cierre sesión UI Bloque D (2026-05-26): primer render visible de vínculos institucionales y cobertura mediática general en `PgCasoDetalle`, Persona y Organización. 16 vínculos + 29 piezas de cobertura en `begona-gomez`.
 
 **Anterior inmediato:** Bloque E pre-launch completado: favicon multi-tamaño, 404 con chrome ministerial, sitemap, robots, Cloudflare Web Analytics condicionado a `CF_ANALYTICS_TOKEN`, fichas [`docs/web/features/higiene-tecnica.md`](docs/web/features/higiene-tecnica.md) y [`docs/web/pages/404.md`](docs/web/pages/404.md). Build verde 168 páginas.
 
@@ -32,7 +34,7 @@
 - **Casos publicables actuales**: `plus-ultra`, `begona-gomez`, `gonzalez-amador`, `fiscal-general-del-estado`, `kitchen`, `lezo`.
 - **Caso no publicable en producción**: `atico-estepona`, en `borrador`.
 - **Bloques pre-launch cerrados**: Bloque A (casos equilibrados), Bloque B (`revisar-caso` v1 + primera auditoría), Bloque E (higiene técnica).
-- **Bloque D**: parcialmente entregado. Cerrados `/cifras`, OG images, RSS/Atom, timeline visual, estado de ficha, síntesis de caso y base de vínculos/cobertura. Quedan grafo, composición de fuentes citadas y salida UI/corpus de cobertura general.
+- **Bloque D**: parcialmente entregado. Cerrados `/cifras`, OG images, RSS/Atom, timeline visual, estado de ficha, síntesis de caso, vínculos institucionales (datos + UI) y cobertura mediática general (corpus + UI). Quedan grafo y composición de fuentes citadas.
 - **Próximo paso comprometido**: lo decide el maintainer. Opciones naturales: Bloque C (revisión editorial humana pre-launch), continuar Bloque D, o publicación técnica en Cloudflare Pages sin DNS apex.
 - **Dev server local**: `pnpm dev` en `http://localhost:4321`.
 - **Workflow git**: trabajo directo sobre `main`, sin ramas ni PRs mientras dure el MVP. No hacer `git add`, `git commit` ni `git push` salvo petición explícita del maintainer. Ver [`AGENTS.md`](AGENTS.md).
@@ -119,11 +121,12 @@ Objetivo: que el sitio parezca serio y útil al compartirlo, sin convertirlo en 
 - [x] Timeline visual. Detalle en [`docs/web/features/timeline-visual.md`](docs/web/features/timeline-visual.md).
 - [x] Estado de ficha de caso. Detalle en [`docs/web/features/estado-ficha-caso.md`](docs/web/features/estado-ficha-caso.md).
 - [x] Síntesis de caso. Detalle en [`docs/web/features/sintesis-caso.md`](docs/web/features/sintesis-caso.md).
-- [x] Base de vínculos institucionales documentados: schema, collection, skill y primera pasada `begona-gomez`.
-- [ ] UI de vínculos institucionales en ficha de caso y/o páginas derivadas, con equivalente textual. Debe responder "qué instituciones rodean este caso" sin sugerir culpabilidad por asociación.
+- [x] Vínculos institucionales documentados: schema, collection, skill v1, primera pasada `begona-gomez` y UI en caso/persona/organización. Detalle en [`docs/web/features/vinculos-institucionales.md`](docs/web/features/vinculos-institucionales.md).
+- [x] Cobertura mediática general / barómetro de cobertura: schema, collection, skill v1, corpus piloto `begona-gomez` y UI separada de biblioteca documental. Detalle en [`docs/web/features/cobertura-mediatica-general.md`](docs/web/features/cobertura-mediatica-general.md).
+- [ ] **Barra proporcional por corriente editorial en cobertura mediática general** (v1.x). Prerrequisito: ampliar modelado de `Organizacion` (`tipo: medio_comunicacion`) con clasificación documentada — hoy sólo existe `linea_editorial_declarada` (cita literal) y casi no está poblada. Sin enum + metodología + `sin_clasificar` obligatorio no hay gráfico fiable. Actualizar skill `/rastrear-cobertura`, ficha de feature y UI juntos. Copy público: composición de la muestra rastreada, no "sesgo" ni veracidad. Análisis en ficha de cobertura y en [`composicion-fuentes-citadas.md`](docs/web/features/composicion-fuentes-citadas.md) (feature hermana: mide N4 citadas por el inventario, no el corpus rastreado).
+- [ ] **Vista agregada "instituciones alcanzadas" en ficha de caso** (v1.x). El modelo ya cubre acusación popular, perjudicado institucional, ente investigado y nombramientos (`VinculoInstitucional`); en `begona-gomez` ya hay datos (p. ej. UCM perjudicada, acusaciones populares). Falta bloque resumen de a quién "le salpica" el caso (administración, partido, organismo…) sin reducirlo a etiqueta partidista. Detalle en [`vinculos-institucionales.md`](docs/web/features/vinculos-institucionales.md).
 - [ ] Grafo de relaciones por caso. Detalle en [`docs/web/features/grafo-relaciones-caso.md`](docs/web/features/grafo-relaciones-caso.md). Grafo local por caso, no grafo global todavía; siempre con alternativa textual.
-- [ ] Composición de fuentes periodísticas citadas. Detalle en [`docs/web/features/composicion-fuentes-citadas.md`](docs/web/features/composicion-fuentes-citadas.md). Mide las N4 usadas por presuntamente.org, no "la cobertura total de internet".
-- [ ] Cobertura mediática general / barómetro de cobertura: decidir alcance entre corpus documentado, UI parcial o v1.1. Detalle en [`docs/web/features/cobertura-mediatica-general.md`](docs/web/features/cobertura-mediatica-general.md). Es otra investigación, no una vista derivada de `Documento`.
+- [ ] Composición de fuentes periodísticas citadas. Detalle en [`docs/web/features/composicion-fuentes-citadas.md`](docs/web/features/composicion-fuentes-citadas.md). Mide las N4 usadas por presuntamente.org, no "la cobertura total de internet". Comparte con cobertura mediática general el prerrequisito `Organizacion.orientacion_editorial` para medios.
 - [ ] Fotos reales de personas + logos institucionales: en pausa hasta consulta legal. No tocar modelado ni cosecha antes de cerrar criterio editorial sobre derecho de imagen, licencias, desimputaciones y tratamiento de fotos de juicio/detención.
 
 #### Bloque E - Higiene técnica pre-launch `[x]`
@@ -169,10 +172,11 @@ Esta sección conserva el contexto mínimo por caso para saber qué tipo de trab
 
 Usar worktrees aislados y la skill `multi-agent-orchestration` si hay sesiones simultáneas.
 
-- [ ] **UI de vínculos institucionales**: consumir `content/vinculos/` y mostrar contexto institucional por caso sin ranking de bandos. Coordinar con grafo.
+- [x] **UI de vínculos institucionales**: consumir `content/vinculos/` e integrar relaciones en personas/organizaciones implicadas sin ranking de bandos. Coordinar con grafo.
 - [ ] **Grafo por caso**: prototipo visual + equivalente textual. Puede empezar con vínculos y relaciones existentes, pero no debe bloquear la ficha si faltan datos.
-- [ ] **Composición de fuentes citadas**: añadir orientación editorial documentada a organizaciones de medios y agregado de N4 citadas por caso.
-- [ ] **Cobertura mediática general**: convertir el corpus `content/cobertura-mediatica/begona-gomez.yaml` en patrón reutilizable, deduplicación y posible UI.
+- [ ] **Clasificación editorial de medios + barra en cobertura general**: extender schema `Organizacion`, poblar medios del inventario, cerrar metodología y entonces UI + copy en cobertura (y composición N4 citadas).
+- [ ] **Resumen "instituciones alcanzadas" en ficha de caso**: agregar vista agregada de vínculos `*_en_caso` y nombramientos; datos piloto ya en `begona-gomez`.
+- [x] **Cobertura mediática general**: convertir el corpus `content/cobertura-mediatica/begona-gomez.yaml` en patrón reutilizable, deduplicación y UI inicial.
 - [ ] **Revisión editorial humana asistida**: preparar checklist de Bloque C para que el maintainer revise hero, `/sobre`, `/aviso-legal`, README y resúmenes.
 
 Orden recomendado si hay varios agentes: primero composición/vínculos, después grafo y cobertura UI. Evitar que dos sesiones toquen a la vez `schemas/caso.schema.json`, `content/casos/*/caso.yaml` o `global.css`.
@@ -187,8 +191,10 @@ Orden recomendado si hay varios agentes: primero composición/vínculos, despué
 
 ## Decisiones pendientes del maintainer
 
-- Elegir el siguiente bloque de trabajo: revisión editorial humana, continuar Bloque D o publicación técnica en Cloudflare Pages.
+- [ ] **Clasificación editorial de medios (`Organizacion.orientacion_editorial`).** Decidir enum (corrientes editoriales gruesas vs afinidad vs propiedad/grupo — son dimensiones distintas), fuente/metodología por valor, obligatoriedad de `sin_clasificar` y copy público ("composición de la muestra", no "sesgo"). Bloquea barra horizontal en cobertura mediática general y composición de fuentes citadas.
+- [ ] **Vista agregada de instituciones alcanzadas por caso** (acusación/perjudicado/nombramientos). Modelo y skill ya lo contemplan; falta diseño UI y criterio de agrupación.
 - Cerrar criterio legal antes de usar fotos reales de personas o logos con licencia/crédito.
+- Elegir el siguiente bloque de trabajo: revisión editorial humana, continuar Bloque D (grafo · composición N4 · barra editorial cobertura · resumen institucional) o publicación técnica en Cloudflare Pages.
 - Decidir cuándo se activa el deploy público y cuándo se anuncia.
 
 ---
@@ -205,6 +211,9 @@ Sólo se quedan aquí los aprendizajes que probablemente afecten a las próximas
 - **No hacer `git add` ni `git commit` durante la sesión** salvo cierre explícito. La contaminación del index global ya está resuelta por norma, no por memoria.
 - **Pagefind requiere build previo**. `/buscar` funciona en `pnpm preview` o producción, no en `pnpm dev` salvo fallback.
 - **Las fichas `docs/web/pages/` y `docs/web/features/` descargan el roadmap**. Ideas futuras específicas deben vivir ahí, no en este fichero.
+- **`ClientRouter` retirado el 2026-05-26.** La navegación vuelve a recarga completa del documento; corrige el bug de botón atrás (URL cambiaba sin actualizar contenido). Los listeners delegados en `BaseLayout.astro` se mantienen por idempotencia, no por swaps SPA.
+- **Enlaces de documento centralizados en `src/lib/documentos.ts`.** Prioridad: `ruta_local` → `url_canonica` → `url_archivo` → ancla de biblioteca. Aplica a `DocumentoCard`, `/biblioteca`, hitos, hechos y `SourceLinkBadge`.
+- **No aplicar `display: flex` directamente a `<td>`.** Rompe `border-collapse` y desalinea separadores horizontales en tablas `.tbl`; el layout va en un `<div>` interno (precedente: columna Enlaces de `/biblioteca`).
 
 ---
 

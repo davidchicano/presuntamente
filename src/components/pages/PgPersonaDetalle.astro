@@ -8,20 +8,29 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionH from '@/components/SectionH.astro';
 import RichProse from '@/components/RichProse.astro';
 import RolBadge from '@/components/RolBadge.astro';
-import { rolLabel, iniciales, type Lang } from '@/lib/labels';
+import VinculosInstitucionalesList from '@/components/VinculosInstitucionalesList.astro';
+import { rolLabel, iniciales, naturalezaVinculoLabel, type Lang } from '@/lib/labels';
+import { documentoRespaldoHref } from '@/lib/documentos';
 
 interface Props { lang?: Lang; persona: CollectionEntry<'personas'>; }
 const { lang = 'es', persona } = Astro.props;
 const data = persona.data;
 
-const [rolesCol, casosCol, delitosCol] = await Promise.all([
+const [rolesCol, casosCol, delitosCol, vinculosCol, organizacionesCol, personasCol, documentosCol] = await Promise.all([
   getCollection('roles'),
   getCollection('casos'),
   getCollection('delitos'),
+  getCollection('vinculos'),
+  getCollection('organizaciones'),
+  getCollection('personas'),
+  getCollection('documentos'),
 ]);
 
 const casoIndex = new Map(casosCol.map((c) => [c.data.id, c.data]));
 const delitoIndex = new Map(delitosCol.map((d) => [d.data.id, d.data]));
+const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
+const personaIndex = new Map(personasCol.map((p) => [p.data.id, p.data]));
+const docIndex = new Map(documentosCol.map((d) => [d.data.id, d.data]));
 
 const rolesPersona = rolesCol
   .filter((r) => r.data.sujeto_tipo === 'persona' && r.data.sujeto_persona_id === data.id)
@@ -40,6 +49,90 @@ const rolesPersona = rolesCol
 const casosUnicos = Array.from(new Set(rolesPersona.map((r) => r.caso_id)))
   .map((id) => casoIndex.get(id))
   .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+function personaLabel(id: string): string {
+  return personaIndex.get(id)?.nombre_completo ?? id;
+}
+
+function orgLabel(id: string): string {
+  return orgIndex.get(id)?.nombre ?? id;
+}
+
+function personaHref(id: string): string {
+  return lang === 'ca' ? `/cat/personas/${id}` : `/personas/${id}`;
+}
+
+function orgHref(id: string): string {
+  return lang === 'ca' ? `/cat/organizaciones/${id}` : `/organizaciones/${id}`;
+}
+
+function formatVinculoDate(value: string, precision?: string): string {
+  if (precision === 'anio') return value.slice(0, 4);
+  if (precision === 'mes') return value.slice(0, 7);
+  return value;
+}
+
+function formatVinculoPeriodo(v: {
+  desde: string;
+  hasta?: string;
+  precision_desde?: string;
+  precision_hasta?: string;
+  vigente?: boolean;
+}): string {
+  const desde = formatVinculoDate(v.desde, v.precision_desde);
+  const hasta = v.hasta
+    ? formatVinculoDate(v.hasta, v.precision_hasta)
+    : v.vigente
+      ? 'vigente'
+      : 'sin fecha de cierre';
+  return `${desde} → ${hasta}`;
+}
+
+function vinculoEntity(v: CollectionEntry<'vinculos'>['data'], side: 'sujeto' | 'objeto') {
+  if (side === 'sujeto') {
+    if (v.sujeto_persona_id) return { label: personaLabel(v.sujeto_persona_id), href: personaHref(v.sujeto_persona_id) };
+    if (v.sujeto_organizacion_id) return { label: orgLabel(v.sujeto_organizacion_id), href: orgHref(v.sujeto_organizacion_id) };
+  }
+  if (v.objeto_persona_id) return { label: personaLabel(v.objeto_persona_id), href: personaHref(v.objeto_persona_id) };
+  if (v.objeto_organizacion_id) return { label: orgLabel(v.objeto_organizacion_id), href: orgHref(v.objeto_organizacion_id) };
+  return { label: 'Entidad no resuelta' };
+}
+
+const vinculosPersona = vinculosCol
+  .filter((v) => v.data.sujeto_persona_id === data.id || v.data.objeto_persona_id === data.id)
+  .filter((v) => v.data.estado_publicacion !== 'retirado_definitivamente')
+  .sort((a, b) => b.data.desde.localeCompare(a.data.desde))
+  .map((v) => {
+    const sujeto = vinculoEntity(v.data, 'sujeto');
+    const objeto = vinculoEntity(v.data, 'objeto');
+    const primerCaso = v.data.relevancia_para_caso_ids?.[0];
+    const caso = primerCaso ? casoIndex.get(primerCaso) : undefined;
+    return {
+      id: v.data.id,
+      naturalezaLabel: naturalezaVinculoLabel(v.data.naturaleza),
+      sujetoLabel: sujeto.label,
+      sujetoHref: sujeto.href,
+      objetoLabel: objeto.label,
+      objetoHref: objeto.href,
+      descripcion: v.data.descripcion,
+      periodo: formatVinculoPeriodo(v.data),
+      gobierno: v.data.gobierno_o_legislatura,
+      casoLabel: caso?.nombre_mediatico ?? primerCaso,
+      casoHref: primerCaso ? `/casos/${primerCaso}` : undefined,
+      papel: v.data.sujeto_persona_id === data.id ? 'Sujeto' : 'Objeto',
+      documentos: v.data.documentos_respaldo.map((ref) => {
+        const doc = docIndex.get(ref.documento_id);
+        return {
+          titulo: doc?.titulo ?? ref.documento_id,
+          href: doc
+            ? documentoRespaldoHref(doc.id, doc, lang === 'ca' ? '/cat/biblioteca' : '/biblioteca')
+            : undefined,
+          pasaje: ref.pasaje,
+          nota: ref.nota,
+        };
+      }),
+    };
+  });
 
 const breadcrumb = [
   { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
@@ -153,7 +246,24 @@ const strings = {
   </table>
   </div>
 
-  <SectionH num="4." title="Cómo se ha redactado esta ficha" id="redaccion" />
+  {vinculosPersona.length > 0 && (
+    <>
+      <SectionH
+        num="4."
+        title="Relaciones institucionales documentadas"
+        id="contexto-institucional"
+        right={`${vinculosPersona.length} vínculo${vinculosPersona.length === 1 ? '' : 's'}`}
+      />
+      <p class="contexto-intro">
+        Vínculos formales documentados en los que aparece esta persona. Este bloque
+        queda separado de la trayectoria procesal para no confundir relaciones
+        institucionales con rol en un procedimiento.
+      </p>
+      <VinculosInstitucionalesList rows={vinculosPersona} />
+    </>
+  )}
+
+  <SectionH num={vinculosPersona.length > 0 ? '5.' : '4.'} title="Cómo se ha redactado esta ficha" id="redaccion" />
   <div class="prose">
     <p>
       Los datos personales se limitan a lo procesalmente relevante (V-17). Si esta persona ha cerrado todos
@@ -239,6 +349,15 @@ const strings = {
     color: var(--color-fg-muted);
     padding: 3px 6px;
     border: 1px solid var(--color-border);
+  }
+
+  .contexto-intro {
+    margin: 0 0 var(--space-3);
+    padding: 10px 12px;
+    background: var(--color-surface-muted);
+    border-left: 3px solid var(--color-border-strong);
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--color-fg);
   }
 
   .meta-list { margin: 0; padding-left: 18px; }

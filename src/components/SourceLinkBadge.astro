@@ -1,0 +1,76 @@
+---
+// SourceLinkBadge -- compact functional badge that points to the backing source.
+// Visually distinct from state/category badges: neutral outline + exit arrow.
+
+import { documentoHrefIsExternal } from '@/lib/documentos';
+
+interface Props {
+  label: string;
+  href?: string;
+}
+
+const { label, href } = Astro.props;
+const external = href ? documentoHrefIsExternal(href) : false;
+---
+
+{href ? (
+  <a
+    class="source-link-badge"
+    href={href}
+    aria-label={`${label}: ver documento de respaldo`}
+    target={external ? '_blank' : undefined}
+    rel={external ? 'noopener' : undefined}
+  >
+    <span>{label}</span>
+    <svg class="source-link-badge__icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 17L17 7" />
+      <path d="M9 7h8v8" />
+    </svg>
+  </a>
+) : (
+  <span class="source-link-badge source-link-badge--disabled">
+    <span>{label}</span>
+    <svg class="source-link-badge__icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 17L17 7" />
+      <path d="M9 7h8v8" />
+    </svg>
+  </span>
+)}
+
+<style>
+  .source-link-badge {
+    display: inline-flex;
+    width: max-content;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 7px;
+    border: 1px solid var(--color-border-strong);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0;
+    background: var(--color-surface);
+    color: var(--color-accent);
+    font: 700 10px/1.4 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .source-link-badge:hover {
+    background: var(--color-accent-soft);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .source-link-badge--disabled {
+    color: var(--color-fg-muted);
+    border-left-color: var(--color-border-strong);
+  }
+  .source-link-badge__icon {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>

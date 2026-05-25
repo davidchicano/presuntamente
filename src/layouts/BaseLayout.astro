@@ -1,7 +1,6 @@
 ---
 import '@/styles/global.css';
 import 'open-props/style';
-import { ClientRouter } from 'astro:transitions';
 import PresuntamenteLogo from '@/components/PresuntamenteLogo.astro';
 import PageToc from '@/components/PageToc.astro';
 
@@ -147,8 +146,6 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     />
-    <ClientRouter fallback="animate" />
-
     {import.meta.env.CF_ANALYTICS_TOKEN && (
       <script
         defer
@@ -299,10 +296,8 @@ const brandSub = 'Inventario público de casos de corrupción en España';
 
     <script>
       // Botón hamburguesa (mobile <720px) + panel desplegable.
-      // Event-delegation desde document para sobrevivir al swap de
-      // ClientRouter sin re-attach manual. `astro:before-preparation` cierra
-      // el panel ante una navegación para que no quede abierto en la página
-      // destino.
+      // Event-delegation desde document; en navegación normal la página
+      // recarga, pero este patrón también evita listeners duplicados.
       let __menuListenersAttached = false;
       function __ensureMenuListeners() {
         if (__menuListenersAttached) return;
@@ -356,8 +351,7 @@ const brandSub = 'Inventario público de casos de corrupción en España';
             setOpen(btn, btn.getAttribute('aria-expanded') !== 'true');
             return;
           }
-          // Click en un link de cualquier panel: dejar que navegue + cerrar inmediatamente
-          // (la transición de ClientRouter también dispara close vía before-preparation).
+          // Click en un link de cualquier panel: dejar que navegue + cerrar inmediatamente.
           if (target.closest(PANEL_LINK_SEL)) {
             closeAny();
             return;
@@ -467,8 +461,8 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       __ensureOrderToggleListener();
       document.addEventListener('astro:page-load', __ensureOrderToggleListener);
 
-      // Case masthead flip. Kept in the layout because ClientRouter swaps the
-      // page body without remounting page-scoped scripts on every navigation.
+      // Case masthead flip. Kept in the layout so the behavior is centralized
+      // and idempotent across pages that include a flippable masthead.
       const __setCaseFlipHeight = (flip: HTMLElement) => {
         const inner = flip.querySelector<HTMLElement>('.ficha-flip__inner');
         const front = flip.querySelector<HTMLElement>('.ficha-flip__face--front');
@@ -593,8 +587,7 @@ const brandSub = 'Inventario público de casos de corrupción en España';
 
       // Índice de página (PageToc) — escanea los .sec-h[id] del <main>,
       // construye la lista, activa el scrollspy con IntersectionObserver y
-      // gestiona el FAB en móvil. Se reejecuta en cada navegación porque
-      // ClientRouter cambia el <main> sin remontar el layout.
+      // gestiona el FAB en móvil.
       let __pageTocObserver: IntersectionObserver | null = null;
       let __pageTocClickAttached = false;
 
@@ -780,8 +773,18 @@ const brandSub = 'Inventario público de casos de corrupción en España';
             setOpen(false);
             return;
           }
+          // Botón de volver al inicio de la página.
+          if (target.closest('.page-toc__top')) {
+            e.preventDefault();
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+            setOpen(false);
+            return;
+          }
           // Click en un link del índice → smooth scroll + cerrar panel
-          // (en móvil) y dejar que el hash se actualice para activar :target.
+          // (en móvil). Se navega al wrapper natural de la sección para que
+          // el inicio del apartado quede arriba, no al header sticky ya fijado.
           const link = target.closest<HTMLAnchorElement>('a.page-toc__link');
           if (link) {
             const id = link.dataset.tocTarget;
@@ -789,7 +792,9 @@ const brandSub = 'Inventario público de casos de corrupción en España';
             if (el) {
               e.preventDefault();
               const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-              el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+              const section = el.closest<HTMLElement>('[data-toc-section]');
+              const naturalTop = section?.offsetTop ?? el.getBoundingClientRect().top + window.scrollY;
+              window.scrollTo({ top: naturalTop, behavior: prefersReduced ? 'auto' : 'smooth' });
               // Actualiza hash sin saltar (replaceState para no inundar history).
               if (id) history.replaceState(null, '', '#' + id);
               setOpen(false);
