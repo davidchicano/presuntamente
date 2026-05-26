@@ -82,9 +82,9 @@ Contexto: esto cierra la Fase 0 operativa. No es sólo configurar DNS; publicar 
 - [x] Comprar dominio `presuntamente.org` en Cloudflare Registrar.
 - [x] Activar Cloudflare Email Routing para `contacto@`, `rectificacion@` y `aportar@`.
 - [ ] Abrir apartado de correos del responsable y completar la identificación postal del aviso legal.
-- [ ] Conectar Cloudflare Pages al repo `davidchicano/presuntamente`. Build command `pnpm build`, output `dist/`, Node 24. Primero URL `*.pages.dev`, sin DNS apex.
+- [ ] Conectar Cloudflare Pages al repo `davidchicano/presuntamente`. Build command `pnpm build`, output `dist/`, Node 24 (de `.nvmrc`). Primero URL `*.pages.dev`, sin DNS apex. Repo listo: `public/_headers` con `X-Robots-Tag: noindex` durante fase preview, ficha [`cloudflare-pages-deploy.md`](docs/web/features/cloudflare-pages-deploy.md). Activar "Web Analytics" desde el toggle del panel (no usar `CF_ANALYTICS_TOKEN` en env).
 - [ ] Revisar el aviso legal con abogado especializado. Repaso especial: LSSI, datos personales/RGPD, licencias y límites de responsabilidad.
-- [ ] Activar DNS apex + `www` cuando lo anterior esté cerrado.
+- [ ] Activar DNS apex + `www` cuando lo anterior esté cerrado, y **retirar `public/_headers`** en un commit dedicado para reabrir indexación.
 
 ### Camino al lanzamiento público
 

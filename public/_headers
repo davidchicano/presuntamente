@@ -1,0 +1,12 @@
+# Cabeceras servidas por Cloudflare Pages.
+# Astro copia este fichero a /dist/_headers durante el build.
+# Documentación: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# RETIRAR cuando se active el DNS apex de presuntamente.org y el sitio sea
+# público bajo dominio propio. Mientras tanto, evita que Google indexe el
+# preview en `*.pages.dev` y que aparezca como contenido duplicado el día
+# que el dominio canónico esté en marcha. Ver ficha:
+#   docs/web/features/cloudflare-pages-deploy.md
+
+/*
+  X-Robots-Tag: noindex, nofollow
