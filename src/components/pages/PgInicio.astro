@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PhaseBadge from '@/components/PhaseBadge.astro';
+import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
+import RolBadge from '@/components/RolBadge.astro';
+import { rolLabel } from '@/lib/labels';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -11,58 +14,114 @@ const { lang = 'es' } = Astro.props;
 
 // --- Cifras del inventario --------------------------------------------------
 
-const [casos, personas, organizaciones, documentos, hitosCol, rolesCol] = await Promise.all([
+const [casos, personas, organizaciones, documentos, hitosCol, rolesCol, vinculosCol] = await Promise.all([
   getCollection('casos'),
   getCollection('personas'),
   getCollection('organizaciones'),
   getCollection('documentos'),
   getCollection('hitos'),
   getCollection('roles'),
+  getCollection('vinculos'),
 ]);
 
-// --- Caso destacado: el más activo (último hito más reciente) --------------
-// Ranking simple: para cada caso, fecha del hito más reciente; gana el que
-// tiene actividad procesal más reciente. Empate → desempata por
-// nivel_relevancia_editorial (capital > alta > media > baja). Cuando haya
-// muchos casos convendrá un score más rico (densidad de hitos, fase,
-// implicados activos), pero el principio se mantiene: destacar lo VIVO.
-const RELEVANCIA_RANK: Record<string, number> = {
-  capital: 4,
-  alta: 3,
-  media: 2,
-  baja: 1,
+const orgIdx = new Map(organizaciones.map((o) => [o.data.id, o.data]));
+
+// --- Casos destacados ------------------------------------------------------
+// Ranking simple: actividad reciente (último hito) y relevancia editorial.
+// Excluimos estados no publicables. Sacamos top 2 para que la landing
+// muestre algo más que un único pivote (decisión maintainer 2026-05-26).
+const RELEVANCIA_RANK: Record<string, number> = { capital: 4, alta: 3, media: 2, baja: 1 };
+const NATURALEZA_A_ROL_DESTACADOS: Record<string, string> = {
+  entidad_investigada_en_caso: 'investigado',
+  perjudicado_institucional_en_caso: 'perjudicado',
+  acusacion_institucional_en_caso: 'acusacion_popular',
 };
-const casoDestacado = casos
+const PRIORIDAD_ORG_PRINCIPAL_DESTACADOS = [
+  'entidad_investigada_en_caso',
+  'perjudicado_institucional_en_caso',
+  'acusacion_institucional_en_caso',
+] as const;
+const ESTADOS_VISIBLES = new Set(['beta_publica', 'en_revision', 'publicado']);
+
+function aplanaProsa(raw: string | undefined): string {
+  if (!raw) return '';
+  return raw.replace(/\s+/g, ' ').trim();
+}
+function truncarHitoDestacado(s: string, max = 110): string {
+  if (!s) return '';
+  const flat = s.replace(/\s+/g, ' ').trim();
+  if (flat.length <= max) return flat;
+  const slice = flat.slice(0, max);
+  const lastSpace = slice.lastIndexOf(' ');
+  return (lastSpace > 60 ? slice.slice(0, lastSpace) : slice).trim() + '…';
+}
+
+const destacados = casos
+  .filter((c) => ESTADOS_VISIBLES.has(c.data.estado_publicacion))
   .map((c) => {
+    const caso = c.data;
     const hitos = hitosCol
-      .filter((h) => h.data.caso_id === c.data.id)
+      .filter((h) => h.data.caso_id === caso.id)
       .sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
+    const ultimo = hitos[0]?.data;
+
+    const vinculosDelCaso = vinculosCol
+      .filter((v) => v.data.relevancia_para_caso_ids?.includes(caso.id))
+      .map((v) => v.data);
+    let orgPrincipalId: string | undefined;
+    let orgPrincipalNaturaleza: string | undefined;
+    for (const naturaleza of PRIORIDAD_ORG_PRINCIPAL_DESTACADOS) {
+      const candidatos = vinculosDelCaso
+        .filter((v) => v.naturaleza === naturaleza && v.sujeto_organizacion_id)
+        .map((v) => v.sujeto_organizacion_id!)
+        .sort();
+      if (candidatos.length > 0) {
+        orgPrincipalId = candidatos[0];
+        orgPrincipalNaturaleza = naturaleza;
+        break;
+      }
+    }
+    const orgPrincipal = orgPrincipalId ? orgIdx.get(orgPrincipalId) : undefined;
+
+    const partidos = ((caso as { partidos_afectados?: Array<{ partido_id: string }> }).partidos_afectados ?? [])
+      .map((p) => {
+        const partOrg = orgIdx.get(p.partido_id);
+        return {
+          id: p.partido_id,
+          label: (partOrg as { siglas?: string } | undefined)?.siglas ?? partOrg?.nombre ?? p.partido_id,
+        };
+      });
+
+    const resumenEjecutivo =
+      (caso as { descripcion_corta?: string }).descripcion_corta ??
+      (caso as { sintesis_caso?: { que_se_investiga?: string } }).sintesis_caso?.que_se_investiga ??
+      '';
+
     return {
-      c,
-      ultimoHitoFecha: hitos[0]?.data.fecha ?? '0000-00-00',
-      relevancia: RELEVANCIA_RANK[c.data.nivel_relevancia_editorial ?? 'media'] ?? 2,
+      id: caso.id,
+      mediatico: caso.nombre_mediatico,
+      oficial: caso.nombre_oficial,
+      faseActual: caso.fase_actual,
+      estadoPublicacion: caso.estado_publicacion,
+      descripcion: aplanaProsa(resumenEjecutivo),
+      orgPrincipalId,
+      orgPrincipalNombre: orgPrincipal?.nombre,
+      orgPrincipalRol: orgPrincipalNaturaleza ? NATURALEZA_A_ROL_DESTACADOS[orgPrincipalNaturaleza] : undefined,
+      partidos,
+      ultimoHitoFecha: ultimo?.fecha,
+      ultimoHitoTitulo: ultimo ? truncarHitoDestacado(ultimo.titulo) : undefined,
+      ultimoHitoTituloFull: ultimo?.titulo,
+      score: {
+        fecha: ultimo?.fecha ?? '0000-00-00',
+        relevancia: RELEVANCIA_RANK[caso.nivel_relevancia_editorial ?? 'media'] ?? 2,
+      },
     };
   })
   .sort((a, b) => {
-    if (a.ultimoHitoFecha !== b.ultimoHitoFecha) return b.ultimoHitoFecha.localeCompare(a.ultimoHitoFecha);
-    return b.relevancia - a.relevancia;
-  })[0]?.c.data;
-
-const hitosDestacado = casoDestacado
-  ? hitosCol
-      .filter((h) => h.data.caso_id === casoDestacado.id)
-      .sort((a, b) => b.data.fecha.localeCompare(a.data.fecha))
-  : [];
-const ultimoHito = hitosDestacado[0]?.data;
-const rolesImputadosDestacado = casoDestacado
-  ? rolesCol.filter(
-      (r) =>
-        r.data.caso_id === casoDestacado.id &&
-        r.data.sujeto_tipo === 'persona' &&
-        ['investigado', 'procesado', 'acusado', 'condenado'].includes(r.data.rol) &&
-        !r.data.fecha_fin,
-    ).length
-  : 0;
+    if (a.score.fecha !== b.score.fecha) return b.score.fecha.localeCompare(a.score.fecha);
+    return b.score.relevancia - a.score.relevancia;
+  })
+  .slice(0, 2);
 
 // TODO i18n: rama 'ca' cuando se active el catalán.
 const strings = {
@@ -79,9 +138,9 @@ const strings = {
     ctaGhost: { label: 'Cómo se redacta', href: '/sobre' },
   },
   reglas: [
-    { num: '01', title: 'Cita siempre', body: 'Cada afirmación con su documento de fuente y nivel N1–N4 visible.' },
-    { num: '02', title: 'Sin cuota política', body: 'Casos de cualquier partido, ordenados por relevancia objetiva.' },
-    { num: '03', title: 'Presunción de inocencia', body: 'Investigado, procesado y condenado son cosas distintas — y se distinguen.' },
+    { title: 'Cita siempre', body: 'Cada afirmación con su documento de fuente y nivel N1–N4 visible.' },
+    { title: 'Sin cuota política', body: 'Casos de cualquier partido, ordenados por relevancia objetiva.' },
+    { title: 'Presunción de inocencia', body: 'Investigado, procesado y condenado son cosas distintas — y se distinguen.' },
   ],
   contadores: [
     { label: 'Casos catalogados',      value: casos.length },
@@ -173,52 +232,68 @@ const strings = {
   <ol class="reglas" aria-label="Principios del inventario">
     {strings.reglas.map((r) => (
       <li class="regla">
-        <span class="regla__num">{r.num}</span>
         <h3 class="regla__title">{r.title}</h3>
         <p class="regla__body">{r.body}</p>
       </li>
     ))}
   </ol>
 
-  <!-- CASO DESTACADO: prueba social concreta de cómo es una ficha -->
-  {casoDestacado && (
+  <!-- CASOS DESTACADOS: prueba social concreta de cómo son las fichas -->
+  {destacados.length > 0 && (
     <section class="destacado">
       <header class="destacado__head">
-        <span class="destacado__eye">Caso destacado</span>
-        <a class="destacado__more" href={`/casos/${casoDestacado.id}`}>Ver ficha completa →</a>
+        <span class="destacado__eye">Casos destacados</span>
+        <a class="destacado__more" href="/casos">Ver catálogo completo →</a>
       </header>
-      <a class="destacado__card" href={`/casos/${casoDestacado.id}`}>
-        <div class="destacado__main">
-          <h2 class="destacado__name">{casoDestacado.nombre_mediatico}</h2>
-          <p class="destacado__oficial">{casoDestacado.nombre_oficial}</p>
-          {casoDestacado.descripcion_corta && (
-            <p class="destacado__desc">{casoDestacado.descripcion_corta}</p>
-          )}
-        </div>
-        <dl class="destacado__meta">
-          <div>
-            <dt>Fase actual</dt>
-            <dd><PhaseBadge fase={casoDestacado.fase_actual} /></dd>
-          </div>
-          <div>
-            <dt>Implicados activos</dt>
-            <dd class="destacado__metric">{rolesImputadosDestacado}</dd>
-          </div>
-          <div>
-            <dt>Hitos registrados</dt>
-            <dd class="destacado__metric">{hitosDestacado.length}</dd>
-          </div>
-          {ultimoHito && (
-            <div class="destacado__last">
-              <dt>Último hito</dt>
-              <dd>
-                <span class="destacado__mono">{ultimoHito.fecha}</span>
-                <span> · {ultimoHito.titulo}</span>
-              </dd>
+      <div class="destacado__stack">
+        {destacados.map((d) => (
+          <a class="destacado__card" href={`/casos/${d.id}`}>
+            <div class="destacado__main">
+              <div class="destacado__top">
+                <PhaseBadge fase={d.faseActual} />
+                <EstadoPublicacionBadge estado={d.estadoPublicacion as 'pendiente' | 'borrador' | 'beta_publica' | 'en_revision' | 'publicado' | 'retirado_temporalmente' | 'retirado_definitivamente'} compact />
+              </div>
+              <h2 class="destacado__name">{d.mediatico}</h2>
+              <p class="destacado__oficial">{d.oficial}</p>
+              {d.descripcion && (
+                <p class="destacado__desc">{d.descripcion}</p>
+              )}
             </div>
-          )}
-        </dl>
-      </a>
+            <dl class="destacado__meta">
+              {d.orgPrincipalNombre && (
+                <div>
+                  <dt>Organización afectada</dt>
+                  <dd>
+                    <span>{d.orgPrincipalNombre}</span>
+                    {d.orgPrincipalRol && (
+                      <RolBadge rol={d.orgPrincipalRol} label={rolLabel(d.orgPrincipalRol)} />
+                    )}
+                  </dd>
+                </div>
+              )}
+              {d.partidos.length > 0 && (
+                <div>
+                  <dt>Partidos afectados</dt>
+                  <dd class="destacado__partidos">
+                    {d.partidos.map((p) => (
+                      <span class="destacado__partido-chip">{p.label}</span>
+                    ))}
+                  </dd>
+                </div>
+              )}
+              {d.ultimoHitoTitulo && (
+                <div class="destacado__last">
+                  <dt>Último hito</dt>
+                  <dd title={d.ultimoHitoTituloFull}>
+                    <span class="destacado__mono">{d.ultimoHitoFecha}</span>
+                    <span class="destacado__hito-text"> · {d.ultimoHitoTitulo}</span>
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </a>
+        ))}
+      </div>
     </section>
   )}
 
@@ -437,6 +512,7 @@ const strings = {
     gap: var(--space-4);
   }
   .regla {
+    margin: 0;
     padding: var(--space-4);
     border: 1px solid var(--color-border);
     background: var(--color-surface);
@@ -447,16 +523,9 @@ const strings = {
     border-top-color: var(--color-accent);
     transform: translateY(-2px);
   }
-  .regla__num {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--color-accent);
-    letter-spacing: 0.05em;
-  }
   .regla__title {
     font: 700 var(--font-size-3)/1.2 var(--font-sans);
-    margin: 6px 0 4px;
+    margin: 0 0 4px;
     color: var(--color-fg);
   }
   .regla__body {
@@ -468,7 +537,7 @@ const strings = {
     .reglas { grid-template-columns: 1fr; }
   }
 
-  /* ========== CASO DESTACADO ========== */
+  /* ========== CASOS DESTACADOS ========== */
   .destacado { margin-bottom: var(--space-7); }
   .destacado__head {
     display: flex;
@@ -492,6 +561,13 @@ const strings = {
     text-decoration: none;
   }
   .destacado__more:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  .destacado__stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
   .destacado__card {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
@@ -501,15 +577,22 @@ const strings = {
     background: var(--color-surface);
     text-decoration: none;
     color: inherit;
-    transition: border-left-width 180ms ease-out, background 180ms ease-out, transform 180ms ease-out;
+    transition: border-left-color 200ms ease-out, transform 200ms ease-out;
   }
   .destacado__card:hover {
-    border-left-width: 6px;
-    background: var(--color-bg-muted);
+    border-left-color: var(--color-accent-secondary-border);
+    transform: translateX(-2px);
   }
   .destacado__main {
-    padding: var(--space-5) var(--space-5);
+    padding: var(--space-5);
     border-right: 1px solid var(--color-border);
+    min-width: 0;
+  }
+  .destacado__top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: var(--space-3);
   }
   .destacado__name {
     font-family: var(--font-serif), Georgia, serif;
@@ -518,6 +601,10 @@ const strings = {
     line-height: 1.15;
     margin: 0 0 6px;
     color: var(--color-fg);
+    transition: color 200ms ease-out;
+  }
+  .destacado__card:hover .destacado__name {
+    color: color-mix(in srgb, var(--color-accent-secondary-hover) 72%, #1a1a18);
   }
   .destacado__oficial {
     font: 400 13px/1.4 var(--font-sans);
@@ -528,24 +615,26 @@ const strings = {
     font: 400 14px/1.6 var(--font-sans);
     color: var(--color-fg);
     margin: 0;
+    max-width: none;
+    width: 100%;
   }
+
   .destacado__meta {
     margin: 0;
     padding: var(--space-3);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0;
     align-content: start;
   }
   .destacado__meta > div {
     padding: 10px 12px;
-    border-right: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
-  .destacado__meta > div:nth-child(2n) { border-right: 0; }
+  .destacado__meta > div:last-child { border-bottom: 0; }
   .destacado__meta dt {
     font: 600 10px/1 var(--font-sans);
     text-transform: uppercase;
@@ -555,18 +644,29 @@ const strings = {
   .destacado__meta dd {
     margin: 0;
     font: 400 13px/1.4 var(--font-sans);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
   }
-  .destacado__metric {
-    font: 700 clamp(1.4rem, 1.2rem + 0.5vw, 1.8rem)/1 var(--font-sans);
+  .destacado__partidos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .destacado__partido-chip {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 2px;
+    font: 700 11px/1.4 var(--font-sans);
+    letter-spacing: 0.02em;
     color: var(--color-accent);
-    font-variant-numeric: tabular-nums;
+    border: 1px solid var(--color-accent);
+    background: var(--color-accent-soft);
   }
-  .destacado__last {
-    grid-column: 1 / -1;
-    border-right: 0 !important;
-    border-bottom: 0 !important;
-  }
-  .destacado__mono { font-family: var(--font-mono); font-size: 12px; }
+  .destacado__mono { font-family: var(--font-mono); font-size: 12px; color: var(--color-fg-muted); }
+  .destacado__hito-text { color: var(--color-fg); }
+  .destacado__last { grid-column: 1 / -1; }
 
   @media (max-width: 720px) {
     .destacado__card { grid-template-columns: 1fr; }
@@ -598,23 +698,45 @@ const strings = {
     margin: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-3);
+    gap: 0;
+    border: 1px solid var(--color-border);
+    align-items: stretch;
+    overflow: hidden;
+  }
+  .secciones__list > li {
+    display: flex;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
   }
   .seccion {
     display: grid;
     grid-template-columns: 56px 1fr;
     gap: var(--space-3);
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    min-height: 100%;
     padding: var(--space-4);
-    border: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
     background: var(--color-surface);
     text-decoration: none;
     color: inherit;
-    transition: border-color 180ms ease-out, transform 180ms ease-out, background 180ms ease-out;
+    box-sizing: border-box;
+    transition: background 180ms ease-out;
+  }
+  .secciones__list > li:nth-child(2n) .seccion { border-right: 0; }
+  .secciones__list > li:nth-child(3) .seccion,
+  .secciones__list > li:nth-child(4) .seccion { border-bottom: 0; }
+  .seccion__body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
   }
   .seccion:hover {
-    border-color: var(--color-accent);
     background: var(--color-bg-muted);
-    transform: translateY(-2px);
   }
   .seccion__num {
     font-family: var(--font-mono);
@@ -622,6 +744,10 @@ const strings = {
     font-size: var(--font-size-3);
     color: var(--color-accent-secondary-hover);
     line-height: 1;
+    transition: color 180ms ease-out;
+  }
+  .seccion:hover .seccion__num {
+    color: var(--color-accent);
   }
   .seccion__title {
     font: 700 var(--font-size-3)/1.2 var(--font-sans);
@@ -632,6 +758,7 @@ const strings = {
     font: 400 13px/1.55 var(--font-sans);
     color: var(--color-fg-muted);
     margin: 0 0 var(--space-3);
+    flex: 1;
   }
   .seccion__cta {
     font: 600 13px/1 var(--font-sans);
@@ -639,11 +766,16 @@ const strings = {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    margin-top: auto;
   }
   .seccion:hover .seccion__cta { text-decoration: underline; text-underline-offset: 3px; }
 
   @media (max-width: 720px) {
     .secciones__list { grid-template-columns: 1fr; }
+    .secciones__list > li:nth-child(3) .seccion,
+    .secciones__list > li:nth-child(4) .seccion { border-bottom: 1px solid var(--color-border); }
+    .secciones__list > li .seccion { border-right: 0; }
+    .secciones__list > li:last-child .seccion { border-bottom: 0; }
   }
 
   /* ========== Disclaimer ========== */

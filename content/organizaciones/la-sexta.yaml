@@ -15,5 +15,8 @@ ambito_territorial: nacional
 localidad: "Madrid"
 provincia: "Madrid"
 url_canonica: "https://www.lasexta.com"
+
+naturaleza_editorial: generalista_politico
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-23"
+ultima_revision_editorial: "2026-05-26"

@@ -11,5 +11,8 @@ descripcion_corta: |
 ambito_territorial: nacional
 localidad: "Madrid"
 url_canonica: "https://www.infobae.com/espana/"
+
+naturaleza_editorial: generalista_politico
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-21"
+ultima_revision_editorial: "2026-05-26"

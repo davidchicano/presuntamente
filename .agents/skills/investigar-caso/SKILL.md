@@ -95,6 +95,10 @@ Producir los YAMLs en disco bajo:
 - `content/casos/<slug>/hechos/<slug>.yaml` — los primeros hechos.
 - `content/casos/<slug>/roles/<slug>.yaml` — los primeros roles.
 
+**Al modelar un medio de comunicación nuevo** (decisión 2026-05-26, ver [`docs/diseno/07-clasificacion-editorial-medios.md`](../../../docs/diseno/07-clasificacion-editorial-medios.md)): poblar como mínimo `naturaleza_editorial` (enum: `generalista_politico`, `verificacion`, `especializado_juridico`, `especializado_no_politico`, `servicio_publico_estatal`, `servicio_publico_autonomico`, `confesional`, `otro`). Si encuentras declaración pública verificable del propio medio sobre su orientación, poblar también `orientacion_editorial_declarada` con `valor` + `fuente` + `cita` literal + `url`. No clasificar por intuición: si no hay cita verificable, no rellenes orientación (queda implícitamente como sin clasificar, lo cual es legal).
+
+**Al cerrar el `caso.yaml` raíz** (decisión 2026-05-26, ver [`docs/web/features/partidos-afectados.md`](../../../docs/web/features/partidos-afectados.md)): valorar si procede poblar `partidos_afectados[]`. Cada entrada exige `partido_id` (FK a `Organizacion` con `tipo: partido_politico`), `tipo_afectacion` (enum cerrado de seis valores) y `justificacion` neutra. Si no encaja ningún tipo de afectación, dejar el array vacío — es legal y editorialmente correcto. **No inferir** desde militancia histórica genérica ni desde simpatías ideológicas.
+
 Y propone commits coherentes (una idea por commit, en español imperativo presente, ver [AGENTS.md → "Commits"](../../../AGENTS.md#commits)).
 
 ### 5. Alimentar el diccionario de citaciones inline

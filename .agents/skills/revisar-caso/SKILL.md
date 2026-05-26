@@ -252,6 +252,31 @@ Si no se cumple ninguna:
 
 **Referencia**: [AGENTS.md → "Principios irrenunciables"](../../../AGENTS.md#principios-irrenunciables) + doc 02 P-01 + lección Lezo 2026-05-24 (biografía de Javier López Madrid afirmaba condena firme en tarjetas black sin Caso/Documento modelado en el repo).
 
+### CH11 — `partidos_afectados` poblado o justificadamente vacío
+
+**Regla** (introducida 2026-05-26, ver [`docs/web/features/partidos-afectados.md`](../../../docs/web/features/partidos-afectados.md)): si en el caso revisado existe al menos uno de los siguientes contextos, `Caso.partidos_afectados` debería contener una entrada por cada partido alcanzado, con `tipo_afectacion` adecuado y `justificacion` neutra:
+
+- Un cargo público de un partido aparece con `RolEnCaso.rol ∈ {investigado, procesado, acusado, condenado_*}` → `imputacion_a_cargo_del_partido` o `militancia_o_cargo_organico_relevante`.
+- El acto investigado se produjo bajo un gobierno (nacional, autonómico, local) de un partido determinado → `gobierno_responsable_del_acto_investigado`.
+- Una persona del caso tiene vínculo familiar directo público con dirigente del partido → `vinculo_familiar_directo_con_dirigente`.
+- Un partido figura como acusación popular constituida → `querella_o_acusacion_popular_del_partido`.
+
+Si no aplica ninguno, el array vacío es legal y editorialmente correcto. **No inferir partidos por militancia histórica ajena al caso ni por simpatías genéricas.**
+
+- `SUGERENCIA` si existe un contexto evidente (p. ej. una persona con cargo del partido figura como investigada) y el array está vacío sin nota en `NOTES.md` que lo justifique.
+- `OK` si el array está poblado coherentemente con el resto del modelado, o si está vacío y el caso no toca a ningún partido.
+
+**Acción sugerida**: añadir entrada con `partido_id`, `tipo_afectacion` del enum cerrado y `justificacion` neutra (sin "se ve salpicado", "típico de", etc.).
+
+### CH12 — Medios productores con `naturaleza_editorial` poblada
+
+**Regla** (introducida 2026-05-26, ver [`docs/diseno/07-clasificacion-editorial-medios.md`](../../../docs/diseno/07-clasificacion-editorial-medios.md)): toda `Organizacion` con `tipo: medio_comunicacion` que aparezca como `Documento.productor_organizacion_id` en el caso debería tener al menos `naturaleza_editorial` poblada.
+
+- `SUGERENCIA` si un medio citado en el caso no tiene `naturaleza_editorial`. Acción: añadir el campo con el valor adecuado del enum.
+- `OK` si todos los medios productores citados tienen al menos naturaleza poblada.
+
+**Orientación editorial declarada/percibida queda como nota informativa**, no bloqueante: su poblado depende de la disponibilidad de cita verificable y de fuentes externas reputadas (`reuters_institute`, `cis`, `estudio_academico_revisado`, `clasificacion_iniciativa_publica`). Sin esas, `sin_clasificar` es legal.
+
 ## Guardarraíles obligatorios
 
 1. **No auto-fix.** La skill **sólo señala**. Nunca edita YAMLs, nunca abre commits, nunca hace `git add`. Las acciones sugeridas se redactan en prosa para que el maintainer las aplique manualmente. Esto es una norma dura del diseño: el LLM no decide qué se publica.

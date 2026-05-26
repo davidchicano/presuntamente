@@ -10,5 +10,8 @@ descripcion_corta: |
 ambito_territorial: nacional
 localidad: "Madrid"
 url_canonica: "https://www.moncloa.com/"
+
+naturaleza_editorial: generalista_politico
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-26"

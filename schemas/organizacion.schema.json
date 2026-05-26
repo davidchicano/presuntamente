@@ -86,7 +86,127 @@
     },
     "linea_editorial_declarada": {
       "type": "string",
-      "description": "Sólo para medio_comunicacion. Se cita literal a la propia 'Quiénes somos' del medio."
+      "description": "DEPRECADO en favor de orientacion_editorial_declarada.cita. Se conserva por retrocompatibilidad para los medios poblados antes del 2026-05-26. Era una cita literal de la propia 'Quiénes somos' del medio."
+    },
+
+    "naturaleza_editorial": {
+      "type": "string",
+      "description": "Sólo para tipo: medio_comunicacion. Naturaleza del medio. Sólo 'generalista_politico' y 'confesional' permiten registrar orientación editorial en el eje izquierda-derecha. El resto se separan visualmente en la UI. Decisión 2026-05-26, ver docs/web/pages/metodologia-clasificacion-medios.md.",
+      "enum": [
+        "generalista_politico",
+        "verificacion",
+        "especializado_juridico",
+        "especializado_no_politico",
+        "servicio_publico_estatal",
+        "servicio_publico_autonomico",
+        "confesional",
+        "otro"
+      ]
+    },
+
+    "orientacion_editorial_declarada": {
+      "type": "object",
+      "description": "Lo que el propio medio declara sobre su orientación editorial (autoadscripción). Sólo válido si naturaleza_editorial ∈ {generalista_politico, confesional}. Si 'valor' está presente, los demás campos son obligatorios. 'sin_clasificar' es legal: medio que no se autoadscribe en términos de espectro político.",
+      "additionalProperties": false,
+      "properties": {
+        "valor": {
+          "type": "string",
+          "enum": [
+            "izquierda_extrema",
+            "izquierda",
+            "centroizquierda",
+            "centro",
+            "centroderecha",
+            "derecha",
+            "derecha_extrema",
+            "sin_clasificar"
+          ]
+        },
+        "fuente": {
+          "type": "string",
+          "enum": [
+            "estatuto_redaccion",
+            "manifiesto_fundacional",
+            "declaracion_publica_director",
+            "libro_estilo_publico",
+            "pagina_quienes_somos",
+            "ideario_corporativo"
+          ]
+        },
+        "cita": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "fecha": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de la declaración citada. Si pasan más de 5 años, la clasificación debería revisarse."
+        }
+      },
+      "required": ["valor", "fuente", "cita", "url"]
+    },
+
+    "orientacion_editorial_percibida": {
+      "type": "object",
+      "description": "Clasificación externa de la orientación editorial por estudio académico, instituto reputado o iniciativa con metodología pública. Sólo válido si naturaleza_editorial ∈ {generalista_politico, confesional}. 'sin_clasificar' es legal cuando ninguna fuente externa reputada lo categoriza.",
+      "additionalProperties": false,
+      "properties": {
+        "valor": {
+          "type": "string",
+          "enum": [
+            "izquierda_extrema",
+            "izquierda",
+            "centroizquierda",
+            "centro",
+            "centroderecha",
+            "derecha",
+            "derecha_extrema",
+            "sin_clasificar"
+          ]
+        },
+        "fuente": {
+          "type": "string",
+          "enum": [
+            "reuters_institute",
+            "cis",
+            "estudio_academico_revisado",
+            "clasificacion_iniciativa_publica"
+          ]
+        },
+        "cita": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Cifra, etiqueta o fragmento literal del estudio. No paráfrasis del agente."
+        },
+        "url": { "type": "string", "format": "uri" },
+        "fecha": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de publicación del estudio. Útil para revisión periódica."
+        }
+      },
+      "required": ["valor", "fuente", "cita", "url"]
+    },
+
+    "grupo_editorial": {
+      "type": "object",
+      "description": "Grupo editorial o propiedad relevante. Sólo para tipo: medio_comunicacion. v1: string libre + rol verificable. Promovible a FK (Organizacion con tipo: grupo_editorial) cuando se modelen los grupos principales.",
+      "additionalProperties": false,
+      "properties": {
+        "nombre": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Nombre del grupo (PRISA, Vocento, Atresmedia, Henneo, Grupo Godó, Unidad Editorial, Grupo Planeta...)."
+        },
+        "rol": {
+          "type": "string",
+          "enum": ["matriz", "filial_editorial", "participacion_relevante"]
+        },
+        "cita": {
+          "type": "string",
+          "description": "Cita literal corta de informe anual, registro CNMV, BOE de adquisición o nota oficial. Si no hay, dejar vacío y considerar no publicar el dato."
+        },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "required": ["nombre", "rol"]
     },
 
     "estado_publicacion": {
@@ -111,6 +231,23 @@
         "required": ["tipo"]
       },
       "then": { "required": ["jurisdiccion", "ambito_territorial"] }
+    },
+    {
+      "description": "Si hay orientacion_editorial_declarada u orientacion_editorial_percibida pobladas, naturaleza_editorial debe ser 'generalista_politico' o 'confesional'. Decisión 2026-05-26.",
+      "if": {
+        "anyOf": [
+          { "required": ["orientacion_editorial_declarada"] },
+          { "required": ["orientacion_editorial_percibida"] }
+        ]
+      },
+      "then": {
+        "required": ["naturaleza_editorial"],
+        "properties": {
+          "naturaleza_editorial": {
+            "enum": ["generalista_politico", "confesional"]
+          }
+        }
+      }
     }
   ]
 }

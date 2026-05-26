@@ -58,6 +58,8 @@ Para cada `Organizacion` que aparece en `Hito.organizaciones_afectadas`, `Hecho.
 2. ¿Es **perjudicada institucional** (administración estafada, organismo público dañado, empresa pública vaciada)? `naturaleza = perjudicado_institucional_en_caso`.
 3. ¿Es **entidad investigada como persona jurídica** (no sólo sus directivos como personas físicas, sino la propia organización con responsabilidad penal)? `naturaleza = entidad_investigada_en_caso`.
 
+> **Importante (2026-05-26)**: estas tres naturalezas alimentan el bloque **«Instituciones alcanzadas»** que `PgCasoDetalle` renderiza automáticamente dentro de «Estado procesal actual» (tres cajas separadas con border-left por familia) y también la columna **«Organización afectada»** de `/casos` (prioridad: investigada → perjudicada → acusación). Cada vínculo nuevo en estas categorías se ve inmediatamente en cabecera de la ficha y en el listado — no hay que tocar UI, sólo el YAML.
+
 ### 4. Documentos de respaldo
 
 Cada `VinculoInstitucional` exige **al menos un `documento_respaldo`** (mismo principio V-13). Aceptables por nivel:

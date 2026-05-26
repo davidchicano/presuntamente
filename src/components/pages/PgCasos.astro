@@ -3,7 +3,9 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
 import PhaseBadge from '@/components/PhaseBadge.astro';
 import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
+import RolBadge from '@/components/RolBadge.astro';
 import { getCollection } from 'astro:content';
+import { rolLabel } from '@/lib/labels';
 
 // En producción los casos en `pendiente`/`borrador` aparecen en la tabla
 // pero no son clickables y la ruta /casos/<slug> no se genera (ver
@@ -41,12 +43,37 @@ const strings = {
 
 // --- Carga desde Content Collections ----------------------------------------
 
-const [casosCol, hitosCol, rolesCol, organizacionesCol] = await Promise.all([
+const [casosCol, hitosCol, rolesCol, organizacionesCol, vinculosCol] = await Promise.all([
   getCollection('casos'),
   getCollection('hitos'),
   getCollection('roles'),
   getCollection('organizaciones'),
+  getCollection('vinculos'),
 ]);
+
+// Prioridad para deducir "organización principal" del caso: entidad
+// investigada (la entidad procesalmente investigada como persona jurídica)
+// pesa más que perjudicado o acusación popular. Decisión 2026-05-26.
+const PRIORIDAD_ORG_PRINCIPAL = ['entidad_investigada_en_caso', 'perjudicado_institucional_en_caso', 'acusacion_institucional_en_caso'] as const;
+
+// Mapeo de naturaleza de VinculoInstitucional → rol procesal equivalente,
+// para reutilizar el RolBadge ya estandarizado (mismo lenguaje visual que
+// el resto de la ficha).
+const NATURALEZA_A_ROL: Record<string, string> = {
+  entidad_investigada_en_caso: 'investigado',
+  perjudicado_institucional_en_caso: 'perjudicado',
+  acusacion_institucional_en_caso: 'acusacion_popular',
+};
+
+// Truncado del título del último hito para no engordar la fila.
+function truncarHito(s: string, max = 90): string {
+  if (!s) return '';
+  const flat = s.replace(/\s+/g, ' ').trim();
+  if (flat.length <= max) return flat;
+  const slice = flat.slice(0, max);
+  const lastSpace = slice.lastIndexOf(' ');
+  return (lastSpace > 50 ? slice.slice(0, lastSpace) : slice).trim() + '…';
+}
 
 // Helper: mapeo de fase_actual (10 valores) → bucket de UI (5 valores).
 // Coincide con PhaseBadge.astro: instr / intermedia / juicio / firme / archivo.
@@ -97,6 +124,27 @@ const casos = casosCol
         ROLES_IMPUTACION.has(r.data.rol) &&
         !r.data.fecha_fin,
     ).length;
+    // Organización principal del caso, derivada de VinculoInstitucional.
+    // Si hay varias del mismo nivel, tomamos la primera por orden alfabético
+    // estable. Si no hay ninguna, queda vacía.
+    const vinculosDelCaso = vinculosCol
+      .filter((v) => v.data.relevancia_para_caso_ids?.includes(caso.id))
+      .map((v) => v.data);
+    let orgPrincipalId: string | undefined;
+    let orgPrincipalNaturaleza: string | undefined;
+    for (const naturaleza of PRIORIDAD_ORG_PRINCIPAL) {
+      const candidatos = vinculosDelCaso
+        .filter((v) => v.naturaleza === naturaleza && v.sujeto_organizacion_id)
+        .map((v) => v.sujeto_organizacion_id!)
+        .sort();
+      if (candidatos.length > 0) {
+        orgPrincipalId = candidatos[0];
+        orgPrincipalNaturaleza = naturaleza;
+        break;
+      }
+    }
+    const orgPrincipal = orgPrincipalId ? orgIndex.get(orgPrincipalId) : undefined;
+
     const org = orgIndex.get(caso.organo_judicial_id);
     // Para la columna "Órgano" preferimos el acrónimo cuando existe (AN, JCI 4),
     // y si no, una versión corta del nombre. El detalle pasa a la ficha.
@@ -110,14 +158,34 @@ const casos = casosCol
       slug: caso.id,
       mediatico: caso.nombre_mediatico,
       oficial: caso.nombre_oficial,
+      // Mini-descripción: preferimos `sintesis_caso.que_se_investiga`
+      // (resume el caso en una frase) sobre `descripcion_corta` (más larga
+      // y a menudo orientada al resumen ejecutivo). Fallback al segundo.
+      descripcion:
+        (caso as { sintesis_caso?: { que_se_investiga?: string } }).sintesis_caso?.que_se_investiga ??
+        (caso as { descripcion_corta?: string }).descripcion_corta ??
+        '',
       fase_actual: caso.fase_actual,
       phaseKind: fase.kind,
       estado_publicacion: caso.estado_publicacion as EstadoPublicacion,
       bloqueadoEnProd: IS_PROD && ESTADOS_BLOQUEADOS_EN_PROD.includes(caso.estado_publicacion),
       organo: organoCorto,
       organoFull: org?.nombre ?? caso.organo_judicial_id,
+      organoId: caso.organo_judicial_id,
       numero: caso.numero_procedimiento ?? '',
       implicados,
+      orgPrincipalId,
+      orgPrincipalNombre: orgPrincipal?.nombre,
+      orgPrincipalNaturaleza,
+      orgPrincipalRol: orgPrincipalNaturaleza ? NATURALEZA_A_ROL[orgPrincipalNaturaleza] : undefined,
+      partidosAfectados: ((caso as { partidos_afectados?: Array<{ partido_id: string }> }).partidos_afectados ?? [])
+        .map((p) => {
+          const partidoOrg = orgIndex.get(p.partido_id);
+          return {
+            id: p.partido_id,
+            label: (partidoOrg as { siglas?: string } | undefined)?.siglas ?? partidoOrg?.nombre ?? p.partido_id,
+          };
+        }),
       ultimo_hito: ultimo
         ? { fecha: ultimo.fecha, titulo: ultimo.titulo }
         : null,
@@ -138,6 +206,7 @@ function buildSearchBlob(c: (typeof casos)[number]): string {
   return [
     c.mediatico,
     c.oficial,
+    c.descripcion,
     c.organo,
     c.organoFull,
     c.numero,
@@ -145,6 +214,17 @@ function buildSearchBlob(c: (typeof casos)[number]): string {
     .filter(Boolean)
     .join(' ')
     .toLowerCase();
+}
+
+// Mini-descripción: primer párrafo de descripcion_corta, recortado para
+// caber a una/dos líneas en la celda. No corta a media palabra.
+function miniDescripcion(raw: string, max = 140): string {
+  const flat = raw.replace(/\s+/g, ' ').trim();
+  if (!flat) return '';
+  if (flat.length <= max) return flat;
+  const slice = flat.slice(0, max);
+  const lastSpace = slice.lastIndexOf(' ');
+  return (lastSpace > 60 ? slice.slice(0, lastSpace) : slice).trim() + '…';
 }
 ---
 
@@ -238,11 +318,11 @@ function buildSearchBlob(c: (typeof casos)[number]): string {
     <thead>
       <tr>
         <th style="width: 30%;">Caso</th>
-        <th style="width: 12%;">Fase</th>
-        <th style="width: 12%;">Estado ficha</th>
-        <th style="width: 18%;">Órgano</th>
-        <th style="width: 7%;" class="c-num">Implic.</th>
-        <th style="width: 21%;">Último hito</th>
+        <th style="width: 10%;">Fase</th>
+        <th style="width: 16%;">Órgano</th>
+        <th style="width: 17%;">Organización afectada</th>
+        <th style="width: 12%;">Partidos afectados</th>
+        <th style="width: 15%;">Último hito</th>
       </tr>
     </thead>
     <tbody>
@@ -259,13 +339,23 @@ function buildSearchBlob(c: (typeof casos)[number]): string {
           <td>
             {c.bloqueadoEnProd ? (
               <span aria-disabled="true" class="c-blocked">
-                <span class="c-name">{c.mediatico}</span>
-                <span class="c-name__sub">{c.oficial}</span>
+                <span class="c-name-row">
+                  <span class="c-name">{c.mediatico}</span>
+                  <EstadoPublicacionBadge estado={c.estado_publicacion} compact />
+                </span>
+                {c.descripcion && (
+                  <span class="c-desc">{miniDescripcion(c.descripcion)}</span>
+                )}
               </span>
             ) : (
               <a href={`/casos/${c.slug}`}>
-                <span class="c-name">{c.mediatico}</span>
-                <span class="c-name__sub">{c.oficial}</span>
+                <span class="c-name-row">
+                  <span class="c-name">{c.mediatico}</span>
+                  <EstadoPublicacionBadge estado={c.estado_publicacion} compact />
+                </span>
+                {c.descripcion && (
+                  <span class="c-desc">{miniDescripcion(c.descripcion)}</span>
+                )}
               </a>
             )}
           </td>
@@ -273,15 +363,39 @@ function buildSearchBlob(c: (typeof casos)[number]): string {
             <PhaseBadge fase={c.fase_actual} />
           </td>
           <td>
-            <EstadoPublicacionBadge estado={c.estado_publicacion} compact />
+            <div class="c-organo">
+              <a class="c-organo__short c-mono" title={c.organoFull} href={`/organizaciones/${c.organoId}`}>{c.organo}</a>
+              <span class="c-organo__full">{c.oficial}</span>
+            </div>
           </td>
-          <td class="c-mono" title={c.organoFull}>{c.organo}</td>
-          <td class="c-num">{c.implicados}</td>
+          <td>
+            {c.orgPrincipalId && c.orgPrincipalNombre ? (
+              <div class="c-org-afectada">
+                <a href={`/organizaciones/${c.orgPrincipalId}`}>{c.orgPrincipalNombre}</a>
+                {c.orgPrincipalRol && (
+                  <RolBadge rol={c.orgPrincipalRol} label={rolLabel(c.orgPrincipalRol)} />
+                )}
+              </div>
+            ) : (
+              <span class="muted">—</span>
+            )}
+          </td>
+          <td>
+            {c.partidosAfectados.length > 0 ? (
+              <div class="c-partidos">
+                {c.partidosAfectados.map((p) => (
+                  <a href={`/organizaciones/${p.id}`} class="c-partido-chip">{p.label}</a>
+                ))}
+              </div>
+            ) : (
+              <span class="muted">—</span>
+            )}
+          </td>
           <td>
             {c.ultimo_hito ? (
               <>
                 <div class="c-date">{c.ultimo_hito.fecha}</div>
-                <div class="c-hito-title">{c.ultimo_hito.titulo}</div>
+                <div class="c-hito-title" title={c.ultimo_hito.titulo}>{truncarHito(c.ultimo_hito.titulo)}</div>
               </>
             ) : (
               <span class="muted">Sin hitos registrados</span>
@@ -391,6 +505,58 @@ function buildSearchBlob(c: (typeof casos)[number]): string {
 </script>
 
 <style>
+  .c-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .c-desc {
+    display: block;
+    font-size: var(--font-size-0);
+    color: var(--color-fg-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .c-organo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .c-organo__short {
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .c-organo__short:hover { text-decoration: underline; }
+  .c-organo__full {
+    font-size: var(--font-size-0);
+    color: var(--color-fg-muted);
+    line-height: 1.35;
+  }
+  .c-org-afectada {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    font-size: var(--font-size-0);
+  }
+  .c-partidos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .c-partido-chip {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 2px;
+    font: 700 11px/1.4 var(--font-sans);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+  .c-partido-chip:hover { background: var(--color-accent); color: var(--color-accent-fg); }
   .c-hito-title {
     font-size: var(--font-size-0);
     color: var(--color-fg-muted);

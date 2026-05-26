@@ -189,8 +189,15 @@ Lecciones:
   Documento. Crear la ficha de la org del medio antes de los Documentos
   (o en el mismo PR si es la primera vez que aparece). Atributos
   mínimos: nombre, tipo, descripcion_corta, ambito_territorial,
-  localidad, url_canonica. `linea_editorial_declarada` queda para
-  cuando haya cita literal del "Quiénes somos"; no asumir.
+  localidad, url_canonica. Añadir también `naturaleza_editorial`
+  (enum: `generalista_politico`, `verificacion`, `especializado_juridico`,
+  `especializado_no_politico`, `servicio_publico_estatal`,
+  `servicio_publico_autonomico`, `confesional`, `otro`) cuando sea obvia.
+  `orientacion_editorial_declarada` sólo si hay cita literal verificable
+  + URL del propio medio (estatuto, manifiesto, ideario, "Quiénes somos");
+  no asumir. Ver canon [`docs/diseno/07-clasificacion-editorial-medios.md`](../../../docs/diseno/07-clasificacion-editorial-medios.md).
+  El campo legacy `linea_editorial_declarada` (string libre) queda
+  deprecado pero se conserva en YAMLs preexistentes.
 - **`url_archivo` (archive.org / archive.ph) queda pendiente del
   maintainer.** El agente no puede llamar a `web.archive.org/save` ni
   con WebFetch (dominio bloqueado) ni de forma fiable con Claude in

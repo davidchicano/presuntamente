@@ -12,18 +12,43 @@ import { rolLabel, rolGrupo, type Lang } from '@/lib/labels';
 interface Props { lang?: Lang; }
 const { lang = 'es' } = Astro.props;
 
-const [personasCol, rolesCol] = await Promise.all([
+const [personasCol, rolesCol, vinculosCol, organizacionesCol] = await Promise.all([
   getCollection('personas'),
   getCollection('roles'),
+  getCollection('vinculos'),
+  getCollection('organizaciones'),
 ]);
+
+const orgIdx = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
+
+// Naturalezas de vínculo que implican "cargo / vinculación a una organización"
+// y se pueden usar como derivación de "Relación principal con organización".
+const NATURALEZAS_CARGO = new Set([
+  'cargo_publico_electo',
+  'cargo_publico_designado',
+  'cargo_judicial',
+  'cargo_organico_partido',
+  'cargo_directivo_empresa_publica',
+  'cargo_directivo_organizacion_privada',
+  'cargo_academico_publico',
+  'cargo_organizacion_civica',
+]);
+
+// Mini-descripción: aplana, recorta a ~110 caracteres sin cortar palabra.
+function miniDescPersona(raw: string | undefined, max = 110): string {
+  if (!raw) return '';
+  const flat = raw.replace(/\s+/g, ' ').trim();
+  if (flat.length <= max) return flat;
+  const slice = flat.slice(0, max);
+  const lastSpace = slice.lastIndexOf(' ');
+  return (lastSpace > 50 ? slice.slice(0, lastSpace) : slice).trim() + '…';
+}
 
 const personas = personasCol
   .map((p) => {
     const rolesPersona = rolesCol.filter(
       (r) => r.data.sujeto_tipo === 'persona' && r.data.sujeto_persona_id === p.data.id,
     );
-    // Rol "más fuerte" para mostrar como badge principal: si tiene
-    // condenado vigente, eso; si tiene imputación activa, eso; etc.
     const roles = rolesPersona.map((r) => r.data);
     const activos = roles.filter((r) => !r.fecha_fin);
     const referencia = activos.length > 0
@@ -33,13 +58,38 @@ const personas = personasCol
         ?? activos[0])
       : roles[roles.length - 1];
     const casosUnicos = new Set(roles.map((r) => r.caso_id));
+
+    // Vínculo de cargo más reciente que apunte a una organización.
+    // Si está vigente y tiene `desde` posterior, se elige por encima de
+    // vínculos cerrados. Permite mostrar la org de la persona en la tabla.
+    const vinculosCargo = vinculosCol
+      .filter((v) =>
+        v.data.sujeto_persona_id === p.data.id &&
+        v.data.objeto_organizacion_id &&
+        NATURALEZAS_CARGO.has(v.data.naturaleza) &&
+        v.data.estado_publicacion !== 'retirado_definitivamente',
+      )
+      .sort((a, b) => {
+        // Vigentes primero, luego por desde descendiente.
+        const aV = a.data.vigente ? 1 : 0;
+        const bV = b.data.vigente ? 1 : 0;
+        if (aV !== bV) return bV - aV;
+        return (b.data.desde ?? '').localeCompare(a.data.desde ?? '');
+      });
+    const vincRef = vinculosCargo[0]?.data;
+    const orgRefId = vincRef?.objeto_organizacion_id;
+    const orgRef = orgRefId ? orgIdx.get(orgRefId) : undefined;
+
     return {
       slug: p.data.id,
       nombre: p.data.nombre_completo,
       cargo: p.data.cargo_publico_actual,
+      biografia: miniDescPersona(p.data.biografia_corta),
       esFigura: p.data.es_figura_publica,
       rolPrincipal: referencia ? { rol: referencia.rol, label: rolLabel(referencia.rol) } : null,
       casosCount: casosUnicos.size,
+      orgRefId,
+      orgRefNombre: orgRef?.nombre,
     };
   })
   .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
@@ -56,7 +106,10 @@ const strings = {
 };
 
 function searchBlob(p: (typeof personas)[number]): string {
-  return [p.nombre, p.cargo, p.rolPrincipal?.label].filter(Boolean).join(' ').toLowerCase();
+  return [p.nombre, p.cargo, p.rolPrincipal?.label, p.biografia, p.orgRefNombre]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
 }
 ---
 
@@ -120,10 +173,11 @@ function searchBlob(p: (typeof personas)[number]): string {
   <table class="tbl" data-personas>
     <thead>
       <tr>
-        <th style="width: 44%;">Persona</th>
-        <th style="width: 20%;">Rol procesal principal</th>
-        <th style="width: 26%;">Cargo público actual</th>
-        <th style="width: 10%;" class="c-num">Casos</th>
+        <th style="width: 38%;">Persona</th>
+        <th style="width: 18%;">Rol procesal principal</th>
+        <th style="width: 22%;">Organización principal</th>
+        <th style="width: 16%;">Cargo actual</th>
+        <th style="width: 6%;" class="c-num">Casos</th>
       </tr>
     </thead>
     <tbody>
@@ -136,13 +190,27 @@ function searchBlob(p: (typeof personas)[number]): string {
         >
           <td>
             <a href={`/personas/${p.slug}`}>
-              <span class="c-name">{p.nombre}</span>
-              <span class="c-name__sub">{p.esFigura ? 'Figura pública' : 'Privado'}</span>
+              <span class="c-name-row">
+                <span class="c-name">{p.nombre}</span>
+                <span class="c-figura">
+                  {p.esFigura ? 'figura pública' : 'persona privada'}
+                </span>
+              </span>
+              {p.biografia && (
+                <span class="c-desc">{p.biografia}</span>
+              )}
             </a>
           </td>
           <td>
             {p.rolPrincipal ? (
               <RolBadge rol={p.rolPrincipal.rol} label={p.rolPrincipal.label} />
+            ) : (
+              <span class="muted">—</span>
+            )}
+          </td>
+          <td>
+            {p.orgRefId && p.orgRefNombre ? (
+              <a href={`/organizaciones/${p.orgRefId}`} class="c-org-link">{p.orgRefNombre}</a>
             ) : (
               <span class="muted">—</span>
             )}
@@ -209,5 +277,27 @@ function searchBlob(p: (typeof personas)[number]): string {
     text-align: center;
     font: 400 var(--font-size-1)/1.5 var(--font-sans);
     color: var(--color-fg-muted);
+  }
+  .c-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .c-figura {
+    color: var(--color-fg-subtle);
+    font-size: var(--font-size-0);
+    font-style: italic;
+    white-space: nowrap;
+  }
+  .c-desc {
+    display: block;
+    font-size: var(--font-size-0);
+    color: var(--color-fg-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .c-org-link {
+    font-size: var(--font-size-0);
   }
 </style>

@@ -6,6 +6,9 @@ import OrgGlyph from '@/components/OrgGlyph.astro';
 import RichProse from '@/components/RichProse.astro';
 import RolBadge from '@/components/RolBadge.astro';
 import VinculosInstitucionalesList from '@/components/VinculosInstitucionalesList.astro';
+import SourceLinkBadge from '@/components/SourceLinkBadge.astro';
+import OrientacionBadge from '@/components/OrientacionBadge.astro';
+import NaturalezaBadge from '@/components/NaturalezaBadge.astro';
 import { tipoOrgLabel, rolLabel, naturalezaVinculoLabel, type Lang } from '@/lib/labels';
 import { documentoRespaldoHref } from '@/lib/documentos';
 
@@ -29,7 +32,7 @@ const personaIndex = new Map(personasCol.map((p) => [p.data.id, p.data]));
 const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
 const docIndex = new Map(documentosCol.map((d) => [d.data.id, d.data]));
 
-// Casos donde aparece esta organización por cualquiera de las vías.
+// Casos con implicación procesual (rol, hecho, hito, órgano titular o querellante).
 const casoIds = new Set<string>();
 for (const c of casosCol) if (c.data.organo_judicial_id === data.id || c.data.querellante_inicial_id === data.id) casoIds.add(c.data.id);
 const rolesOrg = rolesCol
@@ -141,8 +144,108 @@ const vinculosOrg = vinculosCol
     };
   });
 
+// Bloque editorial sólo para medios de comunicación con clasificación documentada.
+const editorialData = data as {
+  naturaleza_editorial?: string;
+  orientacion_editorial_declarada?: { valor: string; fuente: string; cita: string; url: string; fecha?: string };
+  orientacion_editorial_percibida?: { valor: string; fuente: string; cita: string; url: string; fecha?: string };
+  grupo_editorial?: { nombre: string; rol: string; cita?: string; url?: string };
+  linea_editorial_declarada?: string;
+};
+const esMedio = data.tipo === 'medio_comunicacion';
+const tieneClasificacionEditorial =
+  esMedio && Boolean(
+    editorialData.naturaleza_editorial ||
+      editorialData.orientacion_editorial_declarada ||
+      editorialData.orientacion_editorial_percibida ||
+      editorialData.grupo_editorial ||
+      editorialData.linea_editorial_declarada,
+  );
+
+const NATURALEZA_LABEL: Record<string, string> = {
+  generalista_politico: 'Generalista político',
+  verificacion: 'Verificación',
+  especializado_juridico: 'Especializado jurídico',
+  especializado_no_politico: 'Especializado',
+  servicio_publico_estatal: 'Servicio público estatal',
+  servicio_publico_autonomico: 'Servicio público autonómico',
+  confesional: 'Confesional',
+  otro: 'Otro',
+};
+const ORIENTACION_LABEL: Record<string, string> = {
+  izquierda_extrema: 'Izquierda extrema',
+  izquierda: 'Izquierda',
+  centroizquierda: 'Centroizquierda',
+  centro: 'Centro',
+  centroderecha: 'Centroderecha',
+  derecha: 'Derecha',
+  derecha_extrema: 'Derecha extrema',
+  sin_clasificar: 'Sin clasificar',
+};
+const FUENTE_LABEL: Record<string, string> = {
+  estatuto_redaccion: 'Estatuto de Redacción',
+  manifiesto_fundacional: 'Manifiesto fundacional',
+  declaracion_publica_director: 'Declaración pública del director',
+  libro_estilo_publico: 'Libro de estilo público',
+  pagina_quienes_somos: 'Página «Quiénes somos»',
+  ideario_corporativo: 'Ideario corporativo',
+  reuters_institute: 'Reuters Institute',
+  cis: 'CIS',
+  estudio_academico_revisado: 'Estudio académico revisado',
+  clasificacion_iniciativa_publica: 'Iniciativa pública con metodología',
+};
+const GRUPO_ROL_LABEL: Record<string, string> = {
+  matriz: 'Matriz',
+  filial_editorial: 'Filial editorial',
+  participacion_relevante: 'Participación relevante',
+};
+
+// --- Personas relacionadas (inverso del bloque de Persona) -----------------
+// Personas con vínculo formal a esta organización: tienen un cargo dirigido
+// hacia esta org (objeto_organizacion_id === data.id) Y la naturaleza es
+// cargo_* o nombramiento_por_gobierno. Bloque ortogonal a "Relaciones
+// institucionales documentadas" — aquí se enseña sólo la persona y su
+// cargo, sin documentos de respaldo. Para detalle: ver bloque de vínculos.
+const NATURALEZAS_CARGO_PERSONA = new Set([
+  'cargo_publico_electo',
+  'cargo_publico_designado',
+  'cargo_judicial',
+  'cargo_organico_partido',
+  'cargo_directivo_empresa_publica',
+  'cargo_directivo_organizacion_privada',
+  'cargo_academico_publico',
+  'cargo_organizacion_civica',
+  'nombramiento_por_gobierno',
+]);
+const personasRelacionadas = vinculosCol
+  .filter(
+    (v) =>
+      v.data.objeto_organizacion_id === data.id &&
+      v.data.sujeto_persona_id &&
+      NATURALEZAS_CARGO_PERSONA.has(v.data.naturaleza) &&
+      v.data.estado_publicacion !== 'retirado_definitivamente',
+  )
+  .sort((a, b) => {
+    const aV = a.data.vigente ? 1 : 0;
+    const bV = b.data.vigente ? 1 : 0;
+    if (aV !== bV) return bV - aV;
+    return (b.data.desde ?? '').localeCompare(a.data.desde ?? '');
+  })
+  .map((v) => ({
+    vinculoId: v.data.id,
+    personaId: v.data.sujeto_persona_id!,
+    personaLabel: personaLabel(v.data.sujeto_persona_id!),
+    personaHref: personaHref(v.data.sujeto_persona_id!),
+    naturalezaLabel: naturalezaVinculoLabel(v.data.naturaleza),
+    descripcion: v.data.descripcion,
+    periodo: formatVinculoPeriodo(v.data),
+    vigente: v.data.vigente,
+  }));
+
 let sectionCounter = 3;
+const clasificacionSectionNum = tieneClasificacionEditorial ? `${sectionCounter++}.` : undefined;
 const rolesSectionNum = rolesOrg.length > 0 ? `${sectionCounter++}.` : undefined;
+const personasRelacionadasSectionNum = personasRelacionadas.length > 0 ? `${sectionCounter++}.` : undefined;
 const vinculosSectionNum = vinculosOrg.length > 0 ? `${sectionCounter++}.` : undefined;
 const documentosSectionNum = documentosProducidos.length > 0 ? `${sectionCounter++}.` : undefined;
 const redaccionSectionNum = `${sectionCounter}.`;
@@ -174,7 +277,7 @@ const breadcrumb = [
         {(data as { localidad?: string }).localidad && (
           <><span>{(data as { localidad?: string }).localidad}</span><span class="entity-mast__sep">·</span></>
         )}
-        <span><strong>{casos.length}</strong> caso{casos.length === 1 ? '' : 's'} referenciado{casos.length === 1 ? '' : 's'}</span>
+        <span><strong>{casos.length}</strong> caso{casos.length === 1 ? '' : 's'} implicado{casos.length === 1 ? '' : 's'}</span>
         {documentosProducidos.length > 0 && (
           <>
             <span class="entity-mast__sep">·</span>
@@ -191,9 +294,9 @@ const breadcrumb = [
     </FichaTocSection>
   )}
 
-  <FichaTocSection num="2." title="Casos donde aparece" id="casos" right={`${casos.length} caso${casos.length === 1 ? '' : 's'}`}>
+  <FichaTocSection num="2." title="Casos implicados" id="casos" right={`${casos.length} caso${casos.length === 1 ? '' : 's'}`}>
     {casos.length === 0 ? (
-      <p class="muted">Sin casos registrados.</p>
+      <p class="muted">Sin implicación procesal en casos del inventario.</p>
     ) : (
       <ul class="casos-list">
         {casos.map((c) => (
@@ -207,6 +310,133 @@ const breadcrumb = [
       </ul>
     )}
   </FichaTocSection>
+
+  {tieneClasificacionEditorial && (
+    <FichaTocSection
+      num={clasificacionSectionNum!}
+      title="Clasificación editorial"
+      id="clasificacion-editorial"
+    >
+      {(editorialData.naturaleza_editorial || editorialData.orientacion_editorial_declarada) && (
+        <div class="clasif-block">
+          <div class="clasif-row">
+            {editorialData.naturaleza_editorial && (
+              <NaturalezaBadge naturaleza={editorialData.naturaleza_editorial} />
+            )}
+            {editorialData.orientacion_editorial_declarada && (
+              <>
+                <span class="clasif-sep" aria-hidden="true">›</span>
+                <span class="clasif-label">Declarada</span>
+                <OrientacionBadge valor={editorialData.orientacion_editorial_declarada.valor} />
+              </>
+            )}
+          </div>
+          {editorialData.orientacion_editorial_declarada && (
+            <>
+              <p class="clasif-source">
+                {FUENTE_LABEL[editorialData.orientacion_editorial_declarada.fuente] ??
+                  editorialData.orientacion_editorial_declarada.fuente}
+                {' · '}
+                <a
+                  href={editorialData.orientacion_editorial_declarada.url}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fuente original ↗
+                </a>
+                {editorialData.orientacion_editorial_declarada.fecha && (
+                  <>
+                    {' · '}
+                    <span class="mono">{editorialData.orientacion_editorial_declarada.fecha}</span>
+                  </>
+                )}
+              </p>
+              <blockquote class="clasif-cita">
+                «{editorialData.orientacion_editorial_declarada.cita}»
+              </blockquote>
+            </>
+          )}
+        </div>
+      )}
+
+      {editorialData.orientacion_editorial_percibida && (
+        <div class="clasif-block">
+          <div class="clasif-row">
+            <span class="clasif-label">Percibida (fuente externa)</span>
+            <OrientacionBadge valor={editorialData.orientacion_editorial_percibida.valor} />
+          </div>
+          <p class="clasif-source">
+            {FUENTE_LABEL[editorialData.orientacion_editorial_percibida.fuente] ??
+              editorialData.orientacion_editorial_percibida.fuente}
+            {' · '}
+            <a
+              href={editorialData.orientacion_editorial_percibida.url}
+              target="_blank"
+              rel="noopener"
+            >
+              Estudio o fuente ↗
+            </a>
+            {editorialData.orientacion_editorial_percibida.fecha && (
+              <>
+                {' · '}
+                <span class="mono">{editorialData.orientacion_editorial_percibida.fecha}</span>
+              </>
+            )}
+          </p>
+          <blockquote class="clasif-cita">
+            «{editorialData.orientacion_editorial_percibida.cita}»
+          </blockquote>
+        </div>
+      )}
+
+      {editorialData.grupo_editorial && (
+        <div class="clasif-block">
+          <div class="clasif-row">
+            <span class="clasif-label">Grupo editorial</span>
+            <strong>{editorialData.grupo_editorial.nombre}</strong>
+            <span class="clasif-rol">
+              ({GRUPO_ROL_LABEL[editorialData.grupo_editorial.rol] ?? editorialData.grupo_editorial.rol})
+            </span>
+          </div>
+          {editorialData.grupo_editorial.url && (
+            <p class="clasif-source">
+              <a href={editorialData.grupo_editorial.url} target="_blank" rel="noopener">
+                Documento de respaldo ↗
+              </a>
+            </p>
+          )}
+          {editorialData.grupo_editorial.cita && (
+            <blockquote class="clasif-cita">
+              «{editorialData.grupo_editorial.cita}»
+            </blockquote>
+          )}
+        </div>
+      )}
+
+      {!editorialData.orientacion_editorial_declarada &&
+        !editorialData.orientacion_editorial_percibida &&
+        editorialData.linea_editorial_declarada && (
+          <div class="clasif-block">
+            <span class="clasif-label">Cita histórica (modelo previo, deprecada)</span>
+            <blockquote class="clasif-cita">
+              «{editorialData.linea_editorial_declarada}»
+            </blockquote>
+            <p class="clasif-source">
+              Cita conservada del modelado anterior al 2026-05-26. La nueva clasificación
+              estructurada se incorpora en una próxima revisión.
+            </p>
+          </div>
+        )}
+
+      <p class="clasif-intro">
+        Datos de naturaleza y orientación editorial del medio. Cada valor procede o bien
+        de una autoadscripción literal del propio medio, o bien de una clasificación de
+        fuente externa reputada. Sin etiquetas peyorativas, sin promediar dimensiones que
+        digan cosas distintas. Ver{' '}
+        <a href={lang === 'ca' ? '/cat/sobre' : '/sobre'}>metodología</a>.
+      </p>
+    </FichaTocSection>
+  )}
 
   {rolesOrg.length > 0 && (
     <FichaTocSection num={rolesSectionNum!} title="Roles procesales asumidos" id="roles" right={`${rolesOrg.length} rol${rolesOrg.length === 1 ? '' : 'es'}`}>
@@ -229,6 +459,39 @@ const breadcrumb = [
           ))}
         </tbody>
       </table>
+      </div>
+    </FichaTocSection>
+  )}
+
+  {personasRelacionadas.length > 0 && (
+    <FichaTocSection
+      num={personasRelacionadasSectionNum!}
+      title="Personas relacionadas"
+      id="personas-relacionadas"
+      right={`${personasRelacionadas.length} persona${personasRelacionadas.length === 1 ? '' : 's'}`}
+    >
+      <p class="contexto-intro">
+        Personas con cargo o nombramiento documentado en esta organización.
+        Inverso del bloque «Relaciones institucionales documentadas» de la ficha
+        de persona. Para el detalle del vínculo, ver el bloque de vínculos.
+      </p>
+      <div class="personas-rel-list">
+        {personasRelacionadas.map((pr) => (
+          <article class="personas-rel-item" id={`persona-rel-${pr.vinculoId}`}>
+            <SourceLinkBadge label={pr.naturalezaLabel} href={`#vinculo-${pr.vinculoId}`} />
+            <div class="personas-rel-item__body">
+              <p class="personas-rel-item__headline">
+                <a href={pr.personaHref}>{pr.personaLabel}</a>
+              </p>
+              <a class="personas-rel-item__desc" href={`#vinculo-${pr.vinculoId}`}>
+                {pr.descripcion}
+              </a>
+              <p class="personas-rel-item__meta">
+                <span>{pr.periodo}</span>
+              </p>
+            </div>
+          </article>
+        ))}
       </div>
     </FichaTocSection>
   )}
@@ -279,3 +542,108 @@ const breadcrumb = [
   </FichaTocSection>
   </div>
 </BaseLayout>
+
+<style>
+  .clasif-block {
+    margin: 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .clasif-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.55rem;
+    font-size: 0.95rem;
+  }
+  .clasif-sep {
+    color: var(--color-fg-subtle);
+    font-weight: 500;
+  }
+  .clasif-label {
+    color: var(--color-fg-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+  .clasif-rol {
+    color: var(--color-fg-muted);
+    font-size: 0.88rem;
+    font-weight: 400;
+  }
+  .clasif-source {
+    margin: 0;
+    color: var(--color-fg-muted);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+  .clasif-cita {
+    margin: 0;
+    padding: 0.5rem 0.85rem;
+    border-left: 3px solid var(--color-border-strong);
+    background: var(--color-surface-muted);
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+  .personas-rel-list {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .personas-rel-item {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 10px 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .personas-rel-item__body {
+    min-width: 0;
+  }
+  .personas-rel-item__headline {
+    margin: 0 0 4px;
+    font: 700 14px/1.3 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .personas-rel-item__headline a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .personas-rel-item__desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+    font: 400 13px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+    text-decoration: none;
+  }
+  .personas-rel-item__desc:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .personas-rel-item__meta {
+    margin: 6px 0 0;
+    font: 400 11px/1.4 var(--font-mono);
+    color: var(--color-fg-subtle);
+  }
+  @media (max-width: 680px) {
+    .personas-rel-item {
+      grid-template-columns: 1fr;
+    }
+  }
+  .clasif-intro {
+    color: var(--color-fg-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1.25rem 0 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+</style>

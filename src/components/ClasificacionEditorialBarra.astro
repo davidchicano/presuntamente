@@ -1,0 +1,537 @@
+---
+/**
+ * Barra horizontal proporcional de composición editorial.
+ *
+ * Renderiza dos barras apiladas (Declarada autoadscripción + Percibida
+ * por fuente externa) sobre un conteo de medios. Cada barra agrupa los
+ * medios `generalista_politico` y `confesional` por orientación en el
+ * eje izquierda-derecha. Los medios fuera del eje (verificación,
+ * servicio público, especializado jurídico…) se listan en una franja
+ * auxiliar bajo las barras.
+ *
+ * Canon metodológico: docs/diseno/07-clasificacion-editorial-medios.md.
+ * Decisión 2026-05-26.
+ */
+
+interface MedioConteo {
+  medioId: string;
+  total: number;
+}
+
+interface Orientacion {
+  valor: string;
+  fuente: string;
+  cita: string;
+  url: string;
+  fecha?: string;
+}
+
+interface OrgData {
+  id: string;
+  nombre: string;
+  naturaleza_editorial?: string;
+  orientacion_editorial_declarada?: Orientacion;
+  orientacion_editorial_percibida?: Orientacion;
+  grupo_editorial?: { nombre: string; rol: string; cita?: string; url?: string };
+}
+
+interface Props {
+  medios: MedioConteo[];
+  orgIndex: Map<string, OrgData>;
+  contextoLabel?: string;
+  metodologiaHref?: string;
+}
+
+const {
+  medios,
+  orgIndex,
+  contextoLabel = 'de la muestra',
+  metodologiaHref = '/sobre',
+} = Astro.props;
+
+const EJE_ORDEN = [
+  'izquierda_extrema',
+  'izquierda',
+  'centroizquierda',
+  'centro',
+  'centroderecha',
+  'derecha',
+  'derecha_extrema',
+  'sin_clasificar',
+] as const;
+
+type EjeValor = (typeof EJE_ORDEN)[number];
+
+const EJE_LABEL: Record<EjeValor, string> = {
+  izquierda_extrema: 'Izquierda extrema',
+  izquierda: 'Izquierda',
+  centroizquierda: 'Centroizquierda',
+  centro: 'Centro',
+  centroderecha: 'Centroderecha',
+  derecha: 'Derecha',
+  derecha_extrema: 'Derecha extrema',
+  sin_clasificar: 'Sin clasificar',
+};
+
+const NATURALEZA_FUERA_EJE: Record<string, string> = {
+  verificacion: 'Verificación',
+  especializado_juridico: 'Jurídico especializado',
+  especializado_no_politico: 'Especializado',
+  servicio_publico_estatal: 'Servicio público estatal',
+  servicio_publico_autonomico: 'Servicio público autonómico',
+  otro: 'Otro',
+};
+
+type Acumulado = {
+  ejeCounts: Record<EjeValor, number>;
+  ejePiezas: Record<EjeValor, Array<{ medio: OrgData; total: number; cita?: string; url?: string }>>;
+  fueraEje: Map<string, { naturaleza: string; total: number; medios: Array<{ medio: OrgData; total: number }> }>;
+  totalEnEje: number;
+  totalFueraEje: number;
+};
+
+function emptyAcumulado(): Acumulado {
+  const ejeCounts = {} as Record<EjeValor, number>;
+  const ejePiezas = {} as Record<EjeValor, Array<{ medio: OrgData; total: number; cita?: string; url?: string }>>;
+  for (const v of EJE_ORDEN) {
+    ejeCounts[v] = 0;
+    ejePiezas[v] = [];
+  }
+  return {
+    ejeCounts,
+    ejePiezas,
+    fueraEje: new Map(),
+    totalEnEje: 0,
+    totalFueraEje: 0,
+  };
+}
+
+function clasificaDimension(
+  dimension: 'declarada' | 'percibida',
+): Acumulado {
+  const acc = emptyAcumulado();
+  for (const { medioId, total } of medios) {
+    const medio = orgIndex.get(medioId);
+    if (!medio) {
+      acc.ejeCounts.sin_clasificar += total;
+      acc.totalEnEje += total;
+      continue;
+    }
+    const nat = medio.naturaleza_editorial;
+    const dentroEje = nat === 'generalista_politico' || nat === 'confesional';
+    if (!dentroEje) {
+      const key = nat ?? 'otro';
+      const label = NATURALEZA_FUERA_EJE[key] ?? 'Otro';
+      const bucket = acc.fueraEje.get(key) ?? { naturaleza: label, total: 0, medios: [] };
+      bucket.total += total;
+      bucket.medios.push({ medio, total });
+      acc.fueraEje.set(key, bucket);
+      acc.totalFueraEje += total;
+      continue;
+    }
+    const orientacion =
+      dimension === 'declarada'
+        ? medio.orientacion_editorial_declarada
+        : medio.orientacion_editorial_percibida;
+    const valor: EjeValor =
+      orientacion && EJE_ORDEN.includes(orientacion.valor as EjeValor)
+        ? (orientacion.valor as EjeValor)
+        : 'sin_clasificar';
+    acc.ejeCounts[valor] += total;
+    acc.ejePiezas[valor].push({
+      medio,
+      total,
+      cita: orientacion?.cita,
+      url: orientacion?.url,
+    });
+    acc.totalEnEje += total;
+  }
+  return acc;
+}
+
+const declarada = clasificaDimension('declarada');
+const percibida = clasificaDimension('percibida');
+
+const totalGlobal = medios.reduce((sum, m) => sum + m.total, 0);
+const sinDatos = totalGlobal === 0;
+
+function fmtPct(n: number, total: number): string {
+  if (total === 0) return '0';
+  const pct = (n / total) * 100;
+  if (pct < 1) return '<1';
+  return pct.toFixed(0);
+}
+
+const dimensiones: Array<{
+  key: 'declarada' | 'percibida';
+  label: string;
+  ayuda: string;
+  acc: Acumulado;
+}> = [
+  {
+    key: 'declarada',
+    label: 'Declarada por el propio medio',
+    ayuda:
+      'Autoadscripción del medio en su estatuto, manifiesto fundacional, ideario o página «Quiénes somos», con cita literal.',
+    acc: declarada,
+  },
+  {
+    key: 'percibida',
+    label: 'Percibida por fuente externa',
+    ayuda:
+      'Clasificación por estudio académico revisado, Reuters Institute, CIS o iniciativa pública con metodología documentada.',
+    acc: percibida,
+  },
+];
+
+// Suma única de "fuera del eje" — no depende de la dimensión, sólo de naturaleza.
+const fueraEjeUnico = declarada.fueraEje;
+---
+
+<section class="cef" aria-labelledby="cef-title">
+  <header class="cef__head">
+    <h3 id="cef-title">Composición editorial {contextoLabel}</h3>
+    <p class="cef__note">
+      No medimos sesgo ni veracidad de los medios: medimos cómo se compone esta muestra.
+      Cada valor del eje proviene o bien de una autoadscripción literal del medio,
+      o bien de una clasificación de fuente externa reputada.
+      Ver <a href={metodologiaHref}>metodología completa</a>.
+    </p>
+  </header>
+
+  {sinDatos ? (
+    <p class="cef__empty">Sin medios suficientes para componer la barra.</p>
+  ) : (
+    <>
+      {dimensiones.map(({ key, label, ayuda, acc }) => {
+        const sumEje = acc.totalEnEje;
+        return (
+          <div class="cef-row" data-dim={key}>
+            <div class="cef-row__header">
+              <span class="cef-row__label">{label}</span>
+              <span class="cef-row__help">{ayuda}</span>
+            </div>
+            {sumEje === 0 || EJE_ORDEN.filter((v) => v !== 'sin_clasificar').every((v) => acc.ejeCounts[v] === 0) ? (
+              <p class="cef-row__empty">
+                Ningún medio de esta muestra tiene clasificación {key === 'declarada' ? 'declarada' : 'percibida'} poblada con valor en el eje.
+              </p>
+            ) : (
+              <>
+                <div
+                  class="cef-bar"
+                  role="img"
+                  aria-label={`Distribución ${key}: ${EJE_ORDEN
+                    .filter((v) => acc.ejeCounts[v] > 0)
+                    .map((v) => `${EJE_LABEL[v]} ${fmtPct(acc.ejeCounts[v], sumEje)}%`)
+                    .join(', ')}`}
+                >
+                  {EJE_ORDEN.map((v) => {
+                    const n = acc.ejeCounts[v];
+                    if (n === 0) return null;
+                    const pct = (n / sumEje) * 100;
+                    return (
+                      <span
+                        class={`cef-seg cef-seg--${v}`}
+                        style={`width:${pct}%`}
+                        title={`${EJE_LABEL[v]}: ${n} pieza${n === 1 ? '' : 's'} (${fmtPct(n, sumEje)}%)`}
+                      >
+                        <span class="cef-seg__num">{n}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+                <ul class="cef-legend">
+                  {EJE_ORDEN.filter((v) => acc.ejeCounts[v] > 0).map((v) => (
+                    <li class={`cef-legend__item cef-legend__item--${v}`}>
+                      <span class="cef-legend__chip" aria-hidden="true"></span>
+                      <span class="cef-legend__label">{EJE_LABEL[v]}</span>
+                      <span class="cef-legend__count">
+                        {acc.ejeCounts[v]} ({fmtPct(acc.ejeCounts[v], sumEje)}%)
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        );
+      })}
+
+      {fueraEjeUnico.size > 0 && (
+        <div class="cef-fuera" aria-labelledby="cef-fuera-title">
+          <h4 id="cef-fuera-title">Medios fuera del eje izquierda-derecha</h4>
+          <p class="cef-fuera__note">
+            Verificadores, servicio público con mandato de pluralismo y especializados no encajan
+            conceptualmente en el eje político. Se cuentan aparte para no inflar artificialmente
+            la franja «sin clasificar» del eje.
+          </p>
+          <ul class="cef-fuera__list">
+            {Array.from(fueraEjeUnico.values())
+              .sort((a, b) => b.total - a.total)
+              .map((bucket) => (
+                <li>
+                  <strong>{bucket.naturaleza}</strong>
+                  <span class="cef-fuera__count">
+                    {bucket.total} pieza{bucket.total === 1 ? '' : 's'}
+                  </span>
+                  <span class="cef-fuera__medios">
+                    ({bucket.medios.map((m) => m.medio.nombre).join(' · ')})
+                  </span>
+                </li>
+              ))}
+          </ul>
+        </div>
+      )}
+
+      <details class="cef-detalle">
+        <summary>Ver detalle por medio</summary>
+        <table class="cef-detalle__table">
+          <thead>
+            <tr>
+              <th scope="col">Medio</th>
+              <th scope="col">Piezas</th>
+              <th scope="col">Naturaleza</th>
+              <th scope="col">Declarada</th>
+              <th scope="col">Percibida</th>
+            </tr>
+          </thead>
+          <tbody>
+            {medios.map(({ medioId, total }) => {
+              const medio = orgIndex.get(medioId);
+              const dec = medio?.orientacion_editorial_declarada;
+              const per = medio?.orientacion_editorial_percibida;
+              const natKey = medio?.naturaleza_editorial;
+              const natLabel = natKey
+                ? NATURALEZA_FUERA_EJE[natKey] ??
+                  (natKey === 'generalista_politico'
+                    ? 'Generalista político'
+                    : natKey === 'confesional'
+                      ? 'Confesional'
+                      : natKey)
+                : '—';
+              return (
+                <tr>
+                  <td>{medio?.nombre ?? medioId}</td>
+                  <td class="num">{total}</td>
+                  <td>{natLabel}</td>
+                  <td>
+                    {dec ? (
+                      <a href={dec.url} title={dec.cita}>
+                        {EJE_LABEL[dec.valor as EjeValor] ?? dec.valor}
+                      </a>
+                    ) : (
+                      <span class="cef-detalle__dash">—</span>
+                    )}
+                  </td>
+                  <td>
+                    {per ? (
+                      <a href={per.url} title={per.cita}>
+                        {EJE_LABEL[per.valor as EjeValor] ?? per.valor}
+                      </a>
+                    ) : (
+                      <span class="cef-detalle__dash">—</span>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </details>
+    </>
+  )}
+</section>
+
+<style>
+  .cef {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .cef__head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .cef__head h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .cef__note {
+    margin: 0;
+    color: var(--color-fg-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .cef__empty {
+    color: var(--color-fg-muted);
+    font-style: italic;
+  }
+
+  .cef-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .cef-row__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .cef-row__label {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .cef-row__help {
+    color: var(--color-fg-muted);
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+  .cef-row__empty {
+    margin: 0.25rem 0;
+    color: var(--color-fg-subtle);
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  .cef-bar {
+    display: flex;
+    width: 100%;
+    height: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-surface-muted);
+  }
+  .cef-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    overflow: hidden;
+    transition: filter 0.12s ease;
+  }
+  .cef-seg:hover { filter: brightness(0.92); }
+  .cef-seg__num {
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+    padding: 0 0.25rem;
+    white-space: nowrap;
+  }
+  /* Segmentos claros: texto oscuro sin sombra. Paleta invertida 2026-05-26:
+     ahora claros son centroizquierda (ámbar light), centro, centroderecha
+     (azul light) y sin_clasificar. */
+  .cef-seg--centroizquierda .cef-seg__num,
+  .cef-seg--centro .cef-seg__num,
+  .cef-seg--centroderecha .cef-seg__num,
+  .cef-seg--sin_clasificar .cef-seg__num {
+    color: var(--color-fg);
+    text-shadow: none;
+  }
+
+  /* Paleta del eje: tokens centralizados en global.css (--color-eje-*).
+     Izquierda en tonos ámbar/ocre (warm), derecha en azul/navy (cool).
+     Decisión maintainer 2026-05-26. Ver doc 07 §6. */
+  .cef-seg--izquierda_extrema  { background: var(--color-eje-izq-extrema-bg); }
+  .cef-seg--izquierda          { background: var(--color-eje-izq-bg); }
+  .cef-seg--centroizquierda    { background: var(--color-eje-centroizq-bg); }
+  .cef-seg--centro             { background: var(--color-eje-centro-bg); }
+  .cef-seg--centroderecha      { background: var(--color-eje-centroder-bg); }
+  .cef-seg--derecha            { background: var(--color-eje-der-bg); }
+  .cef-seg--derecha_extrema    { background: var(--color-eje-der-extrema-bg); }
+  .cef-seg--sin_clasificar     { background: var(--color-eje-sin-bg); }
+
+  .cef-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.82rem;
+  }
+  .cef-legend__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .cef-legend__chip {
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 2px;
+    border: 1px solid var(--color-border);
+  }
+  .cef-legend__item--izquierda_extrema  .cef-legend__chip { background: var(--color-eje-izq-extrema-bg); }
+  .cef-legend__item--izquierda          .cef-legend__chip { background: var(--color-eje-izq-bg); }
+  .cef-legend__item--centroizquierda    .cef-legend__chip { background: var(--color-eje-centroizq-bg); }
+  .cef-legend__item--centro             .cef-legend__chip { background: var(--color-eje-centro-bg); }
+  .cef-legend__item--centroderecha      .cef-legend__chip { background: var(--color-eje-centroder-bg); }
+  .cef-legend__item--derecha            .cef-legend__chip { background: var(--color-eje-der-bg); }
+  .cef-legend__item--derecha_extrema    .cef-legend__chip { background: var(--color-eje-der-extrema-bg); }
+  .cef-legend__item--sin_clasificar     .cef-legend__chip { background: var(--color-eje-sin-bg); }
+  .cef-legend__count { color: var(--color-fg-muted); }
+
+  .cef-fuera {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.75rem 0.9rem;
+    background: var(--color-surface);
+  }
+  .cef-fuera h4 {
+    margin: 0 0 0.35rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+  .cef-fuera__note {
+    margin: 0 0 0.5rem;
+    color: var(--color-fg-muted);
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+  .cef-fuera__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+  }
+  .cef-fuera__list li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+  .cef-fuera__count { color: var(--color-fg-muted); }
+  .cef-fuera__medios { color: var(--color-fg-subtle); font-size: 0.85rem; }
+
+  .cef-detalle summary {
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: var(--color-fg-muted);
+    padding: 0.35rem 0;
+  }
+  .cef-detalle summary:hover { color: var(--color-fg); }
+  .cef-detalle__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
+  }
+  .cef-detalle__table th,
+  .cef-detalle__table td {
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+  .cef-detalle__table th { background: var(--color-bg-muted); font-weight: 600; }
+  .cef-detalle__table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .cef-detalle__dash { color: var(--color-fg-subtle); }
+</style>

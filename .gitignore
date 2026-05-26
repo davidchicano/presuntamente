@@ -38,3 +38,4 @@ yarn-error.log*
 # Claude Code per-user
 .claude/settings.local.json
 .claude/worktrees/
+_scratch/

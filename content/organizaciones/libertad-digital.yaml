@@ -8,5 +8,16 @@ descripcion_corta: |
 ambito_territorial: nacional
 localidad: "Madrid"
 url_canonica: "https://www.libertaddigital.com"
+
+naturaleza_editorial: generalista_politico
+orientacion_editorial_declarada:
+  valor: derecha
+  fuente: pagina_quienes_somos
+  cita: >-
+    Libertad Digital defenderá los valores liberales en la batalla diaria
+    de la información y la opinión, sin el respaldo pero también sin los
+    condicionantes de nadie.
+  url: "https://www.libertaddigital.com/corporativo/"
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-21"
+ultima_revision_editorial: "2026-05-26"

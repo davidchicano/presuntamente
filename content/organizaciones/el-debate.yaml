@@ -14,5 +14,15 @@ ambito_territorial: nacional
 localidad: "Madrid"
 provincia: "Madrid"
 url_canonica: "https://www.eldebate.com"
+
+naturaleza_editorial: confesional
+orientacion_editorial_declarada:
+  valor: derecha
+  fuente: pagina_quienes_somos
+  cita: >-
+    Nuestro periódico defiende los valores del humanismo cristiano, poniendo
+    en el centro la libertad y dignidad de la persona y el derecho a la vida.
+  url: "https://www.eldebate.com/quienes-somos.html"
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-24"
+ultima_revision_editorial: "2026-05-26"

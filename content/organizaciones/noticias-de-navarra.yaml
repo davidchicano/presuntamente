@@ -12,5 +12,8 @@ localidad: "Pamplona"
 provincia: "Navarra"
 comunidad_autonoma: "Navarra"
 url_canonica: "https://www.noticiasdenavarra.com/"
+
+naturaleza_editorial: generalista_politico
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-26"

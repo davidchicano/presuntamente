@@ -15,6 +15,7 @@ import Hito from '@/components/Hito.astro';
 import Hecho from '@/components/Hecho.astro';
 import DocumentoCard from '@/components/DocumentoCard.astro';
 import CoberturaMediaticaTable from '@/components/CoberturaMediaticaTable.astro';
+import ClasificacionEditorialBarra from '@/components/ClasificacionEditorialBarra.astro';
 import RichProse from '@/components/RichProse.astro';
 import EstadoFichaBadge from '@/components/EstadoFichaBadge.astro';
 import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
@@ -45,6 +46,7 @@ import {
   type Lang,
 } from '@/lib/labels';
 import { documentoRespaldoHref } from '@/lib/documentos';
+import { formatFechaEs } from '@/lib/og';
 
 interface Props {
   lang?: Lang;
@@ -382,6 +384,67 @@ function addRelacion(map: Map<string, CardRelacion[]>, id: string, rel: CardRela
   map.set(id, current);
 }
 
+// --- Instituciones alcanzadas ----------------------------------------------
+// Agregado de Organizaciones alcanzadas por el caso vía VinculoInstitucional.
+// Tres familias neutras (decisión 2026-05-26): investigadas como persona
+// jurídica, perjudicadas institucionales, acusación popular constituida.
+type InstAgrupadaItem = { id: string; nombre: string; href: string };
+const institucionesInvestigadas: InstAgrupadaItem[] = [];
+const institucionesPerjudicadas: InstAgrupadaItem[] = [];
+const institucionesAcusacion: InstAgrupadaItem[] = [];
+const seenOrgPorFamilia = new Map<string, Set<string>>();
+seenOrgPorFamilia.set('entidad_investigada_en_caso', new Set());
+seenOrgPorFamilia.set('perjudicado_institucional_en_caso', new Set());
+seenOrgPorFamilia.set('acusacion_institucional_en_caso', new Set());
+for (const v of vinculosCasoEntries) {
+  const fam = v.data.naturaleza;
+  if (
+    fam !== 'entidad_investigada_en_caso' &&
+    fam !== 'perjudicado_institucional_en_caso' &&
+    fam !== 'acusacion_institucional_en_caso'
+  ) continue;
+  const orgId = v.data.sujeto_organizacion_id;
+  if (!orgId) continue;
+  const seen = seenOrgPorFamilia.get(fam)!;
+  if (seen.has(orgId)) continue;
+  seen.add(orgId);
+  const item: InstAgrupadaItem = { id: orgId, nombre: orgLabel(orgId), href: orgHref(orgId) };
+  if (fam === 'entidad_investigada_en_caso') institucionesInvestigadas.push(item);
+  else if (fam === 'perjudicado_institucional_en_caso') institucionesPerjudicadas.push(item);
+  else institucionesAcusacion.push(item);
+}
+for (const arr of [institucionesInvestigadas, institucionesPerjudicadas, institucionesAcusacion]) {
+  arr.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+}
+const hayInstitucionesAlcanzadas =
+  institucionesInvestigadas.length + institucionesPerjudicadas.length + institucionesAcusacion.length > 0;
+
+// --- Partidos afectados ----------------------------------------------------
+// Declaración explícita del editor sobre qué siglas quedan "alcanzadas"
+// editorialmente por el caso, con justificación neutra y enum cerrado.
+// No se infiere: si no aparece en el YAML, no se muestra. Decisión 2026-05-26.
+const TIPO_AFECTACION_LABEL: Record<string, string> = {
+  imputacion_a_cargo_del_partido: 'Imputación a cargo del partido',
+  gobierno_responsable_del_acto_investigado: 'Gobierno responsable del acto',
+  vinculo_familiar_directo_con_dirigente: 'Vínculo familiar con dirigente',
+  militancia_o_cargo_organico_relevante: 'Militancia / cargo orgánico',
+  querella_o_acusacion_popular_del_partido: 'Acusación popular del partido',
+  otro: 'Otro',
+};
+const partidosAfectados = ((data as { partidos_afectados?: Array<{ partido_id: string; tipo_afectacion: string; justificacion: string }> }).partidos_afectados ?? [])
+  .map((p) => {
+    const org = orgIndex.get(p.partido_id);
+    return {
+      partidoId: p.partido_id,
+      partidoNombre: org?.nombre ?? p.partido_id,
+      partidoSiglas: (org as { siglas?: string } | undefined)?.siglas,
+      tipoLabel: TIPO_AFECTACION_LABEL[p.tipo_afectacion] ?? p.tipo_afectacion,
+      tipoKey: p.tipo_afectacion,
+      justificacion: p.justificacion,
+      href: lang === 'ca' ? `/cat/organizaciones/${p.partido_id}` : `/organizaciones/${p.partido_id}`,
+    };
+  });
+
 for (const v of vinculosCasoEntries) {
   if (v.data.sujeto_persona_id) {
     addRelacion(relacionesPorPersona, v.data.sujeto_persona_id, relacionParaCard(v, v.data.sujeto_persona_id, 'persona'));
@@ -568,10 +631,6 @@ const coberturaEstadoLabel = coberturaCaso?.estado === 'parcial'
   : coberturaCaso?.estado === 'completo'
     ? 'Rastreo completo según la metodología declarada.'
     : 'Rastreo pendiente de completar.';
-
-const coberturaVentanasTexto = coberturaCaso?.metodologia.ventanas_temporales
-  .map((v) => `${v.desde}${v.hasta ? ` a ${v.hasta}` : ''}`)
-  .join(' · ');
 
 const coberturaRows = [...noticiasCobertura]
   .sort((a, b) => b.fecha_publicacion.localeCompare(a.fecha_publicacion))
@@ -846,6 +905,72 @@ const breadcrumb = [
       <div><dt>Nº de procedimiento</dt><dd class="mono">{data.numero_procedimiento}</dd></div>
     )}
   </dl>
+
+  {partidosAfectados.length > 0 && (
+    <section class="partidos-afectados" aria-labelledby="partidos-afectados-title">
+      <h3 id="partidos-afectados-title">Partidos afectados</h3>
+      <p class="partidos-afectados__note">
+        Siglas que el caso alcanza editorialmente, con justificación neutra. No es un
+        juicio de bando ni una asignación de responsabilidad: indica a qué partidos toca
+        el procedimiento (por militancia del investigado, vínculo familiar con dirigente,
+        gobierno responsable del acto, acusación popular constituida, etc.).
+      </p>
+      <ul class="partidos-afectados__list">
+        {partidosAfectados.map((p) => (
+          <li class="partidos-afectados__item">
+            <a class="partidos-afectados__partido" href={p.href}>
+              {p.partidoSiglas ?? p.partidoNombre}
+            </a>
+            <span class="partidos-afectados__tipo">{p.tipoLabel}</span>
+            <span class="partidos-afectados__just">{p.justificacion}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {hayInstitucionesAlcanzadas && (
+    <section class="inst-alcanzadas" aria-labelledby="inst-alcanzadas-title">
+      <h3 id="inst-alcanzadas-title">Instituciones alcanzadas</h3>
+      <p class="inst-alcanzadas__note">
+        Organizaciones que el caso afecta o moviliza institucionalmente. No es un juicio
+        de partido ni un mapa político: agrega a quién toca el procedimiento como sujeto
+        jurídico, perjudicado oficial o acusación popular constituida.
+      </p>
+      <div class="inst-alcanzadas__grid">
+        {institucionesInvestigadas.length > 0 && (
+          <div class="inst-alcanzadas__col inst-alcanzadas__col--investigadas">
+            <h4>Investigadas como persona jurídica</h4>
+            <ul>
+              {institucionesInvestigadas.map((o) => (
+                <li><a href={o.href}>{o.nombre}</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {institucionesPerjudicadas.length > 0 && (
+          <div class="inst-alcanzadas__col inst-alcanzadas__col--perjudicadas">
+            <h4>Perjudicadas institucionales</h4>
+            <ul>
+              {institucionesPerjudicadas.map((o) => (
+                <li><a href={o.href}>{o.nombre}</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {institucionesAcusacion.length > 0 && (
+          <div class="inst-alcanzadas__col inst-alcanzadas__col--acusacion">
+            <h4>Acusación popular constituida</h4>
+            <ul>
+              {institucionesAcusacion.map((o) => (
+                <li><a href={o.href}>{o.nombre}</a></li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
   </FichaTocSection>
 
   <!-- 2.4 — Personas implicadas -->
@@ -984,23 +1109,25 @@ const breadcrumb = [
       id="cobertura-mediatica"
       right={`${coberturaRows.length} pieza${coberturaRows.length === 1 ? '' : 's'}`}
     >
-      <div class="coverage-note">
-        <p>
-          Este bloque resume cómo aparece el caso en una muestra sistemática de prensa.
-          No prueba hechos del procedimiento: sirve para entender momentos de atención,
-          formatos dominantes y límites del rastreo.
-        </p>
-        <p class="coverage-note__meta">
-          Última revisión de cobertura: <span class="mono">{coberturaCaso.fecha_rastreo}</span>.
-          {` ${coberturaEstadoLabel}`}
-        </p>
-      </div>
-
       <div class="coverage-findings" aria-label="Lecturas principales de la cobertura mediática">
         <div class="coverage-finding">
           <span class="coverage-finding__label">Periodo observado</span>
-          <strong>{coberturaDesde} → {coberturaHasta}</strong>
-          <span>Ventanas rastreadas: {coberturaVentanasTexto}</span>
+          <div
+            class="coverage-finding__periodo"
+            aria-label={
+              coberturaDesde === coberturaHasta
+                ? formatFechaEs(coberturaDesde)
+                : `${formatFechaEs(coberturaDesde)} a ${formatFechaEs(coberturaHasta)}`
+            }
+          >
+            <time datetime={coberturaDesde}>{formatFechaEs(coberturaDesde)}</time>
+            {coberturaDesde !== coberturaHasta && (
+              <span class="coverage-finding__periodo-arrow" aria-hidden="true">↓</span>
+            )}
+            {coberturaDesde !== coberturaHasta && (
+              <time datetime={coberturaHasta}>{formatFechaEs(coberturaHasta)}</time>
+            )}
+          </div>
         </div>
         {coberturaPicos[0] && (
           <div class="coverage-finding">
@@ -1025,20 +1152,11 @@ const breadcrumb = [
         )}
       </div>
 
-      <section class="coverage-scope" aria-labelledby="coverage-scope-title">
-        <h3 id="coverage-scope-title">Alcance y límites del rastreo</h3>
-        <p>
-          Se incluyen piezas donde el caso aparece en titular o entradilla, con
-          una muestra de medios de líneas editoriales distintas. El estado es parcial:
-          varios diarios nacionales quedan pendientes de una segunda pasada por
-          limitaciones de acceso o por no haber entrado en este muestreo inicial.
-        </p>
-        <p>
-          No se muestra todavía reparto por bloque ideológico: los medios no tienen
-          una clasificación de orientación editorial revisada y documentada en el inventario.
-        </p>
-        <p><strong>Términos buscados:</strong> {coberturaCaso.metodologia.terminos_busqueda.join(' · ')}</p>
-      </section>
+      <ClasificacionEditorialBarra
+        medios={coberturaPorMedio.map(({ medioId, total }) => ({ medioId, total }))}
+        orgIndex={orgIndex}
+        contextoLabel="del corpus rastreado"
+      />
 
       <div class="coverage-panels">
         <section class="coverage-panel" aria-labelledby="coverage-picos">
@@ -1079,6 +1197,28 @@ const breadcrumb = [
         <summary>Ver listado completo de piezas rastreadas ({coberturaRows.length})</summary>
         <CoberturaMediaticaTable rows={coberturaRows} />
       </details>
+
+      <footer class="coverage-disclaimers">
+        <section class="coverage-disclaimer" aria-labelledby="coverage-scope-title">
+          <h3 id="coverage-scope-title">Alcance y límites del rastreo</h3>
+          <p>
+            Este bloque resume cómo aparece el caso en una muestra sistemática de prensa.
+            No prueba hechos del procedimiento: sirve para entender momentos de atención,
+            formatos dominantes y límites del rastreo.
+          </p>
+          <p>
+            Se incluyen piezas donde el caso aparece en titular o entradilla, con
+            una muestra de medios de líneas editoriales distintas. El estado es parcial:
+            varios diarios nacionales quedan pendientes de una segunda pasada por
+            limitaciones de acceso o por no haber entrado en este muestreo inicial.
+          </p>
+          <p><strong>Términos buscados:</strong> {coberturaCaso.metodologia.terminos_busqueda.join(' · ')}</p>
+          <p class="coverage-disclaimer__meta">
+            Última revisión de cobertura: <span class="mono">{coberturaCaso.fecha_rastreo}</span>.
+            {` ${coberturaEstadoLabel}`}
+          </p>
+        </section>
+      </footer>
     </FichaTocSection>
   )}
 
@@ -1445,9 +1585,20 @@ const breadcrumb = [
     letter-spacing: 0.04em;
     color: var(--color-fg-muted);
   }
-  .coverage-finding strong {
+  .coverage-finding strong,
+  .coverage-finding__periodo {
     font: 700 15px/1.25 var(--font-sans);
     color: var(--color-accent);
+  }
+  .coverage-finding__periodo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+  .coverage-finding__periodo-arrow {
+    font: 400 12px/1 var(--font-mono);
+    color: var(--color-fg-muted);
   }
   .coverage-finding strong a {
     color: inherit;

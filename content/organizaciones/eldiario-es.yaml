@@ -11,5 +11,16 @@ descripcion_corta: |
 ambito_territorial: nacional
 localidad: "Madrid"
 url_canonica: "https://www.eldiario.es/"
+
+naturaleza_editorial: generalista_politico
+orientacion_editorial_declarada:
+  valor: centroizquierda
+  fuente: pagina_quienes_somos
+  cita: >-
+    Vigilamos al poder para proteger la libertad y el progreso sostenible
+    de la sociedad. Defendemos los derechos humanos, la igualdad y una
+    democracia mejor.
+  url: "https://www.eldiario.es/que-es-eldiario-es/"
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-26"

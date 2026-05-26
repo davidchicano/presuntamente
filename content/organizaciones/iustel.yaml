@@ -11,5 +11,8 @@ descripcion_corta: |
 ambito_territorial: nacional
 sector: "Información jurídica"
 url_canonica: "https://www.iustel.com/"
+
+naturaleza_editorial: especializado_juridico
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-26"

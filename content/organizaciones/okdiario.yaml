@@ -14,5 +14,14 @@ ambito_territorial: nacional
 localidad: "Madrid"
 provincia: "Madrid"
 url_canonica: "https://okdiario.com"
+
+naturaleza_editorial: generalista_politico
+orientacion_editorial_declarada:
+  valor: derecha
+  fuente: ideario_corporativo
+  cita: >-
+    OK a la ideología liberal; OK a España unida; OK al libre mercado.
+  url: "https://okdiario.com/espana/10-oks-127631"
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-24"
+ultima_revision_editorial: "2026-05-26"

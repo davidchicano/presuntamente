@@ -83,6 +83,22 @@ resumen_cifras: |
   PSOE y Más Madrid elevan la petición a 5 años de prisión y multa,
   añadiendo delito contable continuado y pertenencia a grupo criminal.
 
+partidos_afectados:
+  - partido_id: partido-popular
+    tipo_afectacion: vinculo_familiar_directo_con_dirigente
+    justificacion: >-
+      El investigado es pareja sentimental de Isabel Díaz Ayuso, presidenta
+      de la Comunidad de Madrid por el Partido Popular en el momento de los
+      hechos.
+  - partido_id: psoe
+    tipo_afectacion: querella_o_acusacion_popular_del_partido
+    justificacion: >-
+      El PSOE figura personado como acusación popular en el procedimiento.
+  - partido_id: mas-madrid
+    tipo_afectacion: querella_o_acusacion_popular_del_partido
+    justificacion: >-
+      Más Madrid figura personado como acusación popular en el procedimiento.
+
 estado_publicacion: beta_publica
 ultima_revision_editorial: "2026-05-22"
 nivel_relevancia_editorial: alta

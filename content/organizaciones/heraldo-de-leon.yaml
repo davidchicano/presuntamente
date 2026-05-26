@@ -15,5 +15,8 @@ localidad: "León"
 provincia: "León"
 comunidad_autonoma: "Castilla y León"
 url_canonica: "https://www.heraldodeleon.es/"
+
+naturaleza_editorial: generalista_politico
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,76 @@
+---
+/**
+ * Badge de naturaleza editorial de un medio de comunicación.
+ *
+ * Decisión maintainer 2026-05-26: igualar visualmente al `badge--cat` (Tipo
+ * de organización) — mismo chasis (border-left 4px coloreado + fondo neutro
+ * + label en versalitas). La diferenciación entre naturalezas viene del tono
+ * del border-left, no de fondos sólidos.
+ *
+ * Canon: docs/diseno/07-clasificacion-editorial-medios.md.
+ */
+
+type Naturaleza =
+  | 'generalista_politico'
+  | 'verificacion'
+  | 'especializado_juridico'
+  | 'especializado_no_politico'
+  | 'servicio_publico_estatal'
+  | 'servicio_publico_autonomico'
+  | 'confesional'
+  | 'otro';
+
+interface Props {
+  naturaleza: string;
+  label?: string;
+  size?: 'sm' | 'md';
+}
+
+const LABELS: Record<Naturaleza, string> = {
+  generalista_politico: 'Generalista político',
+  verificacion: 'Verificación',
+  especializado_juridico: 'Jurídico especializado',
+  especializado_no_politico: 'Especializado',
+  servicio_publico_estatal: 'Servicio público estatal',
+  servicio_publico_autonomico: 'Servicio público autonómico',
+  confesional: 'Confesional',
+  otro: 'Otro',
+};
+
+const FAMILIA: Record<Naturaleza, string> = {
+  generalista_politico: 'generalista',
+  verificacion: 'verificacion',
+  especializado_juridico: 'juridico',
+  especializado_no_politico: 'especializado',
+  servicio_publico_estatal: 'servicio',
+  servicio_publico_autonomico: 'servicio',
+  confesional: 'confesional',
+  otro: 'otro',
+};
+
+const { naturaleza, label, size = 'md' } = Astro.props;
+const safe = (LABELS as Record<string, string>)[naturaleza] ? (naturaleza as Naturaleza) : 'otro';
+const familia = FAMILIA[safe];
+const text = label ?? LABELS[safe];
+---
+
+<span
+  class:list={['badge', 'badge--cat', `badge--cat-nat-${familia}`, size === 'sm' && 'badge--sm']}
+>
+  {text}
+</span>
+
+<style>
+  /* Variantes de naturaleza editorial. Heredan estructura y padding de
+     `.badge.badge--cat` definido en global.css; aquí solo modulamos el tono
+     del border-left y el color del texto. */
+  .badge--cat-nat-generalista   { color: var(--color-fg);       border-left-color: var(--color-border-strong); }
+  .badge--cat-nat-verificacion  { color: #2c5346;               border-left-color: #6b8e7f; }
+  .badge--cat-nat-juridico      { color: #6b4d00;               border-left-color: var(--color-accent-secondary); }
+  .badge--cat-nat-servicio      { color: var(--color-accent);   border-left-color: var(--color-accent); }
+  .badge--cat-nat-confesional   { color: #5d3a5d;               border-left-color: #8a5a8a; }
+  .badge--cat-nat-especializado { color: #5b4a2e;               border-left-color: #9b8866; }
+  .badge--cat-nat-otro          { color: var(--color-fg-muted); border-left-color: var(--color-border-strong); }
+
+  .badge--sm { font-size: 0.7rem; padding-block: 0.05rem; }
+</style>

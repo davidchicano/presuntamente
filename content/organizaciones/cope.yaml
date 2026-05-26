@@ -1,0 +1,33 @@
+id: cope
+nombre: "Cadena COPE"
+nombres_alternativos:
+  - "COPE"
+  - "Cope.es"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Cadena de radio española de carácter generalista vinculada a la
+  Conferencia Episcopal Española. Con sede en Madrid y cobertura
+  nacional, opera además los canales temáticos COPE Más y Rock FM
+  dentro del grupo COPE.
+ambito_territorial: nacional
+localidad: "Madrid"
+url_canonica: "https://www.cope.es/"
+
+naturaleza_editorial: confesional
+orientacion_editorial_declarada:
+  valor: centroderecha
+  fuente: ideario_corporativo
+  cita: >-
+    Orientar a la opinión pública con criterio cristiano. Vinculada a
+    la Conferencia Episcopal Española.
+  url: "https://www.cope.es/ideario.html"
+grupo_editorial:
+  nombre: "Grupo COPE"
+  rol: matriz
+  cita: >-
+    Cadena COPE figura formalmente vinculada a la Conferencia Episcopal
+    Española en su ideario corporativo público.
+  url: "https://www.cope.es/ideario.html"
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

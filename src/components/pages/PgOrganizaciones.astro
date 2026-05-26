@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
+import OrientacionBadge from '@/components/OrientacionBadge.astro';
+import NaturalezaBadge from '@/components/NaturalezaBadge.astro';
 import { getCollection } from 'astro:content';
 import { tipoOrgLabel, type Lang } from '@/lib/labels';
 
@@ -29,6 +31,11 @@ const orgs = organizacionesCol
     for (const h of hitosCol) {
       if (h.data.organizaciones_afectadas?.includes(o.data.id)) casosIds.add(h.data.caso_id);
     }
+    const editorial = o.data as {
+      naturaleza_editorial?: string;
+      orientacion_editorial_declarada?: { valor: string };
+      orientacion_editorial_percibida?: { valor: string };
+    };
     return {
       slug: o.data.id,
       nombre: o.data.nombre,
@@ -36,6 +43,9 @@ const orgs = organizacionesCol
       tipoLabel: tipoOrgLabel(o.data.tipo),
       localidad: (o.data as { localidad?: string }).localidad,
       casosCount: casosIds.size,
+      naturaleza: editorial.naturaleza_editorial,
+      orientacionDeclarada: editorial.orientacion_editorial_declarada?.valor,
+      orientacionPercibida: editorial.orientacion_editorial_percibida?.valor,
     };
   })
   .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
@@ -119,9 +129,10 @@ const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
   <table class="tbl" data-orgs>
     <thead>
       <tr>
-        <th style="width: 50%;">Organización</th>
-        <th style="width: 25%;">Tipo</th>
-        <th style="width: 15%;">Localidad</th>
+        <th style="width: 32%;">Organización</th>
+        <th style="width: 18%;">Tipo</th>
+        <th style="width: 28%;">Clasificación editorial</th>
+        <th style="width: 12%;">Localidad</th>
         <th style="width: 10%;" class="c-num">Casos</th>
       </tr>
     </thead>
@@ -134,6 +145,25 @@ const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
             </a>
           </td>
           <td><span class="badge badge--cat">{o.tipoLabel}</span></td>
+          <td>
+            {o.tipo === 'medio_comunicacion' ? (
+              <div class="orgs-clasif">
+                {o.naturaleza && <NaturalezaBadge naturaleza={o.naturaleza} size="sm" />}
+                {o.orientacionDeclarada && (
+                  <OrientacionBadge
+                    valor={o.orientacionDeclarada}
+                    size="sm"
+                    title="Orientación declarada por el propio medio"
+                  />
+                )}
+                {!o.naturaleza && !o.orientacionDeclarada && (
+                  <span class="orgs-clasif__dash">—</span>
+                )}
+              </div>
+            ) : (
+              <span class="orgs-clasif__dash">—</span>
+            )}
+          </td>
           <td class="c-mono">{o.localidad ?? '—'}</td>
           <td class="c-num">{o.casosCount}</td>
         </tr>
@@ -196,5 +226,22 @@ const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
     text-align: center;
     font: 400 var(--font-size-1)/1.5 var(--font-sans);
     color: var(--color-fg-muted);
+  }
+  .orgs-clasif {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.4rem;
+    align-items: center;
+    vertical-align: middle;
+  }
+  .orgs-clasif__dash {
+    color: var(--color-fg-subtle);
+  }
+  /* Alinear todos los badges al mismo baseline dentro de la columna,
+     independientemente de si vienen de badge (inline-flex) o de
+     orient-badge (inline-block). */
+  .orgs-clasif > .badge,
+  .orgs-clasif > .orient-badge {
+    vertical-align: middle;
   }
 </style>

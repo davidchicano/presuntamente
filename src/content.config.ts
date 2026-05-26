@@ -88,6 +88,22 @@ const casos = defineCollection({
       querellante_inicial_id: z.string().optional(),
       delitos_atribuidos_en_la_causa: z.array(z.string()).default([]),
       resumen_cifras: z.string().optional(),
+      partidos_afectados: z
+        .array(
+          z.object({
+            partido_id: z.string(),
+            tipo_afectacion: z.enum([
+              'imputacion_a_cargo_del_partido',
+              'gobierno_responsable_del_acto_investigado',
+              'vinculo_familiar_directo_con_dirigente',
+              'militancia_o_cargo_organico_relevante',
+              'querella_o_acusacion_popular_del_partido',
+              'otro',
+            ]),
+            justificacion: z.string(),
+          }),
+        )
+        .default([]),
       estado_publicacion: ESTADO_PUBLICACION,
       ultima_revision_editorial: z.string().optional(),
       nivel_relevancia_editorial: z

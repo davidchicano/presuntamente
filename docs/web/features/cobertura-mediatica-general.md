@@ -42,9 +42,16 @@ Una vez existan corpus poblados en al menos un caso piloto, los posibles renders
 
 La UI mantiene la separación editorial clave: las piezas de cobertura general no entran en la "Biblioteca documental del caso" ni usan badges N1-N4. Se muestran como corpus mediático rastreado, con badge de `tipo_pieza` y enlaces al original o archivo cuando exista.
 
-No se muestra reparto por bloque ideológico: `Organizacion` no tiene todavía una clasificación revisada de orientación editorial, sólo `linea_editorial_declarada` para citas literales de "Quiénes somos" y casi no está poblada. Cualquier gráfico de bloques exigiría feature y metodología propias.
+**Decisión editorial 2026-05-26 — modelo de clasificación de medios cerrado.** Canon vinculante en [`docs/diseno/07-clasificacion-editorial-medios.md`](../../diseno/07-clasificacion-editorial-medios.md). Cuatro campos nuevos en `Organizacion`:
 
-**Próximo paso acordado (2026-05-26, pendiente de diseño):** barra horizontal proporcional por corriente editorial sobre el corpus rastreado (`noticias[]` → `medio_id` → clasificación del medio). **Viable técnicamente** una vez exista el campo en `Organizacion`; **viable editorialmente** sólo con metodología explícita, valores discretos conservadores, `sin_clasificar` obligatorio y copy que no prometa medir "sesgo" ni veracidad. Propiedad accionarial, financiación pública o subvenciones son dimensiones distintas de la línea editorial: conviene decidir si van en campos separados o fuera de scope v1. La skill `/rastrear-cobertura` no debe inferir orientación al rastrear; la clasificación vive en el mantenimiento de medios. Feature hermana [`composicion-fuentes-citadas.md`](composicion-fuentes-citadas.md): misma clasificación de medios, distinto corpus (N4 citadas en hechos vs muestra rastreada).
+- `naturaleza_editorial` — separa medios generalistas del eje político de los que no encajan en él (verificación, servicio público, especializado jurídico, confesional…).
+- `orientacion_editorial_declarada` — autoadscripción del medio, con cita literal + URL + fecha.
+- `orientacion_editorial_percibida` — clasificación por fuente externa reputada (Reuters Institute, CIS, estudio académico revisado, iniciativa pública con metodología).
+- `grupo_editorial` — propiedad relevante (PRISA, Vocento, Atresmedia, Henneo…); informativo, no clasifica eje político.
+
+Enum del eje: `izquierda_extrema · izquierda · centroizquierda · centro · centroderecha · derecha · derecha_extrema · sin_clasificar`. Los extremos sólo aparecerán en `percibida` cuando una fuente externa los respalde; en `declarada` casi nunca (ningún medio español se autodefine como tal).
+
+**Próximo paso:** UI que renderice la barra del corpus con toggle "Declarada · Percibida", tooltip por medio con las tres dimensiones, franjas separadas para medios fuera del eje. La skill `/rastrear-cobertura` no clasifica medios (la clasificación vive en el mantenimiento de `Organizacion`). Feature hermana [`composicion-fuentes-citadas.md`](composicion-fuentes-citadas.md): misma clasificación, distinto corpus.
 
 ## Decisiones editoriales y aprendizajes
 
@@ -84,8 +91,9 @@ No se muestra reparto por bloque ideológico: `Organizacion` no tiene todavía u
 - [x] Diseñar schema mínimo de noticia rastreada. **Decisión 2026-05-25**: 14 campos por noticia con `tipo_pieza` enum cerrado de 11 valores.
 - [x] Crear skill `/rastrear-cobertura`. **Entregada v0** el 2026-05-25.
 - [x] Definir política de archivo para noticias que no respaldan hechos. **Decisión 2026-05-25**: archive.org obligatorio; paywall duro decidido caso a caso con el maintainer.
-- [ ] Decidir si "sesgo mediático" se usa sólo internamente o también como copy público. Posponer hasta que la feature hermana [`composicion-fuentes-citadas.md`](composicion-fuentes-citadas.md) esté entregada — ambas comparten metodología y conviene cerrar el copy a la vez.
-- [ ] Diseñar e implementar barra horizontal por corriente editorial (depende de `Organizacion.orientacion_editorial` + metodología documentada).
+- [x] Definir copy público: "composición de la muestra rastreada", no "sesgo". **Decisión 2026-05-26**: léxico fijado en [`docs/diseno/07-clasificacion-editorial-medios.md`](../../diseno/07-clasificacion-editorial-medios.md) §2 (lo que rechazamos hacer) y §4 (reglas operativas).
+- [x] Cerrar modelo de clasificación de medios. **Decisión 2026-05-26**: schema patch + canon en doc 07. Falta poblar medios y UI.
+- [ ] Implementar barra horizontal con toggle "Declarada · Percibida" sobre el corpus rastreado. Franjas separadas para medios fuera del eje político. Tooltip por medio con declarada, percibida y grupo editorial.
 - [x] Extender archivado archive.org a `content/cobertura-mediatica/`. **Entregado 2026-05-26:** `scripts/archivar-n4.mjs` + ficha [`archive-org-pre-commit.md`](archive-org-pre-commit.md).
 - [ ] Ejecutar `pnpm archive:catchup` para rellenar `url_archivo` del corpus piloto `begona-gomez` (29 noticias pendientes a 2026-05-26).
 - [ ] Actualizar skill `/rastrear-cobertura` sólo si hace falta documentar el límite ("no clasificar medios") o el mantenimiento cruzado con medios del inventario.

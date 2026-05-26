@@ -1,0 +1,76 @@
+---
+/**
+ * Badge de orientación editorial en el eje político.
+ *
+ * Estilo outlined (decisión maintainer 2026-05-26 tarde): border y texto del
+ * mismo color del eje sobre fondo blanco, sin fill. Tokens
+ * --color-eje-*-outline en global.css.
+ *
+ * Canon: docs/diseno/07-clasificacion-editorial-medios.md.
+ */
+
+type Valor =
+  | 'izquierda_extrema'
+  | 'izquierda'
+  | 'centroizquierda'
+  | 'centro'
+  | 'centroderecha'
+  | 'derecha'
+  | 'derecha_extrema'
+  | 'sin_clasificar';
+
+interface Props {
+  valor: string;
+  label?: string;
+  size?: 'sm' | 'md';
+  title?: string;
+}
+
+const LABELS: Record<Valor, string> = {
+  izquierda_extrema: 'Izquierda extrema',
+  izquierda: 'Izquierda',
+  centroizquierda: 'Centroizquierda',
+  centro: 'Centro',
+  centroderecha: 'Centroderecha',
+  derecha: 'Derecha',
+  derecha_extrema: 'Derecha extrema',
+  sin_clasificar: 'Sin clasificar',
+};
+
+const { valor, label, size = 'md', title } = Astro.props;
+const safe = (LABELS as Record<string, string>)[valor] ? (valor as Valor) : 'sin_clasificar';
+const text = label ?? LABELS[safe];
+---
+
+<span
+  class:list={['orient-badge', `orient-badge--${safe}`, size === 'sm' && 'orient-badge--sm']}
+  title={title}
+>
+  {text}
+</span>
+
+<style>
+  /* Estilo: chip rectangular sin borde, fondo del color del eje,
+     letra contrastada. Coherente con la paleta del segmento de barra.
+     Decisión maintainer 2026-05-26: rectangular (no pill) sin borde. */
+  .orient-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font: 700 11px/1.4 var(--font-sans);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 0;
+  }
+  .orient-badge--sm { font-size: 10px; padding: 1px 6px; }
+
+  .orient-badge--izquierda_extrema { background: var(--color-eje-izq-extrema-bg); color: var(--color-eje-izq-extrema-fg); }
+  .orient-badge--izquierda         { background: var(--color-eje-izq-bg); color: var(--color-eje-izq-fg); }
+  .orient-badge--centroizquierda   { background: var(--color-eje-centroizq-bg); color: var(--color-eje-centroizq-fg); }
+  .orient-badge--centro            { background: var(--color-eje-centro-bg); color: var(--color-eje-centro-fg); }
+  .orient-badge--centroderecha     { background: var(--color-eje-centroder-bg); color: var(--color-eje-centroder-fg); }
+  .orient-badge--derecha           { background: var(--color-eje-der-bg); color: var(--color-eje-der-fg); }
+  .orient-badge--derecha_extrema   { background: var(--color-eje-der-extrema-bg); color: var(--color-eje-der-extrema-fg); }
+  .orient-badge--sin_clasificar    { background: var(--color-eje-sin-bg); color: var(--color-eje-sin-fg); }
+</style>

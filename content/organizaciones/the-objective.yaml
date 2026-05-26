@@ -11,5 +11,17 @@ descripcion_corta: |
 ambito_territorial: nacional
 localidad: "Madrid"
 url_canonica: "https://theobjective.com/"
+
+naturaleza_editorial: generalista_politico
+orientacion_editorial_declarada:
+  valor: centroderecha
+  fuente: pagina_quienes_somos
+  cita: >-
+    THE OBJECTIVE defiende la democracia liberal y los principios que la
+    hacen posible: el imperio de la ley, la separación de poderes, el respeto
+    de las libertades, la garantía de los derechos fundamentales, la igualdad
+    de oportunidades y la economía de mercado.
+  url: "https://theobjective.com/principios-y-valores/"
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-26"

@@ -11,5 +11,17 @@ descripcion_corta: |
 ambito_territorial: nacional
 localidad: "Madrid"
 url_canonica: "https://www.vozpopuli.com/"
+
+naturaleza_editorial: generalista_politico
+orientacion_editorial_declarada:
+  valor: centroderecha
+  fuente: declaracion_publica_director
+  cita: >-
+    Es un proyecto con su carga ideológica, es un medio liberal, comprometido
+    con la libre empresa, con disposición al trabajo y al esfuerzo,
+    comprometido con aquella doctrina del s.XIX, que plantea un país mejor.
+  url: "https://www.vozpopuli.com/espana/cataluna/jesus-cacho-vozpopuli-cataluna-comprometido_0_1224478793.html"
+  fecha: "2019-03-06"
+
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-25"
+ultima_revision_editorial: "2026-05-26"
