@@ -64,10 +64,14 @@ Si en algún momento se considera bloquear el deploy de Pages cuando GitHub Acti
 
 ## Estado actual
 
-- Código del sitio **listo para Pages**: build verde, `dist/` 28 MB, 168 páginas + sitemap + Pagefind index + `_headers`.
-- **Cuenta de Cloudflare** del maintainer ya tiene el dominio (`presuntamente.org` en Registrar) y Email Routing operativo (`contacto@`, `rectificacion@`, `aportar@`).
-- **Falta**: hacer el "Connect to Git" en el panel y autorizar la GitHub App. Operación manual del maintainer (~5 min) — el agente no tiene credenciales ni puede operar el panel.
-- **Después del primer deploy exitoso**: la URL pública es `presuntamente.pages.dev` (o variante con sufijo numérico si el slug está tomado).
+**Conectado y operativo desde 2026-05-26.**
+
+- Proyecto Pages: `presuntamente`. Production branch `main`. Build command `pnpm build`. Output `dist`.
+- URL preview: [`https://presuntamente.pages.dev`](https://presuntamente.pages.dev). Respondiendo HTTP 200 desde el PoP de Madrid (≈100 ms al primer byte). Cabecera `x-robots-tag: noindex, nofollow` activa, vía [`public/_headers`](../../../public/_headers).
+- Web Analytics activado a nivel de proyecto Pages (toggle del panel, sin token en repo). Empieza a contar tráfico a partir del siguiente deploy posterior a la activación; Cloudflare lo avisa con banner.
+- Auto-deploy en `git push origin main` operativo: cada commit dispara build + rollout sin intervención.
+- Node 24.13.1 detectado automáticamente desde [`.nvmrc`](../../../.nvmrc); pnpm 11.1.3 desde `packageManager`. No fue necesario fijar `NODE_VERSION` ni nada equivalente.
+- Functions Metrics del panel a cero, esperable: el sitio es estático puro, no hay Pages Functions.
 
 ## Decisiones editoriales y aprendizajes
 
@@ -76,6 +80,9 @@ Si en algún momento se considera bloquear el deploy de Pages cuando GitHub Acti
 - **Build command incluye Pagefind.** `pnpm build:no-index` existe para depuración local pero no debe usarse en Pages: rompería `/buscar`.
 - **Analytics: toggle del panel sobre env var.** Mantiene el token fuera del repo y del CI. Decisión revisable si en algún momento hace falta inyectar variantes (ej. eventos custom desde build).
 - **Preview por commit es una forma natural de compartir cambios sin push a main**. Si en algún momento se reactiva el modelo de ramas + PR (cuando entren contribuyentes externos, ver AGENTS.md), Pages ya genera la URL preview automáticamente.
+- **El panel acepta literalmente lo que se teclea en "Build command".** En la conexión inicial (2026-05-26) el campo quedó como `npm build` (sin `run`), que no es comando válido; el primer build falló con `Unknown command: "build"`. Solución: _Settings → Builds & deployments → Build configurations → Edit_, fijar **`pnpm build`** exacto, y _Retry deployment_ sobre el deploy fallido. No hace falta otro push ni tocar el repo. Documentado por si vuelve a ocurrir con un futuro proyecto.
+- **Cloudflare Pages empuja al flujo "Workers + Static Assets" en la UI nueva.** Si en _Create application_ aparece "Create a Worker" pidiendo `npx wrangler deploy` + API token + `wrangler.jsonc`, estás en el flujo equivocado para un sitio estático. Volver atrás y elegir explícitamente la pestaña **Pages** en el selector Workers / Pages. Para nuestro caso (sitio estático puro sin Functions), Pages clásico es más simple: detecta framework, no requiere `wrangler.jsonc` ni token.
+- **Web Analytics: usar el toggle del proyecto Pages, no el Web Analytics de zona DNS.** Si se llega a `Web Analytics → Add site` y se configura con hostname `presuntamente.org`, esa config queda inerte hasta que el dominio apex esté apuntado a Pages y bajo proxy CF. El toggle del proyecto Pages (_Settings → Web Analytics → Add Web Analytics_) inyecta el beacon directamente en cada respuesta servida por el proyecto y funciona desde el primer deploy en `*.pages.dev`. Cuando se active DNS apex, el mismo toggle cubre el dominio nuevo sin tocar nada.
 
 ## Ideas futuras
 
@@ -91,8 +98,9 @@ Si en algún momento se considera bloquear el deploy de Pages cuando GitHub Acti
 
 ## Pendientes operativos
 
-- [ ] **Maintainer**: "Connect to Git" en el panel de Cloudflare con los valores de la tabla de "Configuración de Pages". Comprobar que el primer deploy termina verde.
-- [ ] **Maintainer**: activar "Web Analytics" en el toggle del proyecto Pages (sin tocar `CF_ANALYTICS_TOKEN` ni env vars).
-- [ ] **Maintainer**: probar que `https://<proyecto>.pages.dev` responde y verificar con curl `curl -I https://<proyecto>.pages.dev/` que la cabecera `X-Robots-Tag: noindex, nofollow` está presente.
-- [ ] **Agente, sesión posterior**: cuando se active DNS apex, retirar `public/_headers` (o vaciarlo) en un commit dedicado y validar que la cabecera desaparece. Documentar la fecha de switch en esta ficha.
-- [ ] **Agente, sesión posterior**: si Pages no detecta Node 24 desde `.nvmrc`, fijar `NODE_VERSION=24` como variable de entorno en _Settings_.
+- [x] **Maintainer**: "Connect to Git" en el panel de Cloudflare con los valores de la tabla de "Configuración de Pages". Comprobar que el primer deploy termina verde. _Hecho 2026-05-26 tras un primer build fallido por `npm build` y un Retry con `pnpm build`._
+- [x] **Maintainer**: activar "Web Analytics" en el toggle del proyecto Pages (sin tocar `CF_ANALYTICS_TOKEN` ni env vars). _Hecho 2026-05-26. Empieza a recoger datos a partir del primer deploy posterior a la activación._
+- [x] **Maintainer**: probar que `https://<proyecto>.pages.dev` responde y verificar con curl que la cabecera `X-Robots-Tag: noindex, nofollow` está presente. _Verificado 2026-05-26 desde el agente: HTTP 200, 23 KB, cabecera presente, `cf-ray: …-MAD`._
+- [x] **Verificar Node 24 desde `.nvmrc`**. Logs del primer build confirman `Detected the following tools from environment: nodejs@24.13.1, pnpm@11.1.3`. No fue necesario fijar `NODE_VERSION` como env var.
+- [ ] **Maintainer**: tras la activación de Web Analytics, lanzar manualmente _Retry deployment_ del último deploy verde para que el beacon empiece a inyectarse antes del próximo push natural.
+- [ ] **Agente, sesión posterior**: cuando se active DNS apex de `presuntamente.org`, retirar `public/_headers` (o vaciarlo) en un commit dedicado, validar que la cabecera desaparece y registrar la fecha de switch en esta ficha.

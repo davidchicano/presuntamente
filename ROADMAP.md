@@ -4,7 +4,9 @@
 >
 > El roadmap conceptual vive en [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Este fichero es la versión operativa: estado actual, próximos pasos, backlog inmediato y aprendizajes recientes. El histórico largo se ha movido a [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-26 (tarde-noche, cierre del sprint extendido). Sesión grande que cierra siete piezas:
+**Última actualización:** 2026-05-26 (noche). Cierre operativo: **Cloudflare Pages conectado al repo y sirviendo el preview en [`presuntamente.pages.dev`](https://presuntamente.pages.dev)** con `X-Robots-Tag: noindex` durante la fase sin DNS apex y Web Analytics activado a nivel de proyecto. Auto-deploy por push a `main` operativo. Detalle, configuración del panel y aprendizajes (primer build falló por `npm build` sin `run`; UI nueva empuja al flujo de Workers Static Assets; Web Analytics de zona DNS ≠ Web Analytics del proyecto Pages) en [`docs/web/features/cloudflare-pages-deploy.md`](docs/web/features/cloudflare-pages-deploy.md).
+
+**Anterior (tarde-noche):** cierre del sprint extendido. Sesión grande con siete piezas:
 
 1. **Modelo de clasificación editorial de medios** — canon [`docs/diseno/07-clasificacion-editorial-medios.md`](docs/diseno/07-clasificacion-editorial-medios.md). Cuatro campos nuevos en `Organizacion` (`naturaleza_editorial`, `orientacion_editorial_declarada`, `orientacion_editorial_percibida`, `grupo_editorial`). Enum del eje 7+1. Naturaleza separa generalistas políticos y confesionales (admiten orientación) del resto. 9 medios con orientación declarada verificada (piloto + sub-agente). Sin `percibida` poblada todavía (Reuters 2025 no contiene esos datos; ver bloque D).
 
@@ -50,7 +52,7 @@
 - **Próximo paso comprometido**: lo decide el maintainer. Opciones naturales: Bloque C (revisión editorial humana pre-launch), continuar Bloque D, o publicación técnica en Cloudflare Pages sin DNS apex.
 - **Dev server local**: `pnpm dev` en `http://localhost:4321`.
 - **Workflow git**: trabajo directo sobre `main`, sin ramas ni PRs mientras dure el MVP. No hacer `git add`, `git commit` ni `git push` salvo petición explícita del maintainer. Ver [`AGENTS.md`](AGENTS.md).
-- **Infraestructura pública**: dominio `presuntamente.org` comprado, `contacto@`, `rectificacion@` y `aportar@` operativos vía Cloudflare Email Routing. Sitio aún sin publicar: DNS apex no apuntado y Pages pendiente.
+- **Infraestructura pública**: dominio `presuntamente.org` comprado, `contacto@`, `rectificacion@` y `aportar@` operativos vía Cloudflare Email Routing. **Cloudflare Pages conectado y sirviendo preview en [`presuntamente.pages.dev`](https://presuntamente.pages.dev) con `X-Robots-Tag: noindex` y Web Analytics activado.** Sitio aún sin publicar bajo dominio propio: DNS apex no apuntado a la espera de apartado de correos del responsable y revisión legal del aviso.
 
 ---
 
@@ -82,7 +84,7 @@ Contexto: esto cierra la Fase 0 operativa. No es sólo configurar DNS; publicar 
 - [x] Comprar dominio `presuntamente.org` en Cloudflare Registrar.
 - [x] Activar Cloudflare Email Routing para `contacto@`, `rectificacion@` y `aportar@`.
 - [ ] Abrir apartado de correos del responsable y completar la identificación postal del aviso legal.
-- [ ] Conectar Cloudflare Pages al repo `davidchicano/presuntamente`. Build command `pnpm build`, output `dist/`, Node 24 (de `.nvmrc`). Primero URL `*.pages.dev`, sin DNS apex. Repo listo: `public/_headers` con `X-Robots-Tag: noindex` durante fase preview, ficha [`cloudflare-pages-deploy.md`](docs/web/features/cloudflare-pages-deploy.md). Activar "Web Analytics" desde el toggle del panel (no usar `CF_ANALYTICS_TOKEN` en env).
+- [x] Conectar Cloudflare Pages al repo `davidchicano/presuntamente`. Cerrado 2026-05-26: proyecto `presuntamente`, build `pnpm build`, output `dist`, Node 24.13.1 detectado desde `.nvmrc`. Preview servido en [`presuntamente.pages.dev`](https://presuntamente.pages.dev) con `X-Robots-Tag: noindex, nofollow` (vía `public/_headers`) y Web Analytics activado a nivel de proyecto. Auto-deploy por push a `main` operativo. Detalle y aprendizajes en [`cloudflare-pages-deploy.md`](docs/web/features/cloudflare-pages-deploy.md).
 - [ ] Revisar el aviso legal con abogado especializado. Repaso especial: LSSI, datos personales/RGPD, licencias y límites de responsabilidad.
 - [ ] Activar DNS apex + `www` cuando lo anterior esté cerrado, y **retirar `public/_headers`** en un commit dedicado para reabrir indexación.
 
