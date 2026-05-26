@@ -1,0 +1,20 @@
+id: pino-dao-policia-nacional
+naturaleza: cargo_publico_designado
+descripcion: "Director Adjunto Operativo (DAO) de la Dirección General de la Policía Nacional entre 2012 y 2016, durante el mandato del ministro del Interior Jorge Fernández Díaz. El instructor del JCI nº 6 le atribuye, en la condición de procesado, la coordinación operativa del dispositivo policial conocido como Operación Kitchen."
+sujeto_persona_id: eugenio-pino-sanchez
+objeto_organizacion_id: ministerio-del-interior
+cargo_o_rol: "Director Adjunto Operativo (DAO) de la Policía Nacional"
+desde: "2012-01-01"
+hasta: "2016-12-01"
+precision_desde: anio
+precision_hasta: mes
+vigente: false
+gobierno_o_legislatura: "Gobierno Rajoy I y II (X y XI legislaturas)"
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: eldiario-procesamiento-kitchen-2021-07-29
+    pasaje: "elDiario.es identifica a Eugenio Pino Sánchez como 'ex Director Adjunto Operativo de la Policía' en la cobertura del procesamiento en el caso Kitchen."
+  - documento_id: infobae-procesamiento-kitchen-2021-07-29
+    pasaje: "Infobae identifica a Eugenio Pino Sánchez como ex Director Adjunto Operativo al cubrir el procesamiento por la Operación Kitchen."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

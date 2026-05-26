@@ -1,0 +1,17 @@
+id: gonzalez-amador-pareja-ayuso
+naturaleza: vinculo_familiar_publico
+descripcion: "Pareja sentimental de Isabel Díaz Ayuso, presidenta de la Comunidad de Madrid por el Partido Popular. Este vínculo es el contexto institucional que determina la dimensión pública del procedimiento penal seguido ante el Juzgado de Instrucción nº 19 de Madrid contra González Amador."
+sujeto_persona_id: alberto-gonzalez-amador
+objeto_persona_id: isabel-diaz-ayuso
+desde: "2018-01-01"
+precision_desde: anio
+vigente: true
+relevancia_para_caso_ids: [gonzalez-amador]
+documentos_respaldo:
+  - documento_id: elespanol-procesamiento-ga-2025-05-29
+    pasaje: "El Español titula 'La juez propone juzgar a González Amador, novio de Ayuso, por fraude fiscal y falsedad documental', identificando el vínculo sentimental con Isabel Díaz Ayuso como contexto institucional del caso."
+  - documento_id: maldita-cronologia-ga-2025-12-09
+    pasaje: "Maldita.es describe la cronología del caso González Amador incluyendo su condición de pareja de la presidenta de la Comunidad de Madrid Isabel Díaz Ayuso como elemento definitorio del alcance público del procedimiento."
+notas: "Vínculo familiar público documentado en todas las fuentes de cobertura del caso. Se modela porque la condición de pareja de la presidenta de la Comunidad de Madrid es el factor que determina la relevancia institucional y mediática del procedimiento. Isabel Díaz Ayuso no tiene ningún rol procesal en la causa; el vínculo se modela exclusivamente para contextualizar el alcance público del caso, conforme al guardarraíl de vínculos familiares de la skill documentar-vinculos v1."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

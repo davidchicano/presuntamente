@@ -20,5 +20,13 @@ orientacion_editorial_declarada:
     Diario digital progresista con especial enfoque a la actualidad y la política.
   url: "https://www.elplural.com/quienes-somos.html"
 
+grupo_editorial:
+  nombre: "Corporate Communicator S.L."
+  rol: matriz
+  cita: >-
+    Denominación social: Corporate Communicator, S.L. NIF: B-84262591
+    Domicilio social: Calle Gran Vía 64, 28013 Madrid.
+  url: "https://www.elplural.com/aviso-legal.html"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

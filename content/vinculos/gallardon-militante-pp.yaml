@@ -1,0 +1,17 @@
+id: gallardon-militante-pp
+naturaleza: cargo_organico_partido
+descripcion: "Político del Partido Popular. Presidente de la Comunidad de Madrid (1995-2003), alcalde de Madrid (2003-2011) y ministro de Justicia (2011-2014), todos los cargos en representación del PP. Fue candidato a la presidencia del PP en el año 1999, cuando la formación era presidida por José María Aznar."
+sujeto_persona_id: alberto-ruiz-gallardon
+objeto_organizacion_id: partido-popular
+cargo_o_rol: "Militante del Partido Popular"
+desde: "1982-01-01"
+precision_desde: anio
+vigente: false
+hasta: "2014-09-29"
+precision_hasta: dia
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: confilegal-archivo-gallardon-inassa-lezo-2019-05-30
+    pasaje: "Confilegal identifica a Alberto Ruiz-Gallardón como 'ex presidente del Gobierno de la Comunidad de Madrid y posterior alcalde de Madrid y ministro de Justicia' del PP, al cubrir su desimputación en la pieza Inassa del caso Lezo el 30 de mayo de 2019."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

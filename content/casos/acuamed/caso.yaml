@@ -1,0 +1,13 @@
+id: acuamed
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 6 de la Audiencia Nacional (caso Acuamed)"
+nombre_mediatico: "Caso Acuamed"
+nombres_alternativos:
+  - "Corrupción Acuamed"
+
+organo_judicial_id: juzgado-central-instruccion-6
+fase_actual: fase_intermedia
+fecha_apertura: "2016-01-01"
+
+origen_denuncia: denuncia_organismo_publico
+
+estado_publicacion: pendiente

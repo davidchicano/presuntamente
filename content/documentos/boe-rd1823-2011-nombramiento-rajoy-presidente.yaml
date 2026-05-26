@@ -1,0 +1,31 @@
+id: boe-rd1823-2011-nombramiento-rajoy-presidente
+titulo: "BOE — Real Decreto 1822/2011, de 21 de diciembre, por el que se nombra Presidente del Gobierno a don Mariano Rajoy Brey"
+tipo: boletin_oficial
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Disposición oficial publicada en el Boletín Oficial del Estado el 23 de
+  diciembre de 2011, código BOE-A-2011-19861. Firmado por S.M. el Rey
+  Juan Carlos I. Fuente primaria directa (N1): órgano emisor es la
+  Jefatura del Estado. El nombramiento se produce tras la victoria del
+  Partido Popular en las elecciones generales del 20 de noviembre de
+  2011 y la investidura parlamentaria de Mariano Rajoy en el Congreso
+  de los Diputados. PDF íntegro descargado a
+  `/public/documentos/_globales/` con `hash_sha256` verificado contra
+  el mirror oficial.
+
+  Nota: el slug del fichero (`boe-rd1823-2011-...`) y del id se conserva
+  por estabilidad de referencias, aunque el número de Real Decreto real
+  es 1822/2011 (no 1823). El identificador BOE canónico
+  (BOE-A-2011-19861), el título completo del documento y el PDF
+  descargado son los del RD 1822/2011 efectivamente firmado el 21-12-2011
+  por la Jefatura del Estado.
+productor_organizacion_id: jefatura-del-estado
+fecha_publicacion: "2011-12-23"
+fecha_documento: "2011-12-21"
+estado_acceso: publico
+idioma: es
+url_canonica: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2011-19861"
+ruta_local: "/documentos/_globales/boe-rd1823-2011-nombramiento-rajoy-presidente.pdf"
+hash_sha256: "2616070b89e07d004fec9f2b2fd320e617545df3e706ad70da54487ac40de3ea"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

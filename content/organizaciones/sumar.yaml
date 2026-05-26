@@ -1,0 +1,24 @@
+id: sumar
+nombre: "Movimiento Sumar"
+nombres_alternativos:
+  - "Sumar"
+  - "SMR"
+tipo: partido_politico
+siglas: "SMR"
+descripcion_corta: |
+  Partido político español inscrito en el Registro del Ministerio del
+  Interior el 31 de mayo de 2023 con el nombre oficial "Movimiento
+  Sumar" y las siglas SMR. Fue constituido para actuar como eje
+  articulador de la confluencia de fuerzas a la izquierda del PSOE
+  (Izquierda Unida, Más País, Comunes, Chunta y otras formaciones)
+  en la coalición electoral Sumar, que concurrió a las elecciones
+  generales del 23 de julio de 2023. Yolanda Díaz, Vicepresidenta
+  Segunda del Gobierno de España, ejerció como coordinadora del
+  espacio político previo a la inscripción formal del partido y
+  encabezó la candidatura electoral.
+ambito_territorial: nacional
+localidad: "Madrid"
+url_canonica: "https://movimientosumar.es"
+fundacion: "2023-05-31"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

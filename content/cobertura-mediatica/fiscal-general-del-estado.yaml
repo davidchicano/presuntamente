@@ -1,0 +1,410 @@
+# Cobertura mediática general — caso fiscal-general-del-estado
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: fiscal-general-del-estado
+fecha_rastreo: "2026-05-26"
+
+metodologia:
+  terminos_busqueda:
+    - "García Ortiz fiscal general"
+    - "caso fiscal general del Estado"
+    - "García Ortiz filtración González Amador"
+    - "Álvaro García Ortiz Supremo"
+    - "caso fiscal filtración pareja Ayuso"
+  ventanas_temporales:
+    - desde: "2024-03-01"
+      hasta: "2024-12-31"
+      notas: >
+        Filtración del correo de González Amador (mar 2024), apertura de la causa
+        ante el TSJM y elevación al Tribunal Supremo (oct 2024). Apertura de la
+        Causa Especial nº 20557/2024 en el TS (15 oct 2024). Primeras diligencias
+        de instrucción (nov-dic 2024).
+    - desde: "2025-01-01"
+      hasta: "2025-12-31"
+      notas: >
+        Procesamiento de García Ortiz por el magistrado Hurtado (9 jun 2025),
+        sobreseimiento de Pilar Rodríguez (29 jul 2025), inicio del juicio oral
+        (3 nov 2025), sentencia condenatoria 1000/2025 por 5 votos frente a 2
+        (9 dic 2025), dimisión y cese de García Ortiz (24 nov y 9 dic 2025).
+    - desde: "2026-01-01"
+      hasta: "2026-05-26"
+      notas: >
+        Desestimación de los incidentes de nulidad (26 feb 2026), condena firme.
+        Recursos de amparo al Tribunal Constitucional de la Fiscalía y del
+        condenado (abril 2026). Inspección fiscal sobre posible expulsión del
+        cuerpo.
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - theobjective.com
+    - elespanol.com
+    - libertaddigital.com
+    - maldita.es
+    - newtral.es
+    - vozpopuli.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o lead. Se incluyen
+    noticias, reportajes, análisis y piezas de verificación. Se incluyen piezas
+    de agencia republicadas cuando el titular o lead las identifica como del
+    caso y aportan información sobre hitos procesales.
+  criterios_exclusion: >
+    Se excluyen menciones de pasada del caso FGE en piezas sobre el caso
+    González Amador cuando el FGE no es el objeto central de la pieza. Se excluyen
+    republicaciones de agencia sin valor añadido. Se excluyen El País y El Mundo
+    por no ser accesibles vía WebFetch en el entorno del agente.
+  notas: >
+    Rastreo inicial v1 sobre tres ventanas temporales (mar 2024 — may 2026).
+    El caso tiene cobertura extensa en todos los medios nacionales desde la
+    apertura de la causa en octubre de 2024. El período del juicio oral
+    (nov 2025) y la sentencia (dic 2025) concentran la mayor densidad. Es el
+    primer caso con sentencia firme del Tribunal Supremo en el inventario. Las
+    url_archivo se rellenan con scripts/archivar-n4.mjs (pnpm archive:catchup
+    o hook pre-commit).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: APERTURA DE LA CAUSA (mar — dic 2024) ──────────────────────
+
+  - id: maldita-imputacion-fiscal-general-2024-10
+    url: "https://maldita.es/malditateexplica/20241017/imputacion-fiscal-general-estado/"
+    medio_id: maldita-es
+    titular: "La imputación del fiscal general del Estado por un delito de revelación de secretos: preguntas y respuestas"
+    fecha_publicacion: "2024-10-17"
+    resumen: >
+      Maldita.es responde en formato de preguntas y respuestas a las dudas más
+      frecuentes sobre la apertura de la investigación en el Tribunal Supremo contra
+      el Fiscal General del Estado Álvaro García Ortiz por presunta revelación de
+      secretos relacionada con la filtración del correo del abogado de González Amador.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: newtral-guia-investigacion-garcia-ortiz-2024
+    url: "https://www.newtral.es/guia-investigacion-supremo-garcia-ortiz/20241018/"
+    medio_id: newtral
+    titular: "La investigación del Supremo a García Ortiz"
+    fecha_publicacion: "2024-10-18"
+    resumen: >
+      Newtral publica una guía sobre la investigación del Tribunal Supremo al Fiscal
+      General del Estado: qué se investiga, cuál es el origen de la causa, qué papel
+      juegan la Fiscalía Provincial de Madrid y el correo de la defensa de González
+      Amador, y cuál es el estado procesal de la causa especial.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-acusacion-rastreo-filtracion-2024-10
+    url: "https://theobjective.com/espana/tribunales/2024-10-18/acusacion-garcia-ortiz-filtracion-ayuso/"
+    medio_id: the-objective
+    titular: "Una acusación en el 'caso García Ortiz' pedirá el rastreo de la filtración del novio de Ayuso"
+    fecha_publicacion: "2024-10-18"
+    resumen: >
+      La acusación particular de González Amador solicita al magistrado instructor
+      Ángel Luis Hurtado el rastreo de comunicaciones para determinar el origen
+      exacto de la filtración del correo reservado enviado por la defensa de González
+      Amador a la Fiscalía Provincial de Madrid.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-garcia-ortiz-mensajes-destruidos-2024-12
+    url: "https://theobjective.com/espana/tribunales/2024-12-20/mensajes-garcia-ortiz-filtracion-ayuso/"
+    medio_id: the-objective
+    titular: "Varios mensajes demuestran que García Ortiz destruyó pruebas sobre la filtración de Ayuso"
+    fecha_publicacion: "2024-12-20"
+    resumen: >
+      The Objective publica que el instructor ha obtenido mensajes que indicarían que
+      García Ortiz borró mensajes relativos al período de la presunta filtración. La
+      Fiscalía admite que el FGE eliminó los mensajes de los días en que se produjo
+      la presunta revelación de datos.
+    tipo_pieza: investigacion_periodistica
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-fiscalia-borra-mensajes-2024-12
+    url: "https://theobjective.com/espana/tribunales/2024-12-20/fiscalia-garcia-ortiz-mensajes-filtracion/"
+    medio_id: the-objective
+    titular: "La Fiscalía admite que García Ortiz borró los mensajes de los días de la presunta filtración"
+    fecha_publicacion: "2024-12-20"
+    resumen: >
+      La propia Fiscalía, en el juicio, admite que el Fiscal General del Estado borró
+      los mensajes de su terminal de los días en que se habría producido la filtración
+      del correo reservado de la defensa de González Amador. Pieza complementaria a la
+      de The Objective sobre el mismo hito.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: theobjective-garcia-ortiz-mensajes-destruidos-2024-12
+    notas: "Pieza de The Objective sobre el mismo hito; perspectiva diferenciada sobre la admisión de la Fiscalía."
+
+
+  # ── VENTANA 2: PROCESAMIENTO Y JUICIO (ene — dic 2025) ────────────────────
+
+  - id: theobjective-procesa-fiscal-general-2025-06-09
+    url: "https://theobjective.com/espana/tribunales/2025-06-09/juez-procesa-fiscal-general-revelacion-secretos/"
+    medio_id: the-objective
+    titular: "El Supremo procesa al fiscal general por revelación de secretos contra el novio de Ayuso"
+    fecha_publicacion: "2025-06-09"
+    resumen: >
+      El magistrado instructor Ángel Luis Hurtado dicta auto de procesamiento de
+      Álvaro García Ortiz por un delito de revelación de datos reservados (art. 417.1
+      CP) en relación con la filtración del correo de la defensa de González Amador a
+      la Fiscalía Provincial de Madrid.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-cronologia-garcia-ortiz-2025-06
+    url: "https://theobjective.com/espana/tribunales/2025-06-09/cronologia-caso-garcia-ortiz-llamadas-chats-correos-fiscal-banquillo/"
+    medio_id: the-objective
+    titular: "Cronología del 'caso García Ortiz': las llamadas, chats y correos que acercan al fiscal al banquillo"
+    fecha_publicacion: "2025-06-09"
+    resumen: >
+      Reconstructión cronológica por The Objective de los intercambios de comunicaciones
+      (llamadas, chats, correos) que el magistrado instructor ha tomado en consideración
+      para dictar el auto de procesamiento de García Ortiz.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-novio-ayuso-pide-procesamiento-2025-06
+    url: "https://theobjective.com/espana/tribunales/2025-06-05/novio-ayuso-supremo-fiscal-general-secretos/"
+    medio_id: the-objective
+    titular: "El novio de Ayuso pide al Supremo que procese al fiscal general por revelar sus secretos"
+    fecha_publicacion: "2025-06-05"
+    resumen: >
+      Alberto González Amador, como acusación particular, solicita al Tribunal Supremo
+      el procesamiento formal de García Ortiz por la revelación del correo reservado
+      enviado por su abogado Carlos Neira a la Fiscalía Provincial de Madrid.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-inicio-juicio-garcia-ortiz-2025-11-03
+    url: "https://theobjective.com/espana/tribunales/2025-11-03/supremo-fiscal-general-juicio/"
+    medio_id: the-objective
+    titular: "El Supremo inicia el juicio histórico al fiscal general por la filtración sobre la pareja de Ayuso"
+    fecha_publicacion: "2025-11-03"
+    resumen: >
+      La Sala Segunda del Tribunal Supremo inicia el juicio oral de la Causa Especial
+      nº 20557/2024 contra el Fiscal General del Estado Álvaro García Ortiz, el primero
+      en la democracia española en el que el titular de la máxima institución del
+      Ministerio Público se sienta en el banquillo.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-fiscalia-defiende-impunidad-2025-11-13
+    url: "https://theobjective.com/espana/tribunales/2025-11-13/fiscalia-garcia-ortiz/"
+    medio_id: the-objective
+    titular: "La Fiscalía defiende que aunque García Ortiz hubiera filtrado era «impune»"
+    fecha_publicacion: "2025-11-13"
+    resumen: >
+      El Ministerio Público argumenta en el juicio oral que, aunque se probara que
+      García Ortiz filtró el correo reservado, su conducta sería impune porque la
+      nota de prensa de la Fiscalía se emitió para corregir informaciones falsas
+      sobre González Amador y en el ejercicio legítimo de las funciones de la institución.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-condena-garcia-ortiz-supremo-2025-11-20
+    url: "https://www.eldiario.es/politica/supremo-condena-fiscal-general-multa-7-200-euros-anos-inhabilitacion-filtracion-correo-pareja-ayuso_1_12773048.html"
+    medio_id: eldiario-es
+    titular: "El Supremo condena al fiscal general a dos años de inhabilitación por la filtración del correo de la pareja de Ayuso"
+    fecha_publicacion: "2025-11-20"
+    resumen: >
+      La Sala Segunda del Tribunal Supremo condena a Álvaro García Ortiz a dos años
+      de inhabilitación especial para el cargo de Fiscal General del Estado, multa de
+      7.200 euros e indemnización de 10.000 euros a González Amador por daños morales.
+      La sentencia es aprobada por cinco votos frente a dos.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: elespanol-condena-garcia-ortiz-5-votos-2-2025-11
+    url: "https://www.elespanol.com/espana/tribunales/20251120/ts-condena-garcia-ortiz-revelar-datos-tributarios-pareja-ayuso-votos-inhabilita-fiscal-general/1003744022429_0.html"
+    medio_id: el-espanol
+    titular: "El TS condena a García Ortiz por revelar datos tributarios de la pareja de Ayuso por 5 votos a 2 y le inhabilita como fiscal general"
+    fecha_publicacion: "2025-11-20"
+    resumen: >
+      El Tribunal Supremo condena al Fiscal General del Estado por un delito de
+      revelación de datos reservados por mayoría de cinco votos frente a dos. La
+      condena incluye la inhabilitación especial para el cargo de Fiscal General,
+      lo que obliga a García Ortiz a abandonar el puesto.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: eldiario-condena-garcia-ortiz-supremo-2025-11-20
+    notas: "Pieza de El Español sobre el mismo hito; orientación editorial distinta."
+
+  - id: eldiario-dimision-garcia-ortiz-2025-11-24
+    url: "https://www.eldiario.es/politica/fiscal-general-dimite-despues-condenado-supremo-he-servido-fielmente-institucion_1_12791200.html"
+    medio_id: eldiario-es
+    titular: "El fiscal general dimite tras ser condenado por el Supremo: «He servido fielmente a la institución»"
+    fecha_publicacion: "2025-11-24"
+    resumen: >
+      Álvaro García Ortiz presenta su dimisión ante el ministro de Justicia cuatro
+      días después de su condena por el Tribunal Supremo, antes de conocer la
+      motivación escrita de la sentencia. García Ortiz declara haber servido
+      «fielmente a la institución».
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-carta-dimision-fiscal-general-2025
+    url: "https://www.publico.es/politica/carta-dimision-fiscal-general.html"
+    medio_id: publico-es
+    titular: "Esta es la carta de dimisión del fiscal general del Estado"
+    fecha_publicacion: "2025-11-24"
+    resumen: >
+      Público publica el contenido íntegro de la carta de dimisión de Álvaro García
+      Ortiz, en la que el ex Fiscal General del Estado explica los motivos de su
+      renuncia después de su condena por el Tribunal Supremo.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: eldiario-dimision-garcia-ortiz-2025-11-24
+    notas: "Pieza de Público que publica el texto íntegro de la carta de dimisión."
+
+  - id: elespanol-ocho-pruebas-sentencia-2025-12-10
+    url: "https://www.elespanol.com/espana/tribunales/20251210/fiscalia_general_del_estado-Alvaro_garcia_ortiz-tribunal_supremo-revelacion_de_secretos-isabel_diaz_ayuso-alberto_gonzalez_amador-tribunales/1003744048621_0.html"
+    medio_id: el-espanol
+    titular: "Las ocho pruebas de la sentencia del Tribunal Supremo que han acabado con García Ortiz como fiscal general"
+    fecha_publicacion: "2025-12-10"
+    resumen: >
+      El Español analiza los elementos probatorios de la Sentencia 1000/2025 que han
+      servido al Tribunal Supremo para condenar a García Ortiz, incluyendo los mensajes
+      borrados, las llamadas al director del diario que publicó la filtración y la
+      participación en la redacción de la nota de prensa de la Fiscalía.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-claves-condena-fiscal-general-2025
+    url: "https://www.eldiario.es/politica/claves-condena-fiscal-general-tendra-puesto-futuro-fiscalia-queda-aire_1_12783818.html"
+    medio_id: eldiario-es
+    titular: "Las claves de la condena del fiscal general: tendrá que dejar su puesto y su futuro en la Fiscalía queda en el aire"
+    fecha_publicacion: "2025-11-21"
+    resumen: >
+      Análisis de las consecuencias de la condena del Fiscal General: la inhabilitación
+      le obliga a abandonar el cargo, pero el futuro del FGE en el cuerpo fiscal queda
+      sujeto a un posible expediente disciplinario ante la Inspección Fiscal y a la
+      decisión sobre si aplica la separación del servicio.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-supremo-sentencia-sin-pruebas-2025
+    url: "https://www.publico.es/politica/tribunales/supremo-considera-probado-garcia-ortiz-persona-entorno-filtraron-correo-confesion-novio-ayuso.html"
+    medio_id: publico-es
+    titular: "El Supremo sentencia sin pruebas que García Ortiz o «una persona de su entorno» filtraron el correo de la confesión del novio de Ayuso"
+    fecha_publicacion: "2025-12-10"
+    resumen: >
+      Público analiza críticamente la Sentencia 1000/2025 señalando que el Tribunal
+      Supremo considera probado que el FGE o alguien de su entorno filtró el correo,
+      pero sin identificar una prueba directa inequívoca. La pieza contrasta la
+      conclusión mayoritaria con los dos votos particulares disidentes.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-sentencia-garcia-ortiz-correo-2025-12-09
+    url: "https://theobjective.com/espana/tribunales/2025-12-09/sentencia-garcia-ortiz-correo/"
+    medio_id: the-objective
+    titular: "El Supremo sentencia que García Ortiz o alguien «con su conocimiento» filtró el correo"
+    fecha_publicacion: "2025-12-09"
+    resumen: >
+      The Objective recoge los elementos clave de la Sentencia 1000/2025: el Supremo
+      considera acreditado que el FGE, o alguien con su conocimiento, filtró el correo
+      reservado de la defensa de González Amador, y le condena por revelación de
+      datos reservados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: eldiario-condena-garcia-ortiz-supremo-2025-11-20
+    notas: "La sentencia definitiva se dictó el 9 de dic con motivación escrita; la noticia de la condena oral fue el 20 nov."
+
+  - id: libertad-digital-supremo-inspeccion-fiscal-2025-12
+    url: "https://www.libertaddigital.com/espana/2025-12-17/el-supremo-envia-la-sentencia-contra-garcia-ortiz-a-la-inspeccion-fiscal-para-que-estudie-su-expulsion-7334752/"
+    medio_id: libertad-digital
+    titular: "El Supremo envía la sentencia contra García Ortiz a la Inspección Fiscal para que estudie su expulsión"
+    fecha_publicacion: "2025-12-17"
+    resumen: >
+      La Sala Segunda del Tribunal Supremo remite la Sentencia 1000/2025 a la
+      Inspección Fiscal para que estudie si procede iniciar un expediente disciplinario
+      que podría concluir en la expulsión del cuerpo fiscal del condenado Álvaro
+      García Ortiz.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  # ── VENTANA 3: FIRMEZA DE LA CONDENA Y AMPARO TC (ene — may 2026) ──────────
+
+  - id: elespanol-supremo-rechaza-anular-condena-2026-02-26
+    url: "https://www.elespanol.com/espana/tribunales/20260226/tribunal-supremo-rechaza-anular-condena-garcia-ortiz-exfiscal-general-puede-acudir-constitucional/1003744147061_0.html"
+    medio_id: el-espanol
+    titular: "El Tribunal Supremo rechaza anular la condena a García Ortiz: el exfiscal general ya puede acudir al Constitucional"
+    fecha_publicacion: "2026-02-26"
+    resumen: >
+      La Sala Segunda del Tribunal Supremo desestima los incidentes de nulidad
+      presentados por la defensa de García Ortiz y por el Ministerio Fiscal, dejando
+      firme la Sentencia 1000/2025. García Ortiz queda habilitado para interponer
+      recurso de amparo ante el Tribunal Constitucional.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-garcia-ortiz-constitucional-2026
+    url: "https://www.eldiario.es/politica/ex-fiscal-general-constitucional-supremo-hizo-valoracion-irracional-arbitraria-indicios_1_13137884.html"
+    medio_id: eldiario-es
+    titular: "El ex fiscal general, al Constitucional: «El Supremo hizo una valoración irracional y arbitraria de los indicios»"
+    fecha_publicacion: "2026-04-15"
+    resumen: >
+      García Ortiz interpone recurso de amparo ante el Tribunal Constitucional
+      cuestionando la motivación de la Sentencia 1000/2025, argumentando que el
+      Supremo realizó una valoración «irracional y arbitraria» de los indicios
+      que llevaron a su condena.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-garcia-ortiz-primera-entrevista-2026
+    url: "https://www.eldiario.es/politica/ex-fiscal-general-primera-entrevista-condena-sorpresa-dura-no-habia-pruebas_1_13188145.html"
+    medio_id: eldiario-es
+    titular: "El ex fiscal general del Estado, en la primera entrevista tras su condena: «Fue una sorpresa muy dura, no había pruebas»"
+    fecha_publicacion: "2026-05-01"
+    resumen: >
+      En su primera entrevista pública tras la condena firme, García Ortiz califica
+      la sentencia condenatoria como una «sorpresa muy dura» y reafirma no haber
+      filtrado el correo de la defensa de González Amador. Mantiene que no existían
+      pruebas suficientes para condenarle.
+    tipo_pieza: entrevista
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"

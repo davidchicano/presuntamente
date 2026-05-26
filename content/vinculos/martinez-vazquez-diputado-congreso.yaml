@@ -1,0 +1,17 @@
+id: martinez-vazquez-diputado-congreso
+naturaleza: cargo_publico_electo
+descripcion: "Diputado en el Congreso de los Diputados por Soria en la IX Legislatura (2008-2011)."
+sujeto_persona_id: francisco-martinez-vazquez
+objeto_organizacion_id: congreso-de-los-diputados
+cargo_o_rol: "Diputado en el Congreso de los Diputados por Soria"
+desde: "2008-04-01"
+hasta: "2011-12-22"
+precision_desde: mes
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: congreso-lista-diputados-historial
+    pasaje: "Buscador oficial del Congreso. Francisco Martínez Vázquez figura como Diputado por Soria en la IX Legislatura (2008-2011)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

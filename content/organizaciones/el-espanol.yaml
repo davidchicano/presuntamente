@@ -13,5 +13,12 @@ url_canonica: "https://www.elespanol.com/"
 
 naturaleza_editorial: generalista_politico
 
+grupo_editorial:
+  nombre: "El León de El Español Publicaciones S.A."
+  rol: matriz
+  cita: >-
+    © 2026 El León de El Español Publicaciones S.A.
+  url: "https://www.elespanol.com/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

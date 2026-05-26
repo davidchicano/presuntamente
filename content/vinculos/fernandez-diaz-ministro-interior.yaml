@@ -1,0 +1,20 @@
+id: fernandez-diaz-ministro-interior
+naturaleza: cargo_publico_designado
+descripcion: "Ministro del Interior del Reino de España durante las X y XI legislaturas, bajo la presidencia de Mariano Rajoy. La operación parapolicial atribuida al Ministerio del Interior que es objeto del procedimiento Kitchen se sitúa, según el instructor del JCI nº 6, durante su mandato."
+sujeto_persona_id: jorge-fernandez-diaz
+objeto_organizacion_id: ministerio-del-interior
+cargo_o_rol: "Ministro del Interior"
+desde: "2011-12-22"
+hasta: "2016-11-04"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "Gobierno Rajoy I y II (X y XI legislaturas)"
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: eldiario-procesamiento-kitchen-2021-07-29
+    pasaje: "elDiario.es identifica a Jorge Fernández Díaz como 'ex ministro del Interior' al cubrir el auto de procesamiento del JCI nº 6 de 29 de julio de 2021 en el caso Kitchen."
+  - documento_id: infobae-procesamiento-kitchen-2021-07-29
+    pasaje: "Infobae identifica a Jorge Fernández Díaz como ex ministro del Interior en la cobertura del procesamiento por la Operación Kitchen."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

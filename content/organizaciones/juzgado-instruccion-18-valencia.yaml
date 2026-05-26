@@ -1,0 +1,18 @@
+id: juzgado-instruccion-18-valencia
+nombre: "Juzgado de Instrucción nº 18 de Valencia"
+nombres_alternativos:
+  - "JI nº 18 Valencia"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado de Instrucción nº 18 de Valencia. Instruyó el caso Taula,
+  macrocausa sobre la presunta existencia de una organización criminal
+  vinculada al PP valenciano durante la etapa de la alcaldesa Rita
+  Barberá en el Ayuntamiento de Valencia.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Valencia"
+provincia: "Valencia"
+comunidad_autonoma: "Comunidad Valenciana"
+organo_superior_id: audiencia-provincial-valencia
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,14 @@
+id: manos-limpias-acusacion-fge
+naturaleza: acusacion_institucional_en_caso
+descripcion: "La asociación Manos Limpias (Sindicato Colectivo de Funcionarios Manos Limpias) ejerce la acusación popular en la Causa Especial nº 20557/2024 ante la Sala Segunda del Tribunal Supremo, presentando dos querellas autónomas por los hechos relativos a la filtración del correo electrónico del abogado Carlos Neira."
+sujeto_organizacion_id: manos-limpias
+objeto_organizacion_id: tribunal-supremo
+desde: "2024-10-15"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [fiscal-general-del-estado]
+documentos_respaldo:
+  - documento_id: cgpj-apertura-causa-fge-2024-10-16
+    pasaje: "La nota CGPJ menciona las querellas acumuladas a la causa principal nº 20557/2024, incluyendo las presentadas por Manos Limpias, al describir la apertura de la Causa Especial."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,17 @@
+id: gallardon-presidente-comunidad-madrid
+naturaleza: cargo_publico_electo
+descripcion: "Presidente de la Comunidad de Madrid entre 1995 y 2003. La pieza Inassa del caso Lezo le atribuyó, como investigado, participación en la presuntamente fraudulenta compra del 75% de la sociedad colombiana Inassa por el Canal de Isabel II en 2001, operación ejecutada durante su mandato. Fue sobreseído provisionalmente por auto del JCI nº 6 de 30 de mayo de 2019."
+sujeto_persona_id: alberto-ruiz-gallardon
+objeto_organizacion_id: comunidad-de-madrid
+cargo_o_rol: "Presidente de la Comunidad de Madrid"
+desde: "1995-06-29"
+hasta: "2003-06-13"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: confilegal-archivo-gallardon-inassa-lezo-2019-05-30
+    pasaje: "Confilegal identifica a Alberto Ruiz-Gallardón como 'ex presidente del Gobierno de la Comunidad de Madrid y posterior alcalde de Madrid y ministro de Justicia' al cubrir su desimputación en la pieza Inassa del caso Lezo."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,15 @@
+id: roselli-ceo-plus-ultra
+naturaleza: cargo_directivo_organizacion_privada
+descripcion: "Director ejecutivo (CEO) de Plus Ultra Líneas Aéreas, S.A."
+sujeto_persona_id: roberto-roselli
+objeto_organizacion_id: plus-ultra-lineas-aereas
+cargo_o_rol: "Director ejecutivo (CEO)"
+desde: "2011-01-01"
+precision_desde: anio
+vigente: true
+relevancia_para_caso_ids: [plus-ultra]
+documentos_respaldo:
+  - documento_id: libertaddigital-detencion-plus-ultra-2025-12-11
+    pasaje: "Libertad Digital identifica a Roberto Roselli como director ejecutivo de Plus Ultra en la cobertura de las detenciones de la operación UDEF del 11 de diciembre de 2025."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

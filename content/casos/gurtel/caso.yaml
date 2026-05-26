@@ -1,0 +1,14 @@
+id: gurtel
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+nombre_mediatico: "Caso Gürtel"
+nombres_alternativos:
+  - "Trama Gürtel"
+  - "Operación Gürtel"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: sentencia_firme
+fecha_apertura: "2009-02-06"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

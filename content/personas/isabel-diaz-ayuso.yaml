@@ -1,0 +1,26 @@
+id: isabel-diaz-ayuso
+nombre_completo: "Isabel Díaz Ayuso"
+nombres_alternativos:
+  - "Ayuso"
+  - "Isabel Ayuso"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Presidenta de la Comunidad de Madrid"
+    organizacion_id: comunidad-de-madrid
+    desde: "2021-04-28"
+  - cargo: "Diputada en la Asamblea de Madrid"
+    desde: "2011-05-29"
+fecha_nacimiento: "1978-11-18"
+nacionalidad: "española"
+biografia_corta: |
+  Política española del Partido Popular. Presidenta de la Comunidad de
+  Madrid desde el 28 de abril de 2021, tras las elecciones autonómicas
+  del 4 de mayo de 2021 que otorgaron al PP la mayoría absoluta en la
+  Asamblea de Madrid. Previamente ejerció como diputada autonómica desde
+  2011. Su pareja sentimental, Alberto González Amador, está procesado
+  en el procedimiento penal seguido ante el Juzgado de Instrucción nº 19
+  de Madrid por presuntos delitos contra la Hacienda Pública. Isabel Díaz
+  Ayuso no tiene ningún rol procesal en esa causa.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

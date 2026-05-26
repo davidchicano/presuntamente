@@ -1,0 +1,395 @@
+# Cobertura mediática general — caso gonzalez-amador
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: gonzalez-amador
+fecha_rastreo: "2026-05-26"
+
+metodologia:
+  terminos_busqueda:
+    - "González Amador fraude fiscal"
+    - "novio de Ayuso fraude Hacienda"
+    - "Maxwell Cremona fraude fiscal"
+    - "Alberto González Amador pareja Ayuso"
+    - "González Amador juicio fiscal"
+  ventanas_temporales:
+    - desde: "2024-01-01"
+      hasta: "2024-12-31"
+      notas: >
+        Origen del caso: expediente AEAT (22 ene 2024), confusión sobre la filtración
+        del correo de la defensa de González Amador a la Fiscalía (2-3 mar 2024),
+        y primeras diligencias de instrucción. Declaraciones aplazadas durante 2024.
+    - desde: "2025-01-01"
+      hasta: "2025-12-31"
+      notas: >
+        Auto de cierre de instrucción y procesamiento (29 may 2025), apertura
+        de juicio oral (22 sep 2025), escritos de acusación de Fiscalía y PSOE/Más
+        Madrid (jul 2025), confirmación del procesamiento por la AP Madrid
+        (7 nov 2025).
+    - desde: "2026-01-01"
+      hasta: "2026-05-26"
+      notas: >
+        Fase intermedia: plazo de diez días para que la defensa responda a las
+        acusaciones (feb 2026). Caso conectado al del Fiscal General por la
+        firmeza de la condena de García Ortiz (feb 2026) y los recursos de
+        amparo al TC.
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - theobjective.com
+    - elespanol.com
+    - libertaddigital.com
+    - okdiario.com
+    - infolibre.es
+    - maldita.es
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o lead. Se incluyen
+    noticias, reportajes y análisis sobre los hitos del procedimiento (procesamiento,
+    acusaciones, apertura de juicio oral). Se incluyen piezas de verificación que
+    contextualizan la conexión con el caso del Fiscal General.
+  criterios_exclusion: >
+    Se excluyen piezas cuyo objeto central es el caso del Fiscal General, aunque
+    mencionen a González Amador como perjudicado; esas piezas pertenecen al corpus
+    del caso FGE. Se excluyen republicaciones de agencia sin valor añadido. Se
+    excluyen El País y El Mundo por no ser accesibles vía WebFetch en el entorno
+    del agente.
+  notas: >
+    Rastreo inicial v1 sobre tres ventanas temporales (ene 2024 — may 2026).
+    Este caso está factualmente conectado al caso FGE: la filtración del correo
+    de la defensa de González Amador a la Fiscalía da origen al caso FGE. Las
+    piezas que tratan ambos casos se asignan al corpus más relevante según el
+    objeto central de la pieza. Las url_archivo se rellenan con
+    scripts/archivar-n4.mjs (pnpm archive:catchup o hook pre-commit).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: ORIGEN E INSTRUCCIÓN (ene — dic 2024) ──────────────────────
+
+  - id: eldiario-exclusiva-fraude-gonzalez-amador-2024
+    url: "https://www.eldiario.es/politica/fraude-fiscal-pareja-ayuso-exclusiva-eldiario-18-meses-excusas-culpar-aparato_1_12623565.html"
+    medio_id: eldiario-es
+    titular: "El fraude fiscal de la pareja de Ayuso: una exclusiva de elDiario.es y 18 meses de excusas para culpar al aparato del Estado"
+    fecha_publicacion: "2024-10-15"
+    resumen: >
+      El Diario reconstruye la línea de tiempo del caso: la publicación de la
+      exclusiva periodística sobre el fraude fiscal de González Amador en marzo de
+      2024 y los 18 meses posteriores de respuestas del entorno de Ayuso intentando
+      atribuir el origen de la causa a una filtración política desde la Fiscalía.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-fiscal-niega-pacto-conformidad-2024
+    url: "https://www.publico.es/politica/tribunales/fiscal-asignado-caso-fraude-fiscal-novio-ayuso-niega-pidiera-pacto-conformidad.html"
+    medio_id: publico-es
+    titular: "El fiscal asignado al caso del novio de Ayuso niega que pidiera un pacto de conformidad"
+    fecha_publicacion: "2024-03-15"
+    resumen: >
+      El fiscal encargado del caso desmiente públicamente que la Fiscalía Provincial
+      de Madrid hubiera ofrecido un pacto de conformidad a González Amador. La
+      aclaración es relevante porque los hechos del caso FGE (filtración del correo)
+      derivaron de esa presunta confusión sobre quién propuso la conformidad.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-jueza-retrasa-declaracion-2024-11
+    url: "https://theobjective.com/espana/tribunales/2024-11-11/jueza-retrasa-juicio-novio-ayuso/"
+    medio_id: the-objective
+    titular: "La jueza suspende por tercera vez la declaración de la pareja de Isabel Díaz Ayuso"
+    fecha_publicacion: "2024-11-11"
+    resumen: >
+      La magistrada del Juzgado de Instrucción nº 19 de Madrid suspende por tercera
+      vez consecutiva la declaración de Alberto González Amador en calidad de
+      investigado. La reiterada suspensión alimenta el debate sobre el ritmo de la
+      instrucción.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-informe-hacienda-facturas-falsas-2024
+    url: "https://www.publico.es/politica/tribunales/prueba-cargo-novio-ayuso-informe-hacienda-evidencia-trama-facturas-falsas.html"
+    medio_id: publico-es
+    titular: "La prueba de cargo contra el novio de Ayuso: el informe de Hacienda que evidencia la trama de facturas falsas"
+    fecha_publicacion: "2024-06-01"
+    resumen: >
+      Público analiza el informe de la AEAT que constituye la prueba de cargo central
+      del caso: González Amador habría deducido como gastos de Maxwell Cremona una
+      comisión a una empresa mexicana por negocios que nunca existieron, y trece
+      facturas falsas emitidas por empresas sin recursos de una localidad de Sevilla.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-jueza-tumba-recurso-evitar-juicio-2024
+    url: "https://www.eldiario.es/politica/jueza-tumba-pareja-ayuso-evitar-juicio-fraude-fiscal_1_12489214.html"
+    medio_id: eldiario-es
+    titular: "La jueza tumba el intento de la pareja de Ayuso de evitar el juicio por fraude fiscal"
+    fecha_publicacion: "2024-09-01"
+    resumen: >
+      La jueza instructora Inmaculada Iglesias rechaza el recurso de González Amador
+      que pretendía archivar la causa argumentando que el pago de la deuda tributaria
+      a Hacienda extinguiría la responsabilidad penal, confirmando que la instrucción
+      continúa.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  # ── VENTANA 2: PROCESAMIENTO Y APERTURA JUICIO ORAL (ene — dic 2025) ───────
+
+  - id: eldiario-jueza-envia-banquillo-gonzalez-amador-2025
+    url: "https://www.eldiario.es/politica/jueza-envia-banquillo-pareja-ayuso-fraude-fiscal_1_12622797.html"
+    medio_id: eldiario-es
+    titular: "La jueza envía al banquillo a la pareja de Ayuso por defraudar 350.000 euros con facturas falsas"
+    fecha_publicacion: "2025-05-29"
+    resumen: >
+      La magistrada Inmaculada Iglesias del Juzgado de Instrucción nº 19 de Madrid
+      dicta el auto de cierre de instrucción y propone el procesamiento de González
+      Amador y otros cuatro investigados por presuntos delitos contra la Hacienda
+      Pública y falsedad documental. La cuantía del presunto fraude se cifra en
+      350.951 euros.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: libertad-digital-jueza-procesa-novio-ayuso-2025
+    url: "https://www.libertaddigital.com/espana/2025-05-29/la-juez-procesa-al-novio-de-ayuso-en-la-causa-por-fraude-fiscal-y-falsificacion-de-documentos-7259701/"
+    medio_id: libertad-digital
+    titular: "La juez procesa al novio de Ayuso en la causa por fraude fiscal y falsificación de documentos"
+    fecha_publicacion: "2025-05-29"
+    resumen: >
+      Libertad Digital recoge el procesamiento de González Amador por el auto del
+      29 de mayo de 2025 del Juzgado de Instrucción nº 19 de Madrid. Pieza sobre el
+      mismo hito que la de El Diario.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: eldiario-jueza-envia-banquillo-gonzalez-amador-2025
+    notas: "Pieza de Libertad Digital sobre el mismo hito; orientación editorial distinta."
+
+  - id: eldiario-diez-hechos-probados-gonzalez-amador-2025
+    url: "https://www.eldiario.es/politica/enganos-pareja-ayuso-procesado-delito-fiscal-diez-hechos-probados_129_12676110.html"
+    medio_id: eldiario-es
+    titular: "Los engaños de la pareja de Ayuso, procesado por delito fiscal, en diez hechos probados"
+    fecha_publicacion: "2025-06-10"
+    resumen: >
+      El Diario expone en diez puntos los hechos que el auto de procesamiento
+      del Juzgado de Instrucción nº 19 considera suficientemente acreditados
+      para llevar a González Amador al banquillo: facturas falsas, una empresa
+      pantalla mexicana y el desvío de gastos a Maxwell Cremona.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: elespanol-fiscalia-pide-3-anos-9-meses-2025
+    url: "https://www.elespanol.com/espana/tribunales/20250716/fiscalia-pide-anos-meses-carcel-pareja-ayuso-fraude-fiscal/1003743851293_0.html"
+    medio_id: el-espanol
+    titular: "La Fiscalía pide tres años y 9 meses de cárcel para la pareja de Ayuso por fraude fiscal"
+    fecha_publicacion: "2025-07-16"
+    resumen: >
+      La Fiscalía Provincial de Madrid presenta su escrito de acusación solicitando
+      tres años y nueve meses de prisión para González Amador por dos delitos contra
+      la Hacienda Pública en concurso medial con falsedad en documento mercantil.
+      La Abogacía del Estado solicita la misma pena.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-apertura-juicio-oral-gonzalez-amador-2025-09-22
+    url: "https://theobjective.com/espana/tribunales/2025-09-22/juez-juicio-novio-ayuso-fraude-hacienda/"
+    medio_id: the-objective
+    titular: "La juez abre juicio oral contra el novio de Ayuso por fraude a Hacienda"
+    fecha_publicacion: "2025-09-22"
+    resumen: >
+      El Juzgado de Instrucción nº 19 de Madrid acuerda la apertura del juicio oral
+      contra Alberto González Amador y otros cuatro investigados por los presuntos
+      delitos de fraude fiscal, falsedad documental, delito contable y pertenencia
+      a grupo criminal.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: elespanol-juicio-gonzalez-amador-cuatro-delitos-2025-09
+    url: "https://www.elespanol.com/madrid/comunidad/20250922/juez-manda-juicio-gonzalez-amador-novio-ayuso-fraude-fiscal-organizacion-criminal/1003743935848_0.html"
+    medio_id: el-espanol
+    titular: "La juez manda a juicio a González Amador, novio de Ayuso, por fraude fiscal y organización criminal"
+    fecha_publicacion: "2025-09-22"
+    resumen: >
+      El Español recoge el auto de apertura del juicio oral contra González Amador
+      por cuatro delitos: dos contra la Hacienda Pública, falsedad en documento
+      mercantil y pertenencia a organización criminal.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: theobjective-apertura-juicio-oral-gonzalez-amador-2025-09-22
+    notas: "Pieza de El Español sobre el mismo hito; orientación editorial distinta."
+
+  - id: infolibre-juicio-oral-gonzalez-amador-organizacion-criminal-2025
+    url: "https://www.infolibre.es/politica/juicio-oral-gonzalez-amador-delito-fiscal-contable-pertenencia-grupo-criminal_1_2067231.html"
+    medio_id: infolibre
+    titular: "Juicio oral a González Amador por delito fiscal, contable y pertenencia a grupo criminal"
+    fecha_publicacion: "2025-09-22"
+    resumen: >
+      Infolibre recoge la apertura del juicio oral destacando los delitos de
+      pertenencia a grupo criminal y delito contable añadidos por el auto de
+      apertura, que amplían la causa más allá del fraude fiscal y la falsedad
+      documental.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: theobjective-apertura-juicio-oral-gonzalez-amador-2025-09-22
+    notas: "Pieza de Infolibre sobre el mismo hito."
+
+  - id: theobjective-ap-madrid-confirma-procesamiento-2025-11-07
+    url: "https://theobjective.com/espana/tribunales/2025-11-07/novio-ayuso-banquillo-fraude-fiscal/"
+    medio_id: the-objective
+    titular: "El novio de Ayuso se sentará en el banquillo por fraude fiscal y falsificación de documentos"
+    fecha_publicacion: "2025-11-07"
+    resumen: >
+      La Audiencia Provincial de Madrid (Sección 3ª) confirma el procesamiento de
+      González Amador por auto del 7 de noviembre de 2025, desestimando el recurso
+      de apelación de las defensas. La vía al juicio oral queda despejada.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: infolibre-ap-madrid-confirma-procesamiento-2025
+    url: "https://www.infolibre.es/politica/audiencia-madrid-confirma-procesamiento-novio-ayuso-fraude-fiscal_1_2094154.html"
+    medio_id: infolibre
+    titular: "La Audiencia de Madrid confirma el procesamiento del novio de Ayuso por fraude fiscal"
+    fecha_publicacion: "2025-11-07"
+    resumen: >
+      Infolibre recoge la confirmación del procesamiento por parte de la AP Madrid,
+      cuyo auto desestima el recurso de apelación presentado por las defensas contra
+      el auto de apertura del juicio oral.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: theobjective-ap-madrid-confirma-procesamiento-2025-11-07
+    notas: "Pieza de Infolibre sobre el mismo hito."
+
+  - id: eldiario-ap-madrid-confirma-procesamiento-2025
+    url: "https://www.eldiario.es/politica/audiencia-madrid-confirma-procesamiento-pareja-ayuso-caso-fraude-fiscal_1_12750060.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia de Madrid confirma que la pareja de Ayuso se sentará en el banquillo por fraude fiscal y falsificación de documentos"
+    fecha_publicacion: "2025-11-07"
+    resumen: >
+      El Diario recoge la resolución de la AP Madrid que ratifica el auto de apertura
+      del juicio oral y el procesamiento de González Amador, confirmando que el
+      expresidente de la plataforma de mediación empresarial se enfrentará al juicio
+      oral por los cinco delitos inicialmente imputados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: theobjective-ap-madrid-confirma-procesamiento-2025-11-07
+    notas: "Pieza de El Diario sobre el mismo hito; perspectiva editorial diferente."
+
+  - id: publico-condena-fge-afecta-dos-causas-novio-ayuso-2025
+    url: "https://www.publico.es/politica/tribunales/afecta-condena-fiscal-general-dos-causas-judiciales-novio-ayuso.html"
+    medio_id: publico-es
+    titular: "¿Cómo afecta la condena del fiscal general a las dos causas judiciales del novio de Ayuso?"
+    fecha_publicacion: "2025-12-10"
+    resumen: >
+      Análisis de las consecuencias que la condena del Fiscal General García Ortiz
+      por el Tribunal Supremo puede tener sobre los dos procedimientos judiciales
+      abiertos contra González Amador: el caso del fraude fiscal y una causa conexa
+      por supuesta corrupción con Quirón Prevención.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: maldita-cronologia-fge-gonzalez-amador-2025
+    url: "https://maldita.es/malditateexplica/20251209/cronologia-fiscal-general-gonzalez-amador-mar/"
+    medio_id: maldita-es
+    titular: "De MAR y González Amador a García Ortiz: cronología del caso contra el fiscal general del Estado"
+    fecha_publicacion: "2025-12-09"
+    resumen: >
+      Maldita.es publica una cronología completa que conecta el origen del caso
+      de González Amador (fraude fiscal) con el caso del Fiscal General (filtración
+      del correo de su abogado) y los intentos del entorno de Ayuso de convertir
+      la causa fiscal en un caso de persecución política.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: okdiario-jueza-procesa-novio-pese-acuerdo-2025
+    url: "https://okdiario.com/espana/juez-procesa-novio-ayuso-pese-acuerdo-fiscalia-saldar-deuda-hacienda-14849558"
+    medio_id: okdiario
+    titular: "La juez procesa a Alberto González Amador, novio de Ayuso, pese a su acuerdo con la Fiscalía para saldar su deuda con Hacienda"
+    fecha_publicacion: "2025-05-29"
+    resumen: >
+      Okdiario destaca que la jueza procesa a González Amador a pesar de que el
+      investigado había llegado a un acuerdo con la Fiscalía para saldar su deuda
+      tributaria con Hacienda y negociado un posible acuerdo de conformidad. La
+      pieza subraya que el pago de la deuda no extingue la responsabilidad penal.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  # ── VENTANA 3: FASE INTERMEDIA (ene — may 2026) ────────────────────────────
+
+  - id: publico-juez-diez-dias-novio-ayuso-2026
+    url: "https://www.publico.es/politica/tribunales/juez-da-diez-dias-novio-ayuso-defenderse-acusaciones-juicio-fraude-fiscal.html"
+    medio_id: publico-es
+    titular: "El juez da diez días al novio de Ayuso para defenderse de las acusaciones ante el juicio por fraude fiscal"
+    fecha_publicacion: "2026-02-01"
+    resumen: >
+      El Juzgado de Instrucción nº 19 de Madrid concede a González Amador y al
+      resto de los acusados un plazo de diez días para presentar sus escritos de
+      defensa ante las acusaciones, avanzando así en la fase intermedia previa al
+      señalamiento del juicio oral.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: libertad-digital-gonzalez-amador-sentencia-fge-2025-12
+    url: "https://www.libertaddigital.com/espana/2025-12-10/puede-gonzalez-amador-invocar-la-sentencia-sobre-el-fiscal-general-para-tratar-de-anular-su-juicio-por-fraude-fiscal-7331281/"
+    medio_id: libertad-digital
+    titular: "¿Puede González Amador invocar la sentencia sobre el fiscal general para tratar de anular su juicio por fraude fiscal?"
+    fecha_publicacion: "2025-12-10"
+    resumen: >
+      Análisis jurídico sobre si la condena del Fiscal General García Ortiz por
+      revelación de secretos puede ser invocada por González Amador como causa de
+      nulidad en su propio proceso por fraude fiscal, dado que el origen de la causa
+      está vinculado a la filtración del correo de su abogado.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-caso-novio-admitio-fraude-2025
+    url: "https://www.eldiario.es/politica/caso-novio-ayuso-admitir-fraude-hacienda-pactar-fiscal-evitar-carcel-negar-delito_129_13006696.html"
+    medio_id: eldiario-es
+    titular: "'Caso novio de Ayuso': de admitir el fraude ante Hacienda y pactar con el fiscal para evitar la cárcel a negar el delito"
+    fecha_publicacion: "2026-01-15"
+    resumen: >
+      Reconstructión de la evolución procesal del caso: González Amador inicialmente
+      admitió el fraude ante inspectores de Hacienda (oct 2023) y negoció una
+      conformidad con la Fiscalía (jun 2024), pero tras el escándalo de la filtración
+      y el procesamiento formal, la defensa rechaza los cargos.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"

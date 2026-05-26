@@ -1,0 +1,23 @@
+id: boe-rd-nombramiento-yolanda-diaz-ministra-trabajo-2020-01-14
+titulo: "BOE — Real Decreto 8/2020, de 12 de enero, por el que se nombra a los Ministros del Gobierno (incluye nombramiento de Ministra de Trabajo y Economía Social a doña Yolanda Díaz Pérez)"
+tipo: boletin_oficial
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Disposición oficial publicada en el Boletín Oficial del Estado el 13 de
+  enero de 2020, código BOE-A-2020-416. Firmado por S.M. el Rey Felipe VI.
+  Fuente primaria directa (N1): órgano emisor es la Jefatura del Estado.
+  El RD 8/2020 es el nombramiento conjunto de todos los ministros del
+  primer gobierno de coalición PSOE-Unidas Podemos en la XIV Legislatura,
+  e incluye el nombramiento de Yolanda Díaz como Ministra de Trabajo y
+  Economía Social. PDF íntegro descargado a `/public/documentos/_globales/`
+  con `hash_sha256` verificado contra el mirror oficial.
+productor_organizacion_id: jefatura-del-estado
+fecha_publicacion: "2020-01-13"
+fecha_documento: "2020-01-12"
+estado_acceso: publico
+idioma: es
+url_canonica: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2020-416"
+ruta_local: "/documentos/_globales/boe-rd-nombramiento-yolanda-diaz-ministra-trabajo-2020-01-14.pdf"
+hash_sha256: "fa6ba6e719bc513e71e32ae4a24a3c7f09e89f1b56a69d75cc6036352e548cdb"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

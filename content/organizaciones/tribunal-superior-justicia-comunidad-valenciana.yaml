@@ -1,0 +1,17 @@
+id: tribunal-superior-justicia-comunidad-valenciana
+nombre: "Tribunal Superior de Justicia de la Comunidad Valenciana"
+nombres_alternativos:
+  - "TSJ Comunidad Valenciana"
+  - "TSJCV"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional superior en la Comunidad Valenciana para todos
+  los órdenes salvo el constitucional, con sede en Valencia.
+jurisdiccion: penal
+ambito_territorial: autonomico
+localidad: "Valencia"
+provincia: "Valencia"
+comunidad_autonoma: "Comunidad Valenciana"
+organo_superior_id: tribunal-supremo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

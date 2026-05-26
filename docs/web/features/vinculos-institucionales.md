@@ -23,7 +23,7 @@ Entidad nueva `VinculoInstitucional` con schema en [`schemas/vinculo-institucion
 - **Fechas**: `desde` obligatorio, `hasta` opcional (ausente → vigente). Precisión declarable por separado (`dia`/`mes`/`anio`) para evitar fingir precisión.
 - **`gobierno_o_legislatura`**: obligatorio cuando `naturaleza in [nombramiento_por_gobierno, cargo_publico_designado]` para anclar la responsabilidad política al gobierno concreto.
 - **`notas`**: obligatorio cuando `naturaleza in [vinculo_familiar_publico, vinculo_economico_documentado, vinculo_profesional_documentado]` para justificar relevancia editorial y evitar inflación.
-- **`relevancia_para_caso_ids[]`**: casos del inventario para los que el vínculo es relevante. Vacío significa "vínculo documentado pero no aún anclado a un caso".
+- **`relevancia_para_caso_ids[]`**: casos del inventario para los que el vínculo es relevante. Vacío significa "vínculo documentado pero no aún anclado a un caso" y es legal por defecto del schema. Cubre vínculos que pertenecen a la red institucional pública aunque no toquen todavía ningún procedimiento del inventario (ej. militancia activa de una figura pública en su partido, dirección de una empresa pública). La skill `/documentar-vinculos` modo persona/organización los crea sistemáticamente.
 
 ### Storage
 
@@ -31,7 +31,13 @@ Entidad nueva `VinculoInstitucional` con schema en [`schemas/vinculo-institucion
 
 ### Skill productora
 
-[`/documentar-vinculos <slug-caso>`](../../../.agents/skills/documentar-vinculos/SKILL.md) v1 — pensada para correr en sub-agente paralelo en un git worktree dedicado, lanzada por el maintainer cuando quiera ampliar el contexto institucional de un caso. La skill recorre las personas con rol y las organizaciones implicadas del caso, propone vínculos con su naturaleza correspondiente, exige documento de respaldo y aplica guardarraíles editoriales (verbos prohibidos del P-09, minimización en vínculos familiares, exigencia de documentación en vínculos económicos).
+[`/documentar-vinculos <slug>`](../../../.agents/skills/documentar-vinculos/SKILL.md) v2 — modal según el tipo del slug:
+
+- **Modo caso** (original) — `/documentar-vinculos plus-ultra`. Recorre personas con rol y organizaciones implicadas del caso, propone vínculos con `relevancia_para_caso_ids` incluyendo el caso.
+- **Modo persona** — `/documentar-vinculos isabel-diaz-ayuso`. Escanea todas las organizaciones del repo (partidos, administraciones, empresas, órganos) y propone vínculos persona→organización documentables (cargo público electo o designado, orgánico de partido, judicial, directivo, académico). `relevancia_para_caso_ids` queda vacío si el vínculo no roza ningún caso del inventario, o se rellena con los casos donde la persona aparezca.
+- **Modo organización** — `/documentar-vinculos partido-popular`. Escanea todas las personas del repo y propone vínculos para sus dirigentes históricos, militantes con cargo orgánico o directivos cuyo cargo en esa organización esté públicamente documentado.
+
+Pensada para correr en sub-agente paralelo en un git worktree dedicado, lanzada por el maintainer cuando quiera ampliar el contexto institucional de un caso, completar la red de relaciones de una figura pública recién modelada o cubrir el entorno de una organización. Las tres ramas comparten guardarraíles: exigen documento de respaldo (≥1), aplican P-09 (verbos prohibidos en `descripcion` y `notas`), minimizan vínculos familiares, exigen documentación en económicos/profesionales.
 
 ### Próximo paso
 
@@ -43,7 +49,9 @@ Una vez existan `VinculoInstitucional` poblados en al menos un caso piloto, el r
 
 ## Estado actual
 
-**Primer caso poblado + UI entregada el 2026-05-26.** Schema canónico + collection en `content/vinculos/` + skill `/documentar-vinculos` v1 + 16 vínculos institucionales de `begona-gomez`. La ficha de caso muestra las relaciones dentro de las cards de personas y organizaciones implicadas; las fichas de Persona y Organización muestran una lista compacta de vínculos donde la entidad aparece, separada de la trayectoria o rol procesal.
+**Schema canónico + collection en `content/vinculos/` + skill `/documentar-vinculos` v2** (modal: caso · persona · organización). UI integrada en ficha de caso (relaciones dentro de las cards de personas y organizaciones implicadas), Persona y Organización (lista compacta de vínculos donde la entidad aparece), bloque «Instituciones alcanzadas» en cabecera de caso y columna derivada en /casos.
+
+**Corpus actual (2026-05-26 tarde):** 6 casos publicables con vínculos institucionales poblados — `begona-gomez` (16), `plus-ultra` (7), `kitchen` (7), `lezo` (5), `fiscal-general-del-estado` (5), `gonzalez-amador` (6). Faltan vínculos persona↔organización generales no atados a caso (militancia activa, dirigencia histórica, cargos académicos): la pasada en modo persona/organización con la skill v2 está pendiente de ejecutarse.
 
 La biblioteca del caso incluye también los documentos que respaldan vínculos institucionales. En UI el tipo de vínculo se renderiza con [`SourceLinkBadge`](../../../src/components/SourceLinkBadge.astro): badge funcional distinto de los badges de estado/categoría (borde izquierdo acento + tipografía mono), con flecha de salida ↗ al final. El badge es clicable y abre el documento de respaldo vía [`documentoRespaldoHref`](../../../src/lib/documentos.ts) — copia local, URL canónica o archive.org, en ese orden; si ninguna existe, cae en ancla `#doc-<id>` de la biblioteca del caso o `/biblioteca#doc-<id>` en ficha de Persona/Organización.
 
@@ -62,6 +70,9 @@ En las cards de persona/organización del caso, las relaciones van separadas del
 - **Naturalezas `*_en_caso`:** el enum incluye `acusacion_institucional_en_caso`, `perjudicado_institucional_en_caso` y `entidad_investigada_en_caso` para modelar quién actúa o resulta alcanzado institucionalmente sin confundirlo con imputación procesal directa. La skill `/documentar-vinculos` las recorre explícitamente al auditar organizaciones del caso. Precedente en `begona-gomez`: UCM como perjudicada, varias acusaciones populares (Manos Limpias, Vox, HazteOír…).
 - **Vista agregada "instituciones alcanzadas" entregada el 2026-05-26 (tarde).** Bloque dentro de la sección «Estado procesal actual» de PgCasoDetalle con tres familias en cajas separadas (border-left por familia, fondo blanco): *Investigadas como persona jurídica*, *Perjudicadas institucionales*, *Acusación popular constituida*. Derivado automáticamente de `VinculoInstitucional` con `relevancia_para_caso_ids` incluyendo el caso. En el listado /casos se proyecta a una columna **«Organización afectada»** con prioridad investigada → perjudicada → acusación y `RolBadge` para el rol procesal equivalente.
 - **Listado inverso "Personas relacionadas" en PgOrganizacionDetalle (2026-05-26 tarde).** Sección que lista personas con cargo o nombramiento documentado en la organización (`objeto_organizacion_id === org` + naturalezas de cargo). Hermana de la lista de vínculos de Persona, sin documentos para no duplicar — el detalle vive en «Relaciones institucionales documentadas».
+- **Skill modal v2 (2026-05-26 tarde, post-sprint).** La v1 sólo cubría vínculos que rozan a un caso, lo que dejaba huecos en la red institucional global: personas con militancia evidente (Ayuso → PP, Sánchez → PSOE) sin vínculo modelado porque ningún caso lo había necesitado en su contexto procesal específico. v2 añade dos modalidades hermanas — modo persona (escaneo cruzado contra todas las organizaciones del repo) y modo organización (escaneo cruzado inverso contra todas las personas). Los vínculos así creados quedan con `relevancia_para_caso_ids: []` si no rozan ningún caso, lo cual es legal por defecto del schema. La motivación es alimentar el grafo global con la red institucional pública real, no sólo con la fracción que aparece en procedimientos del inventario.
+- **Modelo intacto.** v2 no requiere cambios en el schema (el campo `relevancia_para_caso_ids[]` con default `[]` ya lo permitía). Sólo la skill ramifica el flujo. Misma exigencia de `documentos_respaldo` ≥ 1, mismo enum de `naturaleza`, mismos guardarraíles de presunción de inocencia y minimización.
+- **No infiere relaciones transitivas.** Si Ayuso es presidenta de Madrid (PP) y un dirigente del PP estuvo en el gobierno de Madrid, NO se infiere relación entre ambas personas vía partido común. Sólo se documenta cada vínculo persona→organización con su respaldo propio. Esto evita ruido en el grafo y mantiene la trazabilidad documental persona-a-persona.
 
 ## Ideas futuras
 
@@ -93,3 +104,5 @@ En las cards de persona/organización del caso, las relaciones van separadas del
 - [x] Diseñar el render en UI una vez exista corpus. **Entregado 2026-05-26**: relaciones embebidas en personas/organizaciones de la ficha de caso + vista compacta en Persona/Organización.
 - [x] Diseñar bloque agregado "instituciones alcanzadas" en ficha de caso. **Entregado 2026-05-26 (tarde):** tres cajas (investigadas / perjudicadas / acusación popular) en cabecera de Estado procesal + columna derivada en /casos.
 - [x] Diseñar listado inverso de Personas en PgOrganizacionDetalle. **Entregado 2026-05-26 (tarde):** nueva sección compacta con cargo + periodo + naturaleza.
+- [x] Extender la skill `/documentar-vinculos` a modo persona y modo organización. **Entregado 2026-05-26 (tarde):** skill v2 modal. Sin cambios en schema (el modelo ya lo permitía vía `relevancia_para_caso_ids: []`).
+- [ ] **Primera pasada en modo persona/organización** sobre figuras públicas del repo aún sin militancia / cargo orgánico modelado (Ayuso → PP, Sánchez → PSOE, Feijóo → PP, etc.). Lanzar sub-agente Sonnet con un listado de personas + organizaciones a recorrer. Output esperado: ~8-20 vínculos nuevos en `content/vinculos/` con `relevancia_para_caso_ids: []` o anclado a casos del repo donde la persona aparezca.

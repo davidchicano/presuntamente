@@ -26,5 +26,13 @@ orientacion_editorial_declarada:
     y con los valores cívicos de la solidaridad, la igualdad y la libertad.
   url: "https://www.infolibre.es/nuestros-principios/"
 
+grupo_editorial:
+  nombre: "Ediciones Prensa Libre S.L."
+  rol: matriz
+  cita: >-
+    Razón social: EDICIONES PRENSA LIBRE SL NIF/CIF: B-65894859 Domicilio
+    social: Calle Fuencarral, 121, 1º izquierda, de Madrid, España.
+  url: "https://www.infolibre.es/aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

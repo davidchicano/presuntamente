@@ -1,0 +1,24 @@
+id: congreso-de-los-diputados
+nombre: "Congreso de los Diputados"
+nombres_alternativos:
+  - "Cámara Baja"
+  - "Cámara de los Diputados"
+tipo: organismo_publico
+siglas: "CD"
+descripcion_corta: |
+  Cámara baja de las Cortes Generales de España, órgano constitucional
+  que representa al pueblo español según los artículos 66-80 de la
+  Constitución Española de 1978. Se compone de 350 diputados y
+  diputadas elegidos mediante sufragio universal en 52
+  circunscripciones provinciales. Tiene sede en el Palacio del
+  Congreso de los Diputados, en la plaza de las Cortes (carrera de
+  San Jerónimo, Madrid). Junto al Senado, ejerce el poder legislativo
+  del Estado, aprueba los Presupuestos Generales del Estado, controla
+  la acción del Gobierno y ostenta la prerrogativa de otorgar o
+  retirar la confianza al Presidente del Gobierno.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.congreso.es"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

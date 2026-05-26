@@ -1,0 +1,19 @@
+id: juzgado-central-instruccion-5
+nombre: "Juzgado Central de Instrucción nº 5"
+nombres_alternativos:
+  - "JCI nº 5"
+  - "JCI 5 AN"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado Central de Instrucción nº 5 de la Audiencia Nacional. Tramita
+  diligencias previas en materia penal con ámbito nacional. Ha instruido
+  causas relevantes como el caso Gürtel (primera época), el caso Bárcenas
+  (caja B del PP), el Forum Filatélico y el caso 3% de Cataluña.
+jurisdiccion: penal
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+organo_superior_id: audiencia-nacional
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

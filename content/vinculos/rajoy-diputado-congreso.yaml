@@ -1,0 +1,17 @@
+id: rajoy-diputado-congreso
+naturaleza: cargo_publico_electo
+descripcion: "Diputado en el Congreso de los Diputados por la circunscripción de Pontevedra durante distintas legislaturas entre 1986 y 2019."
+sujeto_persona_id: mariano-rajoy
+objeto_organizacion_id: congreso-de-los-diputados
+cargo_o_rol: "Diputado en el Congreso de los Diputados por Pontevedra"
+desde: "1986-07-15"
+hasta: "2019-05-28"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: congreso-lista-diputados-historial
+    pasaje: "Buscador oficial del Congreso. Rajoy aparece como Diputado por Pontevedra en las legislaturas III a XII (1986-2019)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,14 @@
+id: palau-musica
+nombre_oficial: "Procedimiento Abreviado — Audiencia Provincial de Barcelona (caso Palau de la Música Catalana)"
+nombre_mediatico: "Caso Palau de la Música"
+nombres_alternativos:
+  - "Caso Palau"
+  - "Palau de la Música Catalana"
+
+organo_judicial_id: audiencia-provincial-barcelona
+fase_actual: sentencia_firme
+fecha_apertura: "2009-07-01"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

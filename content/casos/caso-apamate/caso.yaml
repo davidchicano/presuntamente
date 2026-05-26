@@ -1,0 +1,14 @@
+id: caso-apamate
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 2 de la Audiencia Nacional (financiación ilegal PSOE desde Venezuela)"
+nombre_mediatico: "Caso Apamate"
+nombres_alternativos:
+  - "Caso Financiación Ilegal PSOE (Venezuela)"
+  - "Financiación ilegal PSOE Venezuela"
+
+organo_judicial_id: juzgado-central-instruccion-2
+fase_actual: instruccion
+fecha_apertura: "2025-10-31"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

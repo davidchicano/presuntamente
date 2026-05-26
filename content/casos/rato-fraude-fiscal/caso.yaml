@@ -1,0 +1,14 @@
+id: rato-fraude-fiscal
+nombre_oficial: "Procedimiento Penal — Tribunal Supremo (Sala Segunda) — Recurso de casación contra condena de la Audiencia Provincial de Madrid (caso Rodrigo Rato, fraude fiscal y blanqueo)"
+nombre_mediatico: "Caso Rato (fraude fiscal)"
+nombres_alternativos:
+  - "Caso Rodrigo Rato"
+  - "Operación Osadía"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: recurso
+fecha_apertura: "2015-04-16"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

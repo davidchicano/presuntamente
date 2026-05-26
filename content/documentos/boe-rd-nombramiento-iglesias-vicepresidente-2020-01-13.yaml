@@ -1,0 +1,22 @@
+id: boe-rd-nombramiento-iglesias-vicepresidente-2020-01-13
+titulo: "BOE — Real Decreto 5/2020, de 12 de enero, por el que se nombra Vicepresidente Segundo del Gobierno y Ministro de Derechos Sociales y Agenda 2030 a don Pablo Iglesias Turrión"
+tipo: boletin_oficial
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Disposición oficial publicada en el Boletín Oficial del Estado el 13 de
+  enero de 2020, código BOE-A-2020-413. Firmado por S.M. el Rey Felipe VI.
+  Fuente primaria directa (N1): órgano emisor es la Jefatura del Estado.
+  El nombramiento se produce tras la investidura de Pedro Sánchez al
+  frente del primer gobierno de coalición PSOE-Unidas Podemos en la XIV
+  Legislatura. PDF íntegro descargado a `/public/documentos/_globales/`
+  con `hash_sha256` verificado contra el mirror oficial.
+productor_organizacion_id: jefatura-del-estado
+fecha_publicacion: "2020-01-13"
+fecha_documento: "2020-01-12"
+estado_acceso: publico
+idioma: es
+url_canonica: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2020-413"
+ruta_local: "/documentos/_globales/boe-rd-nombramiento-iglesias-vicepresidente-2020-01-13.pdf"
+hash_sha256: "a417d0ac0d270b88eb8b95020ddcd349ddfb86d80324bc0cd6f556f364fba229"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

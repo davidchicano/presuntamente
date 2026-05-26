@@ -24,5 +24,14 @@ orientacion_editorial_declarada:
     en el centro la libertad y dignidad de la persona y el derecho a la vida.
   url: "https://www.eldebate.com/quienes-somos.html"
 
+grupo_editorial:
+  nombre: "Edicavp (ACdP)"
+  rol: matriz
+  cita: >-
+    Nuestro periódico [...] impulsado por la Asociación Católica de Propagandistas.
+    El presidente de su Consejo de Administración es Alfonso Bullón de Mendoza y
+    Gómez de Valugera.
+  url: "https://www.eldebate.com/quienes-somos.html"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

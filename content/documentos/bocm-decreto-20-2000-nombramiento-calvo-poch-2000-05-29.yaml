@@ -1,0 +1,30 @@
+id: bocm-decreto-20-2000-nombramiento-calvo-poch-2000-05-29
+titulo: "BOCM — Decreto 20/2000, de 26 de mayo, del Presidente de la Comunidad, por el que se nombra Consejero de Medio Ambiente de la Comunidad de Madrid a don Pedro Luis Calvo Poch"
+tipo: boletin_oficial
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Disposición oficial publicada en el Boletín Oficial de la Comunidad de
+  Madrid (BOCM) nº 126, de 29 de mayo de 2000, anuncio nº 1618, código
+  interno (03/13.248/00). Firmado por el Presidente de la Comunidad de
+  Madrid, Alberto Ruiz-Gallardón. Fuente primaria directa (N1): órgano
+  emisor es la Presidencia de la Comunidad de Madrid. Disposición textual
+  literal (verificada vía pdftotext sobre el BOCM íntegro descargado):
+  «DECRETO 20/2000, de 26 de mayo, del Presidente de la Comunidad, por el
+  que se nombra al excelentísimo señor don Pedro Luis Calvo Poch, Consejero
+  de Medio Ambiente. [...] DISPONGO: Nombrar al excelentísimo señor don
+  Pedro Luis Calvo Poch, Consejero de Medio Ambiente de la Comunidad de
+  Madrid. Dado en Madrid, a 26 de mayo de 2000. El Presidente,
+  ALBERTO RUIZ-GALLARDÓN». El decreto figura en la página 17 del boletín
+  íntegro (80 páginas). PDF descargado a `/public/documentos/lezo/` con
+  `hash_sha256` verificado contra el mirror oficial.
+productor_organizacion_id: presidencia-comunidad-de-madrid
+fecha_publicacion: "2000-05-29"
+fecha_documento: "2000-05-26"
+estado_acceso: publico
+idioma: es
+url_canonica: "https://www.bocm.es/boletin/CM_Boletin_BOCM/2000/05/29/12600.PDF"
+ruta_local: "/documentos/lezo/bocm-decreto-20-2000-nombramiento-calvo-poch-2000-05-29.pdf"
+hash_sha256: "fe20d37cebbf24fd526892150cf907e075d18af087ba69ca8a19f836cd50b2c1"
+caso_principal_id: lezo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

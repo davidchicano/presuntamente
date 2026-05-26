@@ -1,0 +1,16 @@
+id: yolanda-diaz-vicepresidenta-gobierno
+naturaleza: cargo_publico_designado
+descripcion: "Vicepresidenta Segunda del Gobierno de España desde el 12 de julio de 2021, en sustitución de Pablo Iglesias. Mantiene el cargo en el Gobierno Sánchez III constituido tras las elecciones generales del 23 de julio de 2023."
+sujeto_persona_id: yolanda-diaz
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Vicepresidenta Segunda del Gobierno de España"
+desde: "2021-07-12"
+precision_desde: dia
+vigente: true
+gobierno_o_legislatura: "XIV y XV Legislaturas (Gobierno Sánchez II y III)"
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: boe-rd738-2021-nombramiento-yolanda-diaz-vicepresidenta
+    pasaje: "Real Decreto 738/2021, de 24 de agosto: nombramiento de Yolanda Díaz Pérez como Vicepresidenta Segunda del Gobierno y Ministra de Trabajo y Economía Social, publicado en BOE nº 204 del 25 de agosto de 2021."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

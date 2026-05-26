@@ -1,0 +1,14 @@
+id: taula
+nombre_oficial: "Diligencias Previas — Juzgado de Instrucción nº 18 de Valencia (caso Taula/Imelsa)"
+nombre_mediatico: "Caso Taula"
+nombres_alternativos:
+  - "Caso Imelsa"
+  - "Trama del PP de Valencia"
+
+organo_judicial_id: juzgado-instruccion-18-valencia
+fase_actual: juicio_oral
+fecha_apertura: "2016-01-01"
+
+origen_denuncia: oficio_judicial
+
+estado_publicacion: pendiente

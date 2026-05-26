@@ -1,0 +1,45 @@
+id: mariano-rajoy
+nombre_completo: "Mariano Rajoy Brey"
+nombres_alternativos:
+  - "Rajoy"
+  - "Mariano Rajoy"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Presidente del Gobierno de España"
+    organizacion_id: presidencia-del-gobierno
+    desde: "2011-12-21"
+    hasta: "2018-06-02"
+  - cargo: "Presidente Nacional del Partido Popular"
+    organizacion_id: partido-popular
+    desde: "2004-10-02"
+    hasta: "2018-07-21"
+  - cargo: "Diputado en el Congreso de los Diputados"
+    organizacion_id: congreso-de-los-diputados
+    desde: "1986-07-15"
+    hasta: "2019-05-28"
+  - cargo: "Ministro de la Presidencia"
+    desde: "2000-04-28"
+    hasta: "2002-07-10"
+  - cargo: "Ministro del Interior"
+    desde: "1996-05-06"
+    hasta: "2000-04-28"
+  - cargo: "Ministro de Educación y Ciencia"
+    desde: "1996-05-06"
+    hasta: "1999-01-13"
+fecha_nacimiento: "1955-03-27"
+nacionalidad: "española"
+biografia_corta: |
+  Político español. Presidente del Gobierno de España durante las X y XI
+  Legislaturas (diciembre de 2011 a junio de 2018), cuando fue sustituido
+  tras una moción de censura del PSOE liderada por Pedro Sánchez. Fue
+  Presidente Nacional del Partido Popular entre 2004 y 2018. Ocupó las
+  carteras de Interior (1996-2000), Educación (1996-1999) y Presidencia
+  (2000-2002) durante el gobierno de José María Aznar. Fue diputado por
+  Pontevedra entre 1986 y 2019. En el juicio oral de la causa del Caso
+  Gürtel (Sección Segunda de la Sala de lo Penal de la Audiencia Nacional)
+  declaró como testigo en julio de 2017 y de nuevo en el juicio del caso
+  Kitchen en julio de 2024; no ha tenido rol procesal de investigado ni
+  acusado en ninguna de esas causas.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

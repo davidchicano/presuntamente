@@ -1,0 +1,19 @@
+id: tribunal-superior-justicia-cataluna
+nombre: "Tribunal Superior de Justicia de Cataluña"
+nombres_alternativos:
+  - "TSJ Cataluña"
+  - "TSJC"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional superior en Cataluña para todos los órdenes
+  salvo el constitucional, con sede en Barcelona. Conoce de los
+  recursos de apelación contra sentencias de las Audiencias
+  Provinciales y de las causas contra aforados autonómicos.
+jurisdiccion: penal
+ambito_territorial: autonomico
+localidad: "Barcelona"
+provincia: "Barcelona"
+comunidad_autonoma: "Cataluña"
+organo_superior_id: tribunal-supremo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

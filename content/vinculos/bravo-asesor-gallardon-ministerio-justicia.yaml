@@ -1,0 +1,18 @@
+id: bravo-asesor-gallardon-ministerio-justicia
+naturaleza: cargo_publico_designado
+descripcion: "Asesor del Ministerio de Justicia bajo el ministro Alberto Ruiz-Gallardón entre diciembre de 2011 y septiembre de 2014. Fue el único concejal del Ayuntamiento de Madrid que acompañó a Ruiz-Gallardón al ministerio cuando éste fue nombrado ministro en diciembre de 2011."
+sujeto_persona_id: juan-bravo-rivera
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Asesor del Ministro de Justicia"
+desde: "2011-12-22"
+hasta: "2014-09-29"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "Gobierno Rajoy I (X Legislatura)"
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: confilegal-bravo-calvo-7-anos-lezo-2019-06-28
+    pasaje: "Confilegal identifica a Juan Bravo como exconsejero del gobierno de Gallardón en la Comunidad de Madrid, en el escrito de calificación de la Fiscalía Anticorrupción del 28 de junio de 2019 en la pieza Inassa del caso Lezo."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

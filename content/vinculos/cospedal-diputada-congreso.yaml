@@ -1,0 +1,17 @@
+id: cospedal-diputada-congreso
+naturaleza: cargo_publico_electo
+descripcion: "Diputada en el Congreso de los Diputados entre 2000 y 2019."
+sujeto_persona_id: maria-dolores-cospedal
+objeto_organizacion_id: congreso-de-los-diputados
+cargo_o_rol: "Diputada en el Congreso de los Diputados"
+desde: "2000-04-05"
+hasta: "2019-05-21"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: congreso-lista-diputados-historial
+    pasaje: "Buscador oficial del Congreso. María Dolores de Cospedal García figura como Diputada en las legislaturas VII a XII (2000-2019)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

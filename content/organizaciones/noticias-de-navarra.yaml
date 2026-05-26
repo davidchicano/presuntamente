@@ -15,5 +15,14 @@ url_canonica: "https://www.noticiasdenavarra.com/"
 
 naturaleza_editorial: generalista_politico
 
+grupo_editorial:
+  nombre: "Grupo Noticias"
+  rol: matriz
+  cita: >-
+    ZEROA MULTIMEDIA, S.A. (CIF A31455082), responsible del sitio web. Otras webs
+    de Grupo Noticias: Deia, Diario de Noticias de Álava, Noticias de Gipuzkoa,
+    Onda Vasca.
+  url: "https://www.noticiasdenavarra.com/aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,21 @@
+id: feijoo-presidente-xunta-galicia
+naturaleza: cargo_publico_electo
+descripcion: "Presidente de la Xunta de Galicia. Ejerció cuatro legislaturas consecutivas (2009-2022), siendo el presidente autonómico con mayor permanencia ininterrumpida en el cargo en la historia de Galicia."
+sujeto_persona_id: alberto-nunez-feijoo
+objeto_organizacion_id: xunta-de-galicia
+cargo_o_rol: "Presidente de la Xunta de Galicia"
+desde: "2009-04-18"
+hasta: "2022-05-12"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: boe-rd630-2009-nombramiento-feijoo-presidente-xunta
+    pasaje: "Real Decreto 630/2009, de 17 de abril, por el que se nombra Presidente de la Junta de Galicia a don Alberto Núñez Feijóo. BOE núm. 95, de 18 de abril de 2009."
+  - documento_id: boe-rd373-2022-nombramiento-rueda-presidente-xunta
+    pasaje: "Real Decreto 373/2022, de 12 de mayo, acredita implícitamente el cese de Feijóo al nombrar a su sucesor Alfonso Rueda Valenzuela."
+  - documento_id: elpais-feijoo-presidente-xunta-galicia-2009-03-21
+    pasaje: "Cobertura de El País sobre la toma de posesión de Feijóo como Presidente de la Xunta el 21 de marzo de 2009 (artículo de 21-03-2009)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -18,6 +18,7 @@ cargos_publicos_historicos:
     desde: "2016-11-04"
     hasta: "2018-06-07"
   - cargo: "Diputada en el Congreso de los Diputados"
+    organizacion_id: congreso-de-los-diputados
     desde: "2000-04-05"
     hasta: "2019-05-21"
 fecha_nacimiento: "1965-12-13"

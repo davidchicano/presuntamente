@@ -10,6 +10,7 @@ cargos_publicos_historicos:
     desde: "2012-01-04"
     hasta: "2016-11-04"
   - cargo: "Diputado en el Congreso de los Diputados"
+    organizacion_id: congreso-de-los-diputados
     desde: "2008-04-01"
     hasta: "2011-12-22"
 fecha_nacimiento: "1971-12-17"

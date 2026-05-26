@@ -1,0 +1,18 @@
+id: audiencia-provincial-lugo
+nombre: "Audiencia Provincial de Lugo"
+nombres_alternativos:
+  - "AP Lugo"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional de segunda instancia con sede en Lugo,
+  competente para el enjuiciamiento de delitos en la provincia de
+  Lugo no atribuidos a otros órganos. Dictó en julio de 2022 la
+  primera sentencia de una pieza de la Operación Pokémon.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Lugo"
+provincia: "Lugo"
+comunidad_autonoma: "Galicia"
+organo_superior_id: tribunal-superior-justicia-galicia
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

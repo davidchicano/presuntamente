@@ -1,0 +1,18 @@
+id: gonzalez-vicepresidente-comunidad-madrid
+naturaleza: cargo_publico_designado
+descripcion: "Vicepresidente de la Comunidad de Madrid entre noviembre de 2003 y septiembre de 2012, bajo los gobiernos de Esperanza Aguirre. La causa Lezo investiga irregularidades en la gestión del Canal de Isabel II que se extienden al periodo de su vicepresidencia."
+sujeto_persona_id: ignacio-gonzalez
+objeto_organizacion_id: comunidad-de-madrid
+cargo_o_rol: "Vicepresidente de la Comunidad de Madrid"
+desde: "2003-11-21"
+hasta: "2012-09-26"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "Gobierno Aguirre I y II (2003-2012)"
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: publico-prision-preventiva-gonzalez-lezo-2017-04-22
+    pasaje: "Público describe la trayectoria de Ignacio González en la Comunidad de Madrid, incluyendo su periodo como vicepresidente antes de convertirse en presidente."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

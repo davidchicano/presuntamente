@@ -22,5 +22,15 @@ orientacion_editorial_declarada:
     y políticos.
   url: "https://www.elsaltodiario.com/salto-de-carro/salto-financiacion-historia-revista-territorios-web"
 
+grupo_editorial:
+  nombre: "El Salto (cooperativa)"
+  rol: matriz
+  cita: >-
+    periodismo radicalmente independiente de los grandes grupos económicos
+    y políticos. Las decisiones importantes las toma la asamblea general,
+    formada por los socios-suscriptores, los miembros del colectivo editor
+    y la plantilla.
+  url: "https://www.elsaltodiario.com/salto-de-carro/salto-financiacion-historia-revista-territorios-web"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

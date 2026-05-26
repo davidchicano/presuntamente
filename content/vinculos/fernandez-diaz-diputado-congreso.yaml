@@ -1,0 +1,17 @@
+id: fernandez-diaz-diputado-congreso
+naturaleza: cargo_publico_electo
+descripcion: "Diputado en el Congreso de los Diputados por Barcelona durante seis legislaturas, entre 2000 y 2019."
+sujeto_persona_id: jorge-fernandez-diaz
+objeto_organizacion_id: congreso-de-los-diputados
+cargo_o_rol: "Diputado en el Congreso de los Diputados por Barcelona"
+desde: "2000-04-05"
+hasta: "2019-05-21"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: congreso-lista-diputados-historial
+    pasaje: "Buscador oficial del Congreso. Jorge Fernández Díaz figura como Diputado por Barcelona en las legislaturas VII a XII (2000-2019)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

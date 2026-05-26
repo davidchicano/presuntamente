@@ -1,0 +1,19 @@
+id: audiencia-provincial-barcelona
+nombre: "Audiencia Provincial de Barcelona"
+nombres_alternativos:
+  - "AP Barcelona"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional de segunda instancia con sede en Barcelona,
+  competente para el enjuiciamiento de delitos en la provincia de
+  Barcelona no atribuidos a otros órganos. Ha conocido el juicio oral
+  del caso Palau de la Música Catalana, dictando sentencia en
+  enero de 2018.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Barcelona"
+provincia: "Barcelona"
+comunidad_autonoma: "Cataluña"
+organo_superior_id: tribunal-superior-justicia-cataluna
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

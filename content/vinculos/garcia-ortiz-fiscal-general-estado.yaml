@@ -1,0 +1,20 @@
+id: garcia-ortiz-fiscal-general-estado
+naturaleza: cargo_publico_designado
+descripcion: "Fiscal General del Estado desde el 2 de agosto de 2022 hasta el 10 de diciembre de 2025, cuando fue cesado a petición propia tras la sentencia condenatoria del Tribunal Supremo. El cargo que ostentaba en el momento de los hechos investigados es el que determina la competencia de la Sala Segunda del Tribunal Supremo para conocer la causa."
+sujeto_persona_id: alvaro-garcia-ortiz
+objeto_organizacion_id: fiscalia-general-del-estado
+cargo_o_rol: "Fiscal General del Estado"
+desde: "2022-08-02"
+hasta: "2025-12-10"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "Gobierno Sánchez II (XV legislatura)"
+relevancia_para_caso_ids: [fiscal-general-del-estado]
+documentos_respaldo:
+  - documento_id: boe-nombramiento-garcia-ortiz-fge-2022-08-02
+    pasaje: "Real Decreto 836/2022, de 2 de agosto, por el que se nombra Fiscal General del Estado a don Álvaro García Ortiz."
+  - documento_id: boe-cese-garcia-ortiz-fge-2025-12-10
+    pasaje: "Real Decreto 1138/2025, de 9 de diciembre, por el que se dispone el cese de don Álvaro García Ortiz como Fiscal General del Estado, tras la apreciación por el Consejo de Ministros de la concurrencia de la causa prevista en la ley aplicable."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

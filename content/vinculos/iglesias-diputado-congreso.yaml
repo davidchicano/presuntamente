@@ -1,0 +1,17 @@
+id: iglesias-diputado-congreso
+naturaleza: cargo_publico_electo
+descripcion: "Diputado en el Congreso de los Diputados por Madrid desde diciembre de 2015 hasta su renuncia al escaño en marzo de 2021, para presentarse como candidato en las elecciones autonómicas madrileñas."
+sujeto_persona_id: pablo-iglesias
+objeto_organizacion_id: congreso-de-los-diputados
+cargo_o_rol: "Diputado en el Congreso de los Diputados por Madrid"
+desde: "2015-12-13"
+hasta: "2021-03-22"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: congreso-lista-diputados-historial
+    pasaje: "Buscador oficial del Congreso. Pablo Iglesias figura como Diputado por Madrid en las legislaturas XI, XII y XIV."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

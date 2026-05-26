@@ -1,0 +1,23 @@
+id: izquierda-unida
+nombre: "Izquierda Unida"
+nombres_alternativos:
+  - "IU"
+  - "Izquierda Unida de España"
+tipo: partido_politico
+siglas: "IU"
+descripcion_corta: |
+  Federación de partidos políticos españoles de izquierda constituida
+  el 27 de abril de 1986 como plataforma electoral e inscrita en el
+  Registro del Ministerio del Interior como federación de partidos
+  en noviembre de 1992. Fue impulsada originalmente por el Partido
+  Comunista de España (PCE) y otras formaciones. Tiene carácter
+  federal, con federaciones territoriales autonómicas con notable
+  autonomía interna. Integró la coalición electoral Unidas Podemos
+  (2016-2019) y posteriormente la coalición Sumar (2023). Yolanda
+  Díaz militó en IU Galicia antes de integrarse en el proyecto Sumar.
+ambito_territorial: nacional
+localidad: "Madrid"
+url_canonica: "https://izquierdaunida.org"
+fundacion: "1986-04-27"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

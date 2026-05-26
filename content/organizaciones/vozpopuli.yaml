@@ -23,5 +23,13 @@ orientacion_editorial_declarada:
   url: "https://www.vozpopuli.com/espana/cataluna/jesus-cacho-vozpopuli-cataluna-comprometido_0_1224478793.html"
   fecha: "2019-03-06"
 
+grupo_editorial:
+  nombre: "Vozpópuli Digital S.A."
+  rol: matriz
+  cita: >-
+    VOZPÓPULI DIGITAL, S.A. [...] como responsable de la página
+    www.vozpopuli.com.
+  url: "https://www.vozpopuli.com/aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

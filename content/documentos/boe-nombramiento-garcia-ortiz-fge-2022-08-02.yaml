@@ -1,0 +1,26 @@
+id: boe-nombramiento-garcia-ortiz-fge-2022-08-02
+titulo: "BOE-A-2022-12946 — Real Decreto 675/2022, de 1 de agosto, por el que se nombra Fiscal General del Estado a don Álvaro García Ortiz"
+tipo: boletin_oficial
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Disposición publicada en el Boletín Oficial del Estado nº 184, de 2 de
+  agosto de 2022, con el código BOE-A-2022-12946. Real Decreto 675/2022,
+  de 1 de agosto, firmado por el Rey Felipe VI y refrendado por el
+  Presidente del Gobierno Pedro Sánchez, por el que se nombra a Álvaro
+  García Ortiz Fiscal General del Estado. El Fiscal General del Estado
+  es nombrado por el Rey a propuesta del Gobierno y oído el Consejo
+  General del Poder Judicial (art. 124.4 CE y art. 29 EOMF). boe.es está
+  en la lista blanca DominiosOficiales del proyecto. PDF íntegro
+  descargado a `/public/documentos/fiscal-general-del-estado/` con
+  `hash_sha256` verificado contra el mirror oficial. Cumple V-12.
+productor_organizacion_id: presidencia-del-gobierno
+fecha_documento: "2022-08-01"
+fecha_publicacion: "2022-08-02"
+url_canonica: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-12946"
+ruta_local: "/documentos/fiscal-general-del-estado/boe-nombramiento-garcia-ortiz-fge-2022-08-02.pdf"
+hash_sha256: "0a403d77945842c97248648b7546d386c49e382fb88c8ec505531621e242ef1f"
+estado_acceso: publico
+idioma: es
+caso_principal_id: fiscal-general-del-estado
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -23,5 +23,13 @@ orientacion_editorial_declarada:
     de oportunidades y la economía de mercado.
   url: "https://theobjective.com/principios-y-valores/"
 
+grupo_editorial:
+  nombre: "The Objective Media SL"
+  rol: matriz
+  cita: >-
+    RAZÓN SOCIAL: THE OBJECTIVE MEDIA SL NIF: B86757101 DIRECCIÓN POSTAL:
+    C/Villanueva 13, bajo izq. Madrid, 28001.
+  url: "https://theobjective.com/aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

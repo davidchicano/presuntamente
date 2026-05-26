@@ -1,0 +1,14 @@
+id: pujol
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional (caso Pujol)"
+nombre_mediatico: "Caso Pujol"
+nombres_alternativos:
+  - "Familia Pujol"
+  - "Fraude fiscal Pujol"
+
+organo_judicial_id: juzgado-central-instruccion-5
+fase_actual: instruccion
+fecha_apertura: "2014-07-25"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

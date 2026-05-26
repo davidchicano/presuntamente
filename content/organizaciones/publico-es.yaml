@@ -16,5 +16,14 @@ url_canonica: "https://www.publico.es/"
 
 naturaleza_editorial: generalista_politico
 
+grupo_editorial:
+  nombre: "Display Connectors S.L."
+  rol: matriz
+  cita: >-
+    DISPLAY CONNECTORS, SL es una entidad cuyo domicilio social se encuentra
+    sito en Av. DIAGONAL 177, Planta 15, 08018 Barcelona, CIF: B65749715 [...]
+    como editora del diario Público.
+  url: "https://www.publico.es/aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

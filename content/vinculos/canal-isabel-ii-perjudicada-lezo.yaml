@@ -1,0 +1,16 @@
+id: canal-isabel-ii-perjudicada-lezo
+naturaleza: perjudicado_institucional_en_caso
+descripcion: "El Canal de Isabel II figura en el procedimiento Lezo como empresa pública perjudicada por las adjudicaciones presuntamente amañadas, los sobreprecios pagados en las operaciones de compra en el extranjero (Emissao, Inassa) y el desvío de fondos atribuido por la Fiscalía Anticorrupción."
+sujeto_organizacion_id: canal-isabel-ii
+objeto_organizacion_id: juzgado-central-instruccion-6
+desde: "2017-04-19"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: publico-prision-preventiva-gonzalez-lezo-2017-04-22
+    pasaje: "Público describe al Canal de Isabel II como la empresa pública cuya gestión irregular es objeto de la investigación Lezo, con mención a los fondos desviados y sobreprecios en operaciones internacionales."
+  - documento_id: elespanol-detencion-gonzalez-lezo-2017-04-19
+    pasaje: "El Español identifica al Canal de Isabel II como empresa pública central en la investigación de la Operación Lezo."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

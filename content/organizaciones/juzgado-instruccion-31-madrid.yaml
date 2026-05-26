@@ -1,0 +1,19 @@
+id: juzgado-instruccion-31-madrid
+nombre: "Juzgado de Instrucción nº 31 de Madrid"
+nombres_alternativos:
+  - "JI nº 31 Madrid"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado de Instrucción nº 31 de Madrid. Instruyó el caso Rodrigo Rato
+  por fraude fiscal y blanqueo de capitales, acumulando en una única
+  pieza los múltiples procedimientos abiertos contra el ex ministro
+  de Economía y ex presidente del FMI, antes de elevar las actuaciones
+  a la Audiencia Provincial de Madrid para su enjuiciamiento.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+organo_superior_id: audiencia-provincial-madrid
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

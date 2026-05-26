@@ -1,0 +1,18 @@
+id: bravo-rivera-consejero-hacienda-cam
+naturaleza: cargo_publico_designado
+descripcion: "Consejero de Hacienda de la Comunidad de Madrid bajo la presidencia de Alberto Ruiz-Gallardón (V Legislatura), tras la remodelación de septiembre de 2001 que separó la Consejería de Hacienda de la unidad «Presidencia y Hacienda»."
+sujeto_persona_id: juan-bravo-rivera
+objeto_organizacion_id: comunidad-de-madrid
+cargo_o_rol: "Consejero de Hacienda"
+desde: "2001-09-20"
+hasta: "2003-06-30"
+precision_desde: dia
+precision_hasta: mes
+vigente: false
+gobierno_o_legislatura: "Comunidad de Madrid - Ruiz-Gallardón (V Legislatura)"
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: bocm-decreto-25-2001-nombramiento-bravo-rivera-2001-09-21
+    pasaje: "DECRETO 25/2001, de 20 de septiembre, del Presidente de la Comunidad, por el que se nombra Consejero de Hacienda de la Comunidad de Madrid [a] don Juan Bravo Rivera. (BOCM nº 225, 21-sep-2001, p. 20)"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

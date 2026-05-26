@@ -1,0 +1,13 @@
+id: brugal
+nombre_oficial: "Procedimiento Penal — Audiencia Provincial de Alicante (caso Brugal)"
+nombre_mediatico: "Caso Brugal"
+nombres_alternativos:
+  - "Trama Brugal"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: sentencia_firme
+fecha_apertura: "2006-01-01"
+
+origen_denuncia: oficio_judicial
+
+estado_publicacion: pendiente

@@ -1,0 +1,15 @@
+id: feijoo-presidente-pp
+naturaleza: cargo_organico_partido
+descripcion: "Presidente Nacional del Partido Popular desde el 2 de abril de 2022, elegido en el XX Congreso Extraordinario del PP celebrado en Sevilla con el 98,35% de los votos de los compromisarios."
+sujeto_persona_id: alberto-nunez-feijoo
+objeto_organizacion_id: partido-popular
+cargo_o_rol: "Presidente Nacional del Partido Popular"
+desde: "2022-04-02"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: infobae-feijoo-presidente-pp-2022-04-02
+    pasaje: "Infobae informa de que Alberto Núñez Feijóo fue elegido nuevo presidente del Partido Popular con el 98,35% de los votos (2.619 de 2.663 compromisarios) en el XX Congreso Extraordinario del PP celebrado en Sevilla el 2 de abril de 2022."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

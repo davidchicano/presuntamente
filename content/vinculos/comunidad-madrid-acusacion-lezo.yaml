@@ -1,0 +1,14 @@
+id: comunidad-madrid-acusacion-lezo
+naturaleza: acusacion_institucional_en_caso
+descripcion: "La Comunidad de Madrid se personó como acusación particular en el procedimiento Lezo por su condición de administración titular indirecta de la empresa pública Canal de Isabel II, perjudicada por las adjudicaciones controvertidas. Solicita para Ignacio González dieciséis años de prisión en la pieza del campo de golf."
+sujeto_organizacion_id: comunidad-de-madrid
+objeto_organizacion_id: juzgado-central-instruccion-6
+desde: "2017-09-01"
+precision_desde: mes
+vigente: true
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: eldiario-juicio-canal-golf-lezo-2025-12-22
+    pasaje: "elDiario.es menciona a la Comunidad de Madrid personada como acusación particular en el caso Lezo, con solicitud de dieciséis años de prisión para Ignacio González en la pieza del campo de golf."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

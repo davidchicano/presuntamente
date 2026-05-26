@@ -1,0 +1,15 @@
+id: tarjetas-black
+nombre_oficial: "Procedimiento Abreviado — Juzgado Central de Instrucción nº 4 de la Audiencia Nacional (tarjetas opacas Caja Madrid-Bankia)"
+nombre_mediatico: "Caso Tarjetas Black"
+nombres_alternativos:
+  - "Tarjetas opacas Caja Madrid"
+  - "Tarjetas black Bankia"
+  - "Tarjetas black Caja Madrid"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: sentencia_firme
+fecha_apertura: "2014-01-01"
+
+origen_denuncia: denuncia_organismo_publico
+
+estado_publicacion: pendiente

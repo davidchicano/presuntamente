@@ -14,5 +14,14 @@ url_canonica: "https://www.infobae.com/espana/"
 
 naturaleza_editorial: generalista_politico
 
+grupo_editorial:
+  nombre: "THX Medios S.A."
+  rol: matriz
+  cita: >-
+    Nombre: THX Medios S.A., sociedad que actúa bajo el nombre Infobae
+    (en adelante INFOBAE). CUIT: 30-70789668-6 Sede Social: Humboldt 1550,
+    Piso 4, Ciudad Autónoma de Buenos Aires, Argentina.
+  url: "https://www.infobae.com/terminos-y-condiciones/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

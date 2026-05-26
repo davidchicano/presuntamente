@@ -1,0 +1,19 @@
+id: fernandez-diaz-militante-pp
+naturaleza: cargo_organico_partido
+descripcion: "Militante del Partido Popular y diputado del Congreso de los Diputados por la circunscripción de Barcelona en representación del PP durante seis legislaturas (2000-2019). Mantiene su condición de militante del partido. El Gobierno instó en abril de 2026 al PP a adoptar las mismas medidas que el PSOE con sus propios militantes investigados."
+sujeto_persona_id: jorge-fernandez-diaz
+objeto_organizacion_id: partido-popular
+cargo_o_rol: "Diputado del Congreso de los Diputados (PP)"
+desde: "2000-04-05"
+hasta: "2019-05-21"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: eldiario-procesamiento-kitchen-2021-07-29
+    pasaje: "elDiario.es identifica a Jorge Fernández Díaz como 'ex ministro del Interior' y militante del Partido Popular en la cobertura del auto de procesamiento del JCI nº 6 de 29 de julio de 2021 en la pieza Kitchen."
+  - documento_id: infobae-procesamiento-kitchen-2021-07-29
+    pasaje: "Infobae identifica a Jorge Fernández Díaz como político del PP y ex ministro del Interior del Reino de España en la cobertura del procesamiento por la Operación Kitchen."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

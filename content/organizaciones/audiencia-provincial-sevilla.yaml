@@ -1,0 +1,19 @@
+id: audiencia-provincial-sevilla
+nombre: "Audiencia Provincial de Sevilla"
+nombres_alternativos:
+  - "AP Sevilla"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional de segunda instancia con sede en Sevilla,
+  competente para el enjuiciamiento de delitos en la provincia de
+  Sevilla no atribuidos a otros órganos. Ha celebrado el juicio oral
+  del caso ERE de Andalucía, dictando en noviembre de 2019 la primera
+  sentencia condenatoria del procedimiento.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Sevilla"
+provincia: "Sevilla"
+comunidad_autonoma: "Andalucía"
+organo_superior_id: tribunal-superior-justicia-andalucia
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

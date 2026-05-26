@@ -1,0 +1,17 @@
+id: rajoy-presidente-partido-popular
+naturaleza: cargo_organico_partido
+descripcion: "Presidente Nacional del Partido Popular entre octubre de 2004 y julio de 2018, elegido en el XVI Congreso Nacional del PP como sucesor de José María Aznar. Dimitió del cargo en julio de 2018, tras la moción de censura que le apartó de la Presidencia del Gobierno."
+sujeto_persona_id: mariano-rajoy
+objeto_organizacion_id: partido-popular
+cargo_o_rol: "Presidente Nacional del Partido Popular"
+desde: "2004-10-02"
+hasta: "2018-07-21"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [kitchen, gurtel]
+documentos_respaldo:
+  - documento_id: elpais-rajoy-presidente-pp-2004-10-02
+    pasaje: "El País recoge la elección de Mariano Rajoy como presidente del PP en el XVI Congreso Nacional del partido celebrado el 2 de octubre de 2004 en Madrid."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -16,5 +16,23 @@ url_canonica: "https://cadenaser.com"
 
 naturaleza_editorial: generalista_politico
 
+orientacion_editorial_percibida:
+  valor: centroizquierda
+  fuente: cis
+  cita: >-
+    Media 3,97 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 24: «¿Y dónde colocaría las siguientes emisoras de radio?».
+    N=21.754. Desviación típica: 2,30.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
+  fecha: "2023-12-15"
+
+grupo_editorial:
+  nombre: "PRISA"
+  rol: matriz
+  cita: >-
+    Una empresa de PRISA Una empresa de PRISA El PAÍS Los 40 principales
+    Santillana [...] Cadena SER AS.com [...] Webs de PRISA.
+  url: "https://www.prisa.com/es/info/un-grupo-global"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

@@ -14,6 +14,17 @@ localidad: "Madrid"
 url_canonica: "https://www.cope.es/"
 
 naturaleza_editorial: confesional
+
+orientacion_editorial_percibida:
+  valor: derecha
+  fuente: cis
+  cita: >-
+    Media 7,90 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 24: «¿Y dónde colocaría las siguientes emisoras de radio?».
+    N=22.738. Desviación típica: 2,03.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
+  fecha: "2023-12-15"
+
 orientacion_editorial_declarada:
   valor: centroderecha
   fuente: ideario_corporativo

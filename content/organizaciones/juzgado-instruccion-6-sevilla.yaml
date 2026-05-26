@@ -1,0 +1,19 @@
+id: juzgado-instruccion-6-sevilla
+nombre: "Juzgado de Instrucción nº 6 de Sevilla"
+nombres_alternativos:
+  - "JI nº 6 Sevilla"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado de Instrucción nº 6 de Sevilla. Instruyó el macrocaso ERE
+  de Andalucía, la mayor macrocausa de corrupción de la comunidad
+  autónoma. Titulares sucesivos: Mercedes Alaya (2009-2014),
+  María de los Ángeles Núñez Bolaños, Álvaro Martín y José Ignacio
+  Vilaplana (desde septiembre de 2019).
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Sevilla"
+provincia: "Sevilla"
+comunidad_autonoma: "Andalucía"
+organo_superior_id: audiencia-provincial-sevilla
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

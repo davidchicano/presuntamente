@@ -1,0 +1,14 @@
+id: bankia-salida-bolsa
+nombre_oficial: "Diligencias Previas 59/2012 — Juzgado Central de Instrucción nº 4 de la Audiencia Nacional"
+nombre_mediatico: "Caso Bankia (salida a bolsa)"
+nombres_alternativos:
+  - "Caso Bankia"
+  - "OPS Bankia"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: sentencia_firme
+fecha_apertura: "2012-01-01"
+
+origen_denuncia: querella_partido_politico
+
+estado_publicacion: pendiente

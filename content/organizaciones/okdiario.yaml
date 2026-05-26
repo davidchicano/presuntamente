@@ -23,5 +23,13 @@ orientacion_editorial_declarada:
     OK a la ideología liberal; OK a España unida; OK al libre mercado.
   url: "https://okdiario.com/espana/10-oks-127631"
 
+grupo_editorial:
+  nombre: "Dos Mil Palabras S.L."
+  rol: matriz
+  cita: >-
+    DOS MIL PALABRAS S.L. CIF ESB87277455, con domicilio en C/ Caleruega,
+    102-104, 28033 Madrid.
+  url: "https://okdiario.com/aviso-legal"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

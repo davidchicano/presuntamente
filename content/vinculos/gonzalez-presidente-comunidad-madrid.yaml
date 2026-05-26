@@ -1,0 +1,19 @@
+id: gonzalez-presidente-comunidad-madrid
+naturaleza: cargo_publico_electo
+descripcion: "Presidente de la Comunidad de Madrid entre septiembre de 2012 y junio de 2015, sucesor de Esperanza Aguirre. La causa Lezo investiga adjudicaciones y desvíos de fondos atribuidos a la gestión de la empresa pública Canal de Isabel II durante su mandato y el de sus predecesores."
+sujeto_persona_id: ignacio-gonzalez
+objeto_organizacion_id: comunidad-de-madrid
+cargo_o_rol: "Presidente de la Comunidad de Madrid"
+desde: "2012-09-26"
+hasta: "2015-06-25"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: elespanol-detencion-gonzalez-lezo-2017-04-19
+    pasaje: "El Español identifica a Ignacio González como ex presidente de la Comunidad de Madrid en la cobertura de su detención en el marco de la Operación Lezo el 19 de abril de 2017."
+  - documento_id: publico-prision-preventiva-gonzalez-lezo-2017-04-22
+    pasaje: "Público identifica a Ignacio González como ex presidente de la Comunidad de Madrid al cubrir su prisión provisional en el caso Lezo."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

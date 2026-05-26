@@ -1,0 +1,14 @@
+id: marsans
+nombre_oficial: "Procedimiento Penal — Audiencia Provincial de Madrid (caso Marsans)"
+nombre_mediatico: "Caso Marsans"
+nombres_alternativos:
+  - "Grupo Marsans"
+  - "Caso Díaz Ferrán"
+
+organo_judicial_id: audiencia-provincial-madrid
+fase_actual: sentencia_firme
+fecha_apertura: "2010-01-01"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

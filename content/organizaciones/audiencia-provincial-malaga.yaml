@@ -1,0 +1,20 @@
+id: audiencia-provincial-malaga
+nombre: "Audiencia Provincial de Málaga"
+nombres_alternativos:
+  - "AP Málaga"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional de segunda instancia con sede en Málaga,
+  competente para el enjuiciamiento de delitos en la provincia de
+  Málaga no atribuidos a otros órganos. Dictó la sentencia del
+  caso Malaya en 2013, condenando al cerebro de la trama de
+  corrupción urbanística de Marbella, Juan Antonio Roca, a
+  11 años de prisión.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Málaga"
+provincia: "Málaga"
+comunidad_autonoma: "Andalucía"
+organo_superior_id: tribunal-superior-justicia-andalucia
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

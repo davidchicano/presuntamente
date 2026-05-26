@@ -1,0 +1,19 @@
+id: barcenas-gerente-pp
+naturaleza: cargo_organico_partido
+descripcion: "Gerente del Partido Popular entre 1990 y julio de 2008, función desde la que se le atribuye, según la sentencia de la Audiencia Nacional en el caso Gürtel, la gestión de la financiación irregular del partido durante el período 1999-2005."
+sujeto_persona_id: luis-barcenas
+objeto_organizacion_id: partido-popular
+cargo_o_rol: "Gerente del Partido Popular"
+desde: "1990-01-01"
+hasta: "2008-07-01"
+precision_desde: anio
+precision_hasta: mes
+vigente: false
+relevancia_para_caso_ids: [gurtel, barcenas-caja-b, kitchen]
+documentos_respaldo:
+  - documento_id: elespanol-barcenas-tesorero-pp-gurtel-2018-05-24
+    pasaje: "El Español acredita que Bárcenas fue gerente del PP desde 1990 y describe su condena en el caso Gürtel como extesorero de la formación. La sentencia de la Audiencia Nacional consideró probada su función central en el sistema de financiación irregular del partido durante su etapa como gerente y tesorero."
+  - documento_id: publico-caja-b-pieza-separada-gurtel
+    pasaje: "Público acredita que la pieza sobre la caja B del PP era una pieza separada del caso Gürtel, y que Bárcenas ocupó funciones de gerente y tesorero del partido durante el período investigado."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

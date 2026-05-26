@@ -1,0 +1,14 @@
+id: manos-limpias-acusacion-plus-ultra
+naturaleza: acusacion_institucional_en_caso
+descripcion: "La asociación Manos Limpias ejerce la acusación popular en el caso Plus Ultra ante el Juzgado Central de Instrucción nº 4 de la Audiencia Nacional, como denunciante que presentó querella el 23 de diciembre de 2025."
+sujeto_organizacion_id: manos-limpias
+objeto_organizacion_id: juzgado-central-instruccion-4
+desde: "2025-12-23"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [plus-ultra]
+documentos_respaldo:
+  - documento_id: querella-manos-limpias-plus-ultra-2025-12
+    pasaje: "La asociación Manos Limpias presentó querella ante el Juzgado de Instrucción nº 15 de Madrid el 23 de diciembre de 2025, querellando a José Luis Rodríguez Zapatero y otros en el caso Plus Ultra."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

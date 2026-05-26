@@ -1,0 +1,32 @@
+id: yolanda-diaz
+nombre_completo: "Yolanda Díaz Pérez"
+nombres_alternativos:
+  - "Yolanda Díaz"
+es_figura_publica: true
+cargo_publico_actual: "Vicepresidenta Segunda del Gobierno de España"
+cargos_publicos_historicos:
+  - cargo: "Vicepresidenta Segunda del Gobierno de España y Ministra de Trabajo y Economía Social"
+    organizacion_id: presidencia-del-gobierno
+    desde: "2021-07-12"
+  - cargo: "Ministra de Trabajo y Economía Social"
+    organizacion_id: presidencia-del-gobierno
+    desde: "2020-01-13"
+    hasta: "2021-07-12"
+  - cargo: "Diputada en el Congreso de los Diputados"
+    organizacion_id: congreso-de-los-diputados
+    desde: "2019-11-10"
+fecha_nacimiento: "1971-03-19"
+nacionalidad: "española"
+biografia_corta: |
+  Política española. Vicepresidenta Segunda del Gobierno de España y
+  Ministra de Trabajo y Economía Social desde el 12 de julio de 2021,
+  cargo que heredó de Pablo Iglesias cuando este dimitió. Previamente
+  fue Ministra de Trabajo y Economía Social desde la formación del
+  gobierno de coalición PSOE-Unidas Podemos en enero de 2020. Fue
+  coordinadora de Izquierda Unida de Galicia y diputada en el Congreso.
+  En 2023 lanzó la coalición Sumar, de la que es coordinadora, que
+  concurrió a las elecciones generales de julio de 2023 integrando a
+  Izquierda Unida, Podemos y otras formaciones de izquierda.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,14 @@
+id: forum-filatelico
+nombre_oficial: "Diligencias Previas 148/2006 — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+nombre_mediatico: "Caso Fórum Filatélico"
+nombres_alternativos:
+  - "Fórum Filatélico y Afinsa"
+  - "Estafa piramidal filatélica"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: sentencia_firme
+fecha_apertura: "2006-05-09"
+
+origen_denuncia: denuncia_organismo_publico
+
+estado_publicacion: pendiente

@@ -1,0 +1,23 @@
+id: xunta-de-galicia
+nombre: "Xunta de Galicia"
+nombres_alternativos:
+  - "Junta de Galicia"
+  - "Gobierno de la Xunta"
+tipo: organismo_publico
+descripcion_corta: |
+  Órgano colegiado que ejerce la función ejecutiva y la potestad
+  reglamentaria de la Comunidad Autónoma de Galicia, conforme al
+  artículo 16 del Estatuto de Autonomía de Galicia (LO 1/1981). Tiene
+  sede en el complejo de San Caetano y el Pazo de Raxoi en Santiago
+  de Compostela. Está presidida desde mayo de 2022 por Alfonso Rueda
+  Valenzuela, quien relevó a Alberto Núñez Feijóo tras la renuncia de
+  este para asumir la presidencia nacional del Partido Popular. La
+  Xunta está formada por el Presidente y los conselleiros
+  (consejeros).
+ambito_territorial: autonomico
+comunidad_autonoma: "Galicia"
+localidad: "Santiago de Compostela"
+provincia: "A Coruña"
+url_canonica: "https://www.xunta.gal"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

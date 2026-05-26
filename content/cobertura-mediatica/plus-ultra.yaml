@@ -1,0 +1,467 @@
+# Cobertura mediática general — caso plus-ultra
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: plus-ultra
+fecha_rastreo: "2026-05-26"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Plus Ultra"
+    - "Plus Ultra SEPI rescate"
+    - "Plus Ultra Zapatero"
+    - "rescate aerolínea Plus Ultra 53 millones"
+    - "juez Calama Plus Ultra"
+  ventanas_temporales:
+    - desde: "2021-03-01"
+      hasta: "2024-06-30"
+      notas: >
+        Aprobación del rescate (9 mar 2021), reacciones políticas y primeras
+        investigaciones administrativas. Primer período hasta apertura de
+        diligencias penales por cooperación internacional.
+    - desde: "2024-07-01"
+      hasta: "2025-11-30"
+      notas: >
+        Instrucción judicial en el Juzgado de Instrucción nº 15 de Madrid tras
+        cooperación internacional de Francia y Suiza. Anticorrupción sostiene
+        que el rescate sirvió para blanquear dinero venezolano.
+    - desde: "2025-12-01"
+      hasta: "2026-05-26"
+      notas: >
+        Operación UDEF con detenciones de ejecutivos de Plus Ultra (11 dic 2025),
+        querella Manos Limpias (23 dic 2025), asunción competencia JCI nº 4 AN
+        (mar 2026), auto imputación Zapatero (19 may 2026).
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - infobae.com
+    - theobjective.com
+    - vozpopuli.com
+    - okdiario.com
+    - libertaddigital.com
+    - elespanol.com
+    - maldita.es
+    - newtral.es
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o en el lead. Se
+    incluyen noticias, reportajes, análisis, columnas y piezas de verificación
+    firmadas. Se incluyen piezas de agencia republicadas cuando el titular o
+    lead las identifica claramente como del caso y aportan valor informativo.
+  criterios_exclusion: >
+    Se excluyen menciones de pasada en piezas sobre otros temas. Se excluyen
+    republicaciones palabra por palabra de agencia sin valor añadido. Se excluye
+    El País (elpais.com) y El Mundo (elmundo.es) por no ser accesibles vía
+    WebFetch en el entorno del agente. Se excluyen opiniones y columnas sin
+    información fáctica adicional relevante.
+  notas: >
+    Rastreo inicial v1 sobre tres ventanas temporales (mar 2021 — may 2026).
+    El caso tuvo escasa cobertura judicial hasta las detenciones de diciembre
+    2025 y la imputación de Zapatero en mayo 2026, momento que concentra la
+    mayor parte del corpus. Las url_archivo se rellenan con
+    scripts/archivar-n4.mjs (pnpm archive:catchup o hook pre-commit).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: RESCATE (mar 2021) ──────────────────────────────────────────
+
+  # (sin piezas en esta ventana: la instrucción judicial comenzó en 2024)
+
+  # ── VENTANA 2: INSTRUCCIÓN (jul 2024 — nov 2025) ──────────────────────────
+
+  - id: eldiario-anticorrupcion-blanqueo-venezuela-2025-11
+    url: "https://www.eldiario.es/politica/anticorrupcion-sostiene-plus-ultra-rescate-sepi-blanquear-dinero-ilicito-venezuela_1_12840351.html"
+    medio_id: eldiario-es
+    titular: "Anticorrupción sostiene que Plus Ultra usó el rescate de la SEPI para blanquear dinero «ilícito» de Venezuela"
+    fecha_publicacion: "2025-11-01"
+    resumen: >
+      La Fiscalía Anticorrupción afirma que Plus Ultra hizo un «uso impropio» de los
+      53 millones de euros del rescate público porque al menos parte de esos fondos
+      se emplearon para blanquear dinero «ilícito» procedente de Venezuela. El origen
+      de la investigación deriva de solicitudes de cooperación judicial de Francia y Suiza.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    notas: "Primera pieza identificada que anuncia públicamente la tesis de Anticorrupción sobre el blanqueo."
+
+  - id: eldiario-detenidos-libertad-cautelares-2025-12
+    url: "https://www.eldiario.es/politica/juzgado-acuerda-libertad-medidas-cautelares-tres-detenidos-plus-ultra_1_12843305.html"
+    medio_id: eldiario-es
+    titular: "Un juzgado acuerda la libertad con medidas cautelares para los tres detenidos de Plus Ultra"
+    fecha_publicacion: "2025-12-12"
+    resumen: >
+      El Juzgado de Instrucción nº 15 de Madrid acuerda la libertad provisional con
+      medidas cautelares (pasaporte retirado, obligación de comparecer cada dos semanas)
+      para el presidente de la aerolínea Julio Martínez Sola, el CEO Roberto Roselli
+      y el asesor externo Julio Martínez Martínez, detenidos el 11 de diciembre de 2025.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  # ── VENTANA 3: DETENCIONES Y ZAPATERO (dic 2025 — may 2026) ───────────────
+
+  - id: infobae-guia-caso-plus-ultra-2026-05-20
+    url: "https://www.infobae.com/espana/2026/05/20/guia-para-entender-el-caso-plus-ultra-un-rescate-aprobado-por-el-gobierno-la-implicacion-de-zapatero-conexiones-con-venezuela-y-acercamientos-a-figuras-del-psoe/"
+    medio_id: infobae
+    titular: "Guía para entender el 'caso Plus Ultra' y la imputación de Zapatero: un rescate aprobado por el Gobierno, conexiones con Venezuela y acercamientos a figuras del PSOE"
+    fecha_publicacion: "2026-05-20"
+    autor: "Redacción Infobae"
+    resumen: >
+      Pieza de síntesis que explica el origen del caso desde el rescate de 53 millones
+      de euros de 2021, la investigación de Anticorrupción por posible blanqueo de
+      fondos venezolanos y la imputación del expresidente Zapatero por el JCI nº 4 de
+      la Audiencia Nacional el 19 de mayo de 2026.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: infobae-zapatero-pequena-aerolinea-2026-05-19
+    url: "https://www.infobae.com/espana/2026/05/19/plus-ultra-la-pequena-aerolinea-con-perdidas-y-cientos-de-reclamaciones-cuyo-rescate-de-53-millones-vuelve-al-foco-por-la-imputacion-de-zapatero/"
+    medio_id: infobae
+    titular: "Plus Ultra, la pequeña aerolínea con pérdidas y cientos de reclamaciones cuyo rescate de 53 millones vuelve al foco por la imputación de Zapatero"
+    fecha_publicacion: "2026-05-19"
+    resumen: >
+      Perfil de la aerolínea Plus Ultra que contextualiza su situación empresarial
+      (pequeña compañía con pérdidas acumuladas y reclamaciones de clientes) con el
+      rescate público de 53 millones y la imputación de Zapatero por el JCI nº 4.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: elespanol-historia-rescate-2026-05-19
+    url: "https://www.elespanol.com/invertia/empresas/20260519/plus-ultra-historia-rescate-millones-sospecha-siempre-planea-sombra-zapatero/1003744053634_0.html"
+    medio_id: el-espanol
+    titular: "Plus Ultra: historia de un rescate de 53 millones bajo sospecha y sobre el que siempre planea la sombra de Zapatero"
+    fecha_publicacion: "2026-05-19"
+    resumen: >
+      Reportaje que recorre la historia del rescate a Plus Ultra desde 2021, las
+      sospechas sobre irregularidades en su concesión y la investigación judicial que
+      ha culminado en la imputación del expresidente Zapatero como presunto núcleo
+      decisor de una red de tráfico de influencias.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: elespanol-zapatero-sociedad-dubai-2026-05-19
+    url: "https://www.elespanol.com/espana/tribunales/20260519/audiencia-nacional-imputa-zapatero-presunto-blanqueo-capitales-rescate-plus-ultra/1003744250635_0.html"
+    medio_id: el-espanol
+    titular: "El juez sostiene que Zapatero creó una sociedad en Dubái para cobrar el 1% del rescate de Plus Ultra y le atribuye haber recibido hasta 2 millones"
+    fecha_publicacion: "2026-05-19"
+    resumen: >
+      El juez Calama atribuye a Zapatero haber recibido hasta 1,95 millones de euros,
+      parte de ellos a través de una sociedad en Dubái, como supuesta comisión por su
+      intermediación en favor del rescate a Plus Ultra. También se atribuye a sus hijas
+      haber recibido 423.779 euros a través de su empresa de comunicación Whathefav S.L.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-zapatero-imputado-an-2026-05-19
+    url: "https://theobjective.com/espana/tribunales/2026-05-19/zapatero-imputado-blanqueo-audiencia-nacional/"
+    medio_id: the-objective
+    titular: "La Audiencia Nacional imputa a Zapatero por su papel en el rescate de la aerolínea Plus Ultra"
+    fecha_publicacion: "2026-05-19"
+    resumen: >
+      El JCI nº 4 de la Audiencia Nacional levanta el secreto de las diligencias y
+      cita a declarar a Zapatero como investigado el 2 de junio de 2026 por presuntos
+      delitos de organización criminal, tráfico de influencias y falsedad documental.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-pp-capos-caen-2026-05-19
+    url: "https://theobjective.com/espana/politica/2026-05-19/pp-imputacion-zapatero-tinglado-desmorona-capos/"
+    medio_id: the-objective
+    titular: "El PP, tras la imputación de Zapatero: «Los capos empiezan a caer»"
+    fecha_publicacion: "2026-05-19"
+    resumen: >
+      Pieza que recoge las reacciones del PP a la imputación de Zapatero: el secretario
+      general Miguel Tellado exige explicaciones al Gobierno y el partido califica la
+      situación como de «gravedad extrema». El líder del PP anuncia que hará «todo lo
+      posible» para provocar un cambio de Gobierno.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: vozpopuli-imputacion-zapatero-directo-2026-05-19
+    url: "https://www.vozpopuli.com/tribunales/imputacion-zapatero-en-directo-reacciones-investigacion-del-caso-plus-ultra-y-ultimas-noticias.html"
+    medio_id: vozpopuli
+    titular: "Última hora de la imputación de Zapatero por el caso Plus Ultra, en directo: reacciones y apoyos al expresidente"
+    fecha_publicacion: "2026-05-19"
+    resumen: >
+      Cobertura en directo de Vozpópuli de la imputación del expresidente Zapatero por
+      el JCI nº 4 de la Audiencia Nacional, recogiendo reacciones del entorno político,
+      apoyos al expresidente y últimas noticias sobre el caso Plus Ultra.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-zapatero-imputado-organizacion-2026-05-19
+    url: "https://www.eldiario.es/politica/zapatero-imputado-blanqueo-capitales-caso-plus-ultra_1_13231540.html"
+    medio_id: eldiario-es
+    titular: "Zapatero, imputado por organización criminal, falsedad y tráfico de influencias en el caso Plus Ultra"
+    fecha_publicacion: "2026-05-19"
+    resumen: >
+      El Diario recoge la imputación de Zapatero por el JCI nº 4 de la Audiencia
+      Nacional, con los tres delitos atribuidos: organización criminal, falsedad
+      documental y tráfico de influencias. La pieza recoge la posición del expresidente
+      negando cualquier gestión ante la Administración pública.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-claves-imputacion-zapatero-2026-05
+    url: "https://www.eldiario.es/politica/claves-imputacion-zapatero-investigacion-defendio-labor-consultoria_1_13231890.html"
+    medio_id: eldiario-es
+    titular: "Claves de la imputación de Zapatero: qué sabemos sobre la investigación y qué defendió él sobre su labor de consultoría"
+    fecha_publicacion: "2026-05-20"
+    autor: "Redacción El Diario"
+    resumen: >
+      Análisis de las claves de la imputación: Zapatero cobró en torno a 70.000 euros
+      anuales como consultor de Análisis Relevante, empresa vinculada a Plus Ultra,
+      entre 2020 y 2025. La pieza contrapone los indicios del juez con la posición
+      del expresidente, que defiende la legalidad de sus trabajos de consultoría.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-caso-zapatero-conjeturas-2026-05
+    url: "https://www.eldiario.es/politica/caso-zapatero-contrato-sospechoso-trafico-influencias-cargado-conjeturas_129_13235557.html"
+    medio_id: eldiario-es
+    titular: "Caso Zapatero: un contrato sospechoso para un tráfico de influencias cargado de conjeturas"
+    fecha_publicacion: "2026-05-21"
+    autor: "Redacción El Diario"
+    resumen: >
+      Análisis crítico del auto de imputación de Zapatero que señala que el juez Calama
+      mezcló indicios de delito con suposiciones de la Policía. La pieza examina si el
+      contrato de consultoría de Zapatero con Análisis Relevante es suficiente prueba
+      para sostener la acusación de tráfico de influencias.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-siete-claves-rescate-2026-05
+    url: "https://www.eldiario.es/politica/siete-claves-rescate-plus-ultra-investiga-juez-caso-zapatero_1_13240595.html"
+    medio_id: eldiario-es
+    titular: "Siete claves del rescate a Plus Ultra que investiga el juez del caso Zapatero"
+    fecha_publicacion: "2026-05-22"
+    resumen: >
+      Siete preguntas y respuestas sobre el rescate a Plus Ultra, la decisión del
+      Consejo de Ministros, los criterios del FASEE y la investigación judicial que
+      lleva al juez Calama a investigar si el préstamo de 53 millones de euros fue
+      instrumentalizado para blanquear dinero venezolano.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-origen-causa-zapatero-2026-05
+    url: "https://www.publico.es/politica/tribunales/origen-causa-zapatero-archivo-prestamo-plus-ultra-impulso-anticorrupcion-trama-blanqueo.html"
+    medio_id: publico-es
+    titular: "El origen de la causa contra Zapatero: del archivo por el préstamo a Plus Ultra al impulso de Anticorrupción por una trama de blanqueo"
+    fecha_publicacion: "2026-05-20"
+    resumen: >
+      Reconstrucción del origen procesal del caso: la primera denuncia de Manos Limpias
+      en 2021 fue archivada; fue la Fiscalía Anticorrupción la que, tras recibir
+      cooperación internacional de Francia y Suiza, impulsó la investigación que derivó
+      en las detenciones de diciembre de 2025 y la imputación de Zapatero en mayo de 2026.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-zapatero-respuesta-imputacion-2026-05-19
+    url: "https://www.publico.es/politica/zapatero-imputacion-he-realizado-ninguna-gestion-ninguna-administracion-publica-relacion-rescate-plus-ultra.html"
+    medio_id: publico-es
+    titular: "Zapatero, tras su imputación: «Jamás he realizado ninguna gestión en relación al rescate de Plus Ultra»"
+    fecha_publicacion: "2026-05-19"
+    resumen: >
+      Zapatero niega cualquier gestión ante la Administración pública relacionada con
+      el rescate de Plus Ultra y defiende la legalidad de sus trabajos de consultoría.
+      Manifiesta su disposición a declarar ante el juez Calama el 2 de junio.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-querella-manos-limpias-zapatero-2026-05
+    url: "https://www.publico.es/politica/tribunales/querella-manos-limpias-zapatero-entrevista-aldama-iker-jimenez-afirmacion-youtuber.html"
+    medio_id: publico-es
+    titular: "La querella de Manos Limpias contra Zapatero: una entrevista de Aldama con Iker Jiménez y una afirmación de un 'youtuber'"
+    fecha_publicacion: "2026-05-20"
+    resumen: >
+      Público analiza el origen y la solidez de la querella de Manos Limpias contra
+      Zapatero presentada en diciembre de 2025, que se basa en declaraciones de Aldama
+      en un programa de televisión y en afirmaciones de un youtuber, cuestionando su
+      fundamento probatorio.
+    tipo_pieza: analisis
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-informes-policiales-sin-pruebas-2026-05
+    url: "https://www.publico.es/politica/dos-informes-policiales-clave-aportan-pruebas-influencia-zapatero-sobre-responsables-sepi.html"
+    medio_id: publico-es
+    titular: "Los dos informes policiales clave no aportan pruebas de la influencia de Zapatero sobre los responsables de la SEPI"
+    fecha_publicacion: "2026-05-22"
+    resumen: >
+      Análisis de los dos informes de la UDEF en los que se basa el auto de imputación
+      de Zapatero: la pieza concluye que los informes no contienen pruebas directas de
+      que Zapatero ejerciera influencia sobre los directivos de la SEPI que aprobaron
+      el rescate.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: libertad-digital-trama-zapatero-fiscalia-2026-05-23
+    url: "https://www.libertaddigital.com/espana/2026-05-23/la-trama-zapatero-recurrio-fiscalia-para-boicotear-la-investigacion-plus-ultra-la-fiscal-jefa-es-amiga-7409066/"
+    medio_id: libertad-digital
+    titular: "La trama Zapatero recurrió a la Fiscalía para boicotear la investigación a Plus Ultra: «La fiscal jefa es amiga»"
+    fecha_publicacion: "2026-05-23"
+    resumen: >
+      Libertad Digital publica conversaciones intervenidas según las cuales integrantes
+      de la presunta trama investigada se jactaban de sus contactos con la Fiscalía
+      Provincial de Madrid para intentar archivar la causa de Plus Ultra. La información
+      reproduce fragmentos del auto del juez Calama.
+    tipo_pieza: investigacion_periodistica
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: infobae-quien-es-quien-plus-ultra-2026-05-24
+    url: "https://www.infobae.com/espana/2026/05/24/quien-es-quien-en-el-caso-plus-ultra-un-entramado-de-empresarios-politicos-y-sociedades-que-coloca-en-el-centro-de-la-investigacion-a-zapatero/"
+    medio_id: infobae
+    titular: "Quién es quién en el caso Plus Ultra: un entramado de empresarios, políticos y sociedades que coloca en el centro de la investigación a Zapatero"
+    fecha_publicacion: "2026-05-24"
+    resumen: >
+      Pieza de contextualización que identifica a los principales investigados y sus
+      roles en la presunta trama: Zapatero como figura central, los ejecutivos de Plus
+      Ultra (Martínez Sola y Roselli), el asesor Julio Martínez Martínez, el antiguo
+      propietario Rodolfo Reyes (en busca y captura) y las sociedades interpuestas.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: maldita-preguntas-respuestas-imputacion-2026-05-20
+    url: "https://maldita.es/desinfo/20260520/preguntas-y-respuestas-imputacion-zapatero-plus-ultra/"
+    medio_id: maldita-es
+    titular: "Preguntas y respuestas sobre la imputación a Zapatero en el caso del rescate a la aerolínea Plus Ultra"
+    fecha_publicacion: "2026-05-20"
+    resumen: >
+      Maldita.es explica en formato de preguntas y respuestas qué delitos se le
+      atribuyen a Zapatero, cuál es la diferencia entre investigado y condenado y qué
+      pasos siguen en el proceso judicial. Pieza con vocación de desambiguación para
+      lectores sin conocimiento jurídico.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: maldita-no-denuncia-manos-limpias-2026-05-20
+    url: "https://maldita.es/desinfo/20260520/zapatero-esta-siendo-investigado-por-una-denuncia-de-la-extrema-derecha/"
+    medio_id: maldita-es
+    titular: "No, la imputación de Zapatero no es por una denuncia de Manos Limpias basada en una entrevista a Aldama"
+    fecha_publicacion: "2026-05-20"
+    resumen: >
+      Maldita.es desmiente la afirmación de que la imputación de Zapatero se origina
+      en la querella de Manos Limpias: la causa principal es la investigación de
+      Anticorrupción a raíz de cooperación judicial internacional de Francia y Suiza,
+      no la querella de la acusación popular.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: maldita-preguntas-respuestas-imputacion-2026-05-20
+    notas: "Pieza de verificación complementaria sobre el mismo hito; no es republicación."
+
+  - id: maldita-delitos-zapatero-2026-05-20
+    url: "https://maldita.es/desinfo/20260520/zapatero-imputado-por-blanqueo-de-capitales-en-la-audiencia-nacional-en-el-caso-plus-ultra/"
+    medio_id: maldita-es
+    titular: "Qué sabemos sobre los delitos que la Audiencia Nacional imputa a Zapatero en el caso Plus Ultra"
+    fecha_publicacion: "2026-05-20"
+    resumen: >
+      Maldita.es describe los tres delitos imputados (organización criminal, tráfico de
+      influencias, falsedad documental) y la posible extensión al blanqueo, aclarando
+      que el término «blanqueo de capitales» que circuló en algunas informaciones no
+      está entre los delitos formales del auto.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: okdiario-trama-zapatero-fiscal-amiga-2026-05
+    url: "https://okdiario.com/espana/trama-zapatero-jactaba-cercania-fiscal-que-logro-archivo-causa-del-rescate-plus-ultra-amiga-17140841"
+    medio_id: okdiario
+    titular: "La trama de Zapatero se jactaba de su cercanía a la fiscal que logró el archivo de la causa del rescate a Plus Ultra: «Es amiga»"
+    fecha_publicacion: "2026-05-23"
+    resumen: >
+      Okdiario publica el mismo contenido de las conversaciones intervenidas sobre los
+      supuestos contactos con la Fiscalía Provincial de Madrid referenciados en el auto
+      del juez Calama. La pieza es paralela a la de Libertad Digital sobre el mismo
+      material.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: libertad-digital-trama-zapatero-fiscalia-2026-05-23
+    notas: "Pieza independiente sobre el mismo material del auto; no es republicación de agencia."
+
+  - id: eldiario-policia-incauto-107000-euros-2026-05
+    url: "https://www.eldiario.es/politica/policia-incauto-107-000-euros-75-000-dolares-registro-casa-presidente-plus-ultra_1_13249419.html"
+    medio_id: eldiario-es
+    titular: "La Policía se incautó de 107.000 euros y 75.000 dólares en el registro de la casa del presidente de Plus Ultra"
+    fecha_publicacion: "2026-05-25"
+    resumen: >
+      El Diario revela que durante el registro de la vivienda del presidente de Plus
+      Ultra, Julio Martínez Sola, el 19 de mayo de 2026, la Policía encontró y se
+      incautó de 107.000 euros y 75.175 dólares en efectivo. El dato procede del auto
+      del juez Calama que levantó el secreto de sumario.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-busca-captura-antiguo-dueno-2026-05
+    url: "https://www.eldiario.es/politica/juez-calama-acusa-antiguo-dueno-plus-ultra-esconder-parte-rescate-paraisos-fiscales-medio-mundo_1_13249423.html"
+    medio_id: eldiario-es
+    titular: "Busca y captura para el antiguo dueño de Plus Ultra por llevarse parte del dinero del rescate a paraísos fiscales"
+    fecha_publicacion: "2026-05-25"
+    resumen: >
+      El juez Calama acusa a Rodolfo Reyes, antiguo propietario venezolano de Plus Ultra,
+      de haber ocultado parte de los 53 millones del rescate en paraísos fiscales. Se
+      ha dictado orden de búsqueda y captura contra él, que se encuentra en situación
+      de fuga desde 2024.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-medidas-cautelares-rebajadas-2026-05
+    url: "https://www.eldiario.es/politica/audiencia-nacional-rebaja-medidas-cautelares-principales-investigados-caso-plus-ultra_1_13216201.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional rebaja las medidas cautelares a los principales investigados del caso Plus Ultra"
+    fecha_publicacion: "2026-05-10"
+    resumen: >
+      La Audiencia Nacional acuerda reducir las medidas cautelares para los principales
+      investigados del caso Plus Ultra que fueron detenidos en diciembre de 2025,
+      permitiéndoles mayor libertad de movimientos mientras continúa la instrucción.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"

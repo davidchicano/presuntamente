@@ -1,0 +1,15 @@
+id: yolanda-diaz-coordinadora-sumar
+naturaleza: cargo_organico_partido
+descripcion: "Coordinadora de Movimiento Sumar. Yolanda Díaz impulsó y encabezó el espacio político Sumar desde su lanzamiento el 2 de abril de 2023, ejerciendo como coordinadora de la coalición y del partido."
+sujeto_persona_id: yolanda-diaz
+objeto_organizacion_id: sumar
+cargo_o_rol: "Coordinadora"
+desde: "2023-04-02"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: elpais-yolanda-diaz-coordinadora-sumar-2023-04-02
+    pasaje: "El País, 2 de abril de 2023: Yolanda Díaz lanza Sumar como coalición electoral de izquierdas de cara a las elecciones generales de 2023, ejerciendo como coordinadora del espacio político."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

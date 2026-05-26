@@ -38,7 +38,9 @@ Una vez existan corpus poblados en al menos un caso piloto, los posibles renders
 
 ## Estado actual
 
-**Primer caso poblado + UI entregada el 2026-05-26.** Schema canónico + collection en `content/cobertura-mediatica/` + skill `/rastrear-cobertura` v1 + corpus inicial de `begona-gomez` con 29 piezas. La ficha de caso renderiza una sección propia "Cobertura mediática general" centrada en lecturas útiles: periodo observado, mayor concentración de piezas, medio más presente en la muestra, formato dominante, picos rastreados, distribución por tipo/medio y listado completo en desplegable.
+**Corpus completo en los 6 casos publicables (2026-05-26 tarde-noche, sprint extendido).** Schema canónico + collection en `content/cobertura-mediatica/` + skill `/rastrear-cobertura` v1 + 137 piezas distribuidas en: `begona-gomez` (29), `plus-ultra` (26), `kitchen` (23), `fiscal-general-del-estado` (22), `gonzalez-amador` (21) y `lezo` (16). La ficha de caso renderiza una sección propia "Cobertura mediática general" centrada en lecturas útiles: periodo observado, mayor concentración de piezas, medio más presente en la muestra, formato dominante, picos rastreados, distribución por tipo/medio y listado completo en desplegable.
+
+Auditoría post-rastreo (2026-05-26): 4 piezas tenían prefijo de medio incorrecto en el campo `id` (típicamente `eldiario-X` cuando el medio real era TheObjective o Público), corregido. El campo `medio_id` y la URL eran correctos en todos los casos. Patrón anotado en aprendizajes para próximas pasadas.
 
 La UI mantiene la separación editorial clave: las piezas de cobertura general no entran en la "Biblioteca documental del caso" ni usan badges N1-N4. Se muestran como corpus mediático rastreado, con badge de `tipo_pieza` y enlaces al original o archivo cuando exista.
 
@@ -95,7 +97,8 @@ Enum del eje: `izquierda_extrema · izquierda · centroizquierda · centro · ce
 - [x] Cerrar modelo de clasificación de medios. **Decisión 2026-05-26**: schema patch + canon en doc 07. Falta poblar medios y UI.
 - [ ] Implementar barra horizontal con toggle "Declarada · Percibida" sobre el corpus rastreado. Franjas separadas para medios fuera del eje político. Tooltip por medio con declarada, percibida y grupo editorial.
 - [x] Extender archivado archive.org a `content/cobertura-mediatica/`. **Entregado 2026-05-26:** `scripts/archivar-n4.mjs` + ficha [`archive-org-pre-commit.md`](archive-org-pre-commit.md).
-- [ ] Ejecutar `pnpm archive:catchup` para rellenar `url_archivo` del corpus piloto `begona-gomez` (29 noticias pendientes a 2026-05-26).
+- [ ] Ejecutar `pnpm archive:catchup` para rellenar `url_archivo` del corpus completo. Backlog: ~135 piezas sin archivar (29 begona-gomez + 108 de los otros 5 casos rastreados en el sprint extendido). El hook acota a 5 URLs/commit; el catchup manual es la vía operativa.
+- [ ] Poblar `orientacion_editorial_percibida` con más fuentes externas cuando aparezcan accesibles (Pew, Political Watch reactivada, paper académico nuevo). Hoy 5 medios cubiertos por CIS 3421; 16 medios restantes del eje sin clasificación percibida.
 - [ ] Actualizar skill `/rastrear-cobertura` sólo si hace falta documentar el límite ("no clasificar medios") o el mantenimiento cruzado con medios del inventario.
 - [x] Poblar el primer caso piloto con `/rastrear-cobertura <slug>` lanzado en sub-agente paralelo. **Entregado 2026-05-25**: `begona-gomez`, 29 piezas.
 - [x] Diseñar el render en UI cuando exista corpus. **Entregado 2026-05-26**: sección propia en ficha de caso, separada de biblioteca documental.

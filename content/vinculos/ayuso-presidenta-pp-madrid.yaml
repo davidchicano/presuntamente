@@ -1,0 +1,15 @@
+id: ayuso-presidenta-pp-madrid
+naturaleza: cargo_organico_partido
+descripcion: "Presidenta del Partido Popular de la Comunidad de Madrid desde el 20 de mayo de 2022, elegida en el XVII Congreso Extraordinario del PP de Madrid celebrado en Ifema con el 99,12% de los votos de los compromisarios (2.030 de 2.052). Es la primera mujer en presidir el PP de Madrid."
+sujeto_persona_id: isabel-diaz-ayuso
+objeto_organizacion_id: partido-popular
+cargo_o_rol: "Presidenta del PP de la Comunidad de Madrid"
+desde: "2022-05-20"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [gonzalez-amador]
+documentos_respaldo:
+  - documento_id: elespanol-ayuso-presidenta-pp-madrid-2022-05-21
+    pasaje: "El Español informa que Isabel Díaz Ayuso fue elegida presidenta del PP de Madrid con el 99,12% de los votos (2.030 de 2.052 compromisarios) en el XVII Congreso Extraordinario celebrado en Ifema el 20 de mayo de 2022."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,15 @@
+id: eres-andalucia
+nombre_oficial: "Procedimiento Abreviado — Audiencia Provincial de Sevilla (caso ERE de Andalucía)"
+nombre_mediatico: "Caso ERE de Andalucía"
+nombres_alternativos:
+  - "Caso ERE"
+  - "EREs Andalucía"
+  - "Caso de los ERE"
+
+organo_judicial_id: audiencia-provincial-sevilla
+fase_actual: ejecucion
+fecha_apertura: "2011-01-01"
+
+origen_denuncia: denuncia_organismo_publico
+
+estado_publicacion: pendiente

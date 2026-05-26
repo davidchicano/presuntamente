@@ -1,0 +1,19 @@
+id: tribunal-superior-justicia-andalucia
+nombre: "Tribunal Superior de Justicia de Andalucía"
+nombres_alternativos:
+  - "TSJ Andalucía"
+  - "TSJA"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional superior en Andalucía para todos los órdenes
+  salvo el constitucional, con sede en Granada. Conoce de los recursos
+  de apelación contra sentencias de las Audiencias Provinciales y de
+  las causas contra aforados autonómicos.
+jurisdiccion: penal
+ambito_territorial: autonomico
+localidad: "Granada"
+provincia: "Granada"
+comunidad_autonoma: "Andalucía"
+organo_superior_id: tribunal-supremo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

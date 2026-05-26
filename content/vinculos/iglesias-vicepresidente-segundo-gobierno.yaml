@@ -1,0 +1,18 @@
+id: iglesias-vicepresidente-segundo-gobierno
+naturaleza: cargo_publico_designado
+descripcion: "Vicepresidente Segundo del Gobierno de España y Ministro de Derechos Sociales y Agenda 2030 desde el 13 de enero de 2020 hasta el 17 de mayo de 2021, fecha de su toma de posesión de la renuncia al cargo."
+sujeto_persona_id: pablo-iglesias
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Vicepresidente Segundo del Gobierno de España"
+desde: "2020-01-13"
+hasta: "2021-05-17"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "XIV Legislatura (Gobierno Sánchez II)"
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: boe-rd-nombramiento-iglesias-vicepresidente-2020-01-13
+    pasaje: "Real Decreto 2/2020, de 13 de enero: nombramiento de Pablo Iglesias Turrión como Vicepresidente Segundo del Gobierno y Ministro de Derechos Sociales y Agenda 2030, publicado en BOE nº 12 del 14 de enero de 2020."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

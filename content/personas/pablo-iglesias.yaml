@@ -1,0 +1,33 @@
+id: pablo-iglesias
+nombre_completo: "Pablo Iglesias Turrión"
+nombres_alternativos:
+  - "Pablo Iglesias"
+  - "Iglesias"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Vicepresidente Segundo del Gobierno de España"
+    organizacion_id: presidencia-del-gobierno
+    desde: "2020-01-13"
+    hasta: "2021-05-17"
+  - cargo: "Secretario General de Podemos"
+    organizacion_id: podemos
+    desde: "2014-10-15"
+    hasta: "2021-05-04"
+  - cargo: "Diputado en el Congreso de los Diputados"
+    organizacion_id: congreso-de-los-diputados
+    desde: "2015-12-13"
+    hasta: "2021-03-22"
+fecha_nacimiento: "1978-10-17"
+nacionalidad: "española"
+biografia_corta: |
+  Político español. Fue Secretario General de Podemos desde la fundación
+  del partido en octubre de 2014 hasta su dimisión el 4 de mayo de 2021,
+  anunciada tras perder las elecciones a la Comunidad de Madrid. Ejerció
+  como Vicepresidente Segundo del Gobierno de España y Ministro de Derechos
+  Sociales y Agenda 2030 en el gobierno de coalición PSOE-Unidas Podemos
+  entre el 13 de enero de 2020 y el 17 de mayo de 2021. Fue diputado por
+  Madrid desde diciembre de 2015 hasta su renuncia al escaño en marzo de
+  2021, para presentarse como candidato en las autonómicas madrileñas.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -19,5 +19,13 @@ orientacion_editorial_declarada:
     condicionantes de nadie.
   url: "https://www.libertaddigital.com/corporativo/"
 
+grupo_editorial:
+  nombre: "Libertad Digital S.A."
+  rol: matriz
+  cita: >-
+    Cuentas Anuales del grupo consolidado del que LIBERTAD DIGITAL, S.A. es
+    sociedad dominante [...] Grupo de comunicación multimedia español.
+  url: "https://www.libertaddigital.com/corporativo/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

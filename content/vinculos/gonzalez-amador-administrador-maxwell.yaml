@@ -1,0 +1,15 @@
+id: gonzalez-amador-administrador-maxwell
+naturaleza: cargo_directivo_organizacion_privada
+descripcion: "Administrador único de Maxwell Cremona Ingeniería y Procesos S.L. La presunta defraudación a la Hacienda Pública investigada en el caso González Amador se atribuye a la tributación irregular del Impuesto sobre Sociedades de esta mercantil en los ejercicios 2020 y 2021."
+sujeto_persona_id: alberto-gonzalez-amador
+objeto_organizacion_id: maxwell-cremona
+cargo_o_rol: "Administrador único"
+desde: "2011-01-01"
+precision_desde: anio
+vigente: true
+relevancia_para_caso_ids: [gonzalez-amador]
+documentos_respaldo:
+  - documento_id: elespanol-procesamiento-ga-2025-05-29
+    pasaje: "El Español identifica a Alberto González Amador como administrador único de Maxwell Cremona al cubrir el auto de procesamiento del Juzgado de Instrucción nº 19 de Madrid."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

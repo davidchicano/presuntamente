@@ -14,6 +14,11 @@ enunciado: |
   cohecho, prevaricación y revelación de secretos. La condición de
   procesados no implica valoración de culpabilidad: rige el principio
   de presunción de inocencia.
+
+  Nota: el auto rectificador del magistrado del JCI nº 6, de 23 de
+  enero de 2024, excluyó del juicio oral los delitos de organización
+  criminal y secuestro por superar el límite de pena establecido para
+  el procedimiento abreviado en que se sustancia la causa.
 tipo: atribuido
 fecha_o_periodo:
   desde: "2021-07-29"
@@ -32,6 +37,8 @@ documentos_respaldo:
     pasaje: "Cobertura periodística del auto del 29 de julio de 2021 con detalle del procesamiento y de los presuntos tipos penales referidos."
   - documento_id: infobae-procesamiento-kitchen-2021-07-29
     pasaje: "Cobertura cruzada en línea editorial distinta sobre el mismo auto."
+  - documento_id: cgpj-rectifica-auto-kitchen-2024-01-23
+    pasaje: "Nota CGPJ sobre el auto rectificador del 23 de enero de 2024 que excluye los delitos de organización criminal y secuestro del juicio oral por superar el límite de pena del procedimiento abreviado."
 nivel_fuente_efectivo: 4
 vigencia: vigente
 redaccion_neutra_revisada: true

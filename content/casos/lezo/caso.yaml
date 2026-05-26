@@ -150,6 +150,24 @@ resumen_cifras: |
   Isabel II por un sobreprecio estimado próximo a los 9,7 millones
   de euros (cobertura cruzada de Público y El Diario, 2019-2020).
 
+partidos_afectados:
+  - partido_id: partido-popular
+    tipo_afectacion: gobierno_responsable_del_acto_investigado
+    justificacion: >-
+      Los actos presuntamente irregulares investigados en las distintas piezas
+      de la causa se atribuyen a la gestión de la empresa pública Canal de
+      Isabel II durante los gobiernos del Partido Popular en la Comunidad de
+      Madrid (mandatos de Esperanza Aguirre, Ignacio González y Cristina
+      Cifuentes, 2003-2017).
+  - partido_id: partido-popular
+    tipo_afectacion: imputacion_a_cargo_del_partido
+    justificacion: >-
+      Ignacio González, procesado en varias piezas de la causa, fue
+      Vicepresidente y Presidente de la Comunidad de Madrid por el Partido
+      Popular (2003-2015). Pedro Calvo Poch y Juan Bravo Rivera, también
+      procesados en la pieza Inassa, fueron consejeros del gobierno autonómico
+      del PP en la Comunidad de Madrid.
+
 estado_publicacion: beta_publica
 ultima_revision_editorial: "2026-05-23"
 nivel_relevancia_editorial: capital
@@ -164,9 +182,9 @@ estado_ficha:
   hechos_modelados: completo
   fuentes_cruzadas: completo
   composicion_fuentes_citadas: pendiente
-  vinculos_institucionales: pendiente
+  vinculos_institucionales: completo
   grafo_relaciones: pendiente
-  cobertura_mediatica_general: pendiente
+  cobertura_mediatica_general: parcial
   revision_editorial: completo
   notas: "Sentencia primera instancia de la pieza Inassa pendiente de CENDOJ; estado actual de la pieza Navalcarnero pendiente de la agenda de señalamientos del CGPJ. Notas oficiales del CGPJ sobre los autos históricos de Emissao y golf pendientes de localización."
-  fecha_actualizacion: "2026-05-25"
+  fecha_actualizacion: "2026-05-26"

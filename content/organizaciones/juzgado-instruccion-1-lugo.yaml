@@ -1,0 +1,17 @@
+id: juzgado-instruccion-1-lugo
+nombre: "Juzgado de Instrucción nº 1 de Lugo"
+nombres_alternativos:
+  - "JI nº 1 Lugo"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado de Instrucción nº 1 de Lugo. Instruyó la Operación Pokémon
+  desde septiembre de 2012, la mayor causa de corrupción descubierta
+  en Galicia, bajo la titularidad de la magistrada Pilar de Lara.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Lugo"
+provincia: "Lugo"
+comunidad_autonoma: "Galicia"
+organo_superior_id: audiencia-provincial-lugo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

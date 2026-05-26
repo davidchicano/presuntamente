@@ -1,0 +1,18 @@
+id: garcia-ortiz-nombramiento-sanchez
+naturaleza: nombramiento_por_gobierno
+descripcion: "Álvaro García Ortiz fue nombrado Fiscal General del Estado por Real Decreto 836/2022 a propuesta del Gobierno presidido por Pedro Sánchez. El nombramiento corresponde al Rey a propuesta del Gobierno y oído el Consejo General del Poder Judicial (art. 124.4 CE)."
+sujeto_persona_id: alvaro-garcia-ortiz
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Fiscal General del Estado (nombramiento)"
+desde: "2022-08-02"
+hasta: "2025-12-10"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "Gobierno Sánchez II (XV legislatura)"
+relevancia_para_caso_ids: [fiscal-general-del-estado]
+documentos_respaldo:
+  - documento_id: boe-nombramiento-garcia-ortiz-fge-2022-08-02
+    pasaje: "Real Decreto 836/2022, de 2 de agosto, firmado por el Rey Felipe VI y refrendado por el Presidente del Gobierno Pedro Sánchez, por el que se nombra a Álvaro García Ortiz Fiscal General del Estado."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

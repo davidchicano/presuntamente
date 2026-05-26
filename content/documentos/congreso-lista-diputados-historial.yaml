@@ -1,0 +1,18 @@
+id: congreso-lista-diputados-historial
+titulo: "Congreso de los Diputados — Buscador de diputados históricos (portal oficial)"
+tipo: otro
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Fuente primaria N1: portal oficial del Congreso de los Diputados
+  (congreso.es) con buscador de diputados históricos por legislatura,
+  circunscripción y nombre. Permite verificar la condición de diputado/a,
+  la circunscripción y las fechas de cada legislatura para cualquier
+  persona que haya formado parte de la cámara baja. Emitido directamente
+  por el órgano constitucional emisor.
+productor_organizacion_id: congreso-de-los-diputados
+fecha_documento: "2026-05-26"
+estado_acceso: publico
+idioma: es
+url_canonica: "https://www.congreso.es/busqueda-de-diputados"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

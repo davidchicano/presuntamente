@@ -1,0 +1,14 @@
+id: koldo
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 6 de la Audiencia Nacional (caso Koldo)"
+nombre_mediatico: "Caso Koldo"
+nombres_alternativos:
+  - "Operación Koldo"
+  - "Trama Koldo"
+
+organo_judicial_id: juzgado-central-instruccion-6
+fase_actual: instruccion
+fecha_apertura: "2024-02-20"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

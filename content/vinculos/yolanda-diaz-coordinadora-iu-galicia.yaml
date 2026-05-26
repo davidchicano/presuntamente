@@ -1,0 +1,19 @@
+id: yolanda-diaz-coordinadora-iu-galicia
+naturaleza: cargo_organico_partido
+descripcion: "Coordinadora nacional de Esquerda Unida (federación gallega de Izquierda Unida). Ejerció el cargo desde 2005 y fue la primera mujer en liderar la organización. Se dio de baja de IU en 2019 por discrepancias durante las negociaciones con el PSOE."
+sujeto_persona_id: yolanda-diaz
+objeto_organizacion_id: izquierda-unida
+cargo_o_rol: "Coordinadora nacional de Esquerda Unida (IU Galicia)"
+desde: "2005-01-01"
+hasta: "2019-01-01"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: eldiario-yolanda-diaz-baja-iu-2019
+    pasaje: "Confirma la militancia de Yolanda Díaz en IU y su baja en 2019 por discrepancias en las negociaciones con el PSOE."
+  - documento_id: newtral-yolanda-diaz-historial-partidos-iu-2026
+    pasaje: "Fact-check de Newtral (19-02-2026) que documenta el cargo de coordinadora nacional de Esquerda Unida (IU Galicia) desde 2005 y su historial electoral bajo las siglas de IU."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

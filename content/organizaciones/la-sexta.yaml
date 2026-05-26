@@ -18,5 +18,24 @@ url_canonica: "https://www.lasexta.com"
 
 naturaleza_editorial: generalista_politico
 
+orientacion_editorial_percibida:
+  valor: centroizquierda
+  fuente: cis
+  cita: >-
+    Media 3,75 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 23: «Y usando la misma escala de 1 a 10, ¿dónde colocaría las
+    siguientes cadenas de televisión?». N=24.697. Desviación típica: 2,41.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
+  fecha: "2023-12-15"
+
+grupo_editorial:
+  nombre: "Atresmedia Corporación de Medios de Comunicación S.A."
+  rol: matriz
+  cita: >-
+    Atresmedia Antena 3 laSexta Neox Nova Mega Atreseries Onda Cero Europa FM
+    Melodía FM Atresplayer Flooxer — Atresmedia Corporación de Medios de
+    Comunicación, S.A.
+  url: "https://www.atresmediacorporacion.com/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

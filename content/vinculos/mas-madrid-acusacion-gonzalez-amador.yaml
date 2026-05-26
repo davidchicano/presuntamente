@@ -1,0 +1,14 @@
+id: mas-madrid-acusacion-gonzalez-amador
+naturaleza: acusacion_institucional_en_caso
+descripcion: "Más Madrid ejerce la acusación popular en el procedimiento seguido ante el Juzgado de Instrucción nº 19 de Madrid contra Alberto González Amador. Solicita, conjuntamente con el PSOE, 5 años de prisión y multa por presuntos delitos contra la Hacienda Pública en concurso medial con falsedad en documento mercantil, delito contable continuado y pertenencia a grupo criminal."
+sujeto_organizacion_id: mas-madrid
+objeto_organizacion_id: juzgado-instruccion-19-madrid
+desde: "2024-09-01"
+precision_desde: mes
+vigente: true
+relevancia_para_caso_ids: [gonzalez-amador]
+documentos_respaldo:
+  - documento_id: infobae-ratifica-procesamiento-ga-2025-11-07
+    pasaje: "Infobae menciona a Más Madrid personada como acusación popular en el caso González Amador junto al PSOE, en la cobertura de la ratificación del procesamiento."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

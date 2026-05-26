@@ -1,0 +1,14 @@
+id: noos
+nombre_oficial: "Diligencias Previas — Juzgado de Instrucción nº 3 de Palma de Mallorca (caso Nóos, pieza 25 del caso Palma Arena)"
+nombre_mediatico: "Caso Nóos"
+nombres_alternativos:
+  - "Instituto Nóos"
+  - "Caso Urdangarín"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: ejecucion
+fecha_apertura: "2010-02-01"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

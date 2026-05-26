@@ -1,0 +1,16 @@
+id: sanchez-presidente-gobierno
+naturaleza: cargo_publico_designado
+descripcion: "Presidente del Gobierno de España desde el 2 de junio de 2018, nombrado por Real Decreto 354/2018 de 1 de junio, como consecuencia de la aprobación de la moción de censura contra Mariano Rajoy en el Congreso de los Diputados los días 31 de mayo y 1 de junio de 2018. Reelegido en enero de 2020 al frente de un gobierno de coalición PSOE-Unidas Podemos y de nuevo en noviembre de 2023 tras las elecciones generales del 23 de julio de ese año."
+sujeto_persona_id: pedro-sanchez
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Presidente del Gobierno de España"
+desde: "2018-06-02"
+precision_desde: dia
+vigente: true
+gobierno_o_legislatura: "XIV y XV Legislaturas (Gobierno Sánchez I, II y III)"
+relevancia_para_caso_ids: [begona-gomez, fiscal-general-del-estado, plus-ultra]
+documentos_respaldo:
+  - documento_id: boe-rd354-2018-nombramiento-sanchez-presidente
+    pasaje: "Real Decreto 354/2018, de 1 de junio: 'se nombra Presidente del Gobierno a don Pedro Sánchez Pérez-Castejón', publicado en BOE nº 134 del 2 de junio de 2018."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,18 @@
+id: calvo-poch-consejero-medio-ambiente-cam
+naturaleza: cargo_publico_designado
+descripcion: "Consejero de Medio Ambiente de la Comunidad de Madrid bajo la presidencia de Alberto Ruiz-Gallardón (V Legislatura)."
+sujeto_persona_id: pedro-calvo-poch
+objeto_organizacion_id: comunidad-de-madrid
+cargo_o_rol: "Consejero de Medio Ambiente"
+desde: "2000-05-26"
+hasta: "2003-06-30"
+precision_desde: dia
+precision_hasta: mes
+vigente: false
+gobierno_o_legislatura: "Comunidad de Madrid - Ruiz-Gallardón (V Legislatura)"
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: bocm-decreto-20-2000-nombramiento-calvo-poch-2000-05-29
+    pasaje: "DECRETO 20/2000, de 26 de mayo, del Presidente de la Comunidad, por el que se nombra al excelentísimo señor don Pedro Luis Calvo Poch, Consejero de Medio Ambiente. (BOCM nº 126, 29-may-2000, p. 17)"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

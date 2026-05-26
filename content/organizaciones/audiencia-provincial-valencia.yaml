@@ -1,0 +1,17 @@
+id: audiencia-provincial-valencia
+nombre: "Audiencia Provincial de Valencia"
+nombres_alternativos:
+  - "AP Valencia"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional de segunda instancia con sede en Valencia,
+  competente para el enjuiciamiento de delitos en la provincia de
+  Valencia no atribuidos a otros órganos.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Valencia"
+provincia: "Valencia"
+comunidad_autonoma: "Comunidad Valenciana"
+organo_superior_id: tribunal-superior-justicia-comunidad-valenciana
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

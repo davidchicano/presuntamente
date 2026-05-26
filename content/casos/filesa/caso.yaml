@@ -1,0 +1,14 @@
+id: filesa
+nombre_oficial: "Causa Especial — Sala Segunda del Tribunal Supremo (caso Filesa)"
+nombre_mediatico: "Caso Filesa"
+nombres_alternativos:
+  - "Trama Filesa"
+  - "Financiación ilegal PSOE Filesa"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: sentencia_firme
+fecha_apertura: "1991-01-01"
+
+origen_denuncia: querella_particular
+
+estado_publicacion: pendiente

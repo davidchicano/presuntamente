@@ -1,0 +1,17 @@
+id: zapatero-presidente-gobierno
+naturaleza: cargo_publico_electo
+descripcion: "Presidente del Gobierno de España durante las VIII y IX legislaturas (2004-2011), elegido tras las elecciones generales del 14 de marzo de 2004 y reelegido en las de 9 de marzo de 2008."
+sujeto_persona_id: jose-luis-rodriguez-zapatero
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Presidente del Gobierno de España"
+desde: "2004-04-17"
+hasta: "2011-12-21"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [plus-ultra]
+documentos_respaldo:
+  - documento_id: auto-jci4-plus-ultra-2026-05-19
+    pasaje: "El auto del JCI nº 4 de la Audiencia Nacional de 19 de mayo de 2026 cita a José Luis Rodríguez Zapatero como investigado en el contexto del caso Plus Ultra, en su condición de ex Presidente del Gobierno."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

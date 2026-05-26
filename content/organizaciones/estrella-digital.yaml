@@ -14,5 +14,13 @@ url_canonica: "https://www.estrelladigital.es/"
 
 naturaleza_editorial: generalista_politico
 
+grupo_editorial:
+  nombre: "Estrella Digital Television SL"
+  rol: matriz
+  cita: >-
+    Titular: Estrella Digital Television SL. NIF: B02939189 [...] Domicilio:
+    Calle María Benítez 16-18, 28224, Pozuelo de Alarcón, Madrid.
+  url: "https://www.estrelladigital.es/aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

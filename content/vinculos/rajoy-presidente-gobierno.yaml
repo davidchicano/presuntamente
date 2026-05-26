@@ -1,0 +1,20 @@
+id: rajoy-presidente-gobierno
+naturaleza: cargo_publico_designado
+descripcion: "Presidente del Gobierno de España durante las X y XI Legislaturas (diciembre de 2011 a junio de 2018), nombrado por Real Decreto 1823/2011 de 21 de diciembre. Cesó el 2 de junio de 2018 tras la aprobación de la moción de censura del PSOE en el Congreso de los Diputados."
+sujeto_persona_id: mariano-rajoy
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Presidente del Gobierno de España"
+desde: "2011-12-21"
+hasta: "2018-06-02"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "X y XI Legislaturas (Gobierno Rajoy I y II)"
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: boe-rd1823-2011-nombramiento-rajoy-presidente
+    pasaje: "Real Decreto 1823/2011, de 21 de diciembre: nombramiento de Mariano Rajoy Brey como Presidente del Gobierno, publicado en BOE nº 308 del 23 de diciembre de 2011."
+  - documento_id: boe-rd454-2018-cese-rajoy-presidente
+    pasaje: "Real Decreto 454/2018, de 2 de junio: cese de Mariano Rajoy Brey como Presidente del Gobierno, publicado en BOE nº 134 del 2 de junio de 2018."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

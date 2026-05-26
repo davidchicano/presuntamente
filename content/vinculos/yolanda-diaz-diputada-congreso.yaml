@@ -1,0 +1,15 @@
+id: yolanda-diaz-diputada-congreso
+naturaleza: cargo_publico_electo
+descripcion: "Diputada en el Congreso de los Diputados desde noviembre de 2019, inicialmente como diputada por A Coruña, cargo que compatibilizó con sus funciones como Ministra y posteriormente como Vicepresidenta Segunda del Gobierno."
+sujeto_persona_id: yolanda-diaz
+objeto_organizacion_id: congreso-de-los-diputados
+cargo_o_rol: "Diputada en el Congreso de los Diputados por A Coruña"
+desde: "2019-11-10"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: congreso-lista-diputados-historial
+    pasaje: "Buscador oficial del Congreso. Yolanda Díaz Pérez figura como Diputada por A Coruña a partir de la XIV Legislatura (desde noviembre de 2019)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

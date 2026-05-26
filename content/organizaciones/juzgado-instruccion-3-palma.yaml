@@ -1,0 +1,18 @@
+id: juzgado-instruccion-3-palma
+nombre: "Juzgado de Instrucción nº 3 de Palma de Mallorca"
+nombres_alternativos:
+  - "JI nº 3 Palma"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado de Instrucción nº 3 de Palma de Mallorca. Instruyó el
+  caso Nóos (pieza separada nº 25 del caso Palma Arena), bajo
+  la titularidad del magistrado José Castro Aragón, quien dictó
+  el auto de apertura de juicio oral el 22 de diciembre de 2014.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Palma de Mallorca"
+provincia: "Illes Balears"
+comunidad_autonoma: "Illes Balears"
+organo_superior_id: audiencia-provincial-palma
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

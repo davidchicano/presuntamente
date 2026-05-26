@@ -1,0 +1,15 @@
+id: proces
+nombre_oficial: "Causa Especial 20907/2017 — Sala Segunda del Tribunal Supremo (procés independentista)"
+nombre_mediatico: "Caso Procés"
+nombres_alternativos:
+  - "Juicio del Procés"
+  - "Procés independentista catalán"
+  - "Causa Especial 20907/2017"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: ejecucion
+fecha_apertura: "2017-10-30"
+
+origen_denuncia: fiscalia_ordinaria
+
+estado_publicacion: pendiente

@@ -1,0 +1,14 @@
+id: barcenas-caja-b
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional (caja B del PP)"
+nombre_mediatico: "Caso Bárcenas (caja B)"
+nombres_alternativos:
+  - "Papeles de Bárcenas"
+  - "Caja B del PP"
+
+organo_judicial_id: tribunal-supremo
+fase_actual: sentencia_firme
+fecha_apertura: "2013-01-31"
+
+origen_denuncia: denuncia_periodistica
+
+estado_publicacion: pendiente

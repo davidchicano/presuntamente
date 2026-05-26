@@ -113,7 +113,7 @@ estado_ficha:
   hechos_modelados: completo
   fuentes_cruzadas: completo
   composicion_fuentes_citadas: pendiente
-  vinculos_institucionales: pendiente
+  vinculos_institucionales: completo
   grafo_relaciones: pendiente
   cobertura_mediatica_general: pendiente
   revision_editorial: completo

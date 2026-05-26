@@ -1,0 +1,18 @@
+id: juzgado-instruccion-5-marbella
+nombre: "Juzgado de Instrucción nº 5 de Marbella"
+nombres_alternativos:
+  - "JI nº 5 Marbella"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado de Instrucción nº 5 de Marbella. Instruyó el caso Malaya,
+  la mayor operación contra la corrupción urbanística del Ayuntamiento
+  de Marbella, bajo la titularidad del magistrado Miguel Ángel Torres
+  Segura desde noviembre de 2005.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Marbella"
+provincia: "Málaga"
+comunidad_autonoma: "Andalucía"
+organo_superior_id: audiencia-provincial-malaga
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

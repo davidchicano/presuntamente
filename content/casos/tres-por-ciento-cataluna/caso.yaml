@@ -1,0 +1,15 @@
+id: tres-por-ciento-cataluna
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional (caso 3%)"
+nombre_mediatico: "Caso 3% de Cataluña"
+nombres_alternativos:
+  - "Caso 3%"
+  - "Financiación ilegal CDC"
+  - "Caso del tres por ciento"
+
+organo_judicial_id: juzgado-central-instruccion-5
+fase_actual: juicio_oral
+fecha_apertura: "2015-01-01"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

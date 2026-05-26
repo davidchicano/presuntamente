@@ -1,0 +1,19 @@
+id: tribunal-superior-justicia-galicia
+nombre: "Tribunal Superior de Justicia de Galicia"
+nombres_alternativos:
+  - "TSJ Galicia"
+  - "TSJG"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional superior en Galicia para todos los órdenes
+  salvo el constitucional, con sede en A Coruña. Conoce de los
+  recursos de apelación contra sentencias de las Audiencias
+  Provinciales gallegas y de las causas contra aforados autonómicos.
+jurisdiccion: penal
+ambito_territorial: autonomico
+localidad: "A Coruña"
+provincia: "A Coruña"
+comunidad_autonoma: "Galicia"
+organo_superior_id: tribunal-supremo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

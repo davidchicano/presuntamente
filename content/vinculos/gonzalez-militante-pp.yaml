@@ -1,0 +1,19 @@
+id: gonzalez-militante-pp
+naturaleza: cargo_organico_partido
+descripcion: "Militante del Partido Popular. Ocupó el cargo de secretario general del PP de Madrid durante los años previos a su detención en el marco de la Operación Lezo en abril de 2017. Tras su imputación en mayo de 2017 no ostentaba cargo orgánico en el partido."
+sujeto_persona_id: ignacio-gonzalez
+objeto_organizacion_id: partido-popular
+cargo_o_rol: "Secretario General del PP de Madrid (hasta 2017)"
+desde: "2003-01-01"
+hasta: "2017-05-09"
+precision_desde: anio
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: elespanol-detencion-gonzalez-lezo-2017-04-19
+    pasaje: "El Español identifica a Ignacio González como político del Partido Popular y ex presidente de la Comunidad de Madrid al cubrir su detención en el marco de la Operación Lezo el 19 de abril de 2017."
+  - documento_id: publico-prision-preventiva-gonzalez-lezo-2017-04-22
+    pasaje: "Público describe a Ignacio González como político del PP, ex vicepresidente y ex presidente de la Comunidad de Madrid, al cubrir su prisión provisional en el caso Lezo."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

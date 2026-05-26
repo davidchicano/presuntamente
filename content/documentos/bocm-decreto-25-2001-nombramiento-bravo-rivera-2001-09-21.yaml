@@ -1,0 +1,34 @@
+id: bocm-decreto-25-2001-nombramiento-bravo-rivera-2001-09-21
+titulo: "BOCM — Decreto 25/2001, de 20 de septiembre, del Presidente de la Comunidad, por el que se nombra Consejero de Hacienda de la Comunidad de Madrid a don Juan Bravo Rivera"
+tipo: boletin_oficial
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Disposición oficial publicada en el Boletín Oficial de la Comunidad de
+  Madrid (BOCM) nº 225, de 21 de septiembre de 2001, anuncio nº 3264.
+  Firmado por el Presidente de la Comunidad de Madrid, Alberto
+  Ruiz-Gallardón. Fuente primaria directa (N1): órgano emisor es la
+  Presidencia de la Comunidad de Madrid. Disposición textual literal
+  (verificada vía pdftotext sobre el BOCM íntegro descargado):
+  «DECRETO 25/2001, de 20 de septiembre, del Presidente de la Comunidad,
+  por el que se nombra Consejero de Hacienda de la Comunidad de Madrid.
+  [...] DISPONGO: Nombrar al excelentísimo señor don Juan Bravo Rivera
+  Consejero de Hacienda de la Comunidad de Madrid. Dado en Madrid, a 20
+  de septiembre de 2001. El Presidente, ALBERTO RUIZ-GALLARDÓN». El
+  decreto figura en la página 20 del boletín íntegro (69 páginas) y forma
+  parte de una remodelación gubernamental en la que el Decreto 155/2001
+  separó la Consejería de Hacienda de la unidad «Presidencia y Hacienda»
+  y el Decreto 156/2001 cesó a Bravo Rivera como Viceconsejero de Hacienda
+  (paso previo inmediato al nombramiento). PDF descargado a
+  `/public/documentos/lezo/` con `hash_sha256` verificado contra el mirror
+  oficial.
+productor_organizacion_id: presidencia-comunidad-de-madrid
+fecha_publicacion: "2001-09-21"
+fecha_documento: "2001-09-20"
+estado_acceso: publico
+idioma: es
+url_canonica: "https://www.bocm.es/boletin/CM_Boletin_BOCM/2001/09/21/22500.PDF"
+ruta_local: "/documentos/lezo/bocm-decreto-25-2001-nombramiento-bravo-rivera-2001-09-21.pdf"
+hash_sha256: "c1af05b3a7e829eff27830f7f0d8d043a5ce5810e632569df12671ba7a5b75ba"
+caso_principal_id: lezo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

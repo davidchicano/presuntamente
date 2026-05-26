@@ -14,5 +14,13 @@ url_canonica: "https://confilegal.com/"
 
 naturaleza_editorial: especializado_juridico
 
+grupo_editorial:
+  nombre: "Confilegal Editorial S.L."
+  rol: matriz
+  cita: >-
+    CONFILEGAL EDITORIAL, S.L. [...] con domicilio social en C/ de Orfila 7,
+    1º, 28010, Madrid [...] y CIF B88158563.
+  url: "https://confilegal.com/aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

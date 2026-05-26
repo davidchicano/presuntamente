@@ -1,0 +1,20 @@
+id: pilar-rodriguez-fiscal-jefa-madrid
+naturaleza: cargo_publico_designado
+descripcion: "Fiscal Jefa Provincial de Madrid entre 2018 y 2025. Fue investigada en la Causa Especial nº 20557/2024 por presunto delito de revelación de secretos y sobreseída provisionalmente por auto de la Sala de lo Penal del Tribunal Supremo de 29 de julio de 2025."
+sujeto_persona_id: pilar-rodriguez-fernandez
+objeto_organizacion_id: fiscalia-general-del-estado
+cargo_o_rol: "Fiscal Jefa Provincial de Madrid"
+desde: "2018-10-12"
+hasta: "2025-08-31"
+precision_desde: dia
+precision_hasta: mes
+vigente: false
+gobierno_o_legislatura: "Gobierno Sánchez I y II (XIV y XV legislaturas)"
+relevancia_para_caso_ids: [fiscal-general-del-estado]
+documentos_respaldo:
+  - documento_id: cgpj-apertura-causa-fge-2024-10-16
+    pasaje: "La nota CGPJ del Tribunal Supremo de apertura de la causa identifica a Pilar Rodríguez Fernández como entonces Fiscal Jefa Provincial de Madrid al anunciar su condición de coinvestigada junto al Fiscal General del Estado."
+  - documento_id: cgpj-archivo-rodriguez-fge-2025-07-29
+    pasaje: "La nota CGPJ del auto de sobreseimiento de 29 de julio de 2025 identifica a Pilar Rodríguez como Fiscal Jefa Provincial de Madrid al tiempo de los hechos investigados."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,15 @@
+id: edu-andalucia
+nombre_oficial: "Diligencias Previas — Juzgado de Instrucción nº 6 de Sevilla (caso Edu, formación laboral Junta de Andalucía)"
+nombre_mediatico: "Caso Edu (formación)"
+nombres_alternativos:
+  - "Caso Edu"
+  - "Fraude de la formación Andalucía"
+  - "Formación laboral Junta Andalucía"
+
+organo_judicial_id: juzgado-instruccion-6-sevilla
+fase_actual: instruccion
+fecha_apertura: "2015-01-01"
+
+origen_denuncia: denuncia_organismo_publico
+
+estado_publicacion: pendiente

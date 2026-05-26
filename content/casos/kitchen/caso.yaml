@@ -133,6 +133,33 @@ resumen_cifras: |
   presuntamente desviados quedan pendientes de cuantificación
   jurisdiccional firme.
 
+partidos_afectados:
+  - partido_id: partido-popular
+    tipo_afectacion: gobierno_responsable_del_acto_investigado
+    justificacion: >-
+      La operación parapolicial investigada se atribuye al Ministerio del
+      Interior entre 2013 y 2015, durante el gobierno presidido por Mariano
+      Rajoy (PP) con Jorge Fernández Díaz como titular del ministerio.
+  - partido_id: partido-popular
+    tipo_afectacion: imputacion_a_cargo_del_partido
+    justificacion: >-
+      Jorge Fernández Díaz, procesado en la causa, ejercía como ministro del
+      Interior por el Partido Popular en el periodo investigado; Francisco
+      Martínez Vázquez, también procesado, era secretario de Estado de
+      Seguridad bajo el mismo gobierno PP.
+  - partido_id: psoe
+    tipo_afectacion: querella_o_acusacion_popular_del_partido
+    justificacion: >-
+      El PSOE figura personado como acusación popular en la causa, habiendo
+      recurrido el sobreseimiento provisional de Cospedal y López del Hierro
+      y solicitado la suspensión del juicio oral al inicio de la vista oral
+      de abril de 2026.
+  - partido_id: podemos
+    tipo_afectacion: querella_o_acusacion_popular_del_partido
+    justificacion: >-
+      Podemos (bajo la denominación Unidas Podemos en parte del periodo)
+      figura personado como acusación popular en la causa.
+
 estado_publicacion: beta_publica
 ultima_revision_editorial: "2026-05-24"
 nivel_relevancia_editorial: capital
@@ -147,8 +174,8 @@ estado_ficha:
   hechos_modelados: completo
   fuentes_cruzadas: completo
   composicion_fuentes_citadas: pendiente
-  vinculos_institucionales: pendiente
+  vinculos_institucionales: completo
   grafo_relaciones: pendiente
-  cobertura_mediatica_general: pendiente
+  cobertura_mediatica_general: parcial
   revision_editorial: completo
-  fecha_actualizacion: "2026-05-25"
+  fecha_actualizacion: "2026-05-26"

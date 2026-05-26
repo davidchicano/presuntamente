@@ -49,12 +49,16 @@ El campo lo rellena el maintainer al cerrar la primera versión publicable de un
 
 ## Estado actual
 
-**Schema + UI + dos pilotos poblados (2026-05-26).**
+**Schema + UI + 6 casos publicables poblados (2026-05-26 tarde-noche, sprint extendido).**
 
 - `begona-gomez`: PSOE · `vinculo_familiar_directo_con_dirigente`.
 - `gonzalez-amador`: PP · `vinculo_familiar_directo_con_dirigente` + PSOE/Más Madrid · `querella_o_acusacion_popular_del_partido`.
+- `plus-ultra`: PSOE × 2 (`gobierno_responsable_del_acto_investigado` por la aprobación del préstamo FASEE en mar 2021 + `militancia_o_cargo_organico_relevante` por Zapatero como ex Secretario General, vínculo histórico no activo en 2021) · Podemos `gobierno_responsable_del_acto_investigado` por la coalición.
+- `fiscal-general-del-estado`: PSOE · `gobierno_responsable_del_acto_investigado` por la designación de García Ortiz.
+- `kitchen`: PP × 2 (`gobierno_responsable_del_acto_investigado` por Min. Interior 2013-2015 + `imputacion_a_cargo_del_partido` por Fernández Díaz y Martínez Vázquez) · PSOE y Podemos · `querella_o_acusacion_popular_del_partido` por personación.
+- `lezo`: PP × 2 (`gobierno_responsable_del_acto_investigado` por Canal Isabel II en gobiernos PP-CAM 2003-2017 + `imputacion_a_cargo_del_partido` por Ignacio González, Calvo Poch y Bravo Rivera).
 
-Los otros 4 casos publicables (`plus-ultra`, `fiscal-general-del-estado`, `kitchen`, `lezo`) tienen `partidos_afectados: []` por defecto y van a poblarse en próximas sesiones de revisión.
+10 entradas en total, todas con justificación neutra y verificable. Los 6 casos publicables tienen el campo declarado de forma explícita; no quedan casos publicables sin pasada de `partidos_afectados`.
 
 ## Decisiones editoriales y aprendizajes
 
@@ -90,5 +94,5 @@ Los otros 4 casos publicables (`plus-ultra`, `fiscal-general-del-estado`, `kitch
 - [x] Decidir si el campo es derivado o declarado. **Decisión 2026-05-26**: declarado, justificación obligatoria.
 - [x] Entregar UI en PgCasoDetalle y /casos. **Entregado 2026-05-26 (tarde):** bloque dentro de «Estado procesal actual» + columna en listado.
 - [x] Poblar al menos dos casos piloto. **Entregado 2026-05-26 (tarde):** `begona-gomez`, `gonzalez-amador`.
-- [ ] Poblar los 4 casos restantes (`plus-ultra`, `fiscal-general-del-estado`, `kitchen`, `lezo`) en próximas sesiones.
+- [x] Poblar los 4 casos restantes (`plus-ultra`, `fiscal-general-del-estado`, `kitchen`, `lezo`). **Entregado 2026-05-26 (tarde-noche, sprint extendido).** Detalle por caso en «Estado actual».
 - [ ] Refactor a `PartidoBadge` con tokens de color por partido. Ver ROADMAP.

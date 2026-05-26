@@ -1,0 +1,18 @@
+id: cospedal-ministra-defensa
+naturaleza: cargo_publico_designado
+descripcion: "Ministra de Defensa del Reino de España entre noviembre de 2016 y junio de 2018, en el Gobierno Rajoy II. Fue investigada en la pieza Kitchen durante y después de este cargo, y posteriormente desimputada por sobreseimiento firme en la fase de instrucción."
+sujeto_persona_id: maria-dolores-cospedal
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Ministra de Defensa"
+desde: "2016-11-04"
+hasta: "2018-06-07"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "Gobierno Rajoy II (XII legislatura)"
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: eldiario-procesamiento-kitchen-2021-07-29
+    pasaje: "elDiario.es menciona el cargo de ministra de Defensa de Cospedal en el contexto de su condición de investigada y posterior sobreseída en el caso Kitchen."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

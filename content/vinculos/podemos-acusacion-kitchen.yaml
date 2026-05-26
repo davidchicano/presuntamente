@@ -1,0 +1,16 @@
+id: podemos-acusacion-kitchen
+naturaleza: acusacion_institucional_en_caso
+descripcion: "Podemos (bajo la denominación Unidas Podemos en parte del periodo) ejerce la acusación popular en la pieza separada nº 7 de las Diligencias Previas 96/2017 (Operación Kitchen) ante la Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional."
+sujeto_organizacion_id: podemos
+objeto_organizacion_id: audiencia-nacional
+desde: "2018-07-19"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: eldiario-procesamiento-kitchen-2021-07-29
+    pasaje: "elDiario.es confirma la personación de Unidas Podemos como acusación popular en la Operación Kitchen en la cobertura del procesamiento de julio de 2021."
+  - documento_id: infobae-procesamiento-kitchen-2021-07-29
+    pasaje: "Infobae menciona a Unidas Podemos como acusación popular en su cobertura del auto de procesamiento del caso Kitchen."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

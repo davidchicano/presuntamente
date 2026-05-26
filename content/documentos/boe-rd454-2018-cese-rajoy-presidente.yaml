@@ -1,0 +1,30 @@
+id: boe-rd454-2018-cese-rajoy-presidente
+titulo: "BOE — Real Decreto 353/2018, de 2 de junio, por el que se dispone el cese de don Mariano Rajoy Brey como Presidente del Gobierno"
+tipo: boletin_oficial
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Disposición oficial publicada en el Boletín Oficial del Estado el 2 de
+  junio de 2018, código BOE-A-2018-7402. Fuente primaria directa (N1):
+  órgano emisor es la Jefatura del Estado. El cese se produce como
+  consecuencia de la aprobación de la moción de censura del PSOE en el
+  Congreso de los Diputados los días 31 de mayo y 1 de junio de 2018.
+  La disposición vecina BOE-A-2018-7401 (RD 352/2018) acuerda el cese del
+  conjunto del Gobierno; la BOE-A-2018-7402 es específica del cese del
+  Presidente Rajoy. PDF íntegro descargado a `/public/documentos/_globales/`
+  con `hash_sha256` verificado contra el mirror oficial.
+
+  Nota: el slug del fichero (`boe-rd454-2018-...`) y del id se conserva
+  por estabilidad de referencias, aunque el número de Real Decreto real
+  es 353/2018 (no 454). El identificador BOE canónico (BOE-A-2018-7402),
+  el título completo y el PDF descargado son los del RD 353/2018
+  efectivamente firmado el 02-06-2018.
+productor_organizacion_id: jefatura-del-estado
+fecha_publicacion: "2018-06-02"
+fecha_documento: "2018-06-02"
+estado_acceso: publico
+idioma: es
+url_canonica: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2018-7402"
+ruta_local: "/documentos/_globales/boe-rd454-2018-cese-rajoy-presidente.pdf"
+hash_sha256: "c06336a36de5129e4d783ef308981f429d4319b54da2499341edc683de6e7215"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

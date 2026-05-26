@@ -22,6 +22,7 @@ cargos_publicos_historicos:
     desde: "2011-12-22"
     hasta: "2011-12-27"
   - cargo: "Diputado del Congreso de los Diputados"
+    organizacion_id: congreso-de-los-diputados
     desde: "2023-08-17"
 fecha_nacimiento: "1956-06-18"
 nacionalidad: "española"

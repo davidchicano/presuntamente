@@ -1,0 +1,15 @@
+id: cobo-vega-diputado-congreso
+naturaleza: cargo_publico_electo
+descripcion: "Diputado del Congreso de los Diputados por Madrid desde agosto de 2023, en la XV Legislatura."
+sujeto_persona_id: manuel-cobo-vega
+objeto_organizacion_id: congreso-de-los-diputados
+cargo_o_rol: "Diputado del Congreso de los Diputados por Madrid"
+desde: "2023-08-17"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: congreso-lista-diputados-historial
+    pasaje: "Buscador oficial del Congreso. Manuel Cobo Vega figura como Diputado por Madrid en la XV Legislatura (desde agosto de 2023)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

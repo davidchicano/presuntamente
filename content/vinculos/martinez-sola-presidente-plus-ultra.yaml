@@ -1,0 +1,17 @@
+id: martinez-sola-presidente-plus-ultra
+naturaleza: cargo_directivo_organizacion_privada
+descripcion: "Presidente y propietario de Plus Ultra Líneas Aéreas, S.A., aerolínea fundada en 2011 y beneficiaria del préstamo público de 53 millones de euros autorizado por el Consejo de Ministros en marzo de 2021."
+sujeto_persona_id: julio-martinez-sola
+objeto_organizacion_id: plus-ultra-lineas-aereas
+cargo_o_rol: "Presidente y propietario"
+desde: "2011-01-01"
+precision_desde: anio
+vigente: true
+relevancia_para_caso_ids: [plus-ultra]
+documentos_respaldo:
+  - documento_id: nota-sepi-aprobacion-plus-ultra-2021-03
+    pasaje: "La nota institucional de la SEPI sobre la autorización del Consejo de Ministros del 9 de marzo de 2021 identifica a la aerolínea Plus Ultra Líneas Aéreas como beneficiaria del préstamo de 53 millones de euros."
+  - documento_id: libertaddigital-detencion-plus-ultra-2025-12-11
+    pasaje: "Libertad Digital identifica a Julio Martínez como el dueño de Plus Ultra en la cobertura de las detenciones de la operación UDEF del 11 de diciembre de 2025."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

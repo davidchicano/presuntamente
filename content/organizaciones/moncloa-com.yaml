@@ -13,5 +13,13 @@ url_canonica: "https://www.moncloa.com/"
 
 naturaleza_editorial: generalista_politico
 
+grupo_editorial:
+  nombre: "Grupo Merca2"
+  rol: matriz
+  cita: >-
+    Grupo Merca2, Mercados y Estilo de Vida SL (CIF B-87644902). Entidad responsable
+    del dominio moncloa.com.
+  url: "https://www.moncloa.com/condiciones-y-aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

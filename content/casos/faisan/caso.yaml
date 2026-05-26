@@ -1,0 +1,14 @@
+id: faisan
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción de la Audiencia Nacional (caso Faisán)"
+nombre_mediatico: "Caso Faisán"
+nombres_alternativos:
+  - "Chivatazo del Faisán"
+  - "Bar Faisán"
+
+organo_judicial_id: audiencia-nacional
+fase_actual: sentencia_firme
+fecha_apertura: "2006-05-04"
+
+origen_denuncia: oficio_judicial
+
+estado_publicacion: pendiente

@@ -1,0 +1,33 @@
+id: barcenas-caja-b-deriva-de-gurtel
+caso_a_id: barcenas-caja-b
+caso_b_id: gurtel
+tipo: derivado_de
+descripcion: |
+  La causa sobre la presunta caja B del Partido Popular, conocida
+  mediáticamente como "Papeles de Bárcenas" y sustanciada ante el
+  Juzgado Central de Instrucción nº 5 de la Audiencia Nacional, se
+  incoó como pieza separada del caso Gürtel (Diligencias Previas del
+  mismo JCI nº 5) a raíz de las declaraciones prestadas en el juicio
+  oral del caso principal por el empresario Alfonso García Pozuelo y
+  por el cabecilla de la trama Gürtel Francisco Correa. Ambas causas
+  comparten el órgano instructor (JCI nº 5 AN), el período de hechos
+  investigados y varios de los investigados, con el ex tesorero del
+  Partido Popular Luis Bárcenas como nexo central.
+
+  La pieza separada investigó la presunta existencia de una contabilidad
+  B del PP financiada con comisiones de adjudicaciones de obra pública
+  —el mismo presunto mecanismo de corrupción atribuido a la trama Gürtel—
+  y la presunta entrega de sobresueldos en metálico a cargos del partido.
+  El Juzgado Central de Instrucción nº 5 acordó el sobreseimiento
+  provisional de la causa a petición de la Fiscalía Anticorrupción, que
+  argumentó que los informes periciales no habían podido establecer una
+  relación entre los pagos investigados y las adjudicaciones de contratos.
+
+  La derivación procesal (Gürtel como causa madre, caja B como pieza
+  separada) está acreditada tanto en la cobertura periodística de
+  referencia como en las propias resoluciones del JCI nº 5.
+documentos_respaldo:
+  - publico-caja-b-pieza-separada-gurtel
+fecha_inicio: "2013-01-31"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

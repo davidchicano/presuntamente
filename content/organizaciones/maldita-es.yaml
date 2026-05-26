@@ -15,5 +15,14 @@ url_canonica: "https://maldita.es/"
 
 naturaleza_editorial: verificacion
 
+grupo_editorial:
+  nombre: "Asociación Maldita Contra la Desinformación"
+  rol: matriz
+  cita: >-
+    ASOCIACION MALDITA CONTRA LA DESINFORMACION PERIODISMO EDUCACION
+    INVESTIGACION Y DATOS EN NUEVOS FORMATOS, con CIF G88206487 y domicilio
+    en AVENIDA DEL MANZANARES 196, LOCAL 2, 28026 Madrid.
+  url: "https://maldita.es/aviso-legal/"
+
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-26"

@@ -1,0 +1,21 @@
+id: audiencia-provincial-palma
+nombre: "Audiencia Provincial de Palma de Mallorca"
+nombres_alternativos:
+  - "AP Palma"
+  - "Audiencia Provincial de Illes Balears"
+  - "AP Illes Balears"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional de segunda instancia con sede en Palma de
+  Mallorca, competente para el enjuiciamiento de delitos en la
+  provincia de Illes Balears no atribuidos a otros órganos.
+  Celebró el juicio oral del caso Nóos, condenando en febrero
+  de 2017 a Iñaki Urdangarín a seis años y tres meses de prisión.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Palma de Mallorca"
+provincia: "Illes Balears"
+comunidad_autonoma: "Illes Balears"
+organo_superior_id: tribunal-superior-justicia-illes-balears
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

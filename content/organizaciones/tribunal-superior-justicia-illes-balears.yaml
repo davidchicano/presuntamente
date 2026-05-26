@@ -1,0 +1,20 @@
+id: tribunal-superior-justicia-illes-balears
+nombre: "Tribunal Superior de Justicia de Illes Balears"
+nombres_alternativos:
+  - "TSJ Illes Balears"
+  - "TSJIB"
+tipo: tribunal
+descripcion_corta: |
+  Órgano jurisdiccional superior en las Illes Balears para todos los
+  órdenes salvo el constitucional, con sede en Palma de Mallorca.
+  Conoce de los recursos de apelación contra sentencias de la
+  Audiencia Provincial de Palma y de las causas contra aforados
+  autonómicos baleares.
+jurisdiccion: penal
+ambito_territorial: autonomico
+localidad: "Palma de Mallorca"
+provincia: "Illes Balears"
+comunidad_autonoma: "Illes Balears"
+organo_superior_id: tribunal-supremo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

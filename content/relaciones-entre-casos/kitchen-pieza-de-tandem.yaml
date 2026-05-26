@@ -1,0 +1,32 @@
+id: kitchen-pieza-de-tandem
+caso_a_id: kitchen
+caso_b_id: tandem
+tipo: derivado_de
+descripcion: |
+  El caso Kitchen (Operación Kitchen) es la pieza separada nº 7 de las
+  Diligencias Previas 96/2017 del Juzgado Central de Instrucción nº 6 de
+  la Audiencia Nacional, conocidas globalmente como caso Tándem. Esta
+  condición consta de forma expresa en el propio nombre oficial del caso
+  Kitchen: "Diligencias Previas 96/2017, pieza separada nº 7 (Kitchen)".
+
+  Las Diligencias 96/2017 se incoaron por el JCI nº 6 el 3 de noviembre de
+  2017, tras la detención del comisario jubilado José Manuel Villarejo Pérez.
+  El instructor Manuel García-Castellón García-Lomas incoa la pieza separada
+  nº 7, posteriormente conocida como Operación Kitchen, el 19 de julio de 2018,
+  al detectarse indicios de una presunta operación parapolicial del Ministerio
+  del Interior entre 2013 y 2015 destinada a obtener documentación sensible del
+  ex tesorero del Partido Popular Luis Bárcenas. El nexo material con la causa
+  madre es la figura de José Manuel Villarejo Pérez, quien aparece como
+  investigado tanto en las diligencias principales como en la pieza séptima.
+
+  En lo procesal, la pieza Kitchen siguió su propio desarrollo autónomo: auto
+  de procesamiento de once personas el 29 de julio de 2021, apertura del juicio
+  oral el 13 de octubre de 2023 (con rectificación del 23 de enero de 2024),
+  e inicio del juicio oral el 6 de abril de 2026. La causa madre (Tándem) sigue
+  en instrucción con múltiples piezas separadas vivas.
+documentos_respaldo:
+  - eldiario-apertura-pieza-kitchen-2018-07-19
+  - infobae-apertura-pieza-kitchen-2018-07-19
+fecha_inicio: "2018-07-19"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

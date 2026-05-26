@@ -1,0 +1,14 @@
+id: itv-cataluna
+nombre_oficial: "Procedimiento Penal — Audiencia Provincial de Barcelona (caso ITV Cataluña, Oriol Pujol)"
+nombre_mediatico: "Caso ITV Cataluña"
+nombres_alternativos:
+  - "Caso Oriol Pujol ITV"
+  - "ITV Pujol"
+
+organo_judicial_id: audiencia-provincial-barcelona
+fase_actual: sentencia_firme
+fecha_apertura: "2014-01-01"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

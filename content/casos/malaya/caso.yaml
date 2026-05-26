@@ -1,0 +1,13 @@
+id: malaya
+nombre_oficial: "Diligencias Previas — Juzgado de Instrucción nº 5 de Marbella (Operación Malaya)"
+nombre_mediatico: "Caso Malaya"
+nombres_alternativos:
+  - "Operación Malaya"
+
+organo_judicial_id: audiencia-provincial-malaga
+fase_actual: sentencia_firme
+fecha_apertura: "2005-11-01"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

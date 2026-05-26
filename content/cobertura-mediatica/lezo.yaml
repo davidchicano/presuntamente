@@ -1,0 +1,319 @@
+# Cobertura mediática general — caso lezo
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: lezo
+fecha_rastreo: "2026-05-26"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Lezo"
+    - "operación Lezo"
+    - "Ignacio González Canal de Isabel II"
+    - "Canal Isabel II corrupción"
+    - "Lezo Inassa Emissao"
+  ventanas_temporales:
+    - desde: "2017-04-01"
+      hasta: "2019-12-31"
+      notas: >
+        Operación UCO de detención de Ignacio González (19 abr 2017), prisión
+        preventiva (22 abr 2017), instrucción inicial, archivo pieza
+        Ruiz-Gallardón / Inassa (30 may 2019), auto procesamiento Emissao
+        (18 nov 2019).
+    - desde: "2021-01-01"
+      hasta: "2023-06-30"
+      notas: >
+        Procesamiento Ignacio González pieza golf (2021), apertura juicio oral
+        pieza Navalcarnero (4 jun 2021), inicio vista oral pieza Inassa
+        (24 may 2023), archivo investigación blanqueo González.
+    - desde: "2025-12-01"
+      hasta: "2026-05-26"
+      notas: >
+        Señalamiento juicio oral pieza golf para septiembre de 2027 (diciembre
+        2025). Cambio de juez instructor: García-Castellón jubilado (2 sep 2024),
+        magistrada Tardón provisional, Piña asume la titularidad (8 ene 2025).
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - infolibre.es
+    - elespanol.com
+    - vozpopuli.com
+    - okdiario.com
+    - theobjective.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o lead. Se incluyen
+    noticias, reportajes, análisis y piezas de verificación. Se incluyen piezas
+    de agencia republicadas cuando el titular o lead las identifica como del caso
+    y aportan información sobre hitos procesales.
+  criterios_exclusion: >
+    Se excluyen menciones de pasada del caso Lezo en piezas sobre otros casos
+    de Villarejo o García-Castellón. Se excluyen republicaciones de agencia
+    sin valor añadido. Se excluyen El País y El Mundo por no ser accesibles vía
+    WebFetch en el entorno del agente.
+  notas: >
+    Rastreo inicial v1 sobre tres ventanas temporales (abr 2017 — may 2026).
+    El caso tiene cobertura extensa desde 2017. El período de mayor densidad
+    es la apertura del procedimiento (abr 2017) y los procesamientos (2019-2021).
+    El juicio oral de la pieza golf (señalado para sept 2027) concentrará la
+    mayor cobertura futura. Las url_archivo se rellenan con
+    scripts/archivar-n4.mjs (pnpm archive:catchup o hook pre-commit).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: APERTURA E INSTRUCCIÓN (abr 2017 — dic 2019) ──────────────
+
+  - id: eldiario-52-investigados-lezo-2017
+    url: "https://www.eldiario.es/politica/investigados-operacion-lezo_1_3396617.html"
+    medio_id: eldiario-es
+    titular: "Estos son los 52 investigados en la Operación Lezo"
+    fecha_publicacion: "2017-04-21"
+    resumen: >
+      Listado de las 52 personas investigadas en la Operación Lezo, la macrocausa
+      sobre presunta corrupción en la gestión del Canal de Isabel II. La operación
+      policial de la UCO de la Guardia Civil el 19 de abril de 2017 supuso la
+      detención del entonces senador Ignacio González y de una docena de personas.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-juez-prision-gonzalez-2017
+    url: "https://www.eldiario.es/politica/juez-envia-prision-ignacio-gonzalez_1_3452636.html"
+    medio_id: eldiario-es
+    titular: "El juez encarcela a Ignacio González por sacar un millón de euros de la Comunidad «para sanear» las cuentas del PP"
+    fecha_publicacion: "2017-04-22"
+    resumen: >
+      El titular del JCI nº 6 de la Audiencia Nacional Eloy Velasco acuerda la
+      prisión provisional incondicional de Ignacio González, expresidente de la
+      Comunidad de Madrid, tres días después de la operación policial de la UCO.
+      González permaneció en prisión preventiva de abril a noviembre de 2017.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-anticorrupcion-pide-prision-2017
+    url: "https://www.publico.es/politica/anticorrupcion-pide-prision-incondicional-ignacio.html"
+    medio_id: publico-es
+    titular: "Operación Lezo: Anticorrupción pide prisión incondicional para Ignacio González, que lo niega todo"
+    fecha_publicacion: "2017-04-22"
+    resumen: >
+      La Fiscalía Anticorrupción solicita al juez Velasco la prisión provisional
+      incondicional para el expresidente de la Comunidad de Madrid Ignacio González,
+      quien niega las acusaciones. Pieza paralela a la de El Diario sobre el mismo
+      hito.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: eldiario-juez-prision-gonzalez-2017
+    notas: "Pieza independiente de Público sobre el mismo hito; no es republicación de agencia."
+
+  - id: publico-uco-acs-campo-golf-lezo
+    url: "https://www.publico.es/politica/caso-lezo-uco-sospecha-acs-desvio-fondos-entorno-personal-gonzalez-cambio-campo-golf.html"
+    medio_id: publico-es
+    titular: "Caso Lezo: La UCO sospecha que ACS desvió fondos al entorno personal de González a cambio de un campo de golf"
+    fecha_publicacion: "2017-05-10"
+    resumen: >
+      La UCO de la Guardia Civil sostiene en un informe que la constructora ACS habría
+      desviado fondos al entorno personal de Ignacio González a cambio de contratos
+      para la construcción y explotación del campo de golf del Canal de Isabel II,
+      adjudicados en 2003-2004.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-archivo-gallardon-inassa-2019
+    url: "https://www.publico.es/politica/juez-lezo-archiva-investigacion-gallardon-compra-inassa.html"
+    medio_id: publico-es
+    titular: "Caso Lezo: El juez de Lezo archiva la investigación a Gallardón por la compra de Inassa"
+    fecha_publicacion: "2019-05-31"
+    resumen: >
+      El juez Manuel García-Castellón acuerda el sobreseimiento provisional de la
+      investigación sobre Alberto Ruiz-Gallardón y otros implicados en la pieza Inassa
+      del caso Lezo, que investiga la compra por el Canal de Isabel II de la sociedad
+      colombiana Inassa en 2001 por unos 73 millones de dólares.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: elespanol-gallardon-inassa-exonerado-2019
+    url: "https://www.elespanol.com/espana/tribunales/20190522/anticorrupcion-exculpa-gallardon-compra-inassa-primera-lezo/400211195_0.html"
+    medio_id: el-espanol
+    titular: "Anticorrupción exculpa a Gallardón en la compra de Inassa, la primera pieza de Lezo que irá a juicio"
+    fecha_publicacion: "2019-05-22"
+    resumen: >
+      La Fiscalía Anticorrupción decide no incluir a Ruiz-Gallardón en el escrito de
+      acusación de la pieza Inassa del caso Lezo. El juez García-Castellón acuerda
+      el sobreseimiento provisional de la investigación sobre el exministro.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: publico-archivo-gallardon-inassa-2019
+    notas: "Pieza de El Español sobre el mismo hito; perspectiva de la posición de la Fiscalía."
+
+  - id: publico-archivo-blanqueo-gonzalez-2022
+    url: "https://www.publico.es/ultima-hora/juez-caso-lezo-archiva-investigacion-ignacio-gonzalez-blanqueo.html"
+    medio_id: publico-es
+    titular: "El juez del 'caso Lezo' archiva la investigación a Ignacio González por blanqueo"
+    fecha_publicacion: "2022-05-05"
+    resumen: >
+      El juez Manuel García-Castellón acuerda el archivo de la investigación por
+      blanqueo de capitales contra Ignacio González en el caso Lezo, dejando
+      pendientes el procesamiento por la pieza del campo de golf y las piezas
+      Inassa y Emissao.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  # ── VENTANA 2: PROCESAMIENTOS Y APERTURA JUICIO (ene 2021 — jun 2023) ──────
+
+  - id: infolibre-juez-envia-juicio-dos-piezas-2021
+    url: "https://www.infolibre.es/politica/juez-envia-juicio-primeras-piezas-caso-lezo-sienta-banquillo-ignacio-gonzalez_1_1181340.html"
+    medio_id: infolibre
+    titular: "El juez envía a juicio las dos primeras piezas del 'caso Lezo' y sienta en el banquillo a Ignacio González"
+    fecha_publicacion: "2021-05-27"
+    resumen: >
+      El juez García-Castellón dicta auto de procesamiento de los acusados en la
+      pieza del campo de golf y abre el juicio oral para dos piezas del caso Lezo.
+      Ignacio González, su hermano, su cuñado, el socio José Antonio Clemente y
+      el ex director gerente Ildefonso de Miguel quedan sentados en el banquillo.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-juez-procesa-gonzalez-campo-golf-2021
+    url: "https://www.eldiario.es/politica/juez-procesa-ignacio-gonzalez-amano-campo-golf-pp-construyo-centro-madrid_1_7971803.html"
+    medio_id: eldiario-es
+    titular: "El juez procesa a Ignacio González por el amaño del campo de golf que el PP construyó en el centro de Madrid"
+    fecha_publicacion: "2021-05-27"
+    resumen: >
+      El juez García-Castellón procesa a Ignacio González por la presunta adjudicación
+      irregular en 2003-2004 de contratos del Canal de Isabel II para la construcción
+      y explotación del campo de golf. González, su hermano y su cuñado son procesados
+      junto a otros dos implicados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: infolibre-juez-envia-juicio-dos-piezas-2021
+    notas: "Pieza de El Diario sobre el mismo hito del procesamiento en la pieza golf."
+
+  - id: infolibre-juez-lezo-navalcarnero-2021
+    url: "https://www.infolibre.es/politica/juez-caso-lezo-envia-juicio-ignacio-gonzalez-lopez-madrid-obras-tren-navalcarnero_1_1198668.html"
+    medio_id: infolibre
+    titular: "El juez del 'caso Lezo' envía a juicio a Ignacio González y a López Madrid por las obras del tren de Navalcarnero"
+    fecha_publicacion: "2021-06-05"
+    resumen: >
+      El juez García-Castellón dicta auto de apertura del juicio oral de la pieza
+      separada nº 3 del caso Lezo sobre la presunta adjudicación irregular en 2007
+      de las obras del tren ligero Móstoles Central-Navalcarnero a la UTE liderada
+      por OHL. González y el consejero de OHL Francisco Javier López Madrid quedan
+      procesados junto a otros cuatro implicados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: vozpopuli-lezo-gonzalez-canal-golf-procesado
+    url: "https://www.vozpopuli.com/espana/lezo-ignacio-gonzalez-canal-golf.html"
+    medio_id: vozpopuli
+    titular: "El juez de 'Lezo' procesa a Ignacio González por las adjudicaciones asociadas al canal Golf"
+    fecha_publicacion: "2021-05-26"
+    resumen: >
+      Vozpópuli recoge el procesamiento de Ignacio González por el presunto amaño
+      de adjudicaciones relacionadas con el campo de golf del Canal de Isabel II.
+      Pieza sobre el mismo hito que las de Infolibre y El Diario.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: infolibre-juez-envia-juicio-dos-piezas-2021
+    notas: "Pieza de Vozpópuli sobre el mismo hito; perspectiva diferenciada."
+
+  - id: okdiario-gonzalez-banquillo-campo-golf-2021
+    url: "https://okdiario.com/espana/ignacio-gonzalez-banquillo-amano-adjudicaciones-campo-golf-del-canal-isabel-ii-7632632"
+    medio_id: okdiario
+    titular: "Ignacio González al banquillo por el amaño de adjudicaciones en el campo de golf del Canal de Isabel II"
+    fecha_publicacion: "2021-05-26"
+    resumen: >
+      Okdiario recoge el procesamiento de Ignacio González y otros cuatro implicados
+      por el presunto amaño de adjudicaciones en el campo de golf del Canal de Isabel
+      II, pieza del caso Lezo.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: infolibre-juez-envia-juicio-dos-piezas-2021
+    notas: "Pieza de Okdiario sobre el mismo hito."
+
+  - id: publico-anticorrupcion-seis-anos-gonzalez-golf
+    url: "https://www.publico.es/politica/anticorrupcion-pide-seis-anos-carcel-ignacio-gonzalez-adjudicaciones-asociadas-campo-golf-canal.html"
+    medio_id: publico-es
+    titular: "Anticorrupción pide seis años de cárcel para Ignacio González por adjudicaciones asociadas al campo de golf del Canal"
+    fecha_publicacion: "2022-12-01"
+    resumen: >
+      La Fiscalía Anticorrupción presenta su escrito de acusación en la pieza del campo
+      de golf del caso Lezo, solicitando seis años de prisión y multa de 550.000 euros
+      para Ignacio González y para cada uno de los otros cuatro acusados. La Comunidad
+      de Madrid, como acusación particular, eleva la petición a dieciséis años para
+      González.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  # ── VENTANA 3: SEÑALAMIENTO JUICIO GOLF 2027 (dic 2025 — may 2026) ─────────
+
+  - id: eldiario-juicio-gonzalez-golf-23-anos-2025
+    url: "https://www.eldiario.es/politica/audiencia-nacional-juzgara-ignacio-gonzalez-campo-golf-canal-23-anos-despues_1_12865400.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional juzgará a Ignacio González por el campo de golf del Canal 23 años después"
+    fecha_publicacion: "2025-12-22"
+    resumen: >
+      La Sección Segunda de la Sala de lo Penal de la Audiencia Nacional señala el
+      juicio oral de la pieza del campo de golf del caso Lezo para el período del 13
+      al 30 de septiembre de 2027, veintitrés años después de los hechos investigados
+      (adjudicaciones de 2003-2004).
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-juicio-gonzalez-golf-2027-cachondeo
+    url: "https://www.publico.es/tremending/cachondeo-saberse-ignacio-gonzalez-sera-juzgado-supuesto-amano-23-anos-despues-velocidad-pueden-juzgar-23-fiscales-generales.html"
+    medio_id: publico-es
+    titular: "Cachondeo tras saberse que Ignacio González será juzgado por un supuesto amaño... 23 años después: «A esa velocidad pueden juzgar a 23 fiscales generales»"
+    fecha_publicacion: "2025-12-22"
+    resumen: >
+      Público recoge las reacciones irónicas en redes sociales al señalamiento para
+      septiembre de 2027 del juicio oral de la pieza golf del caso Lezo, comparando
+      el tiempo transcurrido desde los hechos con el ritmo de otras investigaciones
+      judiciales.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: eldiario-juicio-gonzalez-golf-23-anos-2025
+
+  - id: eldiario-ocaso-ignacio-gonzalez-perfil
+    url: "https://www.eldiario.es/politica/ignacio-gonzalez_1_1054862.html"
+    medio_id: eldiario-es
+    titular: "El ocaso de Ignacio González: de mano derecha de Aguirre a enfrentarse a ocho años de cárcel por corrupción"
+    fecha_publicacion: "2017-04-20"
+    resumen: >
+      Perfil de Ignacio González que analiza su trayectoria política como vicepresidente
+      y presidente de la Comunidad de Madrid durante los gobiernos del PP, y su implicación
+      en las investigaciones del caso Lezo sobre la gestión del Canal de Isabel II.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"

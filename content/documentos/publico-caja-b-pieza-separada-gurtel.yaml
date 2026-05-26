@@ -1,0 +1,20 @@
+id: publico-caja-b-pieza-separada-gurtel
+titulo: "Público — La Audiencia Nacional archiva la pieza sobre la caja B del PP (derivada de Gürtel)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura periodística de Público (publico.es) sobre el archivo de la
+  pieza separada de la caja B del PP en el Juzgado Central de Instrucción
+  nº 5 de la Audiencia Nacional. El artículo acredita que la causa sobre
+  la caja B era una pieza separada del caso Gürtel, incoada conforme a
+  declaraciones de testigos en el juicio del caso principal. Cumple V-13
+  al cruzarse con la cobertura de El Boletín (elboletin.com) sobre el
+  mismo hito de archivo.
+productor_organizacion_id: publico-es
+fecha_documento: "2023-01-01"
+estado_acceso: publico
+idioma: es
+url_canonica: "https://www.publico.es/politica/audiencia-nacional-archiva-investigacion-sobre-caja-b-pp.html"
+caso_principal_id: barcenas-caja-b
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

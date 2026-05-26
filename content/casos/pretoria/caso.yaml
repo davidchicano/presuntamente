@@ -1,0 +1,13 @@
+id: pretoria
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional (Operación Pretoria)"
+nombre_mediatico: "Caso Pretoria"
+nombres_alternativos:
+  - "Operación Pretoria"
+
+organo_judicial_id: audiencia-nacional
+fase_actual: sentencia_firme
+fecha_apertura: "2007-01-01"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

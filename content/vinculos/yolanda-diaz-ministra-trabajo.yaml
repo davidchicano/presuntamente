@@ -1,0 +1,16 @@
+id: yolanda-diaz-ministra-trabajo
+naturaleza: cargo_publico_designado
+descripcion: "Ministra de Trabajo y Economía Social desde el 13 de enero de 2020, nombrada en el primer gobierno de coalición PSOE-Unidas Podemos. Desde el 12 de julio de 2021 acumuló además la Vicepresidencia Segunda del Gobierno en sustitución de Pablo Iglesias."
+sujeto_persona_id: yolanda-diaz
+objeto_organizacion_id: presidencia-del-gobierno
+cargo_o_rol: "Ministra de Trabajo y Economía Social"
+desde: "2020-01-13"
+precision_desde: dia
+vigente: true
+gobierno_o_legislatura: "XIV y XV Legislaturas (Gobierno Sánchez II y III)"
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: boe-rd-nombramiento-yolanda-diaz-ministra-trabajo-2020-01-14
+    pasaje: "Real Decreto 5/2020, de 13 de enero: nombramiento de Yolanda Díaz Pérez como Ministra de Trabajo y Economía Social, publicado en BOE nº 12 del 14 de enero de 2020."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

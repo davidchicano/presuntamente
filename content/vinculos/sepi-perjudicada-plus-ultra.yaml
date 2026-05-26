@@ -1,0 +1,16 @@
+id: sepi-perjudicada-plus-ultra
+naturaleza: perjudicado_institucional_en_caso
+descripcion: "La Sociedad Estatal de Participaciones Industriales (SEPI) es el organismo público que canalizó el préstamo de 53 millones de euros a Plus Ultra Líneas Aéreas a través del Fondo de Apoyo a la Solvencia de Empresas Estratégicas, creado por el Real Decreto-ley 25/2020. El procedimiento investiga si los fondos fueron usados de forma irregular."
+sujeto_organizacion_id: sepi
+objeto_organizacion_id: juzgado-central-instruccion-4
+desde: "2024-07-01"
+precision_desde: mes
+vigente: true
+relevancia_para_caso_ids: [plus-ultra]
+documentos_respaldo:
+  - documento_id: boe-rdl25-2020-fondo-solvencia-fasee
+    pasaje: "Art. 2.1: 'se crea el Fondo de apoyo a la solvencia de empresas estratégicas [...] gestionado, a través de la Sociedad Estatal de Participaciones Industriales (SEPI)'. El FASEE es el vehículo del préstamo de 53 M€ a Plus Ultra cuyo uso irregular investiga el JCI nº 4."
+  - documento_id: nota-sepi-aprobacion-plus-ultra-2021-03
+    pasaje: "Nota institucional de la SEPI que confirma la autorización del Consejo de Ministros del 9 de marzo de 2021 para el préstamo a Plus Ultra a través del FASEE."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

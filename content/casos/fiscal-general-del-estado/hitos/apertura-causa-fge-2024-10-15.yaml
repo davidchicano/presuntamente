@@ -31,4 +31,6 @@ organizaciones_afectadas:
   - fiscalia-general-del-estado
   - fiscalia-provincial-madrid
 documento_principal_id: cgpj-apertura-causa-fge-2024-10-16
+documentos_relacionados:
+  - boe-nombramiento-garcia-ortiz-fge-2022-08-02
 fase_resultante: instruccion

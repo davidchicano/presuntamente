@@ -1,0 +1,14 @@
+id: tandem
+nombre_oficial: "Diligencias Previas 96/2017 — Juzgado Central de Instrucción nº 6 de la Audiencia Nacional (caso Tándem)"
+nombre_mediatico: "Caso Tándem"
+nombres_alternativos:
+  - "Macrocausa Villarejo"
+  - "Caso Villarejo"
+
+organo_judicial_id: juzgado-central-instruccion-6
+fase_actual: instruccion
+fecha_apertura: "2017-11-03"
+
+origen_denuncia: fiscalia_anticorrupcion
+
+estado_publicacion: pendiente

@@ -1,0 +1,17 @@
+id: sanchez-diputado-congreso
+naturaleza: cargo_publico_electo
+descripcion: "Diputado en el Congreso de los Diputados durante la X Legislatura (2013-2016)."
+sujeto_persona_id: pedro-sanchez
+objeto_organizacion_id: congreso-de-los-diputados
+cargo_o_rol: "Diputado en el Congreso de los Diputados"
+desde: "2013-01-08"
+hasta: "2016-10-29"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: []
+documentos_respaldo:
+  - documento_id: congreso-lista-diputados-historial
+    pasaje: "Buscador oficial del Congreso. Pedro Sánchez figura como Diputado en la X Legislatura (2013-2016)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-26"

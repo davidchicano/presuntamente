@@ -7,6 +7,7 @@ nombres_alternativos:
 es_figura_publica: true
 cargos_publicos_historicos:
   - cargo: "Diputado en el Congreso por León"
+    organizacion_id: congreso-de-los-diputados
     desde: "1986-07-15"
     hasta: "2011-12-22"
   - cargo: "Secretario General del PSOE"

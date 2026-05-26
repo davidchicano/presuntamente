@@ -1,0 +1,423 @@
+# Cobertura mediática general — caso kitchen
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: kitchen
+fecha_rastreo: "2026-05-26"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Kitchen"
+    - "operación Kitchen"
+    - "espionaje Bárcenas Interior"
+    - "Fernández Díaz Kitchen"
+    - "Kitchen pieza séptima Tándem"
+  ventanas_temporales:
+    - desde: "2019-05-01"
+      hasta: "2021-12-31"
+      notas: >
+        Fase de instrucción: imputación de policías (mayo 2019), auto de
+        procesamiento de once personas y sobreseimiento de Cospedal/López
+        del Hierro (29 jul 2021).
+    - desde: "2022-01-01"
+      hasta: "2024-01-31"
+      notas: >
+        Fase de instrucción avanzada: confirmación del sobreseimiento de Cospedal
+        (dic 2022), auto de la Sección 3ª desestimando apelaciones (24 feb 2023),
+        auto de apertura de juicio oral (13 oct 2023) y auto rectificador que
+        excluye secuestro y organización criminal (23 ene 2024).
+    - desde: "2026-04-01"
+      hasta: "2026-05-26"
+      notas: >
+        Fase de juicio oral: inicio de la vista oral (6 abr 2026), rechazo del
+        tribunal a suspender el juicio para investigar a Cospedal (7 abr 2026),
+        declaración de Bárcenas (20 abr), declaración de Rajoy y Cospedal como
+        testigos (23 abr 2026), sesiones de mayo 2026.
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - theobjective.com
+    - elespanol.com
+    - okdiario.com
+    - vozpopuli.com
+    - libertaddigital.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o en el lead. Se
+    incluyen noticias, reportajes, análisis, columnas y coberturas en directo
+    relevantes. Se incluyen piezas de agencia republicadas cuando aportan valor
+    informativo propio sobre hitos del procedimiento.
+  criterios_exclusion: >
+    Se excluyen menciones de pasada en piezas sobre Villarejo u otros casos
+    cuando no hacen referencia específica a la pieza Kitchen. Se excluyen
+    republicaciones de agencia palabra por palabra. Se excluye El País
+    y El Mundo por no ser accesibles vía WebFetch en el entorno del agente.
+  notas: >
+    Rastreo inicial v1 sobre tres ventanas temporales (may 2019 — may 2026).
+    El caso tiene cobertura extensa en todos los medios nacionales desde 2019;
+    este corpus es un muestreo sistemático. El período del juicio oral (abr-may
+    2026) concentra la mayor densidad de piezas. Las url_archivo se rellenan
+    con scripts/archivar-n4.mjs (pnpm archive:catchup o hook pre-commit).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: INSTRUCCIÓN (may 2019 — dic 2021) ──────────────────────────
+
+  - id: elespanol-procesamiento-policia-kitchen-2021-07-30
+    url: "https://www.elespanol.com/espana/tribunales/20210729/investigacion-kitchen-exonera-dolores-cospedal-lopez-hi/600190737_0.html"
+    medio_id: el-espanol
+    titular: "El juez cierra el caso Kitchen, exculpa a Dolores Cospedal y ve indicios para juzgar a Jorge Fernández"
+    fecha_publicacion: "2021-07-30"
+    resumen: >
+      El Juzgado Central de Instrucción nº 6 de la Audiencia Nacional transforma el
+      procedimiento a abreviado y procesa a once personas por la presunta operación
+      parapolicial dirigida a obtener documentación del ex tesorero del PP Luis Bárcenas.
+      Simultáneamente acuerda el sobreseimiento provisional de María Dolores de Cospedal
+      y de Ignacio López del Hierro.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  # ── VENTANA 2: APERTURA JUICIO Y CONFIRMACIONES (ene 2022 — ene 2024) ────────
+
+  - id: elespanol-an-rechaza-cospedal-2023-02-24
+    url: "https://www.elespanol.com/espana/tribunales/20230224/audiencia-nacional-respalda-rechaza-cospedal-espionaje-barcenas/743925862_0.html"
+    medio_id: el-espanol
+    titular: "La Audiencia Nacional respalda al juez y rechaza imputar a Cospedal por el espionaje a Bárcenas"
+    fecha_publicacion: "2023-02-24"
+    resumen: >
+      La Sección Tercera de la Sala de lo Penal de la Audiencia Nacional desestima
+      los recursos de apelación de la Fiscalía Anticorrupción, de Unidas Podemos y
+      del PSOE contra el sobreseimiento de Cospedal y López del Hierro, dejando
+      firme el archivo en la fase de instrucción.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-an-rechaza-cospedal-2023-02-24
+    url: "https://theobjective.com/espana/tribunales/2023-02-24/audiencia-nacional-kitchen-cospedal/"
+    medio_id: the-objective
+    titular: "La Audiencia Nacional rechaza reabrir el caso Kitchen para investigar a Cospedal"
+    fecha_publicacion: "2023-02-24"
+    resumen: >
+      La Sección Tercera de la Sala de lo Penal de la Audiencia Nacional confirma el
+      sobreseimiento de Cospedal al rechazar los recursos de Fiscalía, PSOE y Unidas
+      Podemos. Pieza paralela a El Español sobre el mismo hito.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: elespanol-an-rechaza-cospedal-2023-02-24
+    notas: "Pieza independiente de The Objective sobre el mismo auto; no es republicación de agencia."
+
+  - id: elespanol-apertura-juicio-oral-kitchen-2023-10
+    url: "https://www.elespanol.com/espana/tribunales/20231013/fiscalia-psoe-urgen-juez-caso-kitchen-sentar-banquillo-encausados/801170362_0.html"
+    medio_id: el-espanol
+    titular: "La Fiscalía y el PSOE urgen al juez del 'caso Kitchen' a sentar en el banquillo a los encausados"
+    fecha_publicacion: "2023-10-13"
+    resumen: >
+      El Juzgado Central de Instrucción nº 6 dicta el auto de apertura del juicio oral
+      contra los once procesados. La Fiscalía y el PSOE presionan para que la
+      Audiencia señale fecha de vista oral. El PP queda fuera del banquillo como
+      institución, rechazando el juez la pretensión del PSOE de sentar al partido.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: elespanol-auto-rectificador-2024-01-23
+    url: "https://www.elespanol.com/espana/tribunales/20240123/juez-corrige-error-impide-barcenas-acusar-secuestro-cupula-interior-kitchen/827167480_0.html"
+    medio_id: el-espanol
+    titular: "El juez se corrige e impide a los Bárcenas acusar por secuestro a la cúpula de Interior en 'Kitchen'"
+    fecha_publicacion: "2024-01-23"
+    resumen: >
+      El JCI nº 6 dicta auto rectificador excluyendo del juicio oral los delitos de
+      secuestro y pertenencia a organización criminal por superar el límite de pena
+      del procedimiento abreviado (nueve años). La Sala de lo Penal de la Audiencia
+      y los Bárcenas habían impugnado el auto de apertura inicial.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: vozpopuli-fernandez-diaz-juicio-oral
+    url: "https://www.vozpopuli.com/espana/caso-villarejo-juicio-oral-fernandez-diaz-interior-kitchen.html"
+    medio_id: vozpopuli
+    titular: "Caso Villarejo: el juez envía al banquillo a Fernández Díaz por la trama Kitchen"
+    fecha_publicacion: "2021-07-29"
+    resumen: >
+      El juez Manuel García-Castellón transforma el procedimiento de la pieza Kitchen
+      a abreviado y procesa a los once acusados, incluido el ex ministro del Interior
+      Jorge Fernández Díaz y el ex secretario de Estado de Seguridad Francisco Martínez
+      Vázquez.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: elespanol-procesamiento-policia-kitchen-2021-07-30
+    notas: "Pieza de Vozpópuli sobre el mismo hito del procesamiento; no es republicación de agencia."
+
+  # ── VENTANA 3: JUICIO ORAL (abr — may 2026) ────────────────────────────────
+
+  - id: eldiario-juicio-kitchen-guerra-sucia-2026-04-06
+    url: "https://www.eldiario.es/politica/arranca-juicio-kitchen-guerra-sucia-pp-ministro-interior-nueve-presuntos-colaboradores_1_13115728.html"
+    medio_id: eldiario-es
+    titular: "Arranca el juicio de Kitchen: la guerra sucia del PP con su ministro del Interior y nueve presuntos colaboradores"
+    fecha_publicacion: "2026-04-06"
+    resumen: >
+      Arrancan las sesiones del juicio oral de la pieza Kitchen ante la Sección
+      Cuarta de la Sala de lo Penal de la Audiencia Nacional, presidida por la
+      magistrada Teresa Palacios Criado. El ex ministro del Interior Jorge Fernández
+      Díaz y nueve colaboradores se sientan en el banquillo acusados de presunta
+      operación parapolicial para obtener documentos del ex tesorero Bárcenas.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-juicio-kitchen-arranca-2026-04-05
+    url: "https://theobjective.com/espana/tribunales/2026-04-05/juicio-interior-pp-informacion-barcenas/"
+    medio_id: the-objective
+    titular: "Arranca el juicio contra la cúpula de Interior con el PP por intentar robar información a Bárcenas"
+    fecha_publicacion: "2026-04-05"
+    resumen: >
+      El juicio oral de la Operación Kitchen arranca ante la Audiencia Nacional.
+      La pieza juzga la presunta operación parapolicial del Ministerio del Interior
+      entre 2013 y 2015 destinada a obtener información sensible del ex tesorero
+      del PP Luis Bárcenas y socavar su capacidad de aportar pruebas contra el partido.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: eldiario-juicio-kitchen-guerra-sucia-2026-04-06
+    notas: "Pieza de The Objective publicada el día previo al inicio oficial; aborda el mismo hito."
+
+  - id: elespanol-psoe-cospedal-primera-sesion-2026-04-06
+    url: "https://www.elespanol.com/espana/tribunales/20260406/psoe-quema-primer-dia-juicio-kitchen-ultima-bala-intentar-cospedal-vez-investigada/1003744195945_0.html"
+    medio_id: el-espanol
+    titular: "El PSOE quema en el primer día del juicio de 'Kitchen' su última bala para intentar que Cospedal sea otra vez investigada"
+    fecha_publicacion: "2026-04-06"
+    resumen: >
+      El PSOE solicita en el primer día de la vista oral la suspensión del juicio
+      para reabrir la investigación sobre Cospedal y para que el PP sea llamado como
+      partícipe a título lucrativo. La magistrada Teresa Palacios rechaza la petición
+      dejando el sobreseimiento firme.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: elespanol-tribunal-rechaza-cospedal-2026-04-07
+    url: "https://www.elespanol.com/espana/tribunales/20260407/fiscal-opone-peticion-psoe-suspender-juicio-espionaje-barcenas-investigar-nuevo-cospedal/1003744197221_0.html"
+    medio_id: el-espanol
+    titular: "El tribunal de 'Kitchen' desoye al PSOE: no suspende el juicio y rechaza que Cospedal vuelva a ser investigada"
+    fecha_publicacion: "2026-04-07"
+    resumen: >
+      El tribunal presidido por la magistrada Teresa Palacios formaliza el rechazo a
+      la suspensión del juicio solicitada por el PSOE y a la reapertura de la
+      investigación sobre Cospedal y López del Hierro. La Fiscalía también se opone
+      a la suspensión.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-fiscalia-rechaza-suspender-2026-04-07
+    url: "https://theobjective.com/espana/tribunales/2026-04-07/fiscalia-rechaza-suspender-juicio-kitchen/"
+    medio_id: the-objective
+    titular: "La Fiscalía rechaza suspender el juicio de Kitchen para incluir al PP y a Cospedal"
+    fecha_publicacion: "2026-04-07"
+    resumen: >
+      La Fiscalía Anticorrupción se opone a la petición del PSOE de suspender el
+      juicio de Kitchen para investigar a Cospedal y al PP. La Fiscalía considera
+      que el sobreseimiento de Cospedal es firme y que no procede la participación
+      del PP como persona jurídica.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: elespanol-tribunal-rechaza-cospedal-2026-04-07
+    notas: "Pieza de The Objective sobre el mismo hito del rechazo; no es republicación de agencia."
+
+  - id: eldiario-juicio-final-guerra-sucia-documental-2026
+    url: "https://www.eldiario.es/politica/juicio-final-guerra-sucia-pp-especial-eldiario-operacion-kitchen_1_13104422.html"
+    medio_id: eldiario-es
+    titular: "'Juicio final a la guerra sucia del PP': un documental de elDiario.es sobre la Operación Kitchen"
+    fecha_publicacion: "2026-04-06"
+    resumen: >
+      El Diario publica en coincidencia con el inicio del juicio oral un documental
+      multimedia sobre la Operación Kitchen que repasa los hechos investigados, los
+      protagonistas del proceso y el contexto político de los años de la trama (2013-2015).
+    tipo_pieza: investigacion_periodistica
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-juicios-mediaticos-kitchen-2026
+    url: "https://www.publico.es/politica/tribunales/abalos-kitchen-juicios-mediaticos-marcaran-agenda-politica-2026.html"
+    medio_id: publico-es
+    titular: "De Ábalos a la 'Kitchen': los juicios mediáticos que marcarán la agenda política en 2026"
+    fecha_publicacion: "2026-01-02"
+    resumen: >
+      Público contextualiza el juicio de Kitchen entre los grandes procesos judiciales
+      del año 2026 con relevancia política, destacando que el caso juzga la presunta
+      operación parapolicial del Ministerio del Interior del PP para espiar al ex
+      tesorero Bárcenas y recuperar documentación comprometedora.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-barcenas-declara-audios-rajoy-2026
+    url: "https://www.eldiario.es/politica/barcenas-declara-juicio-kitchen-encargo-prision-destruir-audios-mariano-rajoy-reconociendo-caja-b_1_13155835.html"
+    medio_id: eldiario-es
+    titular: "Bárcenas declara en el juicio de Kitchen que encargó desde prisión «destruir los audios» de Rajoy reconociendo la caja B"
+    fecha_publicacion: "2026-04-20"
+    resumen: >
+      Luis Bárcenas declara como testigo en el juicio Kitchen afirmando que desde
+      prisión encargó destruir una grabación de Mariano Rajoy reconociendo la
+      existencia de la caja B del PP. La declaración añade un elemento nuevo sobre
+      la motivación para ejecutar la presunta operación Kitchen.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-barcenas-senala-rajoy-2026-04
+    url: "https://www.eldiario.es/politica/barcenas-senala-rajoy-juicio-kitchen-primer-interesado-sabotear-caso-caja-b-pp_1_13158401.html"
+    medio_id: eldiario-es
+    titular: "Bárcenas señala a Rajoy en el juicio de Kitchen como el primer interesado en sabotear el caso de la caja B del PP"
+    fecha_publicacion: "2026-04-21"
+    resumen: >
+      En su declaración como testigo en el juicio Kitchen, Luis Bárcenas atribuye a
+      Mariano Rajoy un interés directo en obstaculizar la causa sobre la caja B del
+      PP. Bárcenas señala que la operación Kitchen habría servido para proteger al
+      expresidente de posibles pruebas incriminatorias.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-rajoy-cospedal-testigos-23-abril-2026
+    url: "https://www.eldiario.es/politica/ultima-hora-declaracion-mariano-rajoy-actualidad-politica-directo_6_13165520.html"
+    medio_id: eldiario-es
+    titular: "Última hora de la declaración de Rajoy y Cospedal en el juicio Kitchen, en directo"
+    fecha_publicacion: "2026-04-23"
+    resumen: >
+      Cobertura en directo de El Diario de las declaraciones como testigos del
+      expresidente Mariano Rajoy y de la exministra María Dolores de Cospedal en
+      el juicio oral de la Operación Kitchen. Rajoy niega haber destruido pruebas de
+      la caja B; Cospedal afirma no recordar conversaciones con Villarejo sobre
+      «parar» los papeles de Bárcenas.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-declaracion-rajoy-cospedal-kitchen-2026
+    url: "https://www.publico.es/politica/tribunales/declaracion-mariano-rajoy-juicio-kitchen-directo.html"
+    medio_id: publico-es
+    titular: "Así hemos contado en directo las declaraciones de Rajoy y Cospedal en el juicio del caso 'Kitchen'"
+    fecha_publicacion: "2026-04-23"
+    resumen: >
+      Público ofrece cobertura en directo de las declaraciones de Rajoy y Cospedal
+      como testigos en el juicio Kitchen. Pieza paralela a la de El Diario sobre el
+      mismo hito.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+    pieza_referenciada_id: eldiario-rajoy-cospedal-testigos-23-abril-2026
+    notas: "Pieza independiente de Público sobre el mismo hito; no es republicación de agencia."
+
+  - id: okdiario-quien-es-quien-kitchen-2026
+    url: "https://okdiario.com/espana/quien-quien-caso-kitchen-principales-acusados-testigos-trama-que-destapo-okdiario-16641189"
+    medio_id: okdiario
+    titular: "Quién es quién en el 'caso Kitchen': los principales acusados y testigos de la trama que destapó OKDIARIO"
+    fecha_publicacion: "2026-04-06"
+    resumen: >
+      Okdiario, que se atribuye haber destapado la trama Kitchen, publica una guía
+      de los principales acusados y testigos del juicio oral con las peticiones de
+      pena solicitadas por las distintas acusaciones.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: libertad-digital-juicio-kitchen-sanchismo-2026-04
+    url: "https://www.libertaddigital.com/espana/2026-04-05/el-juicio-de-la-operacion-kitchen-que-dara-oxigeno-a-un-pedro-sanchez-acorralado-por-la-corrupcion-7380576/"
+    medio_id: libertad-digital
+    titular: "El juicio de la Operación Kitchen que dará oxígeno a un Pedro Sánchez acorralado por la corrupción"
+    fecha_publicacion: "2026-04-05"
+    resumen: >
+      Libertad Digital analiza el juicio Kitchen desde la perspectiva de que juzga
+      la corrupción del PP y será presentado por el Gobierno de Sánchez como
+      contrapeso a los casos de corrupción que afectan al PSOE durante el juicio
+      de la operación.
+    tipo_pieza: analisis
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-garcia-castellon-kitchen-rajoy-cospedal-testigos
+    url: "https://www.eldiario.es/politica/efecto-garcia-castellon-kitchen-cinco-anos-despues-rajoy-cospedal-pasan-juicio-testigos_1_13161987.html"
+    medio_id: eldiario-es
+    titular: "El efecto de García Castellón en Kitchen, cinco años después: Rajoy y Cospedal pasan por el juicio como testigos"
+    fecha_publicacion: "2026-04-23"
+    resumen: >
+      Análisis sobre el impacto del instructor García-Castellón en la causa Kitchen:
+      el instructor decidió sobreseer a Cospedal, lo que provoca que cinco años después
+      solo pase por el juicio como testigo y no como acusada, pese a las protestas del
+      PSOE y de Anticorrupción.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: publico-dilaciones-rebajas-pena-kitchen-2026
+    url: "https://www.publico.es/politica/tribunales/rebajas-pena-dilaciones-beneficiaron-proxenetas-politicos-corruptos-villarejo-planean-sobre-kitchen.html"
+    medio_id: publico-es
+    titular: "Las rebajas de pena por dilaciones de la justicia que planean sobre el 'caso Kitchen' y que han beneficiado a proxenetas, políticos corruptos y Villarejo"
+    fecha_publicacion: "2026-04-08"
+    resumen: >
+      Público analiza el riesgo de atenuación de penas por dilaciones indebidas en el
+      caso Kitchen, señalando que el retraso en la celebración del juicio oral podría
+      beneficiar a los procesados con rebajas sustanciales en las penas solicitadas.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: eldiario-policia-caja-b-pp-kitchen-2026-05
+    url: "https://www.eldiario.es/politica/policia-caja-b-pp-declara-juicio-kitchen-espionaje-barcenas-hizo-espaldas_1_13181295.html"
+    medio_id: eldiario-es
+    titular: "El policía de la caja B del PP denuncia «presiones» de los mandos para no incluir a Rajoy como perceptor de dinero negro"
+    fecha_publicacion: "2026-05-05"
+    resumen: >
+      Un agente policial que investigó la caja B del PP declara en el juicio Kitchen
+      que recibió presiones de sus superiores jerárquicos para no incluir a Mariano
+      Rajoy entre los beneficiarios del dinero negro del partido. La declaración
+      conecta el objeto del espionaje Kitchen con la investigación paralela sobre
+      la financiación irregular del PP.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
+
+  - id: theobjective-policia-duda-informe-espionaje-2026-04
+    url: "https://theobjective.com/espana/tribunales/2026-04-19/policia-duda-autenticidad-informe-espionaje-ilegal-barcenas/"
+    medio_id: the-objective
+    titular: "La Policía duda de la autenticidad del informe clave sobre el espionaje ilegal a Bárcenas"
+    fecha_publicacion: "2026-04-19"
+    resumen: >
+      Peritos de la Policía Nacional declaran en el juicio Kitchen que dudan de la
+      autenticidad del informe clave que fue usado en la instrucción como prueba de
+      la operación parapolicial de espionaje a Bárcenas.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-26"
