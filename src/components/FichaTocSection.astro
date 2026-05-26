@@ -1,0 +1,21 @@
+---
+// FichaTocSection — bloque numerado de una ficha (caso, persona, org, delito).
+// El wrapper data-toc-section existe en el HTML servido para que el ritmo
+// vertical no dependa del JS del PageToc ni de márgenes que no colapsan.
+
+import SectionH from '@/components/SectionH.astro';
+
+interface Props {
+  num: string;
+  title: string;
+  id: string;
+  right?: string;
+  orderToggle?: boolean;
+}
+
+const { num, title, id, right, orderToggle } = Astro.props;
+---
+<section class="ficha-toc-section" data-toc-section={id}>
+  <SectionH {num} {title} {id} {right} {orderToggle} />
+  <slot />
+</section>

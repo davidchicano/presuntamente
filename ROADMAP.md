@@ -4,9 +4,9 @@
 >
 > El roadmap conceptual vive en [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Este fichero es la versión operativa: estado actual, próximos pasos, backlog inmediato y aprendizajes recientes. El histórico largo se ha movido a [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-26. **Pulido post-UI Bloque D**: enlaces reales en biblioteca documental (caso + `/biblioteca`) vía `src/lib/documentos.ts`; `SourceLinkBadge` con flecha ↗ y destino al documento; fix de bordes en columna Enlaces; retirado `ClientRouter` (bug botón atrás); TOC con scroll al inicio del apartado y botón «Subir arriba». Fichas [`biblioteca.md`](docs/web/pages/biblioteca.md) y [`vinculos-institucionales.md`](docs/web/features/vinculos-institucionales.md) actualizadas.
+**Última actualización:** 2026-05-26. **Ritmo vertical unificado en fichas** (caso, persona, organización, delito): componente `FichaTocSection.astro` con `data-toc-section` en HTML servido; contenedor `.ficha-detail` con `flex` + `gap`; `.entity-mast` compartido en `global.css` (grid 64px, delito sin avatar en columna única); estilos locales duplicados retirados de las tres Pg* de entidad; `PgCasoDetalle` migrado al mismo patrón.
 
-**Último hito de producto:** pulido UX/documentación tras la UI de vínculos y cobertura mediática (2026-05-26). Caso piloto sigue siendo `begona-gomez`. `pnpm validate` y `pnpm build` verdes.
+**Último hito de producto:** layout de fichas alineado entre tipos de entidad (2026-05-26). Caso piloto sigue siendo `begona-gomez`. `pnpm build` verde (170 páginas Pagefind).
 
 **Anterior inmediato:** cierre sesión UI Bloque D (2026-05-26): primer render visible de vínculos institucionales y cobertura mediática general en `PgCasoDetalle`, Persona y Organización. 16 vínculos + 29 piezas de cobertura en `begona-gomez`.
 
@@ -214,6 +214,7 @@ Sólo se quedan aquí los aprendizajes que probablemente afecten a las próximas
 - **`ClientRouter` retirado el 2026-05-26.** La navegación vuelve a recarga completa del documento; corrige el bug de botón atrás (URL cambiaba sin actualizar contenido). Los listeners delegados en `BaseLayout.astro` se mantienen por idempotencia, no por swaps SPA.
 - **Enlaces de documento centralizados en `src/lib/documentos.ts`.** Prioridad: `ruta_local` → `url_canonica` → `url_archivo` → ancla de biblioteca. Aplica a `DocumentoCard`, `/biblioteca`, hitos, hechos y `SourceLinkBadge`.
 - **No aplicar `display: flex` directamente a `<td>`.** Rompe `border-collapse` y desalinea separadores horizontales en tablas `.tbl`; el layout va en un `<div>` interno (precedente: columna Enlaces de `/biblioteca`).
+- **Ritmo de fichas con `gap`, no márgenes entre secciones.** Los `.sec-h` sueltos en `<main>` no colapsan con cajas con borde ni con wrappers TOC solo-JS. Patrón canónico: `.ficha-detail` + `FichaTocSection` (servidor); el wrap JS de `BaseLayout` queda para páginas largas sin ficha (`/cifras`, `/sobre`).
 
 ---
 

@@ -1322,7 +1322,7 @@ body.has-menu-open { overflow: hidden; }
   padding: var(--space-2) var(--space-3);
   border-top: 2px solid var(--color-accent);
   border-bottom: 1px solid var(--color-border);
-  margin: var(--space-6) 0 var(--space-4);
+  margin: var(--space-4) 0 var(--space-3);
   background: var(--color-surface-muted);
   /* Sticky: el encabezado de sección se ancla al top del viewport mientras
    * la sección esté visible. z-index moderado: por debajo del header (que
@@ -2284,8 +2284,6 @@ kbd.cite .n { font-weight: 700; }
 .org-glyph--organismo{ background: var(--color-accent-secondary-soft); border-color: var(--color-accent-secondary-border); color: #6b4d00; }
 .org-glyph--asoc     { background: var(--color-surface); }
 
-.entity-mast .org-glyph { width: 72px; height: 72px; }
-.entity-mast .org-glyph svg { width: 32px; height: 32px; }
 
 .persona-photo {
   width: 72px; height: 72px;
@@ -2340,49 +2338,229 @@ kbd.cite .n { font-weight: 700; }
   border: 1px solid var(--color-border);
   border-top: 3px solid var(--color-accent);
   background: var(--color-surface);
-  padding: var(--space-4);
-  margin-bottom: var(--space-4);
+  padding: 18px 20px;
+  margin-bottom: 0;
   display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: var(--space-4);
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
 }
+.entity-mast:not(:has(> .entity-mast__init, > .org-glyph)) {
+  grid-template-columns: 1fr;
+}
+.entity-mast__body { min-width: 0; }
 .entity-mast__init {
-  width: 72px; height: 72px;
+  width: 64px;
+  height: 64px;
   background: var(--color-accent-soft);
   border: 1px solid var(--color-accent);
-  display: flex; align-items: center; justify-content: center;
-  font: 700 24px/1 var(--font-sans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 22px/1 var(--font-sans);
   color: var(--color-accent);
 }
+.entity-mast .org-glyph { width: 64px; height: 64px; }
+.entity-mast .org-glyph svg { width: 32px; height: 32px; }
+.entity-mast__eye,
 .entity-mast__eyebrow {
   font: 700 11px/1 var(--font-sans);
   letter-spacing: var(--ls-caps);
   text-transform: uppercase;
   color: var(--color-accent-secondary-hover);
-  margin: 0 0 var(--space-2);
+  margin: 0 0 6px;
 }
 .entity-mast__name {
-  font: 700 var(--font-size-5)/1.15 var(--font-sans);
+  font: 700 clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem)/1.15 var(--font-sans);
   letter-spacing: -0.005em;
-  margin: 0 0 var(--space-2);
+  margin: 0 0 4px;
   text-wrap: balance;
 }
-.entity-mast__lede {
-  font: 400 var(--font-size-2)/1.5 var(--font-sans);
-  color: var(--color-fg);
-  max-width: 60ch;
-  margin: 0;
+.entity-mast__sub {
+  font: 400 13px/1.4 var(--font-sans);
+  color: var(--color-fg-muted);
+  margin: 0 0 10px;
+}
+.entity-mast__sub:last-child {
+  margin-bottom: 0;
 }
 .entity-mast__row {
-  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3);
-  font-size: var(--font-size-1);
-  color: var(--color-fg-muted);
-  margin-top: var(--space-3);
-  padding-top: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 8px;
   border-top: 1px solid var(--color-border);
+  font: 400 12px/1 var(--font-sans);
+  color: var(--color-fg-muted);
 }
-.entity-mast__row .sep { color: var(--color-border); }
+.entity-mast__row .sep,
+.entity-mast__sep { color: var(--color-border); }
 .entity-mast__row strong { color: var(--color-fg); font-weight: 600; }
+
+.casos-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.casos-list__item {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.casos-list__item:last-child { border-bottom: 0; }
+.casos-list__item a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.casos-list__item a:hover { text-decoration: underline; }
+.casos-list__item .c-name { font-weight: 600; }
+.casos-list__item .c-name__sub {
+  font-size: var(--font-size-0);
+  color: var(--color-fg-muted);
+}
+
+.docs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.docs-list li {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.docs-list li:last-child { border-bottom: 0; }
+.docs-list__title { flex: 1 1 0; font-weight: 600; }
+.docs-list__date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-fg-muted);
+}
+
+.contexto-intro {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--color-surface-muted);
+  border-left: 3px solid var(--color-border-strong);
+  font: 400 13px/1.55 var(--font-sans);
+  color: var(--color-fg);
+}
+
+.meta-list { margin: 0; padding-left: 18px; }
+.meta-list li { margin: 4px 0; }
+.meta-list .mono { font-family: var(--font-mono); font-size: 12px; }
+
+.delitos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.delitos li {
+  font: 400 11px/1 var(--font-mono);
+  background: var(--color-surface-muted);
+  color: var(--color-fg-muted);
+  padding: 3px 6px;
+  border: 1px solid var(--color-border);
+}
+
+.sujeto-tipo {
+  font-size: 11px;
+  color: var(--color-fg-muted);
+  margin-left: 4px;
+}
+
+.badge--ghost { opacity: 0.65; }
+
+/* Panel de marco normativo (ficha de delito) */
+.norm {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: 0;
+  width: 100%;
+}
+.norm dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(11rem, 24%) 1fr;
+  gap: var(--space-2) var(--space-4);
+  width: 100%;
+  font: 400 var(--font-size-1)/1.5 var(--font-sans);
+}
+.norm dt {
+  font: 700 11px/1.5 var(--font-sans);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+}
+.norm dd { margin: 0; color: var(--color-fg); }
+.cp-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.cp-chip {
+  font: 500 12px/1 var(--font-mono);
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  padding: 4px 8px;
+  color: var(--color-fg);
+}
+
+/* Ritmo vertical de fichas detalle (caso · persona · org · delito).
+ * Un solo gap entre bloques hermanos; dentro de cada apartado numerado,
+ * gap menor entre título y contenido. Sustituye márgenes acumulados que
+ * el PageToc y los bordes de .entity-mast impedían colapsar. */
+.ficha-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+}
+body.has-page-toc .main > .ficha-detail {
+  grid-column: 1;
+}
+.ficha-detail > .ficha-flip {
+  margin-bottom: 0;
+}
+.ficha-detail > .ficha-sintesis {
+  margin-top: calc(-1 * var(--space-2));
+  margin-bottom: 0;
+}
+.ficha-toc-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+}
+.ficha-detail .ficha-toc-section > .sec-h {
+  margin: 0;
+}
+.ficha-detail .ficha-toc-section > *:last-child {
+  margin-bottom: 0;
+}
+.ficha-detail .ficha-toc-section .prose > :last-child {
+  margin-bottom: 0;
+}
+.ficha-detail .ficha-toc-section > .grupo,
+.ficha-detail .ficha-toc-section > .estado-grid,
+.ficha-detail .ficha-toc-section > .coverage-note,
+.ficha-detail .ficha-toc-section > .coverage-findings,
+.ficha-detail .ficha-toc-section > .coverage-scope,
+.ficha-detail .ficha-toc-section > .coverage-panels,
+.ficha-detail .ficha-toc-section > .coverage-list,
+.ficha-detail .ficha-toc-section > .grupo__cards {
+  margin-bottom: 0;
+}
 
 /* Trayectoria — swimlane completa por persona */
 .trayectoria {

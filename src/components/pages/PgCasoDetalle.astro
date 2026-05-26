@@ -7,7 +7,7 @@
 
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import SectionH from '@/components/SectionH.astro';
+import FichaTocSection from '@/components/FichaTocSection.astro';
 import PhaseBadge from '@/components/PhaseBadge.astro';
 import PersonaCard from '@/components/PersonaCard.astro';
 import OrgCard from '@/components/OrgCard.astro';
@@ -619,6 +619,7 @@ const breadcrumb = [
   ogImage={`/og/casos/${data.id}.png`}
   ogType="article"
 >
+  <div class="ficha-detail">
   <!-- 2.1 — Encabezado flippeable: el contenedor unificado lleva la
        masthead + síntesis del caso (cara A) y un reverso editorial (cara B)
        con estado global, 10 chequeos y "Cómo se ha redactado esta ficha".
@@ -807,29 +808,30 @@ const breadcrumb = [
   )}
 
   <!-- 2.2 — Resumen ejecutivo -->
-  <SectionH num="1." title="Resumen ejecutivo" id="resumen" />
-  <div class="prose">
-    {data.descripcion_corta && (
-      <RichProse
-        text={data.descripcion_corta}
-        excludePersonaIds={[data.id]}
-        excludeOrgIds={[data.id]}
-      />
-    )}
-    {data.resumen_cifras && (
-      <p><strong>Cifras de referencia.</strong>{' '}
+  <FichaTocSection num="1." title="Resumen ejecutivo" id="resumen">
+    <div class="prose">
+      {data.descripcion_corta && (
         <RichProse
-          text={data.resumen_cifras}
-          as="span"
+          text={data.descripcion_corta}
           excludePersonaIds={[data.id]}
           excludeOrgIds={[data.id]}
         />
-      </p>
-    )}
-  </div>
+      )}
+      {data.resumen_cifras && (
+        <p><strong>Cifras de referencia.</strong>{' '}
+          <RichProse
+            text={data.resumen_cifras}
+            as="span"
+            excludePersonaIds={[data.id]}
+            excludeOrgIds={[data.id]}
+          />
+        </p>
+      )}
+    </div>
+  </FichaTocSection>
 
   <!-- 2.3 — Estado procesal actual -->
-  <SectionH num="2." title="Estado procesal actual" id="estado" />
+  <FichaTocSection num="2." title="Estado procesal actual" id="estado">
   <dl class="estado-grid">
     <div><dt>Fase</dt><dd>{faseLabel(data.fase_actual)}</dd></div>
     {organo && (
@@ -844,14 +846,15 @@ const breadcrumb = [
       <div><dt>Nº de procedimiento</dt><dd class="mono">{data.numero_procedimiento}</dd></div>
     )}
   </dl>
+  </FichaTocSection>
 
   <!-- 2.4 — Personas implicadas -->
-  <SectionH
+  <FichaTocSection
     num="3."
     title="Personas implicadas"
     id="personas"
     right={`${personasMap.size} persona${personasMap.size === 1 ? '' : 's'}`}
-  />
+  >
   {grupoOrden.map((g) => {
     const items = personasPorGrupo[g.key];
     if (items.length === 0) return null;
@@ -884,16 +887,16 @@ const breadcrumb = [
       </div>
     );
   })}
+  </FichaTocSection>
 
   <!-- 2.5 — Organizaciones implicadas -->
   {orgsImplicadas.length > 0 && (
-    <>
-      <SectionH
-        num="4."
-        title="Organizaciones implicadas"
-        id="organizaciones"
-        right={`${orgsImplicadas.length} organización${orgsImplicadas.length === 1 ? '' : 'es'}`}
-      />
+    <FichaTocSection
+      num="4."
+      title="Organizaciones implicadas"
+      id="organizaciones"
+      right={`${orgsImplicadas.length} organización${orgsImplicadas.length === 1 ? '' : 'es'}`}
+    >
       <div class="grupo__cards">
         {orgsImplicadas.map((ov) => (
           <OrgCard
@@ -908,17 +911,17 @@ const breadcrumb = [
           />
         ))}
       </div>
-    </>
+    </FichaTocSection>
   )}
 
   <!-- 2.6 — Cronología -->
-  <SectionH
+  <FichaTocSection
     num="5."
     title="Cronología"
     id="cronologia"
     right={`${cronologia.length} hito${cronologia.length === 1 ? '' : 's'}`}
     orderToggle={cronologia.length > 1}
-  />
+  >
   {cronologia.length === 0 ? (
     <p class="muted">Sin hitos registrados todavía.</p>
   ) : (
@@ -942,14 +945,15 @@ const breadcrumb = [
       ))}
     </div>
   )}
+  </FichaTocSection>
 
   <!-- 2.7 — Hechos por estado epistémico -->
-  <SectionH
+  <FichaTocSection
     num="6."
     title="Hechos clasificados por estado epistémico"
     id="hechos"
     right={`${hechos.length} hecho${hechos.length === 1 ? '' : 's'}`}
-  />
+  >
   {hechosPorGrupo.map((g) => {
     if (g.items.length === 0) return null;
     return (
@@ -971,15 +975,15 @@ const breadcrumb = [
       </div>
     );
   })}
+  </FichaTocSection>
 
   {coberturaCaso && coberturaRows.length > 0 && (
-    <>
-      <SectionH
-        num="7."
-        title="Cobertura mediática general"
-        id="cobertura-mediatica"
-        right={`${coberturaRows.length} pieza${coberturaRows.length === 1 ? '' : 's'}`}
-      />
+    <FichaTocSection
+      num="7."
+      title="Cobertura mediática general"
+      id="cobertura-mediatica"
+      right={`${coberturaRows.length} pieza${coberturaRows.length === 1 ? '' : 's'}`}
+    >
       <div class="coverage-note">
         <p>
           Este bloque resume cómo aparece el caso en una muestra sistemática de prensa.
@@ -1075,16 +1079,16 @@ const breadcrumb = [
         <summary>Ver listado completo de piezas rastreadas ({coberturaRows.length})</summary>
         <CoberturaMediaticaTable rows={coberturaRows} />
       </details>
-    </>
+    </FichaTocSection>
   )}
 
   <!-- 2.8 — Biblioteca documental -->
-  <SectionH
+  <FichaTocSection
     num="8."
     title="Biblioteca documental del caso"
     id="biblioteca"
     right={`${biblioteca.length} documento${biblioteca.length === 1 ? '' : 's'}`}
-  />
+  >
   <div class="grupo__cards" id="biblioteca-list">
     {biblioteca.map(({ d, productor, productorId, citadoEn }) => (
       <div id={`doc-${d.id}`}>
@@ -1103,6 +1107,8 @@ const breadcrumb = [
         />
       </div>
     ))}
+  </div>
+  </FichaTocSection>
   </div>
 
   <!-- 2.10 — Pie disclaimer
@@ -1195,7 +1201,7 @@ const breadcrumb = [
     border-top: 3px solid var(--color-accent-secondary);
     background: var(--color-surface);
     box-shadow: var(--shadow-flat);
-    margin: calc(-1 * var(--space-2)) 0 var(--space-6);
+    margin: calc(-1 * var(--space-2)) 0 0;
   }
   /* Variante reusable dentro del flip para el bloque "Cómo se ha
      redactado" de la cara B. Comparte la rejilla y el border-top
@@ -1306,7 +1312,7 @@ const breadcrumb = [
     gap: 0;
     border: 1px solid var(--color-border);
     background: var(--color-surface);
-    margin: 0 0 var(--space-5);
+    margin: 0;
   }
   .estado-grid > div {
     padding: 12px 14px;
@@ -1330,7 +1336,7 @@ const breadcrumb = [
   .estado-grid .mono { font-family: var(--font-mono); font-size: 12px; }
 
   /* === Grupos (personas por categoría, hechos por tipo) === */
-  .grupo { margin: 0 0 var(--space-5); }
+  .grupo { margin: 0; }
   .grupo__title {
     font: 700 11px/1.4 var(--font-sans);
     letter-spacing: 0.04em;
@@ -1398,7 +1404,7 @@ const breadcrumb = [
   }
 
   .coverage-note {
-    margin: 0 0 var(--space-4);
+    margin: 0;
     padding: 12px 14px;
     border: 1px solid var(--color-border);
     border-left: 3px solid var(--color-border-strong);
@@ -1424,7 +1430,7 @@ const breadcrumb = [
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     border: 1px solid var(--color-border);
     background: var(--color-surface);
-    margin: 0 0 var(--space-4);
+    margin: 0;
   }
   .coverage-finding {
     padding: 12px 14px;
@@ -1453,7 +1459,7 @@ const breadcrumb = [
     color: var(--color-fg-muted);
   }
   .coverage-scope {
-    margin: 0 0 var(--space-4);
+    margin: 0;
     padding: 12px 14px;
     border: 1px solid var(--color-border);
     border-left: 3px solid var(--color-accent-secondary-border);
@@ -1478,7 +1484,7 @@ const breadcrumb = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--space-3);
-    margin: 0 0 var(--space-3);
+    margin: 0;
   }
   .coverage-panel {
     border: 1px solid var(--color-border);

@@ -13,7 +13,7 @@
 
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import SectionH from '@/components/SectionH.astro';
+import FichaTocSection from '@/components/FichaTocSection.astro';
 import RichProse from '@/components/RichProse.astro';
 import RolBadge from '@/components/RolBadge.astro';
 import { familiaDelitoLabel, rolLabel, type Lang } from '@/lib/labels';
@@ -113,6 +113,7 @@ const strings = {
   activeNav="delitos"
   breadcrumb={breadcrumb}
 >
+  <div class="ficha-detail">
   <section class="entity-mast">
     <div class="entity-mast__body">
       <p class="entity-mast__eye">{strings.eyebrow}</p>
@@ -129,66 +130,67 @@ const strings = {
     </div>
   </section>
 
-  <SectionH num="1." title="Marco normativo" id="normativa" />
-  <div class="norm">
-    <dl>
-      <dt>Artículos del Código Penal</dt>
-      <dd>
-        <ul class="cp-list">
-          {data.articulos_cp.map((a) => <li class="cp-chip">{a}</li>)}
-        </ul>
-      </dd>
-      <dt>Familia</dt>
-      <dd>{familiaDelitoLabel(data.familia)}</dd>
-      {data.enlace_boe && (
-        <>
-          <dt>Fuente legal</dt>
-          <dd>
-            <a href={data.enlace_boe} target="_blank" rel="noopener">
-              Código Penal en el BOE ↗
-            </a>
-          </dd>
-        </>
-      )}
-    </dl>
-  </div>
+  <FichaTocSection num="1." title="Marco normativo" id="normativa">
+    <div class="norm">
+      <dl>
+        <dt>Artículos del Código Penal</dt>
+        <dd>
+          <ul class="cp-list">
+            {data.articulos_cp.map((a) => <li class="cp-chip">{a}</li>)}
+          </ul>
+        </dd>
+        <dt>Familia</dt>
+        <dd>{familiaDelitoLabel(data.familia)}</dd>
+        {data.enlace_boe && (
+          <>
+            <dt>Fuente legal</dt>
+            <dd>
+              <a href={data.enlace_boe} target="_blank" rel="noopener">
+                Código Penal en el BOE ↗
+              </a>
+            </dd>
+          </>
+        )}
+      </dl>
+    </div>
+  </FichaTocSection>
 
   {data.descripcion_breve && (
-    <>
-      <SectionH num="2." title="Descripción del tipo penal" id="descripcion" />
+    <FichaTocSection num="2." title="Descripción del tipo penal" id="descripcion">
       <div class="prose">
         <RichProse text={data.descripcion_breve} lang={lang} />
       </div>
-    </>
+    </FichaTocSection>
   )}
 
-  <SectionH
+  <FichaTocSection
     num="3."
     title="Casos donde se atribuye"
     id="casos"
     right={`${casos.length} caso${casos.length === 1 ? '' : 's'}`}
-  />
-  {casos.length === 0 ? (
-    <p class="muted">Sin casos registrados todavía.</p>
-  ) : (
-    <ul class="casos-list">
-      {casos.map((c) => (
-        <li class="casos-list__item">
-          <a href={`/casos/${c.id}`}>
-            <span class="c-name">{c.nombre_mediatico}</span>
-            <span class="c-name__sub">{c.nombre_oficial}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  )}
+  >
+    {casos.length === 0 ? (
+      <p class="muted">Sin casos registrados todavía.</p>
+    ) : (
+      <ul class="casos-list">
+        {casos.map((c) => (
+          <li class="casos-list__item">
+            <a href={`/casos/${c.id}`}>
+              <span class="c-name">{c.nombre_mediatico}</span>
+              <span class="c-name__sub">{c.nombre_oficial}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </FichaTocSection>
 
-  <SectionH
+  <FichaTocSection
     num="4."
     title="Atribuciones procesales"
     id="atribuciones"
     right={`${atribuciones.length} rol${atribuciones.length === 1 ? '' : 'es'}`}
-  />
+  >
   {atribuciones.length === 0 ? (
     <p class="muted">Ningún rol procesal lo tiene atribuido actualmente.</p>
   ) : (
@@ -225,86 +227,8 @@ const strings = {
     </table>
     </div>
   )}
+  </FichaTocSection>
+  </div>
 
   <div class="aviso aviso--accent mt-6">{strings.disclaimer}</div>
 </BaseLayout>
-
-<style>
-  .entity-mast {
-    border: 1px solid var(--color-border);
-    border-top: 3px solid var(--color-accent);
-    background: var(--color-surface);
-    padding: 18px 20px;
-    margin-bottom: var(--space-4);
-  }
-  .entity-mast__eye {
-    font: 700 11px/1 var(--font-sans);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-accent-secondary-hover);
-    margin: 0 0 6px;
-  }
-  .entity-mast__name {
-    font: 700 clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem)/1.15 var(--font-sans);
-    letter-spacing: -0.005em;
-    margin: 0 0 4px;
-  }
-  .entity-mast__sub {
-    font: 400 13px/1.4 var(--font-sans);
-    color: var(--color-fg-muted);
-    margin: 0;
-  }
-  .entity-mast__row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 10px;
-    padding-top: 8px;
-    border-top: 1px solid var(--color-border);
-    font: 400 12px/1 var(--font-sans);
-    color: var(--color-fg-muted);
-  }
-  .entity-mast__row strong { color: var(--color-fg); font-weight: 600; }
-  .entity-mast__sep { color: var(--color-border); }
-
-  .norm {
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    padding: 14px 18px;
-    margin-bottom: var(--space-4);
-  }
-  .norm dl {
-    margin: 0;
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: 6px 18px;
-    font: 400 13px/1.5 var(--font-sans);
-  }
-  .norm dt {
-    font: 700 11px/1.5 var(--font-sans);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-fg-muted);
-  }
-  .norm dd { margin: 0; color: var(--color-fg); }
-
-  .cp-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  .cp-chip {
-    font: 500 12px/1 var(--font-mono);
-    background: var(--color-surface-muted);
-    border: 1px solid var(--color-border);
-    padding: 4px 8px;
-    color: var(--color-fg);
-  }
-
-  .casos-list { list-style: none; padding: 0; margin: 0 0 var(--space-4); border: 1px solid var(--color-border); background: var(--color-surface); }
-  .casos-list__item { padding: 12px 16px; border-bottom: 1px solid var(--color-border); }
-  .casos-list__item:last-child { border-bottom: 0; }
-  .casos-list__item a { color: inherit; text-decoration: none; display: flex; flex-direction: column; gap: 2px; }
-  .casos-list__item a:hover { text-decoration: underline; }
-  .casos-list__item .c-name { font-weight: 600; }
-  .casos-list__item .c-name__sub { font-size: var(--font-size-0); color: var(--color-fg-muted); }
-
-  .sujeto-tipo { font-size: 11px; color: var(--color-fg-muted); margin-left: 4px; }
-</style>

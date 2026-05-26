@@ -599,16 +599,16 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       function __wrapPageSections() {
         const main = document.querySelector('main');
         if (!main) return;
-        const headers = Array.from(main.querySelectorAll<HTMLElement>('.sec-h[id]'));
+        const sectionRoot = main.querySelector('.ficha-detail') ?? main;
+        const headers = Array.from(sectionRoot.querySelectorAll<HTMLElement>(':scope > .sec-h[id]'));
         for (const h of headers) {
-          // Si ya está dentro de un wrapper nuestro, saltar.
-          if (h.parentElement?.dataset?.tocSection) continue;
-          // Solo procesar headers que sean hijos directos del <main> (los
-          // que vienen de <SectionH /> top-level en las páginas Pg*). Los
-          // .sec-h anidados en sub-bloques mantienen su comportamiento.
-          if (h.parentElement !== main) continue;
+          // Ya envuelto en servidor (<FichaTocSection />) o por una pasada previa.
+          if (h.closest('[data-toc-section]')) continue;
+          // Solo procesar headers hijos directos del contenedor de ficha o del main.
+          if (h.parentElement !== sectionRoot) continue;
 
           const section = document.createElement('section');
+          section.className = 'ficha-toc-section';
           section.dataset.tocSection = h.id;
           // Reunir el header + siblings hasta el próximo .sec-h o el fin.
           const toMove: Element[] = [h];
