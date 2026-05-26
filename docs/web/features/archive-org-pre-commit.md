@@ -28,7 +28,7 @@ Sin esto, Git usa `.git/hooks/` (solo samples) y **el hook no corre nunca**.
 Al hacer `git commit`, si hay en staging documentos N4 o YAML de cobertura mediática con URLs sin archivar:
 
 - Procesa **como máximo 5 URLs** por commit (`ARCHIVAR_HOOK_MAX` o `--hook-max=` para cambiar el tope; `0` = sin tope).
-- Espera 8 s entre llamadas (~1 min en el peor caso con 5 URLs).
+- Entre URLs: **8 s** si hace captura nueva (`/save/`); **0,8 s** si reutiliza snapshot existente (consulta rápida a Wayback).
 - Re-stagea los YAML modificados para que entren en el mismo commit.
 - **No bloquea** el commit si archive.org falla.
 
@@ -42,13 +42,34 @@ Al hacer `git commit`, si hay en staging documentos N4 o YAML de cobertura medi�
 pnpm archive:dry      # lista pendientes
 pnpm archive:catchup  # archiva todo el backlog
 pnpm archive:catchup -- --caso=begona-gomez   # solo un caso (documentos + cobertura)
+pnpm archive:catchup -- --caso=begona-gomez --limit=3   # prueba acotada
 ```
 
 Útil al activar el hook por primera vez, tras clonar el repo, o cuando el pre-commit aplazó URLs por el tope de 5.
 
+## Velocidad y límites de archive.org
+
+El cuello de botella habitual es **`/save/`** (archive.org descarga la página en vivo: 30 s–2 min por URL). El script evita `/save/` cuando puede:
+
+1. **`GET archive.org/wayback/available?url=…`** — si ya hay snapshot, escribe esa URL en `url_archivo` y muestra `OK (reuse)` (~1–3 s).
+2. Solo si no hay snapshot (o con `--force-save` / `ARCHIVAR_SKIP_REUSE=1`) llama a **`/save/`** → `OK (capture)`.
+
+**Pausas entre URLs:**
+
+| Modo | Tras `reuse` | Tras `capture` o fallo |
+|------|----------------|-------------------------|
+| `pnpm archive:catchup` | 0,8 s | 2 s (default) |
+| hook `pre-commit` | 0,8 s | 8 s (default) |
+
+Override: `ARCHIVAR_WAIT_MS=500` (milisegundos; `0` = sin pausa). No bajar mucho el ritmo de capturas nuevas seguidas: archive.org puede responder **HTTP 429** (el script espera 60 s y reintenta una vez, también en `wayback/available`).
+
+Si acabas de un catchup largo interrumpido, conviene **esperar unos minutos** antes de relanzar: la IP puede estar rate-limited temporalmente.
+
+**Cuota:** endpoint anónimo ~8.000 capturas/día (sobra para este repo). Reutilizar snapshots no consume captura nueva.
+
 ## Estado actual
 
-**Entregado 2026-05-26:** el script cubre documentos N4 y noticias de `content/cobertura-mediatica/`. El pre-commit vigila ambas rutas con tope de 5 URLs.
+**Entregado 2026-05-26:** documentos N4 + cobertura mediática; pre-commit con tope 5 URLs. **Mejora velocidad 2026-05-26:** reuse Wayback + pausas diferenciadas en catchup.
 
 Backlog típico sin catchup: Kitchen (N4 sin `url_canonica`), cobertura de Begoña (29 noticias sin mirror), documentos N4 sueltos con URL pero sin pasar catchup.
 

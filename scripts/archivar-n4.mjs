@@ -7,17 +7,21 @@
  *   - content/cobertura-mediatica/*.yaml — noticias del corpus (campo url por ítem)
  *
  * Modos:
- *   --staged-only      Solo YAML en staging. Usado por hooks/pre-commit (tope por
- *                      defecto: 5 URLs; ver ARCHIVAR_HOOK_MAX).
+ *   --staged-only      Solo YAML en staging (hook; tope 5 URLs por defecto).
  *   --catchup          Todo el backlog pendiente del repo.
- *   --caso=<slug>      Filtra por caso_principal_id (documentos) o caso_id (cobertura).
+ *   --caso=<slug>      Filtra por caso.
  *   --dry-run          Lista pendientes sin llamar a archive.org.
- *   --hook-max=<n>     Tope en --staged-only (default 5; 0 = sin tope).
+ *   --hook-max=<n>     Tope en --staged-only.
+ *   --force-save       Siempre llama a /save/; no reutiliza snapshots existentes.
+ *   --limit=<n>        Procesa como máximo n URLs (útil para pruebas).
  *
- * Comportamiento:
- *   - Modifica YAMLs in-place insertando url_archivo tras url_canonica o url.
- *   - En --staged-only re-stagea los YAML modificados.
- *   - Si archive.org falla: avisa y continúa; no bloquea commits (exit 0).
+ * Velocidad:
+ *   1. wayback/available: si ya hay snapshot, reutiliza (segundos, sin /save/).
+ *   2. ARCHIVAR_WAIT_MS: pausa entre URLs (catchup default 2s; hook default 8s).
+ *   3. /save/ solo si no hay snapshot o --force-save (30s–2min por URL).
+ *
+ * Variables de entorno:
+ *   ARCHIVAR_WAIT_MS, ARCHIVAR_HOOK_MAX, ARCHIVAR_SKIP_REUSE=1
  */
 
 import { readFile, writeFile } from 'node:fs/promises';
@@ -26,8 +30,12 @@ import { glob } from 'glob';
 import { parse as parseYaml } from 'yaml';
 
 const SAVE_ENDPOINT = 'https://web.archive.org/save/';
-const WAIT_MS = 8_000;
+const AVAILABLE_ENDPOINT = 'https://archive.org/wayback/available';
+const DEFAULT_WAIT_HOOK_MS = 8_000;
+const DEFAULT_WAIT_CATCHUP_MS = 2_000;
+const WAIT_AFTER_REUSE_MS = 800;
 const REQUEST_TIMEOUT_MS = 180_000;
+const AVAILABLE_TIMEOUT_MS = 20_000;
 const MAX_ATTEMPTS = 2;
 const RATE_LIMIT_BACKOFF_MS = 60_000;
 const DEFAULT_HOOK_MAX = 5;
@@ -37,9 +45,18 @@ const args = process.argv.slice(2);
 const stagedOnly = args.includes('--staged-only');
 const catchup = args.includes('--catchup');
 const dryRun = args.includes('--dry-run');
+const forceSave = args.includes('--force-save');
+const skipReuse = forceSave || process.env.ARCHIVAR_SKIP_REUSE === '1';
 const casoArg = args.find((a) => a.startsWith('--caso='));
 const hookMaxArg = args.find((a) => a.startsWith('--hook-max='));
+const limitArg = args.find((a) => a.startsWith('--limit='));
 const casoFilter = casoArg ? casoArg.slice('--caso='.length) : null;
+
+let limit = null;
+if (limitArg) {
+  const n = Number.parseInt(limitArg.slice('--limit='.length), 10);
+  if (!Number.isNaN(n) && n > 0) limit = n;
+}
 
 let hookMax = DEFAULT_HOOK_MAX;
 if (process.env.ARCHIVAR_HOOK_MAX != null && process.env.ARCHIVAR_HOOK_MAX !== '') {
@@ -52,9 +69,19 @@ if (Number.isNaN(hookMax) || hookMax < 0) {
   hookMax = DEFAULT_HOOK_MAX;
 }
 
+function resolveWaitMs() {
+  if (process.env.ARCHIVAR_WAIT_MS != null && process.env.ARCHIVAR_WAIT_MS !== '') {
+    const n = Number.parseInt(process.env.ARCHIVAR_WAIT_MS, 10);
+    if (!Number.isNaN(n) && n >= 0) return n;
+  }
+  return stagedOnly ? DEFAULT_WAIT_HOOK_MS : DEFAULT_WAIT_CATCHUP_MS;
+}
+
+const waitMs = resolveWaitMs();
+
 if (!stagedOnly && !catchup) {
   console.error(
-    'Uso: node scripts/archivar-n4.mjs (--staged-only|--catchup) [--caso=<slug>] [--dry-run] [--hook-max=<n>]',
+    'Uso: node scripts/archivar-n4.mjs (--staged-only|--catchup) [--caso=<slug>] [--dry-run] [--hook-max=<n>] [--limit=<n>] [--force-save]',
   );
   process.exit(2);
 }
@@ -143,6 +170,54 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function normalizeArchiveUrl(url) {
+  if (url.startsWith('http://web.archive.org/')) {
+    return 'https://web.archive.org/' + url.slice('http://web.archive.org/'.length);
+  }
+  return url;
+}
+
+async function findExistingSnapshot(url, attempt = 1) {
+  const apiUrl = `${AVAILABLE_ENDPOINT}?url=${encodeURIComponent(url)}`;
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), AVAILABLE_TIMEOUT_MS);
+  try {
+    const resp = await fetch(apiUrl, {
+      signal: controller.signal,
+      headers: { 'User-Agent': UA, Accept: 'application/json' },
+    });
+    if (resp.status === 429 || resp.status === 503) {
+      if (attempt < MAX_ATTEMPTS) {
+        clearTimeout(t);
+        await sleep(RATE_LIMIT_BACKOFF_MS);
+        return findExistingSnapshot(url, attempt + 1);
+      }
+      return { ok: false, error: `available API HTTP ${resp.status}` };
+    }
+    if (!resp.ok) {
+      return { ok: false, error: `available API HTTP ${resp.status}` };
+    }
+    let data;
+    try {
+      data = await resp.json();
+    } catch {
+      return { ok: false, error: 'available API: respuesta no JSON' };
+    }
+    const closest = data?.archived_snapshots?.closest;
+    if (closest?.available === true && typeof closest.url === 'string' && closest.url.length > 0) {
+      return { ok: true, archiveUrl: normalizeArchiveUrl(closest.url), method: 'reuse' };
+    }
+    return { ok: false, error: 'sin snapshot en Wayback' };
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      return { ok: false, error: `available API timeout (${AVAILABLE_TIMEOUT_MS / 1000}s)` };
+    }
+    return { ok: false, error: err.message };
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 async function saveOne(url, attempt = 1) {
   const controller = new AbortController();
   const t = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
@@ -166,13 +241,13 @@ async function saveOne(url, attempt = 1) {
     const contentLocation = resp.headers.get('content-location');
 
     if (location && location.startsWith('https://web.archive.org/web/')) {
-      return { ok: true, archiveUrl: location };
+      return { ok: true, archiveUrl: location, method: 'capture' };
     }
     if (contentLocation && contentLocation.startsWith('/web/')) {
-      return { ok: true, archiveUrl: 'https://web.archive.org' + contentLocation };
+      return { ok: true, archiveUrl: 'https://web.archive.org' + contentLocation, method: 'capture' };
     }
     if (location && location.startsWith('/web/')) {
-      return { ok: true, archiveUrl: 'https://web.archive.org' + location };
+      return { ok: true, archiveUrl: 'https://web.archive.org' + location, method: 'capture' };
     }
 
     return { ok: false, error: `respuesta sin Location utilizable (HTTP ${resp.status})` };
@@ -184,6 +259,16 @@ async function saveOne(url, attempt = 1) {
   } finally {
     clearTimeout(t);
   }
+}
+
+async function resolveArchiveUrl(url) {
+  if (!skipReuse) {
+    const existing = await findExistingSnapshot(url);
+    if (existing.ok) {
+      return existing;
+    }
+  }
+  return saveOne(url);
 }
 
 function insertUrlArchivoDocumento(rawYaml, archiveUrl) {
@@ -227,6 +312,13 @@ function gitAdd(file) {
   }
 }
 
+function pauseAfterItem(method) {
+  if (method === 'reuse') {
+    return sleep(WAIT_AFTER_REUSE_MS);
+  }
+  return sleep(waitMs);
+}
+
 async function main() {
   const docFiles = await loadCandidateDocFiles();
   const cobFiles = await loadCandidateCoberturaFiles();
@@ -252,10 +344,16 @@ async function main() {
     deferred = pending.length - hookMax;
     pending = pending.slice(0, hookMax);
   }
+  if (limit != null && pending.length > limit) {
+    pending = pending.slice(0, limit);
+  }
 
   const ctx = stagedOnly ? '(staged)' : '(catchup)';
-  const label = `${pending.length} URL(s)${deferred ? ` (${deferred} aplazada(s) por tope del hook; usa pnpm archive:catchup)` : ''}`;
-  console.log(`📚 archivar-n4 ${ctx}: ${label}${casoFilter ? ` — caso=${casoFilter}` : ''}`);
+  const reuseNote = skipReuse ? 'sin reutilizar snapshots' : 'reutiliza Wayback si existe';
+  const label = `${pending.length} URL(s)${deferred ? ` (${deferred} aplazada(s) por tope del hook)` : ''}`;
+  console.log(
+    `📚 archivar-n4 ${ctx}: ${label}${casoFilter ? ` — caso=${casoFilter}` : ''} · wait=${waitMs}ms · ${reuseNote}`,
+  );
 
   if (dryRun) {
     for (const d of pending) {
@@ -271,13 +369,15 @@ async function main() {
 
   let okCount = 0;
   let failCount = 0;
+  let reuseCount = 0;
+  let captureCount = 0;
   const fileCache = new Map();
 
   for (let i = 0; i < pending.length; i++) {
     const d = pending[i];
     process.stdout.write(`  [${i + 1}/${pending.length}] [${d.source}] ${d.id} … `);
 
-    const r = await saveOne(d.url);
+    const r = await resolveArchiveUrl(d.url);
     if (r.ok) {
       let raw = fileCache.get(d.file) ?? d.raw;
       const updated =
@@ -289,8 +389,11 @@ async function main() {
         await writeFile(d.file, updated, 'utf-8');
         fileCache.set(d.file, updated);
         if (stagedOnly) gitAdd(d.file);
-        console.log('OK');
+        const tag = r.method === 'reuse' ? 'OK (reuse)' : 'OK (capture)';
+        console.log(tag);
         okCount++;
+        if (r.method === 'reuse') reuseCount++;
+        else captureCount++;
       } else {
         console.log('OK (archivado) pero NO se pudo insertar url_archivo en el YAML');
         failCount++;
@@ -301,11 +404,13 @@ async function main() {
     }
 
     if (i < pending.length - 1) {
-      await sleep(WAIT_MS);
+      await pauseAfterItem(r.ok ? r.method : 'capture');
     }
   }
 
-  console.log(`📝 ${okCount} archivado(s) · ${failCount} fallido(s)`);
+  console.log(
+    `📝 ${okCount} archivado(s) (${reuseCount} reuse · ${captureCount} capture) · ${failCount} fallido(s)`,
+  );
   if (failCount > 0) {
     console.log('   Los fallidos quedan sin url_archivo; reintenta con pnpm archive:catchup.');
   }

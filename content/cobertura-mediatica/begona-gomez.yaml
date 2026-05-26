@@ -78,6 +78,7 @@ noticias:
 
   - id: infobae-apertura-diligencias-2024-04-24
     url: "https://www.infobae.com/espana/2024/04/24/un-juzgado-de-madrid-abre-diligencias-contra-begona-gomez-por-la-presunta-comision-de-trafico-de-influencias/"
+    url_archivo: "https://web.archive.org/web/20260526091259/https://www.infobae.com/espana/2024/04/24/un-juzgado-de-madrid-abre-diligencias-contra-begona-gomez-por-la-presunta-comision-de-trafico-de-influencias/"
     medio_id: infobae
     titular: "Un juzgado de Madrid abre diligencias contra Begoña Gómez por la presunta comisión de tráfico de influencias"
     fecha_publicacion: "2024-04-24"
@@ -95,6 +96,7 @@ noticias:
 
   - id: theobjective-manos-limpias-querella-2024-04-24
     url: "https://theobjective.com/espana/tribunales/2024-04-24/manos-limpias-querella-denuncia-gomez/"
+    url_archivo: "https://web.archive.org/web/20260526091325/https://theobjective.com/espana/tribunales/2024-04-24/manos-limpias-querella-denuncia-gomez/"
     medio_id: the-objective
     titular: "Manos Limpias convertirá en querella la denuncia que investiga a Begoña Gómez"
     fecha_publicacion: "2024-04-24"

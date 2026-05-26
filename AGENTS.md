@@ -269,7 +269,7 @@ Hooks vigentes:
 
 - **`hooks/pre-commit`** — Si entran en staging documentos N4 (`content/documentos/`) o noticias de cobertura mediática (`content/cobertura-mediatica/`), archiva hasta **5 URLs** por commit en `archive.org` y añade `url_archivo`. Lotes grandes: `pnpm archive:catchup` (manual). Detalle en [`docs/web/features/archive-org-pre-commit.md`](docs/web/features/archive-org-pre-commit.md).
   - **No bloquea nunca el commit**: si archive.org no responde / hay timeout / no hay red, avisa y deja pasar. Los YAMLs sin `url_archivo` se reintentan en el siguiente commit que toque docs.
-  - Si una sesión añade muchos documentos a la vez puede tardar ~10-20 segundos por URL. Para saltárselo puntualmente: `git commit --no-verify`.
+  - Reutiliza snapshots Wayback existentes antes de `/save/` (rápido). Captura nueva: ~30 s–2 min/URL; catchup usa 2 s entre URLs, hook 8 s. Lotes grandes: `pnpm archive:catchup`, no el hook. Para saltárselo: `git commit --no-verify`.
   - Sin autenticación: usa el endpoint anónimo de archive.org, cuota 8.000 captures/día (sobra varios órdenes de magnitud).
 
 Comandos relacionados:
