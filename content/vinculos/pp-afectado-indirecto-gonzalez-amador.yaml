@@ -1,0 +1,18 @@
+id: pp-afectado-indirecto-gonzalez-amador
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "El Partido Popular queda alcanzado de forma indirecta por el procedimiento contra Alberto González Amador en su condición de pareja sentimental de Isabel Díaz Ayuso, presidenta de la Comunidad de Madrid y militante del PP en el momento de los hechos. El partido no es sujeto procesal del caso."
+sujeto_organizacion_id: partido-popular
+objeto_organizacion_id: juzgado-instruccion-19-madrid
+desde: "2024-01-22"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [gonzalez-amador]
+documentos_respaldo:
+  - documento_id: elespanol-procesamiento-ga-2025-05-29
+    pasaje: "El Español identifica al investigado como pareja sentimental de Isabel Díaz Ayuso, presidenta de la Comunidad de Madrid por el PP, al cubrir el auto de procesamiento del JI nº 19 de Madrid del 29 de mayo de 2025."
+  - documento_id: maldita-cronologia-ga-2025-12-09
+    pasaje: "Maldita.es describe el contexto institucional del caso González Amador haciendo referencia a su condición de pareja sentimental de la presidenta de la Comunidad de Madrid, militante y dirigente del PP."
+nivel_afectacion: indirecta
+justificacion_afectacion: "El investigado es pareja sentimental de Isabel Díaz Ayuso, presidenta de la Comunidad de Madrid por el Partido Popular en el momento de los hechos. El partido queda reputacionalmente alcanzado por el procedimiento contra una persona privada de su entorno cercano (regla 2 del doc 08)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-27"

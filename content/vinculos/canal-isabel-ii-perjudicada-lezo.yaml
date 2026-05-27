@@ -12,5 +12,7 @@ documentos_respaldo:
     pasaje: "Público describe al Canal de Isabel II como la empresa pública cuya gestión irregular es objeto de la investigación Lezo, con mención a los fondos desviados y sobreprecios en operaciones internacionales."
   - documento_id: elespanol-detencion-gonzalez-lezo-2017-04-19
     pasaje: "El Español identifica al Canal de Isabel II como empresa pública central en la investigación de la Operación Lezo."
+nivel_afectacion: directa
+justificacion_afectacion: "Canal de Isabel II figura en el procedimiento como empresa pública perjudicada por las adjudicaciones presuntamente amañadas, los sobreprecios en las operaciones internacionales (Emissao, Inassa) y el desvío de fondos atribuido por la Fiscalía Anticorrupción."
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-26"
+ultima_revision_editorial: "2026-05-27"

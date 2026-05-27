@@ -12,5 +12,7 @@ documentos_respaldo:
     pasaje: "La UCM se persona como perjudicada en el caso Begoña Gómez por un posible perjuicio económico derivado del gasto en el software de la Cátedra, cifrado en 113.509,32 euros."
   - documento_id: moncloacom-ucm-perjuicio-bg-2026-01-27
     pasaje: "La UCM ejercita la acción como perjudicada en el procedimiento."
+nivel_afectacion: directa
+justificacion_afectacion: "La Universidad Complutense de Madrid figura como perjudicada institucional en el procedimiento por el gasto investigado en torno al software de la Cátedra Extraordinaria de Transformación Social Competitiva, cifrado en 113.509,32 euros."
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-25"
+ultima_revision_editorial: "2026-05-27"

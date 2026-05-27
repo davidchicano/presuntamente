@@ -51,28 +51,6 @@ resumen_cifras: |
   Préstamo público de 53 millones de euros aprobado el 9 de marzo de 2021
   por el Consejo de Ministros a través de la SEPI.
 
-partidos_afectados:
-  - partido_id: psoe
-    tipo_afectacion: gobierno_responsable_del_acto_investigado
-    justificacion: >-
-      El Consejo de Ministros que autorizó el préstamo de 53 M€ a Plus Ultra
-      (9 de marzo de 2021) era el gobierno de coalición presidido por Pedro
-      Sánchez, cuyo partido, el PSOE, encabezaba el ejecutivo.
-  - partido_id: psoe
-    tipo_afectacion: militancia_o_cargo_organico_relevante
-    justificacion: >-
-      José Luis Rodríguez Zapatero, citado como investigado por el JCI nº 4
-      en mayo de 2026, fue Secretario General del PSOE de 2000 a 2012 y
-      presidente del Gobierno de España de 2004 a 2011. El vínculo orgánico
-      es histórico y no estaba activo al momento de los hechos investigados
-      (2021).
-  - partido_id: podemos
-    tipo_afectacion: gobierno_responsable_del_acto_investigado
-    justificacion: >-
-      Unidas Podemos formaba parte de la coalición de gobierno que aprobó el
-      préstamo a Plus Ultra el 9 de marzo de 2021, siendo el partido
-      codirector del ejecutivo en el momento del acto investigado.
-
 estado_publicacion: beta_publica
 ultima_revision_editorial: "2026-05-21"
 nivel_relevancia_editorial: capital

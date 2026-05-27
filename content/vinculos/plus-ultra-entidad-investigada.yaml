@@ -12,5 +12,7 @@ documentos_respaldo:
     pasaje: "El auto del JCI nº 4 de la Audiencia Nacional de 19 de mayo de 2026 investiga el presunto uso irregular de fondos públicos por la aerolínea Plus Ultra Líneas Aéreas en relación con el préstamo de 53 millones de euros concedido a través de la SEPI."
   - documento_id: nota-sepi-aprobacion-plus-ultra-2021-03
     pasaje: "La SEPI confirma en nota institucional que Plus Ultra Líneas Aéreas fue beneficiaria del préstamo de 53 millones de euros autorizado el 9 de marzo de 2021 por el Consejo de Ministros."
+nivel_afectacion: directa
+justificacion_afectacion: "Plus Ultra Líneas Aéreas S.A. es la persona jurídica beneficiaria del préstamo del FASEE cuyo uso irregular se investiga en el procedimiento."
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-26"
+ultima_revision_editorial: "2026-05-27"

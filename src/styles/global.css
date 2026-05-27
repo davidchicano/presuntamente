@@ -2808,36 +2808,120 @@ body.has-page-toc .main > .ficha-detail {
   margin-bottom: 0;
 }
 
-/* Instituciones alcanzadas — agregado de VinculoInstitucional en tres
- * familias neutras dentro de la sección "Estado procesal actual". */
-.inst-alcanzadas {
+/* Organizaciones afectadas — bloque unificado que sustituye a los
+ * antiguos "Instituciones alcanzadas" y "Partidos afectados".
+ * Una sola dimensión, dos niveles (directa/indirecta), exhaustiva y
+ * mutuamente excluyente. Acusación popular figura en el bloque
+ * "Participación procesal" más abajo. Ver docs/diseno/08-afectacion-directa-indirecta.md. */
+.org-afectadas {
   margin-top: var(--space-3);
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-border);
 }
-.inst-alcanzadas h3 {
+.org-afectadas h3 {
   font-size: 0.95rem;
   font-weight: 600;
   margin: 0 0 0.35rem;
 }
-.inst-alcanzadas__note {
+.org-afectadas__note {
   color: var(--color-fg-muted);
   font-size: 0.85rem;
   line-height: 1.45;
   margin: 0 0 0.75rem;
 }
-.inst-alcanzadas__grid {
+.org-afectadas__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-3);
 }
-.inst-alcanzadas__col {
+.org-afectadas__col {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-left: 4px solid var(--color-border-strong);
   padding: 0.75rem 0.9rem;
 }
-.inst-alcanzadas__col h4 {
+.org-afectadas__col h4 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-fg-muted);
+  margin: 0 0 0.6rem;
+}
+.org-afectadas__col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 0.92rem;
+}
+.org-afectadas__col li {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+.org-afectadas__col li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.org-afectadas__col--directa   { border-left-color: var(--color-rol-investigado, #8a6b1f); }
+.org-afectadas__col--indirecta { border-left-color: var(--color-accent-secondary); }
+.org-afectadas__nombre {
+  font-weight: 600;
+}
+/* Color del nombre por partido para las indirectas que son partidos. */
+.org-afectadas__col--indirecta li[data-partido="psoe"]            .org-afectadas__nombre { color: var(--color-partido-psoe-fg); }
+.org-afectadas__col--indirecta li[data-partido="partido-popular"] .org-afectadas__nombre { color: var(--color-partido-pp-fg); }
+.org-afectadas__col--indirecta li[data-partido="vox"]             .org-afectadas__nombre { color: var(--color-partido-vox-fg); }
+.org-afectadas__col--indirecta li[data-partido="podemos"]         .org-afectadas__nombre { color: var(--color-partido-podemos-fg); }
+.org-afectadas__col--indirecta li[data-partido="sumar"]           .org-afectadas__nombre { color: var(--color-partido-sumar-fg); }
+.org-afectadas__col--indirecta li[data-partido="izquierda-unida"] .org-afectadas__nombre { color: var(--color-partido-iu-fg); }
+.org-afectadas__col--indirecta li[data-partido="mas-madrid"]      .org-afectadas__nombre { color: var(--color-partido-mas-madrid-fg); }
+.org-afectadas__naturaleza {
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-fg-muted);
+}
+.org-afectadas__just {
+  font-size: 0.85rem;
+  color: var(--color-fg);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+.ficha-detail .ficha-toc-section > .org-afectadas { margin-bottom: 0; }
+
+/* Participación procesal: bloque separado para acusación popular
+ * constituida. NO es afectación; aparece aquí para que el lector vea
+ * quién participa formalmente sin sufrir el caso. */
+.org-procesal {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+.org-procesal h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+.org-procesal__note {
+  color: var(--color-fg-muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+}
+.org-procesal__col {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-fg-subtle, var(--color-border-strong));
+  padding: 0.75rem 0.9rem;
+}
+.org-procesal__col h4 {
   font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -2845,7 +2929,7 @@ body.has-page-toc .main > .ficha-detail {
   color: var(--color-fg-muted);
   margin: 0 0 0.5rem;
 }
-.inst-alcanzadas__col ul {
+.org-procesal__col ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -2854,87 +2938,7 @@ body.has-page-toc .main > .ficha-detail {
   gap: 0.3rem;
   font-size: 0.92rem;
 }
-.inst-alcanzadas__col--investigadas { border-left-color: var(--color-rol-investigado, #8a6b1f); }
-.inst-alcanzadas__col--perjudicadas { border-left-color: var(--color-accent); }
-.inst-alcanzadas__col--acusacion    { border-left-color: var(--color-accent-secondary); }
-.ficha-detail .ficha-toc-section > .inst-alcanzadas { margin-bottom: 0; }
-
-/* Partidos afectados: bloque editorial que declara qué siglas alcanza el
- * caso. Decisión 2026-05-26: declaración explícita, no inferencia. */
-.partidos-afectados {
-  margin-top: var(--space-3);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border);
-}
-.partidos-afectados h3 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0 0 0.35rem;
-}
-.partidos-afectados__note {
-  color: var(--color-fg-muted);
-  font-size: 0.85rem;
-  line-height: 1.45;
-  margin: 0 0 0.75rem;
-}
-.partidos-afectados__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.partidos-afectados__item {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  grid-template-rows: auto auto;
-  gap: 2px 0.85rem;
-  align-items: baseline;
-  padding: 0.55rem 0.75rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-partido-fallback-border);
-}
-/* Color del border-left + de la sigla por partido. Sobrescribe el fallback
- * en función del slug declarado en `data-partido`. Mismos tokens que
- * `PartidoBadge`; mantener sincronizado si se añade un partido nuevo. */
-.partidos-afectados__item[data-partido="psoe"]            { border-left-color: var(--color-partido-psoe-border); }
-.partidos-afectados__item[data-partido="partido-popular"] { border-left-color: var(--color-partido-pp-border); }
-.partidos-afectados__item[data-partido="vox"]             { border-left-color: var(--color-partido-vox-border); }
-.partidos-afectados__item[data-partido="podemos"]         { border-left-color: var(--color-partido-podemos-border); }
-.partidos-afectados__item[data-partido="sumar"]           { border-left-color: var(--color-partido-sumar-border); }
-.partidos-afectados__item[data-partido="izquierda-unida"] { border-left-color: var(--color-partido-iu-border); }
-.partidos-afectados__item[data-partido="mas-madrid"]      { border-left-color: var(--color-partido-mas-madrid-border); }
-
-.partidos-afectados__partido {
-  grid-row: 1 / span 2;
-  align-self: center;
-  /* Peso 600 (no negro 700/800) por la regla AGENTS.md "Tipografía y pesos". */
-  font: 600 13px/1.2 var(--font-sans);
-  letter-spacing: 0.02em;
-  color: var(--color-partido-fallback-fg);
-}
-.partidos-afectados__item[data-partido="psoe"]            .partidos-afectados__partido { color: var(--color-partido-psoe-fg); }
-.partidos-afectados__item[data-partido="partido-popular"] .partidos-afectados__partido { color: var(--color-partido-pp-fg); }
-.partidos-afectados__item[data-partido="vox"]             .partidos-afectados__partido { color: var(--color-partido-vox-fg); }
-.partidos-afectados__item[data-partido="podemos"]         .partidos-afectados__partido { color: var(--color-partido-podemos-fg); }
-.partidos-afectados__item[data-partido="sumar"]           .partidos-afectados__partido { color: var(--color-partido-sumar-fg); }
-.partidos-afectados__item[data-partido="izquierda-unida"] .partidos-afectados__partido { color: var(--color-partido-iu-fg); }
-.partidos-afectados__item[data-partido="mas-madrid"]      .partidos-afectados__partido { color: var(--color-partido-mas-madrid-fg); }
-.partidos-afectados__tipo {
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-fg-muted);
-}
-.partidos-afectados__just {
-  font-size: 0.88rem;
-  color: var(--color-fg);
-  line-height: 1.45;
-}
-.ficha-detail .ficha-toc-section > .partidos-afectados { margin-bottom: 0; }
+.ficha-detail .ficha-toc-section > .org-procesal { margin-bottom: 0; }
 
 /* Disclaimers de cobertura mediática agrupados al final de la sección
  * (decisión maintainer 2026-05-26: no entorpecer la vista del corpus). */

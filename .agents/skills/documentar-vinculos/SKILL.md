@@ -75,13 +75,50 @@ Para cada `Persona` con rol del lado **investigado / procesado / acusado / conde
 
 #### 2.3 Mapeo de organizaciones relevantes
 
-Para cada `Organizacion` que aparece en `Hito.organizaciones_afectadas`, `Hecho.organizaciones_implicadas`, o como `productor_organizacion_id` de Documentos del caso:
+Para cada `Organizacion` que aparece en `Hito.organizaciones_afectadas`, `Hecho.organizaciones_implicadas`, o como `productor_organizacion_id` de Documentos del caso, evaluar las **cinco naturalezas `*_en_caso`**:
 
-1. ¿Actúa como **acusación popular** o **acusación institucional** en el caso? `naturaleza = acusacion_institucional_en_caso`.
-2. ¿Es **perjudicada institucional** (administración estafada, organismo público dañado, empresa pública vaciada)? `naturaleza = perjudicado_institucional_en_caso`.
-3. ¿Es **entidad investigada como persona jurídica** (no sólo sus directivos como personas físicas, sino la propia organización con responsabilidad penal)? `naturaleza = entidad_investigada_en_caso`.
+**Naturalezas de afectación editorial** (exigen `nivel_afectacion` + `justificacion_afectacion`):
 
-> **Importante (2026-05-26)**: estas tres naturalezas alimentan el bloque **«Instituciones alcanzadas»** que `PgCasoDetalle` renderiza automáticamente dentro de «Estado procesal actual» (tres cajas separadas con border-left por familia) y también la columna **«Organización afectada»** de `/casos` (prioridad: investigada → perjudicada → acusación). Cada vínculo nuevo en estas categorías se ve inmediatamente en cabecera de la ficha y en el listado — no hay que tocar UI, sólo el YAML.
+1. ¿Es **entidad investigada como persona jurídica** (no sólo sus directivos como personas físicas, sino la propia organización con responsabilidad penal)? `naturaleza = entidad_investigada_en_caso` · `nivel_afectacion: directa`.
+2. ¿Es **perjudicada institucional** (administración estafada, organismo público dañado, empresa pública vaciada)? `naturaleza = perjudicado_institucional_en_caso` · `nivel_afectacion: directa`.
+3. ¿Es el **ámbito administrativo del que emana el acto** investigado (Ministerio, Consejería autonómica, organismo desde cuyo perímetro se atribuyen los hechos — regla 4 del doc 08)? `naturaleza = ambito_administrativo_directo_del_acto_en_caso` · `nivel_afectacion: directa`.
+4. ¿Es un **partido o ente alcanzado indirectamente** (partido del cargo investigado, partido del cónyuge/pareja, partido del gobierno responsable del acto, ente dependiente sin papel procesal — reglas 1-4 del doc 08)? `naturaleza = afectacion_indirecta_en_caso` · `nivel_afectacion: indirecta`.
+
+**Naturaleza de papel procesal** (NO es afectación, no lleva `nivel_afectacion`):
+
+5. ¿Actúa como **acusación popular constituida** en el caso (incluye acusación de partido — regla 5 del doc 08)? `naturaleza = acusacion_institucional_en_caso`. Sin `nivel_afectacion`; sin `justificacion_afectacion`.
+
+> **Importante (2026-05-27)**: las 4 naturalezas de afectación alimentan el bloque **«Organizaciones afectadas»** que `PgCasoDetalle` renderiza con sub-bloques **Directa** / **Indirecta**, y también la columna fusionada **«Organizaciones afectadas»** de `/casos`. La acusación popular figura en **«Participación procesal»** separada. Toda la derivación pasa por [`src/lib/afectacion.ts`](../../../src/lib/afectacion.ts), que deduplica por `organizacion_id` y normaliza el orden. No hay que tocar UI, sólo el YAML.
+
+**Decisión obligatoria de `nivel_afectacion` y `justificacion_afectacion` al crear el vínculo**:
+
+- `nivel_afectacion: directa` para las naturalezas 1, 2, 3 (auto-inferible, pero obligatorio declararlo explícito por V-22a).
+- `nivel_afectacion: indirecta` para la naturaleza 4 (auto-inferible, obligatorio por V-22b).
+- **Ausente** para la naturaleza 5 (acusación popular — V-23 lo prohíbe; si lo añades, falla validate).
+- **Ausente** para cualquier otra naturaleza (cargos, militancia, nombramientos, vínculos familiares — V-24 lo prohíbe).
+
+La `justificacion_afectacion` es texto neutro corto que explica por qué el caso alcanza a la organización en el nivel marcado. Sin verbos prohibidos P-09. Cuando creas un vínculo `afectacion_indirecta_en_caso`, cita en la justificación la regla del doc 08 que aplica (regla 1 / 2 / 3 / 4).
+
+#### 2.3 bis Antes de marcar un partido como afectado: aplicar las 6 reglas
+
+Decididas el 2026-05-27 y canónicas en [`docs/diseno/08-afectacion-directa-indirecta.md`](../../../docs/diseno/08-afectacion-directa-indirecta.md). Resumen operativo:
+
+1. **Gobierno responsable del acto = indirecta del partido titular.** Plus Ultra → PSOE/Podemos indirectos.
+2. **Pareja sentimental del cargo público → partido del cargo = indirecta.** González Amador → PP indirecto.
+3. **Cónyuge del cargo público → partido del cargo = indirecta.** Begoña Gómez → PSOE indirecto.
+4. **Ministerio/Consejería titular del acto = directa para el ámbito + indirecta para el partido titular.** Kitchen → Ministerio del Interior directa, PP indirecto.
+5. **Acusación popular constituida por partido = NO afectada.** PSOE/Más Madrid en González Amador → no afectados; van en participación procesal.
+6. **Nombramiento por gobierno X de cargo con autonomía formal = NO afectada del gobierno X.** FGE → PSOE no afectado.
+
+Si encuentras una **frontera no cubierta** por estas 6 reglas (partido extranjero, asociación cultural con vínculo difuso, organismo internacional, etc.), **pregunta al maintainer** antes de modelar. No introduzcas una séptima regla por tu cuenta.
+
+**Qué NO es afectación (lista canónica)** — no crear `afectacion_indirecta_en_caso` para:
+- Acusación popular, defensa, juzgado instructor, fiscalía, peritos, unidades policiales investigadoras.
+- Nombramiento histórico de cargo con autonomía formal cuando el caso no cuestiona el nombramiento.
+- Militancia antigua sin cargo activo en el periodo de los hechos investigados.
+- Vínculo familiar lejano (primos, cuñados, parientes no convivientes, sin cargo público).
+- Coincidencia geográfica, generacional o de cohorte.
+- Donación/subvención puntual del pasado sin relación causal con los hechos.
 
 #### 2.4 Cierre modo caso
 
@@ -190,7 +227,28 @@ estado_publicacion: borrador
 ultima_revision_editorial: 2026-05-26
 ```
 
-En modo persona/organización, `relevancia_para_caso_ids` puede quedar vacío (`[]`): es legal y refleja "vínculo documentado en la red institucional pública aunque no anclado todavía a procedimiento del inventario".
+**Vínculo de afectación** (incluye los dos campos `nivel_afectacion` + `justificacion_afectacion` obligatorios para las 4 naturalezas que aportan afectación):
+
+```yaml
+id: pp-afectado-indirecto-kitchen
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "El Partido Popular queda alcanzado de forma indirecta por el procedimiento Kitchen..."
+sujeto_organizacion_id: partido-popular
+objeto_organizacion_id: audiencia-nacional
+desde: 2018-07-19
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: eldiario-procesamiento-kitchen-2021-07-29
+    pasaje: "El procesamiento alcanza a Jorge Fernández Díaz, exministro del Interior por el PP..."
+nivel_afectacion: indirecta
+justificacion_afectacion: "El PP era el partido del Gobierno titular del Ministerio del Interior en los hechos investigados (regla 4 del doc 08)..."
+estado_publicacion: borrador
+ultima_revision_editorial: 2026-05-27
+```
+
+En modo persona/organización, `relevancia_para_caso_ids` puede quedar vacío (`[]`): es legal y refleja "vínculo documentado en la red institucional pública aunque no anclado todavía a procedimiento del inventario". Pero las 4 naturalezas de afectación (`entidad_investigada_en_caso`, `perjudicado_institucional_en_caso`, `ambito_administrativo_directo_del_acto_en_caso`, `afectacion_indirecta_en_caso`) **siempre** exigen al menos un caso en `relevancia_para_caso_ids` (V-22): no se crean vínculos de afectación huérfanos.
 
 ### 7. Actualización del `estado_ficha` (sólo modo caso)
 
@@ -267,6 +325,17 @@ Esta skill está pensada para correr en **sub-agente paralelo** lanzado por el m
 5. Cierra sesión cuando el output final está completo y `pnpm validate` pasa.
 
 ## Histórico
+
+### v3 — 2026-05-27
+
+Refactor de **afectación directa/indirecta**. Cambios al modelo de vínculos `*_en_caso`:
+
+- Dos naturalezas nuevas: `ambito_administrativo_directo_del_acto_en_caso` (Ministerio/Consejería titular del acto, regla 4 del doc 08) y `afectacion_indirecta_en_caso` (partido salpicado, ente dependiente, reglas 1-4).
+- Dos campos nuevos en `VinculoInstitucional`: `nivel_afectacion` (`directa | indirecta`) y `justificacion_afectacion` (texto neutro). Obligatorios para las 4 naturalezas de afectación; prohibidos para `acusacion_institucional_en_caso` y el resto (V-22..V-24).
+- § 2.3 reescrito en 5 ramas + § 2.3 bis con las 6 reglas editoriales + lista "Qué NO es afectación".
+- Campo retirado en paralelo: `Caso.partidos_afectados[]` ya no se modela aquí ni se lee desde la UI. La justificación literal del campo viejo migró a `VinculoInstitucional.justificacion_afectacion`.
+
+Motivo: durante el sprint 2026-05-26 se detectó que la columna "Organización afectada" de `/casos` pintaba la acusación popular como "afectada" (Kitchen mostraba `Podemos · ACUSACIÓN POPULAR`). La taxonomía nueva separa afectación editorial de papel procesal y unifica los dos modelos paralelos (`Caso.partidos_afectados[]` + derivación por naturaleza) en una sola dimensión.
 
 ### v2 — 2026-05-26 (tarde)
 

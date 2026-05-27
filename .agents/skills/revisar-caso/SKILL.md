@@ -252,21 +252,27 @@ Si no se cumple ninguna:
 
 **Referencia**: [AGENTS.md → "Principios irrenunciables"](../../../AGENTS.md#principios-irrenunciables) + doc 02 P-01 + lección Lezo 2026-05-24 (biografía de Javier López Madrid afirmaba condena firme en tarjetas black sin Caso/Documento modelado en el repo).
 
-### CH11 — `partidos_afectados` poblado o justificadamente vacío
+### CH11 — Afectación directa/indirecta coherente (refactor 2026-05-27)
 
-**Regla** (introducida 2026-05-26, ver [`docs/web/features/partidos-afectados.md`](../../../docs/web/features/partidos-afectados.md)): si en el caso revisado existe al menos uno de los siguientes contextos, `Caso.partidos_afectados` debería contener una entrada por cada partido alcanzado, con `tipo_afectacion` adecuado y `justificacion` neutra:
+**Regla** (sustituye al CH11 anterior basado en `Caso.partidos_afectados[]`, ya retirado del modelo). Canon: [`docs/diseno/08-afectacion-directa-indirecta.md`](../../../docs/diseno/08-afectacion-directa-indirecta.md). Toda afectación al caso se modela vía `VinculoInstitucional` con `nivel_afectacion` adecuado.
 
-- Un cargo público de un partido aparece con `RolEnCaso.rol ∈ {investigado, procesado, acusado, condenado_*}` → `imputacion_a_cargo_del_partido` o `militancia_o_cargo_organico_relevante`.
-- El acto investigado se produjo bajo un gobierno (nacional, autonómico, local) de un partido determinado → `gobierno_responsable_del_acto_investigado`.
-- Una persona del caso tiene vínculo familiar directo público con dirigente del partido → `vinculo_familiar_directo_con_dirigente`.
-- Un partido figura como acusación popular constituida → `querella_o_acusacion_popular_del_partido`.
+**Qué debe estar modelado**:
 
-Si no aplica ninguno, el array vacío es legal y editorialmente correcto. **No inferir partidos por militancia histórica ajena al caso ni por simpatías genéricas.**
+- **Directa**: persona jurídica investigada (`entidad_investigada_en_caso`); perjudicado institucional formalizado (`perjudicado_institucional_en_caso`); Ministerio/Consejería del que emana el acto (`ambito_administrativo_directo_del_acto_en_caso`). Las tres exigen `nivel_afectacion: directa` + `justificacion_afectacion`.
+- **Indirecta**: partido del cargo investigado (regla 2), partido del cónyuge (regla 3), partido del gobierno responsable del acto (regla 1), Ministerio del partido titular (regla 4), ente dependiente sin papel procesal. Naturaleza única: `afectacion_indirecta_en_caso` + `nivel_afectacion: indirecta` + `justificacion_afectacion`.
+- **Papel procesal (NO afectación)**: acusación popular constituida (`acusacion_institucional_en_caso`), sin `nivel_afectacion`. Regla 5.
 
-- `SUGERENCIA` si existe un contexto evidente (p. ej. una persona con cargo del partido figura como investigada) y el array está vacío sin nota en `NOTES.md` que lo justifique.
-- `OK` si el array está poblado coherentemente con el resto del modelado, o si está vacío y el caso no toca a ningún partido.
+**Qué NO debe estar modelado como afectación** (lista canónica del doc 08): nombramiento histórico de cargo con autonomía formal (regla 6), militancia antigua sin cargo activo en los hechos, vínculos familiares lejanos, coincidencia geográfica/generacional, donación pasada sin relación causal.
 
-**Acción sugerida**: añadir entrada con `partido_id`, `tipo_afectacion` del enum cerrado y `justificacion` neutra (sin "se ve salpicado", "típico de", etc.).
+**Clasificación**:
+
+- `BLOQUEANTE` si un partido aparece marcado como `afectacion_indirecta_en_caso` cuando lo correcto es papel procesal (acusación popular) o ninguna afectación (regla 5 o 6 incumplida).
+- `BLOQUEANTE` si una organización procesalmente investigada/perjudicada/ámbito directo carece de su `nivel_afectacion: directa` y `justificacion_afectacion` (V-22a falla silenciosamente sólo si no hay vínculo; si el vínculo existe sin esos campos, validate lo bloquea — `revisar-caso` se asegura de que el vínculo **exista**).
+- `SUGERENCIA` si existe un contexto evidente de afectación indirecta no modelada (un cargo público del partido aparece como investigado en el caso, o el acto se atribuye al gobierno de un partido) y no hay vínculo `afectacion_indirecta_en_caso` correspondiente.
+- `SUGERENCIA` si una organización con cargo orgánico de partido y persona investigada en el caso se marca como `afectacion_indirecta_en_caso` sin que aplique ninguna de las 4 reglas de afectación (puede ser inflación).
+- `OK` si los vínculos `*_en_caso` reflejan exactamente las directas/indirectas que el doc 08 prescribe y la acusación popular figura como papel procesal sin afectación.
+
+**Acción sugerida**: crear el vínculo `afectacion_indirecta_en_caso` o el directo correspondiente con justificación que cite la regla del doc 08 que aplica, o quitar el vínculo si infringe la regla 5 o 6. Nunca inferir afectación por simpatías genéricas; si dudas en una frontera no cubierta por las 6 reglas, marcar `SUGERENCIA` con la duda explícita y dejar que el maintainer decida.
 
 ### CH12 — Medios productores con `naturaleza_editorial` poblada
 

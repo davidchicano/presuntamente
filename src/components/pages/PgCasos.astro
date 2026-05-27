@@ -7,6 +7,7 @@ import RolBadge from '@/components/RolBadge.astro';
 import PartidoBadge from '@/components/PartidoBadge.astro';
 import { getCollection } from 'astro:content';
 import { rolLabel } from '@/lib/labels';
+import { organizacionesAfectadasDeCaso } from '@/lib/afectacion';
 
 // En producción los casos en `pendiente`/`borrador` aparecen en la tabla
 // pero no son clickables y la ruta /casos/<slug> no se genera (ver
@@ -65,18 +66,17 @@ const [casosCol, hitosCol, rolesCol, organizacionesCol, vinculosCol] = await Pro
   getCollection('vinculos'),
 ]);
 
-// Prioridad para deducir "organización principal" del caso: entidad
-// investigada (la entidad procesalmente investigada como persona jurídica)
-// pesa más que perjudicado o acusación popular. Decisión 2026-05-26.
-const PRIORIDAD_ORG_PRINCIPAL = ['entidad_investigada_en_caso', 'perjudicado_institucional_en_caso', 'acusacion_institucional_en_caso'] as const;
-
-// Mapeo de naturaleza de VinculoInstitucional → rol procesal equivalente,
-// para reutilizar el RolBadge ya estandarizado (mismo lenguaje visual que
-// el resto de la ficha).
-const NATURALEZA_A_ROL: Record<string, string> = {
+// Etiqueta corta por naturaleza de afectación, mostrada bajo el nombre
+// de cada organización afectada en la columna del listado. Las dos
+// naturalezas con `rol` procesal equivalente reutilizan `RolBadge`; el
+// "ámbito administrativo directo" se etiqueta como microtag de texto
+// porque no es un rol procesal. Ver docs/diseno/08-afectacion-directa-indirecta.md.
+const NATURALEZA_AFECTADA_DIRECTA_ROL: Record<string, string> = {
   entidad_investigada_en_caso: 'investigado',
   perjudicado_institucional_en_caso: 'perjudicado',
-  acusacion_institucional_en_caso: 'acusacion_popular',
+};
+const NATURALEZA_AFECTADA_DIRECTA_TAG: Record<string, string> = {
+  ambito_administrativo_directo_del_acto_en_caso: 'Ámbito del acto',
 };
 
 // Truncado del título del último hito para no engordar la fila.
@@ -138,26 +138,10 @@ const casos = casosCol
         ROLES_IMPUTACION.has(r.data.rol) &&
         !r.data.fecha_fin,
     ).length;
-    // Organización principal del caso, derivada de VinculoInstitucional.
-    // Si hay varias del mismo nivel, tomamos la primera por orden alfabético
-    // estable. Si no hay ninguna, queda vacía.
-    const vinculosDelCaso = vinculosCol
-      .filter((v) => v.data.relevancia_para_caso_ids?.includes(caso.id))
-      .map((v) => v.data);
-    let orgPrincipalId: string | undefined;
-    let orgPrincipalNaturaleza: string | undefined;
-    for (const naturaleza of PRIORIDAD_ORG_PRINCIPAL) {
-      const candidatos = vinculosDelCaso
-        .filter((v) => v.naturaleza === naturaleza && v.sujeto_organizacion_id)
-        .map((v) => v.sujeto_organizacion_id!)
-        .sort();
-      if (candidatos.length > 0) {
-        orgPrincipalId = candidatos[0];
-        orgPrincipalNaturaleza = naturaleza;
-        break;
-      }
-    }
-    const orgPrincipal = orgPrincipalId ? orgIndex.get(orgPrincipalId) : undefined;
+    // Organizaciones afectadas (directa + indirecta), derivadas de
+    // VinculoInstitucional vía src/lib/afectacion.ts. Dedupe por
+    // organizacion_id centralizado en ese módulo (norma 2026-05-27).
+    const afectadas = organizacionesAfectadasDeCaso(caso.id, vinculosCol, orgIndex);
 
     const org = orgIndex.get(caso.organo_judicial_id);
     // Para la columna "Órgano" preferimos el acrónimo cuando existe (AN, JCI 4),
@@ -188,28 +172,22 @@ const casos = casosCol
       organoId: caso.organo_judicial_id,
       numero: caso.numero_procedimiento ?? '',
       implicados,
-      orgPrincipalId,
-      orgPrincipalNombre: orgPrincipal?.nombre,
-      orgPrincipalNaturaleza,
-      orgPrincipalRol: orgPrincipalNaturaleza ? NATURALEZA_A_ROL[orgPrincipalNaturaleza] : undefined,
-      // Deduplicado por `partido_id`: el modelo admite varias entradas con el
-      // mismo partido y `tipo_afectacion` distintos (p. ej. PSOE como
-      // `gobierno_responsable_del_acto_investigado` y como
-      // `militancia_o_cargo_organico_relevante`). En el listado de casos sólo
-      // queremos un chip por partido — la justificación detallada vive en la
-      // ficha del caso.
-      partidosAfectados: (() => {
-        const seen = new Map<string, { id: string; label: string }>();
-        for (const p of (caso as { partidos_afectados?: Array<{ partido_id: string }> }).partidos_afectados ?? []) {
-          if (seen.has(p.partido_id)) continue;
-          const partidoOrg = orgIndex.get(p.partido_id);
-          seen.set(p.partido_id, {
-            id: p.partido_id,
-            label: (partidoOrg as { siglas?: string } | undefined)?.siglas ?? partidoOrg?.nombre ?? p.partido_id,
-          });
-        }
-        return Array.from(seen.values());
-      })(),
+      // Lista de organizaciones afectadas para la columna fusionada.
+      // Pre-resuelve el RolBadge / microtag por naturaleza y la etiqueta
+      // visible (nombre completo para no-partidos, siglas para partidos).
+      afectadasDirectas: afectadas.directas.map((o) => ({
+        id: o.organizacionId,
+        nombre: o.nombre,
+        rol: NATURALEZA_AFECTADA_DIRECTA_ROL[o.naturaleza],
+        tag: NATURALEZA_AFECTADA_DIRECTA_TAG[o.naturaleza],
+      })),
+      afectadasIndirectas: afectadas.indirectas.map((o) => ({
+        id: o.organizacionId,
+        nombre: o.nombre,
+        siglas: o.siglas,
+        esPartido: o.tipo === 'partido_politico',
+        labelCorto: o.siglas ?? o.nombre,
+      })),
       ultimo_hito: ultimo
         ? { fecha: ultimo.fecha, titulo: ultimo.titulo }
         : null,
@@ -354,12 +332,11 @@ function miniDescripcion(raw: string, max = 140): string {
   <table class="tbl" data-catalog>
     <thead>
       <tr>
-        <th style="width: 30%;">Caso</th>
+        <th style="width: 28%;">Caso</th>
         <th style="width: 10%;">Fase</th>
-        <th style="width: 16%;">Órgano</th>
-        <th style="width: 17%;">Organización afectada</th>
-        <th style="width: 12%;">Partidos afectados</th>
-        <th style="width: 15%;">Último hito</th>
+        <th style="width: 14%;">Órgano</th>
+        <th style="width: 28%;">Organizaciones afectadas</th>
+        <th style="width: 20%;">Último hito</th>
       </tr>
     </thead>
     <tbody>
@@ -406,26 +383,41 @@ function miniDescripcion(raw: string, max = 140): string {
             </div>
           </td>
           <td>
-            {c.orgPrincipalId && c.orgPrincipalNombre ? (
-              <div class="c-org-afectada">
-                <a href={`/organizaciones/${c.orgPrincipalId}`}>{c.orgPrincipalNombre}</a>
-                {c.orgPrincipalRol && (
-                  <RolBadge rol={c.orgPrincipalRol} label={rolLabel(c.orgPrincipalRol)} />
+            {(c.afectadasDirectas.length + c.afectadasIndirectas.length) === 0 ? (
+              <span class="muted">—</span>
+            ) : (
+              <div class="c-afectadas">
+                {c.afectadasDirectas.length > 0 && (
+                  <div class="c-afectadas__grupo">
+                    <span class="c-afectadas__nivel">Directa</span>
+                    <ul class="c-afectadas__lista">
+                      {c.afectadasDirectas.map((o) => (
+                        <li class="c-afectadas__item">
+                          <a href={`/organizaciones/${o.id}`}>{o.nombre}</a>
+                          {o.rol && <RolBadge rol={o.rol} label={rolLabel(o.rol)} />}
+                          {o.tag && <span class="c-afectadas__tag">{o.tag}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {c.afectadasIndirectas.length > 0 && (
+                  <div class="c-afectadas__grupo">
+                    <span class="c-afectadas__nivel">Indirecta</span>
+                    <ul class="c-afectadas__lista">
+                      {c.afectadasIndirectas.map((o) => (
+                        <li class="c-afectadas__item">
+                          {o.esPartido ? (
+                            <PartidoBadge id={o.id} label={o.labelCorto} href={`/organizaciones/${o.id}`} size="sm" />
+                          ) : (
+                            <a href={`/organizaciones/${o.id}`}>{o.nombre}</a>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </div>
-            ) : (
-              <span class="muted">—</span>
-            )}
-          </td>
-          <td>
-            {c.partidosAfectados.length > 0 ? (
-              <div class="c-partidos">
-                {c.partidosAfectados.map((p) => (
-                  <PartidoBadge id={p.id} label={p.label} href={`/organizaciones/${p.id}`} size="sm" />
-                ))}
-              </div>
-            ) : (
-              <span class="muted">—</span>
             )}
           </td>
           <td>
@@ -608,17 +600,46 @@ function miniDescripcion(raw: string, max = 140): string {
     color: var(--color-fg-muted);
     line-height: 1.35;
   }
-  .c-org-afectada {
+  .c-afectadas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: var(--font-size-0);
+  }
+  .c-afectadas__grupo {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    align-items: flex-start;
-    font-size: var(--font-size-0);
   }
-  .c-partidos {
+  .c-afectadas__nivel {
+    font: 600 0.7rem/1 var(--font-sans);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+  .c-afectadas__lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .c-afectadas__item {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.3;
+  }
+  .c-afectadas__tag {
+    font: 500 0.72rem/1 var(--font-sans);
+    padding: 2px 6px;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    background: var(--color-surface-muted, var(--color-surface));
+    color: var(--color-fg-muted);
+    white-space: nowrap;
   }
   .c-hito-title {
     font-size: var(--font-size-0);

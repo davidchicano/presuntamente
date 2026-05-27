@@ -35,11 +35,13 @@
         "acusacion_institucional_en_caso",
         "perjudicado_institucional_en_caso",
         "entidad_investigada_en_caso",
+        "ambito_administrativo_directo_del_acto_en_caso",
+        "afectacion_indirecta_en_caso",
         "vinculo_familiar_publico",
         "vinculo_economico_documentado",
         "vinculo_profesional_documentado"
       ],
-      "description": "Tipo de vínculo. cargo_*: Persona ocupa cargo en Organizacion. nombramiento_por_gobierno: vincula a la administración concreta que nombró. *_en_caso: Organizacion actúa en un Caso sin ser sujeto procesal directo de imputación (acusación popular, perjudicado institucional, ente investigado como persona jurídica). vinculo_familiar_publico: sólo si público, relevante y minimizado. vinculo_economico/profesional: sólo si documentado y relevante."
+      "description": "Tipo de vínculo. cargo_*: Persona ocupa cargo en Organizacion. nombramiento_por_gobierno: vincula a la administración concreta que nombró. *_en_caso: la Organizacion participa o queda alcanzada por un Caso. Las cuatro naturalezas de afectación editorial (entidad_investigada, perjudicado_institucional, ambito_administrativo_directo, afectacion_indirecta) exigen `nivel_afectacion` + `justificacion_afectacion`. acusacion_institucional_en_caso es papel procesal y NO se modela como afectación. ambito_administrativo_directo_del_acto_en_caso: Ministerio/Consejería de cuyo perímetro institucional emana el acto investigado (regla 4 del doc 08). afectacion_indirecta_en_caso: partido del cargo investigado, partido del gobierno responsable, partido del cónyuge, ente dependiente; afectación de segundo grado sin papel procesal (reglas 1-4 del doc 08). vinculo_familiar_publico: sólo si público, relevante y minimizado. vinculo_economico/profesional: sólo si documentado y relevante."
     },
 
     "descripcion": {
@@ -103,8 +105,19 @@
     "relevancia_para_caso_ids": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "Casos del inventario para los que este vínculo es relevante. Vacío significa 'vínculo documentado pero no aún anclado a un caso'.",
+      "description": "Casos del inventario para los que este vínculo es relevante. Vacío significa 'vínculo documentado pero no aún anclado a un caso'. Las naturalezas *_en_caso exigen al menos un caso aquí.",
       "default": []
+    },
+
+    "nivel_afectacion": {
+      "type": "string",
+      "enum": ["directa", "indirecta"],
+      "description": "Profundidad con la que el caso alcanza a la Organizacion sujeto o objeto del vínculo. Ausente = no afectación (papel procesal, cargo, militancia o vínculo no central). `directa`: sujeto procesal pasivo, víctima oficial o ámbito administrativo del que emana el acto. `indirecta`: partido salpicado, ente dependiente o contexto institucional sin papel procesal. Definiciones en docs/diseno/08-afectacion-directa-indirecta.md."
+    },
+    "justificacion_afectacion": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Frase neutra que explica por qué el caso alcanza a la Organizacion en el nivel marcado. Sin verbos prohibidos del P-09. Obligatoria cuando `nivel_afectacion` está presente. Hereda la prosa del retirado `Caso.partidos_afectados[].justificacion`."
     },
 
     "documentos_respaldo": {
@@ -189,6 +202,97 @@
         "required": ["naturaleza"]
       },
       "then": { "required": ["gobierno_o_legislatura"] }
+    },
+    {
+      "description": "V-22a: las tres naturalezas de afectación directa exigen `nivel_afectacion: directa`, `justificacion_afectacion` no vacía y al menos un caso en `relevancia_para_caso_ids`.",
+      "if": {
+        "properties": {
+          "naturaleza": {
+            "enum": [
+              "entidad_investigada_en_caso",
+              "perjudicado_institucional_en_caso",
+              "ambito_administrativo_directo_del_acto_en_caso"
+            ]
+          }
+        },
+        "required": ["naturaleza"]
+      },
+      "then": {
+        "required": ["nivel_afectacion", "justificacion_afectacion", "relevancia_para_caso_ids"],
+        "properties": {
+          "nivel_afectacion": { "const": "directa" },
+          "relevancia_para_caso_ids": { "minItems": 1 }
+        }
+      }
+    },
+    {
+      "description": "V-22b: `afectacion_indirecta_en_caso` exige `nivel_afectacion: indirecta`, `justificacion_afectacion` no vacía y al menos un caso en `relevancia_para_caso_ids`.",
+      "if": {
+        "properties": {
+          "naturaleza": { "const": "afectacion_indirecta_en_caso" }
+        },
+        "required": ["naturaleza"]
+      },
+      "then": {
+        "required": ["nivel_afectacion", "justificacion_afectacion", "relevancia_para_caso_ids"],
+        "properties": {
+          "nivel_afectacion": { "const": "indirecta" },
+          "relevancia_para_caso_ids": { "minItems": 1 }
+        }
+      }
+    },
+    {
+      "description": "V-23: `acusacion_institucional_en_caso` modela papel procesal proactivo, no afectación: `nivel_afectacion` y `justificacion_afectacion` deben estar ausentes; sigue exigiendo `relevancia_para_caso_ids` no vacío.",
+      "if": {
+        "properties": {
+          "naturaleza": { "const": "acusacion_institucional_en_caso" }
+        },
+        "required": ["naturaleza"]
+      },
+      "then": {
+        "required": ["relevancia_para_caso_ids"],
+        "properties": {
+          "relevancia_para_caso_ids": { "minItems": 1 }
+        },
+        "not": {
+          "anyOf": [
+            { "required": ["nivel_afectacion"] },
+            { "required": ["justificacion_afectacion"] }
+          ]
+        }
+      }
+    },
+    {
+      "description": "V-24: el resto de naturalezas (cargos, militancias, nombramientos, vínculos personales) NO son afectación editorial. `nivel_afectacion` y `justificacion_afectacion` deben estar ausentes para evitar afectación rebozada en cargos.",
+      "if": {
+        "properties": {
+          "naturaleza": {
+            "enum": [
+              "cargo_publico_electo",
+              "cargo_publico_designado",
+              "cargo_judicial",
+              "cargo_organico_partido",
+              "cargo_directivo_empresa_publica",
+              "cargo_directivo_organizacion_privada",
+              "cargo_academico_publico",
+              "cargo_organizacion_civica",
+              "nombramiento_por_gobierno",
+              "vinculo_familiar_publico",
+              "vinculo_economico_documentado",
+              "vinculo_profesional_documentado"
+            ]
+          }
+        },
+        "required": ["naturaleza"]
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            { "required": ["nivel_afectacion"] },
+            { "required": ["justificacion_afectacion"] }
+          ]
+        }
+      }
     }
   ]
 }

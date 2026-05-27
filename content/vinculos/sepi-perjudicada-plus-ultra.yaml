@@ -12,5 +12,7 @@ documentos_respaldo:
     pasaje: "Art. 2.1: 'se crea el Fondo de apoyo a la solvencia de empresas estratégicas [...] gestionado, a través de la Sociedad Estatal de Participaciones Industriales (SEPI)'. El FASEE es el vehículo del préstamo de 53 M€ a Plus Ultra cuyo uso irregular investiga el JCI nº 4."
   - documento_id: nota-sepi-aprobacion-plus-ultra-2021-03
     pasaje: "Nota institucional de la SEPI que confirma la autorización del Consejo de Ministros del 9 de marzo de 2021 para el préstamo a Plus Ultra a través del FASEE."
+nivel_afectacion: directa
+justificacion_afectacion: "La SEPI es el organismo público que canalizó el préstamo del FASEE; figura como perjudicado institucional en el procedimiento por el uso irregular de los fondos públicos investigados."
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-26"
+ultima_revision_editorial: "2026-05-27"

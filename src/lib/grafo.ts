@@ -68,6 +68,8 @@ const VINCULO_EN_CASO = new Set([
   'acusacion_institucional_en_caso',
   'perjudicado_institucional_en_caso',
   'entidad_investigada_en_caso',
+  'ambito_administrativo_directo_del_acto_en_caso',
+  'afectacion_indirecta_en_caso',
 ]);
 
 function nodeId(kind: GraphNodeKind, rawId: string): string {

@@ -1,0 +1,18 @@
+id: podemos-afectado-indirecto-plus-ultra
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "Unidas Podemos formaba parte de la coalición de gobierno que aprobó el préstamo a Plus Ultra el 9 de marzo de 2021, en condición de partido codirector del ejecutivo en el momento del acto investigado. El caso alcanza al partido como partido en la coalición de Gobierno responsable del acto investigado, sin que el partido sea sujeto procesal."
+sujeto_organizacion_id: podemos
+objeto_organizacion_id: juzgado-central-instruccion-4
+desde: "2024-07-01"
+precision_desde: mes
+vigente: true
+relevancia_para_caso_ids: [plus-ultra]
+documentos_respaldo:
+  - documento_id: boe-rdl25-2020-fondo-solvencia-fasee
+    pasaje: "Art. 2.1: el FASEE 'se gestionará, a través de la Sociedad Estatal de Participaciones Industriales (SEPI)'. La norma habilitante se aprueba en julio de 2020 por el Gobierno de coalición PSOE-Unidas Podemos."
+  - documento_id: nota-sepi-aprobacion-plus-ultra-2021-03
+    pasaje: "Nota institucional de la SEPI sobre la autorización del Consejo de Ministros del 9 de marzo de 2021, en el seno del Gobierno de coalición PSOE-Unidas Podemos."
+nivel_afectacion: indirecta
+justificacion_afectacion: "Unidas Podemos formaba parte de la coalición de gobierno que aprobó el préstamo a Plus Ultra el 9 de marzo de 2021, siendo el partido codirector del ejecutivo en el momento del acto investigado (regla 1 del doc 08)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-27"

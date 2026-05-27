@@ -1,0 +1,18 @@
+id: psoe-afectado-indirecto-plus-ultra
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "El PSOE encabezaba la coalición de gobierno que autorizó el préstamo de 53 millones de euros a Plus Ultra el 9 de marzo de 2021, a través del Fondo de Apoyo a la Solvencia de Empresas Estratégicas (FASEE) gestionado por la SEPI. El caso alcanza al partido como partido del Gobierno responsable del acto investigado, sin que el partido sea sujeto procesal."
+sujeto_organizacion_id: psoe
+objeto_organizacion_id: juzgado-central-instruccion-4
+desde: "2024-07-01"
+precision_desde: mes
+vigente: true
+relevancia_para_caso_ids: [plus-ultra]
+documentos_respaldo:
+  - documento_id: boe-rdl25-2020-fondo-solvencia-fasee
+    pasaje: "Art. 2.1: el FASEE 'se gestionará, a través de la Sociedad Estatal de Participaciones Industriales (SEPI)'. La norma habilitante del préstamo se aprueba en julio de 2020 por el Gobierno presidido por Pedro Sánchez (PSOE)."
+  - documento_id: nota-sepi-aprobacion-plus-ultra-2021-03
+    pasaje: "Nota institucional de la SEPI que confirma la autorización del Consejo de Ministros del 9 de marzo de 2021 para el préstamo a Plus Ultra, bajo el Gobierno de coalición PSOE-Podemos."
+nivel_afectacion: indirecta
+justificacion_afectacion: "El Consejo de Ministros que autorizó el préstamo de 53 M € a Plus Ultra (9 de marzo de 2021) era el gobierno de coalición presidido por Pedro Sánchez, cuyo partido, el PSOE, encabezaba el ejecutivo (regla 1 del doc 08)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-27"

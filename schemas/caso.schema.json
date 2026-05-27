@@ -115,39 +115,6 @@
     },
     "resumen_cifras": { "type": "string" },
 
-    "partidos_afectados": {
-      "type": "array",
-      "description": "Partidos políticos a los que el caso 'alcanza' editorialmente, más allá de la existencia o no de imputaciones procesales contra cargos del partido. Declaración explícita del editor con justificación; nunca se infiere automáticamente. Sirve para que el lector vea de un vistazo qué siglas quedan tocadas por el procedimiento, sin reducir el caso a una etiqueta partidista. Decisión 2026-05-26.",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["partido_id", "tipo_afectacion", "justificacion"],
-        "properties": {
-          "partido_id": {
-            "type": "string",
-            "description": "Slug de una Organizacion con tipo: partido_politico."
-          },
-          "tipo_afectacion": {
-            "type": "string",
-            "enum": [
-              "imputacion_a_cargo_del_partido",
-              "gobierno_responsable_del_acto_investigado",
-              "vinculo_familiar_directo_con_dirigente",
-              "militancia_o_cargo_organico_relevante",
-              "querella_o_acusacion_popular_del_partido",
-              "otro"
-            ]
-          },
-          "justificacion": {
-            "type": "string",
-            "minLength": 1,
-            "description": "Frase corta y neutral describiendo por qué el caso alcanza al partido en este eje. Sin inferencias políticas."
-          }
-        }
-      },
-      "default": []
-    },
-
     "estado_publicacion": {
       "type": "string",
       "description": "Estado de desarrollo + visibilidad pública de la ficha. `pendiente`: caso listado pero sin trabajo iniciado. `borrador`: en desarrollo, NO público (en producción la ruta /casos/<slug> no se genera). `beta_publica`: publicable con cosillas / huecos editoriales aceptados. `en_revision`: revisión interna pre-publicación. `publicado`: ficha terminada al máximo de lo que el producto sabe hacer hoy (no implica caso jurídico cerrado). `retirado_*`: estaba publicado y se retiró.",

@@ -101,15 +101,6 @@ resumen_cifras: |
   acusación particular. La condena fue adoptada por mayoría de cinco
   votos frente a dos.
 
-partidos_afectados:
-  - partido_id: psoe
-    tipo_afectacion: gobierno_responsable_del_acto_investigado
-    justificacion: >-
-      Álvaro García Ortiz fue designado Fiscal General del Estado por el
-      gobierno presidido por Pedro Sánchez (PSOE). Los hechos investigados
-      —la presunta filtración de datos reservados— se atribuyen al entonces
-      FGE mientras ejercía el cargo bajo dicho gobierno.
-
 estado_publicacion: beta_publica
 ultima_revision_editorial: "2026-05-22"
 nivel_relevancia_editorial: capital

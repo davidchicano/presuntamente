@@ -1,0 +1,18 @@
+id: aeat-perjudicada-gonzalez-amador
+naturaleza: perjudicado_institucional_en_caso
+descripcion: "La Agencia Estatal de Administración Tributaria (AEAT) es el organismo público al que se atribuye el perjuicio en el procedimiento penal: los presuntos delitos contra la Hacienda Pública investigados (ejercicios 2020 y 2021 del Impuesto sobre Sociedades) implican defraudación de la cuota tributaria gestionada por la AEAT."
+sujeto_organizacion_id: aeat
+objeto_organizacion_id: juzgado-instruccion-19-madrid
+desde: "2024-01-22"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [gonzalez-amador]
+documentos_respaldo:
+  - documento_id: elespanol-procesamiento-ga-2025-05-29
+    pasaje: "El auto del JI nº 19 de Madrid de 29 de mayo de 2025 procesa a González Amador y a Maxwell Cremona por presuntos delitos contra la Hacienda Pública en los ejercicios 2020 y 2021 del Impuesto sobre Sociedades, lo que sitúa a la AEAT como perjudicado institucional del procedimiento."
+  - documento_id: infobae-encargo-uco-ga-2025-06-27
+    pasaje: "La instrucción se centra en el presunto fraude tributario al Impuesto sobre Sociedades; el sujeto perjudicado es la Hacienda Pública estatal gestionada por la AEAT."
+nivel_afectacion: directa
+justificacion_afectacion: "Los presuntos delitos contra la Hacienda Pública investigados en el procedimiento implican defraudación de la cuota tributaria gestionada por la AEAT; el organismo es el sujeto perjudicado declarado en el auto de procesamiento de mayo de 2025."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-27"

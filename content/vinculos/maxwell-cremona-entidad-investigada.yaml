@@ -10,5 +10,7 @@ relevancia_para_caso_ids: [gonzalez-amador]
 documentos_respaldo:
   - documento_id: elespanol-procesamiento-ga-2025-05-29
     pasaje: "El Español cubre el auto del Juzgado de Instrucción nº 19 de Madrid del 29 de mayo de 2025 que procesa a Maxwell Cremona como persona jurídica por presuntos delitos contra la Hacienda Pública en los ejercicios 2020 y 2021."
+nivel_afectacion: directa
+justificacion_afectacion: "Maxwell Cremona Ingeniería y Procesos S.L. es la persona jurídica procesada en el procedimiento por presuntos delitos contra la Hacienda Pública en los ejercicios 2020 y 2021 del Impuesto sobre Sociedades."
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-26"
+ultima_revision_editorial: "2026-05-27"

@@ -1,0 +1,18 @@
+id: psoe-afectado-indirecto-bg
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "El PSOE queda alcanzado de forma indirecta por el procedimiento contra Begoña Gómez en su condición de esposa del presidente del Gobierno, Pedro Sánchez, secretario general del PSOE en el momento de los hechos investigados. El partido no es sujeto procesal del caso."
+sujeto_organizacion_id: psoe
+objeto_organizacion_id: juzgado-instruccion-41-madrid
+desde: "2024-04-08"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [begona-gomez]
+documentos_respaldo:
+  - documento_id: auto-procesamiento-bg-2026-04-13
+    pasaje: "Auto del JI nº 41 de Madrid de 13 de abril de 2026 que finaliza la instrucción y propone juzgar a Begoña Gómez, identificada en la causa como esposa del presidente del Gobierno."
+  - documento_id: maldita-explica-denuncia-bg-2024-04-25
+    pasaje: "Maldita.es contextualiza la apertura de diligencias contra Begoña Gómez como cónyuge del presidente del Gobierno Pedro Sánchez (PSOE)."
+nivel_afectacion: indirecta
+justificacion_afectacion: "La investigada es cónyuge del presidente del Gobierno, secretario general del PSOE en el momento de los hechos. El partido queda reputacionalmente alcanzado por el procedimiento contra una persona privada de su entorno familiar directo (regla 3 del doc 08)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-27"

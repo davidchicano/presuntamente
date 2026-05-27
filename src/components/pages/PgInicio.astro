@@ -6,6 +6,10 @@ import RolBadge from '@/components/RolBadge.astro';
 import PartidoBadge from '@/components/PartidoBadge.astro';
 import { rolLabel } from '@/lib/labels';
 import { getCollection } from 'astro:content';
+import {
+  organizacionesAfectadasDeCaso,
+  partidosAfectadosIndirectosDeCaso,
+} from '@/lib/afectacion';
 
 interface Props {
   lang?: 'es' | 'ca';
@@ -32,16 +36,17 @@ const orgIdx = new Map(organizaciones.map((o) => [o.data.id, o.data]));
 // Excluimos estados no publicables. Sacamos top 2 para que la landing
 // muestre algo más que un único pivote (decisión maintainer 2026-05-26).
 const RELEVANCIA_RANK: Record<string, number> = { capital: 4, alta: 3, media: 2, baja: 1 };
+// Etiqueta corta por naturaleza de afectación DIRECTA usada en el preview
+// de casos destacados. Misma convención que /casos: las dos naturalezas con
+// equivalente procesal (investigada / perjudicada) reusan RolBadge; ámbito
+// administrativo no es rol procesal y se etiqueta como microtag de texto.
 const NATURALEZA_A_ROL_DESTACADOS: Record<string, string> = {
   entidad_investigada_en_caso: 'investigado',
   perjudicado_institucional_en_caso: 'perjudicado',
-  acusacion_institucional_en_caso: 'acusacion_popular',
 };
-const PRIORIDAD_ORG_PRINCIPAL_DESTACADOS = [
-  'entidad_investigada_en_caso',
-  'perjudicado_institucional_en_caso',
-  'acusacion_institucional_en_caso',
-] as const;
+const NATURALEZA_A_TAG_DESTACADOS: Record<string, string> = {
+  ambito_administrativo_directo_del_acto_en_caso: 'Ámbito del acto',
+};
 const ESTADOS_VISIBLES = new Set(['beta_publica', 'en_revision', 'publicado']);
 
 function aplanaProsa(raw: string | undefined): string {
@@ -66,32 +71,20 @@ const destacados = casos
       .sort((a, b) => b.data.fecha.localeCompare(a.data.fecha));
     const ultimo = hitos[0]?.data;
 
-    const vinculosDelCaso = vinculosCol
-      .filter((v) => v.data.relevancia_para_caso_ids?.includes(caso.id))
-      .map((v) => v.data);
-    let orgPrincipalId: string | undefined;
-    let orgPrincipalNaturaleza: string | undefined;
-    for (const naturaleza of PRIORIDAD_ORG_PRINCIPAL_DESTACADOS) {
-      const candidatos = vinculosDelCaso
-        .filter((v) => v.naturaleza === naturaleza && v.sujeto_organizacion_id)
-        .map((v) => v.sujeto_organizacion_id!)
-        .sort();
-      if (candidatos.length > 0) {
-        orgPrincipalId = candidatos[0];
-        orgPrincipalNaturaleza = naturaleza;
-        break;
-      }
-    }
-    const orgPrincipal = orgPrincipalId ? orgIdx.get(orgPrincipalId) : undefined;
+    // Afectadas (directa + indirecta) derivadas de VinculoInstitucional vía
+    // src/lib/afectacion.ts. Tomamos la primera directa (alfabético) como
+    // "organización principal" del caso para el preview compacto.
+    const afectadas = organizacionesAfectadasDeCaso(caso.id, vinculosCol, orgIdx);
+    const primeraDirecta = afectadas.directas[0];
+    const orgPrincipalId = primeraDirecta?.organizacionId;
+    const orgPrincipalNombre = primeraDirecta?.nombre;
+    const orgPrincipalRol = primeraDirecta ? NATURALEZA_A_ROL_DESTACADOS[primeraDirecta.naturaleza] : undefined;
+    const orgPrincipalTag = primeraDirecta ? NATURALEZA_A_TAG_DESTACADOS[primeraDirecta.naturaleza] : undefined;
 
-    const partidos = ((caso as { partidos_afectados?: Array<{ partido_id: string }> }).partidos_afectados ?? [])
-      .map((p) => {
-        const partOrg = orgIdx.get(p.partido_id);
-        return {
-          id: p.partido_id,
-          label: (partOrg as { siglas?: string } | undefined)?.siglas ?? partOrg?.nombre ?? p.partido_id,
-        };
-      });
+    // Partidos como chips: sólo las indirectas que son partido_politico.
+    // Dedupe ya garantizado por afectacion.ts.
+    const partidos = partidosAfectadosIndirectosDeCaso(caso.id, vinculosCol, orgIdx)
+      .map((o) => ({ id: o.organizacionId, label: o.siglas ?? o.nombre }));
 
     const resumenEjecutivo =
       (caso as { descripcion_corta?: string }).descripcion_corta ??
@@ -106,8 +99,9 @@ const destacados = casos
       estadoPublicacion: caso.estado_publicacion,
       descripcion: aplanaProsa(resumenEjecutivo),
       orgPrincipalId,
-      orgPrincipalNombre: orgPrincipal?.nombre,
-      orgPrincipalRol: orgPrincipalNaturaleza ? NATURALEZA_A_ROL_DESTACADOS[orgPrincipalNaturaleza] : undefined,
+      orgPrincipalNombre,
+      orgPrincipalRol,
+      orgPrincipalTag,
       partidos,
       ultimoHitoFecha: ultimo?.fecha,
       ultimoHitoTitulo: ultimo ? truncarHitoDestacado(ultimo.titulo) : undefined,
@@ -266,12 +260,15 @@ const strings = {
                     {d.orgPrincipalRol && (
                       <RolBadge rol={d.orgPrincipalRol} label={rolLabel(d.orgPrincipalRol)} />
                     )}
+                    {d.orgPrincipalTag && (
+                      <span class="destacado__tag">{d.orgPrincipalTag}</span>
+                    )}
                   </dd>
                 </div>
               )}
               {d.partidos.length > 0 && (
                 <div>
-                  <dt>Partidos afectados</dt>
+                  <dt>Partidos alcanzados (indirecta)</dt>
                   <dd class="destacado__partidos">
                     {d.partidos.map((p) => (
                       <PartidoBadge id={p.id} label={p.label} size="sm" asLink={false} />
@@ -649,6 +646,15 @@ const strings = {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+  }
+  .destacado__tag {
+    font: 500 0.72rem/1 var(--font-sans);
+    padding: 2px 6px;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    background: var(--color-surface-muted, var(--color-surface));
+    color: var(--color-fg-muted);
+    white-space: nowrap;
   }
   .destacado__mono { font-family: var(--font-mono); font-size: 12px; color: var(--color-fg-muted); }
   .destacado__hito-text { color: var(--color-fg); }

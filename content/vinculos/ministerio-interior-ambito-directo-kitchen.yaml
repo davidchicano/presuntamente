@@ -1,0 +1,18 @@
+id: ministerio-interior-ambito-directo-kitchen
+naturaleza: ambito_administrativo_directo_del_acto_en_caso
+descripcion: "El Ministerio del Interior figura como ámbito administrativo del que emana la operación parapolicial investigada en el procedimiento Kitchen: los hechos se atribuyen a la cúpula de Interior y a unidades de la Policía Nacional dependientes del ministerio durante el periodo 2013-2015."
+sujeto_organizacion_id: ministerio-del-interior
+objeto_organizacion_id: audiencia-nacional
+desde: "2018-07-19"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: eldiario-informe-asuntos-internos-kitchen-2020-07
+    pasaje: "Asuntos Internos atribuye a la cúpula del Ministerio del Interior la dirección de la operación parapolicial bautizada como 'Kitchen'."
+  - documento_id: eldiario-procesamiento-kitchen-2021-07-29
+    pasaje: "El juez García Castellón procesa al exministro Fernández Díaz, al exsecretario de Estado Martínez y al ex DAO Eugenio Pino, todos cargos del Ministerio del Interior en los hechos investigados."
+nivel_afectacion: directa
+justificacion_afectacion: "La operación parapolicial investigada emana del perímetro institucional del Ministerio del Interior entre 2013 y 2015; el ámbito administrativo del que parte el acto investigado queda procesalmente alcanzado (regla 4 del doc 08)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-27"

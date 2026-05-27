@@ -88,22 +88,6 @@ const casos = defineCollection({
       querellante_inicial_id: z.string().optional(),
       delitos_atribuidos_en_la_causa: z.array(z.string()).default([]),
       resumen_cifras: z.string().optional(),
-      partidos_afectados: z
-        .array(
-          z.object({
-            partido_id: z.string(),
-            tipo_afectacion: z.enum([
-              'imputacion_a_cargo_del_partido',
-              'gobierno_responsable_del_acto_investigado',
-              'vinculo_familiar_directo_con_dirigente',
-              'militancia_o_cargo_organico_relevante',
-              'querella_o_acusacion_popular_del_partido',
-              'otro',
-            ]),
-            justificacion: z.string(),
-          }),
-        )
-        .default([]),
       estado_publicacion: ESTADO_PUBLICACION,
       ultima_revision_editorial: z.string().optional(),
       nivel_relevancia_editorial: z
@@ -388,10 +372,14 @@ const NATURALEZA_VINCULO = z.enum([
   'acusacion_institucional_en_caso',
   'perjudicado_institucional_en_caso',
   'entidad_investigada_en_caso',
+  'ambito_administrativo_directo_del_acto_en_caso',
+  'afectacion_indirecta_en_caso',
   'vinculo_familiar_publico',
   'vinculo_economico_documentado',
   'vinculo_profesional_documentado',
 ]);
+
+const NIVEL_AFECTACION = z.enum(['directa', 'indirecta']);
 
 const vinculos = defineCollection({
   loader: glob({
@@ -414,6 +402,8 @@ const vinculos = defineCollection({
       vigente: z.boolean().optional(),
       gobierno_o_legislatura: z.string().optional(),
       relevancia_para_caso_ids: z.array(z.string()).default([]),
+      nivel_afectacion: NIVEL_AFECTACION.optional(),
+      justificacion_afectacion: z.string().optional(),
       documentos_respaldo: z
         .array(
           z.object({

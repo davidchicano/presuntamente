@@ -241,6 +241,8 @@ const NATURALEZA_VINCULO_LABEL_ES: Record<string, string> = {
   acusacion_institucional_en_caso: 'Acusación institucional en caso',
   perjudicado_institucional_en_caso: 'Perjudicado institucional en caso',
   entidad_investigada_en_caso: 'Entidad investigada en caso',
+  ambito_administrativo_directo_del_acto_en_caso: 'Ámbito administrativo del acto',
+  afectacion_indirecta_en_caso: 'Afectación indirecta en caso',
   vinculo_familiar_publico: 'Vínculo familiar público',
   vinculo_economico_documentado: 'Vínculo económico documentado',
   vinculo_profesional_documentado: 'Vínculo profesional documentado',

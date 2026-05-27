@@ -1,0 +1,18 @@
+id: pp-afectado-indirecto-kitchen
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "El Partido Popular queda alcanzado de forma indirecta por el procedimiento Kitchen en doble condición: (a) era el partido del Gobierno titular del Ministerio del Interior en los hechos (Mariano Rajoy, presidente del Gobierno; Jorge Fernández Díaz, ministro del Interior; Francisco Martínez Vázquez, secretario de Estado de Seguridad) y (b) los cargos procesados (Fernández Díaz, Martínez Vázquez) ostentaban militancia activa en el PP en el periodo investigado."
+sujeto_organizacion_id: partido-popular
+objeto_organizacion_id: audiencia-nacional
+desde: "2018-07-19"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [kitchen]
+documentos_respaldo:
+  - documento_id: eldiario-procesamiento-kitchen-2021-07-29
+    pasaje: "El procesamiento alcanza a Jorge Fernández Díaz, exministro del Interior por el PP en el Gobierno de Mariano Rajoy, y a Francisco Martínez Vázquez, exsecretario de Estado de Seguridad bajo el mismo gobierno."
+  - documento_id: elplural-apertura-juicio-oral-kitchen-2023-10
+    pasaje: "García-Castellón ratifica la apertura de juicio oral contra la cúpula del Ministerio del Interior del Gobierno Rajoy en el procedimiento Kitchen."
+nivel_afectacion: indirecta
+justificacion_afectacion: "El PP era el partido del Gobierno titular del Ministerio del Interior en los hechos investigados (regla 4 del doc 08); además, Jorge Fernández Díaz y Francisco Martínez Vázquez, ambos procesados en la causa, ejercían como ministro y secretario de Estado bajo militancia activa en el PP en el periodo investigado."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-27"

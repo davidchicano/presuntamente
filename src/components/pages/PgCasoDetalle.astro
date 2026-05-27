@@ -20,7 +20,6 @@ import RichProse from '@/components/RichProse.astro';
 import EstadoFichaBadge from '@/components/EstadoFichaBadge.astro';
 import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
 import GraphConexionesLink from '@/components/GraphConexionesLink.astro';
-import PartidoBadge from '@/components/PartidoBadge.astro';
 
 // Mismo enum que en EstadoPublicacionBadge — Astro no exporta tipos entre
 // componentes .astro de forma estable, así que re-declaro aquí.
@@ -386,66 +385,105 @@ function addRelacion(map: Map<string, CardRelacion[]>, id: string, rel: CardRela
   map.set(id, current);
 }
 
-// --- Instituciones alcanzadas ----------------------------------------------
-// Agregado de Organizaciones alcanzadas por el caso vía VinculoInstitucional.
-// Tres familias neutras (decisión 2026-05-26): investigadas como persona
-// jurídica, perjudicadas institucionales, acusación popular constituida.
-type InstAgrupadaItem = { id: string; nombre: string; href: string };
-const institucionesInvestigadas: InstAgrupadaItem[] = [];
-const institucionesPerjudicadas: InstAgrupadaItem[] = [];
-const institucionesAcusacion: InstAgrupadaItem[] = [];
-const seenOrgPorFamilia = new Map<string, Set<string>>();
-seenOrgPorFamilia.set('entidad_investigada_en_caso', new Set());
-seenOrgPorFamilia.set('perjudicado_institucional_en_caso', new Set());
-seenOrgPorFamilia.set('acusacion_institucional_en_caso', new Set());
-for (const v of vinculosCasoEntries) {
-  const fam = v.data.naturaleza;
-  if (
-    fam !== 'entidad_investigada_en_caso' &&
-    fam !== 'perjudicado_institucional_en_caso' &&
-    fam !== 'acusacion_institucional_en_caso'
-  ) continue;
-  const orgId = v.data.sujeto_organizacion_id;
-  if (!orgId) continue;
-  const seen = seenOrgPorFamilia.get(fam)!;
-  if (seen.has(orgId)) continue;
-  seen.add(orgId);
-  const item: InstAgrupadaItem = { id: orgId, nombre: orgLabel(orgId), href: orgHref(orgId) };
-  if (fam === 'entidad_investigada_en_caso') institucionesInvestigadas.push(item);
-  else if (fam === 'perjudicado_institucional_en_caso') institucionesPerjudicadas.push(item);
-  else institucionesAcusacion.push(item);
-}
-for (const arr of [institucionesInvestigadas, institucionesPerjudicadas, institucionesAcusacion]) {
-  arr.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
-}
-const hayInstitucionesAlcanzadas =
-  institucionesInvestigadas.length + institucionesPerjudicadas.length + institucionesAcusacion.length > 0;
-
-// --- Partidos afectados ----------------------------------------------------
-// Declaración explícita del editor sobre qué siglas quedan "alcanzadas"
-// editorialmente por el caso, con justificación neutra y enum cerrado.
-// No se infiere: si no aparece en el YAML, no se muestra. Decisión 2026-05-26.
-const TIPO_AFECTACION_LABEL: Record<string, string> = {
-  imputacion_a_cargo_del_partido: 'Imputación a cargo del partido',
-  gobierno_responsable_del_acto_investigado: 'Gobierno responsable del acto',
-  vinculo_familiar_directo_con_dirigente: 'Vínculo familiar con dirigente',
-  militancia_o_cargo_organico_relevante: 'Militancia / cargo orgánico',
-  querella_o_acusacion_popular_del_partido: 'Acusación popular del partido',
-  otro: 'Otro',
+// --- Organizaciones afectadas (refactor 2026-05-27) -----------------------
+// Bloque unificado que sustituye al anterior "Instituciones alcanzadas" +
+// al campo retirado `Caso.partidos_afectados[]`. Una sola dimensión con dos
+// niveles (directa / indirecta), exhaustiva y mutuamente excluyente. El
+// papel procesal (acusación popular) NO es afectación y aparece en
+// "Participación procesal" más abajo. Canon: docs/diseno/08-afectacion-directa-indirecta.md.
+const ETIQUETA_NATURALEZA_AFECTACION: Record<string, string> = {
+  entidad_investigada_en_caso: 'Persona jurídica investigada',
+  perjudicado_institucional_en_caso: 'Perjudicado institucional',
+  ambito_administrativo_directo_del_acto_en_caso: 'Ámbito administrativo del acto',
+  afectacion_indirecta_en_caso: 'Afectación indirecta',
 };
-const partidosAfectados = ((data as { partidos_afectados?: Array<{ partido_id: string; tipo_afectacion: string; justificacion: string }> }).partidos_afectados ?? [])
-  .map((p) => {
-    const org = orgIndex.get(p.partido_id);
-    return {
-      partidoId: p.partido_id,
-      partidoNombre: org?.nombre ?? p.partido_id,
-      partidoSiglas: (org as { siglas?: string } | undefined)?.siglas,
-      tipoLabel: TIPO_AFECTACION_LABEL[p.tipo_afectacion] ?? p.tipo_afectacion,
-      tipoKey: p.tipo_afectacion,
-      justificacion: p.justificacion,
-      href: lang === 'ca' ? `/cat/organizaciones/${p.partido_id}` : `/organizaciones/${p.partido_id}`,
+type OrgAfectadaView = {
+  id: string;
+  nombre: string;
+  siglas?: string;
+  esPartido: boolean;
+  href: string;
+  naturalezaLabel: string;
+  justificacion?: string;
+};
+const orgAfectadasDirectas: OrgAfectadaView[] = [];
+const orgAfectadasIndirectas: OrgAfectadaView[] = [];
+{
+  const seen = new Map<string, OrgAfectadaView>();
+  const NATURALEZAS_DIRECTA = new Set([
+    'entidad_investigada_en_caso',
+    'perjudicado_institucional_en_caso',
+    'ambito_administrativo_directo_del_acto_en_caso',
+  ]);
+  const orderForDedup: Array<{ v: OrgAfectadaView; nivel: 'directa' | 'indirecta' }> = [];
+  for (const v of vinculosCasoEntries) {
+    const nat = v.data.naturaleza;
+    const orgId = v.data.sujeto_organizacion_id;
+    if (!orgId) continue;
+    const esDirecta = NATURALEZAS_DIRECTA.has(nat);
+    const esIndirecta = nat === 'afectacion_indirecta_en_caso';
+    if (!esDirecta && !esIndirecta) continue;
+    const org = orgIndex.get(orgId);
+    const view: OrgAfectadaView = {
+      id: orgId,
+      nombre: org?.nombre ?? orgId,
+      siglas: (org as { siglas?: string } | undefined)?.siglas,
+      esPartido: org?.tipo === 'partido_politico',
+      href: orgHref(orgId),
+      naturalezaLabel: ETIQUETA_NATURALEZA_AFECTACION[nat] ?? nat,
+      justificacion: v.data.justificacion_afectacion as string | undefined,
     };
-  });
+    const ya = seen.get(orgId);
+    if (!ya) {
+      seen.set(orgId, view);
+      orderForDedup.push({ v: view, nivel: esDirecta ? 'directa' : 'indirecta' });
+    } else if (esDirecta) {
+      // Dedupe: directa gana sobre indirecta.
+      Object.assign(ya, view);
+    }
+  }
+  for (const { v, nivel } of orderForDedup) {
+    const actual = seen.get(v.id);
+    if (!actual) continue;
+    if (nivel === 'directa') orgAfectadasDirectas.push(actual);
+    else orgAfectadasIndirectas.push(actual);
+  }
+  // Dedupe local de la lista (puede haber duplicados si una misma org
+  // aparece en dos vínculos con la misma naturaleza).
+  const dedup = (arr: OrgAfectadaView[]) => {
+    const out: OrgAfectadaView[] = [];
+    const ids = new Set<string>();
+    for (const o of arr) {
+      if (ids.has(o.id)) continue;
+      ids.add(o.id);
+      out.push(o);
+    }
+    return out.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+  };
+  orgAfectadasDirectas.splice(0, orgAfectadasDirectas.length, ...dedup(orgAfectadasDirectas));
+  orgAfectadasIndirectas.splice(0, orgAfectadasIndirectas.length, ...dedup(orgAfectadasIndirectas));
+}
+const hayOrgAfectadas =
+  orgAfectadasDirectas.length + orgAfectadasIndirectas.length > 0;
+
+// --- Participación procesal: acusación popular constituida -----------------
+// Las organizaciones que se personan como acusación popular no son
+// afectadas (regla 5 del doc 08). Aparecen aquí, separadas, deduplicadas
+// por organizacion_id.
+type OrgProcesalView = { id: string; nombre: string; href: string };
+const acusacionPopularOrgs: OrgProcesalView[] = (() => {
+  const seen = new Set<string>();
+  const out: OrgProcesalView[] = [];
+  for (const v of vinculosCasoEntries) {
+    if (v.data.naturaleza !== 'acusacion_institucional_en_caso') continue;
+    const orgId = v.data.sujeto_organizacion_id;
+    if (!orgId || seen.has(orgId)) continue;
+    seen.add(orgId);
+    out.push({ id: orgId, nombre: orgLabel(orgId), href: orgHref(orgId) });
+  }
+  return out.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+})();
+const hayAcusacionPopular = acusacionPopularOrgs.length > 0;
 
 for (const v of vinculosCasoEntries) {
   if (v.data.sujeto_persona_id) {
@@ -922,68 +960,72 @@ const graphHref = `/grafo?focus=caso&id=${data.id}&depth=2&layout=cose`;
     )}
   </dl>
 
-  {partidosAfectados.length > 0 && (
-    <section class="partidos-afectados" aria-labelledby="partidos-afectados-title">
-      <h3 id="partidos-afectados-title">Partidos afectados</h3>
-      <p class="partidos-afectados__note">
-        Siglas que el caso alcanza editorialmente, con justificación neutra. No es un
-        juicio de bando ni una asignación de responsabilidad: indica a qué partidos toca
-        el procedimiento (por militancia del investigado, vínculo familiar con dirigente,
-        gobierno responsable del acto, acusación popular constituida, etc.).
+  {hayOrgAfectadas && (
+    <section class="org-afectadas" aria-labelledby="org-afectadas-title">
+      <h3 id="org-afectadas-title">Organizaciones afectadas</h3>
+      <p class="org-afectadas__note">
+        Organizaciones que el procedimiento alcanza, separadas por profundidad de
+        afectación. <strong>Directa</strong>: sujeto procesal pasivo, perjudicado oficial
+        o ámbito administrativo del que emana el acto investigado.
+        <strong>Indirecta</strong>: partido o ente salpicado por dependencia política o
+        familiar, sin papel procesal propio. La acusación popular constituida figura
+        más abajo como participación procesal, no como afectación
+        (<a href="/sobre#afectacion">qué es y qué no es afectación</a>).
       </p>
-      <ul class="partidos-afectados__list">
-        {partidosAfectados.map((p) => (
-          <li class="partidos-afectados__item" data-partido={p.partidoId}>
-            <a class="partidos-afectados__partido" href={p.href}>
-              {p.partidoSiglas ?? p.partidoNombre}
-            </a>
-            <span class="partidos-afectados__tipo">{p.tipoLabel}</span>
-            <span class="partidos-afectados__just">{p.justificacion}</span>
-          </li>
-        ))}
-      </ul>
+      <div class="org-afectadas__grid">
+        {orgAfectadasDirectas.length > 0 && (
+          <div class="org-afectadas__col org-afectadas__col--directa">
+            <h4>Directa</h4>
+            <ul>
+              {orgAfectadasDirectas.map((o) => (
+                <li data-partido={o.esPartido ? o.id : undefined}>
+                  <a class="org-afectadas__nombre" href={o.href}>{o.nombre}</a>
+                  <span class="org-afectadas__naturaleza">{o.naturalezaLabel}</span>
+                  {o.justificacion && (
+                    <span class="org-afectadas__just">{o.justificacion}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {orgAfectadasIndirectas.length > 0 && (
+          <div class="org-afectadas__col org-afectadas__col--indirecta">
+            <h4>Indirecta</h4>
+            <ul>
+              {orgAfectadasIndirectas.map((o) => (
+                <li data-partido={o.esPartido ? o.id : undefined}>
+                  <a class="org-afectadas__nombre" href={o.href}>
+                    {o.esPartido ? (o.siglas ?? o.nombre) : o.nombre}
+                  </a>
+                  <span class="org-afectadas__naturaleza">{o.naturalezaLabel}</span>
+                  {o.justificacion && (
+                    <span class="org-afectadas__just">{o.justificacion}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </section>
   )}
 
-  {hayInstitucionesAlcanzadas && (
-    <section class="inst-alcanzadas" aria-labelledby="inst-alcanzadas-title">
-      <h3 id="inst-alcanzadas-title">Instituciones alcanzadas</h3>
-      <p class="inst-alcanzadas__note">
-        Organizaciones que el caso afecta o moviliza institucionalmente. No es un juicio
-        de partido ni un mapa político: agrega a quién toca el procedimiento como sujeto
-        jurídico, perjudicado oficial o acusación popular constituida.
+  {hayAcusacionPopular && (
+    <section class="org-procesal" aria-labelledby="org-procesal-title">
+      <h3 id="org-procesal-title">Participación procesal</h3>
+      <p class="org-procesal__note">
+        Organizaciones personadas formalmente en el procedimiento que <strong>no
+        constituyen afectación editorial</strong>: ejercen un papel procesal proactivo
+        (acusación popular). Aparecen aquí, separadas de las organizaciones afectadas.
       </p>
-      <div class="inst-alcanzadas__grid">
-        {institucionesInvestigadas.length > 0 && (
-          <div class="inst-alcanzadas__col inst-alcanzadas__col--investigadas">
-            <h4>Investigadas como persona jurídica</h4>
-            <ul>
-              {institucionesInvestigadas.map((o) => (
-                <li><a href={o.href}>{o.nombre}</a></li>
-              ))}
-            </ul>
-          </div>
-        )}
-        {institucionesPerjudicadas.length > 0 && (
-          <div class="inst-alcanzadas__col inst-alcanzadas__col--perjudicadas">
-            <h4>Perjudicadas institucionales</h4>
-            <ul>
-              {institucionesPerjudicadas.map((o) => (
-                <li><a href={o.href}>{o.nombre}</a></li>
-              ))}
-            </ul>
-          </div>
-        )}
-        {institucionesAcusacion.length > 0 && (
-          <div class="inst-alcanzadas__col inst-alcanzadas__col--acusacion">
-            <h4>Acusación popular constituida</h4>
-            <ul>
-              {institucionesAcusacion.map((o) => (
-                <li><a href={o.href}>{o.nombre}</a></li>
-              ))}
-            </ul>
-          </div>
-        )}
+      <div class="org-procesal__col">
+        <h4>Acusación popular constituida</h4>
+        <ul>
+          {acusacionPopularOrgs.map((o) => (
+            <li><a href={o.href}>{o.nombre}</a></li>
+          ))}
+        </ul>
       </div>
     </section>
   )}

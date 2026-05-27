@@ -1,0 +1,18 @@
+id: pp-afectado-indirecto-lezo
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "El Partido Popular queda alcanzado de forma indirecta por el procedimiento Lezo en su condición de partido al que pertenecían los gobiernos de la Comunidad de Madrid bajo cuyos mandatos se atribuyen los actos presuntamente irregulares en la gestión del Canal de Isabel II (Esperanza Aguirre, Ignacio González y Cristina Cifuentes, 2003-2017). Varios consejeros autonómicos del PP y el propio expresidente regional Ignacio González figuran procesados en distintas piezas de la causa."
+sujeto_organizacion_id: partido-popular
+objeto_organizacion_id: juzgado-central-instruccion-6
+desde: "2017-04-19"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [lezo]
+documentos_respaldo:
+  - documento_id: bocm-decreto-20-2000-nombramiento-calvo-poch-2000-05-29
+    pasaje: "Decreto del Consejo de Gobierno de la Comunidad de Madrid que documenta el nombramiento de Pedro Calvo-Poch, consejero del Gobierno regional del PP, como cargo público autonómico."
+  - documento_id: bocm-decreto-25-2001-nombramiento-bravo-rivera-2001-09-21
+    pasaje: "Decreto del Consejo de Gobierno de la Comunidad de Madrid que documenta el nombramiento de Juan Bravo Rivera, consejero del Gobierno regional del PP, como cargo público autonómico."
+nivel_afectacion: indirecta
+justificacion_afectacion: "Los actos presuntamente irregulares investigados se atribuyen a la gestión de la empresa pública Canal de Isabel II durante los gobiernos del PP en la Comunidad de Madrid (2003-2017); el partido queda alcanzado indirectamente por los procesamientos de Ignacio González, Pedro Calvo-Poch y Juan Bravo Rivera, cargos públicos autonómicos por el PP en el periodo."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-27"
