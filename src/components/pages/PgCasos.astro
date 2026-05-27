@@ -470,7 +470,7 @@ function miniDescripcion(raw: string, max = 140): string {
     <tbody>
       {casos.map((c) => (
         <tr
-          class:list={['is-link', c.bloqueadoEnProd && 'is-blocked']}
+          class:list={[!c.bloqueadoEnProd && 'is-link', c.bloqueadoEnProd && 'is-blocked']}
           data-row
           data-phase={c.phaseKind}
           data-phase-order={c.phaseOrder}
@@ -815,15 +815,16 @@ function miniDescripcion(raw: string, max = 140): string {
   /* Filas bloqueadas en producción (estados pendiente/borrador): aparecen
      en la lista para que el lector vea que esos casos se están trabajando,
      pero no son clickables y la ruta /casos/<slug> no se genera en build
-     de producción. En dev local nada está bloqueado. */
+     de producción. En dev local nada está bloqueado.
+     No llevan la clase `is-link`: el cursor es default a secas y la
+     delegación de fila en BaseLayout no las toca. */
   :global(.tbl) tr.is-blocked {
     background: var(--color-surface-muted, var(--color-surface));
     color: var(--color-fg-muted);
+    cursor: default;
   }
   :global(.tbl) tr.is-blocked:hover {
-    /* anula el hover normal de filas clickables */
     background: var(--color-surface-muted, var(--color-surface));
-    cursor: default;
   }
   :global(.tbl) tr.is-blocked .c-name {
     color: var(--color-fg-muted);

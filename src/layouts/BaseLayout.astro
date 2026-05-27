@@ -468,6 +468,9 @@ const brandSub = 'Inventario público de casos de corrupción en España';
           if (isInteractive(target)) return;
           const row = target.closest<HTMLTableRowElement>('.tbl tbody tr.is-link');
           if (!row) return;
+          // Defensa: si alguna ficha de listado deja `is-link` y `is-blocked`
+          // a la vez (caso editorial bloqueado en producción), no navegar.
+          if (row.classList.contains('is-blocked')) return;
           navigate(e, row);
         });
         document.addEventListener('auxclick', (e) => {
@@ -477,6 +480,7 @@ const brandSub = 'Inventario público de casos de corrupción en España';
           if (isInteractive(target)) return;
           const row = target.closest<HTMLTableRowElement>('.tbl tbody tr.is-link');
           if (!row) return;
+          if (row.classList.contains('is-blocked')) return;
           navigate(e, row);
           e.preventDefault();
         });
