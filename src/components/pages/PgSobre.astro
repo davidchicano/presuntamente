@@ -14,11 +14,11 @@ const { lang = 'es' } = Astro.props;
 const strings = {
   title: 'Sobre presuntamente',
   description:
-    'Misión, principios editoriales, niveles de fuente, roles procesales, tipos de hecho, lenguaje editorial, cómo rectificar y licencias del inventario público presuntamente.org.',
+    'Misión, filosofía editorial, mantenimiento del inventario, colaboración, niveles de fuente, roles, tipos de hecho, lenguaje y licencias de presuntamente.org.',
   eyebrow: 'Sección 5 · Sobre',
   sub:
-    'Información institucional sobre el proyecto: misión, principios editoriales, escala de niveles de fuente, ' +
-    'glosario de roles procesales y tipos de hecho, lenguaje editorial, protocolo de rectificación y licencias.',
+    'Qué es el inventario, en qué se apoya, cómo se actualiza, cómo puedes colaborar y cómo se redacta cada ficha ' +
+    '(fuentes N1–N4, roles, tipos de hecho, lenguaje, rectificación y código abierto).',
 };
 ---
 
@@ -45,10 +45,18 @@ const strings = {
   <div class="prose">
     <p>
       <strong>presuntamente.org</strong> es un inventario público, interactivo y open-source de los
-      casos de corrupción más relevantes en España. La misión es <strong>reducir desinformación</strong>
-      ofreciendo una referencia objetiva, trazable y sin cuota política de los procedimientos
-      judiciales relevantes.
+      casos de corrupción más relevantes en España. La frase rectora resume el propósito:
+      <strong>«La corrupción en España, ordenada y con sus fuentes»</strong>. La misión es
+      <strong>reducir desinformación</strong> ofreciendo una referencia objetiva, trazable y sin
+      cuota política de los procedimientos judiciales relevantes.
     </p>
+    <p>Cuatro ejes sostienen ese propósito:</p>
+    <ul class="filosofia">
+      <li><strong>Trazabilidad y claridad</strong> como base: cada dato enlaza al documento que lo respalda.</li>
+      <li><strong>Sin fuente no hay afirmación ni dato</strong>: no se publican hechos huérfanos.</li>
+      <li><strong>No entiende de ideologías</strong>: el inventario no toma partido; ordena por relevancia procesal y documental.</li>
+      <li><strong>Antes rigurosidad que ambigüedad</strong>: si el material no alcanza, se etiqueta con la fuerza epistémica que corresponde, no se suaviza el lenguaje para sonar contundente.</li>
+    </ul>
     <p>
       Cada caso se documenta a partir de fuentes primarias (BOE,
       <abbr title="Centro de Documentación Judicial: repositorio oficial de jurisprudencia del Consejo General del Poder Judicial">CENDOJ</abbr>,
@@ -60,6 +68,16 @@ const strings = {
   </FichaTocSection>
 
   <FichaTocSection num="2." title="Principios editoriales" id="principios">
+  <div class="prose">
+    <p>
+      Los cuatro ejes anteriores se operativizan en reglas fijas de redacción y modelado. El detalle
+      jurídico y de datos está en el
+      <a href="https://github.com/davidchicano/presuntamente/blob/main/docs/diseno/01-modelo-de-datos.md" target="_blank" rel="noopener">modelo de datos</a>
+      y en la
+      <a href="https://github.com/davidchicano/presuntamente/blob/main/docs/diseno/02-ficha-de-caso.md" target="_blank" rel="noopener">ficha de caso</a>
+      del repositorio; aquí, lo que aplica al lector de la web:
+    </p>
+  </div>
   <ol class="principios">
     <li>
       <strong>Imputación nunca equivale a condena.</strong> El modelo distingue investigado,
@@ -87,10 +105,65 @@ const strings = {
       <strong>Historial público.</strong> El historial de cambios del repositorio es público.
       Nunca se borra información; las correcciones conservan el histórico completo.
     </li>
+    <li>
+      <strong>Antes rigurosidad que ambigüedad.</strong> Un hecho sin respaldo suficiente no se
+      publica como acreditado por comodidad narrativa. Se usa el tipo epistémico que corresponde
+      (<span class="badge badge--investigado">investigado</span>,
+      <span class="badge badge--atribuido">atribuido</span>,
+      <span class="badge badge--no-concluyente">no_concluyente</span>) y se deja constancia de la
+      incertidumbre en la ficha, no en titulares.
+    </li>
   </ol>
   </FichaTocSection>
 
-  <FichaTocSection num="3." title="Niveles de fuente (N1–N4)" id="niveles">
+  <FichaTocSection num="3." title="Cómo se mantiene vivo el inventario" id="mantenimiento">
+  <div class="prose">
+    <p>
+      El inventario no es un archivo estático: se actualiza cuando hay hitos nuevos documentados en
+      fuentes verificables. No promete cobertura en tiempo real de toda la prensa; promete
+      <strong>incorporar cada cambio procesal relevante con trazabilidad</strong> una vez confirmado.
+    </p>
+    <p><strong>Vigilancia y señales.</strong> Para los casos en fase activa, el proyecto monitoriza
+      publicaciones en
+      <abbr title="Centro de Documentación Judicial">CENDOJ</abbr>, notas del
+      <abbr title="Consejo General del Poder Judicial">CGPJ</abbr>, BOE y cobertura periodística
+      cruzada. Las alertas no se publican solas: entran en una bandeja de señales que el equipo
+      revisa y descarta o convierte en incorporación.</p>
+    <p><strong>Incorporación por deltas.</strong> Cada actualización es incremental: un nuevo
+      documento, un hito en la cronología, un cambio de rol o de fase. No se reescribe la ficha
+      entera; el historial del repositorio registra qué cambió y por qué.</p>
+    <p><strong>IA con guardarraíles, revisión humana.</strong> La extracción de datos desde autos y
+      sentencias la acelera un modelo de lenguaje, pero no sustituye al criterio editorial: no
+      acredita hechos por sí solo, no inventa campos vacíos y no publica sin revisión del
+      maintainer. La validación mecánica del repositorio (schemas y reglas V) corre en cada cambio.
+      Detalle del pipeline en
+      <a href="https://github.com/davidchicano/presuntamente/blob/main/docs/diseno/03-estrategia-de-mantenimiento.md" target="_blank" rel="noopener">estrategia de mantenimiento</a>
+      del repositorio.</p>
+    <p>
+      En las fichas verás estados como <em>beta pública</em> o <em>en revisión</em>: indican el
+      grado de madurez editorial de esa entrada, no la velocidad del procedimiento judicial.
+    </p>
+  </div>
+  </FichaTocSection>
+
+  <FichaTocSection num="4." title="Colaborar" id="colaborar">
+  <div class="prose">
+    <p>
+      El inventario se nutre de aportes externos — no hace falta un único maintainer ni saber git
+      para la vía editorial. Da igual si eres periodista, jurista, funcionario o alguien con una
+      pista documental fiable: lo que importa es la fuente pública verificable.
+    </p>
+    <p>
+      <a class="btn btn--primary" href="/aportar">Aportar al inventario →</a>
+    </p>
+    <p>
+      Si te consideras <strong>aludido</strong> por una afirmación publicada, el cauce no es el de
+      aportación: ver <a href="#correcciones">Correcciones y rectificación</a> más abajo.
+    </p>
+  </div>
+  </FichaTocSection>
+
+  <FichaTocSection num="5." title="Niveles de fuente (N1–N4)" id="niveles">
   <div class="prose">
     <p>Cada documento del inventario lleva un nivel de fuente que comunica su autoridad:</p>
   </div>
@@ -131,7 +204,7 @@ const strings = {
   </ul>
   </FichaTocSection>
 
-  <FichaTocSection num="4." title="Roles procesales" id="roles">
+  <FichaTocSection num="6." title="Roles procesales" id="roles">
   <div class="prose">
     <p>
       Cada persona u organización está unida a un caso mediante un rol procesal con periodo
@@ -251,7 +324,7 @@ const strings = {
   </ul>
   </FichaTocSection>
 
-  <FichaTocSection num="5." title="Tipos de hecho" id="tipos-hecho">
+  <FichaTocSection num="7." title="Tipos de hecho" id="tipos-hecho">
   <div class="prose">
     <p>
       Cada hecho del inventario lleva un tipo que comunica qué sabemos de él, con qué fuerza, y con
@@ -312,7 +385,7 @@ const strings = {
   </ul>
   </FichaTocSection>
 
-  <FichaTocSection num="6." title="Lenguaje editorial" id="lenguaje">
+  <FichaTocSection num="8." title="Lenguaje editorial" id="lenguaje">
   <div class="prose">
     <p>
       Para preservar la presunción de inocencia, el inventario sigue una convención léxica fija al
@@ -344,35 +417,25 @@ const strings = {
   </div>
   </FichaTocSection>
 
-  <FichaTocSection num="7." title="Cómo proponer una corrección" id="rectificar">
+  <FichaTocSection num="9." title="Correcciones y rectificación" id="correcciones">
   <div class="prose">
     <p>
-      El derecho a rectificación está garantizado. Si detectas un error en una ficha (un nombre mal
-      escrito, una fecha incorrecta, una atribución sin fuente, una persona privada expuesta sin
-      necesidad), tienes dos vías:
+      El derecho a rectificación está garantizado para quien se considere aludido por una
+      afirmación publicada. El procedimiento formal sigue la
+      <abbr title="Ley Orgánica 2/1984, reguladora del derecho de rectificación">LO 2/1984</abbr>
+      (plazos, vías y tipos de respuesta en la página dedicada).
     </p>
-    <ol>
-      <li>
-        <strong>Rectificación formal</strong> bajo la
-        <abbr title="Ley Orgánica 2/1984, reguladora del derecho de rectificación">LO 2/1984</abbr>:
-        envía la solicitud a <a href="mailto:rectificacion@presuntamente.org">rectificacion@presuntamente.org</a>.
-        Procedimiento detallado en <a href="/rectificar">/rectificar</a>.
-      </li>
-      <li>
-        <strong>Aportación editorial</strong> (corrección menor, pista, fuente o sugerencia):
-        envía un correo a <a href="mailto:aportar@presuntamente.org">aportar@presuntamente.org</a>.
-        Detalle en <a href="/aportar">/aportar</a>.
-      </li>
-    </ol>
     <p>
-      Las correcciones se procesan en orden de entrada. Los cambios significativos quedan
-      registrados en el historial público del repositorio y, cuando aplican, en la propia ficha
-      afectada — el historial nunca se borra.
+      <a class="btn btn--primary" href="/rectificar">Solicitar rectificación →</a>
+    </p>
+    <p>
+      Las correcciones incorporadas — por rectificación o por aporte editorial — quedan en el
+      historial público del repositorio; nunca se borra información, se corrige con trazabilidad.
     </p>
   </div>
   </FichaTocSection>
 
-  <FichaTocSection num="8." title="Licencias y código" id="licencias">
+  <FichaTocSection num="10." title="Licencias y código" id="licencias">
   <div class="prose">
     <ul class="meta-list">
       <li>
@@ -401,6 +464,17 @@ const strings = {
 </BaseLayout>
 
 <style>
+  .filosofia {
+    margin: 0 0 var(--space-3);
+    padding-left: 20px;
+    border-left: 4px solid var(--color-accent-secondary);
+  }
+  .filosofia li {
+    margin: 6px 0;
+    line-height: 1.55;
+    font: 400 14px/1.55 var(--font-sans);
+  }
+
   .principios { padding-left: 24px; margin: 0 0 var(--space-4); }
   .principios li { margin: 8px 0; line-height: 1.55; }
 

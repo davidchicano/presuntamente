@@ -16,18 +16,20 @@ const { lang = 'es' } = Astro.props;
 const strings = {
   title: 'Aportar al inventario',
   description:
-    'Cómo aportar fuentes, correcciones fácticas o ideas al inventario presuntamente.org. Cauce editorial distinto del derecho de rectificación: para terceros con conocimiento útil del caso. Por defecto anónimo, plazos 5 / 30 días hábiles.',
+    'Cómo colaborar con presuntamente.org: aportar fuentes, correcciones o ideas. Para periodistas, juristas, funcionarios, desarrolladores o cualquier persona con una pista documental. Cauce distinto de /rectificar. Por defecto anónimo, plazos 5 / 30 días hábiles.',
   eyebrow: 'Aportación editorial',
   sub:
-    'Si tienes mejor acceso a fuentes o mejor conocimiento de un caso que nosotros, puedes ' +
-    'aportar al inventario sin saber git ni exponerte en un issue público. Este cauce es distinto ' +
-    'del de rectificación: no necesitas considerarte aludido, basta con que detectes algo que ' +
-    'falta o que está mal.',
+    'Colaborar con el inventario sin saber git: pista a un auto o sentencia, corrección de un dato, ' +
+    'cobertura que falta o idea sobre el sitio. Da igual si eres periodista, jurista, funcionario, ' +
+    'legislador, desarrollador o alguien con un enlace fiable — lo que importa es la fuente pública ' +
+    'verificable, no tu cargo. Este cauce es distinto del de rectificación: no necesitas considerarte aludido.',
 };
 
 const repoUrl = 'https://github.com/davidchicano/presuntamente';
 const issueSugerirUrl = `${repoUrl}/issues/new?template=sugerencia-fuente.yml`;
+const contributingUrl = `${repoUrl}/blob/main/CONTRIBUTING.md`;
 const rectificarHref = lang === 'ca' ? '/cat/rectificar' : '/rectificar';
+const sobreHref = lang === 'ca' ? '/cat/sobre' : '/sobre';
 ---
 
 <BaseLayout
@@ -54,6 +56,13 @@ const rectificarHref = lang === 'ca' ? '/cat/rectificar' : '/rectificar';
   </section>
 
   <FichaTocSection num="1." title="Qué puedes aportar" id="que">
+  <div class="prose prose--lead">
+    <p>
+      Sin fuente pública verificable no hay afirmación en el inventario. Tu aporte nos ayuda a
+      localizar y citar esa fuente — no sustituye al documento. Los principios editoriales completos
+      están en <a href={`${sobreHref}#principios`}>/sobre</a>.
+    </p>
+  </div>
   <ul class="carriles">
     <li>
       <h3>Pista a fuente o hito que falta</h3>
@@ -250,6 +259,24 @@ const rectificarHref = lang === 'ca' ? '/cat/rectificar' : '/rectificar';
     </p>
   </div>
   </FichaTocSection>
+
+  <FichaTocSection num="7." title="Código abierto" id="codigo">
+  <div class="prose">
+    <p>
+      El sitio y el inventario viven en un repositorio público: código bajo AGPL-3.0, contenido
+      editorial bajo CC BY-SA 4.0. Si quieres proponer cambios técnicos o de datos vía git, la guía
+      está en
+      <a href={contributingUrl} target="_blank" rel="noopener">CONTRIBUTING.md</a>
+      (pull requests a colaboradores externos previstos; mientras tanto las incorporaciones
+      editoriales pasan por el maintainer, también vía esta página).
+    </p>
+    <p>
+      <a class="btn" href={repoUrl} target="_blank" rel="noopener">
+        Ver repositorio en GitHub ↗
+      </a>
+    </p>
+  </div>
+  </FichaTocSection>
   </div>
 
   <Aclaracion nivel="baja">
@@ -344,6 +371,10 @@ const rectificarHref = lang === 'ca' ? '/cat/rectificar' : '/rectificar';
     font-size: 12px;
     margin: 0 0 var(--space-3);
     white-space: pre-wrap;
+  }
+
+  .prose--lead {
+    margin-bottom: var(--space-3);
   }
 
   .prose code {

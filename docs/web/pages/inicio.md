@@ -25,7 +25,7 @@ Ranking del bloque «Casos destacados»: actividad reciente (último hito) ↓ +
 ### v1.x
 
 - Tercer destacado opcional cuando haya 8+ casos publicables.
-- A/B copy del kicker ("sin ruido, sin ideología, sin financiación") — riesgo de leerse como auto-publicidad.
+- ~~A/B copy del kicker~~ — **Cerrado 2026-05-27:** kicker `sin ruido, sin ideología, con fuente` (sustituye «sin financiación», que sonaba a auto-publicidad en la primera lectura; el modelo de sostenimiento queda para `/sobre`).
 - Sello aside del hero: dejar fija la fecha de última actualización del inventario y/o nº de casos beta_publica vs publicado.
 
 ### Sin compromiso
@@ -41,10 +41,11 @@ Ranking del bloque «Casos destacados»: actividad reciente (último hito) ↓ +
 - **No mostrar conteo de hitos** en el preview: es un dato seco que no marketing nada. Cambio 2026-05-26 (tarde).
 - **"Caso destacado" → "Casos destacados".** Plural y ≥2 elimina la sensación de monocaso. Cambio 2026-05-26 (tarde).
 - **El preview muestra organización afectada con RolBadge**, no string libre. Coherencia visual con el listado y la ficha de caso.
+- **Kicker del hero (2026-05-27):** tercer eje `con fuente` en lugar de `sin financiación` — la landing promete trazabilidad editorial, no el modelo de sostenimiento (eso va en `/sobre`).
 
 ## Pendientes operativos
 
 - [x] Mostrar al menos 2 casos en el bloque destacado. **Entregado 2026-05-26 (tarde).**
 - [x] Enriquecer preview con datos relevantes (estado, org afectada, partidos, último hito truncado). **Entregado 2026-05-26 (tarde).**
-- [ ] Pulir copy del hero y tres reglas. Bloque C de revisión editorial humana.
+- [ ] Pulir copy del hero y tres reglas. Bloque C de revisión editorial humana. Filosofía y mantenimiento del hilo de lanzamiento viven en [`/sobre`](sobre.md) (2026-05-27).
 - [ ] Decidir si la landing debe enlazar a `/sobre/clasificacion-medios` (futuro) o a `/sobre` global cuando exista metodología pública de medios.

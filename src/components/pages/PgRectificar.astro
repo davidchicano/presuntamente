@@ -23,7 +23,6 @@ const strings = {
 
 const repoUrl = 'https://github.com/davidchicano/presuntamente';
 const issueRectificarUrl = `${repoUrl}/issues/new?template=rectificacion.yml`;
-const issueSugerirUrl = `${repoUrl}/issues/new?template=sugerencia-fuente.yml`;
 ---
 
 <BaseLayout
@@ -170,16 +169,15 @@ const issueSugerirUrl = `${repoUrl}/issues/new?template=sugerencia-fuente.yml`;
   </ul>
   </FichaTocSection>
 
-  <FichaTocSection num="5." title="Otras vías de mejora del inventario" id="otras">
+  <FichaTocSection num="5." title="Otra puerta: aportación editorial" id="aportar">
   <div class="prose">
     <p>
-      Si no quieres rectificar nada pero detectas una <strong>fuente que falta</strong> (sentencia
-      publicada, informe institucional reciente, escrito de fiscalía no incluido), abre un issue de
-      sugerencia con el template específico:
+      Si <strong>no te consideras aludido</strong> pero detectas una fuente que falta, una errata o
+      una idea sobre el sitio, el cauce es la aportación editorial — no la rectificación LO 2/1984:
     </p>
     <p>
-      <a class="btn" href={issueSugerirUrl} target="_blank" rel="noopener">
-        Sugerir una nueva fuente ↗
+      <a class="btn" href={lang === 'ca' ? '/cat/aportar' : '/aportar'}>
+        Ir a /aportar →
       </a>
     </p>
   </div>
