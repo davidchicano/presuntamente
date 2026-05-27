@@ -55,6 +55,25 @@ function rolMasReciente(rs: RolView[]): string | null {
   return [...pool].sort((a, b) => b.fecha_inicio.localeCompare(a.fecha_inicio))[0].rol;
 }
 const rolReciente = rolMasReciente(roles);
+
+// Roles ordenados para mostrar en la card: vigentes primero (por
+// fecha_inicio descendente), cerrados después (por fecha_fin descendente).
+// El primero de la lista es el "más reciente", coincide con el que pinta
+// el border-left de la card. Visualmente los no-primeros se atenúan para
+// que se lean como "anteriores" sin perder la información (decisión
+// 2026-05-27: el lector veía un orden cronológico ASC que no destacaba el
+// estado actual).
+const rolesOrdenados = [...roles].sort((a, b) => {
+  const aVig = a.fecha_fin ? 0 : 1;
+  const bVig = b.fecha_fin ? 0 : 1;
+  if (aVig !== bVig) return bVig - aVig;
+  if (!a.fecha_fin && !b.fecha_fin) {
+    return b.fecha_inicio.localeCompare(a.fecha_inicio);
+  }
+  const aRef = a.fecha_fin ?? a.fecha_inicio;
+  const bRef = b.fecha_fin ?? b.fecha_inicio;
+  return bRef.localeCompare(aRef);
+});
 ---
 <article class:list={['pcard', rolReciente && `pcard--rol-${rolReciente}`]}>
   <div class="pcard__init" aria-hidden="true">{iniciales}</div>
@@ -68,8 +87,8 @@ const rolReciente = rolMasReciente(roles);
       <span>{esFiguraPublica ? 'Figura pública' : 'Privado'}</span>
     </p>
     <ul class="pcard__roles">
-      {roles.map((r) => (
-        <li class="pcard__role">
+      {rolesOrdenados.map((r) => (
+        <li class:list={['pcard__role', r.fecha_fin && 'pcard__role--anterior']}>
           <RolBadge rol={r.rol} label={r.rolLabel} />
           <span class="pcard__role-dates">
             {r.fecha_inicio}
@@ -181,6 +200,17 @@ const rolReciente = rolMasReciente(roles);
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
+  }
+  /* Los roles cerrados (fecha_fin presente) se ven debajo del rol vigente
+     más reciente y bajan ligeramente de jerarquía visual: badge atenuado
+     + fecha en cursiva. Pintamos así para que el "estado actual" de la
+     persona sea lo primero que se lea en la card, y el histórico quede
+     accesible pero secundario. */
+  .pcard__role--anterior {
+    opacity: 0.65;
+  }
+  .pcard__role--anterior .pcard__role-dates {
+    font-style: italic;
   }
   .pcard__role-dates {
     font-family: var(--font-mono);

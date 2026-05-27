@@ -1,0 +1,175 @@
+---
+// CatalogoLeyenda — bloque colapsable común a los catálogos (/casos,
+// /personas, /organizaciones, /delitos). Basado en <details>/<summary>
+// nativo: cero JS, accesible por teclado y por defecto cerrado.
+//
+// Cada catálogo pinta su contenido editorial dentro del slot por defecto.
+// Las clases CSS están pensadas para alinearse con el aviso editorial
+// post-tabla de PgDelitos (.legal-note) sin colisionar: la leyenda vive
+// arriba y describe columnas/filtros; el aviso legal sigue donde ya está.
+//
+// Convención:
+//   - `titulo`  — texto del summary, en cabecera siempre visible.
+//   - `resumen` — segunda línea opcional siempre visible (recordatorio
+//                 corto que tiene sentido leer aunque el bloque esté
+//                 colapsado).
+//   - `abierta` — si se quiere renderizar abierta por defecto. Reservado
+//                 para casos donde el contenido sea crítico desde el
+//                 primer vistazo (por defecto: false).
+
+interface Props {
+  titulo: string;
+  resumen?: string;
+  abierta?: boolean;
+  ariaLabel?: string;
+}
+
+const { titulo, resumen, abierta = false, ariaLabel } = Astro.props;
+---
+
+<details class="cat-legend" open={abierta} aria-label={ariaLabel}>
+  <summary class="cat-legend__summary">
+    <span class="cat-legend__head">
+      <span class="cat-legend__title">{titulo}</span>
+      {resumen && <span class="cat-legend__resumen">{resumen}</span>}
+    </span>
+    <span class="cat-legend__hint" aria-hidden="true">
+      <span class="cat-legend__hint-open">Mostrar</span>
+      <span class="cat-legend__hint-close">Ocultar</span>
+      <svg class="cat-legend__chevron" viewBox="0 0 24 24" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9" />
+      </svg>
+    </span>
+  </summary>
+  <div class="cat-legend__body">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .cat-legend {
+    margin: 0 0 var(--space-4);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent-secondary);
+    background: var(--color-surface);
+  }
+  .cat-legend__summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    user-select: none;
+  }
+  .cat-legend__summary::-webkit-details-marker { display: none; }
+  .cat-legend__summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+  .cat-legend__summary:hover {
+    background: var(--color-surface-muted, var(--color-surface));
+  }
+  .cat-legend__head {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .cat-legend__title {
+    font: 600 0.85rem/1.3 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .cat-legend__resumen {
+    font: 400 0.78rem/1.4 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .cat-legend__hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    font: 500 0.7rem/1 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+  .cat-legend__hint-close { display: none; }
+  .cat-legend[open] .cat-legend__hint-open { display: none; }
+  .cat-legend[open] .cat-legend__hint-close { display: inline; }
+  .cat-legend__chevron {
+    width: 12px;
+    height: 12px;
+    stroke: var(--color-fg-muted);
+    fill: none;
+    stroke-width: 1.8;
+    transition: transform 140ms ease-out;
+  }
+  .cat-legend[open] .cat-legend__chevron {
+    transform: rotate(180deg);
+  }
+  .cat-legend__body {
+    padding: 0 var(--space-4) var(--space-3);
+    border-top: 1px dashed var(--color-border);
+    padding-top: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  /* Patrones de contenido que los catálogos suelen reutilizar dentro del
+     body. Se exponen como :global para que el slot los pueda usar sin
+     reimplementar estilos. */
+  :global(.cat-legend__section) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  :global(.cat-legend__section + .cat-legend__section) {
+    margin-top: 4px;
+  }
+  :global(.cat-legend__section-title) {
+    margin: 0;
+    font: 600 0.78rem/1.3 var(--font-sans);
+    color: var(--color-fg);
+  }
+  :global(.cat-legend__intro) {
+    margin: 0;
+    font: 400 0.78rem/1.45 var(--font-sans);
+    color: var(--color-fg-muted);
+    max-width: none;
+  }
+  :global(.cat-legend__list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 6px 20px;
+  }
+  :global(.cat-legend__item) {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 8px 10px;
+    align-items: center;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+  :global(.cat-legend__desc) {
+    color: var(--color-fg-muted);
+  }
+  :global(.cat-legend__inline) {
+    margin: 0;
+    font: 400 0.78rem/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  :global(.cat-legend__inline strong) {
+    color: var(--color-fg);
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cat-legend__chevron { transition: none; }
+  }
+</style>

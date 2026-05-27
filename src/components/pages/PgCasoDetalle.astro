@@ -20,6 +20,11 @@ import RichProse from '@/components/RichProse.astro';
 import EstadoFichaBadge from '@/components/EstadoFichaBadge.astro';
 import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
 import GraphConexionesLink from '@/components/GraphConexionesLink.astro';
+import ChipFilterGroup from '@/components/ChipFilterGroup.astro';
+import Chip from '@/components/Chip.astro';
+import RolBadge from '@/components/RolBadge.astro';
+import EpistemicBadge from '@/components/EpistemicBadge.astro';
+import CategoryBadge from '@/components/CategoryBadge.astro';
 
 // Mismo enum que en EstadoPublicacionBadge — Astro no exporta tipos entre
 // componentes .astro de forma estable, así que re-declaro aquí.
@@ -197,6 +202,10 @@ const juezInstructorPersona = juezInstructor?.data.sujeto_persona_id
 interface PersonaView {
   persona: ReturnType<typeof personaIndex.get>;
   roles: { rol: string; rolLabel: string; fecha_inicio: string; fecha_fin?: string; delitos: string[]; notas?: string }[];
+  // Rol que rige el lado visual de la card: el rol activo de mayor peso
+  // procesal, o si todos están cerrados, el último cronológico. Se usa
+  // como clave para el filtro por rol individual de la sección §3.
+  rolPrincipal?: string;
 }
 
 const personasMap = new Map<string, PersonaView>();
@@ -229,6 +238,7 @@ for (const pv of personasMap.values()) {
   // están cerrados, vamos al grupo del rol más reciente.
   const activos = pv.roles.filter((r) => !r.fecha_fin);
   const referencia = activos.length > 0 ? activos[0] : pv.roles[pv.roles.length - 1];
+  pv.rolPrincipal = referencia.rol;
   const grupo = rolGrupo(referencia.rol);
   personasPorGrupo[grupo].push(pv);
 }
@@ -565,6 +575,74 @@ const hechosPorGrupo = HECHOS_ORDEN.map((g) => ({
   ...g,
   items: hechosViews.filter((h) => g.tipos.includes(h.tipo)),
 }));
+
+// --- Pills de filtrado por sección -----------------------------------------
+//
+// Para cada sección filtrable de la ficha calculamos las opciones de pill
+// realmente presentes en el caso (no engordar la fila con buckets/tipos
+// que el caso no usa). El orden es canónico, no alfabético: en personas
+// sigue la pirámide procesal (imputación activa → funcional); en hitos
+// sigue el orden editorial (jurisdiccional → político → mediático); en
+// hechos sigue la escala epistémica (acreditado → no concluyente).
+
+// §3 Personas — un pill por rol individual realmente presente en el caso.
+// Cada pill envuelve un RolBadge real del rol (mismo badge que aparece en
+// las cards de las personas). Decisión 2026-05-27 (segunda iteración): los
+// buckets agrupaban roles distintos en un solo badge representativo
+// (p. ej. "Absuelto" / "Desimputado" bajo "Absuelto / desimputado"), lo
+// cual ocultaba el badge real de cada rol. Mejor enseñar el badge tal
+// cual y permitir filtrar por cada rol concreto presente.
+//
+// Orden canónico de roles, alineado con `grupoOrden` (pirámide procesal),
+// aplanado: primero imputación activa, después condenados, después
+// exculpados, partes civiles/popular/testigos y por último aparato
+// judicial.
+const ROL_ORDEN_CANONICO: string[] = [
+  'investigado', 'procesado', 'acusado',
+  'condenado_no_firme', 'condenado_firme',
+  'absuelto', 'desimputado',
+  'denunciante', 'querellante', 'acusacion_particular', 'acusacion_popular',
+  'perjudicado', 'testigo',
+  'juez_instructor', 'juez_ponente',
+  'fiscal',
+  'abogado_defensa', 'abogado_acusacion',
+  'perito_judicial', 'perito_parte',
+  'secretario_judicial',
+];
+// Unión de TODOS los roles que aparecen en cualquier persona del caso, no
+// sólo el "rol principal" de referencia. Decisión 2026-05-27 (tercera
+// iteración): el lector veía la card con los dos roles (p.ej. investigado
+// + procesado) pero la fila de pills sólo mostraba el principal, lo que
+// generaba mismatch. Ahora un pill aparece si CUALQUIER persona del caso
+// tiene ese rol entre los suyos, y filtrar por él muestra a todas las
+// personas que lo lleven. El `data-roles` de cada card es CSV con todos
+// los roles de la persona; el script aplica match por contención.
+const personasRolesPresentes = new Set<string>();
+for (const pv of personasMap.values()) {
+  for (const r of pv.roles) personasRolesPresentes.add(r.rol);
+}
+const personasPills = ROL_ORDEN_CANONICO.filter((r) => personasRolesPresentes.has(r));
+
+// §5 Cronología — 3 familias (devueltas por tipoHitoFamilia).
+const HITOS_PILL_DEF: { value: 'jurisdiccional' | 'politico' | 'mediatico'; label: string }[] = [
+  { value: 'jurisdiccional', label: 'Jurisdiccional' },
+  { value: 'politico',       label: 'Político' },
+  { value: 'mediatico',      label: 'Mediático' },
+];
+const hitoFamiliasPresentes = new Set(cronologia.map((h) => h.tipoFamilia));
+const hitosPills = HITOS_PILL_DEF.filter((p) => hitoFamiliasPresentes.has(p.value));
+
+// §6 Hechos — 6 tipos epistémicos posibles.
+const HECHOS_PILL_DEF: { value: HechoView['tipo']; label: string }[] = [
+  { value: 'acreditado',     label: 'Acreditado' },
+  { value: 'investigado',    label: 'Investigado' },
+  { value: 'atribuido',      label: 'Atribuido' },
+  { value: 'exculpatorio',   label: 'Exculpatorio' },
+  { value: 'desmentido',     label: 'Desmentido' },
+  { value: 'no_concluyente', label: 'No concluyente' },
+];
+const hechoTiposPresentes = new Set(hechosViews.map((h) => h.tipo));
+const hechosPills = HECHOS_PILL_DEF.filter((p) => hechoTiposPresentes.has(p.value));
 
 // --- 2.8 Biblioteca ---------------------------------------------------------
 
@@ -1038,11 +1116,26 @@ const graphHref = `/grafo?focus=caso&id=${data.id}&depth=2&layout=cose`;
     id="personas"
     right={`${personasMap.size} persona${personasMap.size === 1 ? '' : 's'}`}
   >
+  {personasPills.length > 1 && (
+    <Fragment slot="filters">
+      <ChipFilterGroup
+        name="personas-rol"
+        label="Filtrar por"
+        ariaLabel="Filtrar personas por rol procesal"
+      >
+        {personasPills.map((rol) => (
+          <Chip value={rol} title={rolLabel(rol, lang)}>
+            <RolBadge rol={rol} />
+          </Chip>
+        ))}
+      </ChipFilterGroup>
+    </Fragment>
+  )}
   {grupoOrden.map((g) => {
     const items = personasPorGrupo[g.key];
     if (items.length === 0) return null;
     return (
-      <div class="grupo">
+      <div class="grupo" data-personas-grupo>
         <h3 class="grupo__title">
           {g.partes.map((p) =>
             p.rolKey ? (
@@ -1055,16 +1148,18 @@ const graphHref = `/grafo?focus=caso&id=${data.id}&depth=2&layout=cose`;
         {g.intro && <p class="grupo__intro">{g.intro}</p>}
         <div class="grupo__cards">
           {items.map((pv) => (
-            <PersonaCard
-              nombre={pv.persona!.nombre_completo}
-              cargo={pv.persona!.cargo_publico_actual}
-              esFiguraPublica={pv.persona!.es_figura_publica}
-              iniciales={iniciales(pv.persona!.nombre_completo)}
-              href={lang === 'ca' ? `/cat/personas/${pv.persona!.id}` : `/personas/${pv.persona!.id}`}
-              roles={pv.roles}
-              relaciones={relacionesPorPersona.get(pv.persona!.id) ?? []}
-              notas={pv.roles[0]?.notas}
-            />
+            <div class="row-pass" data-persona-row data-roles={pv.roles.map((r) => r.rol).join(',')}>
+              <PersonaCard
+                nombre={pv.persona!.nombre_completo}
+                cargo={pv.persona!.cargo_publico_actual}
+                esFiguraPublica={pv.persona!.es_figura_publica}
+                iniciales={iniciales(pv.persona!.nombre_completo)}
+                href={lang === 'ca' ? `/cat/personas/${pv.persona!.id}` : `/personas/${pv.persona!.id}`}
+                roles={pv.roles}
+                relaciones={relacionesPorPersona.get(pv.persona!.id) ?? []}
+                notas={pv.roles[0]?.notas}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -1105,26 +1200,43 @@ const graphHref = `/grafo?focus=caso&id=${data.id}&depth=2&layout=cose`;
     right={`${cronologia.length} hito${cronologia.length === 1 ? '' : 's'}`}
     orderToggle={cronologia.length > 1}
   >
+  {hitosPills.length > 1 && (
+    <Fragment slot="filters">
+      <ChipFilterGroup
+        name="hitos-familia"
+        label="Filtrar por"
+        ariaLabel="Filtrar hitos por familia (jurisdiccional, político, mediático)"
+      >
+        {hitosPills.map((p) => (
+          <Chip value={p.value} title={p.label}>
+            <CategoryBadge kind="hito" tipo={p.value} label={p.label} />
+          </Chip>
+        ))}
+      </ChipFilterGroup>
+    </Fragment>
+  )}
   {cronologia.length === 0 ? (
     <p class="muted">Sin hitos registrados todavía.</p>
   ) : (
     <div class="timeline">
       {cronologia.map((h) => (
-        <Hito
-          id={h.id}
-          fecha={h.fecha}
-          precision={h.precision}
-          tipo={h.tipo}
-          tipoLabel={h.tipoLabel}
-          tipoFamilia={h.tipoFamilia}
-          titulo={h.titulo}
-          descripcion={h.descripcion}
-          documentoTitulo={h.doc?.titulo}
-          documentoHref={h.doc ? docHrefForCaso(h.doc.id) : undefined}
-          documentoNivel={h.doc?.nivel_fuente as 1 | 2 | 3 | 4 | undefined}
-          excludePersonaIds={[data.id]}
-          excludeOrgIds={[data.id]}
-        />
+        <div class="row-pass" data-hito-row data-tipo-familia={h.tipoFamilia}>
+          <Hito
+            id={h.id}
+            fecha={h.fecha}
+            precision={h.precision}
+            tipo={h.tipo}
+            tipoLabel={h.tipoLabel}
+            tipoFamilia={h.tipoFamilia}
+            titulo={h.titulo}
+            descripcion={h.descripcion}
+            documentoTitulo={h.doc?.titulo}
+            documentoHref={h.doc ? docHrefForCaso(h.doc.id) : undefined}
+            documentoNivel={h.doc?.nivel_fuente as 1 | 2 | 3 | 4 | undefined}
+            excludePersonaIds={[data.id]}
+            excludeOrgIds={[data.id]}
+          />
+        </div>
       ))}
     </div>
   )}
@@ -1137,22 +1249,39 @@ const graphHref = `/grafo?focus=caso&id=${data.id}&depth=2&layout=cose`;
     id="hechos"
     right={`${hechos.length} hecho${hechos.length === 1 ? '' : 's'}`}
   >
+  {hechosPills.length > 1 && (
+    <Fragment slot="filters">
+      <ChipFilterGroup
+        name="hechos-epi"
+        label="Filtrar por"
+        ariaLabel="Filtrar hechos por estado epistémico"
+      >
+        {hechosPills.map((p) => (
+          <Chip value={p.value} title={p.label}>
+            <EpistemicBadge tipo={p.value} />
+          </Chip>
+        ))}
+      </ChipFilterGroup>
+    </Fragment>
+  )}
   {hechosPorGrupo.map((g) => {
     if (g.items.length === 0) return null;
     return (
-      <div class="grupo">
+      <div class="grupo" data-hechos-grupo>
         <h3 class="grupo__title"><span class="grupo__num">{g.num}</span>{g.titulo}</h3>
         {g.aviso && <p class="aviso aviso--mostaza">{g.aviso}</p>}
         <div class="grupo__cards">
           {g.items.map((h) => (
-            <Hecho
-              tipo={h.tipo}
-              enunciado={h.enunciado}
-              fechaTexto={h.fechaTexto}
-              fuentes={h.fuentes}
-              excludePersonaIds={[data.id]}
-              excludeOrgIds={[data.id]}
-            />
+            <div class="row-pass" data-hecho-row data-tipo-epi={h.tipo}>
+              <Hecho
+                tipo={h.tipo}
+                enunciado={h.enunciado}
+                fechaTexto={h.fechaTexto}
+                fuentes={h.fuentes}
+                excludePersonaIds={[data.id]}
+                excludeOrgIds={[data.id]}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -1972,4 +2101,67 @@ const graphHref = `/grafo?focus=caso&id=${data.id}&depth=2&layout=cose`;
       font-size: 22px;
     }
   }
+
+  /* Wrapper passthrough para filas filtrables de la ficha (hitos y hechos).
+     `display: contents` hace que el wrapper no genere caja propia, así que
+     el <Hito>/<Hecho> hereda el contexto de su padre (`.timeline` flex,
+     `.grupo__cards` grid). Cuando el JS de filtrado pone `hidden`, la
+     regla más específica `[hidden].row-pass` lo oculta de verdad — sin la
+     segunda regla, `display: contents` ganaría a `[hidden]` por
+     especificidad del style declarado en la clase. */
+  .row-pass { display: contents; }
+  [hidden].row-pass { display: none; }
 </style>
+
+<script is:inline>
+  (() => {
+    // Filtrado de §3 Personas (por rol procesal), §5 Cronología (por
+    // familia de hito) y §6 Hechos (por estado epistémico). Cada
+    // ChipFilterGroup expone un <input type="hidden" name="..."> que
+    // emite 'change' al cambiar. Aquí leemos esos hidden y aplicamos
+    // visibilidad a las filas correspondientes con semántica OR. Si no
+    // hay nada seleccionado, todo visible (estado "todo activo").
+    //
+    // El atributo de cada fila se trata SIEMPRE como CSV: para hitos y
+    // hechos lleva un único valor ("jurisdiccional", "acreditado"…) y
+    // funciona como matching simple; para personas lleva varios
+    // ("investigado,procesado") y funciona como matching por contención.
+    function attach(name, rowSelector, dataAttr, groupSelector) {
+      const input = document.querySelector(`input[name="${name}"]`);
+      if (!input) return;
+      const rows = document.querySelectorAll(rowSelector);
+      const groups = groupSelector ? document.querySelectorAll(groupSelector) : null;
+      if (rows.length === 0) return;
+
+      function apply() {
+        const sel = (input.value || '').split(',').filter(Boolean);
+        rows.forEach((row) => {
+          const itemKeys = (row.dataset[dataAttr] || '').split(',').filter(Boolean);
+          row.hidden = sel.length > 0 && !sel.some((s) => itemKeys.includes(s));
+        });
+        // Si hay grupos, ocultar los que se queden sin hijos visibles.
+        if (groups) {
+          groups.forEach((g) => {
+            const anyVisible = Array.from(g.querySelectorAll(rowSelector))
+              .some((r) => !r.hidden);
+            g.hidden = !anyVisible;
+          });
+        }
+      }
+      input.addEventListener('change', apply);
+      apply();
+    }
+
+    function init() {
+      attach('personas-rol',  '[data-persona-row]', 'roles',       '[data-personas-grupo]');
+      attach('hitos-familia', '[data-hito-row]',    'tipoFamilia', null);
+      attach('hechos-epi',    '[data-hecho-row]',   'tipoEpi',     '[data-hechos-grupo]');
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>

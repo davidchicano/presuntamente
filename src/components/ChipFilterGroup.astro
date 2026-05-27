@@ -1,0 +1,205 @@
+---
+// ChipFilterGroup — fila de pills clicables con multi-selección, inspirada
+// en el lenguaje de badges del proyecto.
+//
+// API:
+//   <ChipFilterGroup name="hechos-epi" ariaLabel="Filtrar hechos…">
+//     <Chip value="acreditado"><EpistemicBadge tipo="acreditado" /></Chip>
+//     <Chip value="investigado"><EpistemicBadge tipo="investigado" /></Chip>
+//     …
+//   </ChipFilterGroup>
+//
+// Cada hijo es un <Chip> con su `value` y el badge real dentro. La
+// renderización de los buttons la hace `Chip.astro`; este componente sólo
+// orquesta el fieldset, el `<input type="hidden">` agregado, el botón
+// "Mostrar todo" y el script de toggling.
+//
+// Convención de UX:
+//   - Sin nada seleccionado → todos los chips a opacidad completa
+//     (estado "todo visible").
+//   - Click sobre chip → toggle de aria-pressed. Selección múltiple OR.
+//   - Cuando hay al menos un chip activo, los no-activos se atenúan
+//     (opacity 0.45 + grayscale 0.5) y aparece a la derecha un mini-link
+//     "Mostrar todo" que desactiva todos.
+//
+// Contrato hacia el resto del formulario: el componente expone un
+// `<input type="hidden" name="…" value="v1,v2">` y dispara 'change'
+// (bubbles) cada vez que cambia. El consumidor escucha al hidden y
+// aplica la visibilidad sobre las filas correspondientes (mismo patrón
+// que CustomSelect y MultiSelectFilter).
+
+interface Props {
+  name: string;
+  ariaLabel?: string;
+  clearLabel?: string;
+  label?: string;
+}
+
+const {
+  name,
+  ariaLabel,
+  clearLabel = 'Mostrar todo',
+  label,
+} = Astro.props;
+---
+
+<fieldset
+  class="chipfg"
+  role="group"
+  aria-label={ariaLabel}
+  data-chipfg
+  data-chipfg-name={name}
+>
+  <input type="hidden" name={name} value="" data-chipfg-value />
+  {label && <span class="chipfg__label" aria-hidden="true">{label}</span>}
+  <slot />
+  <button
+    type="button"
+    class="chipfg__clear"
+    data-chipfg-clear
+    hidden
+  >
+    {clearLabel}
+  </button>
+</fieldset>
+
+<script is:inline>
+  (() => {
+    // Mismo patrón que CustomSelect/MultiSelectFilter: el script se
+    // renderiza pegado a cada instancia, así que esperamos a
+    // DOMContentLoaded para que un único pase recoja todas las
+    // instancias del documento.
+    if (window.__chipfgInited) return;
+    window.__chipfgInited = true;
+
+    function getSelected(root) {
+      return Array.from(root.querySelectorAll('[data-chipfg-opt]'))
+        .filter((b) => b.getAttribute('aria-pressed') === 'true')
+        .map((b) => b.dataset.value);
+    }
+
+    function commit(root) {
+      const selected = getSelected(root);
+      const hidden = root.querySelector('[data-chipfg-value]');
+      const clear = root.querySelector('[data-chipfg-clear]');
+      if (hidden) {
+        hidden.value = selected.join(',');
+        hidden.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      if (clear) clear.hidden = selected.length === 0;
+      root.classList.toggle('chipfg--has', selected.length > 0);
+    }
+
+    function init() {
+      document.querySelectorAll('[data-chipfg]').forEach((root) => {
+        root.querySelectorAll('[data-chipfg-opt]').forEach((opt) => {
+          opt.addEventListener('click', (e) => {
+            e.preventDefault();
+            const now = opt.getAttribute('aria-pressed') === 'true';
+            opt.setAttribute('aria-pressed', now ? 'false' : 'true');
+            commit(root);
+          });
+          opt.addEventListener('keydown', (e) => {
+            // Espacio/Enter ya disparan click por defecto en <button>,
+            // pero capturamos para evitar scroll con Space.
+            if (e.key === ' ' || e.key === 'Enter') {
+              e.preventDefault();
+              opt.click();
+            }
+          });
+        });
+
+        const clear = root.querySelector('[data-chipfg-clear]');
+        clear?.addEventListener('click', (e) => {
+          e.preventDefault();
+          root.querySelectorAll('[data-chipfg-opt]').forEach((opt) => {
+            opt.setAttribute('aria-pressed', 'false');
+          });
+          commit(root);
+        });
+
+        // form.reset(): si el ChipFilterGroup vive dentro de un <form>
+        // (no es lo habitual en la ficha de caso, pero sí para futuros
+        // usos), tras un reset hay que desactivar todos los chips.
+        const form = root.closest('form');
+        form?.addEventListener('reset', () => {
+          setTimeout(() => {
+            root.querySelectorAll('[data-chipfg-opt]').forEach((opt) => {
+              opt.setAttribute('aria-pressed', 'false');
+            });
+            commit(root);
+          }, 0);
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>
+
+<style>
+  .chipfg {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  /* Prefix tipo "Filtrar por:" para que la fila se entienda como filtro
+     y no como simple decoración de badges. El aria-label del fieldset
+     ya cumple la función accesible; el span queda aria-hidden para
+     evitar duplicar lectura en screen readers. */
+  .chipfg__label {
+    font: 500 11px/1.2 var(--font-sans);
+    color: var(--color-fg-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-right: 2px;
+    white-space: nowrap;
+  }
+
+  /* Las reglas de los chips internos viven en Chip.astro como estilos
+     globales (`:global(.chipfg__opt)`) para que un único punto controle
+     el aspecto del button-wrapper. Aquí sólo controlamos el estado del
+     contenedor: cuando .chipfg--has está activa (hay al menos un chip
+     pulsado), los chips no-pulsados se atenúan. */
+  .chipfg--has :global(.chipfg__opt[aria-pressed="false"]) {
+    opacity: 0.45;
+    filter: grayscale(0.5);
+  }
+  .chipfg--has :global(.chipfg__opt[aria-pressed="false"]:hover) {
+    opacity: 0.75;
+    filter: grayscale(0.2);
+  }
+
+  .chipfg__clear {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    padding: 4px 6px;
+    margin-left: 4px;
+    font: 500 12px/1.2 var(--font-sans);
+    color: var(--color-fg-muted);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--color-border-strong);
+  }
+  .chipfg__clear:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+  .chipfg__clear:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    color: var(--color-accent);
+  }
+</style>

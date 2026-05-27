@@ -1,0 +1,579 @@
+---
+// MultiSelectFilter — combobox multi-selección inspirado en el patrón
+// MultiSelect/Combobox de shadcn-ui, adaptado a la estética administrativa
+// del proyecto (rectangular, sin radius, borde fino, sin frameworks).
+//
+// Renderiza:
+//   - Trigger: botón con label "X seleccionadas" o placeholder, chevron.
+//   - Chips bajo el trigger con las opciones marcadas (clic en la chip
+//     deselecciona esa opción).
+//   - Popover absoluto: input de búsqueda + lista de checkboxes + botón
+//     "Limpiar selección".
+//
+// Estado:
+//   - Cada opción marcada es un <input type="checkbox">.
+//   - El "valor agregado" del filtro se serializa en un <input type="hidden"
+//     name="..." value="org1,org2"> que vive dentro del componente. El
+//     script del catálogo que escucha al form sólo necesita leer ese hidden.
+//
+// Convención de filtrado:
+//   - Semántica OR: una fila pasa el filtro si **alguna** de sus etiquetas
+//     coincide con **alguna** de las opciones seleccionadas.
+//   - Si no hay nada seleccionado, el filtro no descarta nada.
+//
+// El componente dispara 'change' (bubbles) sobre el hidden cada vez que el
+// usuario marca/desmarca/quita una chip/pulsa "Limpiar". El form padre lo
+// recibe igual que el de CustomSelect.
+
+interface Option {
+  value: string;
+  label: string;
+  sublabel?: string;
+}
+
+interface Props {
+  id: string;
+  name: string;
+  options: Option[];
+  placeholder?: string;
+  ariaLabel?: string;
+  searchPlaceholder?: string;
+  clearLabel?: string;
+  emptyLabel?: string;
+}
+
+const {
+  id,
+  name,
+  options,
+  placeholder = 'Todas',
+  ariaLabel,
+  searchPlaceholder = 'Buscar opciones…',
+  clearLabel = 'Limpiar selección',
+  emptyLabel = 'Sin resultados',
+} = Astro.props;
+---
+
+<div class="msf" data-msf data-msf-name={name}>
+  <input type="hidden" name={name} value="" data-msf-value />
+  <button
+    type="button"
+    class="msf__trigger"
+    id={id}
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-label={ariaLabel}
+    data-msf-trigger
+    data-msf-placeholder={placeholder}
+  >
+    <span class="msf__trigger-text" data-msf-trigger-text>{placeholder}</span>
+    <svg class="msf__caret" viewBox="0 0 24 24" aria-hidden="true">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  </button>
+
+  <ul class="msf__chips" data-msf-chips aria-live="polite"></ul>
+
+  <div class="msf__popover" data-msf-popover hidden>
+    <div class="msf__searchwrap">
+      <input
+        type="search"
+        class="msf__search"
+        data-msf-search
+        placeholder={searchPlaceholder}
+        autocomplete="off"
+        aria-label={searchPlaceholder}
+      />
+    </div>
+    <ul class="msf__list" role="listbox" aria-multiselectable="true" data-msf-list>
+      {options.map((o) => (
+        <li class="msf__listitem">
+          <label
+            class="msf__opt"
+            data-msf-opt
+            data-value={o.value}
+            data-search={(o.label + ' ' + (o.sublabel ?? '')).toLowerCase()}
+          >
+            <input
+              type="checkbox"
+              class="msf__checkbox"
+              data-msf-checkbox
+              value={o.value}
+            />
+            <span class="msf__opt-text">
+              <span class="msf__opt-label">{o.label}</span>
+              {o.sublabel && <span class="msf__opt-sublabel">{o.sublabel}</span>}
+            </span>
+          </label>
+        </li>
+      ))}
+    </ul>
+    <p class="msf__empty" data-msf-empty hidden>{emptyLabel}</p>
+    <div class="msf__footer">
+      <button type="button" class="msf__clear" data-msf-clear>{clearLabel}</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    // Mismo patrón que CustomSelect: `<script is:inline>` se renderiza
+    // pegado a cada instancia, por lo que el primer script ejecuta su
+    // querySelectorAll sólo viendo los componentes ya renderizados antes
+    // de él. Esperamos a DOMContentLoaded para que un único pase recoja
+    // todas las instancias del documento.
+    if (window.__msfInited) return;
+    window.__msfInited = true;
+
+    function getSelected(root) {
+      return Array.from(root.querySelectorAll('[data-msf-checkbox]'))
+        .filter((c) => c.checked)
+        .map((c) => c.value);
+    }
+
+    function labelOf(root, value) {
+      const opt = root.querySelector(
+        `[data-msf-opt][data-value="${CSS.escape(value)}"]`,
+      );
+      return opt?.querySelector('.msf__opt-label')?.textContent?.trim() ?? value;
+    }
+
+    function setTriggerLabel(root, selected) {
+      const text = root.querySelector('[data-msf-trigger-text]');
+      const trigger = root.querySelector('[data-msf-trigger]');
+      const placeholder = trigger?.dataset.msfPlaceholder ?? 'Todas';
+      if (!text) return;
+      if (selected.length === 0) {
+        text.textContent = placeholder;
+        text.classList.remove('msf__trigger-text--has');
+      } else if (selected.length === 1) {
+        text.textContent = labelOf(root, selected[0]);
+        text.classList.add('msf__trigger-text--has');
+      } else {
+        text.textContent = `${selected.length} seleccionadas`;
+        text.classList.add('msf__trigger-text--has');
+      }
+    }
+
+    function renderChips(root, selected) {
+      const wrap = root.querySelector('[data-msf-chips]');
+      if (!wrap) return;
+      wrap.innerHTML = '';
+      for (const v of selected) {
+        const li = document.createElement('li');
+        li.className = 'msf__chip';
+        li.dataset.msfChip = v;
+        const txt = document.createElement('span');
+        txt.className = 'msf__chip-text';
+        txt.textContent = labelOf(root, v);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'msf__chip-x';
+        btn.setAttribute('aria-label', `Quitar ${labelOf(root, v)}`);
+        btn.innerHTML =
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
+        btn.dataset.msfChipRemove = v;
+        li.appendChild(txt);
+        li.appendChild(btn);
+        wrap.appendChild(li);
+      }
+    }
+
+    function commit(root) {
+      const hidden = root.querySelector('[data-msf-value]');
+      const selected = getSelected(root);
+      setTriggerLabel(root, selected);
+      renderChips(root, selected);
+      if (hidden) {
+        hidden.value = selected.join(',');
+        hidden.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      root.classList.toggle('msf--has', selected.length > 0);
+    }
+
+    function close(root) {
+      root.classList.remove('msf--open');
+      const trigger = root.querySelector('[data-msf-trigger]');
+      const popover = root.querySelector('[data-msf-popover]');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      if (popover) popover.hidden = true;
+    }
+
+    function open(root) {
+      document.querySelectorAll('[data-msf].msf--open').forEach((other) => {
+        if (other !== root) close(other);
+      });
+      root.classList.add('msf--open');
+      const trigger = root.querySelector('[data-msf-trigger]');
+      const popover = root.querySelector('[data-msf-popover]');
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      if (popover) popover.hidden = false;
+      const search = root.querySelector('[data-msf-search]');
+      // Pequeño delay para evitar el race con el click que abre el popover.
+      setTimeout(() => {
+        if (search) {
+          search.value = '';
+          search.dispatchEvent(new Event('input', { bubbles: true }));
+          search.focus();
+        }
+      }, 30);
+    }
+
+    function filterList(root, q) {
+      const list = root.querySelector('[data-msf-list]');
+      const empty = root.querySelector('[data-msf-empty]');
+      if (!list) return;
+      const items = list.querySelectorAll('[data-msf-opt]');
+      let visible = 0;
+      items.forEach((opt) => {
+        const blob = opt.dataset.search || '';
+        const show = !q || blob.includes(q);
+        const li = opt.parentElement;
+        if (li) li.hidden = !show;
+        if (show) visible++;
+      });
+      if (empty) empty.hidden = visible !== 0;
+    }
+
+    function init() {
+      document.addEventListener('click', (e) => {
+        document.querySelectorAll('[data-msf].msf--open').forEach((root) => {
+          if (!root.contains(e.target)) close(root);
+        });
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('[data-msf].msf--open').forEach((root) => {
+            close(root);
+            const trigger = root.querySelector('[data-msf-trigger]');
+            trigger?.focus();
+          });
+        }
+      });
+
+      document.querySelectorAll('[data-msf]').forEach((root) => {
+      const trigger = root.querySelector('[data-msf-trigger]');
+      trigger?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (root.classList.contains('msf--open')) {
+          close(root);
+        } else {
+          open(root);
+        }
+      });
+
+      root.querySelectorAll('[data-msf-checkbox]').forEach((c) => {
+        c.addEventListener('change', () => commit(root));
+      });
+
+      const search = root.querySelector('[data-msf-search]');
+      search?.addEventListener('input', () => {
+        filterList(root, (search.value || '').trim().toLowerCase());
+      });
+      search?.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          // Si la búsqueda no está vacía, primera tecla Esc la vacía; segunda cierra.
+          if (search.value) {
+            e.stopPropagation();
+            search.value = '';
+            search.dispatchEvent(new Event('input', { bubbles: true }));
+          }
+        }
+      });
+
+      const clear = root.querySelector('[data-msf-clear]');
+      clear?.addEventListener('click', () => {
+        root.querySelectorAll('[data-msf-checkbox]').forEach((c) => {
+          c.checked = false;
+        });
+        commit(root);
+        // Mantiene el popover abierto para que el usuario pueda volver a
+        // seleccionar sin reabrir.
+        search?.focus();
+      });
+
+      const chips = root.querySelector('[data-msf-chips]');
+      chips?.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-msf-chip-remove]');
+        if (!btn) return;
+        const v = btn.dataset.msfChipRemove;
+        const cb = root.querySelector(
+          `[data-msf-checkbox][value="${CSS.escape(v)}"]`,
+        );
+        if (cb) {
+          cb.checked = false;
+          commit(root);
+        }
+      });
+
+      // Sincroniza con form.reset(): tras un reset el navegador no toca
+      // nuestros checkboxes generados (no tienen `checked` por defecto)
+      // pero sí los desmarca todos. Hay que repintar trigger + chips +
+      // hidden y disparar 'change' para que el catálogo se entere.
+      const form = root.closest('form');
+      form?.addEventListener('reset', () => {
+        setTimeout(() => {
+          root.querySelectorAll('[data-msf-checkbox]').forEach((c) => {
+            c.checked = false;
+          });
+          commit(root);
+        }, 0);
+      });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>
+
+<style>
+  .msf {
+    position: relative;
+    width: 100%;
+  }
+
+  .msf__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+    border-radius: 0;
+    font: 400 14px/1.4 var(--font-sans);
+    color: var(--color-fg-muted);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 140ms ease-out;
+  }
+  .msf__trigger:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+    border-color: var(--color-accent);
+  }
+  .msf--open .msf__trigger {
+    border-color: var(--color-accent);
+    position: relative;
+    z-index: 2;
+  }
+  .msf__trigger-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .msf__trigger-text--has {
+    color: var(--color-fg);
+  }
+  .msf__caret {
+    width: 10px;
+    height: 10px;
+    stroke: var(--color-fg-muted);
+    fill: none;
+    stroke-width: 1.8;
+    flex-shrink: 0;
+    margin-left: 8px;
+    transition: transform 140ms ease-out;
+  }
+  .msf--open .msf__caret {
+    transform: rotate(180deg);
+    stroke: var(--color-accent);
+  }
+
+  .msf__chips {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .msf__chips:empty { display: none; }
+  .msf__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 4px 2px 8px;
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+    font: 500 11px/1.3 var(--font-sans);
+    color: var(--color-fg);
+    max-width: 100%;
+  }
+  .msf__chip-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 18ch;
+  }
+  .msf__chip-x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-fg-muted);
+    cursor: pointer;
+  }
+  .msf__chip-x:hover { color: var(--color-accent); }
+  .msf__chip-x svg {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+  }
+
+  .msf__popover {
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    right: 0;
+    z-index: 30;
+    background: var(--color-surface);
+    border: 1px solid var(--color-accent);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    max-height: 320px;
+    box-shadow: 0 6px 14px -10px rgba(0, 0, 0, 0.25);
+    transform-origin: top;
+    animation: msf-in 160ms ease-out both;
+  }
+  /* El atributo HTML [hidden] equivale a `display: none` por user agent,
+     pero `display: flex` de la regla anterior gana en especificidad y
+     dejaba el popover SIEMPRE visible al cargar. Hay que decir
+     explícitamente que con [hidden] no se muestra. Esta regla también
+     mantiene el popover oculto detrás de los demás dropdowns (z-index 30
+     contra los 10 de CustomSelect) cuando está cerrado. */
+  .msf__popover[hidden] { display: none; }
+  @keyframes msf-in {
+    from { opacity: 0; transform: scaleY(0.94) translateY(-2px); }
+    to   { opacity: 1; transform: scaleY(1) translateY(0); }
+  }
+
+  .msf__searchwrap {
+    padding: 6px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .msf__search {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    font: 400 13px/1.4 var(--font-sans);
+    border-radius: 0;
+  }
+  .msf__search:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+    border-color: var(--color-accent);
+  }
+
+  .msf__list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  .msf__listitem { margin: 0; }
+  .msf__opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    font: 400 13px/1.4 var(--font-sans);
+    color: var(--color-fg);
+    cursor: pointer;
+  }
+  .msf__opt:hover {
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+  .msf__checkbox {
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+    cursor: pointer;
+    flex-shrink: 0;
+    display: inline-grid;
+    place-content: center;
+  }
+  .msf__checkbox:checked {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+  .msf__checkbox:checked::before {
+    content: '';
+    width: 7px;
+    height: 4px;
+    border-left: 1.6px solid #fff;
+    border-bottom: 1.6px solid #fff;
+    transform: rotate(-45deg) translateY(-1px);
+  }
+  .msf__checkbox:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  .msf__opt-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+  .msf__opt-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .msf__opt-sublabel {
+    font-size: 11px;
+    color: var(--color-fg-muted);
+  }
+
+  .msf__empty {
+    margin: 0;
+    padding: 12px 10px;
+    font: 400 12px/1.4 var(--font-sans);
+    color: var(--color-fg-muted);
+    text-align: center;
+  }
+
+  .msf__footer {
+    padding: 6px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .msf__clear {
+    background: transparent;
+    border: 0;
+    padding: 4px 8px;
+    font: 500 12px/1.2 var(--font-sans);
+    color: var(--color-fg-muted);
+    cursor: pointer;
+  }
+  .msf__clear:hover {
+    color: var(--color-accent);
+  }
+  .msf__clear:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .msf__caret,
+    .msf__popover { transition: none; animation: none; }
+  }
+</style>

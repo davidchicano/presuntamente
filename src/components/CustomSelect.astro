@@ -61,15 +61,19 @@ const current = options.find((o) => o.value === value) ?? options[0];
 
 <script is:inline>
   (() => {
+    // `<script is:inline>` se renderiza inmediatamente DESPUÉS de cada
+    // instancia del componente, no al final del documento. Eso significa
+    // que cuando hay varios CustomSelect en la misma página, el script de
+    // la primera instancia se ejecuta cuando los demás .csel aún NO
+    // están en el DOM, y `querySelectorAll('[data-csel]')` sólo ve el
+    // primero. El guard `__cselInited` impide a los siguientes scripts
+    // inicializar el resto.
+    //
+    // Solución: si el DOM aún se está cargando, agendamos la
+    // inicialización a DOMContentLoaded; cuando dispara, ya están todos
+    // los .csel renderizados y un único pase los recoge a todos.
     if (window.__cselInited) return;
     window.__cselInited = true;
-
-    document.addEventListener('click', (e) => {
-      // Cierra los selects abiertos cuando se hace click fuera.
-      document.querySelectorAll('[data-csel].csel--open').forEach((csel) => {
-        if (!csel.contains(e.target)) close(csel);
-      });
-    });
 
     function close(csel) {
       csel.classList.remove('csel--open');
@@ -103,49 +107,65 @@ const current = options.find((o) => o.value === value) ?? options[0];
       if (hidden) hidden.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
-    document.querySelectorAll('[data-csel]').forEach((csel) => {
-      const trigger = csel.querySelector('[data-csel-trigger]');
-      const opts = Array.from(csel.querySelectorAll('[data-csel-opt]'));
-
-      trigger?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        csel.classList.contains('csel--open') ? close(csel) : open(csel);
-      });
-      trigger?.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          open(csel);
-          opts[0]?.focus();
-        } else if (e.key === 'Escape') {
-          close(csel);
-        }
-      });
-      opts.forEach((opt, i) => {
-        opt.addEventListener('click', (e) => {
-          e.stopPropagation();
-          commit(csel, opt.dataset.value, opt.textContent.trim());
-          close(csel);
-          trigger?.focus();
+    function init() {
+      // El listener global de "click fuera" se registra UNA vez con todos
+      // los cseles ya en el DOM.
+      document.addEventListener('click', (e) => {
+        document.querySelectorAll('[data-csel].csel--open').forEach((csel) => {
+          if (!csel.contains(e.target)) close(csel);
         });
-        opt.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowDown') {
+      });
+
+      document.querySelectorAll('[data-csel]').forEach((csel) => {
+        const trigger = csel.querySelector('[data-csel-trigger]');
+        const opts = Array.from(csel.querySelectorAll('[data-csel-opt]'));
+
+        trigger?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          csel.classList.contains('csel--open') ? close(csel) : open(csel);
+        });
+        trigger?.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            opts[(i + 1) % opts.length].focus();
-          } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            opts[(i - 1 + opts.length) % opts.length].focus();
-          } else if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
+            open(csel);
+            opts[0]?.focus();
+          } else if (e.key === 'Escape') {
+            close(csel);
+          }
+        });
+        opts.forEach((opt, i) => {
+          opt.addEventListener('click', (e) => {
+            e.stopPropagation();
             commit(csel, opt.dataset.value, opt.textContent.trim());
             close(csel);
             trigger?.focus();
-          } else if (e.key === 'Escape') {
-            close(csel);
-            trigger?.focus();
-          }
+          });
+          opt.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              opts[(i + 1) % opts.length].focus();
+            } else if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              opts[(i - 1 + opts.length) % opts.length].focus();
+            } else if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              commit(csel, opt.dataset.value, opt.textContent.trim());
+              close(csel);
+              trigger?.focus();
+            } else if (e.key === 'Escape') {
+              close(csel);
+              trigger?.focus();
+            }
+          });
         });
       });
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
   })();
 </script>
 

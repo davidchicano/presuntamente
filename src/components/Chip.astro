@@ -1,0 +1,70 @@
+---
+// Chip — wrapper de chip individual para usar dentro de ChipFilterGroup.
+//
+// Renderiza un <button> con `data-value` y `aria-pressed`; el contenido
+// va por el slot por defecto y suele ser un badge real del proyecto
+// (RolBadge, EpistemicBadge, CategoryBadge…).
+//
+// Existe como componente aparte porque la API natural de ChipFilterGroup
+// con un slot dinámico nombrado por `value` no funciona en Astro
+// (`slot[name]` debe ser string estático en compilación). Con Chip
+// hijo, cada uso es:
+//
+//   <Chip value="acreditado"><EpistemicBadge tipo="acreditado" /></Chip>
+//
+// El style del button vive en `:global` para que ChipFilterGroup pueda
+// estilarlo desde fuera sin scope leakage (cada Chip aplica las mismas
+// reglas porque la clase es global).
+
+interface Props {
+  value: string;
+  ariaLabel?: string;
+  title?: string;
+}
+
+const { value, ariaLabel, title } = Astro.props;
+---
+
+<button
+  type="button"
+  class="chipfg__opt"
+  aria-pressed="false"
+  data-chipfg-opt
+  data-value={value}
+  aria-label={ariaLabel}
+  title={title}
+>
+  <slot />
+</button>
+
+<style is:global>
+  .chipfg__opt {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0;
+    line-height: 0;
+    transition: opacity 140ms ease-out, filter 140ms ease-out, box-shadow 140ms ease-out;
+    opacity: 1;
+    filter: none;
+  }
+  .chipfg__opt[aria-pressed="true"] {
+    box-shadow:
+      0 0 0 1px var(--color-surface),
+      0 0 0 3px var(--color-accent);
+  }
+  .chipfg__opt:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  .chipfg__opt:focus:not(:focus-visible) { outline: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chipfg__opt { transition: none; }
+  }
+</style>

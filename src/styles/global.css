@@ -1635,6 +1635,43 @@ body.has-menu-open { overflow: hidden; }
   color: var(--color-fg-muted);
 }
 
+/* Slot por defecto de SectionH — caja a la derecha del header para
+ * acciones contextuales (botón "Limpiar filtros", etc.). Si no hay
+ * `.right` ni `.sec-h__order` antes, se empuja al final con margin-left. */
+.sec-h__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: center;
+}
+.sec-h:not(:has(.right)):not(:has(.sec-h__order)) .sec-h__actions {
+  margin-left: auto;
+}
+/* Botón de acción pequeño compatible con la estética administrativa.
+ * Coherente con `.sec-h__order` pero neutro (sin icono de orden ni
+ * paleta accent-secondary). Pensado para "Limpiar filtros", "Exportar",
+ * etc. */
+.sec-h__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  font: 500 12px/1.2 var(--font-sans);
+  color: var(--color-fg-muted);
+  cursor: pointer;
+  border-radius: 0;
+  text-decoration: none;
+  transition: color 140ms ease-out, border-color 140ms ease-out, background 140ms ease-out;
+}
+.sec-h__action:hover,
+.sec-h__action:focus-visible {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  outline: none;
+}
+
 .sub-h {
   font: 700 12px/1.4 var(--font-sans);
   letter-spacing: var(--ls-caps);

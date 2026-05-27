@@ -2,6 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CategoryBadge from '@/components/CategoryBadge.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
+import CatalogoLeyenda from '@/components/CatalogoLeyenda.astro';
+import SectionH from '@/components/SectionH.astro';
 import { getCollection } from 'astro:content';
 import { familiaDelitoLabel, type Lang } from '@/lib/labels';
 
@@ -87,12 +89,67 @@ const familiasPresentes = Array.from(new Set(delitos.map((d) => d.familia)))
     </div>
   </section>
 
-  <header class="sec-h">
-    <span class="num">4.1</span>
-    <h2>Filtros</h2>
-  </header>
+  <CatalogoLeyenda
+    titulo="Cómo leer este catálogo"
+    resumen="Tipo penal, familia, casos donde aparece y atribuciones formales."
+    ariaLabel="Leyenda del catálogo de delitos"
+  >
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Columnas del listado</h3>
+      <p class="cat-legend__inline">
+        <strong>Tipo penal:</strong> enunciado del delito según la doctrina y el Código Penal.
+        <strong>Familia:</strong> agrupación temática que sirve para filtrar (contra la
+        Administración Pública, contra el patrimonio, falsedad documental, etc.).
+        <strong>Artículos CP:</strong> articulado aplicable.
+        <strong>Casos:</strong> número de procedimientos del inventario donde el tipo penal
+        aparece atribuido.
+        <strong>Atribuciones:</strong> número de roles (persona u organización) que se lo
+        atribuyen formalmente en algún momento del procedimiento.
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Filtros y ordenación</h3>
+      <p class="cat-legend__inline">
+        Puedes <strong>buscar</strong> por nombre típico, familia o número de artículo, y
+        filtrar por <strong>familia de delito</strong>. El selector de orden cubre
+        <strong>alfabético</strong>, <strong>número de casos</strong> y
+        <strong>número de atribuciones</strong>.
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Atribución ≠ condena</h3>
+      <p class="cat-legend__inline">
+        Que un delito aparezca atribuido a una persona o a una organización <strong>no
+        equivale a condena</strong>. La atribución es un dato del procedimiento (escrito de
+        querella, auto de procesamiento, escrito de acusación). La presunción de inocencia
+        se mantiene mientras no exista sentencia firme. Esta misma advertencia aparece como
+        aviso editorial al pie del listado.
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Más detalle metodológico</h3>
+      <p class="cat-legend__inline">
+        Cómo se modelan los hechos a los que se asocia cada delito está en
+        <a href="/sobre#tipos-hecho">/sobre — Tipos de hecho</a>; los criterios editoriales
+        generales (presunción de inocencia y lenguaje), en
+        <a href="/sobre#principios">/sobre — Principios editoriales</a> y
+        <a href="/sobre#lenguaje">/sobre — Lenguaje editorial</a>.
+      </p>
+    </section>
+  </CatalogoLeyenda>
 
-  <form class="filter-bar" method="get" role="search" aria-label="Filtrar delitos" data-delitos-filters>
+  <SectionH num="4.1" title="Filtros">
+    <button
+      type="reset"
+      form="filters-delitos"
+      class="sec-h__action"
+      aria-label="Limpiar filtros de delitos"
+    >
+      Limpiar filtros
+    </button>
+  </SectionH>
+
+  <form id="filters-delitos" class="filter-bar" method="get" role="search" aria-label="Filtrar delitos" data-delitos-filters>
     <div class="field">
       <label for="q">Buscar</label>
       <input id="q" name="q" type="search" placeholder="Nombre típico, familia, artículo…" autocomplete="off" />
@@ -110,13 +167,26 @@ const familiasPresentes = Array.from(new Set(delitos.map((d) => d.familia)))
         ]}
       />
     </div>
-    <button class="btn" type="reset">Limpiar</button>
+    <div class="field">
+      <label for="order">Ordenar por</label>
+      <CustomSelect
+        id="order"
+        name="order"
+        value="alfabetico"
+        ariaLabel="Ordenar listado"
+        options={[
+          { value: 'alfabetico',    label: 'Alfabético' },
+          { value: 'casos',         label: 'Nº de casos ↓' },
+          { value: 'atribuciones',  label: 'Nº de atribuciones ↓' },
+        ]}
+      />
+    </div>
   </form>
 
   <header class="sec-h">
     <span class="num">4.2</span>
     <h2>Listado</h2>
-    <span class="right">orden: alfabético</span>
+    <span class="right" data-listado-meta>orden: alfabético</span>
   </header>
 
   <div class="tbl-scroll">
@@ -136,7 +206,14 @@ const familiasPresentes = Array.from(new Set(delitos.map((d) => d.familia)))
     </thead>
     <tbody>
       {delitos.map((d) => (
-        <tr class="is-link" data-row data-familia={d.familia} data-search={searchBlob(d)}>
+        <tr
+          class="is-link"
+          data-row
+          data-familia={d.familia}
+          data-casos={d.casosCount}
+          data-atribuciones={d.atribCount}
+          data-search={searchBlob(d)}
+        >
           <td>
             <a href={`/delitos/${d.slug}`}>
               <span class="c-name">{d.nombre}</span>
@@ -169,10 +246,20 @@ const familiasPresentes = Array.from(new Set(delitos.map((d) => d.familia)))
     const table = document.querySelector('[data-delitos]');
     if (!form || !table) return;
     const rows = Array.from(table.querySelectorAll('[data-row]'));
+    const tbody = table.querySelector('tbody');
     const shown = document.querySelector('[data-shown]');
     const empty = document.querySelector('[data-empty]');
+    const meta = document.querySelector('[data-listado-meta]');
     const qInput = form.querySelector('#q');
     const famSel = form.querySelector('input[name="familia"]');
+    const orderSel = form.querySelector('input[name="order"]');
+
+    const ORDER_LABEL = {
+      alfabetico: 'alfabético',
+      casos: 'nº de casos',
+      atribuciones: 'nº de atribuciones',
+    };
+
     function resyncCustomSelects() {
       form.querySelectorAll('[data-csel]').forEach((csel) => {
         const hidden = csel.querySelector('[data-csel-value]');
@@ -190,16 +277,39 @@ const familiasPresentes = Array.from(new Set(delitos.map((d) => d.familia)))
     function apply() {
       const q = (qInput.value || '').trim().toLowerCase();
       const fam = famSel.value;
-      let visible = 0;
+      const order = orderSel ? orderSel.value : 'alfabetico';
+
+      const visible = [];
       for (const row of rows) {
         const matchQ = !q || (row.dataset.search || '').includes(q);
         const matchF = fam === 'all' || row.dataset.familia === fam;
         const show = matchQ && matchF;
         row.hidden = !show;
-        if (show) visible++;
+        if (show) visible.push(row);
       }
-      if (shown) shown.textContent = String(visible);
+
+      if (tbody) {
+        visible.sort((a, b) => {
+          if (order === 'casos') {
+            const ca = parseInt(a.dataset.casos || '0', 10);
+            const cb = parseInt(b.dataset.casos || '0', 10);
+            if (cb !== ca) return cb - ca;
+          }
+          if (order === 'atribuciones') {
+            const aa = parseInt(a.dataset.atribuciones || '0', 10);
+            const ab = parseInt(b.dataset.atribuciones || '0', 10);
+            if (ab !== aa) return ab - aa;
+          }
+          const na = (a.querySelector('.c-name')?.textContent || '').trim();
+          const nb = (b.querySelector('.c-name')?.textContent || '').trim();
+          return na.localeCompare(nb, 'es');
+        });
+        for (const row of visible) tbody.appendChild(row);
+      }
+
+      if (shown) shown.textContent = String(visible.length);
       if (empty) empty.hidden = visible !== 0;
+      if (meta) meta.textContent = `orden: ${ORDER_LABEL[order] || 'alfabético'}`;
     }
     form.addEventListener('input', apply);
     form.addEventListener('change', apply);

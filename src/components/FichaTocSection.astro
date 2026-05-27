@@ -2,6 +2,12 @@
 // FichaTocSection — bloque numerado de una ficha (caso, persona, org, delito).
 // El wrapper data-toc-section existe en el HTML servido para que el ritmo
 // vertical no dependa del JS del PageToc ni de márgenes que no colapsan.
+//
+// Slot nombrado `filters`: si se pasa, se renderiza una fila de chips/pills
+// JUSTO DEBAJO del header de la sección (no dentro del <header>). Pensada
+// para filtros visuales en línea (estado epistémico, rol procesal, familia
+// de hito) usando el componente ChipFilterGroup. Mantiene el slot por
+// defecto libre para el contenido de la sección.
 
 import SectionH from '@/components/SectionH.astro';
 
@@ -14,8 +20,24 @@ interface Props {
 }
 
 const { num, title, id, right, orderToggle } = Astro.props;
+const hasFilters = Astro.slots.has('filters');
 ---
 <section class="ficha-toc-section" data-toc-section={id}>
   <SectionH {num} {title} {id} {right} {orderToggle} />
+  {hasFilters && (
+    <div class="ficha-toc-section__filters" role="region" aria-label="Filtros de la sección">
+      <slot name="filters" />
+    </div>
+  )}
   <slot />
 </section>
+
+<style>
+  .ficha-toc-section__filters {
+    margin: -4px 0 var(--space-3);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+  }
+</style>

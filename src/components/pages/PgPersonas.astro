@@ -5,9 +5,34 @@
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
+import CatalogoLeyenda from '@/components/CatalogoLeyenda.astro';
+import SectionH from '@/components/SectionH.astro';
 import RolBadge from '@/components/RolBadge.astro';
 import { getCollection } from 'astro:content';
 import { rolLabel, rolGrupo, type Lang } from '@/lib/labels';
+
+// Bucket de roles procesales para el filtro: condenado_no_firme y
+// condenado_firme se funden en 'condenado'; los demás roles se mantienen
+// como están. Mantiene la categorización entendible para el lector sin
+// duplicar opciones por matiz de firmeza.
+const ROL_BUCKET: Record<string, string> = {
+  investigado: 'investigado',
+  procesado: 'procesado',
+  acusado: 'acusado',
+  condenado_no_firme: 'condenado',
+  condenado_firme: 'condenado',
+  absuelto: 'absuelto',
+  desimputado: 'desimputado',
+};
+const ROL_BUCKET_LABEL: Record<string, string> = {
+  investigado: 'Investigado',
+  procesado: 'Procesado',
+  acusado: 'Acusado',
+  condenado: 'Condenado',
+  absuelto: 'Absuelto',
+  desimputado: 'Desimputado',
+};
+const ROL_BUCKET_ORDER = ['investigado', 'procesado', 'acusado', 'condenado', 'absuelto', 'desimputado'];
 
 interface Props { lang?: Lang; }
 const { lang = 'es' } = Astro.props;
@@ -87,12 +112,21 @@ const personas = personasCol
       biografia: miniDescPersona(p.data.biografia_corta),
       esFigura: p.data.es_figura_publica,
       rolPrincipal: referencia ? { rol: referencia.rol, label: rolLabel(referencia.rol) } : null,
+      rolBucket: referencia ? (ROL_BUCKET[referencia.rol] ?? referencia.rol) : '',
       casosCount: casosUnicos.size,
       orgRefId,
       orgRefNombre: orgRef?.nombre,
     };
   })
   .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+
+// Buckets de rol procesal realmente presentes en el listado, para no
+// engordar el dropdown con opciones vacías. Orden canónico (pirámide
+// procesal), no alfabético.
+const rolBucketsPresentes = new Set(personas.map((p) => p.rolBucket).filter(Boolean));
+const opcionesRolBucket = ROL_BUCKET_ORDER
+  .filter((b) => rolBucketsPresentes.has(b))
+  .map((b) => ({ value: b, label: ROL_BUCKET_LABEL[b] }));
 
 const strings = {
   title: 'Personas implicadas',
@@ -136,15 +170,101 @@ function searchBlob(p: (typeof personas)[number]): string {
     </div>
   </section>
 
-  <header class="sec-h">
-    <span class="num">2.1</span>
-    <h2>Filtros</h2>
-  </header>
+  <CatalogoLeyenda
+    titulo="Cómo leer este catálogo"
+    resumen="Rol procesal principal, figura pública y filtros disponibles."
+    ariaLabel="Leyenda del catálogo de personas"
+  >
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Rol procesal principal</h3>
+      <p class="cat-legend__intro">
+        Rol procesal vigente más relevante para esta persona en cualquiera de los procedimientos
+        del inventario. Si tiene varios roles activos, se prioriza condenado &gt; imputación
+        activa (investigado, procesado, acusado) &gt; rol funcional (juez, fiscal, testigo).
+        Cuando todos los roles han cerrado, se muestra el último histórico.
+      </p>
+      <ul class="cat-legend__list">
+        <li class="cat-legend__item">
+          <RolBadge rol="investigado" label="Investigado" />
+          <span class="cat-legend__desc">Procedimiento abierto en fase de instrucción.</span>
+        </li>
+        <li class="cat-legend__item">
+          <RolBadge rol="procesado" label="Procesado" />
+          <span class="cat-legend__desc">Auto de procesamiento dictado.</span>
+        </li>
+        <li class="cat-legend__item">
+          <RolBadge rol="acusado" label="Acusado" />
+          <span class="cat-legend__desc">Escrito de acusación formulado.</span>
+        </li>
+        <li class="cat-legend__item">
+          <RolBadge rol="condenado_firme" label="Condenado" />
+          <span class="cat-legend__desc">Sentencia condenatoria (firme o no).</span>
+        </li>
+        <li class="cat-legend__item">
+          <RolBadge rol="absuelto" label="Absuelto" />
+          <span class="cat-legend__desc">Sentencia absolutoria.</span>
+        </li>
+        <li class="cat-legend__item">
+          <RolBadge rol="desimputado" label="Desimputado" />
+          <span class="cat-legend__desc">Apartado de la causa antes de juicio.</span>
+        </li>
+      </ul>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Filtros y ordenación</h3>
+      <p class="cat-legend__inline">
+        Puedes <strong>buscar</strong> por nombre, cargo o rol; filtrar por
+        <strong>rol procesal principal</strong> y por <strong>figura pública</strong>
+        (cargo público, mediático o relevancia institucional). El selector de orden cubre
+        <strong>alfabético</strong> y <strong>número de casos</strong> en los que la persona aparece.
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Presunción de inocencia</h3>
+      <p class="cat-legend__inline">
+        Que una persona figure aquí no implica culpabilidad. El rol procesal es un estado
+        formal del procedimiento, no una valoración. La presunción de inocencia se mantiene
+        mientras no exista sentencia firme.
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Más detalle metodológico</h3>
+      <p class="cat-legend__inline">
+        La taxonomía completa de roles (acusado, instructor, parte civil, función judicial…)
+        está en <a href="/sobre#roles">/sobre — Roles procesales</a>; los criterios editoriales
+        generales, en <a href="/sobre#principios">/sobre — Principios editoriales</a>.
+      </p>
+    </section>
+  </CatalogoLeyenda>
 
-  <form class="filter-bar" method="get" role="search" aria-label="Filtrar personas" data-personas-filters>
+  <SectionH num="2.1" title="Filtros">
+    <button
+      type="reset"
+      form="filters-personas"
+      class="sec-h__action"
+      aria-label="Limpiar filtros de personas"
+    >
+      Limpiar filtros
+    </button>
+  </SectionH>
+
+  <form id="filters-personas" class="filter-bar" method="get" role="search" aria-label="Filtrar personas" data-personas-filters>
     <div class="field">
       <label for="q">Buscar</label>
       <input id="q" name="q" type="search" placeholder="Nombre, cargo, rol…" autocomplete="off" />
+    </div>
+    <div class="field">
+      <label for="rol">Rol procesal</label>
+      <CustomSelect
+        id="rol"
+        name="rol"
+        value="all"
+        ariaLabel="Filtrar por rol procesal principal"
+        options={[
+          { value: 'all', label: 'Todos' },
+          ...opcionesRolBucket,
+        ]}
+      />
     </div>
     <div class="field">
       <label for="figura">Figura pública</label>
@@ -160,13 +280,25 @@ function searchBlob(p: (typeof personas)[number]): string {
         ]}
       />
     </div>
-    <button class="btn" type="reset">Limpiar</button>
+    <div class="field">
+      <label for="order">Ordenar por</label>
+      <CustomSelect
+        id="order"
+        name="order"
+        value="alfabetico"
+        ariaLabel="Ordenar listado"
+        options={[
+          { value: 'alfabetico', label: 'Alfabético' },
+          { value: 'casos',      label: 'Nº de casos ↓' },
+        ]}
+      />
+    </div>
   </form>
 
   <header class="sec-h">
     <span class="num">2.2</span>
     <h2>Listado</h2>
-    <span class="right">orden: alfabético</span>
+    <span class="right" data-listado-meta>orden: alfabético</span>
   </header>
 
   <div class="tbl-scroll">
@@ -186,6 +318,8 @@ function searchBlob(p: (typeof personas)[number]): string {
           class="is-link"
           data-row
           data-figura={p.esFigura ? 'publica' : 'privada'}
+          data-rol={p.rolBucket}
+          data-casos={p.casosCount}
           data-search={searchBlob(p)}
         >
           <td>
@@ -232,10 +366,20 @@ function searchBlob(p: (typeof personas)[number]): string {
     const table = document.querySelector('[data-personas]');
     if (!form || !table) return;
     const rows = Array.from(table.querySelectorAll('[data-row]'));
+    const tbody = table.querySelector('tbody');
     const shown = document.querySelector('[data-shown]');
     const empty = document.querySelector('[data-empty]');
+    const meta = document.querySelector('[data-listado-meta]');
     const qInput = form.querySelector('#q');
     const figura = form.querySelector('input[name="figura"]');
+    const rolSel = form.querySelector('input[name="rol"]');
+    const orderSel = form.querySelector('input[name="order"]');
+
+    const ORDER_LABEL = {
+      alfabetico: 'alfabético',
+      casos: 'nº de casos',
+    };
+
     function resyncCustomSelects() {
       form.querySelectorAll('[data-csel]').forEach((csel) => {
         const hidden = csel.querySelector('[data-csel-value]');
@@ -248,19 +392,41 @@ function searchBlob(p: (typeof personas)[number]): string {
         }
       });
     }
+
     function apply() {
       const q = (qInput.value || '').trim().toLowerCase();
       const fig = figura.value;
-      let visible = 0;
+      const rol = rolSel ? rolSel.value : 'all';
+      const order = orderSel ? orderSel.value : 'alfabetico';
+
+      const visible = [];
       for (const row of rows) {
         const matchQ = !q || (row.dataset.search || '').includes(q);
         const matchF = fig === 'all' || row.dataset.figura === fig;
-        const show = matchQ && matchF;
+        const matchR = rol === 'all' || row.dataset.rol === rol;
+        const show = matchQ && matchF && matchR;
         row.hidden = !show;
-        if (show) visible++;
+        if (show) visible.push(row);
       }
-      if (shown) shown.textContent = String(visible);
-      if (empty) empty.hidden = visible !== 0;
+
+      if (tbody) {
+        visible.sort((a, b) => {
+          if (order === 'casos') {
+            const ca = parseInt(a.dataset.casos || '0', 10);
+            const cb = parseInt(b.dataset.casos || '0', 10);
+            if (cb !== ca) return cb - ca;
+          }
+          // Tie-break y default: alfabético por la primera celda (nombre).
+          const na = (a.querySelector('.c-name')?.textContent || '').trim();
+          const nb = (b.querySelector('.c-name')?.textContent || '').trim();
+          return na.localeCompare(nb, 'es');
+        });
+        for (const row of visible) tbody.appendChild(row);
+      }
+
+      if (shown) shown.textContent = String(visible.length);
+      if (empty) empty.hidden = visible.length !== 0;
+      if (meta) meta.textContent = `orden: ${ORDER_LABEL[order] || 'alfabético'}`;
     }
     form.addEventListener('input', apply);
     form.addEventListener('change', apply);

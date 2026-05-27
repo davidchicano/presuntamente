@@ -2,10 +2,35 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CategoryBadge from '@/components/CategoryBadge.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
+import CatalogoLeyenda from '@/components/CatalogoLeyenda.astro';
+import SectionH from '@/components/SectionH.astro';
 import OrientacionBadge from '@/components/OrientacionBadge.astro';
 import NaturalezaBadge from '@/components/NaturalezaBadge.astro';
 import { getCollection } from 'astro:content';
 import { tipoOrgLabel, type Lang } from '@/lib/labels';
+
+// Orden canónico del eje editorial (izquierda → derecha), no alfabético.
+// Coincide con el enum de orientacion_editorial_declarada/percibida.
+const ORIENTACION_ORDER = [
+  'izquierda_radical',
+  'izquierda',
+  'centro_izquierda',
+  'centro',
+  'centro_derecha',
+  'derecha',
+  'derecha_radical',
+  'sin_clasificar',
+];
+const ORIENTACION_LABEL: Record<string, string> = {
+  izquierda_radical: 'Izquierda radical',
+  izquierda: 'Izquierda',
+  centro_izquierda: 'Centro-izquierda',
+  centro: 'Centro',
+  centro_derecha: 'Centro-derecha',
+  derecha: 'Derecha',
+  derecha_radical: 'Derecha radical',
+  sin_clasificar: 'Sin clasificar',
+};
 
 interface Props { lang?: Lang; }
 const { lang = 'es' } = Astro.props;
@@ -69,6 +94,16 @@ function searchBlob(o: (typeof orgs)[number]): string {
 const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
   .map((t) => ({ valor: t, label: tipoOrgLabel(t) }))
   .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+
+// Orientaciones editoriales realmente presentes (sólo medios las tienen).
+// Filtra el dropdown a lo útil. La orientación declarada es la fuente que
+// gobierna el filtro; si una org sólo tiene `percibida`, queda fuera.
+const orientacionesPresentes = new Set(
+  orgs.map((o) => o.orientacionDeclarada).filter(Boolean) as string[],
+);
+const opcionesOrientacion = ORIENTACION_ORDER
+  .filter((v) => orientacionesPresentes.has(v))
+  .map((v) => ({ value: v, label: ORIENTACION_LABEL[v] }));
 ---
 
 <BaseLayout
@@ -94,12 +129,62 @@ const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
     </div>
   </section>
 
-  <header class="sec-h">
-    <span class="num">3.1</span>
-    <h2>Filtros</h2>
-  </header>
+  <CatalogoLeyenda
+    titulo="Cómo leer este catálogo"
+    resumen="Tipo de organización, clasificación editorial (sólo medios) y filtros disponibles."
+    ariaLabel="Leyenda del catálogo de organizaciones"
+  >
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Tipos de organización</h3>
+      <p class="cat-legend__intro">
+        Cada organización lleva su tipo como insignia con icono Lucide: órgano judicial,
+        fiscalía, unidad policial, organismo público, empresa investigada, partido político,
+        asociación de acusación popular, medio de comunicación, sindicato o asociación civil.
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Clasificación editorial (sólo medios)</h3>
+      <p class="cat-legend__inline">
+        La columna <strong>Orientación editorial (medios)</strong> aplica únicamente a medios
+        de comunicación. Combina la <strong>naturaleza editorial</strong> (generalista político,
+        de verificación, especializado, servicio público…) con la <strong>orientación declarada</strong>
+        por el propio medio en el eje izquierda-derecha. Los grados de orientación percibida
+        externamente se muestran en la ficha del medio, no en este listado. Para el resto de
+        organizaciones esta columna queda como «—».
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Filtros y ordenación</h3>
+      <p class="cat-legend__inline">
+        Puedes <strong>buscar</strong> por nombre, tipo o localidad; filtrar por
+        <strong>tipo de organización</strong> y por <strong>orientación editorial declarada</strong>
+        (este filtro descarta automáticamente lo que no es medio). El selector de orden cubre
+        <strong>alfabético</strong> y <strong>número de casos</strong> donde la organización aparece.
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Más detalle metodológico</h3>
+      <p class="cat-legend__inline">
+        Los criterios editoriales aplicados al inventario (qué entra, cómo se trata cada
+        entidad) están en <a href="/sobre#principios">/sobre — Principios editoriales</a>;
+        cómo se respaldan los hechos atribuidos a las organizaciones, en
+        <a href="/sobre#niveles">/sobre — Niveles de fuente (N1–N4)</a>.
+      </p>
+    </section>
+  </CatalogoLeyenda>
 
-  <form class="filter-bar" method="get" role="search" aria-label="Filtrar organizaciones" data-orgs-filters>
+  <SectionH num="3.1" title="Filtros">
+    <button
+      type="reset"
+      form="filters-organizaciones"
+      class="sec-h__action"
+      aria-label="Limpiar filtros de organizaciones"
+    >
+      Limpiar filtros
+    </button>
+  </SectionH>
+
+  <form id="filters-organizaciones" class="filter-bar" method="get" role="search" aria-label="Filtrar organizaciones" data-orgs-filters>
     <div class="field">
       <label for="q">Buscar</label>
       <input id="q" name="q" type="search" placeholder="Nombre, tipo, localidad…" autocomplete="off" />
@@ -117,13 +202,38 @@ const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
         ]}
       />
     </div>
-    <button class="btn" type="reset">Limpiar</button>
+    <div class="field">
+      <label for="orient">Orientación editorial</label>
+      <CustomSelect
+        id="orient"
+        name="orient"
+        value="all"
+        ariaLabel="Filtrar por orientación editorial declarada (sólo medios)"
+        options={[
+          { value: 'all', label: 'Todas (incluye no-medios)' },
+          ...opcionesOrientacion,
+        ]}
+      />
+    </div>
+    <div class="field">
+      <label for="order">Ordenar por</label>
+      <CustomSelect
+        id="order"
+        name="order"
+        value="alfabetico"
+        ariaLabel="Ordenar listado"
+        options={[
+          { value: 'alfabetico', label: 'Alfabético' },
+          { value: 'casos',      label: 'Nº de casos ↓' },
+        ]}
+      />
+    </div>
   </form>
 
   <header class="sec-h">
     <span class="num">3.2</span>
     <h2>Listado</h2>
-    <span class="right">orden: alfabético</span>
+    <span class="right" data-listado-meta>orden: alfabético</span>
   </header>
 
   <div class="tbl-scroll">
@@ -142,7 +252,14 @@ const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
     </thead>
     <tbody>
       {orgs.map((o) => (
-        <tr class="is-link" data-row data-tipo={o.tipo} data-search={searchBlob(o)}>
+        <tr
+          class="is-link"
+          data-row
+          data-tipo={o.tipo}
+          data-orient={o.orientacionDeclarada ?? ''}
+          data-casos={o.casosCount}
+          data-search={searchBlob(o)}
+        >
           <td>
             <a href={`/organizaciones/${o.slug}`}>
               <span class="c-name">{o.nombre}</span>
@@ -187,10 +304,20 @@ const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
     const table = document.querySelector('[data-orgs]');
     if (!form || !table) return;
     const rows = Array.from(table.querySelectorAll('[data-row]'));
+    const tbody = table.querySelector('tbody');
     const shown = document.querySelector('[data-shown]');
     const empty = document.querySelector('[data-empty]');
+    const meta = document.querySelector('[data-listado-meta]');
     const qInput = form.querySelector('#q');
     const tipoSel = form.querySelector('input[name="tipo"]');
+    const orientSel = form.querySelector('input[name="orient"]');
+    const orderSel = form.querySelector('input[name="order"]');
+
+    const ORDER_LABEL = {
+      alfabetico: 'alfabético',
+      casos: 'nº de casos',
+    };
+
     function resyncCustomSelects() {
       form.querySelectorAll('[data-csel]').forEach((csel) => {
         const hidden = csel.querySelector('[data-csel-value]');
@@ -203,19 +330,42 @@ const tiposPresentes = Array.from(new Set(orgs.map((o) => o.tipo)))
         }
       });
     }
+
     function apply() {
       const q = (qInput.value || '').trim().toLowerCase();
       const tipo = tipoSel.value;
-      let visible = 0;
+      const orient = orientSel ? orientSel.value : 'all';
+      const order = orderSel ? orderSel.value : 'alfabetico';
+
+      const visible = [];
       for (const row of rows) {
         const matchQ = !q || (row.dataset.search || '').includes(q);
         const matchT = tipo === 'all' || row.dataset.tipo === tipo;
-        const show = matchQ && matchT;
+        // Si se filtra por orientación, sólo pasan filas con esa orientación
+        // declarada — implícitamente excluye todo lo que no sea medio.
+        const matchO = orient === 'all' || row.dataset.orient === orient;
+        const show = matchQ && matchT && matchO;
         row.hidden = !show;
-        if (show) visible++;
+        if (show) visible.push(row);
       }
-      if (shown) shown.textContent = String(visible);
-      if (empty) empty.hidden = visible !== 0;
+
+      if (tbody) {
+        visible.sort((a, b) => {
+          if (order === 'casos') {
+            const ca = parseInt(a.dataset.casos || '0', 10);
+            const cb = parseInt(b.dataset.casos || '0', 10);
+            if (cb !== ca) return cb - ca;
+          }
+          const na = (a.querySelector('.c-name')?.textContent || '').trim();
+          const nb = (b.querySelector('.c-name')?.textContent || '').trim();
+          return na.localeCompare(nb, 'es');
+        });
+        for (const row of visible) tbody.appendChild(row);
+      }
+
+      if (shown) shown.textContent = String(visible.length);
+      if (empty) empty.hidden = visible.length !== 0;
+      if (meta) meta.textContent = `orden: ${ORDER_LABEL[order] || 'alfabético'}`;
     }
     form.addEventListener('input', apply);
     form.addEventListener('change', apply);

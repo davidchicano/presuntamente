@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
+import MultiSelectFilter from '@/components/MultiSelectFilter.astro';
+import CatalogoLeyenda from '@/components/CatalogoLeyenda.astro';
+import SectionH from '@/components/SectionH.astro';
 import PhaseBadge from '@/components/PhaseBadge.astro';
 import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
 import RolBadge from '@/components/RolBadge.astro';
@@ -8,6 +11,7 @@ import PartidoBadge from '@/components/PartidoBadge.astro';
 import { getCollection } from 'astro:content';
 import { rolLabel } from '@/lib/labels';
 import { organizacionesAfectadasDeCaso } from '@/lib/afectacion';
+import { ultimaActualizacionDeCaso } from '@/lib/git-meta';
 
 // En producción los casos en `pendiente`/`borrador` aparecen en la tabla
 // pero no son clickables y la ruta /casos/<slug> no se genera (ver
@@ -114,6 +118,17 @@ function mapFase(fase: string): { kind: 'instr' | 'intermedia' | 'juicio' | 'fir
   return { kind: 'instr', label: fase };
 }
 
+// Orden numérico de la pirámide procesal para ordenar el listado por fase
+// ascendente (instrucción → archivo) o descendente. Coincide 1-a-1 con los
+// 5 buckets de `mapFase`.
+const PHASE_ORDER: Record<string, number> = {
+  instr: 1,
+  intermedia: 2,
+  juicio: 3,
+  firme: 4,
+  archivo: 5,
+};
+
 // "Implicados con rol activo": personas con rol de imputación (investigado,
 // procesado, acusado, condenado) cuyo rol no tenga fecha_fin. Decisión
 // editorial razonada: en cultura periodística española "implicado" se usa
@@ -152,6 +167,18 @@ const casos = casosCol
       org?.nombre ??
       caso.organo_judicial_id;
     const fase = mapFase(caso.fase_actual);
+    // Fecha del último commit que tocó la carpeta del caso. En Cloudflare
+    // Pages con clone shallow puede devolver null para casos no tocados en
+    // el HEAD: aceptamos el fallback a "—" en UI / ordenación al final.
+    const actualizado = ultimaActualizacionDeCaso(caso.id);
+    // Set único de orgIds afectadas (directa OR indirecta) para alimentar
+    // el multi-select y la regla de filtrado client-side.
+    const orgIdsAfectadas = Array.from(
+      new Set([
+        ...afectadas.directas.map((o) => o.organizacionId),
+        ...afectadas.indirectas.map((o) => o.organizacionId),
+      ]),
+    );
     return {
       slug: caso.id,
       mediatico: caso.nombre_mediatico,
@@ -165,6 +192,9 @@ const casos = casosCol
         '',
       fase_actual: caso.fase_actual,
       phaseKind: fase.kind,
+      phaseOrder: PHASE_ORDER[fase.kind] ?? 9,
+      actualizado,
+      orgIdsAfectadas,
       estado_publicacion: caso.estado_publicacion as EstadoPublicacion,
       bloqueadoEnProd: IS_PROD && ESTADOS_BLOQUEADOS_EN_PROD.includes(caso.estado_publicacion),
       organo: organoCorto,
@@ -218,6 +248,51 @@ function buildSearchBlob(c: (typeof casos)[number]): string {
     .toLowerCase();
 }
 
+// Conjunto único de orgIds que aparecen como afectadas (directa O indirecta)
+// en algún caso del listado. Sólo estas alimentan el multi-select del filtro
+// — la decisión editorial es no engordar el desplegable con organizaciones
+// del repo que nunca aparecen como afectadas en ningún caso visible.
+const orgIdsPresentes = new Set<string>();
+for (const c of casos) for (const id of c.orgIdsAfectadas) orgIdsPresentes.add(id);
+
+const opcionesOrgsAfectadas = Array.from(orgIdsPresentes)
+  .map((id) => {
+    const o = orgIndex.get(id);
+    if (!o) return null;
+    return {
+      value: id,
+      label: o.nombre,
+      sublabel: o.siglas && o.siglas !== o.nombre ? o.siglas : undefined,
+    };
+  })
+  .filter((x): x is { value: string; label: string; sublabel?: string } => x !== null)
+  .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+
+// Lista única de estados de elaboración de ficha que aparecen en el listado
+// (los 7 valores legales no aparecen todos en producción). Mantener el orden
+// canónico de LEYENDA_ESTADOS para que el dropdown siga una progresión
+// editorial (pendiente → publicado → retirado), no alfabética.
+const estadosPresentes = new Set(casos.map((c) => c.estado_publicacion));
+const opcionesEstadoFicha = LEYENDA_ESTADOS
+  .filter(({ estado }) => estadosPresentes.has(estado))
+  .map(({ estado }) => ({
+    value: estado,
+    label: estadoLabel(estado),
+  }));
+
+function estadoLabel(e: EstadoPublicacion): string {
+  switch (e) {
+    case 'pendiente': return 'Pendiente';
+    case 'borrador': return 'Borrador';
+    case 'beta_publica': return 'Beta pública';
+    case 'en_revision': return 'En revisión';
+    case 'publicado': return 'Publicado';
+    case 'retirado_temporalmente': return 'Retirada temporalmente';
+    case 'retirado_definitivamente': return 'Retirada definitivamente';
+    default: return e;
+  }
+}
+
 // Mini-descripción: primer párrafo de descripcion_corta, recortado para
 // caber a una/dos líneas en la celda. No corta a media palabra.
 function miniDescripcion(raw: string, max = 140): string {
@@ -253,26 +328,59 @@ function miniDescripcion(raw: string, max = 140): string {
     </div>
   </section>
 
-  <aside class="catalog-legend" aria-label="Leyenda de estados de ficha">
-    <h3 class="catalog-legend__heading">{strings.leyendaEstadosTitulo}</h3>
-    <p class="catalog-legend__intro">{strings.leyendaEstadosIntro}</p>
-    <ul class="catalog-legend__list">
-      {LEYENDA_ESTADOS.map(({ estado, nota }) => (
-        <li class="catalog-legend__item">
-          <EstadoPublicacionBadge estado={estado} compact />
-          <span class="catalog-legend__desc">{nota}</span>
-        </li>
-      ))}
-    </ul>
-  </aside>
+  <CatalogoLeyenda
+    titulo="Cómo leer este catálogo"
+    resumen="Estado de elaboración de la ficha, columnas y filtros disponibles."
+    ariaLabel="Leyenda del catálogo de casos"
+  >
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">{strings.leyendaEstadosTitulo}</h3>
+      <p class="cat-legend__intro">{strings.leyendaEstadosIntro}</p>
+      <ul class="cat-legend__list">
+        {LEYENDA_ESTADOS.map(({ estado, nota }) => (
+          <li class="cat-legend__item">
+            <EstadoPublicacionBadge estado={estado} compact />
+            <span class="cat-legend__desc">{nota}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Filtros y ordenación</h3>
+      <p class="cat-legend__inline">
+        Puedes <strong>buscar</strong> por nombre del caso, organización o número de procedimiento;
+        filtrar por <strong>fase procesal</strong> (instrucción → archivado), por
+        <strong>estado de elaboración de la ficha</strong> y por
+        <strong>organizaciones afectadas</strong> (directa o indirecta — sólo aparecen las que
+        realmente figuran en algún caso del listado). El selector de orden cubre
+        <strong>último hito</strong>, <strong>última actualización de la ficha</strong>,
+        <strong>fase procesal</strong> (ascendente o descendente) e <strong>implicados</strong>.
+      </p>
+    </section>
+    <section class="cat-legend__section">
+      <h3 class="cat-legend__section-title">Más detalle metodológico</h3>
+      <p class="cat-legend__inline">
+        Los criterios editoriales aplicados a este catálogo están en
+        <a href="/sobre#principios">/sobre — Principios editoriales</a>; cómo se respaldan los
+        hechos de cada caso, en <a href="/sobre#niveles">/sobre — Niveles de fuente (N1–N4)</a>.
+      </p>
+    </section>
+  </CatalogoLeyenda>
 
-  <header class="sec-h">
-    <span class="num">1.1</span>
-    <h2>Filtros</h2>
-  </header>
+  <SectionH num="1.1" title="Filtros">
+    <button
+      type="reset"
+      form="filters-casos"
+      class="sec-h__action"
+      aria-label="Limpiar filtros del catálogo"
+    >
+      Limpiar filtros
+    </button>
+  </SectionH>
 
   <form
-    class="filter-bar"
+    id="filters-casos"
+    class="filter-bar filter-bar--wide"
     method="get"
     role="search"
     aria-label="Filtrar catálogo"
@@ -300,6 +408,30 @@ function miniDescripcion(raw: string, max = 140): string {
       />
     </div>
     <div class="field">
+      <label for="estado">Estado de la ficha</label>
+      <CustomSelect
+        id="estado"
+        name="estado"
+        value="all"
+        ariaLabel="Filtrar por estado de elaboración de la ficha"
+        options={[
+          { value: 'all', label: 'Todos' },
+          ...opcionesEstadoFicha,
+        ]}
+      />
+    </div>
+    <div class="field field--wide">
+      <label for="orgs">Organizaciones afectadas</label>
+      <MultiSelectFilter
+        id="orgs"
+        name="orgs"
+        options={opcionesOrgsAfectadas}
+        placeholder="Todas"
+        ariaLabel="Filtrar por organización afectada (directa o indirecta)"
+        searchPlaceholder="Buscar organización…"
+      />
+    </div>
+    <div class="field">
       <label for="order">Ordenar por</label>
       <CustomSelect
         id="order"
@@ -307,12 +439,14 @@ function miniDescripcion(raw: string, max = 140): string {
         value="hito"
         ariaLabel="Ordenar listado"
         options={[
-          { value: 'hito',       label: 'Último hito ↓' },
-          { value: 'implicados', label: 'Implicados ↓' },
+          { value: 'hito',           label: 'Último hito ↓' },
+          { value: 'actualizado',    label: 'Última actualización ↓' },
+          { value: 'fase_asc',       label: 'Fase ↑ (instrucción → archivo)' },
+          { value: 'fase_desc',      label: 'Fase ↓ (archivo → instrucción)' },
+          { value: 'implicados',     label: 'Implicados ↓' },
         ]}
       />
     </div>
-    <button class="btn" type="reset">Limpiar</button>
   </form>
 
   <header class="sec-h">
@@ -345,8 +479,11 @@ function miniDescripcion(raw: string, max = 140): string {
           class:list={['is-link', c.bloqueadoEnProd && 'is-blocked']}
           data-row
           data-phase={c.phaseKind}
+          data-phase-order={c.phaseOrder}
           data-implicados={c.implicados}
           data-fecha={c.ultimo_hito?.fecha ?? ''}
+          data-actualizado={c.actualizado ?? ''}
+          data-orgs={c.orgIdsAfectadas.join(',')}
           data-search={buildSearchBlob(c)}
           data-estado={c.estado_publicacion}
         >
@@ -454,29 +591,54 @@ function miniDescripcion(raw: string, max = 140): string {
     const meta = document.querySelector('[data-listado-meta]');
 
     const qInput = form.querySelector('#q');
-    // Los selects ahora son <CustomSelect> que guardan el valor en un
-    // <input type="hidden"> dentro del CSel; los leemos por name del
-    // formulario.
+    // Los selects ahora son <CustomSelect> y <MultiSelectFilter> que guardan
+    // su valor en un <input type="hidden"> propio; los leemos por name del
+    // formulario. El multi-select serializa CSV de orgIds.
     const phaseSel = form.querySelector('input[name="phase"]');
+    const estadoSel = form.querySelector('input[name="estado"]');
+    const orgsSel = form.querySelector('input[name="orgs"]');
     const orderSel = form.querySelector('input[name="order"]');
 
     const ORDER_LABEL = {
       hito: 'último hito',
+      actualizado: 'última actualización',
+      fase_asc: 'fase ascendente',
+      fase_desc: 'fase descendente',
       implicados: 'implicados',
     };
+
+    function selectedOrgIds() {
+      return (orgsSel?.value || '').split(',').filter(Boolean);
+    }
+
+    function rowOrgs(row) {
+      const raw = row.dataset.orgs || '';
+      return raw ? raw.split(',') : [];
+    }
 
     function apply() {
       const q = (qInput.value || '').trim().toLowerCase();
       const phase = phaseSel.value;
+      const estado = estadoSel ? estadoSel.value : 'all';
       const order = orderSel.value;
+      const orgs = selectedOrgIds();
 
       const visible = [];
       for (const row of rows) {
         const blob = row.dataset.search || '';
         const rowPhase = row.dataset.phase || '';
+        const rowEstado = row.dataset.estado || '';
         const matchQ = !q || blob.includes(q);
         const matchPhase = phase === 'all' || rowPhase === phase;
-        const show = matchQ && matchPhase;
+        const matchEstado = estado === 'all' || rowEstado === estado;
+        // Multi-select de orgs: si no hay selección, no filtra. Si hay,
+        // semántica OR: el caso pasa si toca al menos una org seleccionada.
+        let matchOrgs = true;
+        if (orgs.length > 0) {
+          const rowSet = rowOrgs(row);
+          matchOrgs = orgs.some((id) => rowSet.includes(id));
+        }
+        const show = matchQ && matchPhase && matchEstado && matchOrgs;
         row.hidden = !show;
         if (show) visible.push(row);
       }
@@ -486,10 +648,26 @@ function miniDescripcion(raw: string, max = 140): string {
           const ia = parseInt(a.dataset.implicados || '0', 10);
           const ib = parseInt(b.dataset.implicados || '0', 10);
           if (ib !== ia) return ib - ia;
+          // tie-break por último hito ↓
+          return (b.dataset.fecha || '').localeCompare(a.dataset.fecha || '');
         }
-        const fa = a.dataset.fecha || '';
-        const fb = b.dataset.fecha || '';
-        return fb.localeCompare(fa);
+        if (order === 'actualizado') {
+          const aa = a.dataset.actualizado || '';
+          const ab = b.dataset.actualizado || '';
+          // Casos sin fecha de actualización al final
+          if (!aa && !ab) return 0;
+          if (!aa) return 1;
+          if (!ab) return -1;
+          return ab.localeCompare(aa);
+        }
+        if (order === 'fase_asc' || order === 'fase_desc') {
+          const pa = parseInt(a.dataset.phaseOrder || '9', 10);
+          const pb = parseInt(b.dataset.phaseOrder || '9', 10);
+          if (pa !== pb) return order === 'fase_asc' ? pa - pb : pb - pa;
+          return (b.dataset.fecha || '').localeCompare(a.dataset.fecha || '');
+        }
+        // hito (default)
+        return (b.dataset.fecha || '').localeCompare(a.dataset.fecha || '');
       });
       for (const row of visible) tbody.appendChild(row);
 
@@ -534,42 +712,13 @@ function miniDescripcion(raw: string, max = 140): string {
 </script>
 
 <style>
-  .catalog-legend {
-    margin: 0 0 var(--space-4);
-    padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--color-border);
-    border-left: 3px solid var(--color-accent-secondary);
-    background: var(--color-surface);
-  }
-  .catalog-legend__heading {
-    margin: 0 0 4px;
-    font: 600 0.82rem/1.3 var(--font-sans);
-    color: var(--color-fg);
-  }
-  .catalog-legend__intro {
-    margin: 0 0 12px;
-    font: 400 0.78rem/1.45 var(--font-sans);
-    color: var(--color-fg-muted);
-    max-width: none;
-  }
-  .catalog-legend__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 8px 20px;
-  }
-  .catalog-legend__item {
-    display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
-    gap: 8px 10px;
-    align-items: center;
-    font-size: 0.78rem;
-    line-height: 1.35;
-  }
-  .catalog-legend__desc {
-    color: var(--color-fg-muted);
+  /* La barra de filtros gana una pista que ocupe más ancho cuando hay
+     muchos filtros (caso /casos: 5 filtros + reset). El `.field--wide`
+     permite al multi-select de organizaciones tomar dos celdas en pantallas
+     anchas para que el popover y los chips respiren. */
+  .filter-bar--wide .field--wide {
+    grid-column: span 2;
+    min-width: 0;
   }
 
   .c-name-row {

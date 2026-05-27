@@ -10,6 +10,11 @@
 // que defina su propia regla `.is-reversed { flex-direction: column-reverse }`).
 // El header sigue siendo click-to-top: el listener salta clicks que cayeron
 // sobre el botón vía el guard de descendientes interactivos.
+//
+// Slot por defecto (sin nombre): cualquier hijo se renderiza al final del
+// header, empujado a la derecha. Pensado para acciones contextuales tipo
+// botón "Limpiar filtros" en la sección de Filtros, que va asociada al form
+// mediante `form="id-del-form"` para no estar anidada en él.
 interface Props {
   num: string;
   title: string;
@@ -18,6 +23,7 @@ interface Props {
   orderToggle?: boolean;
 }
 const { num, title, right, id, orderToggle = false } = Astro.props;
+const hasActions = Astro.slots.has('default');
 ---
 <header class="sec-h" id={id}>
   <span class="num">{num}</span>
@@ -34,5 +40,10 @@ const { num, title, right, id, orderToggle = false } = Astro.props;
       <span class="sec-h__order-icon" aria-hidden="true">⇅</span>
       <span class="sec-h__order-label">Más reciente primero</span>
     </button>
+  )}
+  {hasActions && (
+    <div class="sec-h__actions">
+      <slot />
+    </div>
   )}
 </header>
