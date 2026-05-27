@@ -1,0 +1,19 @@
+id: tribunal-constitucional
+nombre: "Tribunal Constitucional"
+nombres_alternativos:
+  - "TC"
+  - "El Constitucional"
+tipo: tribunal
+descripcion_corta: |
+  Órgano constitucional supremo, intérprete de la Constitución española
+  con sede en Madrid. Conoce del recurso de amparo por vulneración de
+  derechos fundamentales y libertades públicas (art. 53.2 CE), del
+  recurso de inconstitucionalidad, del conflicto de competencias entre
+  Estado y Comunidades Autónomas, y de las cuestiones de
+  inconstitucionalidad. Su admisión del amparo no suspende
+  automáticamente la ejecución de la resolución recurrida salvo que
+  el tribunal lo acuerde expresamente.
+jurisdiccion: constitucional
+ambito_territorial: nacional
+url_canonica: "https://www.tribunalconstitucional.es"
+estado_publicacion: borrador

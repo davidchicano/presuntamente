@@ -1,6 +1,19 @@
-# NOTES — caso Lezo (tras PR1-PR7)
+# NOTES — caso Lezo (tras PR1-PR7 + barrido prelaunch 2026-05-27)
 
 Anotaciones internas. Excluido del build público.
+
+## Barrido prelaunch 2026-05-27
+
+Estado de las piezas activas a fecha de barrido:
+
+- **Pieza Inassa (vista oral):** La vista oral fue suspendida en febrero de 2026 por huelga de funcionarios de justicia. Se reanudó el 10 de mayo de 2026. A fecha de barrido (27-may-2026) no hay veredicto publicado; la sentencia está pendiente. No se modela hito hasta que recaiga resolución publicable.
+- **Pieza Golf (juicio oral):** El señalamiento sigue para septiembre-octubre de 2027 ante la Sección 2ª de la Sala de lo Penal de la AN. Sin novedades procesales en el intervalo.
+- **Sin hitos nuevos incorporados.** El estado del caso no ha cambiado procesalmente de modo que requiera nuevo Hito modelable entre el cierre de PR7 (24-may-2026) y el barrido (27-may-2026).
+- **Sentencias pendientes para PR8+:** cuando recaiga sentencia en Inassa y/o Golf, modelar hito `sentencia_primera_instancia` + roles consecutivos conforme al patrón ya establecido en FGE (cuatro roles en cadena: `investigado → procesado → condenado_no_firme → condenado_firme`).
+
+---
+
+
 
 ## Estado consolidado tras PR1-PR7 (pieza Navalcarnero al completo + refino caso.yaml)
 

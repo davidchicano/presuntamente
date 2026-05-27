@@ -1,0 +1,11 @@
+id: actualidad-es
+nombre: "Actualidad.es"
+nombres_alternativos:
+  - "actualidad.es"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Medio digital español de información política y actualidad nacional.
+ambito_territorial: nacional
+url_canonica: "https://www.actualidad.es"
+naturaleza_editorial: generalista_politico
+estado_publicacion: borrador

@@ -3,12 +3,19 @@
 Anotaciones internas. **No se publica.** Vive en el repo para humanos
 y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-05-24 (PR3 — corrección sustantiva del
-modelado erróneo de PR1+PR2 sobre Cospedal/LdH + 6 procesados
-restantes + tribunal Sec 4ª + acusaciones populares y particulares +
-hitos de apertura juicio oral y de inicio de vista oral + auto
-rectificador 23-ene-2024 que excluye organización criminal y
-secuestro).
+Última actualización: 2026-05-27 (barrido prelaunch — seguimiento juicio oral activo).
+
+---
+
+## Barrido prelaunch 2026-05-27
+
+Estado del juicio oral a fecha de barrido (27-may-2026):
+
+- **Juicio oral en activo.** La vista oral ante la Sección 4ª de la Sala de lo Penal de la AN (presidenta Teresa Palacios Criado) continúa en curso. No hay sentencia a la fecha del barrido; se espera para el otoño de 2026 (tras el verano judicial).
+- **Testigos de cargo.** Ha declarado, entre otros, Eduardo Morocho (testimonio relevante sobre el espionaje a Bárcenas). También se han reproducido en sala audios de José Manuel Villarejo Pérez como prueba.
+- **Turno de acusados.** Los acusados comenzarían a declarar a partir del 28 de mayo de 2026 aproximadamente.
+- **Sin hito nuevo a incorporar.** El juicio está en fase de prueba; no hay resolución procesal susceptible de modelarse como Hito hasta que recaiga sentencia. Se mantiene el hito `inicio-vista-oral-kitchen-2026-04-06` como el último formalizado.
+- **Sentencia pendiente** (no modelar como `sentencia_primera_instancia` hasta que recaiga la resolución publicable). Cuando recaiga, modelar hito + hechos + transformación de roles `procesado` → `condenado_no_firme` o `absuelto` para cada procesado. Previsión: otoño 2026.
 
 ---
 

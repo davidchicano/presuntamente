@@ -2,7 +2,17 @@
 
 Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-05-25 (sesión `vinculos-bg` — skill `documentar-vinculos` v0, primera pasada de vínculos institucionales; 16 vínculos creados, 1 pendiente estructural (BOE Cristina Álvarez); ver sección "Vínculos institucionales — pasada 2026-05-25"). Antes: 2026-05-23 (barrido retrospectivo de la convención "Documentos primarios descargados a `/public/documentos/`" sobre los 24 documentos catalogados del caso; ver sección "Barrido primarios descargados — 2026-05-23"). Antes: 2026-05-22 (PR3 — incorpora Juan José Güemes como persona desimputada, hitos posteriores al 21-abr-2026 hasta hoy, hito propio del ofrecimiento de personación a la UCM, y nuevo tipo de hito `escrito_conclusiones_provisionales` en el schema).
+Última actualización: 2026-05-27 (barrido prelaunch — audiencia previa 26-may + informe UCO 25-may). Antes: 2026-05-25 (skill `documentar-vinculos` v0; ver sección "Vínculos institucionales"). Antes: 2026-05-23 (barrido primarios descargados). Antes: 2026-05-22 (PR3).
+
+---
+
+## Barrido prelaunch 2026-05-27
+
+Hallazgos del barrido de actualidad previo al lanzamiento público del dominio:
+
+- **Hito incorporado:** `auto-audiencia-previa-bg-2026-05-26` — auto del JI nº 41 del 26-may-2026 convocando audiencia previa (art. 655 LECrim, Ley del Jurado) para el 9-jun-2026 a las 11:00h. El auto cita a Begoña Gómez, Cristina Álvarez y Barrabés; anuncia propósito de imponer medidas cautelares personales; advierte que la no comparecencia voluntaria conllevará conducción por la fuerza pública. Fuentes N4 cruzadas: The Objective + El Español + Moncloa.com (tres líneas editoriales distintas). Schema extendido: nuevo tipo `audiencia_previa` añadido al enum de Hito.
+- **Hito incorporado:** `informe-uco-bg-2026-05-25` — la UCO entrega al JI nº 41 su informe pericial el 25-may-2026. Cobertura contradictoria según línea editorial: elDiario.es reporta que "no encontraría ingresos opacos"; El Español reporta que "detecta adjudicaciones premeditadas sin cumplir la normativa". Hito modelado con descripción que recoge ambas perspectivas. Hechos pendientes de modelar: requieren el informe UCO íntegro, no sólo cobertura N4.
+- **Informe UCO prevaricación (magistrada Cantó) — V-13 INCOMPLETO:** el barrido localizó únicamente cobertura de Libertad Digital sobre el informe que valoraría si la magistrada María de la Paz Cantó habría prevaricado al archivar el caso. No se encontró segunda fuente de línea editorial distinta en tres queries de búsqueda. No incorporado al inventario. **Pendiente**: localizar segundo N4 (o documento oficial) para cumplir V-13 y poder modelar el hito `informe_organismo_publico` correspondiente.
 
 ---
 

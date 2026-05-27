@@ -1,0 +1,14 @@
+id: el-correo-gallego
+nombre: "El Correo Gallego"
+nombres_alternativos:
+  - "elcorreogallego.es"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Diario gallego fundado en 1878, con sede en Santiago de Compostela.
+  Uno de los periódicos más antiguos de Galicia, cubre información
+  general y política de ámbito autonómico y nacional.
+ambito_territorial: autonomico
+comunidad_autonoma: "Galicia"
+url_canonica: "https://www.elcorreogallego.es"
+naturaleza_editorial: generalista_politico
+estado_publicacion: borrador

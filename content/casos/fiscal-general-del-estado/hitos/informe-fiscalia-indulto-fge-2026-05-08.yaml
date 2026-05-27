@@ -1,0 +1,32 @@
+id: informe-fiscalia-indulto-fge-2026-05-08
+caso_id: fiscal-general-del-estado
+tipo: informe_organismo_publico
+fecha: "2026-05-08"
+fecha_precision: dia
+titulo: "La Fiscalía del Tribunal Supremo emite informe favorable al indulto parcial de García Ortiz, pidiendo la exención de la inhabilitación"
+descripcion: |
+  El 8 de mayo de 2026, la Fiscalía del Tribunal Supremo emite informe
+  en el que apoya el indulto parcial de Álvaro García Ortiz, condenado
+  por Sentencia firme 1000/2025 de la Sala Segunda del Tribunal Supremo
+  a multa de doce meses, dos años de inhabilitación especial para el
+  cargo de Fiscal General del Estado e indemnización de diez mil euros.
+  La solicitud de indulto fue presentada por García Ortiz el 30 de
+  enero de 2026. En su informe, la Fiscalía solicita la exención de
+  la pena de inhabilitación especial, argumentando que el condenado
+  "actuó con finalidad institucional legítima" y que las consecuencias
+  extrapenales de la condena resultan "intensas y desproporcionadas".
+  La Fiscalía propone mantener íntegramente las penas económicas (multa
+  de 7.200 € e indemnización de 10.000 € al perjudicado Alberto
+  González Amador, ambas ya abonadas el 30-ene-2026). A fecha de este
+  barrido (27-may-2026), la decisión final sobre el indulto corresponde
+  al Consejo de Ministros previo informe del Tribunal Supremo, ambos
+  pendientes de resolución.
+personas_afectadas:
+  - alvaro-garcia-ortiz
+organizaciones_afectadas:
+  - fiscalia-general-del-estado
+  - tribunal-supremo
+documento_principal_id: theobjective-informe-indulto-fge-2026-05-08
+documentos_relacionados:
+  - elespanol-informe-indulto-fge-2026-05-08
+fase_resultante: ejecucion

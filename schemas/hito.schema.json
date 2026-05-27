@@ -49,7 +49,11 @@
         "dimision",
         "cese",
         "aforamiento_perdido_o_ganado",
-        "publicacion_investigacion_periodistica"
+        "publicacion_investigacion_periodistica",
+        "audiencia_previa",
+        "recurso_amparo",
+        "suspension_vista_oral",
+        "auto_diligencias"
       ]
     },
     "fecha": { "type": "string", "format": "date" },
@@ -128,7 +132,9 @@
               "sentencia_firme",
               "archivo_provisional",
               "sobreseimiento_libre",
-              "desimputacion"
+              "desimputacion",
+              "audiencia_previa",
+              "recurso_amparo"
             ]
           }
         },

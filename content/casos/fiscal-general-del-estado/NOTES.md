@@ -3,11 +3,15 @@
 Anotaciones internas. **No se publica.** Vive en el repo para humanos
 y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-05-23 (PR3 — composición completa del
-tribunal de enjuiciamiento + cuatro hechos adicionales acreditados
-con cita literal extraídos del texto íntegro de la Sentencia
-1000/2025; tras PR2 que descargó la sentencia + dos BOE y promovió
-los primeros cuatro hechos a `acreditado`).
+Última actualización: 2026-05-27 (barrido prelaunch — amparo TC + informe indulto). Antes: 2026-05-23 (PR3 — tribunal de enjuiciamiento + hechos acreditados con cita literal).
+
+## Barrido prelaunch 2026-05-27
+
+Hallazgos del barrido de actualidad previo al lanzamiento público:
+
+- **Hito incorporado:** `recurso-amparo-tc-fge-2026-04-10` — la Fiscalía General del Estado interpone recurso de amparo ante el Tribunal Constitucional el 10-abr-2026, invocando cinco derechos fundamentales presuntamente vulnerados por la sentencia de la Sala de lo Penal del TS que condenó a García Ortiz. El recurso no tiene efecto suspensivo sobre la condena. Admisibilidad pendiente en el TC a 27-may-2026. Fuentes N4 cruzadas: El Independiente + Libertad Digital (líneas editoriales distintas). Nueva org creada: `tribunal-constitucional`. Schema extendido: nuevo tipo `recurso_amparo` añadido al enum de Hito (en V-14 por ser procesal).
+- **Hito incorporado:** `informe-fiscalia-indulto-fge-2026-05-08` — la Fiscalía del TS emite informe favorable a un indulto parcial para García Ortiz el 8-may-2026, solicitando eximirle de la inhabilitación de 2 años para cargo público (la pena económica de 17.200 € ya fue abonada el 30-ene-2026). Pendiente: informe del propio TS + decisión del Consejo de Ministros. Fuentes N4 cruzadas: The Objective + El Español. `fase_resultante: ejecucion`.
+- **Vínculo institucional pendiente (documentar-vinculos):** García Ortiz tiene un nuevo cargo en la **Sección Social del Tribunal Supremo** (nombramiento posterior a la condena). Pendiente de modelar como vínculo institucional con la skill `documentar-vinculos` cuando se localice el acuerdo del CGPJ o BOE correspondiente.
 
 ---
 

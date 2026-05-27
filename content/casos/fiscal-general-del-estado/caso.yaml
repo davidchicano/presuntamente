@@ -81,7 +81,7 @@ numero_procedimiento: "Causa Especial nº 20557/2024"
 tipo_procedimiento: causa_especial_aforado
 ponente_actual_id: andres-martinez-arrieta
 
-fase_actual: sentencia_firme
+fase_actual: ejecucion
 fecha_apertura: "2024-10-15"
 
 origen_denuncia: querella_particular
@@ -102,7 +102,7 @@ resumen_cifras: |
   votos frente a dos.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-27"
 nivel_relevancia_editorial: capital
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha

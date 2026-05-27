@@ -1,0 +1,37 @@
+id: auto-audiencia-previa-bg-2026-05-26
+caso_id: begona-gomez
+tipo: audiencia_previa
+fecha: "2026-05-26"
+fecha_precision: dia
+titulo: "El Juzgado de Instrucción nº 41 de Madrid convoca audiencia previa para el 9 de junio de 2026 y anuncia propósito de imponer medidas cautelares personales"
+descripcion: |
+  El magistrado Juan Carlos Peinado, titular del Juzgado de Instrucción
+  nº 41 de Madrid, dicta auto el 26 de mayo de 2026 por el que convoca
+  audiencia previa al juicio ante el Tribunal del Jurado para el 9 de
+  junio de 2026 a las 11:00 horas, conforme a lo dispuesto en la Ley
+  Orgánica del Tribunal del Jurado. La citación se dirige a Begoña Gómez
+  Fernández, Cristina Álvarez Fernández y Juan Carlos Barrabés, que
+  comparecerán en calidad de procesados por presuntos delitos de tráfico
+  de influencias, corrupción en los negocios, malversación de caudales
+  públicos y apropiación indebida. El instructor indica que no resta
+  ninguna diligencia de investigación pendiente y que la causa está
+  en condiciones de avanzar a la fase de enjuiciamiento. En el propio
+  auto, el juez anuncia el propósito de adoptar en dicha audiencia
+  medidas cautelares de naturaleza personal "que eviten o minimicen el
+  riesgo de tratar de eludir la acción de la justicia". El auto advierte
+  expresamente que quienes no comparezcan voluntariamente podrán ser
+  detenidos y conducidos a la sede del juzgado por la fuerza pública.
+  Conforme al principio de presunción de inocencia, la condición de
+  procesados no implica valoración de culpabilidad y persiste mientras
+  no recaiga resolución firme en contrario.
+personas_afectadas:
+  - begona-gomez
+  - cristina-alvarez-fernandez
+  - juan-carlos-barrabes
+organizaciones_afectadas:
+  - juzgado-instruccion-41-madrid
+documento_principal_id: theobjective-audiencia-previa-bg-2026-05-26
+documentos_relacionados:
+  - elespanol-audiencia-previa-bg-2026-05-26
+  - moncloacom-audiencia-previa-bg-2026-05-26
+fase_resultante: fase_intermedia

@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-27 (noche, 9). **Prelaunch público:** repo listo para indexación; retirado `public/_headers` para que el próximo deploy de Cloudflare Pages deje de enviar `X-Robots-Tag: noindex`; `astro.config.mjs` con `site: "https://presuntamente.org"`. Pendiente urgente: barrido de actualidad de los 6 casos publicables (prioridad Plus Ultra) antes de revisores externos. Norma nueva en `AGENTS.md`: roadmap acotado (~150-220 líneas); cierres largos → histórico/fichas.
+**Última actualización:** 2026-05-27 (auditoría editorial paralela cerrada — luz verde para tweet). 6 sub-agentes Sonnet con `/revisar-caso` sobre los 6 casos publicables; 0 bloqueantes tras 5 fixes (duplicado El Independiente amparo FGE resuelto; `fase_actual: ejecucion` en FGE; `estado_acceso: publico` en auto JCI 4 PU; enunciado pieza Inassa Lezo actualizado a vista oral en curso). DNS apex + `www` activos. `pnpm validate` 711 OK + build 204 páginas. **Próximo paso:** `git push origin main` → verificar deploy Cloudflare Pages → tweet de lanzamiento.
 
-**Anterior (2026-05-27 noche, 8).** Contenedor común de cards (`PersonaCard`, `OrgCard`, `Hecho`) alineado con home; canon en [`DESIGN.md`](DESIGN.md). Detalle: [`docs/roadmap/historial-2026-05.md § 2026-05-27 (noche, 7-8)`](docs/roadmap/historial-2026-05.md#sesiones-2026-05-27-noche-7-a-9).
+**Anterior (2026-05-27, barrido prelaunch).** 9 hitos nuevos + schema extendido con 4 tipos (`audiencia_previa`, `recurso_amparo`, `suspension_vista_oral`, `auto_diligencias`). NOTES.md actualizados (6 casos). Detalle: [`docs/roadmap/historial-2026-05.md`](docs/roadmap/historial-2026-05.md).
 
 ---
 
@@ -55,8 +55,10 @@
 
 - [x] Dominio `presuntamente.org` y Email Routing (`contacto@`, `rectificacion@`, `aportar@`).
 - [x] Cloudflare Pages conectado — [`cloudflare-pages-deploy.md`](docs/web/features/cloudflare-pages-deploy.md).
-- [ ] **URGENTE:** barrido de actualidad en 6 casos publicables (prioridad **Plus Ultra**: CGPJ/CENDOJ/BOE/SEPI/Fiscalía + N4 cruzada; material nuevo → incorporar; si no → nota fechada en `NOTES.md`).
-- [ ] Activar DNS apex + `www`; verificar HTTP 200, sin `noindex`, canonical/OG en `https://presuntamente.org`, sitemap.
+- [x] **URGENTE:** barrido de actualidad en 6 casos publicables. 9 hitos nuevos; NOTES.md actualizados. `pnpm validate` 711 OK + build limpio.
+- [x] Auditoría editorial paralela `/revisar-caso` (6 sub-agentes Sonnet); 0 bloqueantes tras 5 fixes finos.
+- [x] Activar DNS apex + `www` (Cloudflare).
+- [ ] `git push origin main` → verificar deploy Cloudflare Pages (HTTP 200, sin `noindex`, canonical/OG, sitemap, ficha caso, `/buscar`).
 - [ ] Revisión aviso legal con abogado — **post-launch temprano** (no bloquea revisores externos).
 - [ ] Apartado postal del responsable — **post-launch temprano** (no bloquea revisores externos).
 
@@ -103,12 +105,12 @@ Plan detallado fuera de git. Pre-requisitos: deploy + dominio → lanzamiento bl
 
 | Caso | Estado | Pendiente principal |
 |------|--------|---------------------|
-| Plus Ultra | publicable | auto Calama íntegro si aparece |
-| Begoña Gómez | publicable | autos JI 41/AP; hallazgos cobertura |
-| González Amador | publicable | auto AP 7-nov; informe UCO |
-| FGE | publicable | vigilar amparo TC / actualidad |
-| Kitchen | publicable | otros procesados; JO |
-| Lezo | publicable | sentencia Inassa; Navalcarnero |
+| Plus Ultra | publicable | auto Calama íntegro en CENDOJ; aplazamiento declaración 17-18 jun |
+| Begoña Gómez | publicable | UCO prevaricación Cantó (1 fuente, V-13 pendiente); audiencia previa 9-jun |
+| González Amador | publicable | informe UCO Quirón (+300 días) |
+| FGE | publicable | amparo TC admisibilidad; indulto parcial pendiente CM |
+| Kitchen | publicable | sentencia otoño 2026 |
+| Lezo | publicable | sentencia Inassa (en curso); pieza golf sep 2027 |
 | ático-estepona | borrador | — |
 | Koldo/Cerdán | — | cuando decida el maintainer |
 
@@ -116,7 +118,7 @@ Plan detallado fuera de git. Pre-requisitos: deploy + dominio → lanzamiento bl
 
 ## Trabajo paralelizable
 
-- [ ] **Barrido actualidad prelaunch** — worktrees + sub-agentes si hace falta; prioridad Plus Ultra.
+- [x] **Barrido actualidad prelaunch** — 9 hitos incorporados; NOTES.md 6 casos actualizados.
 - Caliente: no tocar en paralelo `schemas/caso.schema.json`, `content/casos/*/caso.yaml`, `global.css`.
 
 Resto Bloque D paralelizable: **cerrado** (vínculos, `/conexiones`, cobertura, clasificación medios). Ver [`historial-2026-05.md § 2026-05-26`](docs/roadmap/historial-2026-05.md#cierre-del-sprint-extendido-tarde-noche).

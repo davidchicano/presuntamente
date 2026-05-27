@@ -2,7 +2,24 @@
 
 Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-05-23 (primarios descargados retrospectivamente).
+Última actualización: 2026-05-27 (barrido prelaunch — diligencias 25-26 may 2026).
+
+---
+
+## Barrido prelaunch 2026-05-27
+
+Hallazgos del barrido de actualidad previo al lanzamiento público del dominio:
+
+- **Nuevo hito incorporado:** `auto-diligencias-pu-2026-05-25` — auto del JCI nº 4 del 25-may-2026 acordando bloqueo de 490.780 € en cuentas de Zapatero, acceso a correos de Zapatero y sus hijas (Acens Technologies / Telefónica) y secreto absoluto sobre la UDEF. Fuentes N4 cruzadas: Infobae (25-may) + Actualidad.es (26-may).
+- **Hito actualizado:** `auto-imputacion-zapatero-2026-05-19` — descripción ampliada para reflejar que la declaración inicialmente fijada para el 2-jun-2026 fue posteriormente aplazada al 17-18 de junio de 2026. Fuente: cobertura periodística barrida el 27-may-2026. **Pendiente**: localizar el auto o resolución específica del aplazamiento (no consta aún como documento en el inventario).
+- **Org nueva:** `actualidad-es` creada como medio digital de comunicación para cumplir V-13 en el hito de diligencias.
+- **Investigación paralela EEUU:** la cobertura de mayo 2026 menciona que el Departamento de Justicia de EEUU estaría investigando presunto blanqueo de fondos venezolanos vinculados al entorno de Plus Ultra. No incorporado al inventario: sin documento oficial ni N4 cruzado suficiente a fecha de barrido. Pendiente de seguimiento.
+- **CENDOJ:** el auto íntegro del JCI nº 4 del 19-may-2026 (imputación Zapatero) y el del 25-may-2026 (diligencias bloqueo + correos) no constaban en CENDOJ a 27-may-2026.
+
+**Hechos pendientes** (investigados en el barrido, no incorporados por falta de fuente suficiente o complejidad editorial):
+
+- Trazabilidad del dinero: prensa cita 174 transferencias por importe de ~2,6 M€ entre cuentas vinculadas a la causa. Requiere auto íntegro o informe UDEF publicado para modelar como Hecho con cita literal y localización exacta.
+- Presunta inflación de datos de pasajeros en la solicitud SEPI (requisito de viabilidad): igualmente pendiente de primario N1/N2 para modelar con garantías.
 
 ---
 
@@ -24,6 +41,8 @@ Documentos candidatos a aplicar la convención de `ruta_local` + `hash_sha256` q
 - ~~**BOE Real Decreto-ley 25/2020 de 3 jul 2020**~~ — **Resuelto el 2026-05-24** (decisión editorial del maintainer: catalogar). Incorporado al inventario como `boe-rdl25-2020-fondo-solvencia-fasee` (BOE-A-2020-7311, BOE núm. 185 de 6-jul-2020, 59 pp, 1.145.841 bytes, sha256 `d0c95f42…0a2f07`). PDF + XML descargados a `/public/documentos/plus-ultra/`. Enlazado desde el hecho `pu-prestamo-sepi-2021-03-09` con cita literal del art. 2.1 (creación del FASEE + adscripción a SEPI). Justifica documentalmente la base normativa del préstamo de 53 M € hoy investigado por el JCI nº 4 AN. El hecho permanece como `atribuido` (no se promueve a `acreditado` sin revisión humana específica conforme a guardarraíl 3 de [investigar-caso](docs/diseno/03-estrategia-de-mantenimiento.md#4-uso-de-llm-para-diffs-revisables)).
 
 - **Auto íntegro del JCI nº 4 del 19-may-2026 en CENDOJ** — el documento `auto-jci4-plus-ultra-2026-05-19` referencia hoy la nota CGPJ (descargada en HTML). Cuando aparezca el auto íntegro firmado por el magistrado Calama en CENDOJ, descargarlo como PDF anexo conservando el `id` del documento existente y añadiendo un segundo `ruta_local` o creando un documento complementario `auto-jci4-plus-ultra-2026-05-19-integro` con el texto íntegro. Es la pasada que permitiría citar `Hechos Probados` o fundamentos jurídicos con localización exacta tipo "FJ Tercero, apartado 3.1, p. 14".
+- **Auto JCI nº 4 del 25-may-2026 (diligencias bloqueo + correos)** — no consta en CENDOJ a 27-may-2026. Cuando aparezca, crear documento N1 propio y vincular al hito `auto-diligencias-pu-2026-05-25` como `documento_principal_id` sustituyendo el actual N4.
+- **Auto o resolución de aplazamiento de la declaración de Zapatero** (de 2-jun a 17-18-jun-2026) — no localizado todavía con URL canónica. Cuando aparezca (nota CGPJ o auto en CENDOJ), crear documento y actualizar la descripción del hito `auto-imputacion-zapatero-2026-05-19`.
 
 - **Documentos N4 (cobertura periodística) del caso** — fuera de scope de la convención de primarios descargados ([AGENTS.md → "Documentos primarios descargados"](AGENTS.md#documentos-primarios-descargados-a-publicdocumentos), sección "Cuándo NO descargar"). El mirror permanente está cubierto por `scripts/archivar-n4.mjs` + archive.org; los cinco documentos N4 del caso ya tienen `url_archivo` cumplimentado desde la sesión 6 del 2026-05-22.
 

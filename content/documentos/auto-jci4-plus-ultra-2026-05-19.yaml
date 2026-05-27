@@ -31,7 +31,7 @@ fecha_publicacion: "2026-05-19"
 url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Audiencia-Nacional/Noticias-Judiciales/----La-Audiencia-Nacional-cita-al-expresidente-Jose-Luis-Rodriguez-Zapatero-como-investigado-por-delitos-de-trafico-de-influencias-y-otros-conexos"
 ruta_local: "/documentos/plus-ultra/auto-jci4-plus-ultra-2026-05-19.html"
 hash_sha256: "c0189d8240a07135103af7d81b99980bf1629f1eba8f246bdafc2766d3c416aa"
-estado_acceso: acceso_restringido_pero_citable
+estado_acceso: publico
 idioma: es
 caso_principal_id: plus-ultra
 estado_publicacion: borrador

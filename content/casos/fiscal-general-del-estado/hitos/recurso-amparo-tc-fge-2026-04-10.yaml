@@ -1,0 +1,33 @@
+id: recurso-amparo-tc-fge-2026-04-10
+caso_id: fiscal-general-del-estado
+tipo: recurso_amparo
+fecha: "2026-04-10"
+fecha_precision: dia
+titulo: "La Fiscalía presenta recurso de amparo ante el Tribunal Constitucional para anular la condena a Álvaro García Ortiz"
+descripcion: |
+  El 10 de abril de 2026, la Abogacía del Estado, en nombre de la
+  Fiscalía General del Estado, presenta ante el Tribunal Constitucional
+  recurso de amparo contra la Sentencia 1000/2025 de la Sala Segunda
+  del Tribunal Supremo que condenó a Álvaro García Ortiz por revelación
+  de datos reservados. El recurso alega vulneración de cinco derechos
+  fundamentales: presunción de inocencia (art. 24.2 CE), tutela judicial
+  efectiva (art. 24.1 CE), libertad de expresión (art. 20 CE), derecho
+  a no declarar contra sí mismo (art. 24.2 CE) y derecho a un juez
+  imparcial (art. 24.2 CE). La presentación del amparo no tiene efecto
+  suspensivo automático sobre la ejecución de la pena de inhabilitación
+  especial ya ejecutada ni sobre las obligaciones económicas (multa e
+  indemnización pagadas el 30-ene-2026). A fecha de este barrido
+  (27-may-2026), la admisibilidad del recurso aún no ha sido resuelta
+  por el TC (plazo habitual de 3-4 meses desde la presentación).
+  Conforme al principio de presunción de inocencia, la condena
+  adquirió firmeza el 26 de febrero de 2026 pero el amparo abre una
+  vía extraordinaria de revisión en sede constitucional.
+personas_afectadas:
+  - alvaro-garcia-ortiz
+organizaciones_afectadas:
+  - tribunal-constitucional
+  - fiscalia-general-del-estado
+documento_principal_id: elindependiente-amparo-fiscalia-fge-2026-04-10
+documentos_relacionados:
+  - libertaddigital-amparo-tc-fge-2026-04-10
+fase_resultante: recurso

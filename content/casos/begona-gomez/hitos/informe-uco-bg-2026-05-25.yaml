@@ -1,0 +1,36 @@
+id: informe-uco-bg-2026-05-25
+caso_id: begona-gomez
+tipo: informe_organismo_publico
+fecha: "2026-05-25"
+fecha_precision: dia
+titulo: "La UCO entrega al JI nº 41 su informe pericial sobre los hechos investigados, con conclusiones divergentes sobre ingresos y adjudicaciones"
+descripcion: |
+  La Unidad Central Operativa (UCO) de la Guardia Civil entrega al
+  Juzgado de Instrucción nº 41 de Madrid un informe pericial sobre
+  los hechos investigados en la causa seguida contra Begoña Gómez
+  Fernández y otros.
+
+  Según la cobertura de elDiario.es, el informe no encontraría
+  ingresos opacos o irregulares imputables a la investigada. Según
+  la cobertura de El Español, el mismo informe habría detectado que
+  las adjudicaciones del software licitado por la Fundación General
+  de la Universidad Complutense de Madrid para el proyecto vinculado
+  a la cátedra extraordinaria habrían sido planeadas con antelación y
+  sin cumplir la normativa de contratación pública.
+
+  La cobertura mediática de la misma jornada presenta, por tanto,
+  conclusiones divergentes sobre el contenido del informe UCO según
+  la línea editorial del medio. A fecha de barrido (27-may-2026), el
+  informe íntegro no ha sido publicado con URL canónica oficial.
+
+  Conforme al principio de presunción de inocencia, la condición de
+  investigada no implica valoración de culpabilidad y persiste mientras
+  no recaiga resolución firme en contrario.
+personas_afectadas:
+  - begona-gomez
+organizaciones_afectadas:
+  - juzgado-instruccion-41-madrid
+documento_principal_id: eldiario-informe-uco-bg-2026-05-25
+documentos_relacionados:
+  - elespanol-informe-uco-bg-2026-05-25
+fase_resultante: fase_intermedia
