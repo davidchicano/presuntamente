@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import 'open-props/style';
 import PresuntamenteLogo from '@/components/PresuntamenteLogo.astro';
 import PageToc from '@/components/PageToc.astro';
+import ThemeToggle from '@/components/ThemeToggle.astro';
 import { commitShaShort, buildDate, commitUrl } from '@/lib/build-info';
 
 type NavKey = 'casos' | 'personas' | 'organizaciones' | 'delitos' | 'biblioteca' | 'conexiones' | 'cifras' | 'sobre';
@@ -115,6 +116,23 @@ const brandSub = 'Inventario público de casos de corrupción en España';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* Tema (claro/oscuro): resuelve antes del primer paint para evitar FOUC.
+        Preferencia explícita en localStorage > preferencia del sistema. La
+        cuerda de lámpara del header escribe 'pst-theme'. Ver global.css
+        (:root[data-theme="dark"]) y docs/web/features/dark-mode.md. */}
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('pst-theme');
+          if (t !== 'dark' && t !== 'light') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
     <title>{title} · presuntamente</title>
     <meta name="description" content={ogDescription} />
 
@@ -254,6 +272,23 @@ const brandSub = 'Inventario público de casos de corrupción en España';
         </a>
         <button
           type="button"
+          class="site-theme"
+          data-theme-toggle
+          aria-label="Alternar entre modo claro y oscuro"
+        >
+          <svg class="site-theme__icon site-theme__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <svg class="site-theme__icon site-theme__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+          <span class="theme-pull__cord" aria-hidden="true">
+            <span class="theme-pull__knob"></span>
+          </span>
+        </button>
+        <button
+          type="button"
           class="site-menu-btn"
           aria-controls="site-menu-panel"
           aria-expanded="false"
@@ -306,6 +341,7 @@ const brandSub = 'Inventario público de casos de corrupción en España';
           <span class="sep">/</span>
           <a href="/cat" class:list={[lang === 'ca' && 'is-on']} lang="ca">CAT</a>
         </div>
+        <ThemeToggle />
       </div>
     </header>
 
@@ -341,6 +377,7 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       // Event-delegation desde document; en navegación normal la página
       // recarga, pero este patrón también evita listeners duplicados.
       let __menuListenersAttached = false;
+      let __menuOverflowTimer = 0;
       function __ensureMenuListeners() {
         if (__menuListenersAttached) return;
         __menuListenersAttached = true;
@@ -377,6 +414,20 @@ const brandSub = 'Inventario público de casos de corrupción en España';
           // dropdown del idioma no debe bloquear scroll.
           if (isMenuBtn(btn)) {
             document.body?.classList.toggle('has-menu-open', open);
+            // La cuerda de tema sobresale por debajo del menú. El panel recorta
+            // con overflow para animar el despliegue, así que solo tras terminar
+            // la apertura le ponemos overflow visible (si no, el contenido
+            // asomaría durante la animación). Al cerrar, recortamos de inmediato.
+            if (panel) {
+              window.clearTimeout(__menuOverflowTimer);
+              if (open) {
+                __menuOverflowTimer = window.setTimeout(() => {
+                  if (panel.dataset.open === 'true') panel.style.overflow = 'visible';
+                }, 300);
+              } else {
+                panel.style.overflow = '';
+              }
+            }
           }
         };
         const closeAny = () => {
@@ -435,6 +486,48 @@ const brandSub = 'Inventario público de casos de corrupción en España';
       }
       __ensureMenuListeners();
       document.addEventListener('astro:page-load', __ensureMenuListeners);
+
+      // Cuerda de lámpara: toggle de tema claro/oscuro. Escribe data-theme en
+      // <html> y persiste en localStorage ('pst-theme'); el script inline del
+      // <head> lo relee en cada carga para evitar FOUC. El panel del idioma /
+      // menú se deja abierto a propósito para que se vea el cambio y el tirón.
+      let __themeToggleAttached = false;
+      function __ensureThemeToggle() {
+        if (__themeToggleAttached) return;
+        __themeToggleAttached = true;
+        const applyTheme = (theme: 'light' | 'dark') => {
+          document.documentElement.dataset.theme = theme;
+          try { localStorage.setItem('pst-theme', theme); } catch (e) { /* almacenamiento no disponible */ }
+        };
+        document.addEventListener('click', (e) => {
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          const btn = target.closest<HTMLButtonElement>('[data-theme-toggle]');
+          if (!btn) return;
+          if (btn.classList.contains('is-pulling')) return;
+          const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          // Si el toggle lleva cuerda (header en desktop y menú en móvil), se
+          // reproduce el gesto de tirón; sin cuerda o con motion reducido,
+          // conmuta al instante.
+          const hasCord = !!btn.querySelector('.theme-pull__cord');
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (prefersReduced || !hasCord) { applyTheme(next); return; }
+          // Tirón: la cuerda se estira, cambia el tema a mitad de gesto y rebota.
+          btn.classList.remove('is-idle');
+          btn.classList.add('is-pulling');
+          window.setTimeout(() => {
+            applyTheme(next);
+            btn.classList.remove('is-pulling');
+            btn.classList.add('is-releasing');
+            window.setTimeout(() => {
+              btn.classList.remove('is-releasing');
+              btn.classList.add('is-idle');
+            }, 380);
+          }, 170);
+        });
+      }
+      __ensureThemeToggle();
+      document.addEventListener('astro:page-load', __ensureThemeToggle);
 
       // Filas clicables de las tablas de listado. Cualquier `tr.is-link`
       // navega al primer `<a href>` de la fila al hacer click en una celda

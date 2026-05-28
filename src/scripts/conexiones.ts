@@ -3,6 +3,7 @@ import cytoscape, {
   type EdgeSingular,
   type ElementDefinition,
   type NodeSingular,
+  type StylesheetStyle,
 } from "cytoscape";
 
 type NodeKind = "caso" | "persona" | "organizacion" | "documento";
@@ -1240,6 +1241,297 @@ function applyLocalMeshDrag(node: NodeSingular) {
   node.scratch(MESH_DRAG_SCRATCH, { x: current.x, y: current.y });
 }
 
+// Paleta del grafo (Cytoscape pinta en canvas, así que no hereda las CSS
+// custom properties: hay que resolver los colores en JS). Dos juegos
+// coherentes con los tokens de global.css; se elige por data-theme y se
+// reaplica al vuelo cuando el visitante tira de la cuerda de lámpara.
+interface GraphColors {
+  nodeBg: string;
+  nodeBorder: string;
+  nodeLabel: string;
+  casoBg: string;
+  casoBorder: string;
+  casoLabel: string;
+  casoTextBg: string;
+  personaBg: string;
+  personaBorder: string;
+  orgBg: string;
+  orgBorder: string;
+  docBg: string;
+  docBorder: string;
+  edge: string;
+  edgeLabel: string;
+  edgeTextBg: string;
+  focus: string;
+  edgeProcesal: string;
+  edgeInstitucional: string;
+  edgeCasoCaso: string;
+  edgeDocumental: string;
+}
+
+const GRAPH_COLORS_LIGHT: GraphColors = {
+  nodeBg: "#9aa6b7",
+  nodeBorder: "#ffffff",
+  nodeLabel: "#20252c",
+  casoBg: "#1f3a68",
+  casoBorder: "#1f3a68",
+  casoLabel: "#a78100",
+  casoTextBg: "#ffffff",
+  personaBg: "#ffffff",
+  personaBorder: "#1f3a68",
+  orgBg: "#d7dfeb",
+  orgBorder: "#4a6694",
+  docBg: "#fafafa",
+  docBorder: "#8b949e",
+  edge: "#8b949e",
+  edgeLabel: "#5d6672",
+  edgeTextBg: "#fafafa",
+  focus: "#c89b00",
+  edgeProcesal: "#1f3a68",
+  edgeInstitucional: "#4a6694",
+  edgeCasoCaso: "#c89b00",
+  edgeDocumental: "#9aa1aa",
+};
+
+const GRAPH_COLORS_DARK: GraphColors = {
+  nodeBg: "#6b7689",
+  nodeBorder: "#15171a",
+  nodeLabel: "#f0efe9",
+  casoBg: "#3f6bab",
+  casoBorder: "#3f6bab",
+  casoLabel: "#e0bb5c",
+  casoTextBg: "#23262b",
+  personaBg: "#cdd6e6",
+  personaBorder: "#7fa3d6",
+  orgBg: "#33455f",
+  orgBorder: "#7fa3d6",
+  docBg: "#23262b",
+  docBorder: "#76777a",
+  edge: "#6b7280",
+  edgeLabel: "#a8a59a",
+  edgeTextBg: "#23262b",
+  focus: "#e0bb5c",
+  edgeProcesal: "#7fa3d6",
+  edgeInstitucional: "#8aa3c9",
+  edgeCasoCaso: "#e0bb5c",
+  edgeDocumental: "#6b7280",
+};
+
+function graphColors(): GraphColors {
+  return document.documentElement.dataset.theme === "dark"
+    ? GRAPH_COLORS_DARK
+    : GRAPH_COLORS_LIGHT;
+}
+
+function buildGraphStyle(c: GraphColors): StylesheetStyle[] {
+  return [
+    {
+      selector: "node",
+      style: {
+        width: 18,
+        height: 18,
+        shape: "ellipse",
+        "background-color": c.nodeBg,
+        "border-width": 1.2,
+        "border-color": c.nodeBorder,
+        label: "data(displayLabel)",
+        color: c.nodeLabel,
+        "font-family": "Gill Sans, Lato, Source Sans 3, sans-serif",
+        "font-size": 9,
+        "font-weight": 600,
+        "text-wrap": "none",
+        "text-max-width": "96px",
+        "text-valign": "bottom",
+        "text-halign": "center",
+        "text-margin-y": 5,
+        "z-index-compare": "manual",
+        "z-index": 3,
+        "overlay-opacity": 0,
+        "transition-property":
+          "opacity, border-width, background-color, line-color, target-arrow-color, width",
+        "transition-duration": 130,
+      },
+    },
+    {
+      selector: "node.kind-caso",
+      style: {
+        width: 34,
+        height: 34,
+        "background-color": c.casoBg,
+        "border-color": c.casoBorder,
+        color: c.casoLabel,
+        "font-weight": 600,
+        "font-size": 14,
+        "text-wrap": "wrap",
+        "text-max-width": "172px",
+        "text-margin-y": 8,
+        "text-background-color": c.casoTextBg,
+        "text-background-opacity": 0.8,
+        "text-background-padding": "3px",
+        "text-background-shape": "rectangle",
+        "z-index": 18,
+      },
+    },
+    {
+      selector: "node.kind-persona",
+      style: {
+        width: 22,
+        height: 22,
+        "background-color": c.personaBg,
+        "border-color": c.personaBorder,
+      },
+    },
+    {
+      selector: "node.kind-organizacion",
+      style: {
+        width: 24,
+        height: 24,
+        "background-color": c.orgBg,
+        "border-color": c.orgBorder,
+      },
+    },
+    {
+      selector: "node.kind-documento",
+      style: {
+        width: 14,
+        height: 14,
+        "background-color": c.docBg,
+        "border-color": c.docBorder,
+        "border-style": "dashed",
+        "font-size": 8,
+      },
+    },
+    {
+      selector: "node.depth-2, node.depth-3",
+      style: {
+        opacity: 0.72,
+      },
+    },
+    {
+      selector: "edge",
+      style: {
+        width: 1.2,
+        "line-color": c.edge,
+        "target-arrow-color": c.edge,
+        "target-arrow-shape": "triangle",
+        "target-arrow-fill": "filled",
+        "curve-style": "bezier",
+        color: c.edgeLabel,
+        "font-size": 0,
+        "font-family": "Gill Sans, Lato, Source Sans 3, sans-serif",
+        "text-background-color": c.edgeTextBg,
+        "text-background-opacity": 0.86,
+        "text-background-padding": "2px",
+        "text-rotation": "autorotate",
+        opacity: 0.22,
+        "z-index-compare": "manual",
+        "z-index": 0,
+        "transition-property":
+          "opacity, width, line-color, target-arrow-color",
+        "transition-duration": 130,
+      },
+    },
+    {
+      selector: "node.is-dim",
+      style: {
+        opacity: 0.12,
+      },
+    },
+    {
+      selector: "edge.is-dim",
+      style: {
+        opacity: 0.035,
+      },
+    },
+    {
+      selector: "node.is-highlight",
+      style: {
+        opacity: 1,
+        "z-index": 14,
+      },
+    },
+    {
+      selector: "edge.is-highlight",
+      style: {
+        opacity: 0.86,
+        width: 2,
+        "z-index": 2,
+      },
+    },
+    {
+      selector: "node.is-focus",
+      style: {
+        "border-width": 3,
+        "border-color": c.focus,
+        "z-index": 24,
+        "text-wrap": "wrap",
+        "text-max-width": "158px",
+      },
+    },
+    {
+      selector: "node.kind-caso.is-focus",
+      style: {
+        "font-size": 15,
+        "text-max-width": "190px",
+        "text-background-opacity": 0.78,
+        "text-background-padding": "4px",
+        color: c.focus,
+        "z-index": 32,
+      },
+    },
+    {
+      selector: "edge.is-focus",
+      style: {
+        opacity: 1,
+        width: 2.5,
+        "line-color": c.focus,
+        "target-arrow-color": c.focus,
+        "z-index": 4,
+      },
+    },
+    {
+      selector: "edge.edge-procesal",
+      style: {
+        "line-color": c.edgeProcesal,
+        "target-arrow-color": c.edgeProcesal,
+      },
+    },
+    {
+      selector: "edge.edge-institucional",
+      style: {
+        "line-color": c.edgeInstitucional,
+        "target-arrow-color": c.edgeInstitucional,
+      },
+    },
+    {
+      selector: "edge.edge-caso_caso",
+      style: {
+        "line-color": c.edgeCasoCaso,
+        "target-arrow-color": c.edgeCasoCaso,
+        "line-style": "dashed",
+      },
+    },
+    {
+      selector: "edge.edge-documental",
+      style: {
+        "line-color": c.edgeDocumental,
+        "target-arrow-color": c.edgeDocumental,
+        "line-style": "dotted",
+      },
+    },
+    {
+      selector: ":selected",
+      style: {
+        "border-width": 3,
+        "border-color": c.focus,
+        "background-color": c.focus,
+        "line-color": c.focus,
+        "target-arrow-color": c.focus,
+      },
+    },
+  ];
+}
+
 function renderGraph(
   root: HTMLElement,
   payload: GraphPayload,
@@ -1268,212 +1560,17 @@ function renderGraph(
       minZoom: GRAPH_MIN_ZOOM,
       maxZoom: GRAPH_MAX_ZOOM,
       wheelSensitivity: 1.6,
-      style: [
-        {
-          selector: "node",
-          style: {
-            width: 18,
-            height: 18,
-            shape: "ellipse",
-            "background-color": "#9aa6b7",
-            "border-width": 1.2,
-            "border-color": "#ffffff",
-            label: "data(displayLabel)",
-            color: "#20252c",
-            "font-family": "Gill Sans, Lato, Source Sans 3, sans-serif",
-            "font-size": 9,
-            "font-weight": 600,
-            "text-wrap": "none",
-            "text-max-width": "96px",
-            "text-valign": "bottom",
-            "text-halign": "center",
-            "text-margin-y": 5,
-            "z-index-compare": "manual",
-            "z-index": 3,
-            "overlay-opacity": 0,
-            "transition-property":
-              "opacity, border-width, background-color, line-color, target-arrow-color, width",
-            "transition-duration": 130,
-          },
-        },
-        {
-          selector: "node.kind-caso",
-          style: {
-            width: 34,
-            height: 34,
-            "background-color": "#1f3a68",
-            "border-color": "#1f3a68",
-            color: "#a78100",
-            "font-weight": 600,
-            "font-size": 14,
-            "text-wrap": "wrap",
-            "text-max-width": "172px",
-            "text-margin-y": 8,
-            "text-background-color": "#ffffff",
-            "text-background-opacity": 0.8,
-            "text-background-padding": "3px",
-            "text-background-shape": "rectangle",
-            "z-index": 18,
-          },
-        },
-        {
-          selector: "node.kind-persona",
-          style: {
-            width: 22,
-            height: 22,
-            "background-color": "#ffffff",
-            "border-color": "#1f3a68",
-          },
-        },
-        {
-          selector: "node.kind-organizacion",
-          style: {
-            width: 24,
-            height: 24,
-            "background-color": "#d7dfeb",
-            "border-color": "#4a6694",
-          },
-        },
-        {
-          selector: "node.kind-documento",
-          style: {
-            width: 14,
-            height: 14,
-            "background-color": "#fafafa",
-            "border-color": "#8b949e",
-            "border-style": "dashed",
-            "font-size": 8,
-          },
-        },
-        {
-          selector: "node.depth-2, node.depth-3",
-          style: {
-            opacity: 0.72,
-          },
-        },
-        {
-          selector: "edge",
-          style: {
-            width: 1.2,
-            "line-color": "#8b949e",
-            "target-arrow-color": "#8b949e",
-            "target-arrow-shape": "triangle",
-            "target-arrow-fill": "filled",
-            "curve-style": "bezier",
-            color: "#5d6672",
-            "font-size": 0,
-            "font-family": "Gill Sans, Lato, Source Sans 3, sans-serif",
-            "text-background-color": "#fafafa",
-            "text-background-opacity": 0.86,
-            "text-background-padding": "2px",
-            "text-rotation": "autorotate",
-            opacity: 0.22,
-            "z-index-compare": "manual",
-            "z-index": 0,
-            "transition-property":
-              "opacity, width, line-color, target-arrow-color",
-            "transition-duration": 130,
-          },
-        },
-        {
-          selector: "node.is-dim",
-          style: {
-            opacity: 0.12,
-          },
-        },
-        {
-          selector: "edge.is-dim",
-          style: {
-            opacity: 0.035,
-          },
-        },
-        {
-          selector: "node.is-highlight",
-          style: {
-            opacity: 1,
-            "z-index": 14,
-          },
-        },
-        {
-          selector: "edge.is-highlight",
-          style: {
-            opacity: 0.86,
-            width: 2,
-            "z-index": 2,
-          },
-        },
-        {
-          selector: "node.is-focus",
-          style: {
-            "border-width": 3,
-            "border-color": "#c89b00",
-            "z-index": 24,
-            "text-wrap": "wrap",
-            "text-max-width": "158px",
-          },
-        },
-        {
-          selector: "node.kind-caso.is-focus",
-          style: {
-            "font-size": 15,
-            "text-max-width": "190px",
-            "text-background-opacity": 0.78,
-            "text-background-padding": "4px",
-            "color": "#c89b00",
-            "z-index": 32,
-          },
-        },
-        {
-          selector: "edge.is-focus",
-          style: {
-            opacity: 1,
-            width: 2.5,
-            "line-color": "#c89b00",
-            "target-arrow-color": "#c89b00",
-            "z-index": 4,
-          },
-        },
-        {
-          selector: "edge.edge-procesal",
-          style: {
-            "line-color": "#1f3a68",
-            "target-arrow-color": "#1f3a68",
-          },
-        },
-        {
-          selector: "edge.edge-institucional",
-          style: {
-            "line-color": "#4a6694",
-            "target-arrow-color": "#4a6694",
-          },
-        },
-        {
-          selector: "edge.edge-caso_caso",
-          style: {
-            "line-color": "#c89b00",
-            "target-arrow-color": "#c89b00",
-            "line-style": "dashed",
-          },
-        },
-        {
-          selector: "edge.edge-documental",
-          style: {
-            "line-color": "#9aa1aa",
-            "target-arrow-color": "#9aa1aa",
-            "line-style": "dotted",
-          },
-        },
-        {
-          selector: ":selected",
-          style: {
-            "border-width": 3,
-            "border-color": "#c89b00",
-            "background-color": "#c89b00",
-            "line-color": "#c89b00",
-            "target-arrow-color": "#c89b00",
-          },
-        },
-      ],
+      style: buildGraphStyle(graphColors()),
+    });
+    // Reaplica la paleta del grafo cuando cambia el tema (la cuerda de
+    // lámpara escribe data-theme en <html>). Cytoscape pinta en canvas, así
+    // que no reacciona solo a las CSS custom properties.
+    const themeObserver = new MutationObserver(() => {
+      cy!.style(buildGraphStyle(graphColors()));
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
     });
     let lockedHighlightId = "";
     cy.on("mouseover", "node, edge", (event) => {

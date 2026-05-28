@@ -187,12 +187,12 @@ const badgeClass = [
   }
 
   .estado-pub-badge--beta-publica {
-    color: #6b4d00;
+    color: var(--color-accent-secondary-text);
     background: var(--color-accent-secondary-soft, #f7ecc5);
   }
 
   .estado-pub-badge--en-revision {
-    color: #6b4d00;
+    color: var(--color-accent-secondary-text);
     background: color-mix(in srgb, var(--color-accent-secondary-soft, #f7ecc5) 55%, transparent);
   }
 
@@ -212,25 +212,12 @@ const badgeClass = [
     background: #f9ecec;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .estado-pub-badge--pendiente {
-      color: var(--color-fg-subtle, var(--color-fg-muted));
-    }
-    .estado-pub-badge--borrador {
-      color: var(--color-accent);
-    }
-    .estado-pub-badge--beta-publica,
-    .estado-pub-badge--en-revision {
-      color: var(--color-accent-secondary);
-    }
-    .estado-pub-badge--publicado {
-      color: #9ec5a7;
-    }
-    .estado-pub-badge--retirado-temporalmente,
-    .estado-pub-badge--retirado-definitivamente {
-      color: #e0a4a4;
-      background: #2a1414;
-    }
+  /* Resto de estados → tokens dark-aware. Sólo el rojo "retirado" usa par
+     fijo propio, así que es lo único que el tema oscuro reescribe aquí. */
+  :global(html[data-theme="dark"]) .estado-pub-badge--retirado-temporalmente,
+  :global(html[data-theme="dark"]) .estado-pub-badge--retirado-definitivamente {
+    color: #e0a4a4;
+    background: #2a1414;
   }
 </style>
 
@@ -276,12 +263,12 @@ const badgeClass = [
   }
 
   .estado-pub-badge__hover--beta-publica {
-    color: #6b4d00;
+    color: var(--color-accent-secondary-text);
     background: var(--color-accent-secondary-soft, #f7ecc5);
   }
 
   .estado-pub-badge__hover--en-revision {
-    color: #6b4d00;
+    color: var(--color-accent-secondary-text);
     background: color-mix(in srgb, var(--color-accent-secondary-soft, #f7ecc5) 55%, transparent);
   }
 
@@ -296,24 +283,9 @@ const badgeClass = [
     background: #f9ecec;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .estado-pub-badge__hover--pendiente {
-      color: var(--color-fg-subtle, var(--color-fg-muted));
-    }
-    .estado-pub-badge__hover--borrador {
-      color: var(--color-accent);
-    }
-    .estado-pub-badge__hover--beta-publica,
-    .estado-pub-badge__hover--en-revision {
-      color: var(--color-accent-secondary);
-    }
-    .estado-pub-badge__hover--publicado {
-      color: #9ec5a7;
-    }
-    .estado-pub-badge__hover--retirado-temporalmente,
-    .estado-pub-badge__hover--retirado-definitivamente {
-      color: #e0a4a4;
-      background: #2a1414;
-    }
+  html[data-theme="dark"] .estado-pub-badge__hover--retirado-temporalmente,
+  html[data-theme="dark"] .estado-pub-badge__hover--retirado-definitivamente {
+    color: #e0a4a4;
+    background: #2a1414;
   }
 </style>

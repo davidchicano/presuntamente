@@ -81,7 +81,7 @@ const LABELS: Record<Props['estado'], string> = {
   }
 
   .estado-badge--parcial {
-    color: #6b4d00;
+    color: var(--color-accent-secondary-text);
     background: var(--color-accent-secondary-soft, #f7ecc5);
   }
 
@@ -94,19 +94,7 @@ const LABELS: Record<Props['estado'], string> = {
     color: var(--color-fg-muted, #6c6f73);
     background: var(--color-desmentido-bg, #f0f0f0);
   }
-
-  @media (prefers-color-scheme: dark) {
-    .estado-badge--completo {
-      color: #9ec5a7;
-    }
-    .estado-badge--parcial {
-      color: var(--color-accent-secondary);
-    }
-    .estado-badge--pendiente {
-      color: var(--color-accent);
-    }
-    .estado-badge--no-aplica {
-      color: var(--color-fg-subtle, var(--color-fg-muted));
-    }
-  }
+  /* El tema oscuro se resuelve por tokens dark-aware (--color-acreditado,
+     --color-accent-secondary-text, --color-rol-investigado, --color-fg-muted):
+     no hace falta un bloque dark específico aquí. */
 </style>

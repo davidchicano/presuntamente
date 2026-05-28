@@ -251,7 +251,7 @@ const current = options.find((o) => o.value === value) ?? options[0];
   }
   .csel__opt[aria-selected="true"] {
     background: var(--color-accent);
-    color: #fff;
+    color: var(--color-accent-fg);
   }
   @media (prefers-reduced-motion: reduce) {
     .csel__caret,

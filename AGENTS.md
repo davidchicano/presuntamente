@@ -116,6 +116,10 @@ Antes de tocar UI, consulta `DESIGN.md` y respeta su escala tipográfica. Norma 
 
 Si algo necesita más jerarquía, usar estructura, color, borde, fondo, tamaño moderado o posición; no subir a peso negro. Esta regla aplica también a HTML generado por scripts (`innerHTML`) y a estilos `:global(...)`.
 
+### Dark mode al crear componentes
+
+El sitio tiene tema claro y oscuro (`data-theme` en `<html>`). **Al crear o tocar un componente, piensa el dark mode desde el principio:** usa los tokens `--color-*` (que ya invierten) en vez de hex hardcodeados; si necesitas un color nuevo, añádele su variante en el bloque `:root[data-theme="dark"]` de `global.css`; para texto sobre relleno de color usa `--color-accent-fg` / `--color-accent-secondary-fg`; y nunca uses `@media (prefers-color-scheme: dark)` en un componente (no responde al toggle manual). Detalle en [`docs/web/features/dark-mode.md`](docs/web/features/dark-mode.md).
+
 ### NOTES.md por caso
 
 Cada `/content/casos/<slug>/NOTES.md` contiene anotaciones internas: contexto, "ojo con esta fuente porque…", decisiones tomadas, recordatorios para el LLM. **Excluido del build del sitio público.** Vive sólo en el repo para humanos y agentes.

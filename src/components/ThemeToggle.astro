@@ -1,0 +1,34 @@
+---
+// Cuerda de lámpara para alternar tema claro/oscuro — sólo VISTA MÓVIL.
+//
+// Se coloca al fondo del menú hamburguesa (.site-menu-panel), junto al selector
+// de idioma. El "tirador" (icono + etiqueta) vive dentro del panel; la cuerda
+// con su perilla mostaza cuelga por debajo, sobre el filete tricolor (el panel
+// recorta con overflow para animar su despliegue, así que no sobresale del
+// borde). Idea del maintainer: lámpara antigua de tirar, en clave gov-retro.
+//
+// En desktop NO se usa esta cuerda: el tema se cambia con el botón `.site-theme`
+// del header, a la derecha de "Aportar" (markup en BaseLayout).
+//
+// La lógica de click + persistencia (localStorage 'pst-theme') vive en el
+// script de BaseLayout, junto al resto del chrome del sitio.
+// Canon de tema: global.css (:root[data-theme="dark"]) y
+// docs/web/features/dark-mode.md.
+---
+
+<button type="button" class="theme-pull" data-theme-toggle aria-label="Alternar entre modo claro y oscuro">
+  <span class="theme-pull__face">
+    <svg class="theme-pull__icon theme-pull__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+    <svg class="theme-pull__icon theme-pull__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+    </svg>
+    <span class="theme-pull__label theme-pull__label--off">Apagar la luz</span>
+    <span class="theme-pull__label theme-pull__label--on">Encender la luz</span>
+  </span>
+  <span class="theme-pull__cord" aria-hidden="true">
+    <span class="theme-pull__knob"></span>
+  </span>
+</button>

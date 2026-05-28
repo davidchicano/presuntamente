@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-28 (panel detalle `/conexiones`). Expansión de descripciones truncadas con `Ver más`/`Ver menos` (enlace subrayado bajo el párrafo con `…`), `Cerrar` ghost en fila del badge, estilos `:global` para HTML inyectado y `max-height` del panel ~+30 % (`62vh`/`572px`). Fichas: [`explorador-conexiones.md`](docs/web/features/explorador-conexiones.md), [`conexiones.md`](docs/web/pages/conexiones.md).
+**Última actualización:** 2026-05-28 (modo claro/oscuro). Tema vía `data-theme` + persistencia (`localStorage`, script inline sin FOUC); toggle con cuerda de lámpara (botón en header desktop, cuerda colgante en menú móvil). Auditoría completa de tokens dark (faltaban familias: epistémicos texto, roles, niveles N3/N4, eje, naturaleza, partidos, header) + grafo Cytoscape theme-aware con restyle en vivo. Ficha [`dark-mode.md`](docs/web/features/dark-mode.md). Norma nueva en [`AGENTS.md`](AGENTS.md): pensar dark mode al crear componentes.
 
-**Anterior (2026-05-28, síntesis Leire).** Compactado `sintesis_caso.que_se_investiga` del caso Leire Díez; guardarraíl CH13 en schema y skills. Detalle en [`sintesis-caso.md`](docs/web/features/sintesis-caso.md).
+**Anterior (2026-05-28, panel detalle `/conexiones`).** `Ver más`/`Ver menos`, `Cerrar` ghost, `:global` para HTML inyectado, `max-height` panel +30 %. Ficha [`explorador-conexiones.md`](docs/web/features/explorador-conexiones.md).
 
 ---
 
@@ -87,6 +87,7 @@ Cerradas (una línea cada una; detalle en ficha):
 - [x] `/cifras` · OG images · RSS/Atom · timeline · estado de ficha · síntesis · vínculos institucionales · cobertura mediática general · clasificación editorial medios.
 - [x] Mejoras listados · PartidoBadge · iconografía `badge--cat` · `<Aclaracion>` · refactor afectación directa/indirecta · explorador `/conexiones`.
 - [x] Poblado CIS/grupos editoriales · skills masivas (`documentar-vinculos` v3, `rastrear-cobertura`, `revisar-caso`) · 26 esqueletos `pendiente` + órganos judiciales.
+- [x] Modo claro/oscuro con toggle (cuerda de lámpara) — [`dark-mode.md`](docs/web/features/dark-mode.md).
 
 Pendiente v1.x (no bloquea launch blando):
 

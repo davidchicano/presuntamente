@@ -64,13 +64,16 @@ const text = label ?? LABELS[safe];
   /* Variantes de naturaleza editorial. Heredan estructura y padding de
      `.badge.badge--cat` definido en global.css; aquí solo modulamos el tono
      del border-left y el color del texto. */
-  .badge--cat-nat-generalista   { color: var(--color-fg);       border-left-color: var(--color-border-strong); }
-  .badge--cat-nat-verificacion  { color: #2c5346;               border-left-color: #6b8e7f; }
-  .badge--cat-nat-juridico      { color: #6b4d00;               border-left-color: var(--color-accent-secondary); }
-  .badge--cat-nat-servicio      { color: var(--color-accent);   border-left-color: var(--color-accent); }
-  .badge--cat-nat-confesional   { color: #5d3a5d;               border-left-color: #8a5a8a; }
-  .badge--cat-nat-especializado { color: #5b4a2e;               border-left-color: #9b8866; }
-  .badge--cat-nat-otro          { color: var(--color-fg-muted); border-left-color: var(--color-border-strong); }
+  /* Borde y texto desde tokens dark-aware: en light son los tonos medios
+     originales; en dark el texto se aclara para contrastar sobre el fondo
+     neutro oscuro de `.badge--cat`. */
+  .badge--cat-nat-generalista   { color: var(--color-fg);                     border-left-color: var(--color-border-strong); }
+  .badge--cat-nat-verificacion  { color: var(--color-nat-verificacion-text);  border-left-color: var(--color-nat-verificacion-border); }
+  .badge--cat-nat-juridico      { color: var(--color-accent-secondary-text);  border-left-color: var(--color-accent-secondary); }
+  .badge--cat-nat-servicio      { color: var(--color-accent);                 border-left-color: var(--color-accent); }
+  .badge--cat-nat-confesional   { color: var(--color-nat-confesional-text);   border-left-color: var(--color-nat-confesional-border); }
+  .badge--cat-nat-especializado { color: var(--color-nat-especializado-text); border-left-color: var(--color-nat-especializado-border); }
+  .badge--cat-nat-otro          { color: var(--color-fg-muted);               border-left-color: var(--color-border-strong); }
 
   .badge--sm { font-size: 0.7rem; padding-block: 0.05rem; }
 </style>
