@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-28 (modo claro/oscuro). Tema vía `data-theme` + persistencia (`localStorage`, script inline sin FOUC); toggle con cuerda de lámpara (botón en header desktop, cuerda colgante en menú móvil). Auditoría completa de tokens dark (faltaban familias: epistémicos texto, roles, niveles N3/N4, eje, naturaleza, partidos, header) + grafo Cytoscape theme-aware con restyle en vivo. Ficha [`dark-mode.md`](docs/web/features/dark-mode.md). Norma nueva en [`AGENTS.md`](AGENTS.md): pensar dark mode al crear componentes.
+**Última actualización:** 2026-05-28 (scouting de casos). Categoría nueva de fuentes de descubrimiento (agregadores secundarios, **no citables**) en [`agregadores-y-descubrimiento.md`](docs/fuentes/agregadores-y-descubrimiento.md); cruce de los 589 casos de casos-aislados.com en [`casos-aislados-candidatos.md`](docs/fuentes/casos-aislados-candidatos.md) (554 faltan: 56 alta prioridad, 16 rozan fichas ya existentes). 3 pistas `pending` en `signals.yaml` (Mediador, David Sánchez/Badajoz, Pequeño Nicolás) de una lista de aportes editorial; resto descartado por *sin cuota política*. Norma nueva en [`AGENTS.md`](AGENTS.md): memoria del agente = local/por-developer, conocimiento general → repo.
 
-**Anterior (2026-05-28, panel detalle `/conexiones`).** `Ver más`/`Ver menos`, `Cerrar` ghost, `:global` para HTML inyectado, `max-height` panel +30 %. Ficha [`explorador-conexiones.md`](docs/web/features/explorador-conexiones.md).
+**Anterior (2026-05-28, modo claro/oscuro).** Tema vía `data-theme` + persistencia sin FOUC, toggle de cuerda de lámpara, auditoría de tokens dark y grafo Cytoscape theme-aware. Ficha [`dark-mode.md`](docs/web/features/dark-mode.md).
 
 ---
 
@@ -156,6 +156,8 @@ Sólo lo que afecta sesiones inmediatas. Resto: [`aprendizajes.md`](docs/roadmap
 - **Delegación barata:** contrato cerrado + lectura crítica al volver — [`AGENTS.md`](AGENTS.md).
 - **Portales oficiales:** catálogo incremental [`docs/fuentes/`](docs/fuentes/README.md) (CGPJ histórico pre-2024, CENDOJ, BOE fechas).
 - **Fichas `docs/web/` descargan el roadmap** — ideas futuras allí, no aquí.
+- **Scouting ≠ fuente citable:** agregadores secundarios (casos-aislados.com) sólo para descubrir candidatos — [`agregadores-y-descubrimiento.md`](docs/fuentes/agregadores-y-descubrimiento.md). Backlog de 554 candidatos en [`casos-aislados-candidatos.md`](docs/fuentes/casos-aislados-candidatos.md); promover de uno en uno, no en masa (profundidad > volumen).
+- **Plan abierto (sin arrancar):** "en cola" público ligero (casos previstos sin esqueletos pesados) · escala `/conexiones` (`fcose`/preset antes de ~50 casos) · profundizar Gürtel.
 
 ---
 

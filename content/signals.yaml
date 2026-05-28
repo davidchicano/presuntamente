@@ -11,4 +11,36 @@
 #
 # Pipeline de watchers: [docs/diseno/03-estrategia-de-mantenimiento.md — "Uso de LLM para diffs revisables"](docs/diseno/03-estrategia-de-mantenimiento.md#4-uso-de-llm-para-diffs-revisables)
 
-signals: []
+signals:
+  # Pistas de caso entrantes (lista de aportes editorial, 2026-05-28).
+  # Sólo se han retenido procedimientos judiciales reales; el resto de la
+  # lista de origen era crítica política/de gestión, fuera del alcance del
+  # inventario (principio "tratamiento sin cuota política"). Re-investigar
+  # cada una desde primarios con /investigar-caso antes de fichar.
+  - id: sig-2026-05-28-mediador
+    caso_id: mediador
+    fuente: "pista editorial — pendiente localizar primario (Tribunal Supremo / CENDOJ)"
+    snippet: >-
+      Caso Mediador (Tito Berni): presunta trama de cobro de comisiones a
+      cambio de gestiones ante la Administración, con investigación en el
+      Tribunal Supremo por aforamiento de un diputado. Relevancia nacional.
+    fecha_deteccion: 2026-05-28
+    estado: pending
+  - id: sig-2026-05-28-david-sanchez-badajoz
+    caso_id: david-sanchez-badajoz
+    fuente: "pista editorial — pendiente localizar primario (Juzgado de Badajoz / TSJ Extremadura)"
+    snippet: >-
+      Investigación judicial en la Diputación de Badajoz sobre la creación y
+      provisión de un puesto presuntamente a medida; figura investigada por
+      presuntos delitos de prevaricación y tráfico de influencias.
+    fecha_deteccion: 2026-05-28
+    estado: pending
+  - id: sig-2026-05-28-pequeno-nicolas
+    caso_id: pequeno-nicolas
+    fuente: "pista editorial — pendiente localizar primarios (Audiencia Nacional / CENDOJ; varias piezas)"
+    snippet: >-
+      Procedimientos contra Francisco Nicolás Gómez Iglesias por presuntos
+      delitos (en alguna pieza ya enjuiciados) de usurpación de funciones,
+      falsedad y estafa. Verificar estado procesal pieza a pieza antes de fichar.
+    fecha_deteccion: 2026-05-28
+    estado: pending
