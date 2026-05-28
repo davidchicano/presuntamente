@@ -1,0 +1,13 @@
+id: el-confidencial
+nombre: "El Confidencial"
+nombres_alternativos:
+  - "elconfidencial.com"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Medio de comunicación digital español especializado en periodismo de investigación
+  económica, política y judicial. Publicó en mayo de 2025 las grabaciones que dieron
+  origen al procedimiento ante el JI nº 9 de Madrid en el caso Leire Díez.
+naturaleza_editorial: generalista_politico
+url_canonica: "https://www.elconfidencial.com/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

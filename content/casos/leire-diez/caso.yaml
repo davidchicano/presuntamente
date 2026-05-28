@@ -1,0 +1,83 @@
+id: leire-diez
+nombre_oficial: "Pieza separada del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional, magistrado Santiago Pedraz, sobre presunta financiación irregular y obstrucción de la Justicia"
+nombre_mediatico: "Caso Leire Díez"
+nombres_alternativos:
+  - "caso Ferraz"
+  - "caso Hirurok"
+
+descripcion_corta: |
+  Procedimiento instruido por el JCI nº 5 de la Audiencia Nacional (juez Santiago Pedraz)
+  que investiga una presunta estructura denominada "Hirurok" orientada a obtener comisiones
+  ilegales en contratos públicos y ayudas SEPI (2021–2023), con ramificaciones hacia la
+  sede federal del PSOE. En paralelo, el JI nº 9 de Madrid investiga presuntos delitos de
+  cohecho y tráfico de influencias.
+
+sintesis_caso:
+  que_se_investiga: |
+    Se investiga si María Leire Díez Castro, Vicente Fernández Guerrero y Joseba Antxon
+    Alonso habrían constituido una estructura —denominada internamente "Hirurok"—
+    presuntamente orientada a obtener comisiones ilegales en contratos públicos y ayudas
+    SEPI por valor superior a 700.000 euros entre 2021 y 2023. El auto del juez Pedraz del
+    26 de mayo de 2026 abre pieza separada e investiga si Cerdán, Zarrías y Fuentes Pacheco
+    (exsecretario de Organización, exvicepresidente de la Junta de Andalucía y gerente
+    federal del PSOE, respectivamente) habrían autorizado y canalizado pagos a esa red
+    mediante facturas presuntamente falsas, y si se llevaron a cabo acciones presuntamente
+    orientadas a desestabilizar procedimientos judiciales. En paralelo, el JI nº 9 de
+    Madrid investiga presuntos delitos de cohecho y tráfico de influencias.
+  hechos_clave:
+    - "Se investiga si la red Hirurok habría actuado en contratos públicos y ayudas SEPI por importe superior a 700.000 euros entre 2021 y 2023."
+    - "El auto Pedraz del 26 de mayo de 2026 abre pieza separada e incluye entre los investigados a Santos Cerdán, Gaspar Zarrías y cinco personas más, y autoriza la entrada de la UCO en la sede federal del PSOE."
+    - "La UCO realizó un registro de 12 horas en la sede federal del PSOE (Ferraz) el 27 de mayo de 2026 en busca de documentación."
+    - "Se investiga si se habrían ofrecido 50.000 euros a una empresaria para que modificara su declaración judicial, y si se buscó información sensible sobre jueces y mandos UCO."
+  estado_actual: |
+    Causa bajo secreto sumarial (pieza separada JCI nº 5 AN) en fase de instrucción.
+    La UCO ejecutó el registro en Ferraz el 27 de mayo de 2026. El procedimiento ante el
+    JI nº 9 de Madrid se sustancia de forma paralela.
+  cifras_clave:
+    - "Presunta comisión superior a 700.000 euros en contratos SEPI (2021-2023)"
+    - "188.000 euros mínimo documentado en pagos del PSOE a la red (auto Pedraz)"
+    - "50.000 euros presuntamente ofrecidos para modificar declaración de testigo"
+
+organo_judicial_id: juzgado-central-instruccion-5
+tipo_procedimiento: diligencias_previas
+ponente_actual_id: santiago-pedraz
+# numero_procedimiento: LLM-incierto: número exacto de las diligencias previas no localizado públicamente; pendiente confirmación.
+
+fase_actual: instruccion
+fecha_apertura: "2025-05-01"
+# fecha_apertura: Mayo 2025 (publicación audios El Confidencial y apertura del JI 9). La pieza A ante JCI 5 se formaliza antes del registro de diciembre 2025 (JCI nº 6) y se traslada al JCI nº 5. fecha_precision=mes.
+
+origen_denuncia: denuncia_periodistica
+
+delitos_atribuidos_en_la_causa:
+  - cohecho
+  - trafico-de-influencias
+  - falsedad-documental
+  - revelacion-de-secretos
+  # LLM-incierto: delitos exactos del auto Pedraz pendientes de verificar contra fuente primaria. Se listan los mencionados en prensa cruzada que coinciden con slugs existentes en content/delitos/.
+
+resumen_cifras: |
+  Se investiga una presunta red de comisiones en contratos públicos y ayudas SEPI por valor
+  superior a 700.000 euros (2021-2023). El auto Pedraz del 26 de mayo de 2026 documentó un
+  mínimo de 188.000 euros en pagos del PSOE a la red, canalizados mediante facturas
+  presuntamente falsas. Se investiga también un presunto ofrecimiento de 50.000 euros a
+  una empresaria para modificar su declaración judicial.
+
+estado_publicacion: beta_publica
+ultima_revision_editorial: "2026-05-28"
+nivel_relevancia_editorial: capital
+pin_destacado: 2
+
+estado_ficha:
+  cronologia: parcial
+  roles_procesales: parcial
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: parcial
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: parcial
+  conexiones: parcial
+  cobertura_mediatica_general: pendiente
+  revision_editorial: pendiente
+  notas: "PR1+PR2: 4 hitos, 5 hechos, 10 roles investigados + 1 juez. Vínculos institucionales: 16 vínculos creados (3 afectación, 13 cargos/nombramientos), incluyendo BOE-A-2018-8601 (RD 616/2018, nombramiento Fernández Guerrero SEPI) descargado con hash_sha256 y nota FESOFI (N3) + Newtral (N4) para el cargo de Leire Díez en Correos. Faltan, para próximas pasadas: nota oficial CGPJ del auto Pedraz cuando aparezca; auto JI 9 con número exacto; cargo previo de Zarrías como Consejero de Presidencia de la Junta de Andalucía (1996-2008); BOE-A-2019-14254 de cese de Fernández Guerrero en SEPI (opcional); nombramiento BORME de Leire Díez como apoderada de Correos (acto registral 01-04-2022)."
+  fecha_actualizacion: "2026-05-28"

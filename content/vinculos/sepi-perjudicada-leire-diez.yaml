@@ -1,0 +1,18 @@
+id: sepi-perjudicada-leire-diez
+naturaleza: perjudicado_institucional_en_caso
+descripcion: "La Sociedad Estatal de Participaciones Industriales (SEPI) es el organismo público cuya actividad contractual —licitaciones y ayudas gestionadas por la SEPI entre 2021 y 2023— se investiga como el ámbito en el que la presunta red 'Hirurok' habría operado para obtener comisiones ilegales por valor superior a 700.000 euros. Vicente Fernández Guerrero fue presidente y director general de la SEPI en el periodo 2018-2021."
+sujeto_organizacion_id: sepi
+objeto_organizacion_id: juzgado-central-instruccion-5
+desde: "2025-12-10"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [leire-diez]
+documentos_respaldo:
+  - documento_id: infobae-detencion-leire-2025-12
+    pasaje: "Infobae describe la presunta red Hirurok orientada a obtener comisiones ilegales en contratos públicos y ayudas SEPI por valor superior a 700.000 euros entre 2021 y 2023."
+  - documento_id: eldiario-detencion-leire-2025-12
+    pasaje: "El Diario (segunda línea editorial) confirma la investigación sobre contratos y ayudas SEPI como ámbito de la presunta red."
+nivel_afectacion: directa
+justificacion_afectacion: "La SEPI es el organismo público cuya actividad de contratación y concesión de ayudas figura como el objeto sobre el que se investiga la captación de comisiones irregulares; queda afectada de forma directa como institución perjudicada por el uso fraudulento de su perímetro de gestión."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

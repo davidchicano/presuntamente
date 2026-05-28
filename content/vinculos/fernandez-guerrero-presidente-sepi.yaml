@@ -1,0 +1,20 @@
+id: fernandez-guerrero-presidente-sepi
+naturaleza: cargo_directivo_empresa_publica
+descripcion: "Presidente de la Sociedad Estatal de Participaciones Industriales (SEPI) entre junio de 2018 y octubre de 2019, cuando cesó en la presidencia tras su imputación en el caso Aznalcóllar. Continuó con funciones ejecutivas en la SEPI hasta abril de 2021, periodo que comprende la aprobación del préstamo de 53 millones de euros a Plus Ultra (marzo de 2021) y el inicio del periodo investigado en el caso Leire Díez (2021-2023)."
+sujeto_persona_id: vicente-fernandez-guerrero
+objeto_organizacion_id: sepi
+cargo_o_rol: "Presidente de la SEPI"
+desde: "2018-06-01"
+hasta: "2019-10-31"
+precision_desde: mes
+precision_hasta: mes
+vigente: false
+# LLM-incierto: fechas aproximadas según cobertura cruzada; verificación BOE pendiente.
+relevancia_para_caso_ids: [leire-diez, plus-ultra]
+documentos_respaldo:
+  - documento_id: infobae-detencion-leire-2025-12
+    pasaje: "Infobae identifica a Vicente Fernández Guerrero como expresidente de la SEPI detenido junto a Leire Díez y Joseba Alonso en diciembre de 2025."
+  - documento_id: eldiario-detencion-leire-2025-12
+    pasaje: "El Diario (segunda línea editorial) confirma que Fernández Guerrero fue presidente de la SEPI y lo vincula a la investigación sobre contratos y ayudas del organismo."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

@@ -1,0 +1,56 @@
+id: leire-diez-conexion-factual-plus-ultra
+caso_a_id: leire-diez
+caso_b_id: plus-ultra
+tipo: conexion_factual
+descripcion: |
+  El caso Leire Díez (JCI nº 5 AN, magistrado Pedraz) y el caso Plus Ultra
+  (JCI nº 4 AN, magistrado Calama) son procedimientos formalmente distintos,
+  pero comparten un nexo institucional y temporal documentado: la SEPI como
+  vehículo de los hechos investigados y Vicente Fernández Guerrero como
+  persona pivote.
+
+  Vicente Fernández Guerrero fue presidente de la SEPI entre junio de 2018 y
+  octubre de 2019, y mantuvo funciones ejecutivas en el organismo hasta
+  abril de 2021, periodo que comprende la aprobación del préstamo público
+  de 53 millones de euros a Plus Ultra Líneas Aéreas el 9 de marzo de 2021
+  (objeto del caso Plus Ultra). En el caso Leire Díez consta como
+  investigado por el auto del JCI nº 6 de diciembre de 2025 y por el auto
+  Pedraz del 26 de mayo de 2026 por su presunta participación en la
+  estructura autodenominada "Hirurok", a la que se atribuye indiciariamente
+  el desvío de más de 700.000 euros en comisiones por contratos y
+  adjudicaciones de la SEPI entre 2021 y 2023.
+
+  Cobertura periodística verificable documenta que Fernández Guerrero
+  habría sondeado al entorno de Plus Ultra en la antesala del rescate de
+  2021 (Vozpópuli, fecha pendiente de confirmar; queda referenciado en el
+  campo `nivel_fuente_justificacion` del documento que se incorpore en una
+  futura pasada). Por el momento, el respaldo de esta relación se apoya en
+  la cobertura del 27 de mayo de 2026 que conecta explícitamente el rol de
+  Fernández Guerrero en la SEPI con el caso Plus Ultra y el caso Leire
+  Díez.
+
+  No procede modelar a Fernández Guerrero como `RolEnCaso` en el caso Plus
+  Ultra: a fecha de incorporación (28-may-2026) no consta auto del JCI nº 4
+  que le atribuya rol procesal formal en ese procedimiento, sólo es persona
+  mencionada en cobertura. Cuando aparezca un primario que lo incorpore
+  formalmente al caso Plus Ultra, se promoverá su rol y, si procede,
+  esta relación podría evolucionar a `comparte_actor_con`.
+
+  Confluencia operativa en Ferraz, mayo 2026: el 19 de mayo la UDEF
+  registró la oficina de José Luis Rodríguez Zapatero en Ferraz por orden
+  del magistrado Calama en el caso Plus Ultra; el 27 de mayo la UCO entró
+  en la sede federal del PSOE en Ferraz por orden del magistrado Pedraz en
+  el caso Leire Díez. Son dos procedimientos distintos con dos órdenes
+  judiciales distintas operando en el mismo edificio en un margen de ocho
+  días. Esta confluencia no constituye relación procesal entre ambos
+  casos, pero refuerza el patrón institucional que justifica clasificar
+  la relación como `conexion_factual`.
+
+  Conforme al principio de presunción de inocencia, ninguno de los hechos
+  citados constituye valoración de culpabilidad y persiste mientras no
+  recaigan resoluciones firmes en contrario.
+documentos_respaldo:
+  - infobae-uco-ferraz-2026-05-27
+  - vozpopuli-auto-pedraz-pieza-separada-2026-05-26
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

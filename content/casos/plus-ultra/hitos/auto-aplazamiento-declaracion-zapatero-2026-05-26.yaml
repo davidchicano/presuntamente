@@ -1,0 +1,42 @@
+id: auto-aplazamiento-declaracion-zapatero-2026-05-26
+caso_id: plus-ultra
+tipo: auto_diligencias
+fecha: "2026-05-26"
+fecha_precision: dia
+titulo: >-
+  El JCI nº 4 acuerda aplazar al 17 y 18 de junio la declaración de
+  Zapatero como investigado tras la entrega del sumario a las defensas
+descripcion: |
+  El magistrado José Luis Calama, titular del Juzgado Central de
+  Instrucción nº 4 de la Audiencia Nacional, acuerda aplazar la
+  declaración como investigado del expresidente del Gobierno José Luis
+  Rodríguez Zapatero, que estaba fijada para el 2 de junio de 2026, a
+  los días 17 y 18 de junio de 2026 a las 09:00 horas.
+
+  Según consta en la cobertura periodística del 26-may-2026, el juez
+  atiende la solicitud formulada por la defensa del investigado, que
+  alegó la extensión de la causa —aproximadamente 4.000 folios
+  distribuidos en ocho tomos— a la que las partes no habían tenido
+  acceso hasta los días previos. El aplazamiento no modifica la
+  condición de investigado ni el objeto del procedimiento.
+
+  No consta nota oficial del CGPJ sobre esta resolución a fecha de
+  incorporación (28-may-2026); el documento queda referenciado a dos
+  fuentes N4 de líneas editoriales distintas. Si aparece nota CGPJ o
+  el auto íntegro en CENDOJ, actualizar `documento_principal_id` con
+  el documento oficial.
+
+  Conforme al principio de presunción de inocencia, la condición de
+  investigado no implica valoración de culpabilidad y persiste mientras
+  no recaiga resolución firme en contrario.
+personas_afectadas:
+  - jose-luis-rodriguez-zapatero
+organizaciones_afectadas:
+  - juzgado-central-instruccion-4
+  - audiencia-nacional
+documento_principal_id: infobae-aplazamiento-zapatero-2026-05-26
+documentos_relacionados:
+  - the-objective-aplazamiento-zapatero-2026-05-26
+hechos_introducidos:
+  - pu-aplazamiento-declaracion-zapatero-2026-05-26
+fase_resultante: instruccion

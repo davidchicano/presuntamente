@@ -1,0 +1,20 @@
+id: psoe-ambito-directo-leire-diez
+naturaleza: ambito_administrativo_directo_del_acto_en_caso
+descripcion: "La Secretaría Federal del PSOE —a través de su gerencia y sus cuentas operativas— es el ámbito orgánico del que se investiga que habrían emanado los pagos presuntamente irregulares a la red de Díez Castro. El auto del juez Pedraz del 26 de mayo de 2026 autoriza la entrada de la UCO en la sede federal (Ferraz) y documenta un mínimo de 188.000 euros de pagos del PSOE investigados como posiblemente canalizados mediante facturas falsas. El partido no ha sido imputado como persona jurídica."
+sujeto_organizacion_id: psoe
+objeto_organizacion_id: juzgado-central-instruccion-5
+desde: "2026-05-26"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [leire-diez]
+documentos_respaldo:
+  - documento_id: el-lliberal-cat-auto-pedraz-integro-2026-05-27
+    pasaje: "Auto íntegro del juez Pedraz (N3 filtrado_verificado): autoriza requerimiento de documentación en la sede federal del PSOE (Ferraz) e investiga pagos del PSOE a la red por importe mínimo documentado de 188.000 euros mediante presuntas facturas falsas."
+  - documento_id: infobae-uco-ferraz-2026-05-27
+    pasaje: "Infobae confirma que la UCO ejecutó el registro en la sede federal del PSOE (Ferraz) durante 12 horas el 27 de mayo de 2026 para requerir documentación relacionada con el caso."
+  - documento_id: eldiario-auto-pedraz-pieza-separada-2026-05-26
+    pasaje: "El Diario (segunda línea editorial) informa del auto Pedraz y la autorización de entrada en la sede del PSOE."
+nivel_afectacion: directa
+justificacion_afectacion: "El acto investigado —pagos presuntamente irregulares canalizados desde la caja de la Secretaría Federal del PSOE— emana del perímetro orgánico del partido: la gerencia federal firmó los pagos y la sede federal fue objeto de requerimiento de la UCO por orden del JCI nº 5. Aplica la regla 4 del doc 08 (ámbito administrativo del que emana el acto investigado)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

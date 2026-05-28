@@ -1,0 +1,14 @@
+id: fernandez-guerrero-investigado
+caso_id: leire-diez
+sujeto_tipo: persona
+sujeto_persona_id: vicente-fernandez-guerrero
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - organizacion-criminal
+  # LLM-incierto: delitos exactos pendientes de verificar contra el auto JCI 6 dic-2025.
+fecha_inicio: "2025-12-10"
+hito_origen_id: detencion-leire-diez-2025-12-10
+notas: |
+  Expresidente de la SEPI. Detenido en diciembre de 2025 junto a Díez Castro y Alonso
+  en el marco de la causa que investiga la presunta red Hirurok. Rige la presunción de inocencia.

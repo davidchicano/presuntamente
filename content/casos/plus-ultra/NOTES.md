@@ -2,7 +2,42 @@
 
 Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-05-27 (barrido prelaunch — diligencias 25-26 may 2026).
+Última actualización: 2026-05-28 (barrido actualidad — aplazamiento declaración Zapatero 26-may-2026).
+
+---
+
+## Barrido actualidad 2026-05-28
+
+### Hito incorporado
+
+- **`auto-aplazamiento-declaracion-zapatero-2026-05-26`** — El magistrado Calama acuerda aplazar la declaración del investigado Zapatero del 2 de junio al 17 y 18 de junio de 2026, atendiendo la solicitud de la defensa por la extensión del sumario (~4.000 folios en ocho tomos entregados a las partes en los días previos). Tipo de hito usado: `auto_diligencias` (encaja: resolución de señalamiento que modifica el calendario de diligencias; no es tipo jurisdiccional de los que exigen `documento_principal_id` por V-14 del schema, pero se ha incluido igualmente apuntando al N4 más sólido).
+  - **V-13 cumplido:** dos N4 de líneas editoriales distintas: `infobae-aplazamiento-zapatero-2026-05-26` (Infobae España, grupo editorial latinoamericano, cobertura propia con datos detallados del sumario) + `the-objective-aplazamiento-zapatero-2026-05-26` (The Objective, diario digital español independiente centroderecha, redacción propia no de agencia). Se descartaron Diario Libre (dominicano, nota de agencia EFE) y menorca.info (regional balear, nota de agencia EFE): ambas son difusión de agencia EFE sin valor editorial propio.
+  - No consta nota oficial CGPJ sobre esta resolución a 28-may-2026. Pendiente: si aparece nota CGPJ o auto íntegro en CENDOJ, actualizar `documento_principal_id` en el hito con el documento oficial.
+
+### Pendientes nuevos identificados en el barrido
+
+- **Ampliación CNI/Edmundo González** — cobertura Infobae del 27-may-2026 publica que el sumario contendría notas sobre la presunta intervención del CNI en la liberación de presos venezolanos vinculados al entorno del caso. **No incorporado:** el auto del 25-may-2026 acordó secreto absoluto; se trata de información filtrada sin auto del JCI nº 4 que confirme formalmente la ampliación del objeto de la investigación. Pendiente de auto o nota CGPJ que confirme esta línea.
+
+- **Datos económicos del sumario** — la cobertura de mayo 2026 cita 1,95 M€ al entorno directo de Zapatero (1,52 M€ él + 423.779 € hijas), 174 transferencias por 2,6 M€ entre 2020-2025, 40 empresas analizadas, 60 personas en el grafo UDEF. Datos ya anotados en el barrido previo (2026-05-27). Siguen pendientes de primario N1/N2 para modelar como Hechos con cita literal y localización exacta en el informe UDEF o en el auto íntegro.
+
+- **4 órdenes internacionales de detención** por blanqueo y tráfico de influencias citadas en cobertura del 27-may-2026. Verificar si están dentro del auto del 19-may-2026 ya catalogado (`auto-imputacion-zapatero-2026-05-19`); si es así, no procede hito separado. Pendiente de confirmar con el auto íntegro cuando aparezca en CENDOJ.
+
+### Cruce con caso `leire-diez` (incorporado al inventario el 2026-05-28)
+
+El 27-may-2026 la UCO se presentó en la sede federal del PSOE (Ferraz, Madrid) durante aproximadamente 12 horas requiriendo documentación. **Es operación del `caso leire-diez`**, no de Plus Ultra: la orden de registro la dictó el magistrado Santiago Pedraz (JCI nº 5 AN, pieza separada del caso Leire), no Calama (JCI nº 4 AN, PU). No procede modelar como Hito de PU.
+
+Sí procede dejar constancia del **vínculo funcional** entre ambos casos:
+
+- **Nexo SEPI**: Plus Ultra es el rescate SEPI del 9-mar-2021 (53 M€). El caso Leire investiga si Vicente Fernández Guerrero (presidente SEPI jun-2018/oct-2019, director general SEPI hasta abr-2021) participó en una estructura (HIRUROK) que presuntamente desvió más de 700.000 € en comisiones de contratos SEPI 2021-2023. Fernández Guerrero seguía en SEPI cuando se aprobó Plus Ultra. Vozpópuli ([url](https://www.vozpopuli.com/espana/el-expresidente-de-la-sepi-sondeo-al-entorno-de-plus-ultra-en-la-antesala-del-rescate.html)) documenta que "sondeó al entorno de Plus Ultra en la antesala del rescate".
+- **Confluencia temporal de operaciones policiales en Ferraz**: el 19-may-2026 la UDEF registró la oficina de Zapatero en Ferraz por orden de Calama (PU); el 27-may-2026 la UCO entró en la sede del PSOE en Ferraz por orden de Pedraz (Leire). Dos órdenes distintas, dos procedimientos distintos, mismo edificio en ocho días.
+
+Acción pendiente: modelar `RelacionEntreCasos` entre `plus-ultra` y `leire-diez` con tipo apropiado del schema (probablemente `vinculo_funcional` o equivalente; verificar enum) y `nexo` documentado en Fernández Guerrero + SEPI. **NO** modelar a Fernández Guerrero como `RolEnCaso` en Plus Ultra: en el inventario de PU no tiene rol procesal formal; sólo es persona mencionada en cobertura. Cuando aparezca un primario de PU que lo cite como investigado, se promueve.
+
+Este cruce es un aprendizaje editorial de la sesión 2026-05-28: la primera lectura del brief de Sonnet describió la confluencia como "sólo coincidencia de actualidad mediática"; al investigar más en profundidad, se ve que el nexo SEPI es funcional y documentado. Se recoge en la nueva skill `actualizar-caso` (creada en la misma sesión) como guardarraíl: cuando un barrido de actualidad detecta operaciones policiales o ecos mediáticos cruzados con otro caso del inventario, **no concluir "sin vínculo" hasta cruzar nombres de personas con rol formal en ambos casos** (en este caso: Fernández Guerrero + SEPI + época del rescate PU).
+
+### Pendiente resuelto
+
+- ~~**Auto o resolución de aplazamiento de la declaración de Zapatero** (de 2-jun a 17-18-jun-2026)~~ — **Resuelto 2026-05-28.** Hito `auto-aplazamiento-declaracion-zapatero-2026-05-26` incorporado con dos N4 cruzados. La mención que existía en la descripción del hito `auto-imputacion-zapatero-2026-05-19` ya anticipaba el aplazamiento; ahora tiene hito propio con su Hecho y documentos.
 
 ---
 

@@ -18,12 +18,11 @@ descripcion: |
   influencias, pertenencia a organización criminal y falsedad
   documental.
 
-  El auto fijaba inicialmente la declaración del investigado para el 2
-  de junio de 2026. Conforme a la cobertura periodística disponible a
-  fecha de barrido (27-may-2026), la declaración fue posteriormente
-  aplazada al 17-18 de junio de 2026. A fecha de barrido, el auto
-  íntegro no consta publicado en CENDOJ (documento fuente pendiente de
-  localización).
+  El auto fijó inicialmente la declaración del investigado para el 2 de
+  junio de 2026; el aplazamiento posterior al 17-18 de junio se modela
+  como hito independiente (`auto-aplazamiento-declaracion-zapatero-2026-05-26`).
+  El auto íntegro del 19-may-2026 no consta publicado en CENDOJ a fecha
+  de incorporación; el hito se respalda en la nota oficial CGPJ.
 
   Conforme al principio de presunción de inocencia, la condición de
   investigado no implica valoración de culpabilidad y persiste mientras

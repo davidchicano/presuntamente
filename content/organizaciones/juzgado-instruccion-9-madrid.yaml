@@ -1,0 +1,19 @@
+id: juzgado-instruccion-9-madrid
+nombre: "Juzgado de Instrucción nº 9 de Madrid"
+nombres_alternativos:
+  - "JI nº 9 Madrid"
+  - "JI 9 Madrid"
+tipo: juzgado
+descripcion_corta: |
+  Juzgado de Instrucción nº 9 de Madrid, a cargo del magistrado Arturo Zamarriego.
+  Instruye la pieza B del caso Leire Díez, que investiga presuntos delitos de
+  cohecho y tráfico de influencias en el contexto de las grabaciones publicadas
+  por El Confidencial en mayo de 2025.
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+organo_superior_id: audiencia-provincial-madrid
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

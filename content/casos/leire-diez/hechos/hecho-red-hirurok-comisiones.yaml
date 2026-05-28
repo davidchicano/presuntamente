@@ -1,0 +1,32 @@
+id: hecho-red-hirurok-comisiones
+caso_id: leire-diez
+enunciado: |
+  Se investiga si María Leire Díez Castro, Vicente Fernández Guerrero y Joseba Antxon Alonso
+  constituyeron una estructura de obtención de comisiones ilegales —denominada internamente
+  "Hirurok" (término en euskera que significa "nosotros tres")— presuntamente orientada a
+  obtener beneficios económicos en contratos públicos y en la tramitación de ayudas
+  concedidas por la SEPI por un importe superior a 700.000 euros durante el periodo 2021-2023.
+  Consta en el auto del JCI nº 6 de la Audiencia Nacional (diciembre de 2025), reproducido
+  extensamente por prensa cruzada.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2021-01-01"
+  hasta: "2023-12-31"
+  precision: rango
+personas_implicadas:
+  - leire-diez
+  - vicente-fernandez-guerrero
+  - joseba-antxon-alonso
+organizaciones_implicadas:
+  - sepi
+  - servinabar
+documentos_respaldo:
+  - documento_id: infobae-detencion-leire-2025-12
+    pasaje: "Cobertura sobre las detenciones de diciembre 2025 y descripción de la presunta red Hirurok con sus tres miembros iniciales."
+  - documento_id: eldiario-detencion-leire-2025-12
+    pasaje: "Cobertura confirmatoria de eldiario.es (segunda línea editorial) sobre el mismo hecho."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

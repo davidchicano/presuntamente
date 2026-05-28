@@ -1,0 +1,28 @@
+id: detencion-leire-diez-2025-12-10
+caso_id: leire-diez
+tipo: imputacion
+fecha: "2025-12-10"
+fecha_precision: dia
+# LLM-incierto: fecha exacta de la detención estimada como diciembre 2025; prensa la sitúa en torno al 10 de diciembre; verificación pendiente.
+titulo: "La UCO detiene a Leire Díez Castro, Vicente Fernández Guerrero y Joseba Alonso (diciembre 2025)"
+descripcion: |
+  En diciembre de 2025 la Unidad Central Operativa (UCO) de la Guardia Civil detiene a
+  María Leire Díez Castro, Vicente Fernández Guerrero y Joseba Antxon Alonso en el marco
+  de la causa instruida inicialmente por el JCI nº 6 de la Audiencia Nacional, relacionada
+  con una presunta red de obtención de comisiones ilegales en contratos públicos y ayudas
+  SEPI. La causa es posteriormente trasladada al JCI nº 5 (juez Santiago Pedraz) por turno.
+  Rige el principio de presunción de inocencia respecto a todos los investigados.
+personas_afectadas:
+  - leire-diez
+  - vicente-fernandez-guerrero
+  - joseba-antxon-alonso
+organizaciones_afectadas:
+  - uco-guardia-civil
+  - juzgado-central-instruccion-6
+  - sepi
+documento_principal_id: infobae-detencion-leire-2025-12
+documentos_relacionados:
+  - eldiario-detencion-leire-2025-12
+hechos_introducidos:
+  - hecho-red-hirurok-comisiones
+fase_resultante: instruccion

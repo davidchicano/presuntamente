@@ -1,0 +1,23 @@
+id: grabaciones-confidencial-2025-05
+caso_id: leire-diez
+tipo: publicacion_investigacion_periodistica
+fecha: "2025-05-01"
+fecha_precision: mes
+titulo: "El Confidencial publica grabaciones que relacionan a Leire Díez con presuntas gestiones de comisiones (mayo 2025)"
+descripcion: |
+  En mayo de 2025 el diario El Confidencial publica audios y grabaciones que, según el
+  medio, vincularían a María Leire Díez Castro con presuntas gestiones orientadas a obtener
+  comisiones ilegales. La publicación, junto con la posterior denuncia de la Asociación de
+  Suboficiales de la Guardia Civil y de la asociación Hazte Oír, sirve de base a la apertura
+  de diligencias en el Juzgado de Instrucción nº 9 de Madrid (pieza B, juez Arturo Zamarriego)
+  por presuntos delitos de cohecho y tráfico de influencias. Rige el principio de presunción
+  de inocencia respecto a todos los investigados.
+personas_afectadas:
+  - leire-diez
+organizaciones_afectadas:
+  - juzgado-instruccion-9-madrid
+documento_principal_id: el-confidencial-audios-leire-2025-05
+documentos_relacionados: []
+hechos_introducidos:
+  - hecho-grabaciones-leire-2025
+fase_resultante: instruccion

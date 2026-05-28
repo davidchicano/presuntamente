@@ -362,6 +362,7 @@ const relaciones = defineCollection({
 const NATURALEZA_VINCULO = z.enum([
   'cargo_publico_electo',
   'cargo_publico_designado',
+  'cargo_funcionarial_carrera',
   'cargo_judicial',
   'cargo_organico_partido',
   'cargo_directivo_empresa_publica',

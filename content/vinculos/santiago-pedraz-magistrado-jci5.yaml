@@ -1,0 +1,18 @@
+id: santiago-pedraz-magistrado-jci5
+naturaleza: cargo_judicial
+descripcion: "Magistrado titular del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional. Instructor de la pieza A del caso Leire Díez y de otras causas de relevancia pública. En su condición de magistrado instructor dictó el auto del 26 de mayo de 2026 que abre pieza separada e imputa a siete nuevos investigados."
+sujeto_persona_id: santiago-pedraz
+objeto_organizacion_id: juzgado-central-instruccion-5
+cargo_o_rol: "Magistrado del Juzgado Central de Instrucción nº 5"
+desde: "2015-01-01"
+precision_desde: anio
+vigente: true
+# LLM-incierto: fecha de toma de posesión estimada; verificación BOE/CGPJ pendiente.
+relevancia_para_caso_ids: [leire-diez]
+documentos_respaldo:
+  - documento_id: el-lliberal-cat-auto-pedraz-integro-2026-05-27
+    pasaje: "Auto íntegro del juez Pedraz del 26 de mayo de 2026 firmado como magistrado del JCI nº 5 de la Audiencia Nacional."
+  - documento_id: eldiario-auto-pedraz-pieza-separada-2026-05-26
+    pasaje: "El Diario identifica a Santiago Pedraz como magistrado del JCI nº 5 de la Audiencia Nacional en la cobertura del auto."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

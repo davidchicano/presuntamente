@@ -1,0 +1,20 @@
+id: leire-diez-cargo-psoe-vega-pas
+naturaleza: cargo_organico_partido
+descripcion: "Secretaria general de la agrupación local del PSOE de Vega de Pas (Cantabria), cargo que habría ejercido aproximadamente entre 2007 y 2011. Abandonó el PSOE el 3 de junio de 2025, antes de las detenciones de diciembre de ese año."
+sujeto_persona_id: leire-diez
+objeto_organizacion_id: psoe
+cargo_o_rol: "Secretaria general de la agrupación local del PSOE de Vega de Pas"
+desde: "2007-01-01"
+hasta: "2025-06-03"
+precision_desde: anio
+precision_hasta: dia
+vigente: false
+# LLM-incierto: el cargo en la agrupación de Vega de Pas se estima 2007-2011 según prensa; la militancia en el PSOE continúa hasta la baja voluntaria de junio de 2025. El vínculo modela la vinculación orgánica documentada, con la fecha de fin correspondiente a la baja voluntaria.
+relevancia_para_caso_ids: [leire-diez]
+documentos_respaldo:
+  - documento_id: infobae-detencion-leire-2025-12
+    pasaje: "Infobae describe a Leire Díez Castro como figura vinculada al PSOE, mencionando su trayectoria como política socialista antes de las detenciones de diciembre de 2025."
+  - documento_id: el-espanol-uco-ferraz-2026-05-27
+    pasaje: "El Español contextualiza el perfil de Leire Díez indicando su baja voluntaria del PSOE en junio de 2025 y su anterior vinculación orgánica al partido."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

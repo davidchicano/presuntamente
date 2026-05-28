@@ -1,0 +1,23 @@
+id: leire-diez-directora-correos
+naturaleza: cargo_directivo_empresa_publica
+descripcion: "Directora de Filatelia y Relaciones Institucionales de la Sociedad Estatal Correos y Telégrafos, S.A. entre febrero de 2022 y comienzos de 2024. El nombramiento fue decisión interna de Juan Manuel Serrano, presidente de Correos en aquel momento. El cargo no exige RD del Consejo de Ministros ni publicación en BOE. Correos no es objeto formal del procedimiento."
+sujeto_persona_id: leire-diez
+objeto_organizacion_id: correos
+cargo_o_rol: "Directora de Filatelia y Relaciones Institucionales"
+desde: "2022-02-01"
+hasta: "2024-02-29"
+precision_desde: mes
+precision_hasta: mes
+vigente: false
+relevancia_para_caso_ids: [leire-diez]
+documentos_respaldo:
+  - documento_id: fesofi-nombramiento-leire-directora-filatelia-2022-02
+    pasaje: "FESOFI anuncia que Leire Díez Castro 'acaba de ser nombrada Directora de Filatelia en sustitución de Jordi Escruelas', confirmando el cargo y la fecha de nombramiento (febrero 2022)."
+  - documento_id: newtral-leire-correos-cargo-2025-12
+    pasaje: "Newtral cita el perfil de LinkedIn de Leire Díez: 'fue jefa de área de Relaciones Institucionales de la Vicesecretaría General y del Consejo de noviembre de 2021 a febrero de 2022, cuando ocupó el puesto de directora de Filatelia y Relaciones Institucionales hasta comienzos de 2024'."
+  - documento_id: infobae-detencion-leire-2025-12
+    pasaje: "Infobae describe el perfil de Leire Díez Castro, mencionando su etapa como directiva en Correos hasta 2024."
+  - documento_id: el-espanol-uco-ferraz-2026-05-27
+    pasaje: "El Español contextualiza el caso describiendo el cargo de Leire Díez en Correos como parte de su trayectoria pública previa a la apertura del procedimiento judicial."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

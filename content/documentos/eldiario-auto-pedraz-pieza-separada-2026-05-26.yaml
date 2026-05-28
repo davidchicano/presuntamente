@@ -1,0 +1,19 @@
+id: eldiario-auto-pedraz-pieza-separada-2026-05-26
+titulo: "El Diario informa del auto del juez Pedraz del 26 de mayo de 2026 abriendo pieza separada"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura de eldiario.es (centroizquierda) sobre el auto de Pedraz del 26 de mayo de 2026
+  que abre pieza separada e imputa a siete nuevos investigados, incluida la cúpula federal
+  del PSOE. Aporta una de las dos líneas editoriales exigidas por V-13 para este hito.
+  Cruzado con vozpopuli, el-espanol, infobae y the-objective (otras líneas).
+productor_organizacion_id: eldiario-es
+fecha_documento: "2026-05-26"
+fecha_publicacion: "2026-05-27"
+url_canonica: "https://www.eldiario.es/"
+# LLM-incierto: URL exacta del artículo no disponible sin fetch.
+estado_acceso: publico
+idioma: es
+caso_principal_id: leire-diez
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

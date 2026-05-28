@@ -1,0 +1,17 @@
+id: santos-cerdan-investigado-leire
+caso_id: leire-diez
+sujeto_tipo: persona
+sujeto_persona_id: santos-cerdan
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - falsedad-documental
+  # LLM-incierto: delitos exactos del auto Pedraz 26-may-2026 pendientes de verificar; aproximación por tipo de conducta descrita en el auto.
+fecha_inicio: "2026-05-26"
+hito_origen_id: auto-pedraz-pieza-separada-2026-05-26
+notas: |
+  Exsecretario de Organización del PSOE. Investigado también por el Tribunal Supremo en
+  el caso Koldo. El auto Pedraz del 26 de mayo de 2026 lo imputa en la pieza A del caso
+  Leire Díez por presunta autorización de pagos del PSOE a la red de Díez Castro.
+  Ismael Oliver, también imputado en esta pieza, ejerce además la defensa de Koldo García
+  en el caso Koldo. Rige la presunción de inocencia.

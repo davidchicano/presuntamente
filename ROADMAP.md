@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-27 (auditoría editorial paralela cerrada — luz verde para tweet). 6 sub-agentes Sonnet con `/revisar-caso` sobre los 6 casos publicables; 0 bloqueantes tras 5 fixes (duplicado El Independiente amparo FGE resuelto; `fase_actual: ejecucion` en FGE; `estado_acceso: publico` en auto JCI 4 PU; enunciado pieza Inassa Lezo actualizado a vista oral en curso). DNS apex + `www` activos. `pnpm validate` 711 OK + build 204 páginas. **Próximo paso:** `git push origin main` → verificar deploy Cloudflare Pages → tweet de lanzamiento.
+**Última actualización:** 2026-05-28 (lanzamiento real + primer ciclo de actualidad post-launch, PR1+PR2). Sitio publicado, tweet hecho, tráfico real. **Caso nuevo `leire-diez`** (7º publicable, `pin_destacado: 2`) con auto Pedraz 26-may, registro UCO Ferraz 27-may, imputaciones a la dirigencia PSOE; 16 vínculos institucionales (3 afectación + 13 cargos/nombramientos incluyendo BOE-A-2018-8601 RD 616/2018 nombramiento Fernández Guerrero SEPI descargado + nota FESOFI N3 Leire Correos). **PU actualizado** con hito aplazamiento 26-may, cascada `sintesis_caso` (estado_actual + hechos_clave) y `RelacionEntreCasos` con Leire por nexo SEPI/Fernández Guerrero (`pin_destacado: 1`). Override editorial `pin_destacado` añadido al schema + sort de PgInicio. Schema vínculos ampliado con enum `cargo_funcionarial_carrera` para cargos de carrera (caso Sánchez Yepes capitán UCO). Skill nueva [`/actualizar-caso`](.agents/skills/actualizar-caso/SKILL.md) v1 con guardarraíles (queries cruzadas obligatorias, sumarios bajo secreto no se modelan, agencias EFE no cuentan como línea propia, cascada exhaustiva sobre todo `caso.yaml`). 0 bloqueantes tras auditoría paralela `/revisar-caso` PU+Leire (10 sugerencias resueltas). `pnpm validate` 782 OK + build 223 páginas.
 
-**Anterior (2026-05-27, barrido prelaunch).** 9 hitos nuevos + schema extendido con 4 tipos (`audiencia_previa`, `recurso_amparo`, `suspension_vista_oral`, `auto_diligencias`). NOTES.md actualizados (6 casos). Detalle: [`docs/roadmap/historial-2026-05.md`](docs/roadmap/historial-2026-05.md).
+**Anterior (2026-05-27, auditoría prelaunch).** 6 sub-agentes Sonnet con `/revisar-caso` cerraron luz verde para tweet. Detalle: [`docs/roadmap/historial-2026-05.md`](docs/roadmap/historial-2026-05.md).
 
 ---
 
@@ -25,12 +25,12 @@
 
 ## Estado actual
 
-- **Fase activa:** Fase 0 operativa pendiente de publicación; Fase 1.0 y 1 cerradas; Fase 2 con **6 casos publicables** y 1 borrador (`atico-estepona`).
-- **Casos publicables:** `plus-ultra`, `begona-gomez`, `gonzalez-amador`, `fiscal-general-del-estado`, `kitchen`, `lezo`.
-- **Pre-launch cerrado:** Bloques A (casos equilibrados), B (`revisar-caso` v1 + auditoría), **C (revisión editorial humana)**, E (higiene técnica).
-- **Bloque D:** suficiente para launch blando. Pendiente v1.x: composición de fuentes citadas, barra proporcional por corriente editorial, pills en §7 cobertura mediática.
-- **Próximo paso:** barrido urgente de actualidad (prioridad Plus Ultra) → activar DNS apex + `www` en Cloudflare → revisores externos.
-- **Infra:** dominio y emails (`contacto@`, `rectificacion@`, `aportar@`) operativos; Pages en [`presuntamente.pages.dev`](https://presuntamente.pages.dev) con auto-deploy; falta conectar apex/`www` y verificar cabeceras tras deploy.
+- **Fase activa:** **Post-launch temprano.** Fase 0, 1.0 y 1 cerradas; Fase 2 con **7 casos publicables** y 1 borrador (`atico-estepona`). Sitio público, tráfico real.
+- **Casos publicables:** `plus-ultra` (pin#1), `leire-diez` (pin#2, nuevo), `begona-gomez`, `gonzalez-amador`, `fiscal-general-del-estado`, `kitchen`, `lezo`.
+- **Pre-launch cerrado:** Bloques A, B, C, E.
+- **Bloque D:** suficiente. Pendiente v1.x: composición de fuentes citadas, barra proporcional por corriente editorial, pills en §7 cobertura mediática.
+- **Próximo paso:** archive.org para los N4 nuevos de PU+Leire (`pnpm archive:catchup`); seguimiento declaración Zapatero 17-18 jun; barrido `/actualizar-caso leire-diez` cuando aparezca nota CGPJ del auto Pedraz o auto íntegro en CENDOJ; pendientes anotados en NOTES Leire (Zarrías consejería Presidencia 1996-2008, BOE cese Fernández 2019, BORME apoderada Leire 2022).
+- **Infra:** dominio y emails operativos; Cloudflare Pages servida en apex + `www`; deploy automático en `main`.
 - **Dev:** `pnpm dev` → `http://localhost:4321`. **Git:** `main` directo; sin `git add`/`commit`/`push` salvo cierre explícito del maintainer ([`AGENTS.md`](AGENTS.md)).
 
 ---
@@ -58,9 +58,13 @@
 - [x] **URGENTE:** barrido de actualidad en 6 casos publicables. 9 hitos nuevos; NOTES.md actualizados. `pnpm validate` 711 OK + build limpio.
 - [x] Auditoría editorial paralela `/revisar-caso` (6 sub-agentes Sonnet); 0 bloqueantes tras 5 fixes finos.
 - [x] Activar DNS apex + `www` (Cloudflare).
-- [ ] `git push origin main` → verificar deploy Cloudflare Pages (HTTP 200, sin `noindex`, canonical/OG, sitemap, ficha caso, `/buscar`).
-- [ ] Revisión aviso legal con abogado — **post-launch temprano** (no bloquea revisores externos).
-- [ ] Apartado postal del responsable — **post-launch temprano** (no bloquea revisores externos).
+- [x] Lanzamiento público: `git push origin main` + tweet + tráfico real (2026-05-28).
+- [x] Primer ciclo de actualidad post-launch: PU actualizado + caso Leire arrancado publicable.
+- [x] Override editorial `pin_destacado` (schema + PgInicio + doc en [`docs/web/pages/inicio.md`](docs/web/pages/inicio.md)).
+- [x] Skill nueva [`/actualizar-caso`](.agents/skills/actualizar-caso/SKILL.md) v1.
+- [ ] Revisión aviso legal con abogado — **post-launch temprano**.
+- [ ] Apartado postal del responsable — **post-launch temprano**.
+- [ ] Archive.org para N4 nuevos (`pnpm archive:catchup -- --caso=plus-ultra` y `--caso=leire-diez`).
 
 ### Camino al lanzamiento público
 
@@ -105,14 +109,15 @@ Plan detallado fuera de git. Pre-requisitos: deploy + dominio → lanzamiento bl
 
 | Caso | Estado | Pendiente principal |
 |------|--------|---------------------|
-| Plus Ultra | publicable | auto Calama íntegro en CENDOJ; aplazamiento declaración 17-18 jun |
+| Plus Ultra | publicable · pin#1 | declaración Zapatero 17-18 jun; auto Calama íntegro en CENDOJ; ampliación CNI/Venezuela cuando aparezca auto |
+| Leire Díez | publicable · pin#2 (nuevo 28-may) | nota CGPJ del auto Pedraz; auto JI 9 con número; vínculos institucionales formales (PSOE/SEPI); Carmen Pano si adquiere rol formal |
 | Begoña Gómez | publicable | UCO prevaricación Cantó (1 fuente, V-13 pendiente); audiencia previa 9-jun |
 | González Amador | publicable | informe UCO Quirón (+300 días) |
 | FGE | publicable | amparo TC admisibilidad; indulto parcial pendiente CM |
 | Kitchen | publicable | sentencia otoño 2026 |
 | Lezo | publicable | sentencia Inassa (en curso); pieza golf sep 2027 |
 | ático-estepona | borrador | — |
-| Koldo/Cerdán | — | cuando decida el maintainer |
+| Koldo/Cerdán | — | Cerdán ya catalogado como persona desde Leire; pendiente arrancar caso formal cuando decida el maintainer |
 
 ---
 

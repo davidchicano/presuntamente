@@ -1,0 +1,18 @@
+id: fernandez-guerrero-nombramiento-sepi-sanchez-i
+naturaleza: nombramiento_por_gobierno
+descripcion: "Vicente Fernández Guerrero fue nombrado Presidente de la Sociedad Estatal de Participaciones Industriales (SEPI) por Real Decreto 616/2018, a propuesta de la Ministra de Hacienda María Jesús Montero, en el Gobierno de Pedro Sánchez I. Cesó a petición propia el 5 de octubre de 2019 por Real Decreto 565/2019."
+sujeto_persona_id: vicente-fernandez-guerrero
+objeto_organizacion_id: sepi
+cargo_o_rol: "Presidente de la Sociedad Estatal de Participaciones Industriales (SEPI)"
+desde: "2018-06-23"
+hasta: "2019-10-05"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "Gobierno Sánchez I (XIII legislatura)"
+relevancia_para_caso_ids: [leire-diez, plus-ultra]
+documentos_respaldo:
+  - documento_id: boe-nombramiento-fernandez-guerrero-sepi-2018
+    pasaje: "Real Decreto 616/2018, de 22 de junio, por el que se nombra Presidente de la Sociedad Estatal de Participaciones Industriales a don Vicente Fernández Guerrero."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

@@ -1,0 +1,18 @@
+id: servinabar-entidad-investigada-leire-diez
+naturaleza: entidad_investigada_en_caso
+descripcion: "Servinabar S.L. es la sociedad de responsabilidad limitada de la que Joseba Antxon Alonso figura como administrador, investigada en el marco del caso Leire Díez como presunto vehículo de canalización de las comisiones ilegales atribuidas a la trama 'Hirurok' entre 2021 y 2023."
+sujeto_organizacion_id: servinabar
+objeto_organizacion_id: juzgado-central-instruccion-5
+desde: "2025-12-10"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [leire-diez]
+documentos_respaldo:
+  - documento_id: infobae-detencion-leire-2025-12
+    pasaje: "Infobae identifica a Joseba Antxon Alonso como administrador de la sociedad investigada en relación con la presunta red Hirurok."
+  - documento_id: eldiario-detencion-leire-2025-12
+    pasaje: "El Diario (segunda línea editorial) confirma la vinculación de la sociedad de Joseba Alonso con la trama investigada."
+nivel_afectacion: directa
+justificacion_afectacion: "Servinabar S.L. aparece investigada en el caso como persona jurídica presuntamente utilizada para canalizar las comisiones ilegales de la red Hirurok."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

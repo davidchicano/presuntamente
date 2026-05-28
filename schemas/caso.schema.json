@@ -133,6 +133,11 @@
       "type": "string",
       "enum": ["baja", "media", "alta", "capital"]
     },
+    "pin_destacado": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Override editorial del orden de la home. Entero positivo: 1 es prioridad máxima. Los casos con pin se muestran primero (asc por valor), seguidos del resto por algoritmo (última fecha de hito + relevancia). Pensado para forzar visibilidad de un caso por relevancia mediática del momento cuando la mecánica natural no coincide con el criterio editorial. Vaciar el campo (no incluirlo) cuando deje de aplicar."
+    },
 
     "estado_ficha": {
       "type": "object",

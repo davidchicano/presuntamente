@@ -1,0 +1,26 @@
+id: leire-diez-comparte-actor-koldo
+caso_a_id: leire-diez
+caso_b_id: koldo
+tipo: comparte_actor_con
+descripcion: |
+  El caso Leire Díez (pieza A, JCI nº 5 AN, juez Pedraz) y el caso Koldo (JCI nº 6 AN)
+  comparten dos actores procesales con roles formales en ambos procedimientos.
+
+  Primero, Santos Cerdán García es investigado por el Tribunal Supremo en el caso Koldo
+  (en relación con la trama de comisiones ligada a la gestión del material sanitario
+  durante la pandemia) e investigado por el auto Pedraz del 26 de mayo de 2026 en el
+  caso Leire Díez (en relación con la presunta autorización de pagos del PSOE a la red
+  de Díez Castro mediante facturas presuntamente falsas).
+
+  Segundo, el abogado Ismael Oliver es investigado en la pieza A del caso Leire Díez
+  (auto Pedraz del 26 de mayo de 2026, por presunta canalización de pagos) y ejerce
+  simultáneamente la defensa de Koldo García Balda en el caso Koldo.
+
+  Nota de transparencia: el rol procesal de Santos Cerdán ante el Tribunal Supremo en el
+  caso Koldo, y el rol de Ismael Oliver como defensor en ese mismo caso, son hechos
+  públicamente documentados pero no están todavía modelados como `RolEnCaso` en este
+  inventario (el caso `koldo` figura como `pendiente` en el `ROADMAP.md`, pendiente de
+  arranque editorial). Cuando se fiche el caso Koldo, estos roles quedarán trazables
+  internamente y esta relación podría evolucionar.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

@@ -1,0 +1,20 @@
+id: juan-sanchez-yepes-capitan-uco
+naturaleza: cargo_funcionarial_carrera
+descripcion: "Capitán de la Unidad Central Operativa (UCO) de la Guardia Civil entre aproximadamente 2008 y 2022. El auto del juez Pedraz del 26 de mayo de 2026 lo imputa como investigado por la presunta revelación de secretos de sumario durante su etapa posterior a la UCO, en relación con información sensible sobre mandos de la propia unidad."
+sujeto_persona_id: juan-sanchez-yepes
+objeto_organizacion_id: uco-guardia-civil
+cargo_o_rol: "Capitán de la UCO (Guardia Civil)"
+desde: "2008-01-01"
+hasta: "2022-12-31"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+# LLM-incierto: fechas aproximadas según brief; verificación pendiente.
+relevancia_para_caso_ids: [leire-diez]
+documentos_respaldo:
+  - documento_id: el-lliberal-cat-auto-pedraz-integro-2026-05-27
+    pasaje: "Auto del juez Pedraz del 26 de mayo de 2026 (N3 filtrado_verificado) identifica a Juan Sánchez Yepes como excapitán de la UCO en el encabezado de la imputación."
+  - documento_id: vozpopuli-auto-pedraz-pieza-separada-2026-05-26
+    pasaje: "Voz Pópuli identifica a Sánchez Yepes como excapitán de la UCO imputado en la pieza separada."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

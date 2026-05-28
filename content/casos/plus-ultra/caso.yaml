@@ -20,12 +20,13 @@ descripcion_corta: |
   con esquemas de blanqueo de capitales con origen en Venezuela.
 
 sintesis_caso:
-  que_se_investiga: "Si el préstamo público de 53 millones de euros concedido a Plus Ultra se otorgó o se usó de forma irregular."
+  que_se_investiga: "Si el préstamo público de 53 millones de euros concedido a Plus Ultra se otorgó o se usó de forma irregular, y si habría operado en torno a la decisión una estructura estable de tráfico de influencias presuntamente liderada por el expresidente José Luis Rodríguez Zapatero."
   hechos_clave:
     - "El Consejo de Ministros aprobó en marzo de 2021 un préstamo de 53 millones de euros a través de la SEPI."
     - "La causa procede de cooperación internacional con Francia y Suiza y se instruye en la Audiencia Nacional."
-    - "El instructor investiga el posible uso irregular de fondos públicos y su conexión con esquemas de blanqueo con origen en Venezuela."
-  estado_actual: "La causa sigue en instrucción; no hay sentencia firme ni hechos penales acreditados contra las personas investigadas."
+    - "El JCI nº 4 (magistrado Calama) cita el 19 de mayo de 2026 como investigado a José Luis Rodríguez Zapatero por presuntos delitos de tráfico de influencias, pertenencia a organización criminal y falsedad documental."
+    - "El instructor investiga también el posible uso irregular de fondos públicos y su conexión con esquemas de blanqueo con origen en Venezuela."
+  estado_actual: "La causa sigue en instrucción. José Luis Rodríguez Zapatero está citado como investigado por auto del 19 de mayo de 2026, con declaración aplazada al 17 y 18 de junio de 2026 tras la entrega del sumario (cerca de 4.000 folios en ocho tomos) a las partes. Rige el principio de presunción de inocencia."
   cifras_clave:
     - "53 M€ de préstamo público"
     - "4 delitos atribuidos en la causa"
@@ -54,6 +55,7 @@ resumen_cifras: |
 estado_publicacion: beta_publica
 ultima_revision_editorial: "2026-05-21"
 nivel_relevancia_editorial: capital
+pin_destacado: 1
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
 # (ver docs/web/features/estado-ficha-caso.md). No mide el procedimiento
@@ -66,7 +68,7 @@ estado_ficha:
   fuentes_cruzadas: completo
   composicion_fuentes_citadas: pendiente
   vinculos_institucionales: completo
-  conexiones: pendiente
+  conexiones: parcial
   cobertura_mediatica_general: parcial
   revision_editorial: completo
   fecha_actualizacion: "2026-05-26"

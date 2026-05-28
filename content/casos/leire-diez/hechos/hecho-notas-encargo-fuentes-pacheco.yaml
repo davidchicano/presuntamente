@@ -1,0 +1,27 @@
+id: hecho-notas-encargo-fuentes-pacheco
+caso_id: leire-diez
+enunciado: |
+  Según el auto del juez Pedraz del 26 de mayo de 2026, se investiga si Ana María Fuentes
+  Pacheco, como gerente de la Secretaría Federal del PSOE, emitió notas de encargo con
+  contenido presuntamente falso cuya finalidad sería justificar los pagos realizados a la
+  red de María Leire Díez Castro. El auto la incluye entre los investigados en la pieza
+  separada. Rige el principio de presunción de inocencia.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2021-01-01"
+  hasta: "2024-03-31"
+  precision: rango
+personas_implicadas:
+  - ana-maria-fuentes-pacheco
+organizaciones_implicadas:
+  - psoe
+documentos_respaldo:
+  - documento_id: el-lliberal-cat-auto-pedraz-integro-2026-05-27
+    pasaje: "Auto íntegro del juez Pedraz (N3 filtrado_verificado): imputación de Fuentes Pacheco por presunta falsedad en notas de encargo."
+  - documento_id: eldiario-auto-pedraz-pieza-separada-2026-05-26
+    pasaje: "Cobertura de eldiario.es (segunda línea editorial) sobre la imputación de la gerente del PSOE."
+nivel_fuente_efectivo: 3
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

@@ -1,0 +1,13 @@
+id: servinabar
+nombre: "Servinabar S.L."
+nombres_alternativos:
+  - "Servinabar"
+tipo: empresa
+descripcion_corta: |
+  Sociedad de responsabilidad limitada de la que Joseba Antxon Alonso figura
+  como administrador. Aparece investigada en relación con la presunta red de
+  comisiones ilegales atribuida a la denominada trama "Hirurok" en el marco
+  del caso Leire Díez (JCI nº 5 AN y JI nº 9 Madrid).
+sector: "servicios"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

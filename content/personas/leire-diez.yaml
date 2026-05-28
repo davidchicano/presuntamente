@@ -1,0 +1,41 @@
+id: leire-diez
+nombre_completo: "María Leire Díez Castro"
+nombres_alternativos:
+  - "Leire Díez"
+  - "Leire Díez Castro"
+  - "M. Leire Díez"
+es_figura_publica: true
+fecha_nacimiento: "1975-01-01"
+# LLM-incierto: día y mes exactos de nacimiento no verificados públicamente; año 1975 extraído de prensa cruzada (Portugalete, Vizcaya).
+nacionalidad: "española"
+cargos_publicos_historicos:
+  - cargo: "Secretaria general del PSOE de Vega de Pas (Cantabria)"
+    organizacion_id: psoe
+    desde: "2007-01-01"
+    hasta: "2011-12-31"
+    # LLM-incierto: fechas exactas estimadas según perfil prensa; Vega de Pas es municipio de Cantabria.
+  - cargo: "Teniente de alcalde (municipio no identificado con certeza)"
+    desde: "2011-01-01"
+    hasta: "2014-12-31"
+    # LLM-incierto: municipio exacto no confirmado en fuentes cruzadas disponibles.
+  - cargo: "Responsable de comunicación, ENUSA Industrias Avanzadas"
+    desde: "2018-01-01"
+    hasta: "2021-12-31"
+    # LLM-incierto: fechas aproximadas; ENUSA es empresa pública del sector nuclear.
+  - cargo: "Directora de Filatelia y Relaciones Institucionales, Correos"
+    organizacion_id: correos
+    desde: "2022-01-01"
+    hasta: "2024-03-31"
+    # LLM-incierto: fecha inicio exacta no verificada; fecha fin marzo 2024 según prensa cruzada.
+biografia_corta: |
+  Periodista y política española originaria de Portugalete (Bizkaia, 1975).
+  Vinculada al PSOE desde los años 2000, ejerció como secretaria general
+  del PSOE de Vega de Pas y como teniente de alcalde. Posteriormente
+  desarrolló una trayectoria en la comunicación institucional en ENUSA
+  Industrias Avanzadas (2018–2021) y en Correos, donde fue directora de
+  Filatelia y Relaciones Institucionales hasta marzo de 2024. Abandonó
+  el PSOE el 3 de junio de 2025. Investigada en la pieza A del caso
+  instruido por el JCI nº 5 de la Audiencia Nacional y en la pieza B
+  del JI nº 9 de Madrid.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

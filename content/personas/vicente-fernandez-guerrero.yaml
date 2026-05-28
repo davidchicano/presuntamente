@@ -1,0 +1,29 @@
+id: vicente-fernandez-guerrero
+nombre_completo: "Vicente Fernández Guerrero"
+nombres_alternativos:
+  - "Fernández Guerrero"
+  - "Vicente Fernández"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Presidente de la SEPI (Sociedad Estatal de Participaciones Industriales)"
+    organizacion_id: sepi
+    desde: "2018-06-01"
+    hasta: "2019-10-31"
+    # LLM-incierto: fechas aproximadas según cobertura cruzada (jun-2018 nombramiento,
+    # oct-2019 cese de la presidencia tras imputación en caso Aznalcóllar). Verificación
+    # BOE pendiente.
+  - cargo: "Director general / funciones ejecutivas en SEPI"
+    organizacion_id: sepi
+    desde: "2019-11-01"
+    hasta: "2021-04-30"
+    # LLM-incierto: continúa con funciones ejecutivas tras dejar la presidencia, hasta
+    # abril de 2021 según cobertura cruzada. Verificación BOE pendiente.
+biografia_corta: |
+  Expresidente de la Sociedad Estatal de Participaciones Industriales (SEPI) entre 2018
+  y 2019 y posteriormente director general hasta abril de 2021, periodo que comprende la
+  aprobación del préstamo público de 53 millones de euros a Plus Ultra Líneas Aéreas
+  (marzo de 2021). Investigado por el JCI nº 5 de la Audiencia Nacional (juez Santiago
+  Pedraz) en la pieza A del caso Leire Díez, en relación con una presunta estructura
+  orientada a obtener comisiones ilegales en contratos públicos y ayudas SEPI.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

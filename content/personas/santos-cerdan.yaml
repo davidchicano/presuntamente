@@ -1,0 +1,21 @@
+id: santos-cerdan
+nombre_completo: "Santos Cerdán García"
+nombres_alternativos:
+  - "Santos Cerdán"
+  - "Cerdán"
+  - "Santos Cerdán García"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Secretario de Organización del PSOE"
+    organizacion_id: psoe
+    desde: "2017-01-01"
+    hasta: "2025-01-01"
+    # LLM-incierto: fechas aproximadas; cese tras imputación por el TS en el caso Koldo.
+biografia_corta: |
+  Político español, exsecretario de Organización del PSOE. Investigado tanto
+  por el Tribunal Supremo en el caso Koldo como por el JCI nº 5 de la
+  Audiencia Nacional (auto Pedraz del 26 de mayo de 2026) en la pieza A del
+  caso Leire Díez, en relación con presuntos pagos del PSOE a la red de
+  Díez Castro por valor mínimo documentado de 188.000 euros.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

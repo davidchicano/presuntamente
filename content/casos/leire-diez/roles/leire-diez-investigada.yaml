@@ -1,0 +1,17 @@
+id: leire-diez-investigada
+caso_id: leire-diez
+sujeto_tipo: persona
+sujeto_persona_id: leire-diez
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - trafico-de-influencias
+  - organizacion-criminal
+  # LLM-incierto: delitos exactos del auto JCI nº 6 dic-2025 no confirmados textualmente; aproximación basada en prensa cruzada. Verificar cuando se localice el auto íntegro.
+fecha_inicio: "2025-12-10"
+hito_origen_id: detencion-leire-diez-2025-12-10
+notas: |
+  Investigada tanto en la pieza A (JCI nº 5 AN, juez Pedraz) como en la pieza B
+  (JI nº 9 Madrid, juez Zamarriego). La fecha de inicio corresponde a las detenciones
+  de diciembre de 2025 ante el JCI nº 6, causa posteriormente trasladada al JCI nº 5.
+  Abandonó el PSOE el 3 de junio de 2025. Rige la presunción de inocencia.

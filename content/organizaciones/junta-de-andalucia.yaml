@@ -1,0 +1,18 @@
+id: junta-de-andalucia
+nombre: "Junta de Andalucía"
+nombres_alternativos:
+  - "Gobierno de Andalucía"
+  - "Junta de Andalucia"
+tipo: organismo_publico
+descripcion_corta: |
+  Institución en la que se organiza el autogobierno de la Comunidad Autónoma de Andalucía,
+  con sede en Sevilla. El Consejo de Gobierno, integrado por el presidente, los vicepresidentes
+  y los consejeros, ejerce las funciones ejecutivas y administrativas. El presidente es elegido
+  por el Parlamento de Andalucía y ejerce la dirección del Gobierno autonómico.
+ambito_territorial: autonomico
+localidad: "Sevilla"
+provincia: "Sevilla"
+comunidad_autonoma: "Andalucía"
+url_canonica: "https://www.juntadeandalucia.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

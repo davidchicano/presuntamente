@@ -1,0 +1,20 @@
+id: fernandez-guerrero-director-sepi
+naturaleza: cargo_directivo_empresa_publica
+descripcion: "Director general / funciones ejecutivas en la Sociedad Estatal de Participaciones Industriales (SEPI) entre noviembre de 2019 y abril de 2021, periodo posterior a su cese como presidente y que comprende la aprobación por el Consejo de Ministros del préstamo de 53 millones de euros a Plus Ultra Líneas Aéreas (marzo de 2021) y el inicio de la actividad investigada en el caso Leire Díez."
+sujeto_persona_id: vicente-fernandez-guerrero
+objeto_organizacion_id: sepi
+cargo_o_rol: "Director general / funciones ejecutivas en la SEPI"
+desde: "2019-11-01"
+hasta: "2021-04-30"
+precision_desde: mes
+precision_hasta: mes
+vigente: false
+# LLM-incierto: continuación con funciones ejecutivas tras dejar la presidencia, hasta abril de 2021 según cobertura cruzada. Verificación BOE pendiente.
+relevancia_para_caso_ids: [leire-diez, plus-ultra]
+documentos_respaldo:
+  - documento_id: infobae-detencion-leire-2025-12
+    pasaje: "Infobae describe a Fernández Guerrero como expresidente/exdirectivo de la SEPI en el contexto de las detenciones, señalando su vinculación a la gestión del organismo en el periodo investigado."
+  - documento_id: eldiario-detencion-leire-2025-12
+    pasaje: "El Diario (segunda línea editorial) confirma la vinculación de Fernández Guerrero con la SEPI durante el periodo 2018-2021."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

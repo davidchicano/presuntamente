@@ -1,0 +1,21 @@
+id: gaspar-zarrias-vicepresidente-junta-andalucia
+naturaleza: cargo_publico_designado
+descripcion: "Vicepresidente Primero de la Junta de Andalucía bajo la presidencia de Manuel Chaves. Compatibilizó el cargo con la Consejería de Presidencia, que ocupó desde 1996."
+sujeto_persona_id: gaspar-zarrias
+objeto_organizacion_id: junta-de-andalucia
+cargo_o_rol: "Vicepresidente Primero de la Junta de Andalucía"
+desde: "2008-04-18"
+hasta: "2009-04-23"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+gobierno_o_legislatura: "IX Legislatura del Parlamento de Andalucía — Gobierno Chaves IV"
+relevancia_para_caso_ids:
+  - leire-diez
+documentos_respaldo:
+  - documento_id: vozpopuli-auto-pedraz-pieza-separada-2026-05-26
+    pasaje: "Voz Pópuli describe a Zarrías como 'exvicepresidente de la Junta de Andalucía' en el contexto del auto Pedraz del 26 de mayo de 2026 que lo imputa en la pieza separada del caso Leire Díez."
+  - documento_id: eldiario-auto-pedraz-pieza-separada-2026-05-26
+    pasaje: "El Diario confirma el perfil de Zarrías como exvicepresidente de Manuel Chaves al cubrir el auto Pedraz del 26 de mayo de 2026."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

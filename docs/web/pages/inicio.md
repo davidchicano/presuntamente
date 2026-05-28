@@ -12,7 +12,12 @@ Landing institucional con cuatro bloques:
 4. **Cuatro secciones** del sitio (Casos, Personas, Organizaciones, Biblioteca) en grid 2×2 unificado dentro del contenedor (sin márgenes negativos), alturas iguales, CTA al pie.
 5. **Disclaimer final** de presunción de inocencia.
 
-Ranking del bloque «Casos destacados»: actividad reciente (último hito) ↓ + nivel de relevancia editorial (capital > alta > media > baja) como desempate. Filtra estados no publicables (`pendiente`, `borrador`, `retirado_*`).
+Ranking del bloque «Casos destacados»:
+
+1. **Override editorial `pin_destacado`** (campo opcional en `caso.yaml`, entero positivo). Los casos pineados van primero, ordenados asc por valor del pin (1 antes que 2). Pensado para forzar visibilidad cuando la mecánica natural no coincide con el criterio editorial del momento.
+2. **Algoritmo natural** para los no pineados: actividad reciente (último hito) ↓ + nivel de relevancia editorial (capital > alta > media > baja) como desempate.
+
+Filtra estados no publicables (`pendiente`, `borrador`, `retirado_*`).
 
 ## Ideas futuras
 
@@ -42,6 +47,7 @@ Ranking del bloque «Casos destacados»: actividad reciente (último hito) ↓ +
 - **"Caso destacado" → "Casos destacados".** Plural y ≥2 elimina la sensación de monocaso. Cambio 2026-05-26 (tarde).
 - **El preview muestra organización afectada con RolBadge**, no string libre. Coherencia visual con el listado y la ficha de caso.
 - **Kicker del hero (2026-05-27):** tercer eje `con fuente` en lugar de `sin financiación` — la landing promete trazabilidad editorial, no el modelo de sostenimiento (eso va en `/sobre`).
+- **`pin_destacado` como válvula editorial (2026-05-28):** la mecánica natural de "último hito + relevancia" puede contradecir el criterio del maintainer cuando un caso es el tema del día por intensidad mediática pero su último hito formal es ligeramente anterior al de otro caso. En vez de trampear fechas o forzar hitos por filtración del sumario, se introduce `pin_destacado` (entero positivo, asc) como override explícito. Vaciar cuando deje de aplicar. Primer uso: PU=1 + Leire=2 al arrancar el caso Leire Díez por imputación a la dirigencia PSOE el 27-may-2026 con auto Pedraz más reciente que el último hito de PU (aplazamiento 26-may).
 
 ## Pendientes operativos
 

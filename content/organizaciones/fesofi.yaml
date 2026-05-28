@@ -1,0 +1,16 @@
+id: fesofi
+nombre: "Federación Española de Sociedades Filatélicas"
+nombres_alternativos:
+  - "FESOFI"
+tipo: otra
+descripcion_corta: |
+  Federación que agrupa a las sociedades filatélicas españolas. Actúa como
+  interlocutor sectorial de Correos en materia de filatelia y mantiene
+  comunicación regular con la Dirección de Filatelia de la empresa pública
+  estatal.
+ambito_territorial: nacional
+localidad: "Madrid"
+url_canonica: "https://fesofi.es/"
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

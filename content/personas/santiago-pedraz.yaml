@@ -1,0 +1,20 @@
+id: santiago-pedraz
+nombre_completo: "Santiago Pedraz Gómez"
+nombres_alternativos:
+  - "Santiago Pedraz"
+  - "Pedraz"
+  - "juez Pedraz"
+es_figura_publica: true
+# es_figura_publica: true como magistrado instructor en causa pública relevante de alto perfil.
+cargos_publicos_historicos:
+  - cargo: "Magistrado del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+    organizacion_id: juzgado-central-instruccion-5
+    desde: "2015-01-01"
+    # LLM-incierto: fecha de toma de posesión estimada; verificación BOE pendiente.
+biografia_corta: |
+  Magistrado del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional
+  (Madrid). Ha instruido causas de notable relevancia pública. Instructor
+  de la pieza A del caso Leire Díez desde que la causa fue trasladada al
+  JCI nº 5 desde el JCI nº 6 por reparto.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

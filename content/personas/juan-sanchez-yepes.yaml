@@ -1,0 +1,20 @@
+id: juan-sanchez-yepes
+nombre_completo: "Juan Sánchez Yepes"
+nombres_alternativos:
+  - "Sánchez Yepes"
+  - "Juan Sánchez Yepes"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Capitán de la UCO (Unidad Central Operativa, Guardia Civil)"
+    organizacion_id: uco-guardia-civil
+    desde: "2008-01-01"
+    hasta: "2022-12-31"
+    # LLM-incierto: fechas aproximadas según brief (excapitán UCO 2008-2022).
+biografia_corta: |
+  Excapitán de la Unidad Central Operativa (UCO) de la Guardia Civil, en la
+  que prestó servicio entre 2008 y 2022 aproximadamente. Investigado por el
+  JCI nº 5 de la Audiencia Nacional (auto Pedraz del 26 de mayo de 2026)
+  en la pieza A del caso Leire Díez, en relación con la presunta revelación
+  de secretos de sumario.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

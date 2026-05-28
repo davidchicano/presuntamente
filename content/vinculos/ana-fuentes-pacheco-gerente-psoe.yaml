@@ -1,0 +1,20 @@
+id: ana-fuentes-pacheco-gerente-psoe
+naturaleza: cargo_organico_partido
+descripcion: "Gerente de la Secretaría Federal del Partido Socialista Obrero Español, cargo que ejercía en el momento en que el juez Pedraz la imputó el 26 de mayo de 2026 en relación con la presunta emisión de notas de encargo con contenido falso para justificar pagos a la red de Díez Castro."
+sujeto_persona_id: ana-maria-fuentes-pacheco
+objeto_organizacion_id: psoe
+cargo_o_rol: "Gerente de la Secretaría Federal del PSOE"
+desde: "2018-01-01"
+hasta: "2026-01-01"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+# LLM-incierto: fecha exacta de cese no verificada; el auto Pedraz la describe como gerente en el momento de los hechos investigados hasta al menos finales de 2025.
+relevancia_para_caso_ids: [leire-diez]
+documentos_respaldo:
+  - documento_id: el-lliberal-cat-auto-pedraz-integro-2026-05-27
+    pasaje: "El auto del juez Pedraz del 26 de mayo de 2026 (N3 filtrado_verificado) identifica a Ana María Fuentes Pacheco como 'gerente de la Secretaría Federal del PSOE' en el auto de imputación."
+  - documento_id: eldiario-auto-pedraz-pieza-separada-2026-05-26
+    pasaje: "El Diario identifica a Fuentes Pacheco como gerente del PSOE en la cobertura del auto Pedraz."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

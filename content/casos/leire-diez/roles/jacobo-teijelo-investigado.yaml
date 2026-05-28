@@ -1,0 +1,10 @@
+id: jacobo-teijelo-investigado
+caso_id: leire-diez
+sujeto_tipo: persona
+sujeto_persona_id: jacobo-teijelo
+rol: investigado
+fecha_inicio: "2026-05-26"
+hito_origen_id: auto-pedraz-pieza-separada-2026-05-26
+notas: |
+  Abogado. Investigado en la pieza A del caso Leire Díez por el auto Pedraz del 26 de
+  mayo de 2026. Rige la presunción de inocencia.

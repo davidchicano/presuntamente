@@ -1,0 +1,36 @@
+id: pu-aplazamiento-declaracion-zapatero-2026-05-26
+caso_id: plus-ultra
+enunciado: >-
+  El JCI nº 4 de la Audiencia Nacional acuerda aplazar al 17 y 18 de
+  junio de 2026 la declaración como investigado de José Luis Rodríguez
+  Zapatero, inicialmente prevista para el 2 de junio, atendiendo a la
+  solicitud de su defensa por la extensión del sumario (aproximadamente
+  4.000 folios en ocho tomos) entregado a las partes en los días previos.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-05-26"
+  precision: dia
+personas_implicadas:
+  - jose-luis-rodriguez-zapatero
+organizaciones_implicadas:
+  - juzgado-central-instruccion-4
+  - audiencia-nacional
+documentos_respaldo:
+  - documento_id: infobae-aplazamiento-zapatero-2026-05-26
+    pasaje: >-
+      "El juez José Luis Calama ha decidido aplazar al 17 y 18 de junio
+      la declaración como investigado José Luis Rodríguez Zapatero en el
+      'caso Plus Ultra'"; el sumario contiene "cerca de 4.000 páginas en
+      ocho tomos".
+  - documento_id: the-objective-aplazamiento-zapatero-2026-05-26
+    pasaje: >-
+      "El juez José Luis Calama pospone la declaración del expresidente
+      del Gobierno en calidad de imputado, prevista para el 2 de junio,
+      y la fija en los días 17 y 18 del mismo mes a las 9 horas",
+      atendiendo a "la extensión de la causa, a la que hasta este lunes
+      no ha tenido acceso".
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

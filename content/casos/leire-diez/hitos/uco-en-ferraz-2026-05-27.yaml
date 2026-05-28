@@ -1,0 +1,26 @@
+id: uco-en-ferraz-2026-05-27
+caso_id: leire-diez
+tipo: auto_diligencias
+fecha: "2026-05-27"
+fecha_precision: dia
+titulo: "La UCO pasa 12 horas en la sede federal del PSOE (Ferraz) requiriendo documentación (27 mayo 2026)"
+descripcion: |
+  El 27 de mayo de 2026, agentes de la Unidad Central Operativa (UCO) de la Guardia Civil
+  acceden a la sede federal del PSOE en la calle Ferraz de Madrid durante aproximadamente
+  doce horas para requerir y recopilar documentación en ejecución del auto del JCI nº 5
+  dictado por el magistrado Santiago Pedraz el día anterior. La actuación no es un registro
+  domiciliario de tipo allanatorio sino un requerimiento de documentación autorizado
+  judicialmente en el marco de la pieza separada bajo secreto sumarial. Rige el principio
+  de presunción de inocencia respecto a todos los investigados.
+personas_afectadas: []
+organizaciones_afectadas:
+  - psoe
+  - uco-guardia-civil
+  - juzgado-central-instruccion-5
+documento_principal_id: el-lliberal-cat-auto-pedraz-integro-2026-05-27
+documentos_relacionados:
+  - infobae-uco-ferraz-2026-05-27
+  - el-espanol-uco-ferraz-2026-05-27
+  - eldiario-auto-pedraz-pieza-separada-2026-05-26
+hechos_introducidos: []
+fase_resultante: instruccion

@@ -1,0 +1,41 @@
+id: auto-pedraz-pieza-separada-2026-05-26
+caso_id: leire-diez
+tipo: separacion_pieza
+fecha: "2026-05-26"
+fecha_precision: dia
+titulo: "El juez Pedraz abre pieza separada e imputa a siete nuevos investigados, incluidos Santos Cerdán, Gaspar Zarrías y la gerente del PSOE (26 mayo 2026)"
+descripcion: |
+  El 26 de mayo de 2026 el magistrado Santiago Pedraz del JCI nº 5 de la Audiencia Nacional
+  dicta auto abriendo pieza separada en el marco del caso Leire Díez. El auto imputa como
+  investigados a Santos Cerdán García (exsecretario de Organización del PSOE), Gaspar Zarrías
+  Arévalo (expolicítico del PSOE), Ana María Fuentes Pacheco (gerente de la Secretaría
+  Federal del PSOE), Javier Pérez Dolset (empresario), Ismael Oliver (abogado), Jacobo
+  Teijelo Casanova (abogado) y Juan Sánchez Yepes (excapitán UCO). El auto autoriza el
+  requerimiento de documentación en la sede federal del PSOE (calle Ferraz, Madrid). La
+  pieza queda bajo secreto sumarial. Se investigan, entre otros, presuntos pagos del PSOE
+  a la red de Díez Castro por valor mínimo documentado de 188.000 euros, presuntos intentos
+  de desestabilizar procedimientos judiciales (incluyendo el caso Begoña Gómez), y la
+  presunta búsqueda de información sensible sobre jueces y mandos UCO. Rige el principio
+  de presunción de inocencia respecto a todos los investigados.
+personas_afectadas:
+  - santos-cerdan
+  - gaspar-zarrias
+  - ana-maria-fuentes-pacheco
+  - javier-perez-dolset
+  - ismael-oliver
+  - jacobo-teijelo
+  - juan-sanchez-yepes
+  - leire-diez
+  - santiago-pedraz
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+  - psoe
+documento_principal_id: el-lliberal-cat-auto-pedraz-integro-2026-05-27
+documentos_relacionados:
+  - eldiario-auto-pedraz-pieza-separada-2026-05-26
+  - vozpopuli-auto-pedraz-pieza-separada-2026-05-26
+hechos_introducidos:
+  - hecho-pagos-psoe-red-leire
+  - hecho-presunta-obstruccion-judicial
+  - hecho-notas-encargo-fuentes-pacheco
+fase_resultante: instruccion

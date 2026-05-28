@@ -1,0 +1,22 @@
+id: leire-diez-conexion-factual-begona-gomez
+caso_a_id: leire-diez
+caso_b_id: begona-gomez
+tipo: conexion_factual
+descripcion: |
+  El auto del magistrado Santiago Pedraz (JCI nº 5 AN) del 26 de mayo de 2026 describe,
+  entre las acciones investigadas en la pieza A del caso Leire Díez, actuaciones
+  presuntamente orientadas a desestabilizar el procedimiento judicial del caso Begoña Gómez
+  (instruido por el JI nº 41 de Madrid, magistrado Juan Carlos Peinado).
+
+  La conexión factual documentada en el auto consiste en la presunta búsqueda de información
+  sensible sobre el magistrado instructor del caso Begoña Gómez. Esta mención en el auto
+  establece un nexo factual verificado (N3 filtrado_verificado) entre ambos procedimientos,
+  aunque no existe vínculo procesal: son dos causas distintas tramitadas ante órganos
+  distintos sin acumulación formal. La relación no implica ninguna responsabilidad de los
+  investigados en el caso Begoña Gómez; se limita a señalar que el auto Pedraz describe
+  acciones presuntamente dirigidas a ese otro procedimiento.
+documentos_respaldo:
+  - el-lliberal-cat-auto-pedraz-integro-2026-05-27
+fecha_inicio: "2026-05-26"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

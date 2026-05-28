@@ -1,0 +1,29 @@
+id: el-lliberal-cat-auto-pedraz-integro-2026-05-27
+titulo: "Auto íntegro del juez Pedraz sobre Ferraz y el caso Leire Díez (El Lliberal Cat, 27 mayo 2026)"
+tipo: auto_judicial
+nivel_fuente: 3
+nivel_fuente_justificacion: |
+  Auto judicial del JCI nº 5 AN (juez Santiago Pedraz) del 26 de mayo de 2026, publicado
+  íntegro por el medio El Lliberal Cat el 27 de mayo de 2026. Se modela como N3
+  `filtrado_verificado` porque el auto es el documento jurisdiccional original pero llega
+  al público a través de un medio periodístico, no de una nota oficial CGPJ ni de CENDOJ.
+  El auto abre la pieza separada del JCI nº 5 e imputa a Cerdán, Zarrías, Fuentes Pacheco,
+  Pérez Dolset, Oliver, Teijelo y Sánchez Yepes, y autoriza el requerimiento de documentación
+  en la sede federal del PSOE (Ferraz). El medio El Lliberal Cat es una publicación
+  independiente catalana que publicó el texto íntegro atribuido al auto.
+  Pendiente: verificar si el CGPJ publicó nota oficial sobre este auto (N1 disponible).
+  Pendiente: localizar en CENDOJ cuando sea accesible (posible elevación a N1 futura).
+productor_organizacion_id: el-lliberal-cat
+# Autor del auto: juzgado-central-instruccion-5 (magistrado Santiago Pedraz). El productor
+# de este Documento es el medio El Lliberal Cat, que publicó el texto íntegro atribuido al
+# auto el 27-may-2026; la cadena de custodia editorial es la del medio, no la del órgano.
+# Cuando aparezca nota CGPJ o auto íntegro en CENDOJ se creará Documento N1 con
+# productor_organizacion_id: juzgado-central-instruccion-5.
+fecha_documento: "2026-05-26"
+fecha_publicacion: "2026-05-27"
+url_canonica: "https://www.elliberal.cat/2026/05/27/auto-integro-del-juez-pedraz-sobre-ferraz-y-el-caso-leire/"
+estado_acceso: filtrado_verificado
+idioma: es
+caso_principal_id: leire-diez
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

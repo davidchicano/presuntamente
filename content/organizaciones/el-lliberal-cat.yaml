@@ -1,0 +1,22 @@
+id: el-lliberal-cat
+nombre: "El Lliberal"
+nombres_alternativos:
+  - "El Lliberal Cat"
+  - "elliberal.cat"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Publicación digital catalana de orientación liberal y política,
+  publicada en castellano. Cubre actualidad política, judicial y
+  económica con foco en información de tribunales. El 27 de mayo de
+  2026 publicó íntegro el auto del juez Pedraz sobre Ferraz y el
+  caso Leire Díez.
+ambito_territorial: autonomico
+localidad: "Barcelona"
+url_canonica: "https://www.elliberal.cat/"
+
+naturaleza_editorial: generalista_politico
+# orientacion_editorial_declarada: LLM-incierto: no localizada autoadscripción explícita
+# en una página "Quiénes somos" verificable; se omite hasta confirmar fuente.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

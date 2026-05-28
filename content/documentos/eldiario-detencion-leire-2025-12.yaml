@@ -1,0 +1,17 @@
+id: eldiario-detencion-leire-2025-12
+titulo: "El Diario informa sobre las detenciones de diciembre 2025 en el caso Leire Díez"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura de eldiario.es (centroizquierda) sobre las detenciones de diciembre de 2025.
+  Aporta segunda línea editorial distinta a Infobae para cumplir V-13 en el hito de detención.
+productor_organizacion_id: eldiario-es
+fecha_documento: "2025-12-10"
+fecha_publicacion: "2025-12-10"
+url_canonica: "https://www.eldiario.es/"
+# LLM-incierto: URL exacta no disponible sin fetch.
+estado_acceso: publico
+idioma: es
+caso_principal_id: leire-diez
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

@@ -1,0 +1,25 @@
+id: gaspar-zarrias
+nombre_completo: "Gaspar Zarrías Arévalo"
+nombres_alternativos:
+  - "Gaspar Zarrías"
+  - "Zarrías"
+  - "Gaspar Zarrías Arévalo"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Vicepresidente de la Junta de Andalucía"
+    desde: "2004-01-01"
+    hasta: "2012-01-01"
+    # LLM-incierto: fechas aproximadas según perfil conocido; verificación pendiente.
+  - cargo: "Secretario de Organización del PSOE (federal)"
+    organizacion_id: psoe
+    desde: "2000-01-01"
+    hasta: "2007-01-01"
+    # LLM-incierto: periodo estimado.
+biografia_corta: |
+  Político andaluz del PSOE. Fue vicepresidente de la Junta de Andalucía y
+  secretario de Organización del PSOE federal. Investigado por el JCI nº 5
+  de la Audiencia Nacional (auto Pedraz del 26 de mayo de 2026) en la pieza A
+  del caso Leire Díez, en relación con la presunta canalización de pagos
+  mediante empresas vinculadas.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-28"

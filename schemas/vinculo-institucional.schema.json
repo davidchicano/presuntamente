@@ -25,6 +25,7 @@
       "enum": [
         "cargo_publico_electo",
         "cargo_publico_designado",
+        "cargo_funcionarial_carrera",
         "cargo_judicial",
         "cargo_organico_partido",
         "cargo_directivo_empresa_publica",
@@ -41,7 +42,7 @@
         "vinculo_economico_documentado",
         "vinculo_profesional_documentado"
       ],
-      "description": "Tipo de vínculo. cargo_*: Persona ocupa cargo en Organizacion. nombramiento_por_gobierno: vincula a la administración concreta que nombró. *_en_caso: la Organizacion participa o queda alcanzada por un Caso. Las cuatro naturalezas de afectación editorial (entidad_investigada, perjudicado_institucional, ambito_administrativo_directo, afectacion_indirecta) exigen `nivel_afectacion` + `justificacion_afectacion`. acusacion_institucional_en_caso es papel procesal y NO se modela como afectación. ambito_administrativo_directo_del_acto_en_caso: Ministerio/Consejería de cuyo perímetro institucional emana el acto investigado (regla 4 del doc 08). afectacion_indirecta_en_caso: partido del cargo investigado, partido del gobierno responsable, partido del cónyuge, ente dependiente; afectación de segundo grado sin papel procesal (reglas 1-4 del doc 08). vinculo_familiar_publico: sólo si público, relevante y minimizado. vinculo_economico/profesional: sólo si documentado y relevante."
+      "description": "Tipo de vínculo. cargo_*: Persona ocupa cargo en Organizacion. cargo_publico_designado: cargo designado por el gobierno (RD, designación de ministro), exige `gobierno_o_legislatura`. cargo_funcionarial_carrera: cargo accedido por oposición o concurso dentro de un cuerpo funcionarial estable (Guardia Civil, judicatura, fiscalía, diplomático, etc.); no depende del gobierno de turno y NO exige `gobierno_o_legislatura`. nombramiento_por_gobierno: vincula a la administración concreta que nombró. *_en_caso: la Organizacion participa o queda alcanzada por un Caso. Las cuatro naturalezas de afectación editorial (entidad_investigada, perjudicado_institucional, ambito_administrativo_directo, afectacion_indirecta) exigen `nivel_afectacion` + `justificacion_afectacion`. acusacion_institucional_en_caso es papel procesal y NO se modela como afectación. ambito_administrativo_directo_del_acto_en_caso: Ministerio/Consejería de cuyo perímetro institucional emana el acto investigado (regla 4 del doc 08). afectacion_indirecta_en_caso: partido del cargo investigado, partido del gobierno responsable, partido del cónyuge, ente dependiente; afectación de segundo grado sin papel procesal (reglas 1-4 del doc 08). vinculo_familiar_publico: sólo si público, relevante y minimizado. vinculo_economico/profesional: sólo si documentado y relevante."
     },
 
     "descripcion": {
@@ -270,6 +271,7 @@
             "enum": [
               "cargo_publico_electo",
               "cargo_publico_designado",
+              "cargo_funcionarial_carrera",
               "cargo_judicial",
               "cargo_organico_partido",
               "cargo_directivo_empresa_publica",

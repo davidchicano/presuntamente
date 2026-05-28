@@ -1,0 +1,14 @@
+id: joseba-alonso-investigado
+caso_id: leire-diez
+sujeto_tipo: persona
+sujeto_persona_id: joseba-antxon-alonso
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - organizacion-criminal
+  # LLM-incierto: delitos exactos pendientes de verificar contra el auto JCI 6 dic-2025.
+fecha_inicio: "2025-12-10"
+hito_origen_id: detencion-leire-diez-2025-12-10
+notas: |
+  Empresario y administrador de Servinabar S.L. Detenido en diciembre de 2025 junto a
+  Díez Castro y Fernández Guerrero. Rige la presunción de inocencia.

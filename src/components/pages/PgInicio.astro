@@ -107,6 +107,7 @@ const destacados = casos
       ultimoHitoFecha: ultimo?.fecha,
       ultimoHitoTitulo: ultimo ? truncarHitoDestacado(ultimo.titulo) : undefined,
       ultimoHitoTituloFull: ultimo?.titulo,
+      pin: (caso as { pin_destacado?: number }).pin_destacado,
       score: {
         fecha: ultimo?.fecha ?? '0000-00-00',
         relevancia: RELEVANCIA_RANK[caso.nivel_relevancia_editorial ?? 'media'] ?? 2,
@@ -114,6 +115,11 @@ const destacados = casos
     };
   })
   .sort((a, b) => {
+    // Override editorial: los casos con pin_destacado van primero (asc por valor).
+    // Resto por algoritmo: última fecha de hito desc, luego relevancia desc.
+    if (a.pin !== undefined && b.pin === undefined) return -1;
+    if (a.pin === undefined && b.pin !== undefined) return 1;
+    if (a.pin !== undefined && b.pin !== undefined) return a.pin - b.pin;
     if (a.score.fecha !== b.score.fecha) return b.score.fecha.localeCompare(a.score.fecha);
     return b.score.relevancia - a.score.relevancia;
   })
