@@ -1,0 +1,807 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FichaTocSection from '@/components/FichaTocSection.astro';
+import Aclaracion from '@/components/Aclaracion.astro';
+import BarRow, { type BarItem } from '@/components/charts/BarRow.astro';
+import StackedBar, { type StackSegment } from '@/components/charts/StackedBar.astro';
+import Treemap, { type TreemapCell } from '@/components/charts/Treemap.astro';
+import TimelineColumns from '@/components/charts/TimelineColumns.astro';
+import DurationBars, { type DurationItem } from '@/components/charts/DurationBars.astro';
+import ChartTabs from '@/components/charts/ChartTabs.astro';
+import Sheet from '@/components/Sheet.astro';
+import { tally, entries, yearOf, denseYearSeries } from '@/lib/aggregation';
+import { faseLabel, rolLabel, familiaDelitoLabel } from '@/lib/labels';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  lang?: 'es' | 'ca';
+}
+const { lang = 'es' } = Astro.props;
+
+// TODO i18n: castellano hardcoded; cuando entre el catalán, traducir strings.
+
+const [casosCol, hechosCol, rolesCol, documentosCol, hitosCol, delitosCol, personasCol] = await Promise.all([
+  getCollection('casos'),
+  getCollection('hechos'),
+  getCollection('roles'),
+  getCollection('documentos'),
+  getCollection('hitos'),
+  getCollection('delitos'),
+  getCollection('personas'),
+]);
+
+const buildDate = new Date().toISOString().slice(0, 10);
+const currentYear = new Date().getFullYear();
+
+// Salvo el Bloque 0 (encuadre honesto, que muestra el total), TODAS las gráficas
+// cuentan sólo los casos con ficha en beta pública o superior. Los esqueletos y
+// borradores quedan fuera para no distorsionar (un caso a medio fichar tiene
+// pocos hechos/roles y falsearía las distribuciones). Mismo umbral de visibilidad
+// que el resto del sitio.
+const CASOS_VISIBLES = new Set(['beta_publica', 'en_revision', 'publicado']);
+const casosComputables = casosCol.filter((c) => CASOS_VISIBLES.has(c.data.estado_publicacion));
+const idsComputables = new Set(casosComputables.map((c) => c.data.id));
+const enCaso = (casoId: string) => idsComputables.has(casoId);
+const totalCasosComputables = casosComputables.length;
+
+// ---------------------------------------------------------------------------
+// Paletas (sólo tokens existentes; sin colores nuevos — ver DESIGN.md)
+// ---------------------------------------------------------------------------
+
+const FASE_ORDER = [
+  'denuncia_o_querella', 'instruccion', 'fase_intermedia', 'juicio_oral',
+  'sentencia_primera_instancia', 'recurso', 'sentencia_firme', 'ejecucion',
+  'archivo_provisional', 'archivo_libre',
+];
+function faseColor(f: string): string {
+  if (f === 'archivo_provisional' || f === 'archivo_libre') return 'var(--color-fg-subtle)';
+  const ramp = FASE_ORDER.slice(0, 8);
+  const idx = ramp.indexOf(f);
+  const t = idx < 0 ? 0.5 : idx / (ramp.length - 1);
+  const pct = Math.round(38 + t * 54);
+  return `color-mix(in srgb, var(--color-accent) ${pct}%, var(--color-surface))`;
+}
+
+const ROL_COLOR: Record<string, string> = {
+  investigado: 'var(--color-rol-investigado)',
+  procesado: 'var(--color-rol-procesado)',
+  acusado: 'var(--color-rol-acusado)',
+  condenado_no_firme: 'var(--color-rol-condenado-no-firme)',
+  condenado_firme: 'var(--color-rol-condenado-firme)',
+  absuelto: 'var(--color-rol-absuelto)',
+  desimputado: 'var(--color-rol-desimputado)',
+  sin_rol_activo: 'var(--color-fg-subtle)',
+};
+
+const EPIS_COLOR: Record<string, string> = {
+  acreditado: 'var(--color-acreditado)',
+  investigado: 'var(--color-investigado)',
+  atribuido: 'var(--color-investigado)',
+  exculpatorio: 'var(--color-exculpatorio)',
+  desmentido: 'var(--color-desmentido)',
+  no_concluyente: 'var(--color-desmentido)',
+};
+
+// ---------------------------------------------------------------------------
+// Bloque 0 — Encuadre honesto: madurez del inventario
+// ---------------------------------------------------------------------------
+
+let madBor = 0, madEsq = 0;
+for (const c of casosCol) {
+  const e = c.data.estado_publicacion;
+  if (CASOS_VISIBLES.has(e)) continue; // contabilizados como totalCasosComputables
+  else if (e === 'borrador') madBor++;
+  else madEsq++;
+}
+const totalCasos = casosCol.length;
+// El primer segmento (verde) es justo el conjunto que cuenta en el resto del panel.
+const madurezSegments: StackSegment[] = [
+  { label: 'En beta o superior', value: totalCasosComputables, color: 'var(--color-acreditado)', refKey: 'mad:computable' },
+  { label: 'En borrador', value: madBor, color: 'var(--color-investigado)' },
+  { label: 'Esqueleto o pendiente', value: madEsq, color: 'var(--color-desmentido)' },
+];
+
+// ---------------------------------------------------------------------------
+// Bloque 1 — Recorrido procesal
+// ---------------------------------------------------------------------------
+
+const faseCount = tally(casosComputables, (c) => c.data.fase_actual);
+const faseItems: BarItem[] = FASE_ORDER
+  .filter((f) => (faseCount.get(f) ?? 0) > 0)
+  .map((f) => ({ label: faseLabel(f), value: faseCount.get(f) ?? 0, color: faseColor(f), refKey: `fase:${f}` }));
+
+// Estado procesal ACTUAL de cada persona (una persona = un estado, el más
+// avanzado vigente; si no hay rol acusatorio vigente, su resolución terminal).
+const ROL_LADO = new Set([
+  'investigado', 'procesado', 'acusado',
+  'condenado_no_firme', 'condenado_firme', 'absuelto', 'desimputado',
+]);
+type PEstado = { roles: Set<string>; vig: Set<string> };
+const byPersona = new Map<string, PEstado>();
+for (const r of rolesCol) {
+  if (r.data.sujeto_tipo !== 'persona' || !r.data.sujeto_persona_id) continue;
+  if (!enCaso(r.data.caso_id)) continue;
+  if (!ROL_LADO.has(r.data.rol)) continue;
+  const id = r.data.sujeto_persona_id;
+  const e = byPersona.get(id) ?? { roles: new Set<string>(), vig: new Set<string>() };
+  e.roles.add(r.data.rol);
+  if (!r.data.fecha_fin) e.vig.add(r.data.rol);
+  byPersona.set(id, e);
+}
+function estadoActual(p: PEstado): string {
+  if (p.roles.has('condenado_firme')) return 'condenado_firme';
+  if (p.roles.has('condenado_no_firme')) return 'condenado_no_firme';
+  if (p.vig.has('acusado')) return 'acusado';
+  if (p.vig.has('procesado')) return 'procesado';
+  if (p.vig.has('investigado')) return 'investigado';
+  if (p.roles.has('absuelto')) return 'absuelto';
+  if (p.roles.has('desimputado')) return 'desimputado';
+  if (p.roles.has('acusado')) return 'acusado';
+  if (p.roles.has('procesado')) return 'procesado';
+  if (p.roles.has('investigado')) return 'investigado';
+  return 'sin_rol_activo';
+}
+const estadoCount = new Map<string, number>();
+for (const e of byPersona.values()) {
+  const s = estadoActual(e);
+  estadoCount.set(s, (estadoCount.get(s) ?? 0) + 1);
+}
+const ESTADO_ORDER = [
+  'investigado', 'procesado', 'acusado',
+  'condenado_no_firme', 'condenado_firme', 'absuelto', 'desimputado', 'sin_rol_activo',
+];
+const estadoLabel = (s: string) => (s === 'sin_rol_activo' ? 'Sin rol procesal vigente' : rolLabel(s));
+const estadoItems: BarItem[] = ESTADO_ORDER
+  .filter((s) => (estadoCount.get(s) ?? 0) > 0)
+  .map((s) => ({ label: estadoLabel(s), value: estadoCount.get(s) ?? 0, color: ROL_COLOR[s], refKey: `estado:${s}` }));
+const totalPersonasAcusado = byPersona.size;
+
+// ---------------------------------------------------------------------------
+// Bloque 2 — Trazabilidad
+// ---------------------------------------------------------------------------
+
+// Documentos: los de un caso esqueleto quedan fuera; los sin caso principal
+// (compartidos / generales) se conservan.
+const documentosComputables = documentosCol.filter(
+  (d) => !d.data.caso_principal_id || enCaso(d.data.caso_principal_id),
+);
+const nivelCount = tally(documentosComputables, (d) => String(d.data.nivel_fuente));
+const NIVEL_COLOR: Record<string, string> = {
+  '1': 'var(--color-nivel-1-bg)',
+  '2': 'var(--color-nivel-2-bg)',
+  '3': 'color-mix(in srgb, var(--color-accent) 36%, var(--color-surface))',
+  '4': 'color-mix(in srgb, var(--color-accent) 15%, var(--color-surface))',
+};
+const NIVEL_NAME: Record<string, string> = {
+  '1': 'N1 · Oficial primaria',
+  '2': 'N2 · Instructora',
+  '3': 'N3 · Institucional / cita',
+  '4': 'N4 · Prensa cruzada',
+};
+const nivelSegments: StackSegment[] = ['1', '2', '3', '4'].map((n) => ({
+  label: NIVEL_NAME[n],
+  value: nivelCount.get(n) ?? 0,
+  color: NIVEL_COLOR[n],
+}));
+const totalDocumentos = documentosComputables.length;
+
+const EPIS_ORDER = ['acreditado', 'investigado', 'atribuido', 'exculpatorio', 'desmentido', 'no_concluyente'];
+const EPIS_LABEL: Record<string, string> = {
+  acreditado: 'Acreditado',
+  investigado: 'En investigación',
+  atribuido: 'Atribuido',
+  exculpatorio: 'Exculpatorio',
+  desmentido: 'Desmentido',
+  no_concluyente: 'No concluyente',
+};
+const hechosComputables = hechosCol.filter((h) => enCaso(h.data.caso_id));
+const episCount = tally(hechosComputables, (h) => h.data.tipo);
+const episItems: BarItem[] = EPIS_ORDER
+  .filter((t) => (episCount.get(t) ?? 0) > 0)
+  .map((t) => ({ label: EPIS_LABEL[t], value: episCount.get(t) ?? 0, color: EPIS_COLOR[t], refKey: `epis:${t}` }));
+const totalHechos = hechosComputables.length;
+
+// ---------------------------------------------------------------------------
+// Bloque 3 — Mapa de delitos (familias, por peso de atribución en roles)
+// ---------------------------------------------------------------------------
+
+const FAMILIA_SHORT: Record<string, string> = {
+  contra_administracion_publica: 'Admón. pública',
+  contra_patrimonio_y_orden_socioeconomico: 'Patrimonio y orden socioecon.',
+  falsedad_documental: 'Falsedad documental',
+  delitos_electorales: 'Electorales',
+  blanqueo_capitales: 'Blanqueo',
+  pertenencia_organizacion_criminal: 'Org. criminal',
+  cohecho_y_trafico_influencias: 'Cohecho y tráfico de influencias',
+  otros: 'Otros',
+};
+const delitoFamilia = new Map(delitosCol.map((d) => [d.data.id, d.data.familia]));
+const famCount = new Map<string, number>();
+for (const r of rolesCol) {
+  if (!enCaso(r.data.caso_id)) continue;
+  for (const slug of r.data.delitos_atribuidos ?? []) {
+    const fam = delitoFamilia.get(slug);
+    if (fam) famCount.set(fam, (famCount.get(fam) ?? 0) + 1);
+  }
+}
+const famCells: TreemapCell[] = entries(famCount).map(([fam, v]) => ({
+  label: familiaDelitoLabel(fam),
+  short: FAMILIA_SHORT[fam] ?? familiaDelitoLabel(fam),
+  value: v,
+  refKey: `fam:${fam}`,
+}));
+const totalAtribuciones = Array.from(famCount.values()).reduce((a, b) => a + b, 0);
+
+// ---------------------------------------------------------------------------
+// Bloque 4 — Tiempo
+// ---------------------------------------------------------------------------
+
+const hitosComputables = hitosCol.filter((h) => enCaso(h.data.caso_id));
+const yearCount = new Map<number, number>();
+for (const h of hitosComputables) {
+  const y = yearOf(h.data.fecha);
+  if (y != null) yearCount.set(y, (yearCount.get(y) ?? 0) + 1);
+}
+const totalHitos = hitosComputables.length;
+
+const lastHitoYearByCaso = new Map<string, number>();
+for (const h of hitosComputables) {
+  const y = yearOf(h.data.fecha);
+  if (y == null) continue;
+  lastHitoYearByCaso.set(h.data.caso_id, Math.max(lastHitoYearByCaso.get(h.data.caso_id) ?? 0, y));
+}
+// Casos que ya no están "en curso": con sentencia firme, en ejecución de
+// sentencia o archivados. Recurso y 1ª instancia siguen abiertos (recurribles).
+const TERMINAL = new Set(['sentencia_firme', 'ejecucion', 'archivo_provisional', 'archivo_libre']);
+type DurInternal = DurationItem & { _end: number };
+const durItems: DurInternal[] = [];
+for (const c of casosComputables) {
+  const s = yearOf(c.data.fecha_apertura);
+  if (s == null) continue;
+  const cierre = yearOf(c.data.fecha_cierre);
+  let end: number | null;
+  let ongoing: boolean;
+  if (cierre != null) { end = cierre; ongoing = false; }
+  else if (TERMINAL.has(c.data.fase_actual)) { end = lastHitoYearByCaso.get(c.data.id) ?? s; ongoing = false; }
+  else { end = null; ongoing = true; }
+  durItems.push({
+    label: c.data.nombre_mediatico,
+    startYear: s,
+    endYear: end,
+    href: `/casos/${c.data.id}`,
+    ongoing,
+    _end: end ?? currentYear,
+  });
+}
+durItems.sort((a, b) => a.startYear - b.startYear || a._end - b._end);
+const durMin = durItems.length ? Math.min(...durItems.map((d) => d.startYear)) : currentYear;
+const durMax = Math.max(currentYear, ...durItems.map((d) => d._end));
+
+// ---------------------------------------------------------------------------
+// Datasets adicionales para tabs
+// ---------------------------------------------------------------------------
+
+// Tiempo: casos por año (apertura) e imputaciones por año; eje común con hitos.
+const casoYearCount = new Map<number, number>();
+for (const c of casosComputables) {
+  const y = yearOf(c.data.fecha_apertura);
+  if (y != null) casoYearCount.set(y, (casoYearCount.get(y) ?? 0) + 1);
+}
+const IMPUT_TIPOS = new Set(['imputacion', 'auto_procesamiento']);
+const imputYearCount = new Map<number, number>();
+for (const h of hitosComputables) {
+  if (!IMPUT_TIPOS.has(h.data.tipo)) continue;
+  const y = yearOf(h.data.fecha);
+  if (y != null) imputYearCount.set(y, (imputYearCount.get(y) ?? 0) + 1);
+}
+const tlYears = [...yearCount.keys(), ...casoYearCount.keys(), ...imputYearCount.keys()];
+const tlMin = tlYears.length ? Math.min(...tlYears) : currentYear;
+const tlMax = Math.max(currentYear, ...tlYears);
+const serieHitosT = denseYearSeries(yearCount, tlMin, tlMax);
+const serieCasosT = denseYearSeries(casoYearCount, tlMin, tlMax);
+const serieImputT = denseYearSeries(imputYearCount, tlMin, tlMax);
+const totalImput = Array.from(imputYearCount.values()).reduce((a, b) => a + b, 0);
+// Cada año enlaza con su lista de entidades para el drill-down del timeline.
+const serieHitosR = serieHitosT.map((d) => ({ ...d, refKey: `hito-year:${d.year}` }));
+const serieCasosR = serieCasosT.map((d) => ({ ...d, refKey: `caso-year:${d.year}` }));
+const serieImputR = serieImputT.map((d) => ({ ...d, refKey: `imput-year:${d.year}` }));
+
+// Mapas: delitos concretos (granularidad fina del mapa de familias).
+const delitoCount = new Map<string, number>();
+const casosByDelito = new Map<string, Set<string>>();
+for (const r of rolesCol) {
+  if (!enCaso(r.data.caso_id)) continue;
+  for (const slug of r.data.delitos_atribuidos ?? []) {
+    delitoCount.set(slug, (delitoCount.get(slug) ?? 0) + 1);
+    const set = casosByDelito.get(slug) ?? new Set<string>();
+    set.add(r.data.caso_id);
+    casosByDelito.set(slug, set);
+  }
+}
+const delitoNombre = new Map(delitosCol.map((d) => [d.data.id, d.data.nombre_tipico]));
+const delitoCells: TreemapCell[] = entries(delitoCount).map(([slug, v]) => ({
+  label: delitoNombre.get(slug) ?? slug,
+  value: v,
+  refKey: `delito:${slug}`,
+}));
+
+// familia de delito → casos (para el drill-down del mapa de familias)
+const casosByFamilia = new Map<string, Set<string>>();
+for (const r of rolesCol) {
+  if (!enCaso(r.data.caso_id)) continue;
+  for (const slug of r.data.delitos_atribuidos ?? []) {
+    const fam = delitoFamilia.get(slug);
+    if (!fam) continue;
+    const set = casosByFamilia.get(fam) ?? new Set<string>();
+    set.add(r.data.caso_id);
+    casosByFamilia.set(fam, set);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Listas de entidades para el drill-down (panel de referencia)
+// ---------------------------------------------------------------------------
+
+type RefItem = { label: string; href?: string; meta?: string };
+type RefList = { key: string; title: string; items: RefItem[]; allHref?: string; allLabel?: string };
+
+const personaNombre = new Map(personasCol.map((p) => [p.data.id, p.data.nombre_completo]));
+const casoNombre = new Map(casosCol.map((c) => [c.data.id, c.data.nombre_mediatico]));
+const casoItem = (id: string): RefItem => ({ label: casoNombre.get(id) ?? id, href: `/casos/${id}` });
+const plural = (n: number, sing: string, plur: string) => `${n} ${n === 1 ? sing : plur}`;
+function truncar(s: string, n = 88): string {
+  const flat = s.replace(/\s+/g, ' ').trim();
+  return flat.length <= n ? flat : flat.slice(0, n - 1).trimEnd() + '…';
+}
+
+const refLists: RefList[] = [];
+
+// fase → casos
+for (const f of FASE_ORDER) {
+  const casos = casosComputables.filter((c) => c.data.fase_actual === f);
+  if (!casos.length) continue;
+  refLists.push({
+    key: `fase:${f}`,
+    title: `${faseLabel(f)} · ${plural(casos.length, 'caso', 'casos')}`,
+    items: casos.map((c) => casoItem(c.data.id)),
+    allHref: '/casos',
+    allLabel: 'Ver todos los casos →',
+  });
+}
+
+// estado procesal → personas
+const personasByEstado = new Map<string, string[]>();
+for (const [pid, pe] of byPersona) {
+  const s = estadoActual(pe);
+  const arr = personasByEstado.get(s) ?? [];
+  arr.push(pid);
+  personasByEstado.set(s, arr);
+}
+for (const s of ESTADO_ORDER) {
+  const ids = personasByEstado.get(s);
+  if (!ids?.length) continue;
+  refLists.push({
+    key: `estado:${s}`,
+    title: `${estadoLabel(s)} · ${plural(ids.length, 'persona', 'personas')}`,
+    items: ids.map((pid) => ({ label: personaNombre.get(pid) ?? pid, href: `/personas/${pid}` })),
+    allHref: '/personas',
+    allLabel: 'Ver todas las personas →',
+  });
+}
+
+// hechos por estado epistémico → hechos (enlace al caso#hecho)
+const hechosByEpis = new Map<string, RefItem[]>();
+for (const h of hechosComputables) {
+  const arr = hechosByEpis.get(h.data.tipo) ?? [];
+  arr.push({
+    label: truncar(h.data.enunciado),
+    href: `/casos/${h.data.caso_id}#${h.data.id}`,
+    meta: casoNombre.get(h.data.caso_id),
+  });
+  hechosByEpis.set(h.data.tipo, arr);
+}
+for (const t of EPIS_ORDER) {
+  const items = hechosByEpis.get(t);
+  if (!items?.length) continue;
+  refLists.push({
+    key: `epis:${t}`,
+    title: `${EPIS_LABEL[t]} · ${plural(items.length, 'hecho', 'hechos')}`,
+    items: items.slice(0, 60),
+  });
+}
+
+// familia de delito → casos
+for (const [fam] of famCount) {
+  const ids = Array.from(casosByFamilia.get(fam) ?? []);
+  if (!ids.length) continue;
+  refLists.push({
+    key: `fam:${fam}`,
+    title: `${familiaDelitoLabel(fam)} · ${plural(ids.length, 'caso', 'casos')}`,
+    items: ids.map(casoItem),
+    allHref: '/casos',
+    allLabel: 'Ver todos los casos →',
+  });
+}
+
+// delito concreto → casos
+for (const [slug] of delitoCount) {
+  const ids = Array.from(casosByDelito.get(slug) ?? []);
+  if (!ids.length) continue;
+  refLists.push({
+    key: `delito:${slug}`,
+    title: `${delitoNombre.get(slug) ?? slug} · ${plural(ids.length, 'caso', 'casos')}`,
+    items: ids.map(casoItem),
+    allHref: `/delitos/${slug}`,
+    allLabel: 'Ver la ficha del delito →',
+  });
+}
+
+// madurez → casos (sólo el bloque computable; los esqueletos no tienen ficha pública)
+refLists.push({
+  key: 'mad:computable',
+  title: `Casos con ficha en beta o superior · ${totalCasosComputables}`,
+  items: casosComputables.map((c) => casoItem(c.data.id)),
+  allHref: '/casos',
+  allLabel: 'Ver todos los casos →',
+});
+
+// tiempo → entidades del año (timeline: hitos, casos abiertos, imputaciones)
+const hitosByYear = new Map<number, RefItem[]>();
+const imputByYear = new Map<number, RefItem[]>();
+for (const h of hitosComputables) {
+  const y = yearOf(h.data.fecha);
+  if (y == null) continue;
+  const item: RefItem = {
+    label: truncar(h.data.titulo, 80),
+    href: `/casos/${h.data.caso_id}#${h.data.id}`,
+    meta: casoNombre.get(h.data.caso_id),
+  };
+  const hk = hitosByYear.get(y) ?? [];
+  hk.push(item);
+  hitosByYear.set(y, hk);
+  if (IMPUT_TIPOS.has(h.data.tipo)) {
+    const ik = imputByYear.get(y) ?? [];
+    ik.push(item);
+    imputByYear.set(y, ik);
+  }
+}
+const casosByYear = new Map<number, RefItem[]>();
+for (const c of casosComputables) {
+  const y = yearOf(c.data.fecha_apertura);
+  if (y == null) continue;
+  const ck = casosByYear.get(y) ?? [];
+  ck.push(casoItem(c.data.id));
+  casosByYear.set(y, ck);
+}
+for (const [y, items] of hitosByYear) {
+  refLists.push({ key: `hito-year:${y}`, title: `Hitos en ${y} · ${plural(items.length, 'hito', 'hitos')}`, items: items.slice(0, 60) });
+}
+for (const [y, items] of casosByYear) {
+  refLists.push({ key: `caso-year:${y}`, title: `Casos abiertos en ${y} · ${plural(items.length, 'caso', 'casos')}`, items, allHref: '/casos', allLabel: 'Ver todos los casos →' });
+}
+for (const [y, items] of imputByYear) {
+  refLists.push({ key: `imput-year:${y}`, title: `Imputaciones y autos en ${y} · ${plural(items.length, 'hito', 'hitos')}`, items: items.slice(0, 60) });
+}
+
+// ---------------------------------------------------------------------------
+// Strings + meta
+// ---------------------------------------------------------------------------
+
+const strings = {
+  title: 'Gráficas del inventario',
+  description:
+    'Lectura visual del inventario: madurez de las fichas, recorrido procesal, trazabilidad de las fuentes, familias de delito y línea de tiempo. Datos recalculados en cada publicación.',
+  eyebrow: 'Sección · Gráficas',
+  sub:
+    'Una lectura visual del inventario, pensada para verlo de un vistazo sin perder el rigor: cada gráfica ' +
+    'indica qué cuenta y qué no, y ninguna afirma culpabilidad. Cifras recalculadas en cada publicación.',
+};
+
+const breadcrumb = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Gráficas' },
+];
+
+// Tabs (en frontmatter para no meter objetos literales en atributos JSX).
+const tiempoTabs = [
+  { id: 'hitos', label: 'Hitos' },
+  { id: 'casos', label: 'Casos abiertos' },
+  { id: 'imput', label: 'Imputaciones' },
+];
+const mapaTabs = [
+  { id: 'familias', label: 'Por familia' },
+  { id: 'delitos', label: 'Delitos concretos' },
+];
+---
+
+<BaseLayout title={strings.title} lang={lang} description={strings.description} breadcrumb={breadcrumb} activeNav="graficas">
+  {/* Arma el reveal antes del primer paint, sólo si no hay motion reducido.
+      Sin esto (JS off / reduced-motion) las barras se pintan completas. */}
+  <script is:inline>
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.dataset.chartsArmed = '1';
+      }
+    } catch (e) {}
+  </script>
+
+  <div class="ficha-detail">
+    <header class="page-id">
+      <div>
+        <p class="page-id__eyebrow">{strings.eyebrow}</p>
+        <h1 class="page-id__title">{strings.title}</h1>
+        <p class="page-id__sub">{strings.sub}</p>
+      </div>
+      <div class="page-id__meta">
+        <span>Actualizado el {buildDate}</span>
+        <span><a href="/cifras">Ver cifras en tabla →</a></span>
+      </div>
+    </header>
+
+    <!-- 1. Encuadre honesto -->
+    <FichaTocSection id="encuadre" title="Cómo de completo está este inventario">
+      <p class="lead">
+        Antes de leer ninguna otra gráfica: esto es un inventario <strong>curado y en construcción</strong>,
+        no un censo de toda la corrupción en España. Las cifras describen lo que hay fichado hoy, no la
+        realidad completa. Empezamos por ahí para que el resto se lea en su justa medida.
+      </p>
+      <StackedBar segments={madurezSegments} ariaLabel="Madurez de las fichas del inventario" />
+      <p class="chart-foot">
+        {totalCasos} casos en el repositorio. El resto del panel cuenta sólo los {totalCasosComputables}
+        con ficha en beta pública o superior (el bloque verde). Más casos no significa "más corrupción de
+        tal signo": significa que aún estamos fichando.
+      </p>
+      <Aclaracion nivel="media" posicion="bottom">
+        <p>
+          Las gráficas siguientes excluyen esqueletos y borradores: cuentan sólo los
+          <strong>{totalCasosComputables} casos con ficha en beta pública o superior</strong>, para que un
+          caso a medio fichar no distorsione las distribuciones.
+        </p>
+        <p>
+          La selección de casos sigue un criterio de relevancia editorial, no de cuota política. Un sesgo
+          en qué casos están más completos refleja el orden de trabajo, no un juicio sobre partidos.
+        </p>
+      </Aclaracion>
+    </FichaTocSection>
+
+    <!-- 2. Recorrido procesal -->
+    <FichaTocSection id="recorrido" title="Recorrido procesal">
+      <h3 class="sub-h">Casos por fase</h3>
+      <p class="lead">
+        En qué punto del procedimiento está cada caso, ordenado del inicio (denuncia) al final
+        (sentencia firme y ejecución). Los casos archivados se cierran sin condena.
+        <strong>Pulsa una fase</strong> para ver sus casos.
+      </p>
+      <BarRow items={faseItems} ariaLabel="Distribución de casos por fase procesal" valueSuffix=" casos" />
+
+      <h3 class="sub-h">Personas, según su situación procesal actual</h3>
+      <p class="lead">
+        Cada persona se cuenta <strong>una sola vez</strong>, en su situación más avanzada hoy
+        ({totalPersonasAcusado} personas con algún rol del lado acusado). <strong>No es un embudo</strong>:
+        no son una misma cohorte avanzando de una fase a la siguiente, sino una foto del estado actual.
+        <strong>Pulsa una situación</strong> para ver quiénes son.
+      </p>
+      <BarRow items={estadoItems} ariaLabel="Personas por situación procesal actual" valueSuffix=" personas" />
+      <Aclaracion nivel="alta" posicion="bottom">
+        Investigado, procesado y acusado son fases de un procedimiento abierto: ninguna implica condena.
+        La presunción de inocencia rige mientras no haya sentencia firme. Que haya pocas condenas firmes
+        refleja sobre todo que la mayoría de causas siguen en instrucción, no una tasa de absolución.
+      </Aclaracion>
+    </FichaTocSection>
+
+    <!-- 3. Trazabilidad -->
+    <FichaTocSection id="trazabilidad" title="De dónde sale cada afirmación">
+      <h3 class="sub-h">Composición de las fuentes por nivel</h3>
+      <p class="lead">
+        Cada documento del inventario tiene un nivel de oficialidad, de N1 (sentencia, auto firme, BOE) a
+        N4 (cobertura periodística cruzada). El peso de N4 es alto y es honesto que se vea: la mayoría de
+        casos son recientes y aún no han generado resoluciones firmes.
+      </p>
+      <StackedBar segments={nivelSegments} ariaLabel="Composición de las fuentes por nivel N1 a N4" />
+      <p class="chart-foot">{totalDocumentos} documentos catalogados.</p>
+
+      <h3 class="sub-h">Hechos por estado epistémico</h3>
+      <p class="lead">
+        Cada hecho se clasifica por el grado de prueba que lo respalda. Es la seña de identidad del
+        inventario: separar lo acreditado de lo que sólo se investiga o se atribuye.
+        <strong>Pulsa un estado</strong> para ver los hechos.
+      </p>
+      <BarRow items={episItems} ariaLabel="Hechos por estado epistémico" valueSuffix=" hechos" />
+      <p class="chart-foot">{totalHechos} hechos clasificados.</p>
+    </FichaTocSection>
+
+    <!-- 4. Mapa de delitos -->
+    <FichaTocSection id="delitos" title="Mapa de delitos">
+      <p class="lead">
+        Peso de cada delito según cuántas veces aparece <strong>atribuido</strong> en los roles del
+        inventario. El tamaño es proporcional al número de atribuciones; el color sólo refuerza la jerarquía
+        (no codifica gravedad ni partido). Cambia entre familias y delitos concretos, y <strong>pulsa una
+        celda</strong> para ver sus casos.
+      </p>
+      <ChartTabs tabs={mapaTabs} ariaLabel="Mapas de delito">
+        <div data-ctab-panel="familias">
+          <Treemap cells={famCells} ariaLabel="Familias de delito por número de atribuciones en roles" />
+        </div>
+        <div data-ctab-panel="delitos" hidden>
+          <Treemap cells={delitoCells} ariaLabel="Delitos concretos por número de atribuciones en roles" />
+        </div>
+      </ChartTabs>
+      <Aclaracion nivel="media" posicion="bottom">
+        Cuenta atribuciones, no condenas. Una persona investigada por cuatro delitos suma cuatro
+        atribuciones. {totalAtribuciones} atribuciones sobre el catálogo de {delitosCol.length} delitos.
+      </Aclaracion>
+    </FichaTocSection>
+
+    <!-- 5. Tiempo -->
+    <FichaTocSection id="tiempo" title="Línea de tiempo">
+      <h3 class="sub-h">Por año</h3>
+      <p class="lead">
+        Volumen por año, a elegir: hitos del procedimiento, casos abiertos (por su fecha de apertura) o
+        imputaciones y autos de procesamiento. Refleja tanto la actividad de los casos como el ritmo al que
+        los fichamos. <strong>Pulsa un año</strong> para ver qué entró ese año.
+      </p>
+      <ChartTabs tabs={tiempoTabs} ariaLabel="Series por año">
+        <div data-ctab-panel="hitos">
+          <TimelineColumns data={serieHitosR} ariaLabel="Hitos registrados por año" unit="hitos" />
+          <p class="chart-foot">{totalHitos} hitos entre {tlMin} y {tlMax}.</p>
+        </div>
+        <div data-ctab-panel="casos" hidden>
+          <TimelineColumns data={serieCasosR} ariaLabel="Casos abiertos por año, según fecha de apertura" unit="casos" />
+          <p class="chart-foot">{totalCasosComputables} casos por su año de apertura.</p>
+        </div>
+        <div data-ctab-panel="imput" hidden>
+          <TimelineColumns data={serieImputR} ariaLabel="Imputaciones y autos de procesamiento por año" unit="hitos" />
+          <p class="chart-foot">{totalImput} hitos de imputación o procesamiento entre {tlMin} y {tlMax}.</p>
+        </div>
+      </ChartTabs>
+
+      <h3 class="sub-h">Duración de cada procedimiento</h3>
+      <p class="lead">
+        Desde la apertura hasta la sentencia firme o el archivo. Las barras rayadas siguen en curso. Es una
+        medida de la lentitud de la justicia, no de la culpabilidad de nadie.
+      </p>
+      <DurationBars items={durItems} minYear={durMin} maxYear={durMax} ariaLabel="Duración de cada procedimiento por año" />
+    </FichaTocSection>
+
+    <!-- 6. Por partido — en preparación -->
+    <FichaTocSection id="partidos" title="Por partido político">
+      <Aclaracion nivel="alta" titulo="En preparación">
+        <p>
+          La pregunta más frecuente —"¿qué partido acumula más casos?"— es también la más fácil de
+          contestar mal. Hoy el inventario <strong>no es representativo</strong>: faltan casos históricos
+          y la cobertura por familia política está desequilibrada, así que cualquier ranking diría más
+          sobre nuestro orden de trabajo que sobre la realidad.
+        </p>
+        <p>
+          Por eso lo dejamos fuera hasta que la cobertura sea suficientemente completa, y entonces se
+          publicará con metodología visible, los descargos de lo que <em>no</em> mide y los datos brutos
+          descargables. Un ranking sesgado por cobertura es peor que no tener ranking.
+        </p>
+      </Aclaracion>
+    </FichaTocSection>
+
+    <!-- 7. Notas metodológicas -->
+    <FichaTocSection id="metodologia" title="Notas metodológicas">
+      <ol class="notas">
+        <li>Todas las gráficas se recalculan con cada publicación a partir del repositorio de datos. No hay caché ni cifras escritas a mano.</li>
+        <li>Ninguna gráfica afirma culpabilidad. Las situaciones procesales son fases de un procedimiento; sólo la sentencia firme determina una condena.</li>
+        <li><em>Personas por situación actual</em> cuenta personas únicas, no asignaciones de rol: cada una aparece una sola vez, en su situación más avanzada vigente.</li>
+        <li>El <em>mapa de delitos</em> agrega atribuciones en roles, no condenas ni casos. La misma persona puede sumar varias atribuciones.</li>
+        <li>La <em>duración</em> usa la fecha de apertura y la de cierre cuando consta; si no consta y el caso sigue abierto, la barra llega hasta hoy y se marca en curso.</li>
+        <li>Para el detalle tabular completo —rankings, niveles de fuente por tipo, organizaciones, glosario—, ver <a href="/cifras">Cifras del inventario</a>.</li>
+      </ol>
+
+      <p class="homenaje">En honor a Jon G. por su contribución a la divulgación de datos públicos.</p>
+
+      <Aclaracion nivel="baja" class="aclaracion--centered">
+        Lectura visual del inventario. La fuente de verdad de cada cifra es el
+        <a href="https://github.com/davidchicano/presuntamente" rel="noopener">repositorio público</a>.
+        Inspirada en la tradición de divulgar datos públicos con gráficos claros — la que demostró que un
+        buen gráfico explica más que una hora de tertulia.
+      </Aclaracion>
+    </FichaTocSection>
+
+    <!-- Listas de entidades para el drill-down: ocultas; el Sheet clona el
+         bloque correspondiente al pulsar un segmento [data-sheet]. -->
+    <div hidden data-sheet-contents data-pagefind-ignore>
+      {refLists.map((rl) => (
+        <div data-sheet-content={rl.key} data-sheet-title={rl.title}>
+          {rl.items.length > 0 ? (
+            <ul class="sheet-list">
+              {rl.items.map((it) => (
+                <li>
+                  {it.href ? (
+                    <a href={it.href}>
+                      <span>{it.label}</span>
+                      {it.meta && <span class="sheet-item__meta">{it.meta}</span>}
+                    </a>
+                  ) : (
+                    <span class="sheet-item">
+                      <span>{it.label}</span>
+                      {it.meta && <span class="sheet-item__meta">{it.meta}</span>}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="sheet-empty">Sin entidades para mostrar.</p>
+          )}
+          {rl.allHref && <a class="sheet-all" href={rl.allHref}>{rl.allLabel}</a>}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <Sheet />
+
+  <script>
+    // Isla de reveal: marca data-revealed en cada [data-reveal] al entrar en
+    // viewport (una sola vez). El armado inicial lo hizo el is:inline de arriba
+    // sólo si no hay prefers-reduced-motion; aquí lo reforzamos para navegación
+    // con view transitions. Si algo falla, se revelan todas (fallback seguro).
+    function __initChartReveal() {
+      let armed = false;
+      try { armed = !window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { armed = false; }
+      if (!armed) return; // motion reducido: barras completas, sin animación
+      document.documentElement.dataset.chartsArmed = '1';
+      const targets = Array.from(document.querySelectorAll('[data-reveal]:not([data-revealed])'));
+      if (targets.length === 0) return;
+      try {
+        if (!('IntersectionObserver' in window)) throw new Error('no IO');
+        const io = new IntersectionObserver((entries, obs) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.setAttribute('data-revealed', '');
+              obs.unobserve(e.target);
+            }
+          }
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+        for (const t of targets) io.observe(t);
+      } catch (e) {
+        for (const t of targets) t.setAttribute('data-revealed', '');
+      }
+    }
+    __initChartReveal();
+    document.addEventListener('astro:page-load', __initChartReveal);
+  </script>
+</BaseLayout>
+
+<style>
+  .lead {
+    font: 400 14px/1.55 var(--font-sans);
+    color: var(--color-fg-muted);
+    margin: 0 0 var(--space-4);
+  }
+  .lead :global(strong) { color: var(--color-fg); font-weight: 600; }
+
+  .sub-h { margin-top: var(--space-6); }
+  .ficha-toc-section > .sub-h:first-of-type { margin-top: 0; }
+
+  .chart-foot {
+    margin: var(--space-3) 0 0;
+    font: 400 12.5px/1.5 var(--font-sans);
+    color: var(--color-fg-subtle);
+  }
+
+  /* Separación entre una gráfica y el siguiente sub-bloque de la misma sección */
+  :global(.chart) { margin-bottom: var(--space-2); }
+
+  .notas {
+    margin: 0 0 var(--space-5);
+    padding-left: 1.4em;
+    font: 400 14px/1.6 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .notas li { margin-bottom: 8px; }
+
+  /* Chapita homenaje: discreta, mono, tono de comentario de código. */
+  .homenaje {
+    margin: var(--space-5) 0 0;
+    font: 500 12px/1.4 var(--font-mono);
+    letter-spacing: 0.01em;
+    color: var(--color-fg-subtle);
+    text-align: center;
+  }
+  .homenaje::before { content: '// '; opacity: 0.6; }
+</style>

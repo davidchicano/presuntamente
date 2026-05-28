@@ -16,7 +16,7 @@
 // botón "Limpiar filtros" en la sección de Filtros, que va asociada al form
 // mediante `form="id-del-form"` para no estar anidada en él.
 interface Props {
-  num: string;
+  num?: string;
   title: string;
   right?: string;
   id?: string;
@@ -26,7 +26,7 @@ const { num, title, right, id, orderToggle = false } = Astro.props;
 const hasActions = Astro.slots.has('default');
 ---
 <header class="sec-h" id={id}>
-  <span class="num">{num}</span>
+  {num && <span class="num">{num}</span>}
   <h2>{title}</h2>
   {right && <span class="right">{right}</span>}
   {orderToggle && (

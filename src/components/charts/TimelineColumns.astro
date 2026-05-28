@@ -1,0 +1,185 @@
+---
+// TimelineColumns — columnas verticales por año, en HTML + CSS (no SVG): así el
+// texto (valores, años) es px real y no encoge con el viewBox en móvil. Las
+// barras tienen alto fijo en px y ancho flexible; los años se muestran todos en
+// pantallas anchas y sólo los "mayores" en estrechas (para no solaparse).
+//
+// Accesibilidad: valores y años en texto; barras decorativas; tabla de datos
+// desplegable como fallback. Reveal coordinado por la isla de PgGraficas.
+
+interface Props {
+  data: Array<{ year: number; value: number; refKey?: string }>;
+  ariaLabel: string;
+  /** Sufijo del valor en el tooltip nativo (p. ej. "hitos"). */
+  unit?: string;
+  /** Alto en px de la barra más alta. */
+  height?: number;
+  /** width se ignora (el ancho es fluido); se mantiene por compatibilidad. */
+  width?: number;
+}
+
+const { data, ariaLabel, unit = '', height = 160 } = Astro.props;
+
+const maxV = Math.max(1, ...data.map((d) => d.value));
+const firstY = data[0]?.year;
+const lastY = data[data.length - 1]?.year;
+// Año "mayor" (siempre visible): primero, último y múltiplos de 5 que no queden
+// pegados a un extremo. En móvil sólo se muestran estos; en desktop, todos.
+const isMajor = (yr: number) =>
+  yr === firstY ||
+  yr === lastY ||
+  (yr % 5 === 0 && Math.abs(yr - firstY) > 1 && Math.abs(yr - lastY) > 1);
+
+const cols = data.map((d, i) => ({
+  i,
+  year: d.year,
+  value: d.value,
+  barPx: Math.round((d.value / maxV) * height),
+  major: isMajor(d.year),
+  refKey: d.refKey,
+}));
+---
+
+<figure class="chart chart--timeline" data-reveal role="group" aria-label={ariaLabel}>
+  <div class="tl-plot" style={`--barmax:${height}px`}>
+    {cols.map((c) => (
+      <div
+        class:list={['tl-col', c.refKey && c.value > 0 && 'is-clickable']}
+        style={`--i:${c.i};`}
+        data-sheet={c.value > 0 ? c.refKey : undefined}
+        role={c.refKey && c.value > 0 ? 'button' : undefined}
+        tabindex={c.refKey && c.value > 0 ? 0 : undefined}
+        aria-label={c.refKey && c.value > 0 ? `${c.year}: ${c.value}${unit ? ` ${unit}` : ''}` : undefined}
+      >
+        <span class="tl-val">{c.value > 0 ? c.value : ''}</span>
+        <span
+          class="tl-bar"
+          style={`height:${c.barPx}px;`}
+          title={`${c.year}: ${c.value}${unit ? ` ${unit}` : ''}`}
+        ></span>
+      </div>
+    ))}
+  </div>
+  <div class="tl-years" aria-hidden="true">
+    {cols.map((c) => (
+      <span class:list={['tl-year', !c.major && 'tl-year--minor']}>{c.year}</span>
+    ))}
+  </div>
+
+  <details class="chart-data">
+    <summary>Ver datos</summary>
+    <table>
+      <thead><tr><th>Año</th><th>Valor</th></tr></thead>
+      <tbody>
+        {data.filter((d) => d.value > 0).map((d) => (
+          <tr><td>{d.year}</td><td>{d.value}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</figure>
+
+<style>
+  .chart--timeline { margin: 0; }
+
+  .tl-plot {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: calc(var(--barmax) + 22px);
+    padding: 0 2px;
+    border-bottom: 1px solid var(--color-border-strong);
+  }
+  .tl-col {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .tl-val {
+    margin-bottom: 3px;
+    font: 600 11px/1 var(--font-mono);
+    color: var(--color-fg-muted);
+    font-variant-numeric: tabular-nums;
+    min-height: 11px;
+  }
+  .tl-bar {
+    display: block;
+    width: 100%;
+    max-width: 38px;
+    background: var(--color-accent);
+    transform-origin: bottom;
+  }
+  .tl-col:hover .tl-bar { background: var(--color-accent-hover); }
+  .tl-col.is-clickable { cursor: pointer; }
+  .tl-col.is-clickable:hover .tl-val { color: var(--color-accent); }
+  .tl-col.is-clickable:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .tl-years {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+    padding: 0 2px;
+  }
+  .tl-year {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    font: 500 11px/1 var(--font-mono);
+    color: var(--color-fg-muted);
+  }
+
+  /* En móvil, sólo años mayores (los menores ocultos pero conservan su hueco
+     para que los mayores sigan alineados con su barra). */
+  @media (max-width: 560px) {
+    .tl-year--minor { visibility: hidden; }
+  }
+
+  .chart-data {
+    margin-top: var(--space-3);
+    font: 400 13px/1.4 var(--font-sans);
+  }
+  .chart-data summary {
+    cursor: pointer;
+    color: var(--color-accent);
+    font-weight: 600;
+    width: max-content;
+  }
+  .chart-data table { margin-top: 8px; border-collapse: collapse; }
+  .chart-data th,
+  .chart-data td {
+    border: 1px solid var(--color-border);
+    padding: 4px 12px 4px 9px;
+    text-align: left;
+  }
+  .chart-data td:nth-child(2),
+  .chart-data th:nth-child(2) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+  }
+
+  /* Reveal: las columnas crecen desde la base, escalonadas. */
+  :global(html[data-charts-armed]) .chart--timeline[data-reveal]:not([data-revealed]) .tl-bar {
+    transform: scaleY(0);
+  }
+  .chart--timeline[data-reveal][data-revealed] .tl-bar {
+    transform: scaleY(1);
+    transition: transform 0.5s var(--motion-ease);
+    transition-delay: calc(var(--i, 0) * 12ms);
+  }
+  :global(html[data-charts-armed]) .chart--timeline[data-reveal]:not([data-revealed]) .tl-val {
+    opacity: 0;
+  }
+  .chart--timeline[data-reveal][data-revealed] .tl-val {
+    opacity: 1;
+    transition: opacity 0.4s var(--motion-ease);
+    transition-delay: calc(var(--i, 0) * 12ms + 0.18s);
+  }
+</style>

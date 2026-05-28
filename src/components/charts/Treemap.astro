@@ -1,0 +1,275 @@
+---
+// Treemap — mapa de áreas proporcionales generado en build con d3-hierarchy
+// (sólo matemática de layout; 0 bytes de JS al cliente). El SVG resultante es
+// estático y responsive (viewBox + width:100%).
+//
+// Color: rampa del MISMO navy institucional por tamaño (la celda mayor, más
+// oscura), NO una paleta categórica. Decisión alineada con DESIGN.md — no
+// introducir colores nuevos ni asociaciones partidistas: el área ya codifica
+// la categoría, el color sólo refuerza la jerarquía.
+//
+// Accesibilidad: role="img" + aria-label, <title> por celda y tabla de datos
+// desplegable (<details>) navegable por teclado como fallback textual.
+
+import { hierarchy, treemap } from 'd3-hierarchy';
+
+export interface TreemapCell {
+  label: string;
+  value: number;
+  /** Etiqueta corta para pintar dentro de la celda (default: label). */
+  short?: string;
+  /** Si se pasa, celda y leyenda abren el panel de referencia (drill-down). */
+  refKey?: string;
+}
+
+interface Props {
+  cells: TreemapCell[];
+  ariaLabel: string;
+  width?: number;
+  height?: number;
+}
+
+const { cells, ariaLabel, width = 760, height = 380 } = Astro.props;
+
+type Node = { children?: TreemapCell[]; label?: string; value?: number; short?: string };
+const root = hierarchy<Node>({ children: cells } as Node)
+  .sum((d) => (d as TreemapCell).value ?? 0)
+  .sort((a, b) => (b.value ?? 0) - (a.value ?? 0));
+treemap<Node>().size([width, height]).paddingInner(3).round(true)(root);
+
+const leaves = root.leaves();
+const n = leaves.length;
+const total = leaves.reduce((a, l) => a + (l.value ?? 0), 0) || 1;
+
+function ramp(rank: number) {
+  const t = n <= 1 ? 0 : rank / (n - 1);
+  const pctAccent = Math.round(88 - t * 48); // 88% … 40%
+  const fg = pctAccent >= 60 ? 'var(--color-accent-fg)' : 'var(--color-fg)';
+  return {
+    fill: `color-mix(in srgb, var(--color-accent) ${pctAccent}%, var(--color-surface))`,
+    fg,
+  };
+}
+
+const placed = leaves.map((l, i) => {
+  const d = l.data as TreemapCell;
+  const w = (l as any).x1 - (l as any).x0;
+  const h = (l as any).y1 - (l as any).y0;
+  const { fill, fg } = ramp(i);
+  return {
+    x: (l as any).x0,
+    y: (l as any).y0,
+    w,
+    h,
+    label: d.label,
+    short: d.short ?? d.label,
+    value: l.value ?? 0,
+    pct: Math.round(((l.value ?? 0) / total) * 100),
+    fill,
+    fg,
+    refKey: d.refKey,
+    i,
+  };
+});
+---
+
+<figure class="chart chart--treemap" data-reveal>
+  <svg
+    viewBox={`0 0 ${width} ${height}`}
+    width={width}
+    height={height}
+    role="img"
+    aria-label={ariaLabel}
+    preserveAspectRatio="xMidYMid meet"
+  >
+    {placed.map((c) => (
+      <g
+        class:list={['tm-g', c.refKey && 'is-clickable']}
+        style={`--i:${c.i};`}
+        data-sheet={c.refKey}
+        role={c.refKey ? 'button' : undefined}
+        tabindex={c.refKey ? 0 : undefined}
+      >
+        <title>{c.label}: {c.value} ({c.pct}%)</title>
+        <rect x={c.x} y={c.y} width={c.w} height={c.h} class="tm-rect" style={`fill:${c.fill};`} />
+        {c.w > 56 && c.h > 30 && (
+          <foreignObject x={c.x} y={c.y} width={c.w} height={c.h}>
+            <div class="tm-cell" style={`--fg:${c.fg};`}>
+              <span class="tm-cell__label">{c.short}</span>
+              <span class="tm-cell__val">{c.value}</span>
+            </div>
+          </foreignObject>
+        )}
+      </g>
+    ))}
+  </svg>
+
+  <ul class="tm-legend">
+    {placed.map((c) => (
+      <li
+        class:list={['tm-legend__item', c.refKey && 'is-clickable']}
+        data-sheet={c.refKey}
+        role={c.refKey ? 'button' : undefined}
+        tabindex={c.refKey ? 0 : undefined}
+      >
+        <span class="tm-legend__swatch" style={`background:${c.fill};`} aria-hidden="true"></span>
+        <span class="tm-legend__label">{c.label}</span>
+        <span class="tm-legend__val">{c.value} · {c.pct}%</span>
+      </li>
+    ))}
+  </ul>
+
+  <details class="chart-data">
+    <summary>Ver datos</summary>
+    <table>
+      <thead><tr><th>Categoría</th><th>Valor</th><th>%</th></tr></thead>
+      <tbody>
+        {placed.map((c) => (
+          <tr><td>{c.label}</td><td>{c.value}</td><td>{c.pct}%</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</figure>
+
+<style>
+  .chart--treemap { margin: 0; }
+  .chart--treemap svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--color-border);
+  }
+  .tm-rect {
+    stroke: var(--color-surface);
+    stroke-width: 1;
+  }
+
+  /* Drill-down: celda y leyenda clicables. */
+  .tm-g.is-clickable { cursor: pointer; }
+  .tm-g.is-clickable:hover .tm-rect { filter: brightness(0.94); }
+  .tm-g.is-clickable:focus-visible { outline: none; }
+  .tm-g.is-clickable:focus-visible .tm-rect {
+    stroke: var(--color-accent-secondary);
+    stroke-width: 3;
+  }
+  .tm-cell {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 7px 9px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: var(--fg);
+    line-height: 1.2;
+  }
+  .tm-cell__label {
+    font: 600 12px/1.2 var(--font-sans);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .tm-cell__val {
+    font: 600 13px/1 var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    opacity: 0.92;
+  }
+
+  /* Leyenda: oculta en desktop (el texto va dentro de las celdas). En móvil,
+     donde las celdas pequeñas no caben el texto, se ocultan los textos de
+     celda y se muestra esta leyenda. */
+  .tm-legend {
+    display: none;
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .tm-legend__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font: 400 13px/1.3 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .tm-legend__swatch {
+    width: 12px;
+    height: 12px;
+    flex: none;
+    border: 1px solid color-mix(in srgb, var(--color-fg) 18%, transparent);
+  }
+  .tm-legend__label { font-weight: 600; flex: 1; }
+  .tm-legend__val {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-fg-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .tm-legend__item.is-clickable { cursor: pointer; }
+  .tm-legend__item.is-clickable::after {
+    content: '›';
+    margin-left: 4px;
+    color: var(--color-fg-subtle);
+    font-weight: 600;
+  }
+  .tm-legend__item.is-clickable:hover .tm-legend__label {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .tm-legend__item.is-clickable:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  @media (max-width: 600px) {
+    .tm-cell { display: none; }
+    .tm-legend { display: flex; }
+  }
+
+  /* Tabla de datos (fallback accesible) */
+  .chart-data {
+    margin-top: var(--space-3);
+    font: 400 13px/1.4 var(--font-sans);
+  }
+  .chart-data summary {
+    cursor: pointer;
+    color: var(--color-accent);
+    font-weight: 600;
+    width: max-content;
+  }
+  .chart-data table {
+    margin-top: 8px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 460px;
+  }
+  .chart-data th,
+  .chart-data td {
+    border: 1px solid var(--color-border);
+    padding: 4px 9px;
+    text-align: left;
+  }
+  .chart-data td:nth-child(2),
+  .chart-data td:nth-child(3),
+  .chart-data th:nth-child(2),
+  .chart-data th:nth-child(3) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+  }
+
+  /* Reveal: celdas aparecen escalonadas. */
+  :global(html[data-charts-armed]) .chart--treemap[data-reveal]:not([data-revealed]) .tm-g {
+    opacity: 0;
+  }
+  .chart--treemap[data-reveal][data-revealed] .tm-g {
+    opacity: 1;
+    transition: opacity 0.5s var(--motion-ease);
+    transition-delay: calc(var(--i, 0) * 35ms);
+  }
+</style>

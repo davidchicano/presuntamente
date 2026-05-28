@@ -1,0 +1,163 @@
+---
+// DurationBars — barras de duración tipo Gantt (HTML + CSS, sin SVG ni JS de
+// cliente). Cada fila posiciona una barra dentro de la escala temporal común
+// [minYear, maxYear]: inicio = desplazamiento, longitud = duración. Pensada
+// para la duración procesal de los casos (apertura → sentencia/archivo).
+//
+// Accesible: cada fila lleva su etiqueta y rango de años en texto; la barra es
+// decorativa. Reveal coordinado por la isla de PgGraficas.
+
+export interface DurationItem {
+  label: string;
+  startYear: number;
+  /** Año de cierre; null si sigue en curso (barra abierta). */
+  endYear: number | null;
+  href?: string;
+  ongoing: boolean;
+}
+
+interface Props {
+  items: DurationItem[];
+  minYear: number;
+  maxYear: number;
+  ariaLabel: string;
+}
+
+const { items, minYear, maxYear, ariaLabel } = Astro.props;
+const span = Math.max(1, maxYear - minYear);
+const offset = (yr: number) => ((yr - minYear) / span) * 100;
+const widthOf = (a: number, b: number) => (Math.max(0.5, b - a) / span) * 100;
+
+// Tres marcas de eje: inicio, medio, fin.
+const midYear = Math.round((minYear + maxYear) / 2);
+const axis = [minYear, midYear, maxYear].filter((v, i, a) => a.indexOf(v) === i);
+---
+
+<figure class="chart chart--duration" data-reveal role="group" aria-label={ariaLabel}>
+  <div class="dur-axis" aria-hidden="true">
+    {axis.map((yr) => (
+      <span class="dur-axis__tick" style={`left:${offset(yr)}%;`}>{yr}</span>
+    ))}
+  </div>
+
+  <ol class="dur-rows">
+    {items.map((it, i) => {
+      const end = it.endYear ?? maxYear;
+      const years = it.ongoing
+        ? `${it.startYear} – en curso`
+        : it.startYear === end
+          ? `${it.startYear}`
+          : `${it.startYear} – ${end}`;
+      return (
+        <li class="dur-row" style={`--i:${i};`}>
+          <span class="dur-row__label">
+            {it.href ? <a href={it.href}>{it.label}</a> : it.label}
+          </span>
+          <div class="dur-row__track" aria-hidden="true">
+            <div
+              class:list={['dur-row__bar', it.ongoing && 'is-ongoing']}
+              style={`--left:${offset(it.startYear)}%;--width:${widthOf(it.startYear, end)}%;`}
+            ></div>
+          </div>
+          <span class="dur-row__years">{years}</span>
+        </li>
+      );
+    })}
+  </ol>
+</figure>
+
+<style>
+  .chart--duration { margin: 0; }
+
+  /* Columnas: etiqueta · pista · años. La pista comparte la escala temporal. */
+  .dur-axis {
+    position: relative;
+    height: 16px;
+    margin-left: var(--dur-label-w, 180px);
+    margin-right: var(--dur-years-w, 96px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .dur-axis__tick {
+    position: absolute;
+    transform: translateX(-50%);
+    font: 500 10px/1 var(--font-mono);
+    color: var(--color-fg-subtle);
+    white-space: nowrap;
+  }
+  .dur-axis__tick:first-child { transform: none; }
+  .dur-axis__tick:last-child { transform: translateX(-100%); }
+
+  .dur-rows {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dur-row {
+    display: grid;
+    grid-template-columns: var(--dur-label-w, 180px) 1fr var(--dur-years-w, 96px);
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .dur-row__label {
+    font: 600 12.5px/1.25 var(--font-sans);
+    color: var(--color-fg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dur-row__label a { color: inherit; text-decoration: none; }
+  .dur-row__label a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .dur-row__track {
+    position: relative;
+    height: 13px;
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+  }
+  .dur-row__bar {
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: var(--left);
+    width: var(--width);
+    background: var(--color-accent);
+    transform-origin: left center;
+  }
+  .dur-row__bar.is-ongoing {
+    background: repeating-linear-gradient(
+      135deg,
+      var(--color-accent) 0 6px,
+      color-mix(in srgb, var(--color-accent) 55%, var(--color-surface)) 6px 12px
+    );
+    border-right: 0;
+  }
+  .dur-row__years {
+    font: 500 11.5px/1.2 var(--font-mono);
+    color: var(--color-fg-muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 620px) {
+    .dur-row {
+      grid-template-columns: 1fr;
+      gap: 3px;
+      margin-bottom: 4px;
+    }
+    .dur-row__label { white-space: normal; }
+    .dur-row__years { text-align: left; }
+    .dur-axis { display: none; }
+  }
+
+  /* Reveal: las barras crecen de izquierda a derecha una sola vez. */
+  :global(html[data-charts-armed]) .chart--duration[data-reveal]:not([data-revealed]) .dur-row__bar {
+    transform: scaleX(0);
+  }
+  .chart--duration[data-reveal][data-revealed] .dur-row__bar {
+    transform: scaleX(1);
+    transition: transform 0.55s var(--motion-ease);
+    transition-delay: calc(var(--i, 0) * 40ms);
+  }
+</style>

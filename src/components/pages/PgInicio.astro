@@ -5,6 +5,8 @@ import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
 import RolBadge from '@/components/RolBadge.astro';
 import PartidoBadge from '@/components/PartidoBadge.astro';
 import Aclaracion from '@/components/Aclaracion.astro';
+import StackedBar, { type StackSegment } from '@/components/charts/StackedBar.astro';
+import Sheet from '@/components/Sheet.astro';
 import { rolLabel } from '@/lib/labels';
 import { getCollection } from 'astro:content';
 import {
@@ -31,6 +33,44 @@ const [casos, personas, organizaciones, documentos, hitosCol, rolesCol, vinculos
 ]);
 
 const orgIdx = new Map(organizaciones.map((o) => [o.data.id, o.data]));
+
+// --- Teaser visual del hero: casos por fase (enlaza a /graficas) ------------
+// Buckets de la secuencia procesal en rampa navy (claro = pronto, oscuro =
+// firme) + gris para archivados. Sin leyenda; el detalle vive en /graficas.
+const FASE_BUCKETS = [
+  { id: 'instruccion', label: 'Instrucción', fases: ['denuncia_o_querella', 'instruccion', 'fase_intermedia'], color: 'color-mix(in srgb, var(--color-accent) 40%, var(--color-surface))' },
+  { id: 'juicio', label: 'Juicio oral', fases: ['juicio_oral', 'recurso', 'sentencia_primera_instancia'], color: 'color-mix(in srgb, var(--color-accent) 68%, var(--color-surface))' },
+  { id: 'firme', label: 'Sentencia firme', fases: ['sentencia_firme', 'ejecucion'], color: 'var(--color-accent)' },
+  { id: 'archivado', label: 'Archivado', fases: ['archivo_provisional', 'archivo_libre'], color: 'var(--color-fg-subtle)' },
+];
+// Sólo casos en beta pública o superior, igual que /graficas (los esqueletos
+// no distorsionan el teaser).
+const TEASER_VISIBLES = new Set(['beta_publica', 'en_revision', 'publicado']);
+const faseCountHome = new Map<string, number>();
+const casosByBucket = new Map<string, Array<{ nombre: string; slug: string }>>();
+for (const c of casos) {
+  if (!TEASER_VISIBLES.has(c.data.estado_publicacion)) continue;
+  faseCountHome.set(c.data.fase_actual, (faseCountHome.get(c.data.fase_actual) ?? 0) + 1);
+  const bucket = FASE_BUCKETS.find((b) => b.fases.includes(c.data.fase_actual));
+  if (bucket) {
+    const arr = casosByBucket.get(bucket.id) ?? [];
+    arr.push({ nombre: c.data.nombre_mediatico, slug: c.data.id });
+    casosByBucket.set(bucket.id, arr);
+  }
+}
+const totalCasosTeaser = Array.from(faseCountHome.values()).reduce((a, b) => a + b, 0);
+const faseTeaserSegments: StackSegment[] = FASE_BUCKETS
+  .map((b) => ({
+    label: b.label,
+    value: b.fases.reduce((a, f) => a + (faseCountHome.get(f) ?? 0), 0),
+    color: b.color,
+    refKey: `home-fase:${b.id}`,
+  }))
+  .filter((s) => s.value > 0);
+// Drill-down (Sheet): un bloque de contenido por bucket con casos.
+const teaserSheets = FASE_BUCKETS
+  .map((b) => ({ key: `home-fase:${b.id}`, label: b.label, casos: casosByBucket.get(b.id) ?? [] }))
+  .filter((s) => s.casos.length > 0);
 
 // --- Casos destacados ------------------------------------------------------
 // Ranking simple: actividad reciente (último hito) y relevancia editorial.
@@ -212,8 +252,8 @@ const strings = {
     </div>
     <aside class="hero__col-aside" aria-label="Cifras del inventario">
       <div class="hero__stamp">
-        <span class="hero__stamp-eye">{strings.eyebrow}</span>
-        <span class="hero__stamp-date">desde 2026</span>
+        <span class="hero__stamp-eye">{strings.eyebrow}<span class="hero__stamp-date"> · desde 2026</span></span>
+        <a class="hero__stamp-link" href="/cifras">Ver todas las cifras →</a>
       </div>
       <ul class="hero__cifras">
         {strings.contadores.map((c) => (
@@ -223,8 +263,17 @@ const strings = {
           </li>
         ))}
       </ul>
-      <a class="hero__cifras-more" href="/cifras">
-        Ver todas las cifras →
+      {faseTeaserSegments.length > 0 && (
+        <div class="hero__viz">
+          <span class="hero__viz-head">
+            <span class="hero__viz-label">Casos por fase</span>
+            <span class="hero__viz-sub">{totalCasosTeaser} casos en beta o superior</span>
+          </span>
+          <StackedBar segments={faseTeaserSegments} legend="min" ariaLabel="Distribución de casos por fase procesal" />
+        </div>
+      )}
+      <a class="hero__cifras-more" href="/graficas">
+        Ver gráficas →
       </a>
     </aside>
   </section>
@@ -321,6 +370,21 @@ const strings = {
   </section>
 
   <Aclaracion nivel="baja" class="aclaracion--centered">{strings.disclaimer}</Aclaracion>
+
+  {/* Drill-down del teaser de fase: contenido oculto que clona el Sheet. */}
+  <div hidden data-sheet-contents data-pagefind-ignore>
+    {teaserSheets.map((s) => (
+      <div data-sheet-content={s.key} data-sheet-title={`${s.label} · ${s.casos.length}`}>
+        <ul class="sheet-list">
+          {s.casos.map((c) => (
+            <li><a href={`/casos/${c.slug}`}><span>{c.nombre}</span></a></li>
+          ))}
+        </ul>
+        <a class="sheet-all" href="/casos">Ver todos los casos →</a>
+      </div>
+    ))}
+  </div>
+  <Sheet />
 </BaseLayout>
 
 <style>
@@ -485,6 +549,42 @@ const strings = {
     color: var(--color-accent-hover);
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+  /* Cabecera del sello: enlace "Ver todas las cifras" a la derecha */
+  .hero__stamp-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 140ms ease-out;
+  }
+  .hero__stamp-link:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  /* Teaser visual estático: mini-barra de casos por fase (no interactiva;
+     para ir a las gráficas está el enlace "Ver gráficas" de abajo). */
+  .hero__viz {
+    padding: 12px 14px 14px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .hero__viz-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .hero__viz-label {
+    font: 600 11px/1 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+  .hero__viz-sub {
+    font: 500 10px/1 var(--font-mono);
+    color: var(--color-fg-subtle);
   }
   .hero__cifra-val {
     font: 700 clamp(1.6rem, 1.2rem + 1vw, 2.2rem)/1 var(--font-sans);

@@ -1,0 +1,145 @@
+---
+// BarRow — gráfico de barras horizontales generado en build (HTML + CSS, sin
+// SVG ni JS de cliente para dibujar). Cada fila es etiqueta · barra · valor, con
+// la barra coloreada por su token semántico. Es accesible por defecto (el texto
+// de cada fila se lee tal cual) y la barra es decorativa (aria-hidden).
+//
+// La animación de entrada (reveal) la coordina la isla de PgGraficas vía el
+// atributo `data-reveal` + `html[data-charts-armed]`; sin JS o con
+// prefers-reduced-motion las barras se pintan completas de inmediato.
+
+export interface BarItem {
+  label: string;
+  value: number;
+  /** Color CSS de la barra (token var(--…) o hex). Default: accent. */
+  color?: string;
+  /** Si se pasa, la etiqueta enlaza aquí. */
+  href?: string;
+  /** Texto auxiliar bajo la etiqueta (opcional). */
+  note?: string;
+  /** Si se pasa, la fila abre el panel de referencia con ese key (drill-down). */
+  refKey?: string;
+}
+
+interface Props {
+  items: BarItem[];
+  ariaLabel: string;
+  /** Máximo del eje. Default: el mayor valor de la serie. */
+  max?: number;
+  /** Sufijo del valor en plural (p. ej. " casos"). */
+  valueSuffix?: string;
+  /** Sufijo en singular cuando el valor es 1. Default: quita la "s" final. */
+  valueSuffixSingular?: string;
+}
+
+const { items, ariaLabel, max, valueSuffix = '', valueSuffixSingular } = Astro.props;
+const topMax = max ?? Math.max(1, ...items.map((i) => i.value));
+const pct = (v: number) => `${Math.max(0, (v / topMax) * 100)}%`;
+const suffixFor = (v: number) =>
+  v === 1 && valueSuffix ? (valueSuffixSingular ?? valueSuffix.replace(/s$/, '')) : valueSuffix;
+---
+
+<figure class="chart chart--bars" data-reveal role="group" aria-label={ariaLabel}>
+  <ol class="bar-rows">
+    {items.map((it, i) => (
+      <li
+        class:list={['bar-row', it.refKey && 'is-clickable']}
+        style={`--w:${pct(it.value)};--i:${i};${it.color ? `--c:${it.color};` : ''}`}
+        data-sheet={it.refKey}
+        role={it.refKey ? 'button' : undefined}
+        tabindex={it.refKey ? 0 : undefined}
+      >
+        <div class="bar-row__head">
+          <span class="bar-row__label">
+            {it.href && !it.refKey ? <a href={it.href}>{it.label}</a> : it.label}
+          </span>
+          <span class="bar-row__val">{it.value}{suffixFor(it.value)}</span>
+        </div>
+        <div class="bar-row__track" aria-hidden="true">
+          <div class="bar-row__fill"></div>
+        </div>
+        {it.note && <span class="bar-row__note">{it.note}</span>}
+      </li>
+    ))}
+  </ol>
+</figure>
+
+<style>
+  .chart--bars { margin: 0; }
+  .bar-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .bar-row__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: 5px;
+  }
+  .bar-row__label {
+    font: 600 13px/1.3 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .bar-row__label a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .bar-row__label a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .bar-row__val {
+    font: 600 13px/1 var(--font-mono);
+    color: var(--color-fg-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .bar-row__track {
+    height: 14px;
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+  .bar-row__fill {
+    height: 100%;
+    width: var(--w);
+    background: var(--c, var(--color-accent));
+    border-right: 1px solid color-mix(in srgb, var(--c, var(--color-accent)) 70%, #000 12%);
+  }
+  .bar-row__note {
+    display: block;
+    margin-top: 4px;
+    font: 400 12px/1.4 var(--font-sans);
+    color: var(--color-fg-subtle);
+  }
+
+  /* Fila clicable (drill-down): cursor + chevron + hover/focus. */
+  .bar-row.is-clickable { cursor: pointer; }
+  .bar-row.is-clickable .bar-row__head::after {
+    content: '›';
+    margin-left: 4px;
+    color: var(--color-fg-subtle);
+    font-weight: 600;
+    transition: color 140ms ease-out;
+  }
+  .bar-row.is-clickable:hover .bar-row__label,
+  .bar-row.is-clickable:hover .bar-row__head::after { color: var(--color-accent); }
+  .bar-row.is-clickable:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Reveal: armado por la isla (html[data-charts-armed]); colapsa a 0 hasta
+     que la figura entra en viewport y recibe data-revealed. Sin armado (sin JS
+     o motion reducido) las barras quedan completas. */
+  :global(html[data-charts-armed]) .chart--bars[data-reveal]:not([data-revealed]) .bar-row__fill {
+    width: 0;
+  }
+  .chart--bars[data-reveal][data-revealed] .bar-row__fill {
+    width: var(--w);
+    transition: width 0.55s var(--motion-ease);
+    transition-delay: calc(var(--i, 0) * 45ms);
+  }
+</style>

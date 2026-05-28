@@ -2,7 +2,9 @@
 
 Lenguaje visual canónico de presuntamente.org. Este fichero es la fuente de verdad de la identidad visual del proyecto. Cualquier agente (Claude Design, Claude Code, otros) que vaya a generar diseño, código o cualquier output visual debe leerlo antes de empezar.
 
-**Última actualización:** 2026-05-27 — contenedor común de cards de ficha (PersonaCard, OrgCard y Hecho) alineado con los casos destacados de home: borde fino uniforme, fondo `--color-surface`, hover sutil `translateX(-2px)` con fondo muy claro, y sin `border-left` grueso. El `border-left` queda reservado para F-función, avisos/aclaraciones y algunos bloques administrativos, no para codificar estado en cards de entidad o hecho. Se mantiene el refinamiento visual de F-estado (epistémico sin dot; rol procesal con dot + fondo suave sin borde) y `PartidoBadge` sin `border-left` grueso. Pendiente sincronizar con Claude Design.
+**Última actualización:** 2026-05-28 — añadida regla "animación funcional de una sola pasada" en visualizaciones de datos (Do's and Don'ts), al entregar la página `/graficas` y su sistema de charts ([`visualizaciones-graficas.md`](docs/web/features/visualizaciones-graficas.md)). Reveal sobrio gated por `prefers-reduced-motion`; sigue prohibida la animación decorativa/parallax/scroll-jacking.
+
+**Anterior (2026-05-27):** contenedor común de cards de ficha (PersonaCard, OrgCard y Hecho) alineado con los casos destacados de home: borde fino uniforme, fondo `--color-surface`, hover sutil `translateX(-2px)` con fondo muy claro, y sin `border-left` grueso. El `border-left` queda reservado para F-función, avisos/aclaraciones y algunos bloques administrativos, no para codificar estado en cards de entidad o hecho. Se mantiene el refinamiento visual de F-estado (epistémico sin dot; rol procesal con dot + fondo suave sin borde) y `PartidoBadge` sin `border-left` grueso. Pendiente sincronizar con Claude Design.
 
 ---
 
@@ -368,6 +370,12 @@ Dentro del cuerpo de un Hecho, descripción de Hito o resumen ejecutivo, ciertos
 
 ---
 
+### Sheet (panel deslizante reutilizable)
+
+Componente común [`src/components/Sheet.astro`](src/components/Sheet.astro) para mostrar contenido en un overlay: **bottom sheet en móvil** (sube desde abajo, backdrop) y **modal centrado en desktop** (≥720px). Aporta el contenedor, los bordes (borde superior 3px navy), la cabecera (título + botón de cierre cuadrado) y la interacción (abrir/cerrar/posicionar, backdrop, Escape, foco, `prefers-reduced-motion`). El **contenido lo decide quien lo use**.
+
+Contrato genérico por atributos: se renderiza `<Sheet />` una vez; cualquier disparador lleva `data-sheet="<clave>"`; el contenido va en un bloque oculto `<div hidden data-sheet-content="<clave>" data-sheet-title="…">`. Clases utilitarias de contenido: `.sheet-list` / `.sheet-item` / `.sheet-item__meta` / `.sheet-empty` / `.sheet-all`. Primer uso: drill-down de [`/graficas`](docs/web/features/visualizaciones-graficas.md) y teaser de la home. Reutilizable en cualquier página que necesite un panel así (hermano de `HoverCard`, que cubre el preview ligero al pasar el cursor).
+
 ## 5. Layout Principles
 
 - **Ancho máximo de contenido**: ~70ch (aprox. 700-800px). Contenido centrado.
@@ -407,6 +415,7 @@ Las fichas (Caso, Persona, Organización, Documento, Delito) y las páginas larg
 - Iconografía monocroma estilo línea (Lucide outline, Heroicons outline, o SVG propios).
 - Transmitir información de estado por **tres canales simultáneos**: color, etiqueta textual e icono. Nunca solo color.
 - Spacing vertical generoso entre secciones.
+- **Animación funcional de una sola pasada** en visualizaciones de datos (reveal de barras/columnas al entrar en viewport): permitida si es sobria, no se repite en bucle, no hace scroll-jacking ni parallax, y respeta `prefers-reduced-motion` (sin animación → contenido completo). Es enganche funcional, no decoración. Detalle: [`docs/web/features/visualizaciones-graficas.md`](docs/web/features/visualizaciones-graficas.md).
 
 ### Don't
 

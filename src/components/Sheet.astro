@@ -1,0 +1,242 @@
+---
+/**
+ * Sheet — panel deslizante reutilizable: bottom sheet en móvil, modal centrado
+ * en desktop. Sólo aporta el contenedor, la cabecera (título + cierre), los
+ * bordes y la interacción (abrir/cerrar/posicionar, backdrop, Escape, foco). El
+ * CONTENIDO lo decide quien lo use.
+ *
+ * Contrato (genérico, por atributos de datos):
+ *   1. Renderiza UNA vez `<Sheet />` en la página.
+ *   2. Marca cualquier elemento disparador con `data-sheet="<clave>"`.
+ *   3. Pon el contenido en un bloque oculto:
+ *        <div hidden data-sheet-content="<clave>" data-sheet-title="Título…">…</div>
+ *   Al pulsar el disparador, el Sheet clona ese contenido y lo muestra.
+ *
+ * Clases utilitarias para el contenido (estilizadas aquí, is:global):
+ *   .sheet-list / .sheet-item / .sheet-item__meta / .sheet-empty / .sheet-all
+ *
+ * Primer uso: drill-down de /graficas (ver docs/web/features/sheet.md). Los
+ * estilos son globales porque el contenido se clona desde otro scope.
+ */
+---
+
+<div class="sheet" data-sheet-root hidden>
+  <div class="sheet__backdrop" data-sheet-close></div>
+  <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet__head">
+      <h3 class="sheet__title" id="sheet-title"></h3>
+      <button type="button" class="sheet__close" data-sheet-close aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M6 18L18 6" /></svg>
+      </button>
+    </div>
+    <div class="sheet__body" data-sheet-body></div>
+  </div>
+</div>
+
+<script>
+  function __initSheet() {
+    if ((window as any).__sheetInit) return;
+    (window as any).__sheetInit = true;
+
+    let lastFocused: HTMLElement | null = null;
+    const rootEl = () => document.querySelector<HTMLElement>('[data-sheet-root]');
+
+    function open(key: string) {
+      const root = rootEl();
+      if (!root) return;
+      let src: HTMLElement | null = null;
+      try {
+        src = document.querySelector<HTMLElement>(`[data-sheet-content="${CSS.escape(key)}"]`);
+      } catch {
+        src = null;
+      }
+      if (!src) return;
+      const title = root.querySelector('#sheet-title');
+      const body = root.querySelector<HTMLElement>('[data-sheet-body]');
+      if (!title || !body) return;
+      title.textContent = src.getAttribute('data-sheet-title') ?? '';
+      body.innerHTML = src.innerHTML;
+      body.scrollTop = 0;
+      lastFocused = document.activeElement as HTMLElement | null;
+      root.hidden = false;
+      document.body?.classList.add('has-sheet-open');
+      requestAnimationFrame(() => {
+        root.classList.add('sheet--open');
+        root.querySelector<HTMLButtonElement>('.sheet__close')?.focus();
+      });
+    }
+
+    function close() {
+      const root = rootEl();
+      if (!root || root.hidden) return;
+      root.classList.remove('sheet--open');
+      document.body?.classList.remove('has-sheet-open');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.setTimeout(() => { root.hidden = true; }, reduce ? 0 : 200);
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+      if (target.closest('[data-sheet-close]')) { close(); return; }
+      // Enlaces dentro del panel: dejar navegar.
+      if (target.closest('.sheet__body a')) return;
+      // Disparador (salvo que se pulse un enlace dentro del propio disparador).
+      const trigger = target.closest<HTMLElement>('[data-sheet]');
+      if (trigger && !target.closest('a')) open(trigger.getAttribute('data-sheet') ?? '');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+      const trigger = target.closest<HTMLElement>('[data-sheet]');
+      if (trigger && !target.closest('a')) {
+        e.preventDefault();
+        open(trigger.getAttribute('data-sheet') ?? '');
+      }
+    });
+
+    document.addEventListener('astro:before-preparation', close);
+  }
+  __initSheet();
+  document.addEventListener('astro:page-load', __initSheet);
+</script>
+
+<style is:global>
+  .sheet {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+  }
+  .sheet[hidden] { display: none; }
+  .sheet__backdrop {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--color-fg) 42%, transparent);
+    opacity: 0;
+    transition: opacity 0.18s ease-out;
+  }
+  .sheet--open .sheet__backdrop { opacity: 1; }
+
+  .sheet__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-surface);
+    border-top: 3px solid var(--color-accent);
+    max-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    transition: transform 0.2s var(--motion-ease);
+  }
+  .sheet--open .sheet__panel { transform: translateY(0); }
+
+  .sheet__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    background: var(--color-surface);
+  }
+  .sheet__title {
+    margin: 0;
+    font: 600 15px/1.3 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .sheet__close {
+    flex: none;
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 0;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-fg-muted);
+  }
+  .sheet__close:hover { color: var(--color-fg); border-color: var(--color-border-strong); }
+  .sheet__close svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+  .sheet__body {
+    padding: 12px 16px 18px;
+    overflow-y: auto;
+  }
+
+  /* Utilidades de contenido (listas enlazadas típicas del drill-down). */
+  .sheet-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .sheet-list li { border-bottom: 1px solid var(--color-border); }
+  .sheet-list li:last-child { border-bottom: 0; }
+  .sheet-list a,
+  .sheet-list .sheet-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 9px 2px;
+    color: var(--color-fg);
+    text-decoration: none;
+    font: 400 14px/1.35 var(--font-sans);
+  }
+  .sheet-list a:hover { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+  .sheet-item__meta {
+    margin-left: auto;
+    font: 500 11px/1.3 var(--font-mono);
+    color: var(--color-fg-muted);
+    white-space: nowrap;
+  }
+  .sheet-empty {
+    margin: 0;
+    font: 400 13px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .sheet-all {
+    display: inline-block;
+    margin-top: 12px;
+    font: 600 13px/1.2 var(--font-sans);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .sheet-all:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (min-width: 720px) {
+    .sheet { display: flex; align-items: center; justify-content: center; }
+    .sheet[hidden] { display: none; }
+    .sheet__panel {
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      width: 100%;
+      max-width: 460px;
+      margin: 0 16px;
+      max-height: 72vh;
+      border: 1px solid var(--color-accent);
+      border-top-width: 3px;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform 0.18s var(--motion-ease), opacity 0.18s var(--motion-ease);
+    }
+    .sheet--open .sheet__panel { transform: none; opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sheet__backdrop,
+    .sheet__panel { transition: none; }
+  }
+</style>

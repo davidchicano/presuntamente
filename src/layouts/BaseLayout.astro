@@ -6,7 +6,7 @@ import PageToc from '@/components/PageToc.astro';
 import ThemeToggle from '@/components/ThemeToggle.astro';
 import { commitShaShort, buildDate, commitUrl } from '@/lib/build-info';
 
-type NavKey = 'casos' | 'personas' | 'organizaciones' | 'delitos' | 'biblioteca' | 'conexiones' | 'cifras' | 'sobre';
+type NavKey = 'casos' | 'personas' | 'organizaciones' | 'delitos' | 'biblioteca' | 'conexiones' | 'cifras' | 'graficas' | 'sobre';
 
 interface BreadcrumbItem {
   label: string;
@@ -83,8 +83,9 @@ const navInventario: NavTab[] = [
   { key: 'delitos',        label: 'Delitos',        href: lang === 'ca' ? '/cat/delitos'        : '/delitos' },
 ];
 const navReferencia: NavTab[] = [
-  { key: 'biblioteca', label: 'Biblioteca', href: lang === 'ca' ? '/cat/biblioteca' : '/biblioteca' },
+  { key: 'graficas',   label: 'Gráficas',   href: lang === 'ca' ? '/cat/graficas'   : '/graficas' },
   { key: 'cifras',     label: 'Cifras',     href: lang === 'ca' ? '/cat/cifras'     : '/cifras' },
+  { key: 'biblioteca', label: 'Biblioteca', href: lang === 'ca' ? '/cat/biblioteca' : '/biblioteca' },
 ];
 
 const navEntries: NavEntry[] = [

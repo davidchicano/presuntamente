@@ -15,6 +15,7 @@ import {
   familiaDelitoLabel,
 } from '@/lib/labels';
 import { getCollection } from 'astro:content';
+import { bump, entries, type Counter } from '@/lib/aggregation';
 
 interface Props {
   lang?: 'es' | 'ca';
@@ -47,17 +48,7 @@ const [
   getCollection('relaciones'),
 ]);
 
-// ---------------------------------------------------------------------------
-// Helpers de agregación
-// ---------------------------------------------------------------------------
-
-type Counter = Map<string, number>;
-function bump(map: Counter, key: string, by = 1) {
-  map.set(key, (map.get(key) ?? 0) + by);
-}
-function entries(map: Counter): Array<[string, number]> {
-  return Array.from(map.entries()).sort((a, b) => b[1] - a[1]);
-}
+// Helpers de agregación: bump / entries / Counter en @/lib/aggregation.
 
 // Roles "del lado acusado" (familia F-estado en RolBadge).
 const ROLES_LADO_ACUSADO = new Set([
@@ -318,7 +309,7 @@ const breadcrumb = [
       </div>
       <div class="page-id__meta">
         <span>Actualizado el {strings.buildDate}</span>
-        <span>{totalCasos} casos</span>
+        <span><a href="/graficas">Ver en gráficas →</a></span>
       </div>
     </header>
 
@@ -340,7 +331,7 @@ const breadcrumb = [
   </div>
 
   <!-- 1. Estado procesal de las personas -->
-  <FichaTocSection num="1." id="estado-procesal" title="Estado procesal de las personas">
+  <FichaTocSection id="estado-procesal" title="Estado procesal de las personas">
   <p class="lead">
     Una misma persona puede acumular roles consecutivos en distintas fases procesales del mismo caso
     (p. ej. <em>investigada → procesada → condenada</em>). Los conteos siguientes cuentan personas únicas,
@@ -387,7 +378,7 @@ const breadcrumb = [
   </FichaTocSection>
 
   <!-- 2. Casos -->
-  <FichaTocSection num="2." id="casos" title="Distribución de casos">
+  <FichaTocSection id="casos" title="Distribución de casos">
 
   <h3 class="sub-h">Por fase procesal</h3>
   <div class="tbl-scroll">
@@ -441,7 +432,7 @@ const breadcrumb = [
   </FichaTocSection>
 
   <!-- 3. Documentos -->
-  <FichaTocSection num="3." id="documentos" title="Documentos y fuentes">
+  <FichaTocSection id="documentos" title="Documentos y fuentes">
 
   <ul class="kpis">
     <li class="kpi kpi--neutro">
@@ -512,7 +503,7 @@ const breadcrumb = [
   </FichaTocSection>
 
   <!-- 4. Hechos -->
-  <FichaTocSection num="4." id="hechos" title="Hechos y carga editorial">
+  <FichaTocSection id="hechos" title="Hechos y carga editorial">
   <p class="lead">
     Cada Hecho del inventario se clasifica por estado epistémico (qué grado de prueba lo respalda) y
     por vigencia (si sigue en pie o ha sido superado por otro Hecho posterior).
@@ -563,7 +554,7 @@ const breadcrumb = [
   </FichaTocSection>
 
   <!-- 5. Hitos -->
-  <FichaTocSection num="5." id="hitos" title="Hitos del inventario">
+  <FichaTocSection id="hitos" title="Hitos del inventario">
 
   <ul class="kpis">
     <li class="kpi kpi--neutro">
@@ -613,7 +604,7 @@ const breadcrumb = [
   </FichaTocSection>
 
   <!-- 6. Organizaciones -->
-  <FichaTocSection num="6." id="organizaciones" title="Organizaciones citadas">
+  <FichaTocSection id="organizaciones" title="Organizaciones citadas">
   <div class="tbl-scroll">
     <table class="tbl">
       <thead>
@@ -635,7 +626,7 @@ const breadcrumb = [
   </FichaTocSection>
 
   <!-- 7. Delitos -->
-  <FichaTocSection num="7." id="delitos" title="Delitos catalogados y atribuidos">
+  <FichaTocSection id="delitos" title="Delitos catalogados y atribuidos">
 
   <h3 class="sub-h">Catálogo por familia</h3>
   <div class="tbl-scroll">
@@ -683,7 +674,7 @@ const breadcrumb = [
   </FichaTocSection>
 
   <!-- 8. Conexiones y glosario -->
-  <FichaTocSection num="8." id="conexiones" title="Conexiones y referencias auxiliares">
+  <FichaTocSection id="conexiones" title="Conexiones y referencias auxiliares">
   <ul class="kpis">
     <li class="kpi kpi--neutro">
       <span class="kpi__val">{totalRelaciones}</span>
@@ -697,7 +688,7 @@ const breadcrumb = [
   </FichaTocSection>
 
   <!-- 9. Notas metodológicas -->
-  <FichaTocSection num="9." id="metodologia" title="Notas metodológicas">
+  <FichaTocSection id="metodologia" title="Notas metodológicas">
   <ol class="notas">
     <li>
       Todas las cifras se recalculan con cada publicación del sitio a partir del repositorio de

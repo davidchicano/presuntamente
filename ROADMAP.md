@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-28 (scouting de casos). Categoría nueva de fuentes de descubrimiento (agregadores secundarios, **no citables**) en [`agregadores-y-descubrimiento.md`](docs/fuentes/agregadores-y-descubrimiento.md); cruce de los 589 casos de casos-aislados.com en [`casos-aislados-candidatos.md`](docs/fuentes/casos-aislados-candidatos.md) (554 faltan: 56 alta prioridad, 16 rozan fichas ya existentes). 3 pistas `pending` en `signals.yaml` (Mediador, David Sánchez/Badajoz, Pequeño Nicolás) de una lista de aportes editorial; resto descartado por *sin cuota política*. Norma nueva en [`AGENTS.md`](AGENTS.md): memoria del agente = local/por-developer, conocimiento general → repo.
+**Última actualización:** 2026-05-29 (página `/graficas`). Sistema propio de charts en build (barras, stacked, treemap, timeline, Gantt), estética gov-retro; **tabs** por dataset (tiempo: hitos/casos/imputaciones; mapas: familias/delitos) y **drill-down** vía componente común [`Sheet`](src/components/Sheet.astro) (bottom sheet móvil / modal desktop), reutilizable y ya usado en el teaser de fase de la home. Solo casos en beta+ (con disclaimer); nav reordenado (Gráficas·Cifras·Biblioteca). Brief del proyecto de **importe presuntamente atribuido** documentado para otra sesión (commit aparte `2ee9586`). Fichas: [`visualizaciones-graficas.md`](docs/web/features/visualizaciones-graficas.md), [`graficas.md`](docs/web/pages/graficas.md); canon visual en [`DESIGN.md`](DESIGN.md).
 
-**Anterior (2026-05-28, modo claro/oscuro).** Tema vía `data-theme` + persistencia sin FOUC, toggle de cuerda de lámpara, auditoría de tokens dark y grafo Cytoscape theme-aware. Ficha [`dark-mode.md`](docs/web/features/dark-mode.md).
+**Anterior (2026-05-28, scouting de casos).** Fuentes de descubrimiento no citables ([`agregadores-y-descubrimiento.md`](docs/fuentes/agregadores-y-descubrimiento.md)), cruce casos-aislados.com ([`casos-aislados-candidatos.md`](docs/fuentes/casos-aislados-candidatos.md)) y 3 pistas `pending` en `signals.yaml`. Antes: modo claro/oscuro ([`dark-mode.md`](docs/web/features/dark-mode.md)).
 
 ---
 
@@ -84,7 +84,7 @@ Cerrado 2026-05-27: auditoría 5 zonas + ejecución. Detalle: [`historial-2026-0
 
 Cerradas (una línea cada una; detalle en ficha):
 
-- [x] `/cifras` · OG images · RSS/Atom · timeline · estado de ficha · síntesis · vínculos institucionales · cobertura mediática general · clasificación editorial medios.
+- [x] `/cifras` · `/graficas` (+ sistema de charts SVG/build) · OG images · RSS/Atom · timeline · estado de ficha · síntesis · vínculos institucionales · cobertura mediática general · clasificación editorial medios.
 - [x] Mejoras listados · PartidoBadge · iconografía `badge--cat` · `<Aclaracion>` · refactor afectación directa/indirecta · explorador `/conexiones`.
 - [x] Poblado CIS/grupos editoriales · skills masivas (`documentar-vinculos` v3, `rastrear-cobertura`, `revisar-caso`) · 26 esqueletos `pendiente` + órganos judiciales.
 - [x] Modo claro/oscuro con toggle (cuerda de lámpara) — [`dark-mode.md`](docs/web/features/dark-mode.md).
