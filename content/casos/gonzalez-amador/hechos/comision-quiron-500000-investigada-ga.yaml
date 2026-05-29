@@ -26,11 +26,17 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 500000
 importe_alcance: componente
+importe_clase: objeto
 importe_naturaleza: comision_ilicita
 importe_nota: >-
   Presunto pago encubierto presentado como comisión, dentro de la pieza Quirón.
   Forma parte del volumen investigado en el hecho de la rama Quirón, por lo que
   se marca componente y NO acumula al total del caso.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: alberto-gonzalez-amador
+    papel: beneficiario
+    nota: Presunto cobro encubierto en investigación; componente de la rama Quirón, no acumula.
 vigencia: vigente
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-22"

@@ -26,12 +26,21 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 113509.32
 importe_alcance: componente
+importe_clase: objeto
 importe_naturaleza: gasto_publico_cuestionado
 importe_nota: >-
   Desglose del gasto financiado por la UCM: 108.765,79 € en contratos
   administrativos (entre otros, Deloitte y Making Science) + 4.743,53 € en
   costes de personal. Misma cifra que el perjuicio cuantificado por la UCM,
   por lo que NO acumula al total del caso.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: universidad-complutense-madrid
+    papel: perjudicado
+  - sujeto_tipo: persona
+    sujeto: begona-gomez
+    papel: activo
+    nota: Gasto público cuestionado; no consta que lo percibiera. Misma cifra que el perjuicio, marcada componente.
 vigencia: vigente
 redaccion_neutra_revisada: false
 estado_publicacion: borrador

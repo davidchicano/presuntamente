@@ -40,11 +40,17 @@ documentos_respaldo:
 nivel_fuente_efectivo: 1
 importe: 7200
 importe_alcance: individual
+importe_clase: consecuencia
 importe_naturaleza: multa_penal
 importe_nota: >-
   Multa de la condena firme a Álvaro García Ortiz (12 meses × 20 €/día × 30).
   La condena incluye además inhabilitación especial de 2 años, de naturaleza
   no dineraria.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: alvaro-garcia-ortiz
+    papel: obligado
+    nota: Multa penal de la condena firme, a favor del Estado.
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador

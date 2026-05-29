@@ -297,6 +297,68 @@ export function relevanciaEditorialLabel(relevancia: string, _lang: Lang = 'es')
   return RELEVANCIA_EDITORIAL_LABEL_ES[relevancia] ?? relevancia;
 }
 
+// --- Importe (cifras económicas del Hecho) ----------------------------------
+// Canon de enums y reglas: docs/diseno/01-modelo-de-datos.md §2.6.
+
+const IMPORTE_NATURALEZA_LABEL_ES: Record<string, string> = {
+  perjuicio: 'Perjuicio económico',
+  objeto_contrato: 'Objeto del contrato',
+  fondo_publico_concedido: 'Fondo público concedido',
+  comision_ilicita: 'Comisión presuntamente ilícita',
+  cobro_indebido: 'Cobro presuntamente indebido',
+  multa_penal: 'Multa penal',
+  responsabilidad_civil: 'Responsabilidad civil',
+  gasto_publico_cuestionado: 'Gasto público cuestionado',
+  otro: 'Otra cifra',
+};
+export function importeNaturalezaLabel(naturaleza: string, _lang: Lang = 'es'): string {
+  return IMPORTE_NATURALEZA_LABEL_ES[naturaleza] ?? naturaleza;
+}
+
+const IMPORTE_CLASE_LABEL_ES: Record<string, string> = {
+  objeto: 'Dinero presuntamente atribuido',
+  consecuencia: 'Consecuencias económicas',
+};
+export function importeClaseLabel(clase: string, _lang: Lang = 'es'): string {
+  return IMPORTE_CLASE_LABEL_ES[clase] ?? clase;
+}
+
+const IMPORTE_ALCANCE_LABEL_ES: Record<string, string> = {
+  total_caso: 'Total del caso',
+  componente: 'Partida (no acumula)',
+  individual: 'Atribución individual',
+};
+export function importeAlcanceLabel(alcance: string, _lang: Lang = 'es'): string {
+  return IMPORTE_ALCANCE_LABEL_ES[alcance] ?? alcance;
+}
+
+// Papel económico de un sujeto en el importe de un Hecho (importe_atribucion).
+// Distinto del rol procesal. Cuida la presunción de inocencia: `activo` no
+// afirma percepción del dinero; `beneficiario` sí (cuando consta).
+const IMPORTE_PAPEL_LABEL_ES: Record<string, string> = {
+  activo: 'Conducta atribuida',
+  beneficiario: 'Presunto beneficiario',
+  perjudicado: 'Perjudicado',
+  obligado: 'Obligado al pago',
+  acreedor: 'A su favor',
+};
+export function importePapelLabel(papel: string, _lang: Lang = 'es'): string {
+  return IMPORTE_PAPEL_LABEL_ES[papel] ?? papel;
+}
+
+// Encabezado de cada cubeta de cifras en la ficha de un sujeto. La redacción es
+// el guardarraíl de presunción de inocencia: nunca "dinero que se llevó".
+const IMPORTE_PAPEL_SECCION_ES: Record<string, string> = {
+  activo: 'Cifras de los hechos que se le atribuyen',
+  beneficiario: 'Dinero que presuntamente percibió o se le adjudica',
+  perjudicado: 'Quebranto económico que figura como sufrido',
+  obligado: 'Consecuencias económicas a su cargo',
+  acreedor: 'Cantidades fijadas a su favor',
+};
+export function importePapelSeccionLabel(papel: string, _lang: Lang = 'es'): string {
+  return IMPORTE_PAPEL_SECCION_ES[papel] ?? papel;
+}
+
 // --- Familia de Delito -------------------------------------------------------
 
 const FAMILIA_DELITO_LABEL_ES: Record<string, string> = {

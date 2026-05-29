@@ -98,6 +98,11 @@
       "enum": ["total_caso", "componente", "individual"],
       "description": "Clave para no duplicar al sumar. total_caso: cifra global/de objeto del caso o pieza (sumable entre sí para el total del caso). componente: partida que desglosa un total ya contabilizado o cifra meramente citada/no acumulable (petición de pena no firme, ofrecimiento no percibido, importe de un hecho exculpatorio); NUNCA se suma. individual: importe atribuido nominalmente a una persona/organización (multa, indemnización, cobro); alimenta la vista por persona y sólo suma al total del caso si no existe ningún total_caso."
     },
+    "importe_clase": {
+      "type": "string",
+      "enum": ["objeto", "consecuencia"],
+      "description": "Tipo fundamental de la cifra; NUNCA se mezclan ni se suman entre sí. objeto: el dinero en juego / presuntamente atribuido (perjuicio o quebranto a lo público, objeto del contrato, fondo público concedido, comisión presunta, cobro indebido, gasto cuestionado) — lo que se investiga que se movió mal. consecuencia: respuesta económica del procedimiento (multa penal, responsabilidad civil/indemnización) — lo que se impone o paga. Determina en qué tabla aparece el importe. Ver docs/diseno/01-modelo-de-datos.md §2.6."
+    },
     "importe_naturaleza": {
       "type": "string",
       "enum": [
@@ -111,11 +116,42 @@
         "gasto_publico_cuestionado",
         "otro"
       ],
-      "description": "Qué representa el importe. Evita sumar cifras de naturaleza incomparable en agregados (un préstamo concedido ≠ un perjuicio cuantificado ≠ una multa penal). Opcional pero recomendado."
+      "description": "Subtipo del importe dentro de su clase. objeto: perjuicio, objeto_contrato, fondo_publico_concedido, comision_ilicita, cobro_indebido, gasto_publico_cuestionado. consecuencia: multa_penal, responsabilidad_civil. Evita sumar cifras incomparables en agregados (un préstamo concedido ≠ un perjuicio ≠ una multa). Opcional pero recomendado."
     },
     "importe_nota": {
       "type": "string",
       "description": "Matiz editorial del importe: origen de la cifra ('según escrito de acusación', 'cuantificado por la UCM'), desglose, divisa original, o por qué no es acumulable. Markdown breve."
+    },
+    "importe_atribucion": {
+      "type": "array",
+      "description": "Atribución del importe por sujeto, con su PAPEL ECONÓMICO en el flujo de dinero (distinto del rol procesal de RolEnCaso). Permite la vista de cifras por persona/organización sin violar la presunción de inocencia: el quebranto de una víctima (perjudicado) NUNCA se suma al investigado, y `activo` (conducta atribuida) no afirma que el sujeto percibiera el dinero. Cada `sujeto` debe figurar en personas_implicadas/organizaciones_implicadas (V-24). Ver docs/diseno/01-modelo-de-datos.md §2.6.",
+      "items": {
+        "type": "object",
+        "required": ["sujeto_tipo", "sujeto", "papel"],
+        "additionalProperties": false,
+        "properties": {
+          "sujeto_tipo": { "type": "string", "enum": ["persona", "organizacion"] },
+          "sujeto": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Slug de la Persona u Organizacion. Debe estar en personas_implicadas/organizaciones_implicadas del Hecho (V-24)."
+          },
+          "papel": {
+            "type": "string",
+            "enum": ["activo", "beneficiario", "perjudicado", "obligado", "acreedor"],
+            "description": "Papel económico. Clase objeto: `activo` (sujeto a cuya conducta se atribuye el hecho económico; NO afirma que percibiera el dinero), `beneficiario` (percibe o se queda el dinero, cuando consta indiciariamente), `perjudicado` (sufre el quebranto/pérdida). Clase consecuencia: `obligado` (paga la multa o responsabilidad civil), `acreedor` (la cobra). V-25: el papel debe ser coherente con importe_clase."
+          },
+          "importe_sujeto": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "description": "Cuota atribuida a ESTE sujeto si difiere del importe del Hecho (p. ej. reparto cuantificado entre varios). Si se omite, al sujeto se le atribuye el importe completo del Hecho. Las vistas por sujeto no se suman entre sujetos, así que la responsabilidad solidaria se modela atribuyendo el total a cada obligado."
+          },
+          "nota": {
+            "type": "string",
+            "description": "Matiz de la atribución a este sujeto (p. ej. 'responsabilidad civil solidaria con los demás procesados'). Markdown breve."
+          }
+        }
+      }
     },
     "contraposicion_a": {
       "type": "string",
@@ -147,5 +183,5 @@
     "ultima_revision_editorial": { "type": "string", "format": "date" }
   },
   "if": { "required": ["importe"] },
-  "then": { "required": ["importe_alcance"] }
+  "then": { "required": ["importe_alcance", "importe_clase"] }
 }

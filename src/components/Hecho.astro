@@ -22,11 +22,14 @@ interface Props {
   fuentes: Fuente[];
   excludeOrgIds?: string[];
   excludePersonaIds?: string[];
+  /** id de ancla (#hecho-<slug>). Va en el <article> real, no en el wrapper
+   *  `display:contents`, para que la navegación por fragmento aterrice aquí. */
+  id?: string;
 }
 
-const { tipo, enunciado, fechaTexto, fuentes, excludeOrgIds, excludePersonaIds } = Astro.props;
+const { tipo, enunciado, fechaTexto, fuentes, excludeOrgIds, excludePersonaIds, id } = Astro.props;
 ---
-<article class:list={['hecho', `hecho--${tipo}`]}>
+<article class:list={['hecho', `hecho--${tipo}`]} id={id}>
   <header class="hecho__head">
     <EpistemicBadge tipo={tipo} />
     {fechaTexto && <span class="hecho__date">{fechaTexto}</span>}

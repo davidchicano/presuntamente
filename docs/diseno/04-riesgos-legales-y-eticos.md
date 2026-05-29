@@ -61,6 +61,7 @@ Parcialmente cubiertas por P-09 del doc 02. Consolidadas aquí:
 - Sentencias no firmes: "ha sido condenado en primera instancia, pendiente de recurso" — nunca "es culpable".
 - Personas absueltas o desimputadas: nunca "fue acusado de X" como descripción presente; sí "fue investigado por X y posteriormente desimputado por el órgano Y mediante auto Z".
 - Causas archivadas: "el procedimiento fue archivado" + tipo (provisional vs libre). Nunca "no se demostró pero podría haber sido".
+- **Dinero atribuido por sujeto.** Cuando un Hecho cuantifica dinero y hay varios implicados, **nunca** se suma en una sola cifra lo que sufre la víctima con lo que se atribuye al investigado, ni se presenta un importe pegado a un nombre como si lo hubiera "robado". Cada sujeto lleva su **papel económico** (`importe_atribucion`, ver [doc 01 §2.6](01-modelo-de-datos.md#26-hecho)): `perjudicado` (víctima, su pérdida nunca se imputa a otro), `activo` (conducta atribuida, **no** afirma percepción), `beneficiario` (sólo si consta que recibió), `obligado`/`acreedor` (consecuencias). El rojo de condena sólo se usa con dinero acreditado por resolución firme — nunca sobre lo investigado.
 
 CI puede ayudar con lista negra simple de verbos para hechos no acreditados (warning, no bloqueante; decide review humano).
 

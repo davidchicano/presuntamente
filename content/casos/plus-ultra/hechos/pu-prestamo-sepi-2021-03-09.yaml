@@ -31,10 +31,16 @@ documentos_respaldo:
 nivel_fuente_efectivo: 1
 importe: 53000000
 importe_alcance: total_caso
+importe_clase: objeto
 importe_naturaleza: fondo_publico_concedido
 importe_nota: >-
   Préstamo público concedido a través del FASEE; el acto de concesión consta
   (nota SEPI y BOE), lo que se investiga es su regularidad. Cifra titular del caso.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: plus-ultra-lineas-aereas
+    papel: beneficiario
+    nota: Receptora del préstamo público cuya regularidad se investiga; la concesión consta acreditada.
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador

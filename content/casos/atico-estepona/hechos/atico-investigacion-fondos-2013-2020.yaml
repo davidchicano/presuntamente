@@ -35,12 +35,18 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 770000
 importe_alcance: componente
+importe_clase: objeto
 importe_naturaleza: objeto_contrato
 importe_nota: >-
   Precio de la compraventa del ático en 2011. El procedimiento fue sobreseído
   provisionalmente en 2020 sin indicios sobre el origen de los fondos (hecho
   exculpatorio): la cifra se conserva por trazabilidad pero NO acumula como
   importe atribuido.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: ignacio-gonzalez
+    papel: activo
+    nota: Conducta investigada y posteriormente sobreseída (exculpatorio); la cifra no acumula.
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador

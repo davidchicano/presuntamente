@@ -288,6 +288,7 @@ const hechos = defineCollection({
       importe_alcance: z
         .enum(['total_caso', 'componente', 'individual'])
         .optional(),
+      importe_clase: z.enum(['objeto', 'consecuencia']).optional(),
       importe_naturaleza: z
         .enum([
           'perjuicio',
@@ -302,6 +303,29 @@ const hechos = defineCollection({
         ])
         .optional(),
       importe_nota: z.string().optional(),
+      // Atribución del importe por sujeto: papel económico (distinto del rol
+      // procesal). Permite la vista de cifras por persona/organización sin
+      // misatribuir (el quebranto de una víctima nunca se suma al investigado).
+      // Canon en schemas/hecho.schema.json y docs/diseno/01-modelo-de-datos.md §2.6.
+      importe_atribucion: z
+        .array(
+          z
+            .object({
+              sujeto_tipo: z.enum(['persona', 'organizacion']),
+              sujeto: z.string(),
+              papel: z.enum([
+                'activo',
+                'beneficiario',
+                'perjudicado',
+                'obligado',
+                'acreedor',
+              ]),
+              importe_sujeto: z.number().positive().optional(),
+              nota: z.string().optional(),
+            })
+            .passthrough(),
+        )
+        .optional(),
       vigencia: z.enum(['vigente', 'superado', 'retirado']),
       estado_publicacion: ESTADO_PUBLICACION,
     })

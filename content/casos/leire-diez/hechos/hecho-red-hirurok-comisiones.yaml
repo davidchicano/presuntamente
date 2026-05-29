@@ -28,11 +28,22 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 700000
 importe_alcance: total_caso
+importe_clase: objeto
 importe_naturaleza: comision_ilicita
 importe_nota: >-
   Presuntas comisiones de la red Hirurok en contratos públicos y ayudas
   concedidas por la SEPI, por importe superior a 700.000 € durante 2021-2023,
   según el auto del JCI nº 6 reproducido por prensa cruzada.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: leire-diez
+    papel: beneficiario
+  - sujeto_tipo: persona
+    sujeto: vicente-fernandez-guerrero
+    papel: beneficiario
+  - sujeto_tipo: persona
+    sujeto: joseba-antxon-alonso
+    papel: beneficiario
 vigencia: vigente
 redaccion_neutra_revisada: false
 estado_publicacion: borrador

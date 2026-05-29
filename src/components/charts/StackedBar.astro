@@ -16,6 +16,9 @@ export interface StackSegment {
   fg?: string;
   /** Si se pasa, segmento y leyenda abren el panel de referencia (drill-down). */
   refKey?: string;
+  /** Texto a mostrar como valor en vez del número crudo (p. ej. "53 M€").
+   *  El ancho del segmento sigue usando `value`. */
+  valueLabel?: string;
 }
 
 interface Props {
@@ -41,7 +44,7 @@ const visible = segments.filter((s) => s.value > 0);
       <div
         class:list={['stacked-seg', s.refKey && 'is-clickable']}
         style={`--seg-w:${pct(s.value)}%;--seg-c:${s.color};--i:${i};`}
-        title={`${s.label}: ${s.value} (${fmtPct(s.value)})`}
+        title={`${s.label}: ${s.valueLabel ?? s.value} (${fmtPct(s.value)})`}
         data-sheet={s.refKey}
       ></div>
     ))}
@@ -57,7 +60,7 @@ const visible = segments.filter((s) => s.value > 0);
         >
           <span class="stacked-legend__swatch" style={`background:${s.color};`} aria-hidden="true"></span>
           <span class="stacked-legend__label">{s.label}</span>
-          <span class="stacked-legend__val">{legend === 'full' ? `${s.value} · ${fmtPct(s.value)}` : s.value}</span>
+          <span class="stacked-legend__val">{legend === 'full' ? `${s.valueLabel ?? s.value} · ${fmtPct(s.value)}` : (s.valueLabel ?? s.value)}</span>
         </li>
       ))}
     </ul>

@@ -6,8 +6,16 @@ import CatalogoLeyenda from '@/components/CatalogoLeyenda.astro';
 import SectionH from '@/components/SectionH.astro';
 import OrientacionBadge from '@/components/OrientacionBadge.astro';
 import NaturalezaBadge from '@/components/NaturalezaBadge.astro';
+import HoverCard from '@/components/HoverCard.astro';
 import { getCollection } from 'astro:content';
 import { tipoOrgLabel, type Lang } from '@/lib/labels';
+import {
+  toImporteEntries,
+  analizarSujeto,
+  importeAtribuidoSujeto,
+  type HechoImporteInput,
+} from '@/lib/importe';
+import { formatEurosCompact, formatEurosFull } from '@/lib/money';
 
 // Orden canónico del eje editorial (izquierda → derecha), no alfabético.
 // Coincide con el enum de orientacion_editorial_declarada/percibida.
@@ -43,6 +51,17 @@ const [organizacionesCol, rolesCol, casosCol, hechosCol, hitosCol] = await Promi
   getCollection('hitos'),
 ]);
 
+// Importe presuntamente atribuido por organización (cubetas beneficiario +
+// activo, clase objeto): el dinero en juego vinculado a su conducta. NO incluye
+// el perjuicio sufrido por las víctimas (p. ej. Canal de Isabel II) ni las
+// consecuencias; eso vive en su ficha de detalle. Misma semántica que /casos.
+const importeEntries = toImporteEntries(
+  hechosCol.map((h) => h.data as unknown as HechoImporteInput),
+);
+function importeAtribuidoDe(sujeto: string): number {
+  return importeAtribuidoSujeto(analizarSujeto(importeEntries, sujeto));
+}
+
 const orgs = organizacionesCol
   .map((o) => {
     // Casos donde esta organización aparece (como órgano judicial,
@@ -72,6 +91,7 @@ const orgs = organizacionesCol
       naturaleza: editorial.naturaleza_editorial,
       orientacionDeclarada: editorial.orientacion_editorial_declarada?.valor,
       orientacionPercibida: editorial.orientacion_editorial_percibida?.valor,
+      importeAtribuido: importeAtribuidoDe(o.data.id),
     };
   })
   .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
@@ -216,6 +236,21 @@ const opcionesOrientacion = ORIENTACION_ORDER
       />
     </div>
     <div class="field">
+      <label for="importe">Importe atribuido</label>
+      <CustomSelect
+        id="importe"
+        name="importe"
+        value="all"
+        ariaLabel="Filtrar por importe presuntamente atribuido"
+        options={[
+          { value: 'all', label: 'Cualquiera' },
+          { value: 'con', label: 'Con importe atribuido' },
+          { value: 'm1',  label: '≥ 1 M€' },
+          { value: 'm10', label: '≥ 10 M€' },
+        ]}
+      />
+    </div>
+    <div class="field">
       <label for="order">Ordenar por</label>
       <CustomSelect
         id="order"
@@ -225,6 +260,7 @@ const opcionesOrientacion = ORIENTACION_ORDER
         options={[
           { value: 'alfabetico', label: 'Alfabético' },
           { value: 'casos',      label: 'Nº de casos ↓' },
+          { value: 'importe',    label: 'Importe atribuido ↓' },
         ]}
       />
     </div>
@@ -258,12 +294,27 @@ const opcionesOrientacion = ORIENTACION_ORDER
           data-tipo={o.tipo}
           data-orient={o.orientacionDeclarada ?? ''}
           data-casos={o.casosCount}
+          data-importe={o.importeAtribuido}
           data-search={searchBlob(o)}
         >
           <td>
             <a href={`/organizaciones/${o.slug}`}>
               <span class="c-name">{o.nombre}</span>
             </a>
+            {o.importeAtribuido > 0 && (
+              <HoverCard side="top" align="start">
+                <span slot="trigger" class="c-importe">
+                  <span class="c-importe__label">Importe atribuido</span>
+                  <span class="c-importe__value">{formatEurosCompact(o.importeAtribuido)}</span>
+                </span>
+                <div slot="content">
+                  <strong>{formatEurosFull(o.importeAtribuido)}</strong> — dinero presuntamente
+                  atribuido a su actividad (presunta beneficiaria o entidad investigada) en los
+                  hechos donde aparece. No incluye el perjuicio sufrido por terceros ni las multas;
+                  el detalle por papel está en su ficha.
+                </div>
+              </HoverCard>
+            )}
           </td>
           <td>
             <CategoryBadge kind="org" tipo={o.tipo} label={o.tipoLabel} />
@@ -311,12 +362,15 @@ const opcionesOrientacion = ORIENTACION_ORDER
     const qInput = form.querySelector('#q');
     const tipoSel = form.querySelector('input[name="tipo"]');
     const orientSel = form.querySelector('input[name="orient"]');
+    const importeSel = form.querySelector('input[name="importe"]');
     const orderSel = form.querySelector('input[name="order"]');
 
     const ORDER_LABEL = {
       alfabetico: 'alfabético',
       casos: 'nº de casos',
+      importe: 'importe atribuido',
     };
+    const IMPORTE_MIN = { con: 1, m1: 1_000_000, m10: 10_000_000 };
 
     function resyncCustomSelects() {
       form.querySelectorAll('[data-csel]').forEach((csel) => {
@@ -335,6 +389,8 @@ const opcionesOrientacion = ORIENTACION_ORDER
       const q = (qInput.value || '').trim().toLowerCase();
       const tipo = tipoSel.value;
       const orient = orientSel ? orientSel.value : 'all';
+      const importe = importeSel ? importeSel.value : 'all';
+      const importeMin = IMPORTE_MIN[importe] ?? 0;
       const order = orderSel ? orderSel.value : 'alfabetico';
 
       const visible = [];
@@ -344,7 +400,8 @@ const opcionesOrientacion = ORIENTACION_ORDER
         // Si se filtra por orientación, sólo pasan filas con esa orientación
         // declarada — implícitamente excluye todo lo que no sea medio.
         const matchO = orient === 'all' || row.dataset.orient === orient;
-        const show = matchQ && matchT && matchO;
+        const matchImporte = importeMin === 0 || parseFloat(row.dataset.importe || '0') >= importeMin;
+        const show = matchQ && matchT && matchO && matchImporte;
         row.hidden = !show;
         if (show) visible.push(row);
       }
@@ -355,6 +412,11 @@ const opcionesOrientacion = ORIENTACION_ORDER
             const ca = parseInt(a.dataset.casos || '0', 10);
             const cb = parseInt(b.dataset.casos || '0', 10);
             if (cb !== ca) return cb - ca;
+          }
+          if (order === 'importe') {
+            const va = parseFloat(a.dataset.importe || '0');
+            const vb = parseFloat(b.dataset.importe || '0');
+            if (vb !== va) return vb - va;
           }
           const na = (a.querySelector('.c-name')?.textContent || '').trim();
           const nb = (b.querySelector('.c-name')?.textContent || '').trim();
@@ -382,6 +444,35 @@ const opcionesOrientacion = ORIENTACION_ORDER
     text-align: center;
     font: 400 var(--font-size-1)/1.5 var(--font-sans);
     color: var(--color-fg-muted);
+  }
+  /* 5 filtros (buscar · tipo · orientación · importe · orden): rejilla propia
+     para que entren en una fila en pantallas anchas (el global trae 4). */
+  .filter-bar {
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  }
+  /* Chip de importe atribuido bajo el nombre (HoverCard común). */
+  .c-importe {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 6px;
+    padding: 3px 8px;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface-muted);
+    width: max-content;
+    max-width: 100%;
+  }
+  .c-importe__label {
+    font: 500 0.66rem/1 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+  .c-importe__value {
+    font: 600 0.82rem/1 var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-fg);
   }
   .orgs-clasif {
     display: inline-flex;

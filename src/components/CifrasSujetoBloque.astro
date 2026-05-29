@@ -1,0 +1,320 @@
+---
+// CifrasSujetoBloque — cifras económicas de UN sujeto (persona u organización),
+// agrupadas por papel económico (importe_atribucion). Cada cubeta es de un solo
+// papel y por tanto de una sola clase: NUNCA se mezclan ni se suman entre sí.
+// El encabezado + la frase llana de cada cubeta son el guardarraíl de
+// presunción de inocencia (nunca "dinero que se llevó"); `activo` no afirma
+// percepción. Codificación visual por familia (navy = atribuido/percibido,
+// gris = quebranto/víctima, mostaza = consecuencia) para distinguir de un
+// vistazo un señalamiento de una pérdida sufrida.
+import EpistemicBadge from '@/components/EpistemicBadge.astro';
+import LevelBadge from '@/components/LevelBadge.astro';
+import CifrasTotalBox from '@/components/CifrasTotalBox.astro';
+import { importePapelSeccionLabel, importeNaturalezaLabel } from '@/lib/labels';
+import { formatEurosCompact, formatEurosFull } from '@/lib/money';
+import type { AnalisisSujeto, ImportePapel } from '@/lib/importe';
+
+interface Props {
+  analisis: AnalisisSujeto;
+  /** casoId → nombre legible del caso. */
+  casos: Record<string, string>;
+}
+const { analisis, casos } = Astro.props;
+
+const TOTAL_LABEL: Record<ImportePapel, string> = {
+  activo: 'Total en juego en los hechos que se le atribuyen',
+  beneficiario: 'Total que presuntamente percibió o se le adjudica',
+  perjudicado: 'Quebranto total que figura como sufrido',
+  obligado: 'Total a su cargo',
+  acreedor: 'Total fijado a su favor',
+};
+// Familia visual de cada papel (sólo tokens existentes; sin hues nuevos).
+const PAPEL_TONE: Record<ImportePapel, 'objeto' | 'perjuicio' | 'consecuencia'> = {
+  beneficiario: 'objeto',
+  activo: 'objeto',
+  perjudicado: 'perjuicio',
+  obligado: 'consecuencia',
+  acreedor: 'consecuencia',
+};
+// Frase llana bajo cada encabezado: lo que de verdad significa, sin jerga.
+const PAPEL_EXPLICA: Record<ImportePapel, string> = {
+  beneficiario: 'Cantidades que la investigación atribuye a su esfera.',
+  activo:
+    'Dinero en juego en hechos que se le atribuyen. No consta que lo percibiera: puede ser un perjuicio a un tercero.',
+  perjudicado:
+    'Dinero que figura como perdido. Aparece como perjudicado (víctima): no se le atribuye la conducta.',
+  obligado: 'Multas o responsabilidad civil a su cargo, impuestas o solicitadas por resolución.',
+  acreedor: 'Indemnizaciones o responsabilidad civil fijadas a su favor.',
+};
+const totalHint =
+  'Suma de los importes de los hechos donde el sujeto figura con este papel; las partidas que desglosan un total y los hechos archivados se muestran pero no acumulan. Cada cifra conserva su grado de prueba.';
+
+// Lado "responsable" (el dinero pesa contra el sujeto). El rojo de condena
+// SOLO puede aparecer aquí, nunca en perjudicado (víctima) ni acreedor (cobra).
+const PAPEL_RESPONSABLE = new Set<ImportePapel>(['beneficiario', 'activo', 'obligado']);
+// Tono de la cubeta: rojo SOLO si es lado responsable y TODO lo que acumula está
+// acreditado por sentencia/resolución firme (= condena). Si no, color de familia.
+function cubetaTone(cubeta: AnalisisSujeto['cubetas'][number]): 'objeto' | 'perjuicio' | 'consecuencia' | 'firme' {
+  const acum = cubeta.items.filter((it) => it.acumula);
+  const todoFirme = acum.length > 0 && acum.every((it) => it.entry.tipo === 'acreditado');
+  if (PAPEL_RESPONSABLE.has(cubeta.papel) && todoFirme) return 'firme';
+  return PAPEL_TONE[cubeta.papel];
+}
+const noAcumulaHint =
+  'Esta cifra se muestra como contexto pero no suma al total: es el mismo dinero ya contado en otra partida, una cantidad sólo citada, o un procedimiento archivado.';
+---
+<div class="cifras-sujeto">
+  <p class="cifras-sujeto__disclaimer">
+    Las cifras proceden de <strong>hechos concretos</strong> de cada caso y conservan su grado de
+    prueba y su nivel de fuente. Se agrupan por el <strong>papel económico</strong> del sujeto en
+    cada hecho —distinto del rol procesal— y <strong>no implican condena</strong>: la mayoría
+    corresponde a procedimientos abiertos. «Conducta atribuida» no afirma que el sujeto percibiera
+    el dinero.
+  </p>
+
+  {analisis.cubetas.map((cubeta) => {
+    const tone = cubetaTone(cubeta);
+    const acumulables = cubeta.items.filter((it) => it.acumula);
+    const contexto = cubeta.items.filter((it) => !it.acumula);
+    const renderItem = (it: (typeof cubeta.items)[number]) => (
+      <li class:list={['cs', !it.acumula && 'cs--no-acumula']}>
+        <div class="cs__head">
+          <span class="cs__amount" title={formatEurosFull(it.importeSujeto)}>
+            {formatEurosCompact(it.importeSujeto)}
+          </span>
+          <EpistemicBadge tipo={it.entry.tipo} />
+          <LevelBadge nivel={it.entry.nivel} />
+          {!it.acumula && (
+            <span class="cs__flag" title={noAcumulaHint}>No suma</span>
+          )}
+        </div>
+        <div class="cs__meta">
+          {it.entry.naturaleza && (
+            <span class="cs__tag">{importeNaturalezaLabel(it.entry.naturaleza)}</span>
+          )}
+          <a class="cs__caso" href={`/casos/${it.entry.casoId}`}>
+            {casos[it.entry.casoId] ?? it.entry.casoId}
+          </a>
+        </div>
+        <div class="cs__enunciado-wrap">
+          <p class="cs__enunciado">{it.entry.enunciado.trim().replace(/\s+/g, ' ')}</p>
+          <button type="button" class="cs__more" aria-expanded="false" hidden>Ver más</button>
+        </div>
+        {(it.notaSujeto ?? it.entry.nota) && (
+          <p class="cs__nota">{it.notaSujeto ?? it.entry.nota}</p>
+        )}
+        <div class="cs__links">
+          <a href={`/casos/${it.entry.casoId}#hecho-${it.entry.hechoId}`}>Ver el hecho →</a>
+        </div>
+      </li>
+    );
+    return (
+      <section class="cubeta" data-tone={tone}>
+        <h3 class="cubeta__title">{importePapelSeccionLabel(cubeta.papel)}</h3>
+        <p class="cubeta__explica">{PAPEL_EXPLICA[cubeta.papel]}</p>
+
+        {cubeta.total != null && (
+          <div class="cubeta__total">
+            <CifrasTotalBox
+              label={tone === 'firme' ? `${TOTAL_LABEL[cubeta.papel]} · condena firme` : TOTAL_LABEL[cubeta.papel]}
+              value={cubeta.total}
+              tone={tone}
+              size="md"
+              hint={totalHint}
+            />
+          </div>
+        )}
+
+        {acumulables.length > 0 && <ul class="cs-list">{acumulables.map(renderItem)}</ul>}
+
+        {contexto.length > 0 && (
+          <>
+            <p class="cs-contexto-cap">
+              Se muestra como contexto y <strong>no suma</strong> al total (mismo dinero ya contado
+              o procedimiento archivado):
+            </p>
+            <ul class="cs-list">{contexto.map(renderItem)}</ul>
+          </>
+        )}
+      </section>
+    );
+  })}
+</div>
+
+<script is:inline>
+  (() => {
+    if (window.__csExpandInited) return;
+    window.__csExpandInited = true;
+    function init() {
+      document.querySelectorAll('.cs__enunciado-wrap').forEach((wrap) => {
+        if (wrap.dataset.csBound) return;
+        wrap.dataset.csBound = '1';
+        const p = wrap.querySelector('.cs__enunciado');
+        const btn = wrap.querySelector('.cs__more');
+        if (!p || !btn) return;
+        // Sólo ofrece "Ver más" si el texto realmente se recorta.
+        if (p.scrollHeight - p.clientHeight < 4) return;
+        btn.hidden = false;
+        btn.addEventListener('click', () => {
+          const open = wrap.classList.toggle('is-expanded');
+          btn.textContent = open ? 'Ver menos' : 'Ver más';
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+    document.addEventListener('astro:page-load', init);
+  })();
+</script>
+
+<style>
+  .cifras-sujeto__disclaimer {
+    margin: 0 0 var(--space-4);
+    padding: 10px 12px;
+    border-left: 3px solid var(--color-border-strong);
+    background: var(--color-surface-muted);
+    font: 400 12.5px/1.55 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .cifras-sujeto__disclaimer :global(strong) { color: var(--color-fg); font-weight: 600; }
+
+  /* Color de familia por papel: navy (atribuido/percibido), gris (quebranto),
+     mostaza (consecuencia). Sólo tokens existentes; el color va en el borde y el
+     marcador, no en el texto (que se mantiene legible). */
+  .cubeta { margin: 0 0 var(--space-5); --cubeta-c: var(--color-accent); }
+  .cubeta[data-tone='perjuicio'] { --cubeta-c: var(--color-border-strong); }
+  .cubeta[data-tone='consecuencia'] { --cubeta-c: var(--color-accent-secondary); }
+  .cubeta[data-tone='firme'] { --cubeta-c: var(--color-rol-condenado-firme); }
+  .cubeta:last-child { margin-bottom: 0; }
+  .cubeta__title {
+    font: 700 11.5px/1.4 var(--font-sans);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-fg);
+    border-left: 4px solid var(--cubeta-c);
+    padding: 1px 0 1px 9px;
+    margin: 0 0 4px;
+  }
+  .cubeta__explica {
+    margin: 0 0 var(--space-3) 13px;
+    font: 400 12px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .cubeta__total { margin: 0 0 var(--space-3); }
+
+  .cs-contexto-cap {
+    margin: var(--space-3) 0 var(--space-2);
+    font: 400 12px/1.5 var(--font-sans);
+    color: var(--color-fg-subtle);
+  }
+  .cs-contexto-cap :global(strong) { color: var(--color-fg-muted); font-weight: 600; }
+
+  .cs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .cs {
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--cubeta-c);
+    background: var(--color-surface);
+    padding: 12px 14px;
+  }
+  .cs--no-acumula {
+    border-left-color: var(--color-border-strong);
+    border-left-style: dashed;
+    background: var(--color-surface-muted);
+  }
+  .cs__head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    margin-bottom: 8px;
+  }
+  .cs__amount {
+    font: 700 18px/1.1 var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-fg);
+  }
+  .cs--no-acumula .cs__amount { color: var(--color-fg-muted); }
+  .cs__flag {
+    margin-left: auto;
+    font: 500 10.5px/1 var(--font-mono);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-fg-subtle);
+    border: 1px solid var(--color-border);
+    padding: 3px 6px;
+    cursor: help;
+  }
+  .cs__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    margin-bottom: 8px;
+  }
+  .cs__tag {
+    font: 500 11px/1.3 var(--font-sans);
+    color: var(--color-fg-muted);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+    padding: 2px 8px;
+  }
+  .cs__caso {
+    font: 600 11.5px/1.3 var(--font-sans);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .cs__caso:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+  .cs__enunciado-wrap { margin: 0 0 8px; }
+  .cs__enunciado {
+    margin: 0;
+    font: 400 13.5px/1.55 var(--font-sans);
+    color: var(--color-fg);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .is-expanded .cs__enunciado {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+  .cs__more {
+    appearance: none;
+    background: none;
+    border: 0;
+    margin-top: 4px;
+    padding: 0;
+    font: 600 12px/1.4 var(--font-sans);
+    color: var(--color-accent);
+    cursor: pointer;
+  }
+  .cs__more:hover { text-decoration: underline; text-underline-offset: 2px; }
+  .cs__more:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+  .cs__nota {
+    margin: 0 0 8px;
+    font: 400 12px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .cs__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font: 500 12px/1 var(--font-sans);
+  }
+  .cs__links a { color: var(--color-accent); text-decoration: none; }
+  .cs__links a:hover { text-decoration: underline; text-underline-offset: 2px; }
+</style>

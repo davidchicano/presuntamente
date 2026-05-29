@@ -20,6 +20,9 @@ export interface TreemapCell {
   short?: string;
   /** Si se pasa, celda y leyenda abren el panel de referencia (drill-down). */
   refKey?: string;
+  /** Texto a mostrar como valor en vez del número crudo (p. ej. "53 M€").
+   *  El área de la celda sigue usando `value`. */
+  valueLabel?: string;
 }
 
 interface Props {
@@ -64,6 +67,7 @@ const placed = leaves.map((l, i) => {
     label: d.label,
     short: d.short ?? d.label,
     value: l.value ?? 0,
+    valueLabel: d.valueLabel,
     pct: Math.round(((l.value ?? 0) / total) * 100),
     fill,
     fg,
@@ -90,13 +94,13 @@ const placed = leaves.map((l, i) => {
         role={c.refKey ? 'button' : undefined}
         tabindex={c.refKey ? 0 : undefined}
       >
-        <title>{c.label}: {c.value} ({c.pct}%)</title>
+        <title>{c.label}: {c.valueLabel ?? c.value} ({c.pct}%)</title>
         <rect x={c.x} y={c.y} width={c.w} height={c.h} class="tm-rect" style={`fill:${c.fill};`} />
         {c.w > 56 && c.h > 30 && (
           <foreignObject x={c.x} y={c.y} width={c.w} height={c.h}>
             <div class="tm-cell" style={`--fg:${c.fg};`}>
               <span class="tm-cell__label">{c.short}</span>
-              <span class="tm-cell__val">{c.value}</span>
+              <span class="tm-cell__val">{c.valueLabel ?? c.value}</span>
             </div>
           </foreignObject>
         )}
@@ -114,7 +118,7 @@ const placed = leaves.map((l, i) => {
       >
         <span class="tm-legend__swatch" style={`background:${c.fill};`} aria-hidden="true"></span>
         <span class="tm-legend__label">{c.label}</span>
-        <span class="tm-legend__val">{c.value} · {c.pct}%</span>
+        <span class="tm-legend__val">{c.valueLabel ?? c.value} · {c.pct}%</span>
       </li>
     ))}
   </ul>
@@ -125,7 +129,7 @@ const placed = leaves.map((l, i) => {
       <thead><tr><th>Categoría</th><th>Valor</th><th>%</th></tr></thead>
       <tbody>
         {placed.map((c) => (
-          <tr><td>{c.label}</td><td>{c.value}</td><td>{c.pct}%</td></tr>
+          <tr><td>{c.label}</td><td>{c.valueLabel ?? c.value}</td><td>{c.pct}%</td></tr>
         ))}
       </tbody>
     </table>

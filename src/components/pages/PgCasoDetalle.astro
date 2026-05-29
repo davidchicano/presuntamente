@@ -26,6 +26,7 @@ import RolBadge from '@/components/RolBadge.astro';
 import EpistemicBadge from '@/components/EpistemicBadge.astro';
 import CategoryBadge from '@/components/CategoryBadge.astro';
 import Aclaracion from '@/components/Aclaracion.astro';
+import CifrasCasoBloque from '@/components/CifrasCasoBloque.astro';
 
 // Mismo enum que en EstadoPublicacionBadge — Astro no exporta tipos entre
 // componentes .astro de forma estable, así que re-declaro aquí.
@@ -50,10 +51,13 @@ import {
   faseLabel,
   origenLabel,
   iniciales,
+  importeNaturalezaLabel,
   type Lang,
 } from '@/lib/labels';
 import { documentoRespaldoHref } from '@/lib/documentos';
 import { formatFechaEs } from '@/lib/og';
+import { toImporteEntries, analizarCaso, type HechoImporteInput } from '@/lib/importe';
+import { formatEurosCompact } from '@/lib/money';
 
 interface Props {
   lang?: Lang;
@@ -578,6 +582,41 @@ const hechosPorGrupo = HECHOS_ORDEN.map((g) => ({
   ...g,
   items: hechosViews.filter((h) => g.tipos.includes(h.tipo)),
 }));
+
+// --- Cifras del caso (importes) --------------------------------------------
+// El dinero vive en los Hechos. Se separan SIEMPRE dos clases que nunca se
+// mezclan ni se suman: `objeto` (dinero presuntamente atribuido / en juego) y
+// `consecuencia` (multas y responsabilidad civil). Reglas anti-doble-conteo y
+// por clase en src/lib/importe.ts.
+function truncarEnunciado(s: string, n = 120): string {
+  const flat = s.replace(/\s+/g, ' ').trim();
+  return flat.length <= n ? flat : flat.slice(0, n - 1).trimEnd() + '…';
+}
+const importeEntriesCaso = toImporteEntries(
+  hechos.map((h) => h.data as unknown as HechoImporteInput),
+);
+function cifraEntryView(e: (typeof importeEntriesCaso)[number]) {
+  return {
+    importe: e.importe,
+    tipo: e.tipo,
+    nivel: e.nivel,
+    naturaleza: e.naturaleza,
+    alcance: e.alcance,
+    enunciado: truncarEnunciado(e.enunciado),
+    nota: e.nota,
+    hechoHref: `#hecho-${e.hechoId}`,
+    docHref: e.docId ? docHrefForCaso(e.docId) : undefined,
+    acumula: e.acumula,
+  };
+}
+const cifrasObjeto = analizarCaso(importeEntriesCaso, 'objeto');
+const cifrasConsecuencia = analizarCaso(importeEntriesCaso, 'consecuencia');
+const cifrasObjetoViews = cifrasObjeto.entries.map(cifraEntryView);
+const cifrasConsecuenciaViews = cifrasConsecuencia.entries.map(cifraEntryView);
+const naturalezasObjetoLabels = cifrasObjeto.naturalezasEnTotal.map((n) => importeNaturalezaLabel(n));
+const naturalezasConsecuenciaLabels = cifrasConsecuencia.naturalezasEnTotal.map((n) => importeNaturalezaLabel(n));
+const hayCifras = cifrasObjetoViews.length > 0 || cifrasConsecuenciaViews.length > 0;
+const cifrasTotalPreview = cifrasObjeto.total ?? cifrasConsecuencia.total;
 
 // --- Pills de filtrado por sección -----------------------------------------
 //
@@ -1277,8 +1316,9 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
         {g.aviso && <Aclaracion nivel="alta">{g.aviso}</Aclaracion>}
         <div class="grupo__cards">
           {g.items.map((h) => (
-            <div class="row-pass" data-hecho-row data-tipo-epi={h.tipo} id={`hecho-${h.id}`}>
+            <div class="row-pass" data-hecho-row data-tipo-epi={h.tipo}>
               <Hecho
+                id={`hecho-${h.id}`}
                 tipo={h.tipo}
                 enunciado={h.enunciado}
                 fechaTexto={h.fechaTexto}
@@ -1294,9 +1334,61 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
   })}
   </FichaTocSection>
 
-  {coberturaCaso && coberturaRows.length > 0 && (
+  <!-- 2.7bis — Cifras del caso: dos clases que NUNCA se mezclan -->
+  {hayCifras && (
     <FichaTocSection
       num="7."
+      title="Cifras del caso"
+      id="cifras"
+      right={cifrasTotalPreview != null ? formatEurosCompact(cifrasTotalPreview) : undefined}
+    >
+      <Aclaracion nivel="alta">
+        Se distinguen dos cosas muy diferentes que <strong>nunca se suman entre sí</strong>:
+        el <strong>dinero presuntamente atribuido</strong> (lo que se investiga que se movió
+        mal) y las <strong>consecuencias económicas</strong> (multas y responsabilidad civil).
+        Cada cifra cuelga de un hecho con su estado y su nivel de fuente; las cantidades de un
+        procedimiento abierto no implican culpabilidad mientras no recaiga sentencia firme.
+      </Aclaracion>
+
+      {cifrasObjetoViews.length > 0 && (
+        <CifrasCasoBloque
+          titulo="Dinero presuntamente atribuido"
+          intro="El dinero en juego: perjuicio o quebranto a lo público, objeto del contrato, fondo concedido, comisión presunta o cobro indebido. Lo que se investiga que se desvió o se cobró mal."
+          total={cifrasObjeto.total}
+          basis={cifrasObjeto.basis}
+          naturalezasEnTotal={naturalezasObjetoLabels}
+          totalLabelTotal="Total presuntamente atribuido en el caso"
+          totalLabelIndividual="Suma de importes atribuidos individualmente"
+          entries={cifrasObjetoViews}
+        />
+      )}
+
+      {cifrasConsecuenciaViews.length > 0 && (
+        <CifrasCasoBloque
+          titulo="Consecuencias económicas"
+          intro="La respuesta económica del procedimiento: multas penales y responsabilidad civil o indemnizaciones, ya impuestas o solicitadas. No es dinero presuntamente sustraído, sino lo que se paga o reclama."
+          total={cifrasConsecuencia.total}
+          basis={cifrasConsecuencia.basis}
+          naturalezasEnTotal={naturalezasConsecuenciaLabels}
+          totalLabelTotal="Total de consecuencias económicas fijadas"
+          totalLabelIndividual="Suma de multas e indemnizaciones (impuestas o solicitadas)"
+          entries={cifrasConsecuenciaViews}
+          tone="consecuencia"
+        />
+      )}
+
+      <Aclaracion nivel="baja" posicion="bottom">
+        El importe estructurado es siempre la cifra en euros editorialmente relevante.
+        Cifras en otra divisa, peticiones de pena no firmes, ofrecimientos no percibidos
+        o el desglose de un total ya contabilizado se anotan junto a cada cifra y no se
+        suman. La cifra completa exacta aparece al pasar el cursor sobre cada importe.
+      </Aclaracion>
+    </FichaTocSection>
+  )}
+
+  {coberturaCaso && coberturaRows.length > 0 && (
+    <FichaTocSection
+      num="8."
       title="Cobertura mediática general"
       id="cobertura-mediatica"
       right={`${coberturaRows.length} pieza${coberturaRows.length === 1 ? '' : 's'}`}
@@ -1413,7 +1505,7 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
 
   <!-- 2.8 — Biblioteca documental -->
   <FichaTocSection
-    num="8."
+    num="9."
     title="Biblioteca documental del caso"
     id="biblioteca"
     right={`${biblioteca.length} documento${biblioteca.length === 1 ? '' : 's'}`}

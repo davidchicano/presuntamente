@@ -14,6 +14,8 @@ Listado tabular con leyenda colapsable común (`CatalogoLeyenda`) antes de la se
 
 Al pie del listado, **aviso editorial fijo** (`legal-note`) recordando que «atribución ≠ condena». No se funde con la leyenda superior porque cumple función distinta: la leyenda explica columnas y filtros; el aviso refuerza presunción de inocencia.
 
+**Cifras económicas (2026-05-29):** la ficha de detalle del delito ([`PgDelitoDetalle`](../../../src/components/pages/PgDelitoDetalle.astro)) gana una sección **«Cifras económicas de los casos»** con el total `objeto` y `consecuencia` de **cada caso** donde se atribuye el delito — contexto **a nivel de caso, nunca por persona ni sumado en una sola cifra**. Modelo en [`importe-presunto.md`](../features/importe-presunto.md).
+
 ## Ideas futuras
 
 ### v1.x

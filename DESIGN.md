@@ -174,6 +174,18 @@ Dos ejes cruzados:
 
 El **rojo se reserva exclusivamente a `condenado_no_firme` y `condenado_firme`**. Tonos institucionales muted (`#c44545`, `#c92e2e`), nunca el rojo PSOE/IU saturado de campaña. La progresión expresa **gravedad procesal**, no juicio moral.
 
+### F-cifras — Color en cifras económicas (incorporado 2026-05-29)
+
+Las secciones de cifras (ficha de caso, fichas de sujeto, `/graficas`, chips de inventario) codifican el dinero por **familia de papel económico** con tokens ya existentes — nunca hues nuevos:
+
+- **Navy** (`--color-accent`) → dinero **presuntamente atribuido / percibido** (papeles `activo`, `beneficiario`, clase `objeto`). Es la cifra investigativa, prominente.
+- **Gris neutro** (`--color-border-strong`) → **quebranto sufrido por la víctima** (`perjudicado`). Calmado a propósito: una pérdida, no un señalamiento. Nunca se suma al investigado.
+- **Mostaza** (`--color-accent-secondary`) → **consecuencias** (`obligado`/`acreedor`, clase `consecuencia`: multas y responsabilidad civil).
+
+**Extensión de la regla del rojo a las cifras (misma reserva):** el rojo de condena (`--color-rol-condenado-firme`) aparece en una cifra **sólo si** el Hecho es `acreditado` por resolución firme **y** el sujeto está en el lado responsable (`activo`/`beneficiario`/`obligado`). Es la expresión económica de una condena firme, coherente con el badge `condenado_firme`. **Nunca** en dinero `investigado`/`atribuido` (rompería "nunca rojo en lo no probado" y marcaría de culpable a quien solo se investiga), **nunca** en `perjudicado` (víctima) ni `acreedor` (cobra a su favor). Hoy, en la práctica, casi no se ve rojo en cifras — porque casi nada está acreditado en firme, que es el mensaje honesto.
+
+Canon del modelo y de los papeles: [doc 01 §2.6](docs/diseno/01-modelo-de-datos.md#26-hecho); detalle de implementación: [`importe-presunto.md`](docs/web/features/importe-presunto.md).
+
 ### F4 — Fase del Caso
 
 La fase es una secuencia ordenada: instrucción → fase intermedia → juicio oral → sentencia firme. Cuatro buckets activos + uno especial (archivado). Cada badge incluye una **micro-barra de progreso de 4 segmentos** en su base (3px de alto, pintada con `linear-gradient` sobre `::after`):

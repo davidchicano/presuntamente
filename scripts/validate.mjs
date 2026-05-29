@@ -101,6 +101,46 @@ for (const filepath of files) {
   }
 }
 
+// --- Cross-check de atribución de importe por sujeto (V-24, V-25) ------------
+// Guardarraíl de presunción de inocencia: cada sujeto de importe_atribucion
+// debe figurar en personas_implicadas/organizaciones_implicadas (V-24) y su
+// papel económico debe ser coherente con importe_clase (V-25). Ver
+// docs/diseno/01-modelo-de-datos.md §2.6.
+const PAPEL_CLASE = {
+  activo: 'objeto',
+  beneficiario: 'objeto',
+  perjudicado: 'objeto',
+  obligado: 'consecuencia',
+  acreedor: 'consecuencia',
+};
+const hechoFiles = await glob('content/casos/*/hechos/*.yaml');
+for (const filepath of hechoFiles) {
+  let data;
+  try {
+    data = parseYaml(await readFile(filepath, 'utf-8'));
+  } catch {
+    continue; // ya reportado arriba
+  }
+  if (!Array.isArray(data?.importe_atribucion)) continue;
+  const personas = new Set(data.personas_implicadas ?? []);
+  const orgs = new Set(data.organizaciones_implicadas ?? []);
+  for (const a of data.importe_atribucion) {
+    const universo = a.sujeto_tipo === 'persona' ? personas : orgs;
+    if (!universo.has(a.sujeto)) {
+      errors++;
+      console.error(
+        `❌ ${filepath}\n   importe_atribucion: "${a.sujeto}" (${a.sujeto_tipo}) no está en ${a.sujeto_tipo === 'persona' ? 'personas_implicadas' : 'organizaciones_implicadas'} (V-24).`,
+      );
+    }
+    if (data.importe_clase && PAPEL_CLASE[a.papel] !== data.importe_clase) {
+      errors++;
+      console.error(
+        `❌ ${filepath}\n   importe_atribucion: papel "${a.papel}" (clase ${PAPEL_CLASE[a.papel]}) incoherente con importe_clase "${data.importe_clase}" (V-25).`,
+      );
+    }
+  }
+}
+
 console.log(
   `\nResumen: ${validated} validado(s), ${skipped} saltado(s), ${errors} con errores.`
 );

@@ -51,7 +51,7 @@ Si una referencia no resuelve (`getEntry` devuelve null), anotar como hallazgo `
 
 ### 2. Aplicación de la checklist
 
-Aplicar los 13 chequeos de la (ver "Checklist") sobre el material cargado. Cada hallazgo se acumula con:
+Aplicar los 14 chequeos de la (ver "Checklist") sobre el material cargado. Cada hallazgo se acumula con:
 
 - `nivel`: `BLOQUEANTE` (debe arreglarse antes de publicar / mergear) · `SUGERENCIA` (mejora editorial recomendable, no bloquea) · `OK` (chequeo pasado limpiamente — se reporta sólo en el resumen final, no como entrada individual).
 - `chequeo`: nombre corto del chequeo (CH1..CH10).
@@ -102,7 +102,7 @@ Si el caso es grande y la lista de hallazgos amenaza con desbordar el contexto, 
 
 ## Checklist
 
-13 chequeos tras la primera iteración del 2026-05-24 y refinamientos posteriores. Los 8 originales (CH1..CH8) del bullet del ROADMAP + CH9 (Documentos huérfanos), CH10 (Condena firme afirmada en biografía sin Documento modelado), CH11 (afectación directa/indirecta), CH12 (medios productores) y CH13 (síntesis sobredimensionada o sin sujeto principal). Cada uno con qué busca, dónde lo busca y cómo clasifica.
+14 chequeos tras la primera iteración del 2026-05-24 y refinamientos posteriores. Los 8 originales (CH1..CH8) del bullet del ROADMAP + CH9 (Documentos huérfanos), CH10 (Condena firme afirmada en biografía sin Documento modelado), CH11 (afectación directa/indirecta), CH12 (medios productores), CH13 (síntesis sobredimensionada o sin sujeto principal) y CH14 (atribución de dinero por sujeto + presunción de inocencia). Cada uno con qué busca, dónde lo busca y cómo clasifica.
 
 ### CH1 — Verbos prohibidos en Hechos no acreditados
 
@@ -297,6 +297,20 @@ Si no se cumple ninguna:
 **Clasificación**: `SUGERENCIA` por defecto; `BLOQUEANTE` si la longitud, la abstraccion o la acumulacion de detalles produce una lectura confusa o contradice el resumen ejecutivo.
 
 **Referencia**: [`docs/web/features/sintesis-caso.md`](../../../docs/web/features/sintesis-caso.md), aprendizaje Leire Diez 2026-05-28.
+
+### CH14 — Atribución de dinero por sujeto (`importe_atribucion`) y presunción de inocencia
+
+**Regla**: para cada `Hecho` con `importe_atribucion`, verifica:
+
+1. **V-24** — cada `{sujeto, sujeto_tipo}` figura en `personas_implicadas`/`organizaciones_implicadas` del mismo Hecho. `BLOQUEANTE` si no (también lo bloquea `pnpm validate`, pero confírmalo).
+2. **V-25** — `papel ∈ {activo, beneficiario, perjudicado}` ⇒ `importe_clase: objeto`; `papel ∈ {obligado, acreedor}` ⇒ `importe_clase: consecuencia`. `BLOQUEANTE` si no casan.
+3. **Presunción de inocencia en la atribución**:
+   - `activo` designa **conducta atribuida, NO percepción**. Si el `enunciado` o una nota da por hecho que el sujeto se quedó el dinero, `BLOQUEANTE`.
+   - `beneficiario` solo cuando el documento respalde indiciariamente que **recibió o se le adjudicó** el dinero. Marcarlo sin ese respaldo → `SUGERENCIA`.
+   - El quebranto de una víctima (`perjudicado`) **nunca** se atribuye al investigado. Si una víctima clara (erario, entidad pública, empresa defraudada) figura como `activo`/`beneficiario`, o un investigado como `perjudicado`, `BLOQUEANTE`.
+4. **Rojo = condena**: el rojo en cifras (ver [DESIGN.md — "Sistema de badges"](../../../DESIGN.md#2bis-sistema-de-badges)) sólo procede en dinero `acreditado` por resolución firme del lado responsable; una cifra `investigado`/`atribuido` no debe llegar a renderizarse en rojo.
+
+**Clasificación**: como arriba. **Referencia**: [doc 01 §2.6](../../../docs/diseno/01-modelo-de-datos.md#26-hecho) (papeles, V-24/V-25), [ficha importe-presunto](../../../docs/web/features/importe-presunto.md), [doc 04 §3](../../../docs/diseno/04-riesgos-legales-y-eticos.md#3-presunción-de-inocencia-reglas-de-redacción).
 
 ## Guardarraíles obligatorios
 

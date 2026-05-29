@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CustomSelect from '@/components/CustomSelect.astro';
 import MultiSelectFilter from '@/components/MultiSelectFilter.astro';
+import HoverCard from '@/components/HoverCard.astro';
 import CatalogoLeyenda from '@/components/CatalogoLeyenda.astro';
 import SectionH from '@/components/SectionH.astro';
 import PhaseBadge from '@/components/PhaseBadge.astro';
@@ -11,6 +12,8 @@ import { getCollection } from 'astro:content';
 import { naturalezaAfectacionLabel } from '@/lib/labels';
 import { organizacionesAfectadasDeCaso } from '@/lib/afectacion';
 import { ultimaActualizacionDeCaso } from '@/lib/git-meta';
+import { toImporteEntries, totalesPorCaso, type HechoImporteInput } from '@/lib/importe';
+import { formatEurosCompact, formatEurosFull } from '@/lib/money';
 
 // En producción los casos en `pendiente`/`borrador` aparecen en la tabla
 // pero no son clickables y la ruta /casos/<slug> no se genera (ver
@@ -61,13 +64,27 @@ const LEYENDA_ESTADOS: ReadonlyArray<{ estado: EstadoPublicacion; nota: string }
 
 // --- Carga desde Content Collections ----------------------------------------
 
-const [casosCol, hitosCol, rolesCol, organizacionesCol, vinculosCol] = await Promise.all([
+const [casosCol, hitosCol, rolesCol, organizacionesCol, vinculosCol, hechosCol] = await Promise.all([
   getCollection('casos'),
   getCollection('hitos'),
   getCollection('roles'),
   getCollection('organizaciones'),
   getCollection('vinculos'),
+  getCollection('hechos'),
 ]);
+
+// Total presuntamente atribuido por caso (clase `objeto` = el dinero en juego,
+// NO las multas/responsabilidad civil), procedimientos abiertos, sin doble
+// conteo (src/lib/importe.ts). Sólo preview; el detalle (y las consecuencias
+// económicas, en tabla aparte) vive en la ficha del caso.
+const importeEntries = toImporteEntries(
+  hechosCol.map((h) => h.data as unknown as HechoImporteInput),
+);
+const totalPorCaso = new Map(
+  totalesPorCaso(importeEntries, new Set(casosCol.map((c) => c.data.id)), { clase: 'objeto' }).map(
+    (t) => [t.casoId, t.total],
+  ),
+);
 
 // Etiqueta de rol procesal por naturaleza de afectación directa (cuando aplica).
 // El detalle completo va al HoverCard del chip; ver OrgAfectadaChip.astro.
@@ -195,6 +212,7 @@ const casos = casosCol
       organoId: caso.organo_judicial_id,
       numero: caso.numero_procedimiento ?? '',
       implicados,
+      importeTotal: totalPorCaso.get(caso.id) ?? null,
       // Lista de organizaciones afectadas para la columna del listado.
       // El detalle (nivel, naturaleza, justificación) va al HoverCard del chip.
       afectadasDirectas: afectadas.directas.map((o) => ({
@@ -427,6 +445,21 @@ function miniDescripcion(raw: string, max = 140): string {
       />
     </div>
     <div class="field">
+      <label for="importe">Importe atribuido</label>
+      <CustomSelect
+        id="importe"
+        name="importe"
+        value="all"
+        ariaLabel="Filtrar por importe presuntamente atribuido"
+        options={[
+          { value: 'all', label: 'Cualquiera' },
+          { value: 'con', label: 'Con importe atribuido' },
+          { value: 'm1',  label: '≥ 1 M€' },
+          { value: 'm10', label: '≥ 10 M€' },
+        ]}
+      />
+    </div>
+    <div class="field">
       <label for="order">Ordenar por</label>
       <CustomSelect
         id="order"
@@ -436,6 +469,7 @@ function miniDescripcion(raw: string, max = 140): string {
         options={[
           { value: 'hito',           label: 'Último hito ↓' },
           { value: 'actualizado',    label: 'Última actualización ↓' },
+          { value: 'importe',        label: 'Importe atribuido ↓' },
           { value: 'fase_asc',       label: 'Fase ↑ (instrucción → archivo)' },
           { value: 'fase_desc',      label: 'Fase ↓ (archivo → instrucción)' },
           { value: 'implicados',     label: 'Implicados ↓' },
@@ -480,6 +514,7 @@ function miniDescripcion(raw: string, max = 140): string {
           data-orgs={c.orgIdsAfectadas.join(',')}
           data-search={buildSearchBlob(c)}
           data-estado={c.estado_publicacion}
+          data-importe={c.importeTotal ?? 0}
         >
           <td>
             {c.bloqueadoEnProd ? (
@@ -503,6 +538,19 @@ function miniDescripcion(raw: string, max = 140): string {
                   <span class="c-desc">{miniDescripcion(c.descripcion)}</span>
                 )}
               </a>
+            )}
+            {c.importeTotal != null && (
+              <HoverCard side="top" align="start">
+                <span slot="trigger" class="c-importe">
+                  <span class="c-importe__label">Importe atribuido</span>
+                  <span class="c-importe__value">{formatEurosCompact(c.importeTotal)}</span>
+                </span>
+                <div slot="content">
+                  <strong>{formatEurosFull(c.importeTotal)}</strong> — dinero presuntamente
+                  atribuido (dinero en juego), sumando las piezas del caso sin doble conteo, en
+                  procedimientos abiertos. No incluye multas ni responsabilidad civil.
+                </div>
+              </HoverCard>
             )}
           </td>
           <td>
@@ -621,15 +669,19 @@ function miniDescripcion(raw: string, max = 140): string {
     const phaseSel = form.querySelector('input[name="phase"]');
     const estadoSel = form.querySelector('input[name="estado"]');
     const orgsSel = form.querySelector('input[name="orgs"]');
+    const importeSel = form.querySelector('input[name="importe"]');
     const orderSel = form.querySelector('input[name="order"]');
 
     const ORDER_LABEL = {
       hito: 'último hito',
       actualizado: 'última actualización',
+      importe: 'importe atribuido',
       fase_asc: 'fase ascendente',
       fase_desc: 'fase descendente',
       implicados: 'implicados',
     };
+
+    const IMPORTE_MIN = { con: 1, m1: 1_000_000, m10: 10_000_000 };
 
     function selectedOrgIds() {
       return (orgsSel?.value || '').split(',').filter(Boolean);
@@ -644,8 +696,10 @@ function miniDescripcion(raw: string, max = 140): string {
       const q = (qInput.value || '').trim().toLowerCase();
       const phase = phaseSel.value;
       const estado = estadoSel ? estadoSel.value : 'all';
+      const importe = importeSel ? importeSel.value : 'all';
       const order = orderSel.value;
       const orgs = selectedOrgIds();
+      const importeMin = IMPORTE_MIN[importe] ?? 0;
 
       const visible = [];
       for (const row of rows) {
@@ -662,12 +716,19 @@ function miniDescripcion(raw: string, max = 140): string {
           const rowSet = rowOrgs(row);
           matchOrgs = orgs.some((id) => rowSet.includes(id));
         }
-        const show = matchQ && matchPhase && matchEstado && matchOrgs;
+        const matchImporte = importeMin === 0 || parseFloat(row.dataset.importe || '0') >= importeMin;
+        const show = matchQ && matchPhase && matchEstado && matchOrgs && matchImporte;
         row.hidden = !show;
         if (show) visible.push(row);
       }
 
       visible.sort((a, b) => {
+        if (order === 'importe') {
+          const va = parseFloat(a.dataset.importe || '0');
+          const vb = parseFloat(b.dataset.importe || '0');
+          if (vb !== va) return vb - va;
+          return (b.dataset.fecha || '').localeCompare(a.dataset.fecha || '');
+        }
         if (order === 'implicados') {
           const ia = parseInt(a.dataset.implicados || '0', 10);
           const ib = parseInt(b.dataset.implicados || '0', 10);
@@ -762,6 +823,32 @@ function miniDescripcion(raw: string, max = 140): string {
     color: var(--color-fg-muted);
     margin-top: 4px;
     line-height: 1.4;
+  }
+  /* Preview del importe presuntamente atribuido. Neutro, sin afirmar
+     culpabilidad: el detalle trazado (estado + nivel por cifra) vive en la
+     ficha. */
+  .c-importe {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 6px;
+    padding: 3px 8px;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface-muted);
+    width: max-content;
+    max-width: 100%;
+  }
+  .c-importe__label {
+    font: 500 0.66rem/1 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+  .c-importe__value {
+    font: 600 0.82rem/1 var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-fg);
   }
   .c-fase-organo {
     display: flex;

@@ -6,15 +6,16 @@ Lectura **visual** del inventario, buque insignia de gráficas. Hermana de [`/ci
 
 ## Estado actual
 
-Siete secciones numeradas (`FichaTocSection`, con `PageToc` automático):
+Ocho secciones numeradas (`FichaTocSection`, con `PageToc` automático):
 
 1. **Encuadre honesto** — barra de madurez del inventario (publicable / borrador / esqueleto). El antídoto: deja claro que es un inventario curado y en construcción, no un censo.
-2. **Recorrido procesal** — casos por fase (orden inicio→firme) + personas por situación procesal **actual** (una persona = un estado, el más avanzado vigente; explícitamente **no es un embudo de cohorte**).
-3. **Trazabilidad** — composición de fuentes N1–N4 + hechos por estado epistémico.
-4. **Mapa de delitos** — treemap con **tabs**: por familia y por delito concreto (nº de atribuciones en roles).
-5. **Tiempo** — **tabs** de columnas por año (hitos · casos abiertos · imputaciones) + duración de cada procedimiento (Gantt; barras rayadas = en curso).
-6. **Por partido político** — *en preparación* (ver decisión abajo).
-7. **Notas metodológicas** — qué cuenta y qué no cada gráfica + chapita homenaje.
+2. **Cifras económicas** — importe presuntamente atribuido (va el segundo a propósito: es lo que más se pregunta). **Cabecera sticky con dos conmutadores que gobiernan toda la sección a la vez** —vista (Procedimientos abiertos / Solo condenas firmes) y modo (€ nominales / € de 2025)—, en lugar de las antiguas tabs por gráfica. Por cada clase (objeto / consecuencia, nunca sumadas), una **caja-total** y las lecturas del mismo dinero sumable, sin doble conteo: ranking **por caso** (drill-down a ficha), composición **según el grado de prueba** (se oculta en la vista "solo condenas firmes") y **según el nivel de fuente** (N1–N4) en `StackedBar`, y treemap **por naturaleza**. Representatividad "X de Y" y datos descargables CSV/JSON. Reparto por sujeto en las fichas de persona/organización (enlazadas desde la nota al pie). Canon: [`importe-presunto.md`](../features/importe-presunto.md); no se repite aquí.
+3. **Recorrido procesal** — casos por fase (orden inicio→firme) + personas por situación procesal **actual** (una persona = un estado, el más avanzado vigente; explícitamente **no es un embudo de cohorte**).
+4. **Trazabilidad** — composición de fuentes N1–N4 + hechos por estado epistémico.
+5. **Mapa de delitos** — treemap con **tabs**: por familia y por delito concreto (nº de atribuciones en roles).
+6. **Tiempo** — **tabs** de columnas por año (hitos · casos abiertos · imputaciones) + duración de cada procedimiento (Gantt; barras rayadas = en curso).
+7. **Por partido político** — *en preparación* (ver decisión abajo).
+8. **Notas metodológicas** — qué cuenta y qué no cada gráfica + chapita homenaje.
 
 **Drill-down**: pulsar una barra, segmento o celda (fase, situación procesal, estado epistémico, familia, delito, madurez) abre un panel —bottom sheet en móvil— con la lista enlazada de las entidades detrás de ese número y un enlace al listado completo. Sólo enlaza a entidades con ficha pública.
 
@@ -31,7 +32,7 @@ Detalle técnico del render/animación/tabs/drill-down/accesibilidad: en la fich
 ## Ideas futuras
 
 - Activar el **bloque de partidos** cuando la cobertura sea representativa (con CSV/JSON descargable + disclaimers).
-- **Importe presuntamente atribuido** (treemap/ranking por caso · persona · organización) — proyecto con brief ejecutable en [`importe-presunto.md`](../features/importe-presunto.md). Decidido 2026-05-28: se hace en otra sesión. Sería la cuarta gráfica más potente y el candidato a titular de la home.
+- ~~**Importe presuntamente atribuido** (treemap/ranking por caso · persona · organización)~~ **Entregado 2026-05-29** (sección 2). La vista por caso, el reparto por sujeto (vía `importe_atribucion`, mostrado en fichas de persona/organización) y el toggle nominal/constante están en producción. Sigue pendiente sólo el **titular agregado de la home** (gated a copy firmado). Canon: [`importe-presunto.md`](../features/importe-presunto.md).
 - Sankey de transiciones procesales cuando haya cohortes con recorrido completo.
 - Filtro por caso (`?caso=`) cuando el inventario crezca.
 - OG image propia con 2-3 gráficas del encuadre.

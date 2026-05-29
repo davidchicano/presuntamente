@@ -21,9 +21,20 @@ interface Props {
 
 const { num, title, id, right, orderToggle } = Astro.props;
 const hasFilters = Astro.slots.has('filters');
+// Slot `header-actions`: si se pasa, se reenvía al slot por defecto de SectionH,
+// que lo renderiza dentro del propio header sticky de la sección (extremo
+// derecho). Útil para conmutadores que deben seguir accesibles tras scroll sin
+// duplicar el título de la sección en una barra aparte.
+const hasHeaderActions = Astro.slots.has('header-actions');
 ---
 <section class="ficha-toc-section" data-toc-section={id}>
-  <SectionH {num} {title} {id} {right} {orderToggle} />
+  {hasHeaderActions ? (
+    <SectionH {num} {title} {id} {right} {orderToggle}>
+      <slot name="header-actions" />
+    </SectionH>
+  ) : (
+    <SectionH {num} {title} {id} {right} {orderToggle} />
+  )}
   {hasFilters && (
     <div class="ficha-toc-section__filters" role="region" aria-label="Filtros de la sección">
       <slot name="filters" />

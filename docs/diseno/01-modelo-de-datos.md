@@ -374,9 +374,17 @@ interface Hecho {
   // trazable a un hecho con su grado de prueba. Ficha: docs/web/features/importe-presunto.md.
   importe?: number;                      // cantidad en unidades de importe_moneda, normalizada
   importe_moneda?: string;               // ISO 4217, por defecto "EUR"
+  importe_clase?: enum<ImporteClase>;    // objeto | consecuencia (NUNCA se mezclan: dos tablas separadas)
   importe_alcance?: enum<ImporteAlcance>; // total_caso | componente | individual (clave anti-doble-conteo)
-  importe_naturaleza?: enum<ImporteNaturaleza>; // qué representa la cifra (perjuicio, multa, comisión…)
+  importe_naturaleza?: enum<ImporteNaturaleza>; // subtipo dentro de la clase (perjuicio, multa, comisión…)
   importe_nota?: markdown;               // origen de la cifra, desglose, divisa original, por qué no acumula
+  importe_atribucion?: array<{           // papel ECONÓMICO de cada sujeto (≠ rol procesal)
+    sujeto_tipo: "persona" | "organizacion";
+    sujeto: slug;                        // debe estar en personas/organizaciones_implicadas (V-24)
+    papel: enum<ImportePapel>;           // activo | beneficiario | perjudicado | obligado | acreedor (V-25)
+    importe_sujeto?: number;             // cuota del sujeto si difiere del importe del Hecho
+    nota?: markdown;
+  }>;
   
   // Diálogo con otros Hechos
   contraposicion_a?: ref<Hecho>;         // este Hecho rebate / contrasta con otro
@@ -402,11 +410,20 @@ interface Hecho {
 - `tipo = desmentido` exige documento(s) cuya valoración editorial soporta el desmentido, citado de forma identificable.
 - Una `Persona` privada (no figura pública) no puede aparecer en un Hecho `acreditado` o `investigado` salvo que tenga al menos un `RolEnCaso` activo en el periodo del Hecho.
 - `nivel_fuente_efectivo` se computa desde `documentos_respaldo` y se guarda como cache para la UI.
-- **Importe (opcional).** Si un `Hecho` lleva `importe`, debe llevar `importe_alcance` (V-22, schema-enforced). El importe hereda `tipo`, `nivel_fuente_efectivo` y `documentos_respaldo` del propio Hecho: un perjuicio de sentencia firme (`acreditado`, N1) no es lo mismo que una cifra de un escrito de acusación (`atribuido`, N3) ni que una de prensa (N4), y la UI debe mostrar estado + nivel junto a cada número. El importe estructurado es **siempre** la cifra editorialmente relevante (perjuicio, comisión, multa, fondo concedido); cifras en otra divisa, peticiones de pena no firmes, ofrecimientos no percibidos o el precio bruto de una operación se anotan en `importe_nota` o se marcan `componente`, no se estructuran como cifra acumulable.
-- **Anti-doble-conteo (`importe_alcance`).** Dentro de un mismo `Caso`, una misma cantidad no puede contarse dos veces. Si un total (`total_caso`) se desglosa en partidas, las partidas son `componente` y **no se suman**. Si una misma cifra aparece en dos Hechos (p. ej. una comisión citada en el hecho de la operación y en el hecho dedicado a esa comisión), sólo uno la estructura como cifra que suma; el otro la omite o la marca `componente`. Revisión editorial obligatoria al poblar (V-23, editorial). Agregaciones derivadas:
-  - **Total del caso** = Σ(`importe` con `alcance = total_caso`); si no hay ninguno, Σ(`importe` con `alcance = individual`). Los `componente` nunca suman.
-  - **Por persona/organización** = Σ(`importe` con `alcance = individual`) en Hechos donde el sujeto está implicado **y tiene `RolEnCaso` formal** (guardarraíl de presunción de inocencia).
-  - Los Hechos `exculpatorio` / `desmentido` se excluyen de los totales atribuidos (la cifra puede estructurarse como `componente` para mostrarse, p. ej. "770.000 € — procedimiento archivado", pero no acumula).
+- **Importe (opcional).** Si un `Hecho` lleva `importe`, debe llevar `importe_alcance` e `importe_clase` (V-22, schema-enforced). El importe hereda `tipo`, `nivel_fuente_efectivo` y `documentos_respaldo` del propio Hecho: un perjuicio de sentencia firme (`acreditado`, N1) no es lo mismo que una cifra de un escrito de acusación (`atribuido`, N3) ni que una de prensa (N4), y la UI debe mostrar estado + nivel junto a cada número. El importe estructurado es **siempre** la cifra editorialmente relevante; cifras en otra divisa, ofrecimientos no percibidos o el precio bruto de una operación se anotan en `importe_nota` o se marcan `componente`, no se estructuran como cifra acumulable.
+- **Dos clases que NUNCA se mezclan (`importe_clase`).** Es muy distinto el dinero presuntamente sustraído/desviado del que se paga como consecuencia: no se suman ni se muestran en la misma tabla.
+  - **`objeto`** — el dinero en juego / presuntamente atribuido: el perjuicio o quebranto a lo público o a un perjudicado, el objeto del contrato o adjudicación, el fondo público concedido, la comisión presunta, el cobro indebido, el gasto cuestionado. Es "lo que se investiga que se movió mal".
+  - **`consecuencia`** — la respuesta económica del procedimiento: multas penales y responsabilidad civil/indemnizaciones, fijadas o solicitadas. Es "lo que se impone o paga".
+  - La clase no es derivable mecánicamente de la naturaleza en todos los casos (una `responsabilidad_civil` puede ser el daño reclamado —clase `objeto`— o una indemnización impuesta —clase `consecuencia`—): se declara por Hecho. Regla editorial: cada `Caso` puede tener un total `objeto` y un total `consecuencia`, **independientes**.
+- **Anti-doble-conteo (`importe_alcance`).** Dentro de cada clase de un mismo `Caso`, una misma cantidad no puede contarse dos veces. Si un total (`total_caso`) se desglosa en partidas, las partidas son `componente` y **no se suman**. Si una misma cifra aparece en dos Hechos (p. ej. una comisión citada en el hecho de la operación y en el hecho dedicado a esa comisión), sólo uno la estructura como cifra que suma; el otro la omite o la marca `componente`. Revisión editorial obligatoria al poblar (V-23, editorial). Agregaciones derivadas, **siempre dentro de una misma clase**:
+  - **Total del caso (por clase)** = Σ(`importe` con `alcance = total_caso`); si no hay ninguno, Σ(`importe` con `alcance = individual`). Los `componente` nunca suman.
+  - **Por persona/organización** = se reparte por el **papel económico** declarado en `importe_atribucion` (no por mera implicación). Cada cubeta de la ficha del sujeto es de UN papel (y por tanto de UNA clase) y suma `importe_sujeto ?? importe` de los Hechos donde el sujeto figura con ese papel, excluyendo `componente` y los Hechos `exculpatorio`/`desmentido`/`no_concluyente`. Las vistas por sujeto **no se suman entre sujetos** (la responsabilidad solidaria se atribuye íntegra a cada obligado).
+  - Los Hechos `exculpatorio` / `desmentido` se excluyen de los totales (la cifra puede estructurarse como `componente` para mostrarse, p. ej. "770.000 € — procedimiento archivado", pero no acumula).
+- **Atribución por sujeto (`importe_atribucion`).** El dinero se reparte por sujeto con su **papel económico** (`ImportePapel`), distinto del rol procesal de `RolEnCaso`. Es el guardarraíl de presunción de inocencia de la vista por persona/organización: el quebranto de una víctima nunca acaba sumado al investigado, y `activo` no afirma que el sujeto percibiera el dinero. Papeles por clase:
+  - **`objeto`** → `activo` (sujeto a cuya conducta se atribuye el hecho económico; NO afirma percepción), `beneficiario` (percibe o se queda el dinero, cuando consta indiciariamente), `perjudicado` (sufre el quebranto).
+  - **`consecuencia`** → `obligado` (paga la multa o responsabilidad civil), `acreedor` (la cobra).
+  - **V-24** (validador): cada `sujeto` de `importe_atribucion` debe figurar en `personas_implicadas`/`organizaciones_implicadas` del Hecho.
+  - **V-25** (validador): el `papel` debe ser coherente con `importe_clase` (activo/beneficiario/perjudicado ⇒ objeto; obligado/acreedor ⇒ consecuencia).
 
 ### 2.7 Documento
 
@@ -584,6 +601,10 @@ Los enums siguientes son la lista cerrada inicial. Ampliarlos requiere PR razona
 - `desmentido` — contradicho por evidencia posterior con fuerza suficiente
 - `no_concluyente` — el estado actual no permite categorizar; permanece como "pendiente"
 
+**`ImporteClase`** (de Hecho; separa dos tipos de dinero que nunca se mezclan ni se suman)
+- `objeto` — el dinero en juego / presuntamente atribuido: perjuicio o quebranto, objeto del contrato, fondo público concedido, comisión presunta, cobro indebido, gasto cuestionado.
+- `consecuencia` — respuesta económica del procedimiento: multa penal, responsabilidad civil/indemnización.
+
 **`ImporteAlcance`** (de Hecho; clave anti-doble-conteo)
 - `total_caso` — cifra global del perjuicio/objeto del caso o de una de sus piezas/objetos diferenciados. Sumable entre sí para dar el total del caso.
 - `componente` — partida que desglosa un `total_caso` ya contabilizado, o cifra meramente citada / no acumulable (petición de pena no firme, ofrecimiento no percibido, importe de un Hecho exculpatorio). **Nunca se suma.**
@@ -688,8 +709,10 @@ Las reglas que CI ejecuta sobre los YAML antes de mergear cualquier PR. Cada una
 | V-19 | `nivel_fuente_efectivo` de un `Hecho` coincide con el mejor (menor) nivel entre sus `documentos_respaldo` | bloqueante (auto-corregible) |
 | V-20 | `Caso.delitos_atribuidos_en_la_causa` es exactamente la unión de los `delitos_atribuidos` de sus `RolEnCaso` | bloqueante (auto-corregible) |
 | V-21 | Slugs son inmutables tras `estado_publicacion = publicado`. Renombrar requiere entrada en tabla `redirects` | bloqueante |
-| V-22 | Un `Hecho` con `importe` informado tiene `importe_alcance` informado, e `importe_moneda` es un código ISO 4217 (por defecto `EUR`) | bloqueante (schema-enforced vía `if/then`) |
-| V-23 | Anti-doble-conteo: dentro de un `Caso`, ninguna cantidad se contabiliza dos veces. Las partidas que desglosan un `total_caso` son `componente` y no suman; una misma cifra citada en dos Hechos la estructura sólo uno. Los Hechos `exculpatorio`/`desmentido` no acumulan al total atribuido | editorial (revisión obligatoria al poblar; no auto-verificable hoy) |
+| V-22 | Un `Hecho` con `importe` informado tiene `importe_alcance` e `importe_clase` informados, e `importe_moneda` es un código ISO 4217 (por defecto `EUR`) | bloqueante (schema-enforced vía `if/then`) |
+| V-23 | Anti-doble-conteo: dentro de cada `importe_clase` de un `Caso`, ninguna cantidad se contabiliza dos veces. Las partidas que desglosan un `total_caso` son `componente` y no suman; una misma cifra citada en dos Hechos la estructura sólo uno. Las clases `objeto` y `consecuencia` no se suman entre sí. Los Hechos `exculpatorio`/`desmentido` no acumulan | editorial (revisión obligatoria al poblar; no auto-verificable hoy) |
+| V-24 | Cada `sujeto` de `importe_atribucion` figura en `personas_implicadas`/`organizaciones_implicadas` del mismo Hecho | bloqueante (validador `scripts/validate.mjs`) |
+| V-25 | El `papel` de `importe_atribucion` es coherente con `importe_clase`: `activo`/`beneficiario`/`perjudicado` ⇒ `objeto`; `obligado`/`acreedor` ⇒ `consecuencia` | bloqueante (validador `scripts/validate.mjs`) |
 
 V-17 es la salvaguarda LOPD/honor más sensible: una persona privada que fue temporalmente investigada y luego desimputada **tiene derecho a desaparecer** del sitio o a aparecer con identificadores reducidos. El sistema obliga a revisarlo.
 

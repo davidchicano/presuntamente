@@ -36,6 +36,8 @@
 // El texto se escapa siempre antes de emitir HTML; los inputs YAML pueden
 // contener `<`, `&`, `"` sin riesgo.
 
+import { formatGroupedNumber } from '@/lib/money';
+
 type Lang = 'es' | 'ca';
 
 export type OrgLite = {
@@ -138,27 +140,6 @@ function parseEuropeanNumber(s: string): number {
   return parseFloat(s);
 }
 
-function formatAmount(num: number): string {
-  // Forma europea: coma decimal, punto miles. Máx 2 decimales, sin ceros
-  // a la derecha innecesarios. Formatter manual porque `toLocaleString`
-  // en este runtime no aplica grouping de forma fiable (verificado:
-  // (4743.53).toLocaleString('es-ES') → "4743,53" sin punto de miles).
-  const negative = num < 0;
-  const abs = Math.abs(num);
-  const rounded = Math.round(abs * 100) / 100;
-  const intPart = Math.trunc(rounded);
-  const decPart = rounded - intPart;
-  // Miles cada 3 dígitos desde la derecha.
-  const intStr = String(intPart).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  let out = intStr;
-  if (decPart > 0) {
-    // 2 decimales, recorta ceros a la derecha.
-    let dec = decPart.toFixed(2).slice(2).replace(/0+$/, '');
-    if (dec) out += `,${dec}`;
-  }
-  return negative ? `-${out}` : out;
-}
-
 function shortenMoney(amount: string, unit: string): string {
   const num = parseEuropeanNumber(amount);
   if (Number.isNaN(num)) return `${amount} ${unit}`.trim();
@@ -168,10 +149,10 @@ function shortenMoney(amount: string, unit: string): string {
   const euros = isMillionsUnit ? num * 1_000_000 : num;
   if (euros >= 1_000_000) {
     const millions = euros / 1_000_000;
-    return `${formatAmount(millions)} M€`;
+    return `${formatGroupedNumber(millions)} M€`;
   }
   // Por debajo del millón: dejar en € (sin acortar, normalizar a "X €").
-  return `${formatAmount(euros)} €`;
+  return `${formatGroupedNumber(euros)} €`;
 }
 
 // --- Tokenizador ------------------------------------------------------------

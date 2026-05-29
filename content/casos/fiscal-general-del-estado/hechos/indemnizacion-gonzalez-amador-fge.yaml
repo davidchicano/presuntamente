@@ -33,11 +33,19 @@ documentos_respaldo:
 nivel_fuente_efectivo: 1
 importe: 10000
 importe_alcance: individual
+importe_clase: consecuencia
 importe_naturaleza: responsabilidad_civil
 importe_nota: >-
   Responsabilidad civil por daños morales fijada en sentencia firme, a cargo
   del condenado Álvaro García Ortiz y a favor del perjudicado Alberto González
   Amador.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: alvaro-garcia-ortiz
+    papel: obligado
+  - sujeto_tipo: persona
+    sujeto: alberto-gonzalez-amador
+    papel: acreedor
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador

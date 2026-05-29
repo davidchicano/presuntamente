@@ -39,13 +39,31 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 19000000
 importe_alcance: total_caso
-importe_naturaleza: responsabilidad_civil
+importe_clase: objeto
+importe_naturaleza: perjuicio
 importe_nota: >-
-  Perjuicio patrimonial cuya responsabilidad civil reclama la Fiscalía
-  Anticorrupción, conjunta y solidariamente, a los 22 procesados de la pieza
-  Inassa (en torno a 19 M€). La compra del 75% de Inassa se articuló por unos
-  73 M USD vía la sociedad panameña Aguas de América (cifra en dólares, no
-  estructurada aquí).
+  Perjuicio patrimonial por el sobreprecio abonado en la compra del 75% de
+  Inassa, cuantificado por la Fiscalía Anticorrupción en torno a 19 M€ y
+  reclamado conjunta y solidariamente a los 22 procesados de la pieza. La compra
+  se articuló por unos 73 M USD vía la sociedad panameña Aguas de América (cifra
+  en dólares, no estructurada aquí).
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: canal-isabel-ii
+    papel: perjudicado
+  - sujeto_tipo: organizacion
+    sujeto: comunidad-de-madrid
+    papel: perjudicado
+  - sujeto_tipo: persona
+    sujeto: pedro-calvo-poch
+    papel: activo
+    nota: Responsabilidad civil reclamada conjunta y solidariamente a los 22 procesados.
+  - sujeto_tipo: persona
+    sujeto: juan-bravo-rivera
+    papel: activo
+  - sujeto_tipo: persona
+    sujeto: edmundo-rodriguez-sobrino
+    papel: activo
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador

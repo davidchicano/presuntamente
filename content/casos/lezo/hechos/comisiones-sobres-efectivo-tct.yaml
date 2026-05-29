@@ -39,6 +39,7 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 3000000
 importe_alcance: total_caso
+importe_clase: objeto
 importe_naturaleza: comision_ilicita
 importe_nota: >-
   TCT habría ingresado del Canal de Isabel II más de 3 M€ por las obras del
@@ -46,6 +47,29 @@ importe_nota: >-
   del campo de golf, distribuidos en 49 entregas en sobres de efectivo. La
   Fiscalía solicita además 550.000 € de multa por cada uno de los cinco
   procesados (pena, no perjuicio).
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: tct-sociedad
+    papel: beneficiario
+    nota: Sociedad que habría ingresado del Canal el importe del proyecto modificado.
+  - sujeto_tipo: organizacion
+    sujeto: canal-isabel-ii
+    papel: perjudicado
+  - sujeto_tipo: persona
+    sujeto: ignacio-gonzalez
+    papel: activo
+  - sujeto_tipo: persona
+    sujeto: pablo-manuel-gonzalez
+    papel: activo
+  - sujeto_tipo: persona
+    sujeto: juan-jose-caballero
+    papel: activo
+  - sujeto_tipo: persona
+    sujeto: jose-antonio-clemente
+    papel: activo
+  - sujeto_tipo: persona
+    sujeto: ildefonso-de-miguel
+    papel: activo
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador

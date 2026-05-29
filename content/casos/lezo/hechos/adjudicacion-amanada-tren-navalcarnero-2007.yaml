@@ -55,12 +55,30 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 1800000
 importe_alcance: total_caso
+importe_clase: objeto
 importe_naturaleza: comision_ilicita
 importe_nota: >-
   Comisiones presuntamente ilícitas repartidas entre los procesados en la
   adjudicación amañada del tren ligero Móstoles-Navalcarnero (aprox. 1,8 M€).
   Una línea editorial coetánea cifra el reparto en torno a 2,5 M USD (cifra en
   dólares, no estructurada).
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: javier-lopez-madrid
+    papel: beneficiario
+    nota: Comisiones presuntamente repartidas entre los procesados; reparto individual no cuantificado.
+  - sujeto_tipo: persona
+    sujeto: ignacio-gonzalez
+    papel: beneficiario
+  - sujeto_tipo: persona
+    sujeto: ildefonso-de-miguel
+    papel: beneficiario
+  - sujeto_tipo: organizacion
+    sujeto: canal-isabel-ii
+    papel: perjudicado
+  - sujeto_tipo: organizacion
+    sujeto: comunidad-de-madrid
+    papel: perjudicado
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador

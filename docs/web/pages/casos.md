@@ -13,6 +13,8 @@ Listado tabular de casos con leyenda colapsable común (`CatalogoLeyenda`) antes
 
 Filas en estado `pendiente`/`borrador` aparecen no clicables en producción (`tr.is-blocked`) pero visibles para transparencia. En dev local todas son clicables.
 
+**Cifras económicas (2026-05-29):** en la celda del caso, chip **«Importe atribuido»** (total de la clase `objeto`, modo abierto, sin doble conteo) envuelto en [`HoverCard`](../features/hover-card.md) con la metodología; nuevo filtro **«Importe atribuido»** (con importe / ≥1 M€ / ≥10 M€) y orden **por importe**. Modelo y reglas en [`importe-presunto.md`](../features/importe-presunto.md).
+
 ## Ideas futuras
 
 ### v1 pre-launch

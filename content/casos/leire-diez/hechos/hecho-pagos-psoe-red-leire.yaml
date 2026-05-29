@@ -30,11 +30,26 @@ documentos_respaldo:
 nivel_fuente_efectivo: 3
 importe: 188000
 importe_alcance: total_caso
+importe_clase: objeto
 importe_naturaleza: cobro_indebido
 importe_nota: >-
   Importe mínimo documentado de pagos del PSOE a la red, canalizados
   presuntamente mediante facturas falsas (auto del juez Pedraz del 26-may-2026).
   Es un mínimo documentado, no un total cerrado.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: leire-diez
+    papel: beneficiario
+    nota: Pagos canalizados presuntamente hacia su red.
+  - sujeto_tipo: persona
+    sujeto: santos-cerdan
+    papel: activo
+  - sujeto_tipo: persona
+    sujeto: gaspar-zarrias
+    papel: activo
+  - sujeto_tipo: persona
+    sujeto: ismael-oliver
+    papel: activo
 vigencia: vigente
 redaccion_neutra_revisada: false
 estado_publicacion: borrador

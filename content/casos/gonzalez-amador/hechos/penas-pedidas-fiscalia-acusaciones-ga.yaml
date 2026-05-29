@@ -32,12 +32,18 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 600000
 importe_alcance: individual
+importe_clase: consecuencia
 importe_naturaleza: multa_penal
 importe_nota: >-
   Multa superior a 600.000 € solicitada por la Fiscalía y la Abogacía del Estado
   para Alberto González Amador (petición provisional de calificación). Las
   acusaciones populares del PSOE y Más Madrid elevan la petición de prisión y
   multa. Cifra no firme.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: alberto-gonzalez-amador
+    papel: obligado
+    nota: Multa solicitada por la Fiscalía y la Abogacía del Estado; petición no firme.
 vigencia: vigente
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-22"

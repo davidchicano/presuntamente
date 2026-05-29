@@ -1,0 +1,156 @@
+---
+// CifrasEconomicasCharts — bloque completo de UNA clase de dinero (objeto =
+// presuntamente atribuido, o consecuencia = multas/responsabilidad civil) para
+// UNA combinación de modo (nominal | constante) y vista (abierto | firme) en la
+// sección "Cifras económicas" de /graficas. El modo y la vista se controlan
+// desde la cabecera de la sección (sticky), no aquí: este componente sólo
+// presenta el bundle ya agregado que le llega. Las dos clases nunca se mezclan.
+import BarRow, { type BarItem } from '@/components/charts/BarRow.astro';
+import StackedBar, { type StackSegment } from '@/components/charts/StackedBar.astro';
+import Treemap, { type TreemapCell } from '@/components/charts/Treemap.astro';
+import CifrasTotalBox from '@/components/CifrasTotalBox.astro';
+
+interface Props {
+  modo: 'nominal' | 'constante';
+  vista: 'abierto' | 'firme';
+  clase: 'objeto' | 'consecuencia';
+  tituloClase: string;
+  introClase: string;
+  total: number;
+  casoBars: BarItem[];
+  estadoSegments: StackSegment[];
+  nivelSegments: StackSegment[];
+  natCells: TreemapCell[];
+  repCuantificados: number;
+  totalCasosComputables: number;
+}
+const {
+  modo,
+  vista,
+  clase,
+  tituloClase,
+  introClase,
+  total,
+  casoBars,
+  estadoSegments,
+  nivelSegments,
+  natCells,
+  repCuantificados,
+  totalCasosComputables,
+} = Astro.props;
+
+const sufijo = `${vista === 'firme' ? ' [solo condenas firmes]' : ''}${
+  modo === 'constante' ? ' [€ constantes de 2025]' : ''
+}`;
+const esObjeto = clase === 'objeto';
+const esFirme = vista === 'firme';
+// El grado de prueba sólo aporta en la vista de procedimientos abiertos: en
+// "solo condenas firmes" todo es, por definición, acreditado.
+const mostrarEstado = !esFirme && estadoSegments.length > 0;
+const sustantivo = esObjeto ? 'el dinero presuntamente atribuido' : 'las consecuencias económicas';
+const natLead = esObjeto
+  ? 'En qué consiste el dinero en juego: no es lo mismo un perjuicio cuantificado que un préstamo público bajo investigación o una comisión presunta.'
+  : 'De qué tipo son las consecuencias: multas penales frente a responsabilidad civil o indemnizaciones.';
+const cuantLabel = esObjeto ? 'con dinero cuantificado' : 'con consecuencias cuantificadas';
+const vacioFirme = esObjeto
+  ? 'Nada acreditado por resolución firme todavía: la mayoría corresponde a procedimientos abiertos.'
+  : 'Sin consecuencias económicas firmes en este conjunto todavía.';
+const totalLabel = `${esObjeto ? 'Total presuntamente atribuido' : 'Total en consecuencias económicas'}${
+  esFirme ? ' · solo condenas firmes' : ''
+}`;
+const totalHint = esObjeto
+  ? 'Suma de los totales por caso sin doble conteo. Agrega naturalezas heterogéneas (perjuicios, fondos, comisiones), por eso debajo se reparte por naturaleza, grado de prueba y nivel de fuente.'
+  : 'Suma de multas y responsabilidad civil del conjunto de casos (impuestas o solicitadas). Nunca se mezcla con el dinero presuntamente atribuido.';
+---
+
+<div class="cifras-clase">
+  <h3 class="cifras-clase__title">{tituloClase}</h3>
+  <p class="cifras-clase__intro">{introClase}</p>
+
+  {total > 0 && (
+    <div class="cifras-clase__total">
+      <CifrasTotalBox label={totalLabel} value={total} tone={clase} hint={totalHint} />
+    </div>
+  )}
+
+  <h4 class="sub-h">Por caso</h4>
+  <p class="lead">
+    Importe por caso, sumando sus piezas sin doble conteo. <strong>Pulsa un caso</strong> para ir a
+    su ficha.
+  </p>
+  {casoBars.length > 0 ? (
+    <BarRow items={casoBars} ariaLabel={`${tituloClase} por caso${sufijo}`} />
+  ) : (
+    <p class="chart-foot">{esFirme ? vacioFirme : 'Ningún caso con esta cifra cuantificada todavía.'}</p>
+  )}
+  <p class="chart-foot">
+    {esFirme
+      ? 'Sólo importes de hechos acreditados por resolución firme.'
+      : `${repCuantificados} de ${totalCasosComputables} casos ${cuantLabel}.`}
+  </p>
+
+  {mostrarEstado && (
+    <>
+      <h4 class="sub-h">Según el grado de prueba</h4>
+      <p class="lead">
+        ¿Cuánto de {sustantivo} está <strong>acreditado</strong> y cuánto sólo se
+        <strong>investiga</strong> o se <strong>atribuye</strong>? <strong>Pulsa un tramo</strong>
+        para ver sus casos.
+      </p>
+      <StackedBar segments={estadoSegments} ariaLabel={`${tituloClase} según el grado de prueba${sufijo}`} />
+    </>
+  )}
+
+  <h4 class="sub-h">Según el nivel de fuente</h4>
+  <p class="lead">
+    De dónde sale cada euro: de una fuente oficial primaria (N1: sentencia, auto, BOE) a la
+    cobertura periodística cruzada (N4). <strong>Pulsa un nivel</strong> para ver sus casos.
+  </p>
+  {nivelSegments.length > 0 ? (
+    <StackedBar segments={nivelSegments} ariaLabel={`${tituloClase} según el nivel de fuente N1 a N4${sufijo}`} />
+  ) : (
+    <p class="chart-foot">Sin cifras cuantificadas en esta vista.</p>
+  )}
+
+  <h4 class="sub-h">Por naturaleza de la cifra</h4>
+  <p class="lead">
+    {natLead} El tamaño es proporcional al importe; el color sólo refuerza la jerarquía.
+    <strong>Pulsa una naturaleza</strong> para ver sus casos.
+  </p>
+  {natCells.length > 0 ? (
+    <Treemap cells={natCells} ariaLabel={`${tituloClase} por naturaleza${sufijo}`} />
+  ) : (
+    <p class="chart-foot">Sin cifras cuantificadas en esta vista.</p>
+  )}
+</div>
+
+<style>
+  .cifras-clase { margin: 0 0 var(--space-6); }
+  .cifras-clase__title {
+    font: 700 16px/1.3 var(--font-sans);
+    color: var(--color-fg);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 6px;
+    margin: 0 0 8px;
+  }
+  .cifras-clase__intro {
+    margin: 0 0 var(--space-4);
+    font: 400 13.5px/1.55 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .cifras-clase__total { margin: 0 0 var(--space-3); }
+  .sub-h { margin-top: var(--space-5); }
+  .cifras-clase > .sub-h:first-of-type { margin-top: var(--space-3); }
+  .lead {
+    font: 400 14px/1.55 var(--font-sans);
+    color: var(--color-fg-muted);
+    margin: 0 0 var(--space-4);
+  }
+  .lead :global(strong) { color: var(--color-fg); font-weight: 600; }
+  .chart-foot {
+    margin: var(--space-3) 0 0;
+    font: 400 12.5px/1.5 var(--font-sans);
+    color: var(--color-fg-subtle);
+  }
+  :global(.chart) { margin-bottom: var(--space-2); }
+</style>

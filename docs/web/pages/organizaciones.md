@@ -12,6 +12,8 @@ Listado tabular con leyenda colapsable común (`CatalogoLeyenda`) antes de la se
 4. **Localidad** — string libre.
 5. **Casos** — número de casos en los que aparece la org.
 
+**Cifras económicas (2026-05-29):** chip **«Importe atribuido»** bajo el nombre (cubetas `beneficiario` + `activo`, clase `objeto`) con [`HoverCard`](../features/hover-card.md), + filtro y orden por importe (rejilla de filtros ampliada a 5 columnas). Las organizaciones que sólo son **víctimas** (`perjudicado`, p. ej. Canal de Isabel II) **no muestran chip**. La ficha de detalle gana una sección **«Cifras económicas»** ([`CifrasSujetoBloque`](../../../src/components/CifrasSujetoBloque.astro)) por papel. Modelo en [`importe-presunto.md`](../features/importe-presunto.md).
+
 ## Ideas futuras
 
 ### v1 pre-launch

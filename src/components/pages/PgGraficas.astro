@@ -10,7 +10,18 @@ import DurationBars, { type DurationItem } from '@/components/charts/DurationBar
 import ChartTabs from '@/components/charts/ChartTabs.astro';
 import Sheet from '@/components/Sheet.astro';
 import { tally, entries, yearOf, denseYearSeries } from '@/lib/aggregation';
-import { faseLabel, rolLabel, familiaDelitoLabel } from '@/lib/labels';
+import { faseLabel, rolLabel, familiaDelitoLabel, importeNaturalezaLabel, importeClaseLabel } from '@/lib/labels';
+import {
+  toImporteEntries,
+  totalesPorCaso,
+  totalesPorNaturaleza,
+  summableComputables,
+  aEurosConstantes,
+  type HechoImporteInput,
+} from '@/lib/importe';
+import { formatEurosCompact, formatEurosFull } from '@/lib/money';
+import { aConstante2025 } from '@/lib/ipc';
+import CifrasEconomicasCharts from '@/components/CifrasEconomicasCharts.astro';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -356,6 +367,205 @@ function truncar(s: string, n = 88): string {
 
 const refLists: RefList[] = [];
 
+// ---------------------------------------------------------------------------
+// Bloque — Cifras económicas (importes presuntamente atribuidos)
+// El dinero vive en los Hechos; aquí se agrega por caso, naturaleza, grado de
+// prueba y nivel de fuente, respetando las reglas anti-doble-conteo
+// (src/lib/importe.ts). Se computan DOS bundles: nominal y € constantes de
+// 2025 (IPC INE, src/lib/ipc.ts), que el toggle de la sección conmuta. No hay
+// vista por persona/organización: ver la Aclaración de la sección y la ficha.
+// ---------------------------------------------------------------------------
+const importeEntries = toImporteEntries(
+  hechosCol.map((h) => h.data as unknown as HechoImporteInput),
+);
+const constanteEntries = aEurosConstantes(importeEntries, aConstante2025);
+
+const NAT_SHORT: Record<string, string> = {
+  perjuicio: 'Perjuicio',
+  objeto_contrato: 'Objeto contrato',
+  fondo_publico_concedido: 'Fondo público',
+  comision_ilicita: 'Comisión',
+  cobro_indebido: 'Cobro indebido',
+  multa_penal: 'Multa',
+  responsabilidad_civil: 'Resp. civil',
+  gasto_publico_cuestionado: 'Gasto público',
+  otro: 'Otra',
+};
+const EPIS_MONEY_ORDER = ['acreditado', 'investigado', 'atribuido'];
+const EPIS_MONEY_COLOR: Record<string, string> = {
+  acreditado: 'var(--color-acreditado)',
+  investigado: 'var(--color-investigado)',
+  atribuido: 'color-mix(in srgb, var(--color-investigado) 50%, var(--color-surface))',
+};
+
+interface CifrasBundle {
+  casoBars: BarItem[];
+  estadoSegments: StackSegment[];
+  nivelSegments: StackSegment[];
+  natCells: TreemapCell[];
+  repCuantificados: number;
+}
+
+// Construye el bundle de gráficas para un conjunto de entradas (nominal o
+// constante) y UNA clase (objeto | consecuencia). `kp` (key-prefix) hace únicos
+// los refKeys de drill-down entre las cuatro combinaciones, y empuja sus
+// refLists al panel compartido.
+function buildCifrasBundle(
+  entries: typeof importeEntries,
+  kp: string,
+  clase: 'objeto' | 'consecuencia',
+  firmeOnly: boolean,
+): CifrasBundle {
+  const casoBar = (t: { casoId: string; total: number; naturalezas: string[] }): BarItem => ({
+    label: casoNombre.get(t.casoId) ?? t.casoId,
+    value: t.total,
+    valueLabel: formatEurosCompact(t.total),
+    href: `/casos/${t.casoId}`,
+    note: t.naturalezas.map((n) => importeNaturalezaLabel(n)).join(' · '),
+  });
+  const totalesCaso = totalesPorCaso(entries, idsComputables, { clase, firmeOnly });
+  const natTotals = totalesPorNaturaleza(entries, idsComputables, { clase, firmeOnly });
+
+  const natCells: TreemapCell[] = natTotals.map((t) => ({
+    label: importeNaturalezaLabel(t.naturaleza),
+    short: NAT_SHORT[t.naturaleza] ?? importeNaturalezaLabel(t.naturaleza),
+    value: t.total,
+    valueLabel: formatEurosCompact(t.total),
+    refKey: `${kp}nat:${t.naturaleza}`,
+  }));
+  for (const t of natTotals) {
+    refLists.push({
+      key: `${kp}nat:${t.naturaleza}`,
+      title: `${importeNaturalezaLabel(t.naturaleza)} · ${formatEurosCompact(t.total)}`,
+      items: t.casoIds.map(casoItem),
+      allHref: '/casos',
+      allLabel: 'Ver todos los casos →',
+    });
+  }
+
+  // Reparto del mismo dinero sumable por grado de prueba y por nivel de fuente.
+  const sumables = summableComputables(entries, idsComputables, { clase, firmeOnly });
+  const bucketBy = (keyFn: (e: (typeof sumables)[number]) => string) => {
+    const m = new Map<string, { total: number; casos: Set<string> }>();
+    for (const e of sumables) {
+      const k = keyFn(e);
+      const b = m.get(k) ?? { total: 0, casos: new Set<string>() };
+      b.total += e.importe;
+      b.casos.add(e.casoId);
+      m.set(k, b);
+    }
+    return m;
+  };
+  const porEstado = bucketBy((e) => e.tipo);
+  const porNivel = bucketBy((e) => String(e.nivel));
+
+  const estadoSegments: StackSegment[] = EPIS_MONEY_ORDER
+    .filter((t) => (porEstado.get(t)?.total ?? 0) > 0)
+    .map((t) => ({
+      label: EPIS_LABEL[t],
+      value: porEstado.get(t)!.total,
+      valueLabel: formatEurosCompact(porEstado.get(t)!.total),
+      color: EPIS_MONEY_COLOR[t],
+      refKey: `${kp}estado:${t}`,
+    }));
+  for (const t of EPIS_MONEY_ORDER) {
+    const b = porEstado.get(t);
+    if (!b?.total) continue;
+    refLists.push({
+      key: `${kp}estado:${t}`,
+      title: `${EPIS_LABEL[t]} · ${formatEurosCompact(b.total)}`,
+      items: Array.from(b.casos).map(casoItem),
+      allHref: '/casos',
+      allLabel: 'Ver todos los casos →',
+    });
+  }
+
+  const nivelSegments: StackSegment[] = ['1', '2', '3', '4']
+    .filter((n) => (porNivel.get(n)?.total ?? 0) > 0)
+    .map((n) => ({
+      label: NIVEL_NAME[n],
+      value: porNivel.get(n)!.total,
+      valueLabel: formatEurosCompact(porNivel.get(n)!.total),
+      color: NIVEL_COLOR[n],
+      refKey: `${kp}nivel:${n}`,
+    }));
+  for (const n of ['1', '2', '3', '4']) {
+    const b = porNivel.get(n);
+    if (!b?.total) continue;
+    refLists.push({
+      key: `${kp}nivel:${n}`,
+      title: `${NIVEL_NAME[n]} · ${formatEurosCompact(b.total)}`,
+      items: Array.from(b.casos).map(casoItem),
+      allHref: '/casos',
+      allLabel: 'Ver todos los casos →',
+    });
+  }
+
+  return {
+    casoBars: totalesCaso.map(casoBar),
+    estadoSegments,
+    nivelSegments,
+    natCells,
+    repCuantificados: totalesCaso.length,
+  };
+}
+
+// Matriz de bundles: clase × modo (nominal/constante) × vista (abierto/firme).
+// Cada combinación lleva un key-prefix único para que los refKeys de drill-down
+// no colisionen entre los 8 conjuntos.
+const cifrasBundles = {
+  objeto: {
+    nominal: {
+      abierto: buildCifrasBundle(importeEntries, 'o-na-', 'objeto', false),
+      firme: buildCifrasBundle(importeEntries, 'o-nf-', 'objeto', true),
+    },
+    constante: {
+      abierto: buildCifrasBundle(constanteEntries, 'o-ca-', 'objeto', false),
+      firme: buildCifrasBundle(constanteEntries, 'o-cf-', 'objeto', true),
+    },
+  },
+  consecuencia: {
+    nominal: {
+      abierto: buildCifrasBundle(importeEntries, 'k-na-', 'consecuencia', false),
+      firme: buildCifrasBundle(importeEntries, 'k-nf-', 'consecuencia', true),
+    },
+    constante: {
+      abierto: buildCifrasBundle(constanteEntries, 'k-ca-', 'consecuencia', false),
+      firme: buildCifrasBundle(constanteEntries, 'k-cf-', 'consecuencia', true),
+    },
+  },
+};
+const MODOS = ['nominal', 'constante'] as const;
+const VISTAS = ['abierto', 'firme'] as const;
+// El total de la clase = Σ de los totales por caso (mismo conjunto sumable).
+const totalDe = (b: CifrasBundle) => b.casoBars.reduce((s, x) => s + x.value, 0);
+
+// Intros de cada clase (se pasan al componente; se escriben una vez).
+const INTRO_OBJETO =
+  'El dinero en juego: perjuicio o quebranto a lo público, objeto del contrato, fondo concedido, comisión presunta o cobro indebido. Lo que se investiga que se movió mal.';
+const INTRO_CONSECUENCIA =
+  'La respuesta económica del procedimiento: multas penales y responsabilidad civil o indemnizaciones, ya impuestas o solicitadas. No es dinero presuntamente sustraído, sino lo que se paga o reclama.';
+
+// Dataset descargable (CSV/JSON): cada importe con su trazabilidad, en euros
+// nominales y constantes de 2025.
+const importeDataset = importeEntries
+  .filter((e) => idsComputables.has(e.casoId))
+  .sort((a, b) => b.importe - a.importe)
+  .map((e) => ({
+    caso: casoNombre.get(e.casoId) ?? e.casoId,
+    caso_id: e.casoId,
+    hecho_id: e.hechoId,
+    clase: e.clase,
+    anio: e.anio ?? '',
+    importe_eur_nominal: e.importe,
+    importe_eur_constante_2025: e.anio == null ? e.importe : Math.round(aConstante2025(e.importe, e.anio)),
+    estado: e.tipo,
+    nivel_fuente: e.nivel,
+    alcance: e.alcance,
+    naturaleza: e.naturaleza ?? '',
+    documento_id: e.docId ?? '',
+  }));
+
 // fase → casos
 for (const f of FASE_ORDER) {
   const casos = casosComputables.filter((c) => c.data.fase_actual === f);
@@ -564,7 +774,138 @@ const mapaTabs = [
       </Aclaracion>
     </FichaTocSection>
 
-    <!-- 2. Recorrido procesal -->
+    <!-- 2. Cifras económicas (lo que más se pregunta: la pasta) -->
+    <FichaTocSection id="cifras-economicas" title="Cifras económicas">
+      <!-- Conmutadores dentro del propio header sticky de la sección: vista
+           (abiertos / solo firmes) + modo (nominales / € 2025) gobiernan TODA
+           la sección a la vez. Las 4 combinaciones se prerrenderizan; el toggle
+           sólo cambia cuál es visible y, al vivir en el .sec-h sticky, sigue
+           accesible tras hacer scroll. -->
+      <div class="cifras-toggles" data-cifras-bar slot="header-actions">
+        <div class="seg" role="group" aria-label="Qué cifras se muestran">
+          <button type="button" class="seg__btn" data-vista-btn="abierto" aria-pressed="true">Procedimientos abiertos</button>
+          <button type="button" class="seg__btn" data-vista-btn="firme" aria-pressed="false">Solo condenas firmes</button>
+        </div>
+        <div class="seg" role="group" aria-label="Ajuste por inflación de las cifras">
+          <button type="button" class="seg__btn" data-modo-btn="nominal" aria-pressed="true">€ nominales</button>
+          <button type="button" class="seg__btn" data-modo-btn="constante" aria-pressed="false">€ de 2025</button>
+        </div>
+      </div>
+      <p class="lead">
+        Cuánto dinero se mueve en los casos del inventario —lo que más se suele querer
+        saber—. Cada euro cuelga de un hecho con su estado y su nivel de fuente;
+        <strong>ninguna cifra afirma culpabilidad</strong>. <strong>Pulsa un caso, una
+        naturaleza, un grado de prueba o un nivel de fuente</strong> para abrir el detalle.
+      </p>
+
+      <Aclaracion nivel="alta">
+        Separamos <strong>dos cosas muy distintas</strong> que nunca se suman entre sí: el
+        <strong>dinero presuntamente atribuido</strong> (lo que se investiga que se sustrajo,
+        desvió o cobró mal —lo que ha podido perder lo público) y las
+        <strong>consecuencias económicas</strong> (multas y responsabilidad civil —lo que se
+        impone o paga). Tampoco reducimos cada una a una sola cifra global: un préstamo bajo
+        investigación, un perjuicio cuantificado o una comisión presunta no son comparables,
+        por eso se reparten por naturaleza, grado de prueba y nivel de fuente.
+      </Aclaracion>
+
+      <p class="modo-note" data-note-modo="nominal">
+        Euros del año del hecho, tal como constan en cada resolución o fuente. Comparar entre
+        décadas distintas distorsiona (no es lo mismo un euro de 2001 que uno de 2021).
+      </p>
+      <p class="modo-note" data-note-modo="constante" hidden>
+        Euros constantes de 2025, ajustados por el IPC general del INE (referencia: diciembre
+        de 2025; el año de cada importe es el inicio del periodo del hecho). Cifras estimadas
+        para comparar entre épocas, <strong>no literales</strong> de la resolución.
+      </p>
+      <p class="modo-note modo-note--firme" data-note-vista="firme" hidden>
+        Solo se cuentan los importes <strong>acreditados por sentencia o resolución firme</strong>.
+        Hoy casi todo el dinero del inventario corresponde a procedimientos abiertos, así que esta
+        vista queda casi vacía a propósito: es la diferencia entre lo que se investiga y lo ya juzgado.
+      </p>
+
+      {MODOS.map((modo) =>
+        VISTAS.map((vista) => {
+          const o = cifrasBundles.objeto[modo][vista];
+          const k = cifrasBundles.consecuencia[modo][vista];
+          return (
+            <div
+              class="cifras-view"
+              data-cifras-view
+              data-modo={modo}
+              data-vista={vista}
+              hidden={!(modo === 'nominal' && vista === 'abierto')}
+            >
+              <CifrasEconomicasCharts
+                modo={modo} vista={vista} clase="objeto"
+                tituloClase="Dinero presuntamente atribuido" introClase={INTRO_OBJETO}
+                total={totalDe(o)}
+                casoBars={o.casoBars}
+                estadoSegments={o.estadoSegments}
+                nivelSegments={o.nivelSegments}
+                natCells={o.natCells}
+                repCuantificados={o.repCuantificados}
+                totalCasosComputables={totalCasosComputables}
+              />
+              <CifrasEconomicasCharts
+                modo={modo} vista={vista} clase="consecuencia"
+                tituloClase="Consecuencias económicas" introClase={INTRO_CONSECUENCIA}
+                total={totalDe(k)}
+                casoBars={k.casoBars}
+                estadoSegments={k.estadoSegments}
+                nivelSegments={k.nivelSegments}
+                natCells={k.natCells}
+                repCuantificados={k.repCuantificados}
+                totalCasosComputables={totalCasosComputables}
+              />
+            </div>
+          );
+        }),
+      )}
+
+      <details class="chart-data cifras-data">
+        <summary>Ver y descargar los datos</summary>
+        <div class="cifras-data__actions">
+          <button type="button" class="cifras-dl" data-dl="csv">Descargar CSV</button>
+          <button type="button" class="cifras-dl" data-dl="json">Descargar JSON</button>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Caso</th><th>Clase</th><th>Año</th><th>€ nominales</th><th>€ de 2025</th><th>Estado</th><th>Nivel</th><th>Naturaleza</th></tr>
+          </thead>
+          <tbody>
+            {importeDataset.map((r) => (
+              <tr>
+                <td>{r.caso}</td>
+                <td>{importeClaseLabel(r.clase)}</td>
+                <td class="num">{r.anio || '—'}</td>
+                <td class="num">{formatEurosFull(r.importe_eur_nominal)}</td>
+                <td class="num">{formatEurosFull(r.importe_eur_constante_2025)}</td>
+                <td>{r.estado}</td>
+                <td>N{r.nivel_fuente}</td>
+                <td>{r.naturaleza ? importeNaturalezaLabel(r.naturaleza) : '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </details>
+
+      <Aclaracion nivel="media" posicion="bottom" titulo="Cómo se reparte el dinero por persona y organización">
+        <p>
+          El importe cuelga del <strong>hecho</strong>, y un hecho implica a varias personas y
+          organizaciones —incluidas víctimas, acusación y el propio órgano judicial—. Para no
+          atribuir dinero a quien no corresponde, cada importe lleva el <strong>papel económico</strong>
+          de cada sujeto (presunto beneficiario, conducta atribuida, perjudicado, obligado al pago
+          o acreedor), distinto de su rol procesal. Las cifras por sujeto se ven en la ficha de cada
+          <a href="/personas">persona</a> y <a href="/organizaciones">organización</a>: nunca se
+          suma el quebranto de una víctima al investigado, y «conducta atribuida» no afirma que
+          percibiera el dinero.
+        </p>
+      </Aclaracion>
+
+      <script type="application/json" data-importe-dataset set:html={JSON.stringify(importeDataset)} is:inline></script>
+    </FichaTocSection>
+
+    <!-- 3. Recorrido procesal -->
     <FichaTocSection id="recorrido" title="Recorrido procesal">
       <h3 class="sub-h">Casos por fase</h3>
       <p class="lead">
@@ -765,6 +1106,112 @@ const mapaTabs = [
     __initChartReveal();
     document.addEventListener('astro:page-load', __initChartReveal);
   </script>
+
+  <script>
+    // Isla de descarga del dataset de importes. Lee el JSON embebido y arma un
+    // Blob para CSV / JSON al pulsar cada botón. Sin red ni dependencias.
+    function __initImporteDownload() {
+      const holder = document.querySelector('[data-importe-dataset]');
+      if (!holder) return;
+      let rows: Record<string, unknown>[] = [];
+      try {
+        rows = JSON.parse(holder.textContent || '[]');
+      } catch (e) {
+        return;
+      }
+      if (!Array.isArray(rows) || rows.length === 0) return;
+      const cols = Object.keys(rows[0]);
+
+      function download(name: string, mime: string, text: string) {
+        const blob = new Blob([text], { type: mime });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      function toCsv(): string {
+        const esc = (v: unknown) => {
+          const s = v == null ? '' : String(v);
+          return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+        };
+        const lines = [cols.join(',')];
+        for (const r of rows) lines.push(cols.map((c) => esc(r[c])).join(','));
+        return lines.join('\n');
+      }
+
+      document.querySelectorAll('[data-dl]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const fmt = (btn as HTMLElement).dataset.dl;
+          if (fmt === 'csv') {
+            download('presuntamente-importes.csv', 'text/csv;charset=utf-8', toCsv());
+          } else {
+            download('presuntamente-importes.json', 'application/json', JSON.stringify(rows, null, 2));
+          }
+        });
+      });
+    }
+    __initImporteDownload();
+    document.addEventListener('astro:page-load', __initImporteDownload);
+  </script>
+
+  <script>
+    // Conmutadores de la cabecera de Cifras económicas: vista (abierto/firme) y
+    // modo (nominal/constante). Las 4 combinaciones se prerrenderizan; el toggle
+    // sólo cambia cuál es visible y revela las gráficas que entran en pantalla.
+    function __initCifrasToggles() {
+      const armed = () => document.documentElement.hasAttribute('data-charts-armed');
+      document.querySelectorAll<HTMLElement>('[data-cifras-bar]').forEach((bar) => {
+        const scope = bar.closest<HTMLElement>('[data-toc-section]') ?? document.body;
+        const state = { vista: 'abierto', modo: 'nominal' };
+        const vistaBtns = Array.from(bar.querySelectorAll<HTMLButtonElement>('[data-vista-btn]'));
+        const modoBtns = Array.from(bar.querySelectorAll<HTMLButtonElement>('[data-modo-btn]'));
+
+        const apply = () => {
+          vistaBtns.forEach((b) =>
+            b.setAttribute('aria-pressed', b.dataset.vistaBtn === state.vista ? 'true' : 'false'),
+          );
+          modoBtns.forEach((b) =>
+            b.setAttribute('aria-pressed', b.dataset.modoBtn === state.modo ? 'true' : 'false'),
+          );
+          scope.querySelectorAll<HTMLElement>('[data-cifras-view]').forEach((el) => {
+            const on = el.dataset.modo === state.modo && el.dataset.vista === state.vista;
+            el.hidden = !on;
+            if (on && armed()) {
+              el.querySelectorAll('[data-reveal]:not([data-revealed])').forEach((c) =>
+                c.setAttribute('data-revealed', ''),
+              );
+            }
+          });
+          scope.querySelectorAll<HTMLElement>('[data-note-modo]').forEach((n) => {
+            n.hidden = n.dataset.noteModo !== state.modo;
+          });
+          scope.querySelectorAll<HTMLElement>('[data-note-vista]').forEach((n) => {
+            n.hidden = n.dataset.noteVista !== state.vista;
+          });
+        };
+
+        vistaBtns.forEach((b) =>
+          b.addEventListener('click', () => {
+            state.vista = b.dataset.vistaBtn ?? 'abierto';
+            apply();
+          }),
+        );
+        modoBtns.forEach((b) =>
+          b.addEventListener('click', () => {
+            state.modo = b.dataset.modoBtn ?? 'nominal';
+            apply();
+          }),
+        );
+      });
+    }
+    __initCifrasToggles();
+    document.addEventListener('astro:page-load', __initCifrasToggles);
+  </script>
 </BaseLayout>
 
 <style>
@@ -794,6 +1241,93 @@ const mapaTabs = [
     color: var(--color-fg);
   }
   .notas li { margin-bottom: 8px; }
+
+  /* Conmutadores vista + modo, alojados en el slot de acciones del header
+     sticky de la sección (.sec-h ya es position:sticky; top:0), así que no
+     necesitan sticky propio: viajan con el título y siguen accesibles tras
+     hacer scroll, sin duplicar la cabecera. */
+  .cifras-toggles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+  .seg { display: inline-flex; border: 1px solid var(--color-border); }
+  .seg__btn {
+    appearance: none;
+    background: var(--color-surface);
+    border: 0;
+    padding: 6px 10px;
+    font: 600 12px/1 var(--font-sans);
+    color: var(--color-fg-muted);
+    cursor: pointer;
+    transition: background 140ms ease-out, color 140ms ease-out;
+  }
+  .seg__btn + .seg__btn { border-left: 1px solid var(--color-border); }
+  .seg__btn:hover { color: var(--color-fg); }
+  .seg__btn[aria-pressed='true'] {
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+  .seg__btn[aria-pressed='true']:hover { color: var(--color-accent-fg); }
+  .seg__btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .modo-note {
+    margin: 0 0 var(--space-4);
+    font: 400 12.5px/1.5 var(--font-sans);
+    color: var(--color-fg-subtle);
+  }
+  .modo-note :global(strong) { color: var(--color-fg-muted); font-weight: 600; }
+  .modo-note--firme { color: var(--color-fg-muted); }
+
+  /* Datos descargables de la sección de cifras económicas. */
+  .cifras-data {
+    margin-top: var(--space-4);
+    font: 400 13px/1.4 var(--font-sans);
+  }
+  .cifras-data summary {
+    cursor: pointer;
+    color: var(--color-accent);
+    font-weight: 600;
+    width: max-content;
+  }
+  .cifras-data table {
+    margin-top: 8px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .cifras-data th,
+  .cifras-data td {
+    border: 1px solid var(--color-border);
+    padding: 4px 9px;
+    text-align: left;
+  }
+  .cifras-data td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+  .cifras-data__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  .cifras-dl {
+    font: 600 12.5px/1 var(--font-sans);
+    color: var(--color-accent);
+    background: var(--color-surface);
+    border: 1px solid var(--color-accent);
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+  .cifras-dl:hover {
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+  .cifras-dl:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
 
   /* Chapita homenaje: discreta, mono, tono de comentario de código. */
   .homenaje {

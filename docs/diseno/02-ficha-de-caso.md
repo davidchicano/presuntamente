@@ -144,6 +144,8 @@ Para macrocausas, los Hitos de piezas hijas aparecen aquí también con indicado
 
 **LA sección más sensible.** Su estructura materializa el principio anti-desinformación.
 
+> **Cifras en los Hechos.** Un Hecho puede llevar `importe` (con su `importe_clase`, `importe_alcance`, `importe_naturaleza` y, si el documento lo desglosa, `importe_atribucion` por papel económico). Cada cifra **hereda y muestra** el estado epistémico (`EpistemicBadge`) y el nivel de fuente (`LevelBadge`) del Hecho: un perjuicio de sentencia firme no se presenta igual que una cifra de un escrito de acusación. El total agregado del caso vive en la sección "Cifras del caso" (clase `objeto` y `consecuencia` separadas, nunca sumadas). Modelo en [doc 01 §2.6](01-modelo-de-datos.md#26-hecho); feature en [`importe-presunto.md`](../web/features/importe-presunto.md).
+
 Subsecciones, en este orden fijo:
 
 #### 2.7.1 Hechos acreditados {#271-hechos-acreditados}

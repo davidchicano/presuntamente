@@ -11,6 +11,8 @@ Listado tabular con leyenda colapsable común (`CatalogoLeyenda`) antes de la se
 3. **Cargo actual** — `cargo_publico_actual` literal.
 4. **Casos y rol procesal** — casos donde aparece la persona, con enlace a la ficha y `RolBadge` de sus roles en cada caso.
 
+**Cifras económicas (2026-05-29):** chip **«Importe atribuido»** bajo el nombre (suma de las cubetas `beneficiario` + `activo`, clase `objeto`, vía `importeAtribuidoSujeto`) con [`HoverCard`](../features/hover-card.md), + filtro y orden por importe. Las víctimas (sólo papel `perjudicado`) **no muestran chip** a propósito. La ficha de detalle de la persona ([`PgPersonaDetalle`](../../../src/components/pages/PgPersonaDetalle.astro)) gana una sección **«Cifras económicas»** ([`CifrasSujetoBloque`](../../../src/components/CifrasSujetoBloque.astro)) agrupada por papel económico. Modelo y guardarraíles en [`importe-presunto.md`](../features/importe-presunto.md).
+
 ## Ideas futuras
 
 ### v1 pre-launch

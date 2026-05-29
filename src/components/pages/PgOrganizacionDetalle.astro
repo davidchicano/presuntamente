@@ -7,10 +7,12 @@ import RichProse from '@/components/RichProse.astro';
 import RolBadge from '@/components/RolBadge.astro';
 import VinculosInstitucionalesList from '@/components/VinculosInstitucionalesList.astro';
 import GraphConexionesLink from '@/components/GraphConexionesLink.astro';
+import CifrasSujetoBloque from '@/components/CifrasSujetoBloque.astro';
 import SourceLinkBadge from '@/components/SourceLinkBadge.astro';
 import OrientacionBadge from '@/components/OrientacionBadge.astro';
 import NaturalezaBadge from '@/components/NaturalezaBadge.astro';
 import { tipoOrgLabel, rolLabel, naturalezaVinculoLabel, type Lang } from '@/lib/labels';
+import { toImporteEntries, analizarSujeto, type HechoImporteInput } from '@/lib/importe';
 import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
 import Aclaracion from '@/components/Aclaracion.astro';
 
@@ -36,6 +38,16 @@ const casoIndex = new Map(casosCol.map((c) => [c.data.id, c.data]));
 const personaIndex = new Map(personasCol.map((p) => [p.data.id, p.data]));
 const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
 const docIndex = new Map(documentosCol.map((d) => [d.data.id, d.data]));
+
+// Cifras económicas atribuidas a esta organización (por papel económico).
+const importeEntries = toImporteEntries(
+  hechosCol.map((h) => h.data as unknown as HechoImporteInput),
+);
+const analisisCifras = analizarSujeto(importeEntries, data.id);
+const hayCifras = analisisCifras.hayCifras;
+const casosNombre: Record<string, string> = Object.fromEntries(
+  casosCol.map((c) => [c.data.id, c.data.nombre_mediatico]),
+);
 
 // Casos con implicación procesual (rol, hecho, hito, órgano titular o querellante).
 const casoIds = new Set<string>();
@@ -248,6 +260,7 @@ const personasRelacionadas = vinculosCol
   }));
 
 let sectionCounter = 3;
+const cifrasSectionNum = hayCifras ? `${sectionCounter++}.` : undefined;
 const clasificacionSectionNum = tieneClasificacionEditorial ? `${sectionCounter++}.` : undefined;
 const rolesSectionNum = rolesOrg.length > 0 ? `${sectionCounter++}.` : undefined;
 const personasRelacionadasSectionNum = personasRelacionadas.length > 0 ? `${sectionCounter++}.` : undefined;
@@ -319,6 +332,12 @@ const graphHref = `/conexiones?focus=organizacion&id=${data.id}&depth=2&layout=c
       </ul>
     )}
   </FichaTocSection>
+
+  {hayCifras && (
+    <FichaTocSection num={cifrasSectionNum!} title="Cifras económicas" id="cifras">
+      <CifrasSujetoBloque analisis={analisisCifras} casos={casosNombre} />
+    </FichaTocSection>
+  )}
 
   {tieneClasificacionEditorial && (
     <FichaTocSection

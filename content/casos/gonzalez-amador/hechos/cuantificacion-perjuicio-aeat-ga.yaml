@@ -26,11 +26,23 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 350951
 importe_alcance: total_caso
+importe_clase: objeto
 importe_naturaleza: perjuicio
 importe_nota: >-
   Perjuicio a la Hacienda Pública cuantificado por la AEAT por la tributación
   irregular del Impuesto sobre Sociedades 2020-2021 de Maxwell Cremona; base de
   la cuantificación del presunto delito fiscal en el auto del 29-may-2025.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: aeat
+    papel: perjudicado
+  - sujeto_tipo: persona
+    sujeto: alberto-gonzalez-amador
+    papel: activo
+  - sujeto_tipo: organizacion
+    sujeto: maxwell-cremona
+    papel: activo
+    nota: Sociedad a través de la que se habría tributado de forma irregular.
 vigencia: vigente
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-22"

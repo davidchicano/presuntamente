@@ -10,7 +10,9 @@ import RichProse from '@/components/RichProse.astro';
 import RolBadge from '@/components/RolBadge.astro';
 import VinculosInstitucionalesList from '@/components/VinculosInstitucionalesList.astro';
 import GraphConexionesLink from '@/components/GraphConexionesLink.astro';
+import CifrasSujetoBloque from '@/components/CifrasSujetoBloque.astro';
 import { rolLabel, iniciales, naturalezaVinculoLabel, type Lang } from '@/lib/labels';
+import { toImporteEntries, analizarSujeto, type HechoImporteInput } from '@/lib/importe';
 import EstadoPublicacionBadge from '@/components/EstadoPublicacionBadge.astro';
 import Aclaracion from '@/components/Aclaracion.astro';
 
@@ -21,7 +23,7 @@ interface Props { lang?: Lang; persona: CollectionEntry<'personas'>; }
 const { lang = 'es', persona } = Astro.props;
 const data = persona.data;
 
-const [rolesCol, casosCol, delitosCol, vinculosCol, organizacionesCol, personasCol, documentosCol] = await Promise.all([
+const [rolesCol, casosCol, delitosCol, vinculosCol, organizacionesCol, personasCol, documentosCol, hechosCol] = await Promise.all([
   getCollection('roles'),
   getCollection('casos'),
   getCollection('delitos'),
@@ -29,6 +31,7 @@ const [rolesCol, casosCol, delitosCol, vinculosCol, organizacionesCol, personasC
   getCollection('organizaciones'),
   getCollection('personas'),
   getCollection('documentos'),
+  getCollection('hechos'),
 ]);
 
 const casoIndex = new Map(casosCol.map((c) => [c.data.id, c.data]));
@@ -139,6 +142,29 @@ const vinculosPersona = vinculosCol
     };
   });
 
+// Cifras económicas atribuidas a esta persona (por papel económico).
+const importeEntries = toImporteEntries(
+  hechosCol.map((h) => h.data as unknown as HechoImporteInput),
+);
+const analisisCifras = analizarSujeto(importeEntries, data.id);
+const casosNombre: Record<string, string> = Object.fromEntries(
+  casosCol.map((c) => [c.data.id, c.data.nombre_mediatico]),
+);
+
+// Numeración dinámica de secciones (algunas son condicionales).
+const hayBio = Boolean(data.biografia_corta);
+const hayCifras = analisisCifras.hayCifras;
+const hayVinculos = vinculosPersona.length > 0;
+let _n = 0;
+const num = {
+  bio: hayBio ? `${++_n}.` : '',
+  casos: `${++_n}.`,
+  cifras: hayCifras ? `${++_n}.` : '',
+  trayectoria: `${++_n}.`,
+  vinculos: hayVinculos ? `${++_n}.` : '',
+  redaccion: `${++_n}.`,
+};
+
 const breadcrumb = [
   { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
   { label: 'Personas', href: lang === 'ca' ? '/cat/personas' : '/personas' },
@@ -185,7 +211,7 @@ const graphHref = `/conexiones?focus=persona&id=${data.id}&depth=2&layout=cose`;
   </section>
 
   {data.biografia_corta && (
-    <FichaTocSection num="1." title="Biografía" id="biografia">
+    <FichaTocSection num={num.bio} title="Biografía" id="biografia">
       <div class="prose">
         <RichProse text={data.biografia_corta} lang={lang} excludePersonaIds={[data.id]} />
       </div>
@@ -193,7 +219,7 @@ const graphHref = `/conexiones?focus=persona&id=${data.id}&depth=2&layout=cose`;
   )}
 
   <FichaTocSection
-    num="2."
+    num={num.casos}
     title="Casos donde aparece"
     id="casos"
     right={`${casosUnicos.length} caso${casosUnicos.length === 1 ? '' : 's'}`}
@@ -214,8 +240,18 @@ const graphHref = `/conexiones?focus=persona&id=${data.id}&depth=2&layout=cose`;
     )}
   </FichaTocSection>
 
+  {hayCifras && (
+    <FichaTocSection
+      num={num.cifras}
+      title="Cifras económicas"
+      id="cifras"
+    >
+      <CifrasSujetoBloque analisis={analisisCifras} casos={casosNombre} />
+    </FichaTocSection>
+  )}
+
   <FichaTocSection
-    num="3."
+    num={num.trayectoria}
     title="Trayectoria procesal completa"
     id="trayectoria"
     right={`${rolesPersona.length} rol${rolesPersona.length === 1 ? '' : 'es'}`}
@@ -259,7 +295,7 @@ const graphHref = `/conexiones?focus=persona&id=${data.id}&depth=2&layout=cose`;
 
   {vinculosPersona.length > 0 && (
     <FichaTocSection
-      num="4."
+      num={num.vinculos}
       title="Relaciones institucionales documentadas"
       id="contexto-institucional"
       right={`${vinculosPersona.length} vínculo${vinculosPersona.length === 1 ? '' : 's'}`}
@@ -273,7 +309,7 @@ const graphHref = `/conexiones?focus=persona&id=${data.id}&depth=2&layout=cose`;
     </FichaTocSection>
   )}
 
-  <FichaTocSection num={vinculosPersona.length > 0 ? '5.' : '4.'} title="Sobre esta ficha" id="redaccion">
+  <FichaTocSection num={num.redaccion} title="Sobre esta ficha" id="redaccion">
     <div class="prose">
       <p>
         Los datos personales se limitan a lo procesalmente relevante. Si esta persona ha cerrado

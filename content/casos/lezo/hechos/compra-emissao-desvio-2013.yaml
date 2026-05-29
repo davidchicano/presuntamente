@@ -40,12 +40,23 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 9600000
 importe_alcance: total_caso
+importe_clase: objeto
 importe_naturaleza: perjuicio
 importe_nota: >-
   Desvío de fondos públicos del Canal cuantificado por la acusación en hasta
   9,6 M€. La compra de la brasileña Emissao se hizo por unos 30 M USD (cifra en
   dólares, no estructurada). Un ex directivo de Inassa declaró un reparto
   próximo a 5,5 M€ con Ignacio González en relación con esta operación.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: canal-isabel-ii
+    papel: perjudicado
+  - sujeto_tipo: persona
+    sujeto: ignacio-gonzalez
+    papel: activo
+  - sujeto_tipo: persona
+    sujeto: edmundo-rodriguez-sobrino
+    papel: activo
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador

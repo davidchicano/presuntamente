@@ -24,11 +24,20 @@ documentos_respaldo:
 nivel_fuente_efectivo: 4
 importe: 113509.32
 importe_alcance: total_caso
+importe_clase: objeto
 importe_naturaleza: perjuicio
 importe_nota: >-
   Perjuicio económico cuantificado indiciariamente por la propia UCM como
   perjudicada personada; coincide con el coste de desarrollo del software de
   la cátedra.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: universidad-complutense-madrid
+    papel: perjudicado
+  - sujeto_tipo: persona
+    sujeto: begona-gomez
+    papel: activo
+    nota: Perjuicio atribuido a la UCM en los hechos imputados a Gómez; no consta enriquecimiento personal.
 vigencia: vigente
 redaccion_neutra_revisada: false
 estado_publicacion: borrador

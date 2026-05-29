@@ -10,20 +10,39 @@ import CatalogoLeyenda from '@/components/CatalogoLeyenda.astro';
 import SectionH from '@/components/SectionH.astro';
 import OrgChip from '@/components/OrgChip.astro';
 import RolBadge from '@/components/RolBadge.astro';
+import HoverCard from '@/components/HoverCard.astro';
 import { getCollection } from 'astro:content';
 import { rolLabel, rolGrupo, type Lang } from '@/lib/labels';
+import {
+  toImporteEntries,
+  analizarSujeto,
+  importeAtribuidoSujeto,
+  type HechoImporteInput,
+} from '@/lib/importe';
+import { formatEurosCompact, formatEurosFull } from '@/lib/money';
 
 interface Props { lang?: Lang; }
 const { lang = 'es' } = Astro.props;
 
-const [personasCol, rolesCol, vinculosCol, organizacionesCol, casosCol, delitosCol] = await Promise.all([
+const [personasCol, rolesCol, vinculosCol, organizacionesCol, casosCol, delitosCol, hechosCol] = await Promise.all([
   getCollection('personas'),
   getCollection('roles'),
   getCollection('vinculos'),
   getCollection('organizaciones'),
   getCollection('casos'),
   getCollection('delitos'),
+  getCollection('hechos'),
 ]);
+
+// Importe presuntamente atribuido por persona (cubetas beneficiario + activo,
+// clase objeto), misma semántica que el "Importe atribuido" de /casos. No
+// incluye el perjuicio sufrido (víctimas) ni las consecuencias económicas.
+const importeEntries = toImporteEntries(
+  hechosCol.map((h) => h.data as unknown as HechoImporteInput),
+);
+function importeAtribuidoDe(sujeto: string): number {
+  return importeAtribuidoSujeto(analizarSujeto(importeEntries, sujeto));
+}
 
 const orgIdx = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
 const casoIdx = new Map(casosCol.map((c) => [c.data.id, c.data]));
@@ -122,6 +141,7 @@ const personas = personasCol
       orgRefId,
       orgRefNombre: orgRef?.nombre,
       orgRefEsPartido: orgRef?.tipo === 'partido_politico',
+      importeAtribuido: importeAtribuidoDe(p.data.id),
     };
   })
   .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
@@ -313,6 +333,21 @@ function searchBlob(p: (typeof personas)[number]): string {
       />
     </div>
     <div class="field">
+      <label for="importe">Importe atribuido</label>
+      <CustomSelect
+        id="importe"
+        name="importe"
+        value="all"
+        ariaLabel="Filtrar por importe presuntamente atribuido"
+        options={[
+          { value: 'all', label: 'Cualquiera' },
+          { value: 'con', label: 'Con importe atribuido' },
+          { value: 'm1',  label: '≥ 1 M€' },
+          { value: 'm10', label: '≥ 10 M€' },
+        ]}
+      />
+    </div>
+    <div class="field">
       <label for="order">Ordenar por</label>
       <CustomSelect
         id="order"
@@ -322,6 +357,7 @@ function searchBlob(p: (typeof personas)[number]): string {
         options={[
           { value: 'alfabetico', label: 'Alfabético' },
           { value: 'casos',      label: 'Nº de casos ↓' },
+          { value: 'importe',    label: 'Importe atribuido ↓' },
         ]}
       />
     </div>
@@ -352,6 +388,7 @@ function searchBlob(p: (typeof personas)[number]): string {
           data-casos={p.casosCount}
           data-caso-ids={p.casoIds.join(',')}
           data-delito-ids={p.delitoIds.join(',')}
+          data-importe={p.importeAtribuido}
           data-search={searchBlob(p)}
         >
           <td>
@@ -366,6 +403,20 @@ function searchBlob(p: (typeof personas)[number]): string {
                 <span class="c-desc">{p.biografia}</span>
               )}
             </a>
+            {p.importeAtribuido > 0 && (
+              <HoverCard side="top" align="start">
+                <span slot="trigger" class="c-importe">
+                  <span class="c-importe__label">Importe atribuido</span>
+                  <span class="c-importe__value">{formatEurosCompact(p.importeAtribuido)}</span>
+                </span>
+                <div slot="content">
+                  <strong>{formatEurosFull(p.importeAtribuido)}</strong> — dinero presuntamente
+                  atribuido a su conducta (presunto beneficiario o conducta investigada) en los
+                  hechos donde aparece. No incluye el perjuicio sufrido por terceros ni las multas;
+                  el detalle por papel está en su ficha.
+                </div>
+              </HoverCard>
+            )}
           </td>
           <td>
             {p.orgRefId && p.orgRefNombre ? (
@@ -421,12 +472,15 @@ function searchBlob(p: (typeof personas)[number]): string {
     const figura = form.querySelector('input[name="figura"]');
     const casoSel = form.querySelector('input[name="caso"]');
     const delitoSel = form.querySelector('input[name="delito"]');
+    const importeSel = form.querySelector('input[name="importe"]');
     const orderSel = form.querySelector('input[name="order"]');
 
     const ORDER_LABEL = {
       alfabetico: 'alfabético',
       casos: 'nº de casos',
+      importe: 'importe atribuido',
     };
+    const IMPORTE_MIN = { con: 1, m1: 1_000_000, m10: 10_000_000 };
 
     function resyncCustomSelects() {
       form.querySelectorAll('[data-csel]').forEach((csel) => {
@@ -446,6 +500,8 @@ function searchBlob(p: (typeof personas)[number]): string {
       const fig = figura.value;
       const casos = (casoSel?.value || '').split(',').filter(Boolean);
       const delitos = (delitoSel?.value || '').split(',').filter(Boolean);
+      const importe = importeSel ? importeSel.value : 'all';
+      const importeMin = IMPORTE_MIN[importe] ?? 0;
       const order = orderSel ? orderSel.value : 'alfabetico';
 
       const visible = [];
@@ -456,7 +512,8 @@ function searchBlob(p: (typeof personas)[number]): string {
         const rowDelitos = (row.dataset.delitoIds || '').split(',').filter(Boolean);
         const matchCaso = casos.length === 0 || casos.some((id) => rowCasos.includes(id));
         const matchDelito = delitos.length === 0 || delitos.some((id) => rowDelitos.includes(id));
-        const show = matchQ && matchF && matchCaso && matchDelito;
+        const matchImporte = importeMin === 0 || parseFloat(row.dataset.importe || '0') >= importeMin;
+        const show = matchQ && matchF && matchCaso && matchDelito && matchImporte;
         row.hidden = !show;
         if (show) visible.push(row);
       }
@@ -467,6 +524,11 @@ function searchBlob(p: (typeof personas)[number]): string {
             const ca = parseInt(a.dataset.casos || '0', 10);
             const cb = parseInt(b.dataset.casos || '0', 10);
             if (cb !== ca) return cb - ca;
+          }
+          if (order === 'importe') {
+            const va = parseFloat(a.dataset.importe || '0');
+            const vb = parseFloat(b.dataset.importe || '0');
+            if (vb !== va) return vb - va;
           }
           // Tie-break y default: alfabético por la primera celda (nombre).
           const na = (a.querySelector('.c-name')?.textContent || '').trim();
@@ -497,10 +559,34 @@ function searchBlob(p: (typeof personas)[number]): string {
     color: var(--color-fg-muted);
   }
   .filter-bar {
-    grid-template-columns: minmax(220px, 1.3fr) minmax(180px, 1fr) minmax(180px, 1fr) minmax(150px, 0.8fr) minmax(150px, 0.8fr);
+    grid-template-columns: minmax(220px, 1.3fr) minmax(180px, 1fr) minmax(180px, 1fr) minmax(150px, 0.8fr) minmax(150px, 0.8fr) minmax(150px, 0.8fr);
   }
   .filter-bar .field--wide {
     min-width: 0;
+  }
+  /* Chip de importe atribuido bajo el nombre (HoverCard común). */
+  .c-importe {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 6px;
+    padding: 3px 8px;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface-muted);
+    width: max-content;
+    max-width: 100%;
+  }
+  .c-importe__label {
+    font: 500 0.66rem/1 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-fg-muted);
+  }
+  .c-importe__value {
+    font: 600 0.82rem/1 var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-fg);
   }
   .c-name-row {
     display: flex;

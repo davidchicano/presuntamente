@@ -1,0 +1,193 @@
+---
+// CifrasCasoBloque — un bloque de cifras de la ficha de caso para UNA clase
+// (objeto = dinero presuntamente atribuido, o consecuencia = multas y
+// responsabilidad civil). Las dos clases NUNCA se suman: la ficha renderiza
+// este componente una vez por clase. Total + lista trazada de cada importe con
+// su estado, nivel, naturaleza, alcance y enlaces a hecho/documento.
+import EpistemicBadge from '@/components/EpistemicBadge.astro';
+import LevelBadge from '@/components/LevelBadge.astro';
+import CifrasTotalBox from '@/components/CifrasTotalBox.astro';
+import { importeNaturalezaLabel, importeAlcanceLabel } from '@/lib/labels';
+import { formatEurosCompact, formatEurosFull } from '@/lib/money';
+
+export interface CifraEntryView {
+  importe: number;
+  tipo: 'acreditado' | 'investigado' | 'atribuido' | 'exculpatorio' | 'desmentido' | 'no_concluyente';
+  nivel: 1 | 2 | 3 | 4;
+  naturaleza?: string;
+  alcance: string;
+  enunciado: string;
+  nota?: string;
+  hechoHref: string;
+  docHref?: string;
+  acumula: boolean;
+}
+
+interface Props {
+  titulo: string;
+  intro: string;
+  total: number | null;
+  basis: 'total_caso' | 'individual' | null;
+  naturalezasEnTotal: string[];
+  totalLabelTotal: string;
+  totalLabelIndividual: string;
+  entries: CifraEntryView[];
+  tone?: 'objeto' | 'consecuencia';
+}
+const {
+  titulo,
+  intro,
+  total,
+  basis,
+  naturalezasEnTotal,
+  totalLabelTotal,
+  totalLabelIndividual,
+  entries,
+  tone = 'objeto',
+} = Astro.props;
+const totalHint =
+  tone === 'objeto'
+    ? 'Suma de los importes del caso sin doble conteo: las partidas que desglosan un total y las cifras de hechos archivados no acumulan. Cada cifra conserva su grado de prueba y su nivel de fuente.'
+    : 'Suma de multas y responsabilidad civil del procedimiento (impuestas o solicitadas). No es dinero presuntamente sustraído: nunca se mezcla con el dinero en juego.';
+// Rojo = condena: solo si TODO lo que acumula al total está acreditado por
+// resolución firme (DESIGN.md: el rojo se reserva a condena).
+const acumEntries = entries.filter((e) => e.acumula);
+const todoFirme = acumEntries.length > 0 && acumEntries.every((e) => e.tipo === 'acreditado');
+const boxTone = todoFirme ? 'firme' : tone;
+const totalLabelBase = basis === 'total_caso' ? totalLabelTotal : totalLabelIndividual;
+const totalLabel = boxTone === 'firme' ? `${totalLabelBase} · condena firme` : totalLabelBase;
+---
+<div class="cifras-bloque">
+  <h3 class="cifras-bloque__title">{titulo}</h3>
+  <p class="cifras-bloque__intro">{intro}</p>
+
+  {total != null && (
+    <div class="cifras-total-wrap">
+      <CifrasTotalBox
+        label={totalLabel}
+        value={total}
+        note={naturalezasEnTotal.length > 0 ? `${naturalezasEnTotal.join(' · ')}.` : undefined}
+        tone={boxTone}
+        hint={totalHint}
+      />
+    </div>
+  )}
+
+  <ul class="cifras-list">
+    {entries.map((e) => (
+      <li class:list={['cifra', !e.acumula && 'cifra--no-acumula']}>
+        <div class="cifra__head">
+          <span class="cifra__amount" title={formatEurosFull(e.importe)}>{formatEurosCompact(e.importe)}</span>
+          <EpistemicBadge tipo={e.tipo} />
+          <LevelBadge nivel={e.nivel} />
+          {!e.acumula && <span class="cifra__flag">No acumula</span>}
+        </div>
+        <div class="cifra__meta">
+          {e.naturaleza && <span class="cifra__tag">{importeNaturalezaLabel(e.naturaleza)}</span>}
+          <span class="cifra__tag cifra__tag--alcance">{importeAlcanceLabel(e.alcance)}</span>
+        </div>
+        <p class="cifra__enunciado">{e.enunciado}</p>
+        {e.nota && <p class="cifra__nota">{e.nota}</p>}
+        <div class="cifra__links">
+          <a href={e.hechoHref}>Ver el hecho →</a>
+          {e.docHref && <a href={e.docHref}>Documento de respaldo →</a>}
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .cifras-bloque { margin: 0 0 var(--space-5); }
+  .cifras-bloque:last-child { margin-bottom: 0; }
+  .cifras-bloque__title {
+    font: 700 11px/1.4 var(--font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent-secondary-hover);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 4px;
+    margin: 0 0 var(--space-3);
+  }
+  .cifras-bloque__intro {
+    margin: 0 0 var(--space-3);
+    font: 400 13px/1.55 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+
+  .cifras-total-wrap { margin: 0 0 var(--space-4); }
+
+  .cifras-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .cifra {
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface);
+    padding: 12px 14px;
+  }
+  .cifra--no-acumula {
+    border-left-color: var(--color-border-strong);
+    background: var(--color-surface-muted);
+  }
+  .cifra__head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    margin-bottom: 8px;
+  }
+  .cifra__amount {
+    font: 700 18px/1.1 var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-fg);
+  }
+  .cifra__flag {
+    margin-left: auto;
+    font: 500 10.5px/1 var(--font-mono);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-fg-subtle);
+    border: 1px solid var(--color-border);
+    padding: 3px 6px;
+  }
+  .cifra__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .cifra__tag {
+    font: 500 11px/1.3 var(--font-sans);
+    color: var(--color-fg-muted);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+    padding: 2px 8px;
+  }
+  .cifra__tag--alcance { color: var(--color-fg-subtle); }
+  .cifra__enunciado {
+    margin: 0 0 8px;
+    font: 400 13.5px/1.55 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .cifra__nota {
+    margin: 0 0 8px;
+    font: 400 12px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .cifra__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font: 500 12px/1 var(--font-sans);
+  }
+  .cifra__links a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .cifra__links a:hover { text-decoration: underline; text-underline-offset: 2px; }
+</style>

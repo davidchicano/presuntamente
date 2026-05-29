@@ -19,6 +19,9 @@ export interface BarItem {
   note?: string;
   /** Si se pasa, la fila abre el panel de referencia con ese key (drill-down). */
   refKey?: string;
+  /** Texto a mostrar como valor en vez del número crudo (p. ej. "53 M€").
+   *  La anchura de la barra sigue usando `value`. */
+  valueLabel?: string;
 }
 
 interface Props {
@@ -53,7 +56,7 @@ const suffixFor = (v: number) =>
           <span class="bar-row__label">
             {it.href && !it.refKey ? <a href={it.href}>{it.label}</a> : it.label}
           </span>
-          <span class="bar-row__val">{it.value}{suffixFor(it.value)}</span>
+          <span class="bar-row__val">{it.valueLabel ?? `${it.value}${suffixFor(it.value)}`}</span>
         </div>
         <div class="bar-row__track" aria-hidden="true">
           <div class="bar-row__fill"></div>
