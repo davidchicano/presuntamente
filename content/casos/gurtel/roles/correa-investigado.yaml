@@ -1,0 +1,22 @@
+id: correa-investigado
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: francisco-correa-sanchez
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - blanqueo-de-capitales
+  - falsedad-documental
+  - organizacion-criminal
+fecha_inicio: "2009-02-06"
+fecha_fin: "2018-05-24"
+hito_origen_id: gurtel-publicacion-investigacion-2009
+hito_fin_id: gurtel-sentencia-epoca-i-an-2018
+notas: |
+  Investigado desde el destape del caso en 2009. La condición de
+  investigado no implica culpabilidad; rige la presunción de
+  inocencia. El rol se cierra al dictarse la sentencia de instancia,
+  que abre el tramo de condenado no firme. Los delitos listados son
+  los nucleares de la pieza Época I (asociación ilícita modelada como
+  organizacion-criminal); el detalle exacto por tipo penal queda
+  pendiente de la sentencia íntegra.

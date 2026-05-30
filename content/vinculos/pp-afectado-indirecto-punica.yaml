@@ -1,0 +1,18 @@
+id: pp-afectado-indirecto-punica
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "El Partido Popular queda alcanzado de forma indirecta por el procedimiento Púnica en tanto que Francisco Granados Lerena —ex consejero de Presidencia de la Comunidad de Madrid y ex secretario general del PP de Madrid— es uno de los investigados y acusados centrales de la macrocausa. Los actos investigados se atribuyen presuntamente al periodo en que Granados ejercía simultáneamente cargo público autonómico y cargo orgánico en el partido. La pieza de presunta financiación irregular del PP de Madrid fue archivada definitivamente en octubre de 2022 sin consecuencias procesales para el partido como organización."
+sujeto_organizacion_id: partido-popular
+objeto_organizacion_id: audiencia-nacional
+desde: "2014-10-27"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [punica]
+documentos_respaldo:
+  - documento_id: elespanol-detenciones-punica-2014-10-27
+    pasaje: "El Español identifica a Francisco Granados como ex secretario general del PP de Madrid y ex consejero de la Comunidad de Madrid al cubrir su detención en la Operación Púnica del 27 de octubre de 2014."
+  - documento_id: nota-cgpj-archivo-financiacion-pp-punica-2022-10
+    pasaje: "La nota del CGPJ confirma el archivo de la pieza de presunta financiación irregular del PP de Madrid en octubre de 2022, sin consecuencias procesales para el partido como organización."
+nivel_afectacion: indirecta
+justificacion_afectacion: "El PP era el partido al que pertenecía Francisco Granados Lerena, ex secretario general del PP de Madrid y ex consejero autonómico, cuyo cargo orgánico en el partido coincidió con el periodo de los actos investigados (2003-2011). Aplica la regla 1 del doc 08 (partido del cargo investigado). La pieza de presunta financiación irregular del PP de Madrid fue archivada definitivamente en 2022, lo que delimita la afectación al alcance procesal e institucional del caso, no al partido como organización procesada."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

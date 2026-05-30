@@ -1,0 +1,53 @@
+id: amano-contratos-cofely-punica
+caso_id: punica
+enunciado: |
+  Según la sentencia de la Audiencia Nacional de 22 de diciembre de
+  2025 (no firme), entre marzo de 2012 y octubre de 2014 se amañaron
+  en favor de la empresa Cofely España contratos de eficiencia
+  energética adjudicados por ayuntamientos de la Comunidad de Madrid
+  por un volumen aproximado de 224 millones de euros, mediante la
+  participación de la empresa en la confección de los pliegos y la
+  manipulación de los criterios de valoración a cambio del pago de
+  comisiones a cargos y funcionarios. El tribunal considera probado
+  este amaño respecto de los condenados; rige la presunción de
+  inocencia mientras la sentencia no sea firme.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2012-03-01"
+  hasta: "2014-10-31"
+  precision: rango
+personas_implicadas:
+  - david-marjaliza
+organizaciones_implicadas:
+  - cofely-espana
+  - comunidad-de-madrid
+documentos_respaldo:
+  - documento_id: nota-cgpj-condena-cofely-punica-2025-12-22
+  - documento_id: eldiario-condena-cofely-punica-2025-12-22
+  - documento_id: infobae-condena-cofely-punica-2025-12-22
+nivel_fuente_efectivo: 1
+importe: 224000000
+importe_moneda: EUR
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: objeto_contrato
+importe_nota: |
+  Volumen de los contratos amañados en la pieza Cofely según la
+  sentencia de la AN de 22-dic-2025 (cifra recogida por la cobertura
+  cruzada de Infobae y otras cabeceras). Es el objeto del contrato de
+  esta pieza, no un perjuicio ni una cantidad percibida por persona
+  alguna; no se suma con la multa (consecuencia) ni con las comisiones
+  (componente del mismo objeto).
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: cofely-espana
+    papel: activo
+    nota: |
+      Cofely España es la empresa adjudicataria de los contratos
+      cuyo amaño se declara probado en la pieza; `activo` no afirma
+      que percibiera el total como beneficio, sino que es el sujeto
+      a cuya conducta se atribuye el hecho económico.
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -3,7 +3,28 @@
 Anotaciones internas. **No se publica.** Vive en el repo para humanos
 y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-05-27 (barrido prelaunch — seguimiento juicio oral activo).
+Última actualización: 2026-05-30 (barrido de actualidad — inicio de la declaración de los acusados).
+
+---
+
+## Barrido de actualidad 2026-05-30
+
+Ventana cubierta: del 27-may-2026 (último barrido) al 30-may-2026, con repaso de la fase de juicio abril-mayo.
+
+**Novedad real modelada (Hito + Hecho):**
+
+- **28-may-2026 — empiezan a declarar los acusados.** Tras cerrarse la fase de prueba testifical (más de 150 testigos según la cobertura) y la documental/audios de Villarejo aportados por el PSOE como acusación popular, el 28-may declararon como primeros procesados Francisco Martínez Vázquez (ex secretario de Estado de Seguridad) y Jorge Fernández Díaz (ex ministro del Interior). Fernández Díaz se desvinculó del espionaje a Bárcenas, negó haber ordenado o conocido la operación y dijo que se enteró por la prensa a finales de 2015; su versión contradijo la de Martínez sobre quién conocía la operación. Un perito de la defensa de Fernández Díaz apreció indicios de manipulación en los mensajes de 2013.
+  - Modelado como Hito `inicio-declaracion-acusados-kitchen-2026-05-28` (tipo `declaracion_imputado`) + Hecho `declaracion-fernandez-diaz-juicio-kitchen-2026-05-28` (tipo `atribuido`).
+  - Documentos N4 en tres líneas editoriales distintas (V-13): `elindependiente-declaracion-fernandez-diaz-kitchen-2026-05-28` (Centro), `eldiario-declaracion-fernandez-diaz-kitchen-2026-05-28` (Izquierda), `publico-declaracion-acusados-kitchen-2026-05-28` (Izquierda). Fuentes corroborantes adicionales sin modelar: El Independiente, Euronews, ara.cat, The Local, Demócrata, Canarias7, La Voz de Galicia.
+
+**Cascada aplicada a `caso.yaml`:** `sintesis_caso.estado_actual` actualizado (acusados declarando desde el 28-may; previsión de visto para sentencia en junio 2026); `ultima_revision_editorial` → 2026-05-30; `estado_ficha.fecha_actualizacion` → 2026-05-30. **NO se tocó `fase_actual`** (sigue `juicio_oral`: el juicio NO ha quedado visto para sentencia todavía; la previsión de junio 2026 es cobertura, no resolución). `cifras_clave`/`resumen_cifras` sin cambios (las penas ya están en el Hecho `peticion-penas-anticorrupcion-kitchen`; V-23 anti-doble-conteo: no se reestructura la cifra).
+
+**Descartado / no modelado:**
+
+- Declaraciones de testigos (Rajoy, Cospedal como testigos en abril; "El Gordo"; más de 150 testigos) y reproducción de audios de Villarejo (incluida la conversación con Cospedal sobre "la libretita" y el audio sobre supuestos pagos a Rajoy): son prueba practicada en sala, no resoluciones; no se modelan como Hito/Hecho propio. El contenido de los audios sobre terceros (Rajoy, Cospedal) NO se modela como Hecho: son manifestaciones de un investigado en grabaciones, sin sentencia que las acredite, y rozan a personas con su situación procesal ya definida (Cospedal sobreseída firme; Rajoy sin rol procesal en esta pieza). Anotado aquí por trazabilidad.
+- Notas de agencia (EFE/Europa Press, replicadas por Infobae, Menorca.info, etc.) tratadas como una sola fuente; no cuentan para V-13.
+
+**Visto para sentencia / sentencia (PENDIENTE, vigilar):** la cobertura prevé que el juicio quede visto para sentencia en junio de 2026. Cuando ocurra, modelar Hito de cierre del juicio oral (no hay tipo `conclusiones` en el enum; valorar `inicio_vista_oral` ya usado / dejar en NOTES hasta la sentencia). Cuando recaiga sentencia, modelar Hito `sentencia_primera_instancia` + transformación de roles `procesado` → `condenado_no_firme`/`absuelto`, sin promover ningún Hecho a `acreditado` sin revisión humana (V-04).
 
 ---
 

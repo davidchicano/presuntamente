@@ -1,0 +1,21 @@
+id: pablo-ruz-gutierrez
+nombre_completo: "Pablo Rafael Ruz Gutiérrez"
+nombres_alternativos:
+  - "Pablo Ruz"
+  - "Ruz"
+es_figura_publica: true
+cargo_publico_actual: ""
+cargos_publicos_historicos:
+  - cargo: "Magistrado-juez en funciones del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+    organizacion_id: juzgado-central-instruccion-5
+    desde: "2010-05-01"
+    hasta: "2015-03-01"
+nacionalidad: "española"
+biografia_corta: |
+  Magistrado que asumió la instrucción de la trama Gürtel y de la
+  pieza de la «caja b» del Partido Popular al frente del Juzgado
+  Central de Instrucción nº 5 de la Audiencia Nacional tras la salida
+  de Baltasar Garzón, dirigiendo la fase de instrucción que condujo a
+  la apertura del juicio oral de la Época I.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

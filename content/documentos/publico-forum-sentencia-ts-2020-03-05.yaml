@@ -1,0 +1,17 @@
+id: publico-forum-sentencia-ts-2020-03-05
+titulo: "El Supremo rebaja la condena al expresidente de Fórum Filatélico a casi 12 años de prisión por estafa y blanqueo"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura periodística de Público.es (línea editorial diferenciada de
+  El Independiente y El Español). Informa de la sentencia del TS de 5 de
+  marzo de 2020 con detalle sobre la rebaja de condenas del Supremo respecto
+  a la AN. Cumple V-13: reforzado con nota CGPJ N1 como fuente principal.
+productor_organizacion_id: publico-es
+fecha_documento: "2020-03-05"
+url_canonica: "https://www.publico.es/politica/supremo-rebaja-condena-expresidente-forum-filatelico-casi-12-anos-prision-estafa-blanqueo.html"
+estado_acceso: publico
+idioma: es
+caso_principal_id: forum-filatelico
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,63 @@
+id: condena-firme-salamanca-cohecho-barajas
+caso_id: tandem
+enunciado: |
+  La Sala de Apelación de la Audiencia Nacional (Sentencia 3/2025, de 15 de
+  enero) confirmó en segunda instancia la condena a tres años de prisión del
+  ex comisario Carlos Salamanca Sánchez por un delito continuado de cohecho
+  pasivo: entre 2010 y 2015, en su condición de jefe de fronteras del
+  aeropuerto Adolfo Suárez Madrid-Barajas, se investiga que recibió regalos
+  valorados en 273.915 euros a cambio de dar trato preferente en el control
+  de fronteras a ciudadanos ecuatoguineanos vinculados a un empresario con
+  relaciones con el gobierno de Guinea Ecuatorial. Los regalos consistieron
+  en un automóvil Porsche Cayenne, el uso durante un año de un Porsche
+  Panamera, dos relojes de lujo, un viaje a Londres, el pago de un estudio
+  de grabación y cinco entregas en metálico que totalizaron 135.000 euros.
+  La resolución acordó el comiso de los bienes recibidos. La sentencia de
+  apelación no es firme: contra ella cabe recurso de casación ante el
+  Tribunal Supremo (Sala Segunda); no consta a fecha de revisión que se
+  haya resuelto dicho recurso.
+  # Corrección 2026-05-30: la Sentencia 3/2025 establece expresamente que
+  # no es firme (cabe casación ante el TS). Se corrige el enunciado.
+  # Hecho se mantiene en tipo: atribuido hasta firmeza acreditada.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2010-01-01"
+  hasta: "2015-12-31"
+  precision: rango
+personas_implicadas:
+  - carlos-salamanca-sanchez
+organizaciones_implicadas:
+  - direccion-general-policia
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: cgpj-nota-confirmacion-condena-salamanca-barajas-2025-01-15
+    pasaje: >-
+      Nota oficial CGPJ (poderjudicial.es, 2025-01-15): "La Sala de Apelación
+      confirma la condena de tres años de prisión para el excomisario
+      del aeropuerto de Madrid-Barajas por recibir dádivas de empresarios
+      para dar trato preferente a sus clientes. La resolución ordena el comiso
+      de los regalos recibidos, valorados en 273.915 euros."
+  - documento_id: estrelladigital-condena-salamanca-firme-2025-01-19
+    pasaje: "Confirmada en apelación la condena de 3 años de cárcel contra el excomisario Salamanca por cohecho pasivo; comiso de regalos valorados en 273.915 euros incluido un Porsche Cayenne y 135.000 € en metálico."
+nivel_fuente_efectivo: 1
+importe: 273915
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: cobro_indebido
+importe_nota: >-
+  Valor total de los regalos declarados probados por la Sala de Apelación: 273.915 €,
+  de los que 135.000 € fueron entregas en efectivo y el resto bienes de lujo
+  (automóviles, relojes, viajes, estudio de grabación). El tribunal acordó
+  el comiso. Sentencia de apelación pendiente de firmeza (cabe casación TS).
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: carlos-salamanca-sanchez
+    papel: beneficiario
+    nota: >-
+      Salamanca es el receptor de los regalos declarados probados por la Sala de
+      Apelación de la AN (Sentencia 3/2025). Condena no firme: cabe casación TS.
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

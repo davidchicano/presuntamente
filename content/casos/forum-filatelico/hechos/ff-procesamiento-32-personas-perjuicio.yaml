@@ -1,0 +1,34 @@
+id: ff-procesamiento-32-personas-perjuicio
+caso_id: forum-filatelico
+enunciado: |
+  El juez Pablo Ruz, titular del Juzgado Central de Instrucción nº 5 de la
+  Audiencia Nacional, dicta auto de procesamiento el 8 de octubre de 2014
+  contra 32 personas como responsables, a diferentes grados, del fraude
+  de Fórum Filatélico S.A. El auto los procesa por los delitos de estafa
+  continuada agravada, falseamiento de cuentas anuales, insolvencia punible
+  y blanqueo de capitales, y cuantifica el perjuicio a los 269.203 inversores
+  en 3.702 millones de euros. La instrucción ha abarcado más de 500.000
+  páginas de documentación y 115 comisiones rogatorias a 25 países, incluyendo
+  investigación de un complejo entramado de sociedades pantalla internacionales
+  utilizadas para inflar las valoraciones de los sellos.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2014-10-08"
+  precision: dia
+personas_implicadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+  - antonio-merino-blanco
+  - pablo-ruz-gutierrez
+organizaciones_implicadas:
+  - forum-filatelico-sa
+  - juzgado-central-instruccion-5
+documentos_respaldo:
+  - documento_id: publico-forum-procesamiento-ruz-2014-10-08
+    pasaje: "El juez Ruz procesa a 32 responsables y colaboradores de Fórum a diferentes grados de participación, imponiendo fianza de responsabilidad civil de 3.702 millones de euros a 22 de ellos."
+nivel_fuente_efectivo: 4
+vigencia: superado
+corregido_por: ff-condena-an-briones
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

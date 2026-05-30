@@ -1,0 +1,49 @@
+id: pp-participe-titulo-lucrativo
+caso_id: gurtel
+enunciado: |
+  La Audiencia Nacional declaró al Partido Popular partícipe a título
+  lucrativo de los delitos cometidos en la Época I del caso Gürtel
+  y lo condenó a abonar 245.492,80 euros, al apreciar que la formación
+  se benefició económicamente de actividades de la red (entre ellas
+  actos y gastos electorales en Majadahonda y Pozuelo) que de otro
+  modo habría tenido que financiar con recursos propios. El Tribunal
+  Supremo confirmó en casación esta responsabilidad civil. La condena
+  a título lucrativo es una responsabilidad civil, no una condena
+  penal del partido.
+tipo: acreditado
+fecha_o_periodo:
+  desde: "2018-05-24"
+  precision: dia
+personas_implicadas: []
+organizaciones_implicadas:
+  - partido-popular
+  - audiencia-nacional
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-gurtel-epoca-i-an-2018
+    pasaje: "La Audiencia Nacional condena al Partido Popular como partícipe a título lucrativo a abonar 245.492,80 euros: 133.628,48 euros por los actos electorales de Majadahonda y 111.864,32 euros por los de Pozuelo."
+  - documento_id: nota-cgpj-sentencia-gurtel-ts-2020
+    pasaje: "El Tribunal Supremo (sentencia 507/2020, 14 de octubre de 2020) confirma la responsabilidad civil a título lucrativo del Partido Popular: 133.628,48 euros (Majadahonda) y 111.864,32 euros (Pozuelo), total 245.492,80 euros."
+nivel_fuente_efectivo: 1
+importe: 245492.80
+importe_moneda: EUR
+importe_alcance: individual
+importe_clase: consecuencia
+importe_naturaleza: responsabilidad_civil
+importe_nota: |
+  Responsabilidad civil a título lucrativo del Partido Popular fijada
+  por la Audiencia Nacional y confirmada por el Tribunal Supremo. Se
+  desglosa en 133.628,48 euros por las operaciones de Majadahonda y
+  111.864,32 euros por las de Pozuelo. No es una multa penal ni un
+  perjuicio del partido: es la cuantía del beneficio del que se
+  declaró partícipe lucrativo. La condena análoga del PP en la pieza
+  Boadilla (204.000 euros, abril de 2022) corresponde a otra pieza y
+  no se acumula aquí.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: partido-popular
+    papel: obligado
+    nota: "Obligado al pago de la responsabilidad civil a título lucrativo."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

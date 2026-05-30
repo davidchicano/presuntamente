@@ -1,0 +1,13 @@
+id: roman-condenado-firme
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: pedro-roman-malaga
+rol: condenado_firme
+delitos_atribuidos:
+  - cohecho
+fecha_inicio: "2015-07-27"
+hito_origen_id: malaya-sentencia-firme-ts-2015
+notas: |
+  El TS confirma la condena en la sentencia firme de 27-jul-2015
+  (4 años y 6 meses, ajustados respecto a la AP Málaga). La
+  presunción de inocencia decae respecto a los hechos probados y firmes.

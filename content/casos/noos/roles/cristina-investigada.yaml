@@ -1,0 +1,15 @@
+id: cristina-investigada
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: cristina-de-borbon
+rol: investigado
+delitos_atribuidos:
+  - delito-contra-hacienda-publica
+fecha_inicio: "2014-01-08"
+fecha_fin: "2017-02-17"
+hito_origen_id: noos-imputacion-infanta-cristina-2014
+hito_fin_id: noos-sentencia-primera-instancia-ap-palma-2017
+notas: |
+  Investigada por segunda vez desde enero de 2014 como cooperadora necesaria en dos delitos
+  fiscales (tesis de Manos Limpias). La Fiscalía Anticorrupción se opuso a su investigación
+  en todo momento. La presunción de inocencia es plena durante esta fase.

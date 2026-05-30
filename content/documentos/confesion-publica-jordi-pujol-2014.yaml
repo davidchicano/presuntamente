@@ -1,0 +1,20 @@
+id: confesion-publica-jordi-pujol-2014
+titulo: "Comunicado público de Jordi Pujol reconociendo dinero no regularizado en el extranjero"
+tipo: comunicado_partido
+nivel_fuente: 4
+nivel_fuente_justificacion: >-
+  Declaración del propio interesado difundida a través de la prensa el 25 de
+  julio de 2014. Se cataloga nivel 4 a la espera de localizar una copia íntegra
+  y auditable del texto original. Verificable por cobertura simultánea en
+  múltiples líneas editoriales.
+productor_personas_ids:
+  - jordi-pujol-soley
+fecha_documento: "2014-07-25"
+# url_canonica: LLM-incierto: el comunicado original se difundió a través de medios;
+# falta localizar la copia íntegra publicada por el autor o por una fuente
+# institucional auditable. Pendiente en NOTES.md.
+estado_acceso: acceso_restringido_pero_citable
+caso_principal_id: pujol
+idioma: es
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

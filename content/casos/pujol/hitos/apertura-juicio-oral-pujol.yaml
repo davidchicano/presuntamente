@@ -1,0 +1,27 @@
+id: pujol-apertura-juicio-oral-2021
+caso_id: pujol
+tipo: apertura_juicio_oral
+fecha: "2021-01-01"
+fecha_precision: anio
+titulo: "Apertura de juicio oral contra la familia Pujol"
+descripcion: >-
+  La Audiencia Nacional acordó la apertura de juicio oral contra los miembros
+  de la familia Pujol, con la Fiscalía Anticorrupción ejerciendo la acusación
+  pública. La causa pasa a la fase de juicio oral pendiente de señalamiento.
+# LLM-incierto: fecha exacta de la apertura de juicio oral pendiente de
+# verificar; marcada fecha_precision anio (circa 2021). El estado actual del
+# señalamiento/celebración del juicio también está sin verificar. Ver NOTES.md.
+personas_afectadas:
+  - jordi-pujol-soley
+  - jordi-pujol-ferrusola
+  - oriol-pujol-ferrusola
+  - oleguer-pujol-ferrusola
+  - pere-pujol-ferrusola
+  - marta-pujol-ferrusola
+  - mireia-pujol-ferrusola
+  - josep-pujol-ferrusola
+organizaciones_afectadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documento_principal_id: nota-cgpj-apertura-juicio-oral-pujol
+fase_resultante: juicio_oral

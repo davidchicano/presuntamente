@@ -1,0 +1,13 @@
+id: colmenero-juez-ponente-ts
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: miguel-colmenero-menendez
+rol: juez_ponente
+fecha_inicio: "2018-01-01"
+# LLM-incierto: fecha exacta de designación como ponente no verificada; estimada a partir del número de recurso 2891/2018
+fecha_fin: "2020-03-05"
+hito_fin_id: sentencia-firme-ts-forum-2020-03-05
+notas: |
+  Magistrado ponente de la Sala Segunda del Tribunal Supremo que redactó la
+  sentencia 688/2019 de 5 de marzo de 2020, que resuelve el recurso de
+  casación 2891/2018 del caso Fórum Filatélico.

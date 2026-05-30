@@ -1,0 +1,16 @@
+id: salamanca-condenado-firme-pieza-1
+caso_id: tandem
+sujeto_tipo: persona
+sujeto_persona_id: carlos-salamanca-sanchez
+rol: condenado_firme
+delitos_atribuidos:
+  - cohecho
+fecha_inicio: "2025-01-19"
+hito_origen_id: condena-salamanca-firme-pieza-1-2025-01
+notas: |
+  Condena firme de 3 años de prisión por cohecho pasivo continuado en la
+  pieza separada nº 1 del caso Tándem (pieza Salamanca). Sentencia
+  confirmada en apelación en enero de 2025. El tribunal acordó el comiso
+  de los bienes recibidos (valor total declarado probado: 273.915 euros).
+  La condena es firme y no está sujeta a presunción de inocencia procesal,
+  aunque se mantiene la cautela editorial habitual.

@@ -1,0 +1,235 @@
+# Cobertura mediática general — caso punica
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: punica
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Púnica"
+    - "operación Púnica"
+    - "trama Púnica"
+    - "Francisco Granados"
+    - "David Marjaliza"
+    - "Cofely Madrid corrupción"
+    - "Juzgado Central Instrucción 6 Púnica"
+  ventanas_temporales:
+    - desde: "2014-10-27"
+      hasta: "2014-12-31"
+      notas: "Operación policial de la UCO (27-oct-2014): medio centenar de detenidos, incluido Francisco Granados. Primera cobertura masiva."
+    - desde: "2015-01-01"
+      hasta: "2017-12-31"
+      notas: "Instrucción principal. Granados en prisión provisional (oct-2014 a jun-2017). Primera condena pieza filtración (AN dic-2017)."
+    - desde: "2018-01-01"
+      hasta: "2019-12-31"
+      notas: "Granados acusa a Aguirre, Cifuentes y González (feb-2018). Tribunal Supremo confirma condena firme pieza filtración (14-mar-2019)."
+    - desde: "2020-01-01"
+      hasta: "2022-12-31"
+      notas: "Archivo de la pieza de financiación del PP de Madrid (oct-2022). Instrucción pieza Cofely en tramo final."
+    - desde: "2023-01-01"
+      hasta: "2024-12-31"
+      notas: "La AN propone juzgar a Marjaliza y exalcaldes en pieza Cofely (abr-2023). Juicio oral pieza Cofely (a partir de abr-2025 según conformidades). Contextualizaciones del caso una década después."
+    - desde: "2025-01-01"
+      hasta: "2025-12-31"
+      notas: "Juicio oral pieza Cofely (2025). Conformidades de 13 acusados (abr-2025). Sentencia AN pieza Cofely (22-dic-2025): 29 condenados incluido Marjaliza (8 años y 2 meses)."
+    - desde: "2026-01-01"
+      hasta: "2026-05-30"
+      notas: "Auto apertura juicio oral pieza 8 (suelo/obra pública) contra Granados y 40 acusados (21-may-2026). Fiscalía pide 42 años para Granados."
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - elespanol.com
+    - theobjective.com
+    - infolibre.es
+    - libertaddigital.com
+    - okdiario.com
+    - vozpopuli.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso Púnica, la operación policial o sus actores
+    principales (Granados, Marjaliza, Cofely) en el titular o en el lead. Se incluyen
+    noticias, reportajes, análisis, columnas de opinión firmadas y piezas de agencia
+    republicadas cuando el titular las identifica claramente como del caso.
+  criterios_exclusion: >
+    Se excluyen menciones de pasada en piezas sobre otros temas (corrupción genérica,
+    PP de Madrid como contexto amplio). Se excluyen republicaciones palabra por palabra
+    de agencia sin valor añadido. Se excluyen editoriales anónimos. No se han incluido
+    en este rastreo: elpais.com (dominio no accesible vía WebFetch en el entorno del
+    agente), elmundo.es, abc.es, lavanguardia.com por no ser objeto de búsqueda
+    sistemática en esta pasada. Los medios de agencia (EFE, Europa Press) se recogen
+    solo cuando se identifican como fuente firmada en una republicación.
+  notas: >
+    Rastreo inicial v1 sobre siete ventanas temporales (oct-2014 — may-2026).
+    El caso Púnica es una macrocausa con cobertura sostenida durante más de una
+    década: este corpus es un muestreo diverso y sistemático (8 piezas), no un
+    listado exhaustivo. Se priorizan piezas en hitos procesales clave: operación
+    policial (oct-2014), condena pieza filtración (mar-2019), archivo pieza
+    financiación PP (2022), sentencia pieza Cofely (dic-2025) y apertura JO
+    pieza 8 (may-2026). Las url_archivo se rellenan mediante pnpm archive:catchup
+    (ver docs/web/features/archive-org-pre-commit.md); se dejan vacías en esta pasada.
+    Hallazgo anotado en NOTES.md: okdiario.com publicó la salida de Granados de
+    la cárcel presentándolo como inocente; no se incluye como pieza del corpus
+    por carecer de rigor procesal contrastable, pero se anota para revisión editorial.
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: OPERACIÓN POLICIAL (oct 2014) ──────────────────────────────
+
+  - id: libertaddigital-detenciones-punica-2014-10-27
+    url: "https://www.libertaddigital.com/espana/2014-10-27/el-juez-velasco-ordena-el-arresto-de-francisco-granados-1276531780/"
+    medio_id: libertad-digital
+    titular: "Francisco Granados y seis alcaldes de Madrid, entre los detenidos"
+    fecha_publicacion: "2014-10-27"
+    resumen: >
+      El juez Eloy Velasco de la Audiencia Nacional ordena la detención del ex
+      secretario general del PP de Madrid Francisco Granados y de seis alcaldes
+      de municipios madrileños en el marco de la Operación Púnica, una de las
+      mayores operaciones anticorupción de la Guardia Civil hasta esa fecha.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 2: INSTRUCCIÓN (2015-2017) ────────────────────────────────────
+
+  - id: eldiario-lista-detenidos-punica-2014
+    url: "https://www.eldiario.es/politica/lista-empresarios-detenidos-operacion-punica_1_4556780.html"
+    medio_id: eldiario-es
+    titular: "Lista completa de los 35 detenidos en la operación Púnica"
+    fecha_publicacion: "2014-10-27"
+    resumen: >
+      elDiario.es publica la lista completa de las 35 personas detenidas durante
+      la Operación Púnica, con el ex secretario general del PP de Madrid Francisco
+      Granados como figura central. La investigación de la UCO de la Guardia Civil,
+      dirigida por el magistrado Eloy Velasco, documenta presuntas adjudicaciones
+      irregulares en municipios de Madrid, Murcia, León y Valencia.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 3: CONDENA PIEZA FILTRACIÓN (2017-2019) ──────────────────────
+
+  - id: elespanol-supremo-condena-granados-filtracion-2019-03-14
+    url: "https://www.elespanol.com/espana/tribunales/20190314/supremo-confirma-condena-carcel-granados-chivatazo-punica/383212056_0.html"
+    medio_id: el-espanol
+    titular: "El Supremo confirma la condena de dos años de cárcel para Granados por el 'chivatazo' de Púnica"
+    fecha_publicacion: "2019-03-14"
+    resumen: >
+      El Tribunal Supremo confirma la condena de dos años de cárcel para Francisco
+      Granados y para el guardia civil José Manuel Rodríguez Talamino por la filtración
+      de la investigación de la UCO en septiembre de 2014. La sentencia, que adquiere
+      firmeza, acredita que Granados fue alertado de la vigilancia sobre el empresario
+      Marjaliza con tiempo suficiente para que este destruyera documentos.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 4: ARCHIVO PIEZA FINANCIACIÓN PP (2022) ─────────────────────
+
+  - id: eldiario-archivo-aguirre-caja-b-2022
+    url: "https://www.eldiario.es/politica/garcia-castellon-archiva-causa-esperanza-aguirre-caja-b-pp-madrid_1_9218894.html"
+    medio_id: eldiario-es
+    titular: "García Castellón archiva la causa contra Esperanza Aguirre por la caja B del PP de Madrid"
+    fecha_publicacion: "2022-10-14"
+    resumen: >
+      El magistrado instructor Manuel García Castellón archiva la pieza de Púnica
+      relativa a la presunta financiación irregular del PP de Madrid, incluyendo
+      la causa contra Esperanza Aguirre, Ignacio González y otras personas
+      investigadas en esa pieza. El archivo se produce por prescripción y falta
+      de prueba suficiente, según el instructor.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 5: CONTEXTUALIZACIONES UNA DÉCADA DESPUÉS (2024-2025) ─────────
+
+  - id: eldiario-punica-decada-2024
+    url: "https://www.eldiario.es/politica/punica-decada-despues-alcaldes-pactan-condenas-mayor-pelotazo-juicios-pendientes_1_12215850.html"
+    medio_id: eldiario-es
+    titular: "Púnica, una década después: dos alcaldes pactan condenas por su mayor pelotazo y varios juicios pendientes"
+    fecha_publicacion: "2024-10-27"
+    resumen: >
+      Reportaje de contexto publicado en el décimo aniversario de la Operación Púnica
+      que repasa el estado de los juicios pendientes: la pieza Cofely (eficiencia
+      energética, 224 M€) y la pieza de la caja B del PP esperan juicio oral;
+      la pieza de la filtración tiene condena firme; la pieza de financiación del PP
+      fue archivada. Dos exalcaldes han pactado ya conformidades con la Fiscalía.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 6: SENTENCIA PIEZA COFELY (dic 2025) ─────────────────────────
+
+  - id: publico-condena-exalcaldes-cofely-2025-12-22
+    url: "https://www.publico.es/politica/tribunales/audiencia-nacional-condena-seis-exalcaldes-comunidad-madrid-practicas-corruptas-contratos-punica-cofely.html"
+    medio_id: publico-es
+    titular: "La Audiencia Nacional condena a seis exalcaldes de la Comunidad de Madrid por \"prácticas corruptas\" en contratos de 'Púnica' con Cofely"
+    fecha_publicacion: "2025-12-22"
+    resumen: >
+      La Audiencia Nacional dicta sentencia (no firme) en la pieza Cofely del caso
+      Púnica condenando a 29 personas, entre ellas a David Marjaliza (8 años y 2
+      meses de prisión) y a seis exalcaldes de municipios madrileños. La sentencia
+      acredita que los contratos de eficiencia energética se adjudicaron de forma
+      presuntamente corrupta entre 2012 y 2014, con un volumen de 224 millones de euros.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: theobjective-condena-exalcaldes-punica-2025-12-22
+    url: "https://theobjective.com/espana/tribunales/2025-12-22/condenados-seis-exalcaldes-corrupcion-punica/"
+    medio_id: the-objective
+    titular: "Condenados seis exalcaldes del PP en la Comunidad de Madrid por la trama Púnica"
+    fecha_publicacion: "2025-12-22"
+    resumen: >
+      The Objective recoge la sentencia de la Audiencia Nacional en la pieza Cofely
+      del caso Púnica, que condena a 29 personas por la adjudicación irregular de
+      contratos de eficiencia energética. La pieza es la primera de la macrocausa
+      que obtiene sentencia condenatoria, once años después de la operación policial.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    pieza_referenciada_id: publico-condena-exalcaldes-cofely-2025-12-22
+    fecha_rastreo: "2026-05-30"
+    notas: "Pieza independiente de The Objective sobre el mismo hito de sentencia; no es republicación de agencia."
+
+  # ── VENTANA 7: APERTURA JUICIO ORAL PIEZA 8 (may 2026) ───────────────────
+
+  - id: theobjective-apertura-juicio-granados-pieza8-2026-05-26
+    url: "https://theobjective.com/espana/tribunales/2026-05-26/juez-juicio-francisco-granados-caso-punica/"
+    medio_id: the-objective
+    titular: "El juez manda a juicio a Granados y otras 40 personas por otra pieza del 'caso Púnica'"
+    fecha_publicacion: "2026-05-26"
+    resumen: >
+      El instructor Antonio Piña dicta auto de apertura de juicio oral en la pieza 8
+      del caso Púnica contra Francisco Granados, Javier López Madrid y otras 40 personas
+      por presuntas irregularidades entre 2003 y 2011 en adjudicaciones de suelo y obras
+      públicas. La Fiscalía Anticorrupción solicita 42 años de prisión para Granados
+      en esta pieza.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: infolibre-granados-segundo-juicio-pieza8-2026
+    url: "https://www.infolibre.es/politica/granados-afronta-2026-segundo-juicio-punica-11-anos-despues-arresto_1_2117842.html"
+    medio_id: infolibre
+    titular: "Granados afronta en 2026 su segundo juicio de Púnica, más de 11 años después de su arresto"
+    fecha_publicacion: "2026-05-26"
+    resumen: >
+      infoLibre contextualiza la apertura del segundo juicio oral contra Francisco
+      Granados en el marco del caso Púnica: ya fue condenado con sentencia firme
+      en 2019 por la filtración de la investigación y ahora se enfrenta a una nueva
+      causa por presuntas adjudicaciones irregulares de suelo y obra pública durante
+      su etapa como consejero. La Fiscalía solicita 42 años de prisión.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"

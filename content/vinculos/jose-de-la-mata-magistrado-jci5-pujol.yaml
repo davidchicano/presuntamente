@@ -1,0 +1,19 @@
+id: jose-de-la-mata-magistrado-jci5-pujol
+naturaleza: cargo_judicial
+descripcion: "Magistrado titular del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional. Como instructor de la causa Pujol dictó el auto de transformación a procedimiento abreviado y acordó la apertura de juicio oral contra la familia Pujol Ferrusola."
+sujeto_persona_id: jose-de-la-mata
+objeto_organizacion_id: juzgado-central-instruccion-5
+cargo_o_rol: "Magistrado del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+desde: "2015-03-01"
+precision_desde: mes
+# LLM-incierto: fecha exacta de toma de posesión pendiente de verificar contra nota CGPJ/BOE.
+vigente: true
+# LLM-incierto: verificar si sigue siendo titular vigente o fue relevado.
+relevancia_para_caso_ids: [pujol]
+documentos_respaldo:
+  - documento_id: auto-transformacion-procedimiento-abreviado-pujol
+    pasaje: "El auto de transformación a procedimiento abreviado del JCI nº 5 fue dictado por José de la Mata en su condición de magistrado instructor."
+  - documento_id: nota-cgpj-apertura-juicio-oral-pujol
+    pasaje: "La comunicación sobre la apertura de juicio oral en el caso Pujol hace referencia a la instrucción llevada a cabo por el magistrado del JCI nº 5."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

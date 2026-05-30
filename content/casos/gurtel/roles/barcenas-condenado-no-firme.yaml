@@ -1,0 +1,20 @@
+id: barcenas-condenado-no-firme
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: luis-barcenas
+rol: condenado_no_firme
+delitos_atribuidos:
+  - blanqueo-de-capitales
+  - cohecho
+  - delito-contra-hacienda-publica
+fecha_inicio: "2018-05-24"
+fecha_fin: "2020-10-14"
+hito_origen_id: gurtel-sentencia-epoca-i-an-2018
+hito_fin_id: gurtel-sentencia-firme-ts-2020
+notas: |
+  Extesorero del Partido Popular condenado en primera instancia a 33
+  años y 4 meses por la Época I de Gürtel, en sentencia recurrible.
+  Los delitos exactos atribuidos están sujetos a confirmación de la
+  sentencia íntegra como primario; provisionalmente se listan los
+  nucleares de la pieza. La presunción de inocencia formal se mantenía
+  hasta la firmeza.

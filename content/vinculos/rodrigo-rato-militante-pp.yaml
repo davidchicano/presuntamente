@@ -1,0 +1,31 @@
+id: rodrigo-rato-militante-pp
+naturaleza: cargo_organico_partido
+descripcion: >-
+  Militante y cuadro politico del Partido Popular. Rodrigo de Rato y Figaredo
+  fue diputado del Congreso por el PP, lider del grupo parlamentario popular y
+  Vicepresidente del Gobierno en los Ejecutivos de Jose Maria Aznar. Tras dejar
+  la vida publica activa en 2007, mantuvo su vinculacion con el partido. En el
+  caso de las tarjetas black fue condenado por la Audiencia Nacional (2017),
+  condena confirmada y firme por el Tribunal Supremo (2018).
+sujeto_persona_id: rodrigo-rato
+objeto_organizacion_id: partido-popular
+cargo_o_rol: "Diputado del Congreso de los Diputados y cuadro del Partido Popular"
+desde: "1989-01-01"
+precision_desde: anio
+vigente: false
+relevancia_para_caso_ids: [tarjetas-black]
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: >-
+      La sentencia de la Audiencia Nacional de 23 de febrero de 2017 identifica
+      a Rodrigo de Rato y Figaredo como exvicepresidente primero del Gobierno
+      espanol y exministro de Economia, cargos desempenados en representacion
+      del Partido Popular durante los Gobiernos de Jose Maria Aznar (1996-2004).
+  - documento_id: sentencia-ts-tarjetas-black-2018
+    pasaje: >-
+      La sentencia del Tribunal Supremo que confirma la condena en casacion
+      (2018) identifica a Rodrigo de Rato por sus anteriores cargos publicos en
+      el Partido Popular como contexto de su posterior acceso a la presidencia
+      de Caja Madrid y Bankia.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

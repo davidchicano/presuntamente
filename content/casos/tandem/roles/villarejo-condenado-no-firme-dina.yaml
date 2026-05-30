@@ -1,0 +1,18 @@
+id: villarejo-condenado-no-firme-dina
+caso_id: tandem
+sujeto_tipo: persona
+sujeto_persona_id: jose-manuel-villarejo
+rol: condenado_no_firme
+delitos_atribuidos:
+  - revelacion-de-secretos
+fecha_inicio: "2026-05-05"
+hito_origen_id: sentencia-pieza-dina-2026-05-05
+notas: |
+  Condena de 3 años y 6 meses de prisión en sentencia de la Sección Cuarta
+  de la Sala de lo Penal de la Audiencia Nacional de 5 de mayo de 2026,
+  pieza separada nº 10 (caso Dina). Sentencia no firme a fecha de revisión
+  editorial. El delito apreciado es revelación de secretos de particulares
+  con difusión a terceros cometido con prevalimiento de la condición de
+  funcionario público. Adicionalmente: multa de 18 meses, 6 años de
+  inhabilitación absoluta, indemnizaciones. Rige la presunción de inocencia
+  formal hasta firmeza.

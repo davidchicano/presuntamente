@@ -1,0 +1,14 @@
+id: special-events
+nombre: "Special Events S.L."
+nombres_alternativos:
+  - "Special Events"
+tipo: empresa
+descripcion_corta: |
+  Sociedad de organización de eventos integrada en la red empresarial
+  de Francisco Correa, identificada en las resoluciones de la Audiencia
+  Nacional como uno de los vehículos societarios de la trama Gürtel
+  para la contratación con administraciones públicas.
+sector: "Organización de eventos y comunicación"
+ambito_territorial: nacional
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,21 @@
+id: pujol-confesion-publica-2014
+caso_id: pujol
+tipo: declaracion_imputado
+fecha: "2014-07-25"
+fecha_precision: dia
+titulo: "Jordi Pujol reconoce públicamente fondos no regularizados en el extranjero"
+descripcion: >-
+  Jordi Pujol Soley difundió un comunicado en el que reconocía que la familia
+  había mantenido durante décadas dinero no regularizado en el extranjero,
+  atribuyendo su origen a una herencia de su padre, Florenci Pujol. El
+  comunicado desencadenó la apertura formal de la investigación en la Audiencia
+  Nacional.
+personas_afectadas:
+  - jordi-pujol-soley
+documento_principal_id: confesion-publica-jordi-pujol-2014
+documentos_relacionados:
+  - cobertura-elpais-confesion-pujol-2014
+  - cobertura-vozpopuli-confesion-pujol-2014
+hechos_introducidos:
+  - hecho-fondos-no-regularizados-extranjero
+fase_resultante: instruccion

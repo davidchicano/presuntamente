@@ -1,0 +1,19 @@
+id: urdangarin-condenado-no-firme
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: inaki-urdangarin
+rol: condenado_no_firme
+delitos_atribuidos:
+  - malversacion-caudales-publicos
+  - prevaricacion
+  - fraude-administraciones-publicas
+  - delito-contra-hacienda-publica
+  - trafico-de-influencias
+fecha_inicio: "2017-02-17"
+fecha_fin: "2018-06-12"
+hito_origen_id: noos-sentencia-primera-instancia-ap-palma-2017
+hito_fin_id: noos-sentencia-firme-ts-2018
+notas: |
+  Condenado en primera instancia a 6 años y 3 meses por la Audiencia Provincial de Palma
+  (Procedimiento Abreviado 58/2015). Sentencia recurrible en casación. La presunción de
+  inocencia formal se mantiene hasta firmeza.

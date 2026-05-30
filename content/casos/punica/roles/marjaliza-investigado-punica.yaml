@@ -1,0 +1,28 @@
+id: marjaliza-investigado-punica
+caso_id: punica
+sujeto_tipo: persona
+sujeto_persona_id: david-marjaliza
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - prevaricacion
+  - malversacion-caudales-publicos
+  - fraude-administraciones-publicas
+  - falsedad-documental
+  - blanqueo-de-capitales
+  - organizacion-criminal
+fecha_inicio: "2014-10-27"
+fecha_fin: "2025-12-22"
+hito_origen_id: operacion-uco-detenciones-punica-2014-10-27
+hito_fin_id: sentencia-cofely-punica-2025-12-22
+notas: |
+  Tras la detención del 27 de octubre de 2014 en el marco de la
+  Operación Púnica, David Marjaliza Torres adquirió la condición
+  procesal de investigado en las diligencias instruidas por el
+  Juzgado Central de Instrucción nº 6 de la Audiencia Nacional.
+  Durante la instrucción mantuvo una posición de colaboración con la
+  Justicia. El rol se da por cerrado en la pieza Cofely con la
+  sentencia de 22 de diciembre de 2025, que da paso al rol
+  consecutivo de condenado no firme en esa pieza. La condición de
+  investigado no implica valoración de culpabilidad: rige la
+  presunción de inocencia.

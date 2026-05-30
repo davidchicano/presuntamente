@@ -1,0 +1,12 @@
+id: bernal-condenado-firme
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: gonzalo-bernal-garcia
+rol: condenado_firme
+delitos_atribuidos:
+  - prevaricacion
+  - fraude-administraciones-publicas
+fecha_inicio: "2018-06-12"
+hito_origen_id: noos-sentencia-firme-ts-2018
+notas: |
+  Condenado en sentencia firme (STS 277/2018) a 15 meses de prisión, sustituidos por multa.

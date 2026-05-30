@@ -1,0 +1,20 @@
+id: eldiario-recuperacion-fondos-palau-2022
+titulo: "elDiario.es — La Justicia logra recuperar más de 12 millones del saqueo del Palau de la Música (2022)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura periodística de elDiario.es sobre la ejecución de la
+  sentencia firme del caso Palau y la recuperación de fondos a favor
+  de la Fundació Orfeó Català-Palau de la Música, la Associació Orfeó
+  Català y el Consorci del Palau de la Música. Segunda fuente editorial
+  independiente que cumple V-13 para los hechos de ejecucion de
+  sentencia.
+productor_organizacion_id: eldiario-es
+fecha_documento: "2022-11-01" # LLM-incierto: fecha exacta de publicación no verificada; artículo de 2022
+fecha_publicacion: "2022-11-01" # LLM-incierto
+url_canonica: "https://www.eldiario.es/catalunya/justicia-logra-recuperar-12-millones-saqueo-palau-musica_1_9689454.html"
+estado_acceso: publico
+idioma: es
+caso_principal_id: palau-musica
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

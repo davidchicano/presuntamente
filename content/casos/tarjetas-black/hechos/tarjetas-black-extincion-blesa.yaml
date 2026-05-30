@@ -1,0 +1,36 @@
+id: tarjetas-black-extincion-blesa
+caso_id: tarjetas-black
+enunciado: |
+  Miguel Blesa de la Parra fallecio el 28 de julio de 2017, tras haber sido
+  condenado en primera instancia por la Audiencia Nacional en sentencia de 23
+  de febrero de 2017 a seis anos de prision por delito continuado de
+  apropiacion indebida, y antes de que el Tribunal Supremo resolviera los
+  recursos de casacion. El procurador de sus herederos no aporto poder notarial
+  para sostener el recurso en el plazo fijado, por lo que el Tribunal Supremo
+  lo declaro desierto mediante resolucion publicada el 21 de noviembre de 2017
+  y declaro extinguida su responsabilidad criminal por fallecimiento (conforme
+  al articulo 130.1.1.a del Codigo Penal). En consecuencia, no existe condena
+  firme contra Miguel Blesa en este caso.
+tipo: acreditado
+# V-04 aplicado: promovido a 'acreditado' el 2026-05-30 por revision humana
+# (maintainer autorizado). Respaldo: nota oficial CGPJ (N1) verificada en
+# poderjudicial.es el 2026-05-30. Fecha de fallecimiento (28-07-2017) y
+# declaracion de extincion de responsabilidad confirmadas por nota CGPJ.
+fecha_o_periodo:
+  desde: "2017-07-28"
+  precision: dia
+  # Fecha verificada el 2026-05-30 via nota oficial CGPJ (poderjudicial.es).
+personas_implicadas:
+  - miguel-blesa
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: cgpj-nota-tarjetas-black-blesa-recurso-desierto
+    pasaje: "Nota CGPJ de 21-11-2017: 'El Tribunal Supremo declara desierto el recurso de Miguel Blesa [...] la Sala declaro extinguida la responsabilidad criminal por fallecimiento del reo'; fallecimiento comunicado al tribunal el 28 de julio de 2017."
+  - documento_id: sentencia-ts-tarjetas-black-2018
+    pasaje: "Resolucion del TS sobre el recurso de casacion de Blesa (extincion de responsabilidad penal por fallecimiento, art. 130.1.1.a CP). Texto integro pendiente de localizar en CENDOJ para cita con pagina exacta."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

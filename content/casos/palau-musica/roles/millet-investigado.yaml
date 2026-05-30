@@ -1,0 +1,20 @@
+id: millet-investigado
+caso_id: palau-musica
+sujeto_tipo: persona
+sujeto_persona_id: felix-millet-tusell
+rol: investigado
+delitos_atribuidos:
+  - apropiacion-indebida
+  - malversacion-caudales-publicos
+  - falsedad-documental
+  - trafico-de-influencias
+  - blanqueo-de-capitales
+  - delito-contra-hacienda-publica
+fecha_inicio: "2009-06-01"
+fecha_fin: "2017-03-01"
+hito_fin_id: palau-inicio-vista-oral-2017
+notas: |
+  Fèlix Millet i Tusell fue investigado desde la apertura del procedimiento
+  penal en junio de 2009, en calidad de presidente de la Fundació Orfeó
+  Català-Palau de la Música Catalana. La presunción de inocencia rige
+  hasta la firmeza de la condena.

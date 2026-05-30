@@ -1,0 +1,26 @@
+id: felix-millet-tusell
+nombre_completo: "Fèlix Millet i Tusell"
+nombres_alternativos:
+  - "Félix Millet Tusell"
+  - "Félix Millet"
+  - "Fèlix Millet"
+  - "Millet"
+es_figura_publica: true
+fallecido: true
+fecha_fallecimiento: "2023-03-16"
+cargos_publicos_historicos:
+  - cargo: "Presidente de la Fundació Orfeó Català-Palau de la Música Catalana"
+    organizacion_id: fundacio-orfeo-catala-palau-musica
+    desde: "1990-01-01"
+    hasta: "2009-07-27"
+biografia_corta: |
+  Empresario catalán, presidente de la Fundació Orfeó Català-Palau de la Música
+  Catalana desde aproximadamente 1990 hasta julio de 2009. Condenado por la
+  STS 813/2020 del Tribunal Supremo a 9 años y 8 meses de prisión y multa de
+  4,1 millones de euros por los delitos de apropiación indebida, malversación,
+  falsedad documental, tráfico de influencias, blanqueo de capitales y delito
+  contra la Hacienda Pública en el marco del caso Palau de la Música Catalana.
+  Cumplió 2 años y 4 meses de prisión antes de obtener el tercer grado por
+  su delicado estado de salud. Falleció el 16 de marzo de 2023 a los 87 años.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

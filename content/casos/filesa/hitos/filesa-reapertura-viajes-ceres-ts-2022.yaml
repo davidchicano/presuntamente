@@ -1,0 +1,27 @@
+id: filesa-reapertura-viajes-ceres-ts-2022
+caso_id: filesa
+tipo: recurso_casacion
+fecha: "2022-02-01"
+fecha_precision: mes
+titulo: "El Tribunal Supremo ordena reabrir la rama Viajes Ceres del caso Filesa"
+descripcion: |
+  La Sala Segunda del Tribunal Supremo estima el recurso interpuesto por
+  el Partido Popular como acusación popular contra el auto de la Audiencia
+  Provincial de Madrid de 18 de noviembre de 2019, que había decretado el
+  sobreseimiento libre por prescripción de los delitos en la rama relativa
+  a la agencia Viajes Ceres. El Supremo devuelve la causa al Juzgado de
+  Instrucción nº 26 de Madrid para que continúe la investigación sobre la
+  presunta desviación de subvenciones del Imserso hacia la red de empresas
+  pantalla Filesa. La causa investiga que aproximadamente 2.000 millones
+  de pesetas (≈ 42,2 M€) de los fondos públicos percibidos por Viajes
+  Ceres como adjudicataria de los programas de turismo del Imserso
+  habrían sido desviados hacia las cuentas de la red de empresas pantalla.
+organizaciones_afectadas:
+  - tribunal-supremo
+  - partido-popular
+  - juzgado-instruccion-26-madrid
+  - psoe
+documento_principal_id: prensa-filesa-rama-viajes-ceres-publico-2022
+documentos_relacionados:
+  - prensa-filesa-rama-viajes-ceres-eldebate-2024
+fase_resultante: instruccion

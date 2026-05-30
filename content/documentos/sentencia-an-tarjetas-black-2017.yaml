@@ -1,0 +1,22 @@
+id: sentencia-an-tarjetas-black-2017
+titulo: "Sentencia de la Audiencia Nacional sobre las tarjetas black de Caja Madrid / Bankia (23-02-2017)"
+tipo: sentencia
+nivel_fuente: 1
+nivel_fuente_justificacion: >-
+  Sentencia jurisdiccional de la Audiencia Nacional. Fuente primaria (N1) cuando
+  este localizada en CENDOJ (poderjudicial.es). Pendiente de localizar URL canonica
+  y numero de resolucion/rollo. Hasta entonces se modela como N1 pendiente de
+  verificacion por ser una sentencia de organo judicial espanol.
+productor_organizacion_id: audiencia-nacional
+fecha_documento: "2017-02-23"
+# LLM-incierto: fecha de dictado de la sentencia (conocimiento publico solido).
+# Numero de rollo y seccion de la Sala a verificar en CENDOJ.
+estado_acceso: publico
+# Las sentencias judiciales espanolas son de dominio publico (art. 235.5 LOPJ).
+idioma: es
+caso_principal_id: tarjetas-black
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# pendiente_primario: localizar en CENDOJ (poderjudicial.es) la sentencia integra;
+# completar url_canonica + hash_sha256 si el maintainer decide descargarla a
+# /public/documentos/tarjetas-black/.

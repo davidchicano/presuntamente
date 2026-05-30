@@ -1,0 +1,21 @@
+id: baltasar-garzon-real
+nombre_completo: "Baltasar Garzón Real"
+nombres_alternativos:
+  - "Baltasar Garzón"
+  - "Garzón"
+  - "Garzón Real"
+es_figura_publica: true
+cargo_publico_actual: ""
+cargos_publicos_historicos:
+  - cargo: "Magistrado-juez del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+    organizacion_id: juzgado-central-instruccion-5
+    desde: "1988-01-01"
+    hasta: "2010-05-14"
+nacionalidad: "española"
+biografia_corta: |
+  Magistrado-juez que instruyó el inicio de la trama Gürtel en 2009
+  como titular del Juzgado Central de Instrucción nº 5 de la Audiencia
+  Nacional, antes de la pérdida de su condición de magistrado en mayo
+  de 2010 por una condena en una causa distinta.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

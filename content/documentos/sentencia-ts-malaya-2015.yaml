@@ -1,0 +1,24 @@
+id: sentencia-ts-malaya-2015
+titulo: "Sentencia del Tribunal Supremo (Sala 2ª) sobre el caso Malaya, 27 de julio de 2015 — ponente Juan Saavedra Ruiz"
+tipo: sentencia
+nivel_fuente: 3
+nivel_fuente_justificacion: |
+  Sentencia firme del Tribunal Supremo (Sala Segunda de lo Penal) de
+  27 de julio de 2015, ponente Juan Saavedra Ruiz, resolviendo 48
+  recursos de casación. La sentencia tiene 3.138 folios. A fecha de
+  modelado (2026-05-30) no se localiza en CENDOJ con URL directa; está
+  accesible en mirror PDF a través de losgenoveses.net y confilegal.com
+  con contenidos coincidentes (triangulación entre dos fuentes de
+  naturaleza editorial distinta). Se clasifica como N3
+  filtrado_verificado hasta localización en CENDOJ. Número ROJ no
+  confirmado; ECLI no localizado en búsqueda pública.
+  # pendiente_primario: localizar URL CENDOJ directa para elevar a N1.
+productor_organizacion_id: tribunal-supremo
+productor_personas_ids:
+  - juan-saavedra-ruiz
+fecha_documento: "2015-07-27"
+estado_acceso: filtrado_verificado
+idioma: es
+caso_principal_id: malaya
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

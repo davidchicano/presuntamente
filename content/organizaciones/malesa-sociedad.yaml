@@ -1,0 +1,13 @@
+id: malesa-sociedad
+nombre: "Malesa, S.A."
+nombres_alternativos:
+  - "Malesa"
+  - "Malesa SA"
+tipo: empresa
+descripcion_corta: |
+  Sociedad mercantil vinculada a la trama Filesa. Junto con Filesa y
+  Time Export, formó parte de la red de empresas pantalla utilizadas
+  presuntamente para la financiación irregular del PSOE, investigada
+  en la Causa Especial nº 880/1991 ante el Tribunal Supremo.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

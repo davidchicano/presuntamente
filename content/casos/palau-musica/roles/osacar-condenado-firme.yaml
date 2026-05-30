@@ -1,0 +1,19 @@
+id: osacar-condenado-firme
+caso_id: palau-musica
+sujeto_tipo: persona
+sujeto_persona_id: daniel-osacar-escrig
+rol: condenado_firme
+delitos_atribuidos:
+  - trafico-de-influencias
+  - blanqueo-de-capitales
+  - falsedad-documental
+fecha_inicio: "2020-04-30"
+hito_origen_id: palau-sentencia-firme-ts-2020
+notas: |
+  Condena firme confirmada por la STS 813/2020 del Tribunal Supremo
+  (30 de abril de 2020): condena reducida por el TS a 3 años y 6 meses
+  de prisión (de los 4 años y 5 meses de primera instancia) y multa de
+  3,7 millones de euros. Daniel Osàcar Escrig actuó como tesorero de
+  CDC y es considerado el enlace entre Ferrovial y el partido en el
+  esquema de comisiones. La presunción de inocencia decae respecto de
+  los hechos declarados probados por sentencia firme.

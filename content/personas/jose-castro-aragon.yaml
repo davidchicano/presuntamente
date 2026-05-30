@@ -1,0 +1,19 @@
+id: jose-castro-aragon
+nombre_completo: "José Castro Aragón"
+nombres_alternativos:
+  - "José Castro"
+  - "juez Castro"
+es_figura_publica: true
+fecha_nacimiento: "1945-12-20"
+cargos_publicos_historicos:
+  - cargo: "Magistrado-Juez del Juzgado de Instrucción nº 3 de Palma de Mallorca"
+    organizacion_id: juzgado-instruccion-3-palma
+    desde: "1990-01-01"
+    hasta: "2015-01-01"
+biografia_corta: |
+  Magistrado-juez titular del Juzgado de Instrucción nº 3 de Palma de Mallorca desde 1990.
+  Instructor del caso Palma Arena y de su pieza separada nº 25, el caso Nóos. Conocido por
+  haber acordado la investigación y la segunda imputación de la Infanta Cristina de Borbón
+  durante la instrucción, frente a la posición contraria de la Fiscalía Anticorrupción.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

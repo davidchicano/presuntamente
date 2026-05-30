@@ -1,0 +1,24 @@
+id: sentencia-filtracion-punica-2017-12-04
+caso_id: punica
+tipo: sentencia_primera_instancia
+fecha: "2017-12-04"
+fecha_precision: dia
+titulo: "La Sección Primera de la Sala de lo Penal de la Audiencia Nacional condena a Francisco Granados a dos años de prisión por la filtración de la investigación de la Operación Púnica"
+descripcion: |
+  La Sección Primera de la Sala de lo Penal de la Audiencia Nacional
+  dicta sentencia en la pieza relativa a la filtración de
+  información sobre la propia investigación de la Operación Púnica.
+  El tribunal condena a Francisco Granados Lerena a dos años de
+  prisión y al guardia civil José Manuel Rodríguez Talamino a dos
+  años de prisión y cuatro de inhabilitación, así como al agente en
+  excedencia José Luis Caro Vinagre a un año y seis meses de prisión.
+  Según la sentencia, la filtración causó un daño intenso a la causa
+  pública. La resolución es recurrible en casación ante el Tribunal
+  Supremo. Rige la presunción de inocencia respecto de las restantes
+  piezas de la macrocausa.
+personas_afectadas:
+  - francisco-granados
+organizaciones_afectadas:
+  - audiencia-nacional
+documento_principal_id: nota-cgpj-condena-filtracion-punica-2017-12-04
+fase_resultante: recurso

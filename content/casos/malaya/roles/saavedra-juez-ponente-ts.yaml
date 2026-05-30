@@ -1,0 +1,11 @@
+id: saavedra-juez-ponente-ts
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: juan-saavedra-ruiz
+rol: juez_ponente
+fecha_inicio: "2015-07-27"
+notas: |
+  Magistrado de la Sala Segunda del Tribunal Supremo designado
+  ponente de la sentencia de 27 de julio de 2015 que resolvió los
+  48 recursos de casación del caso Malaya, confirmando con variaciones
+  las condenas de la Audiencia Provincial de Málaga.

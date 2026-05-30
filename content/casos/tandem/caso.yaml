@@ -4,11 +4,138 @@ nombre_mediatico: "Caso Tándem"
 nombres_alternativos:
   - "Macrocausa Villarejo"
   - "Caso Villarejo"
+  - "Operación Tándem"
+
+descripcion_corta: |
+  Macrocausa incoada el 3 de noviembre de 2017 en el Juzgado Central de
+  Instrucción nº 6 de la Audiencia Nacional, tras la detención del comisario
+  jubilado José Manuel Villarejo Pérez, su esposa Gemma Alcalá Garcés, su
+  socio abogado Rafael Redondo Rodríguez y el comisario en activo Carlos
+  Salamanca Sánchez. La causa se despliega en torno a la actividad presuntamente
+  delictiva de Villarejo, quien a través de su empresa Cenyt habría ofrecido
+  servicios de inteligencia y espionaje a empresas privadas y figuras públicas
+  valiéndose de su condición de agente policial en activo y de su acceso a bases
+  de datos reservadas. El procedimiento ha generado más de cuarenta y siete
+  piezas separadas, de las cuales varias han alcanzado ya sentencia (algunas
+  firmes en apelación), mientras que otras siguen en instrucción o en juicio
+  oral. La pieza más conocida mediáticamente, la Operación Kitchen (pieza
+  separada nº 7), se modeló en este inventario como caso independiente dado
+  su relevancia y autonomía procesal. Las penas acumuladas de Villarejo por
+  sentencias no firmes derivadas de la causa superan los trece años de
+  prisión a fecha de revisión editorial. La regla de presunción de inocencia
+  rige respecto de los procesados en piezas sin sentencia firme.
+
+sintesis_caso:
+  que_se_investiga: >-
+    La presunta venta de servicios de espionaje e inteligencia privada por
+    parte del comisario jubilado José Manuel Villarejo —a través de su
+    empresa Cenyt— a clientes empresariales y políticos, con presunto uso
+    de su condición policial y acceso a bases de datos reservadas del Estado.
+  hechos_clave:
+    - >-
+      Villarejo y sus colaboradores fueron detenidos el 3 de noviembre de 2017;
+      la causa se incoa como Diligencias Previas 96/2017 en el JCI nº 6 de la
+      Audiencia Nacional ante la magistrada Carmen Lamela, con más de cuarenta
+      y siete piezas separadas.
+    - >-
+      La Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional dictó
+      sentencia el 24 de julio de 2023 en el juicio conjunto de las piezas
+      Iron, Land y Pintor, condenando a Villarejo a diecinueve años de prisión
+      por revelación de secretos y falsedad documental; la Sala de Apelación
+      redujo la condena a trece años en septiembre de 2025 al absolver del
+      delito de falsedad.
+    - >-
+      La pieza separada nº 7, conocida como Operación Kitchen, está en juicio
+      oral desde el 6 de abril de 2026; se imputa a once personas, incluido
+      el ex ministro del Interior Jorge Fernández Díaz, la presunta
+      organización de una operación parapolicial contra el ex tesorero del PP
+      Luis Bárcenas.
+    - >-
+      Las piezas más relevantes en instrucción avanzada o en espera de juicio
+      incluyen la pieza 9 (BBVA/Trampa, con procesamiento de Francisco González
+      y la entidad bancaria) y la pieza 10 (Dina, con sentencia condenatoria
+      de mayo de 2026).
+  estado_actual: >-
+    Causa en múltiples fases simultáneas: juicio oral de Kitchen (pieza 7)
+    en curso desde abril de 2026; pieza Dina (pieza 10) con sentencia de
+    mayo de 2026 no firme; pieza BBVA/Trampa (pieza 9) pendiente de fecha
+    de juicio oral; numerosas piezas en instrucción. Las piezas Iron, Land
+    y Pintor tienen sentencia de apelación de septiembre de 2025 (trece años
+    para Villarejo), pendiente de posible recurso de casación ante el
+    Tribunal Supremo.
+  cifras_clave:
+    - "Más de 47 piezas separadas en el procedimiento principal"
+    - "13 años de prisión para Villarejo en sentencia de apelación de sept. 2025 (Iron, Land, Pintor)"
+    - "3 años y 6 meses de prisión para Villarejo en pieza Dina (mayo 2026, no firme)"
+    - "173 años de prisión pedidos por la Fiscalía para Francisco González en pieza BBVA"
+    - "Cenyt facturó más de 10 millones de euros en encargos de dudosa legalidad"
 
 organo_judicial_id: juzgado-central-instruccion-6
+numero_procedimiento: "Diligencias Previas 96/2017"
+tipo_procedimiento: diligencias_previas
+
+ponente_actual_id: manuel-garcia-castellon
+
 fase_actual: instruccion
+
 fecha_apertura: "2017-11-03"
 
 origen_denuncia: fiscalia_anticorrupcion
 
-estado_publicacion: pendiente
+delitos_atribuidos_en_la_causa:
+  - revelacion-de-secretos
+  - blanqueo-de-capitales
+  - cohecho
+  - organizacion-criminal
+  - prevaricacion
+  - malversacion-caudales-publicos
+  - falsedad-documental
+
+resumen_cifras: |
+  El procedimiento principal (Diligencias Previas 96/2017) agrupa más
+  de cuarenta y siete piezas separadas en fases procesales heterogéneas.
+  Las penas de Villarejo derivadas de sentencias ya dictadas ascienden a
+  trece años de prisión por Iron, Land y Pintor (sentencia de apelación
+  septiembre 2025, pendiente de posible casación) y tres años y seis meses
+  por la pieza Dina (sentencia mayo 2026, no firme). En la pieza
+  BBVA/Trampa (pieza 9), la Fiscalía reclama 173 años para el expresidente
+  Francisco González y 180 millones de euros de multa para la entidad. La
+  empresa Cenyt, vehículo de los encargos, habría facturado más de diez
+  millones de euros en trabajos de dudosa legalidad. La pieza Salamanca
+  (pieza 1) se saldó con condena firme de tres años para el excomisario
+  Carlos Salamanca por cohecho pasivo (resolución confirmada en apelación
+  en enero de 2025). La cifra de encargos al BBVA supera los diez millones
+  de euros en contratos entre 2004 y 2016 según el escrito acusatorio.
+  Las cifras globales de penas acumuladas en toda la macrocausa no son
+  comparables entre sí al corresponder a piezas y acusados distintos.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: capital
+
+estado_ficha:
+  cronologia: parcial
+  roles_procesales: parcial
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: completo
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: parcial
+  conexiones: parcial
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: >-
+    Modelado inicial centrado en el caso raíz (troncal) y en las piezas con
+    mayor relevancia editorial (Iron/Land/Pintor enjuiciadas, Dina con
+    sentencia, Kitchen en juicio oral, BBVA pendiente). La pieza Kitchen se
+    modela como caso independiente en este inventario (slug 'kitchen'). Las
+    piezas en instrucción temprana (más de treinta), la pieza Iberdrola y
+    otras piezas menores pendientes de juicio no están modeladas en detalle.
+    Los roles de personas secundarias (directivos BBVA, acusados de piezas
+    menores) están pendientes. Las sentencias íntegras de Iron/Land/Pintor
+    no han podido descargarse como primario (pendiente_primario).
+    Vínculos institucionales: parcial — pendientes el vínculo de Gemma Alcalá
+    como apoderada de Cenyt (rol de gestión, no procesal) y los cargos de
+    los directivos del BBVA procesados en la pieza 9 (Corrochano, Cano,
+    Arbizu, Gortari, Béjar), cuyas fichas de persona aún no están modeladas.
+  fecha_actualizacion: "2026-05-30"

@@ -1,0 +1,29 @@
+id: noos-apertura-juicio-oral-2014
+caso_id: noos
+tipo: apertura_juicio_oral
+fecha: "2014-12-22"
+fecha_precision: dia
+titulo: "El juez Castro abre juicio oral contra 17 acusados en el caso Nóos, incluida la Infanta Cristina"
+descripcion: |
+  El juez José Castro dicta auto de apertura de juicio oral en la pieza 25 (caso Nóos) del
+  caso Palma Arena contra 17 acusados, entre ellos la Infanta Cristina de Borbón como cooperadora
+  necesaria en dos delitos fiscales. La causa se eleva a la Audiencia Provincial de les Illes
+  Balears para la celebración del juicio oral. Es el hito que da por concluida la instrucción
+  ante el Juzgado de Instrucción nº 3 de Palma y abre la fase de enjuiciamiento.
+personas_afectadas:
+  - inaki-urdangarin
+  - diego-torres-perez
+  - jaume-matas-palou
+  - cristina-de-borbon
+  - jose-luis-ballester
+  - gonzalo-bernal-garcia
+  - juan-carlos-alia
+  - miguel-angel-bonet
+  - jose-castro-aragon
+organizaciones_afectadas:
+  - juzgado-instruccion-3-palma
+  - audiencia-provincial-palma
+documento_principal_id: nota-cgpj-apertura-juicio-oral-noos-2014
+documentos_relacionados: []
+hechos_introducidos: []
+fase_resultante: juicio_oral

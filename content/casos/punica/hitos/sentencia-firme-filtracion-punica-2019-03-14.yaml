@@ -1,0 +1,22 @@
+id: sentencia-firme-filtracion-punica-2019-03-14
+caso_id: punica
+tipo: sentencia_firme
+fecha: "2019-03-14"
+fecha_precision: dia
+titulo: "El Tribunal Supremo confirma la condena de dos años de prisión a Francisco Granados por la filtración de la investigación de Púnica"
+descripcion: |
+  La Sala de lo Penal del Tribunal Supremo desestima los recursos de
+  casación y confirma la sentencia de la Audiencia Nacional de 4 de
+  diciembre de 2017 que condenó a Francisco Granados Lerena a dos
+  años de prisión por su participación en la filtración de
+  información sobre la investigación de la Operación Púnica. Con la
+  resolución del Tribunal Supremo la condena de esta pieza adquiere
+  firmeza. La firmeza de esta pieza no se extiende a las restantes
+  piezas de la macrocausa, en las que rige la presunción de
+  inocencia.
+personas_afectadas:
+  - francisco-granados
+organizaciones_afectadas:
+  - tribunal-supremo
+documento_principal_id: nota-cgpj-condena-filtracion-punica-2017-12-04
+fase_resultante: sentencia_firme

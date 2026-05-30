@@ -1,14 +1,84 @@
 id: forum-filatelico
-nombre_oficial: "Diligencias Previas 148/2006 — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+nombre_oficial: "Sumario nº 3/2013 — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional (Diligencias Previas 148/2006)"
 nombre_mediatico: "Caso Fórum Filatélico"
 nombres_alternativos:
   - "Fórum Filatélico y Afinsa"
   - "Estafa piramidal filatélica"
+  - "Operación Atrio (pieza Fórum Filatélico)"
 
-organo_judicial_id: tribunal-supremo
-fase_actual: sentencia_firme
+descripcion_corta: |
+  Macrocausa por presunta estafa piramidal instruida desde mayo de 2006 por el
+  Juzgado Central de Instrucción nº 5 de la Audiencia Nacional (primero bajo el
+  juez Baltasar Garzón y después Pablo Ruz) contra la dirección de Fórum
+  Filatélico S.A., empresa que durante 27 años captó el ahorro de más de 268.000
+  clientes mediante contratos de compraventa de sellos con garantía de recompra
+  y rentabilidades superiores a las bancarias. La administración concursal fijó
+  el déficit patrimonial en 2.843 millones de euros. La Sección Primera de la
+  Sala de lo Penal de la Audiencia Nacional dictó sentencia el 13 de julio de 2018,
+  condenando a 20 de los 27 acusados a penas de hasta 12 años y 4 meses de
+  prisión. El Tribunal Supremo, mediante sentencia 688/2019 de 5 de marzo de 2020
+  (ponente Miguel Colmenero), confirmó la condena con pequeñas modificaciones,
+  reduciendo la pena a Francisco Briones a 11 años y 10 meses y rebajando de
+  20 a 16 el número de condenados.
+
+sintesis_caso:
+  que_se_investiga: "Una presunta estafa piramidal articulada durante 27 años por la dirección de Fórum Filatélico S.A. mediante la captación del ahorro de cientos de miles de inversores con promesas de revalorización de sellos que no respondían a ninguna realidad de mercado."
+  hechos_clave:
+    - "El 9 de mayo de 2006 la policía intervino judicialmente Fórum Filatélico S.A. y Afinsa Bienes Tangibles S.A. en la denominada «Operación Atrio», por orden del JCI nº 5."
+    - "El juez Pablo Ruz procesó el 8 de octubre de 2014 a 32 personas por estafa agravada, insolvencia punible, falseamiento de cuentas y blanqueo de capitales, con perjuicio cuantificado en 3.702 millones de euros para 269.203 inversores."
+    - "La sentencia de la Audiencia Nacional de 13 de julio de 2018 condenó a 20 acusados, con pena máxima de 12 años y 4 meses para el expresidente Francisco Briones."
+    - "El Tribunal Supremo confirmó en 2020 la estafa piramidal, reduciendo el número de condenados de 20 a 16 y la pena máxima a 11 años y 10 meses; la sentencia es firme."
+  estado_actual: "Sentencia firme del Tribunal Supremo (STS 688/2019, de 5 de marzo de 2020). Fase de ejecución: los condenados cumplen penas; la recuperación de los afectados avanza a través del proceso concursal de Fórum Filatélico S.A."
+  cifras_clave:
+    - "268.804 inversores perjudicados (contratos filatélicos reconocidos en el concurso)"
+    - "Perjuicio acreditado en concurso: 3.707.127.583 euros (capital más intereses)"
+    - "Déficit patrimonial según administración concursal: 2.843.503.812 euros"
+    - "Pena más alta firme: 11 años y 10 meses (Francisco Briones, expresidente)"
+    - "16 condenados firmes con penas de entre 6 meses y 11 años y 10 meses de prisión"
+
+organo_judicial_id: juzgado-central-instruccion-5
+numero_procedimiento: "Diligencias Previas 148/2006 / Sumario 3/2013 — Procedimiento abreviado 8/2013 ante la Sección Primera de la Sala de lo Penal de la Audiencia Nacional — Recurso de casación 2891/2018 (STS 688/2019)"
+tipo_procedimiento: sumario_ordinario
+
+fase_actual: ejecucion
 fecha_apertura: "2006-05-09"
+fecha_cierre: "2020-03-05"
 
-origen_denuncia: denuncia_organismo_publico
+origen_denuncia: fiscalia_anticorrupcion
 
-estado_publicacion: pendiente
+delitos_atribuidos_en_la_causa:
+  - estafa
+  - insolvencia-punible
+  - falsedad-documental
+  - blanqueo-de-capitales
+
+resumen_cifras: |
+  El perjuicio patrimonial cuantificado por la administración concursal
+  asciende a 3.707 millones de euros (capital más intereses pactados
+  reconocidos a los 268.804 titulares de contratos filatélicos) frente
+  a un déficit patrimonial de 2.843 millones. La responsabilidad civil
+  penal impuesta en la sentencia firme del Tribunal Supremo (STS 688/2019)
+  recae solidariamente sobre los condenados por la totalidad de las
+  cantidades entregadas por los inversores, minoradas en lo recuperado
+  por el proceso concursal. La estimación de las pérdidas totales del
+  conjunto del esquema filatélico (Fórum más Afinsa) que circula en prensa
+  —en torno a 5.000 millones de euros— es una agregación periodística de
+  ambas causas, no una cifra de un documento judicial único.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: alta
+
+estado_ficha:
+  cronologia: completo
+  roles_procesales: parcial
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: completo
+  composicion_fuentes_citadas: parcial
+  vinculos_institucionales: pendiente
+  conexiones: parcial
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: "Sentencia AN y STS 688/2019 íntegras pendientes de localizar en CENDOJ y descargar como primario. Los 16 acusados restantes (de los 20 condenados en AN) no han podido identificarse con nombre completo verificado; se modelan sólo los tres con nombre confirmado en múltiples fuentes N4 cruzadas. José Manuel Carlos Llorca Rodríguez (en rebeldía) pendiente de modelar como rol separado cuando se confirme extradición o entrega."
+  fecha_actualizacion: "2026-05-30"

@@ -1,0 +1,23 @@
+id: briones-investigado
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: francisco-briones
+rol: investigado
+delitos_atribuidos:
+  - estafa
+  - insolvencia-punible
+  - falsedad-documental
+  - blanqueo-de-capitales
+delitos_codigo_penal:
+  - "art. 250 CP (estafa agravada)"
+  - "art. 259 CP (insolvencia punible)"
+  - "art. 290 CP (falseamiento de cuentas)"
+  - "art. 301 CP (blanqueo de capitales)"
+fecha_inicio: "2006-05-09"
+fecha_fin: "2014-10-08"
+hito_fin_id: auto-procesamiento-ruz-forum-2014-10-08
+notas: |
+  Investigado desde la intervención judicial de Fórum Filatélico S.A. el
+  9 de mayo de 2006, en el marco de las Diligencias Previas 148/2006 del
+  JCI nº 5. La condición de investigado no implica valoración de culpabilidad;
+  rige el principio de presunción de inocencia.

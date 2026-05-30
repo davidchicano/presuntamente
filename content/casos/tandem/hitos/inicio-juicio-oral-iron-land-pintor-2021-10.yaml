@@ -1,0 +1,28 @@
+id: inicio-juicio-oral-iron-land-pintor-2021-10
+caso_id: tandem
+tipo: inicio_vista_oral
+fecha: "2021-10-01"
+fecha_precision: mes
+titulo: "Inicio del juicio oral conjunto de las piezas Iron, Land y Pintor"
+descripcion: |
+  En octubre de 2021 comenzó el primer juicio oral del caso Tándem,
+  correspondiente al enjuiciamiento conjunto de las piezas separadas nº 2
+  (Iron), nº 3 (Land) y nº 4 (Pintor). El juicio se celebró ante la
+  Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional. La
+  acusación fue ejercida por la Fiscalía Anticorrupción y diversas
+  acusaciones particulares. Comparecieron 26 acusados, incluidos José
+  Manuel Villarejo Pérez (reo principal), Rafael Redondo Rodríguez
+  (socio) y Gemma Alcalá Garcés (esposa de Villarejo, absuelta).
+  La pieza Iron investigaba el encargo del bufete Herrero y Asociados SL
+  a Cenyt para obtener información sobre un despacho rival. La pieza Land
+  investigaba encargos sobre el entorno familiar del empresario fallecido
+  Francisco García Cereceda. La pieza Pintor investigaba encargos de los
+  hermanos Muñoz Támara sobre un ex socio.
+personas_afectadas:
+  - jose-manuel-villarejo
+  - rafael-redondo-rodriguez
+  - gemma-alcala-garces
+organizaciones_afectadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+fase_resultante: juicio_oral

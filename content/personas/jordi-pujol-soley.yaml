@@ -1,0 +1,20 @@
+id: jordi-pujol-soley
+nombre_completo: "Jordi Pujol Soley"
+nombres_alternativos:
+  - "Jordi Pujol"
+  - "el expresident Pujol"
+  - "el Molt Honorable"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Presidente de la Generalitat de Cataluña"
+    organizacion_id: generalitat-de-cataluna
+    desde: "1980-04-11"
+    hasta: "2003-12-16"
+fecha_nacimiento: "1930-06-09"
+biografia_corta: >-
+  Político catalán, líder histórico de Convergència Democràtica de Catalunya y
+  presidente de la Generalitat de Cataluña durante 23 años (1980-2003). En julio
+  de 2014 reconoció públicamente que la familia mantuvo durante décadas dinero no
+  regularizado en el extranjero.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

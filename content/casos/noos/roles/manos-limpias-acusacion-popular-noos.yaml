@@ -1,0 +1,13 @@
+id: manos-limpias-acusacion-popular-noos
+caso_id: noos
+sujeto_tipo: organizacion
+sujeto_organizacion_id: manos-limpias
+rol: acusacion_popular
+fecha_inicio: "2011-01-01"
+# LLM-incierto: fecha exacta de personación de Manos Limpias; estimada.
+notas: |
+  El sindicato Manos Limpias ejerció la acusación popular en el caso Nóos, siendo la única
+  parte que solicitó la investigación y el enjuiciamiento penal de la Infanta Cristina por
+  dos delitos fiscales. Fue la acusación que logró la segunda imputación de la Infanta en
+  enero de 2014, pese a la oposición de la Fiscalía Anticorrupción. La Infanta resultó
+  absuelta penalmente en ambas instancias.

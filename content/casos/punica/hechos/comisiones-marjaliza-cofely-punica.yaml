@@ -1,0 +1,49 @@
+id: comisiones-marjaliza-cofely-punica
+caso_id: punica
+enunciado: |
+  Según la sentencia de la Audiencia Nacional de 22 de diciembre de
+  2025 (no firme), Cofely España habría acordado con el empresario
+  David Marjaliza el pago por su labor de intermediación de una cuota
+  fija de 1.500 euros mensuales más una parte variable de hasta
+  155.000 euros, en el marco de un sistema de comisiones presuntamente
+  ilícitas que el tribunal cifra, en su conjunto y en lo confesado,
+  en torno a dos millones de euros. Rige la presunción de inocencia
+  mientras la sentencia no sea firme.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2012-03-01"
+  hasta: "2014-10-31"
+  precision: rango
+personas_implicadas:
+  - david-marjaliza
+organizaciones_implicadas:
+  - cofely-espana
+documentos_respaldo:
+  - documento_id: nota-cgpj-condena-cofely-punica-2025-12-22
+  - documento_id: eldiario-condena-cofely-punica-2025-12-22
+  - documento_id: publico-marjaliza-conformidad-punica-2025-12
+nivel_fuente_efectivo: 1
+importe: 2000000
+importe_moneda: EUR
+importe_alcance: componente
+importe_clase: objeto
+importe_naturaleza: comision_ilicita
+importe_nota: |
+  Comisiones confesas próximas a los 2 M€ según la sentencia de la
+  pieza Cofely. Es un componente del objeto de esta pieza (no se suma
+  al volumen de contratos de 224 M€, que ya contabiliza el objeto
+  total, ni a la multa, que es consecuencia). El acuerdo concreto con
+  Marjaliza (1.500 €/mes + hasta 155.000 € variable) es una parte de
+  ese sistema de comisiones.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: david-marjaliza
+    papel: activo
+    nota: |
+      David Marjaliza figura como intermediario al que se atribuye la
+      canalización de las comisiones; `activo` no cuantifica lo que
+      pudiera haber percibido personalmente.
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

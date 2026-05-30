@@ -1,0 +1,21 @@
+id: urdangarin-condenado-firme
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: inaki-urdangarin
+rol: condenado_firme
+delitos_atribuidos:
+  - malversacion-caudales-publicos
+  - prevaricacion
+  - fraude-administraciones-publicas
+  - delito-contra-hacienda-publica
+  - trafico-de-influencias
+fecha_inicio: "2018-06-12"
+hito_origen_id: noos-sentencia-firme-ts-2018
+notas: |
+  Condenado en sentencia firme por la Sala Segunda del Tribunal Supremo (STS 277/2018,
+  ECLI:ES:TS:2018:2056, ponente Antonio del Moral García, 12 de junio de 2018) a 5 años y
+  10 meses de prisión. El recurso de nulidad fue rechazado el 26 de septiembre de 2018,
+  consolidando definitivamente la firmeza. Ingresó en prisión el 18 de junio de 2018 en
+  Brieva (Ávila). Obtuvo tercer grado en enero de 2021 y libertad condicional en marzo de 2022.
+  Condena extinguida en abril de 2024. La presunción de inocencia decae respecto de los
+  hechos declarados probados y firmes por el Tribunal Supremo.

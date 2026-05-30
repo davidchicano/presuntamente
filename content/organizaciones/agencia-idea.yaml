@@ -1,0 +1,21 @@
+id: agencia-idea
+nombre: "Agencia de Innovación y Desarrollo de Andalucía (IDEA)"
+nombres_alternativos:
+  - "Agencia IDEA"
+  - "IDEA"
+  - "Instituto de Fomento de Andalucía"
+  - "IFA"
+tipo: organismo_publico
+descripcion_corta: >-
+  Agencia pública empresarial de la Junta de Andalucía, sucesora del
+  Instituto de Fomento de Andalucía (IFA). En la causa de los ERE se
+  investiga su papel como entidad por la que, según la instrucción,
+  transitaron las ayudas sociolaborales presuntamente concedidas de forma
+  irregular.
+ambito_territorial: autonomico
+comunidad_autonoma: "Andalucía"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# El IFA pasó a denominarse Agencia IDEA en 2007. La instrucción del caso
+# ERE sitúa en el IFA/IDEA el cauce instrumental de las transferencias de
+# fondos desde la Consejería de Empleo para las ayudas.

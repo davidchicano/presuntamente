@@ -1,0 +1,16 @@
+id: cobertura-eldiario-sentencia-ap-palma-noos-2017
+tipo: articulo_prensa
+titulo: "El tribunal del caso Nóos absuelve a la infanta y condena a Urdangarin a 6 años de cárcel"
+fecha_documento: "2017-02-17"
+fecha_publicacion: "2017-02-17"
+idioma: es
+productor_organizacion_id: eldiario-es
+url_canonica: "https://www.eldiario.es/politica/tribunal-absuelve-noos-urdangarin-infanta_1_3579093.html"
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura de eldiario.es (N4). Verificada contra nota oficial CGPJ del mismo día
+  (nota-cgpj-sentencia-ap-palma-noos-2017). Informa del fallo: condenas, absueltos y
+  responsabilidades civiles de la Audiencia Provincial de Palma.
+estado_acceso: publico
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

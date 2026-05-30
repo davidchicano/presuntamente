@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-05-29 (importe presuntamente atribuido — **modelado de dinero completo**). Sobre la base ya hecha (`importe_clase` objeto/consecuencia que nunca se suman; toggle nominal↔€2025 IPC; bloque en ficha de caso, sección en `/graficas`, preview en `/casos`), tres bloques nuevos por feedback del maintainer: **(1) atribución por sujeto** — campo `importe_atribucion` con papel económico (`activo`/`beneficiario`/`perjudicado`/`obligado`/`acreedor`, ≠ rol procesal); guardarraíl de presunción de inocencia (el quebranto de la víctima nunca se suma al investigado, `activo`≠percepción); V-24/V-25 en [`validate.mjs`](scripts/validate.mjs); 17 hechos backfill. **(2) Cifras por sujeto** en fichas de persona/organización ([`CifrasSujetoBloque`](src/components/CifrasSujetoBloque.astro)) y contexto a nivel de caso en delitos. **(3) `/graficas`**: cabecera **sticky** con conmutadores vista (abierto/firme) + modo (nominal/€2025) que gobiernan toda la sección (fuera las tabs por gráfica); caja-total homogénea [`CifrasTotalBox`](src/components/CifrasTotalBox.astro). **(4) Cobertura completa de cifras**: `/casos` usa el HoverCard común + filtro y orden por importe; los inventarios `/personas` y `/organizaciones` muestran chip «Importe atribuido» (beneficiario+activo, vía `importeAtribuidoSujeto`) con HoverCard, filtro y orden (las víctimas, solo `perjudicado`, no muestran chip a propósito). **(5) Documentación propagada**: el papel económico + la regla del **rojo-condena** quedan en las skills (`investigar`/`incorporar`/`actualizar`/`revisar-caso` ← nuevo CH14), `DESIGN.md` (F-cifras), docs de diseño 02/04 y las fichas de página, para que el próximo trabajo de casos lo aplique. Diferido: titular home (copy firmado), comparativas externas. Ficha [`importe-presunto.md`](docs/web/features/importe-presunto.md). `pnpm validate` 793 OK + build 226 pp.
+**Última actualización:** 2026-05-30 (**tanda masiva de casos vía workflow multiagente**). 12 casos nuevos modelados completos desde esqueleto (`gurtel`, `punica`, `pujol`, `eres-andalucia`, `noos`, `malaya`, `tarjetas-black`, `barcenas-caja-b`, `filesa`, `tandem`, `palau-musica`, `forum-filatelico`) + barrido de actualidad en los 8 ya fichados (hitos nuevos en kitchen/plus-ultra/begona/g.amador/fge/atico). Inventario: ~50 casos con contenido → **20 con contenido modelado**; +70 personas, +33 orgs, +90 documentos, +2 delitos (estafa, insolvencia punible), +43 vínculos, +7 relaciones-entre-casos, +12 corpus de cobertura mediática. Dedup `pablo-ruz`→`pablo-ruz-gutierrez`. Auditoría `/revisar-caso` de los 20 + **dos pasadas de corrección**: bloqueantes mecánicos y editoriales resueltos (bios "no modelado", `trama` P-09, fechas rol ERE, `querellante_inicial_id` Bárcenas, ref rota noos, tildes kitchen, `el-confidencial-digital`, `pujol` actualizado, `Cavero` anonimizada, PSOE→afectación indirecta) y **18 hechos con sentencia firme promovidos a `acreditado`** con cita N1 verificada (búsqueda real en CGPJ/BOE). `pnpm validate` **1359 OK / 0 errores**. **SIN commit** (working tree; ⚠️ index quedó con `git add` automático de un subagente, hay que `git reset` antes de stagear por ruta). Detalle: [`historial-2026-05.md`](docs/roadmap/historial-2026-05.md). Pendientes no bloqueantes: ver "Estado de los bloqueantes" abajo.
 
-**Anterior (2026-05-29, enlaces de apartado).** Feature "copiar enlace" en cabeceras + hitos/personas/orgs/documentos de la ficha; corregido el desfase de anclas del drill-down de `/graficas` y `/cifras`. Ficha [`enlaces-de-apartado.md`](docs/web/features/enlaces-de-apartado.md).
+**Anterior (2026-05-29, importe presuntamente atribuido).** Modelado de dinero completo: `importe_atribucion` por sujeto (papel económico ≠ rol procesal) + V-24/V-25; cifras por sujeto en fichas; `/graficas` con cabecera sticky; cobertura de cifras en `/casos`/`/personas`/`/organizaciones`. Ficha [`importe-presunto.md`](docs/web/features/importe-presunto.md).
 
 ---
 
@@ -25,11 +25,12 @@
 
 ## Estado actual
 
-- **Fase activa:** **Post-launch temprano.** Fase 0, 1.0 y 1 cerradas; Fase 2 con **7 casos publicables** y 1 borrador (`atico-estepona`). Sitio público, tráfico real.
-- **Casos publicables:** `plus-ultra` (pin#1), `leire-diez` (pin#2, nuevo), `begona-gomez`, `gonzalez-amador`, `fiscal-general-del-estado`, `kitchen`, `lezo`.
+- **Fase activa:** **Post-launch temprano.** Fase 0, 1.0 y 1 cerradas; Fase 2 con **20 casos con contenido modelado** (7 publicables + 13 en borrador tras la tanda 2026-05-30). Sitio público, tráfico real.
+- **Casos publicables:** `plus-ultra` (pin#1), `leire-diez` (pin#2), `begona-gomez`, `gonzalez-amador`, `fiscal-general-del-estado`, `kitchen`, `lezo`.
+- **Casos en borrador (tanda 2026-05-30, pendientes de revisión + subir `estado_publicacion`):** `gurtel`, `punica`, `pujol`, `eres-andalucia`, `noos`, `malaya`, `tarjetas-black`, `barcenas-caja-b`, `filesa`, `tandem`, `palau-musica`, `forum-filatelico`, `atico-estepona`.
 - **Pre-launch cerrado:** Bloques A, B, C, E.
 - **Bloque D:** suficiente. Pendiente v1.x: composición de fuentes citadas, barra proporcional por corriente editorial, pills en §7 cobertura mediática.
-- **Próximo paso:** archive.org para los N4 nuevos de PU+Leire (`pnpm archive:catchup`); seguimiento declaración Zapatero 17-18 jun; barrido `/actualizar-caso leire-diez` cuando aparezca nota CGPJ del auto Pedraz o auto íntegro en CENDOJ.
+- **Próximo paso:** revisar con el maintainer los bloqueantes no-mecánicos de la tanda (ver sección abajo) antes de subir borradores a publicable; archive.org de los N4 nuevos (`pnpm archive:catchup`); seguimiento declaración Zapatero 17-18 jun.
 - **Infra:** dominio y emails operativos; Cloudflare Pages servida en apex + `www`; deploy automático en `main`.
 - **Dev:** `pnpm dev` → `http://localhost:4321`. **Git:** `main` directo; sin `git add`/`commit`/`push` salvo cierre explícito del maintainer ([`AGENTS.md`](AGENTS.md)).
 
@@ -118,8 +119,32 @@ Plan detallado fuera de git. Pre-requisitos: deploy + dominio → lanzamiento bl
 | FGE | publicable | amparo TC admisibilidad; indulto parcial pendiente CM |
 | Kitchen | publicable | sentencia otoño 2026 |
 | Lezo | publicable | sentencia Inassa (en curso); pieza golf sep 2027 |
-| ático-estepona | borrador | — |
+| Gürtel | borrador (2026-05-30) | 3 hechos firmes promovidos a `acreditado` (STS 507/2020); pieza visita del Papa pendiente de pena individual; decidir "Gürtel" nombre propio (P-09) |
+| Púnica | borrador (2026-05-30) | crear docs N1 sentencias filtración 2017/2019; auto apertura juicio pieza 8 (hoy N4) |
+| Pujol | borrador (2026-05-30) | **actualizado**: juicio nov-2025/may-2026 + sobreseimiento Pujol Soley + visto para sentencia modelados; doc huérfano eliminado. Falta: roles 7 hijos `investigado`→`acusado` y Pujol Soley→`desimputado` (rev. humana) |
+| ERE Andalucía | borrador (2026-05-30) | **0 promovidos a propósito** (TC anuló/matizó condenas 2024; firmeza no limpia); piezas específicas; ponente TS; PDF íntegro CENDOJ |
+| Nóos | borrador (2026-05-30) | 3 hechos firmes promovidos a `acreditado` (STS 277/2018); 8 absueltos sin rol; vínculos institucionales |
+| Malaya | borrador (2026-05-30) | 2 hechos firmes promovidos a `acreditado` (CGPJ TS 2015); importe 12M€ era Wikipedia (neutralizado); PDF íntegro CENDOJ pendiente |
+| Tarjetas black | borrador (2026-05-30) | 2 hechos firmes promovidos a `acreditado` (STS 2018 + extinción Blesa); ~63 acusados restantes; cifras por sujeto; equilibrio afectación |
+| Bárcenas caja B | borrador (2026-05-30) | 4 hechos firmes promovidos a `acreditado` (AN 2021 + STS 2024); 3 hitos sin doc principal |
+| Filesa | borrador (2026-05-30) | 2 hechos firmes promovidos a `acreditado` (5 STC del BOE + 3 indultos BOE); STS 1/1997 íntegra no está en CENDOJ; vínculos institucionales |
+| Tándem | borrador (2026-05-30) | **0 promovidos a propósito** (Salamanca firme pero pendiente verificar casación; Villarejo NO firme); privados sin rol (Muñoz Támara, García Cereceda) → anonimizar o ficha+rol |
+| Palau Música | borrador (2026-05-30) | 2 hechos firmes promovidos a `acreditado` (STS 813/2020); doc principal de la querella 2009; vínculos institucionales |
+| Fórum Filatélico | borrador (2026-05-30) | docs N1/N2 de hitos; `forum-filatelico-sa` mal como perjudicado en importe |
+| ático-estepona | borrador | **Cavero anonimizada** (V-17, caso archivado); vínculos institucionales pendientes |
 | Koldo/Cerdán | — | Cerdán ya catalogado como persona desde Leire; pendiente arrancar caso formal cuando decida el maintainer |
+
+### Estado de los bloqueantes de la auditoría (tanda 2026-05-30)
+
+**Mecánicos y editoriales — RESUELTOS** (dos pasadas Sonnet): bios "no modelado" desactualizadas, `trama` sin comillas P-09 (gürtel/malaya/filesa/púnica + vínculo servinabar), fechas rol `condenado_firme` ERE, `querellante_inicial_id` Bárcenas, ref rota noos, tildes kitchen, alta `el-confidencial-digital`, `pujol` actualizado + doc huérfano eliminado, `Lourdes Cavero` anonimizada, PSOE reclasificado a afectación **indirecta** (`psoe-afectacion-indirecta-leire-diez`), **18 hechos firmes promovidos a `acreditado`** con cita N1 verificada (gürtel 3, noos 3, bárcenas 4, malaya 2, tarjetas-black 2, palau 2, filesa 2).
+
+**Pendiente de decisión/acción del maintainer** (no bloquea publicar; cada caso lo detalla en su `NOTES.md`):
+
+1. **Roles procesales de `pujol`**: 7 hijos `investigado`→`acusado` y Pujol Soley→`desimputado` (cambian badge; toca presunción → decisión humana).
+2. **Excepción de nombre propio "Gürtel"/"Púnica"/"Malaya"**: hoy sustituidos en prosa; decidir si se documenta excepción en [`AGENTS.md`](AGENTS.md) o se mantiene. Viven en `nombres_alternativos`.
+3. **Promociones a `acreditado` no hechas a propósito**: ERE (TC matizó la firmeza 2024) y tándem (Salamanca sin confirmar casación; Villarejo no firme). Revisar cuando haya certeza de firmeza.
+4. **Posible 7.ª regla de afectación** (doc 08) para "partido cuya caja es objeto de investigación" (caso PSOE/leire-diez) — decisión de modelo, no urgente.
+5. **PDFs íntegros / `pendiente_primario`**: varias sentencias firmes respaldadas por nota CGPJ N1 pero sin PDF en CENDOJ (descarga con `ruta_local`+hash cuando aparezcan). `archive:catchup` de los N4 nuevos (requiere red).
 
 ---
 

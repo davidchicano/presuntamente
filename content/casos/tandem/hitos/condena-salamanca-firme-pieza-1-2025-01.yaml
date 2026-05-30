@@ -1,0 +1,30 @@
+id: condena-salamanca-firme-pieza-1-2025-01
+caso_id: tandem
+tipo: sentencia_apelacion
+fecha: "2025-01-15"
+fecha_precision: dia
+titulo: "Sentencia de apelación en pieza Salamanca (pieza 1): 3 años para el excomisario de Barajas (no firme)"
+descripcion: |
+  El 15 de enero de 2025 la Sala de Apelación de la Audiencia Nacional
+  (Sentencia 3/2025; presidenta Manuela Fernández Prado, ponente José Ramón
+  González Clavijo) confirmó en segunda instancia la condena a tres años de
+  prisión de Carlos Salamanca Sánchez, ex comisario jefe de fronteras del
+  aeropuerto Adolfo Suárez Madrid-Barajas, por un delito continuado de cohecho
+  pasivo. La sala ratificó los hechos probados: Salamanca recibió entre 2010 y
+  2015 regalos valorados en 273.915 euros —un Porsche Cayenne, el uso durante
+  un año de un Porsche Panamera, dos relojes de lujo, un viaje a Londres, el
+  pago de un estudio de grabación y cinco entregas en metálico por un total de
+  135.000 euros— a cambio de dar trato preferente en el control de fronteras a
+  ciudadanos ecuatoguineanos. La resolución acordó asimismo el comiso de todos
+  los bienes recibidos. La Sentencia 3/2025 no es firme: contra ella cabe
+  recurso de casación ante el Tribunal Supremo (Sala Segunda).
+  # Corrección 2026-05-30: el hito se etiquetaba como sentencia_firme pero la
+  # propia resolución establece que cabe casación ante el TS; corregido a
+  # sentencia_apelacion y fase_resultante actualizada.
+personas_afectadas:
+  - carlos-salamanca-sanchez
+organizaciones_afectadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documento_principal_id: cgpj-nota-confirmacion-condena-salamanca-barajas-2025-01-15
+fase_resultante: recurso

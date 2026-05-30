@@ -1,0 +1,44 @@
+id: barcenas-condena-firme-genova
+caso_id: barcenas-caja-b
+enunciado: |
+  El Tribunal Supremo confirma el 15 de noviembre de 2024
+  (ECLI:ES:TS:2024:5577, ponente: Antonio del Moral García) las condenas
+  dictadas por la Audiencia Nacional en la pieza Génova, reduciendo las penas
+  al apreciar la atenuante de dilaciones indebidas (cinco años transcurridos
+  entre el cierre de la instrucción y el inicio del juicio oral). Luis Bárcenas
+  queda condenado por sentencia firme a ocho meses de prisión y multa de
+  180.000 euros. Gonzalo Urquijo y Belén García, administradores de Unifica,
+  quedan condenados a nueve meses de prisión y multa de 200.000 euros cada uno.
+tipo: acreditado
+fecha_o_periodo:
+  desde: "2024-11-15"
+  precision: dia
+personas_implicadas:
+  - luis-barcenas
+  - antonio-del-moral
+organizaciones_implicadas:
+  - tribunal-supremo
+  - partido-popular
+documentos_respaldo:
+  - documento_id: cgpj-sentencia-ts-barcenas-caja-b-2024
+    pasaje: >-
+      Fallo — «los dos administradores de Unifica S.L. reducen su condena de
+      2 años y 9 meses a 9 meses de prisión» y «Luis Bárcenas [...] reduce su
+      condena de 2 años a 8 meses de prisión»; multa de 200.000 euros a cada
+      administrador y de 180.000 euros a Bárcenas; «la mitigación de las penas
+      obedece [...] a la apreciación de una atenuante de dilaciones indebidas,
+      basada en el largo tiempo transcurrido (cinco años) entre [...]
+      la investigación y el juicio oral» (STS ECLI:ES:TS:2024:5577, 15-nov-2024)
+  - documento_id: elespanol-sentencia-ts-barcenas-2024
+    pasaje: >-
+      Penas reducidas confirmadas y motivación del TS: dilaciones indebidas por
+      cinco años entre cierre instrucción e inicio juicio oral
+      (El Español, 15-nov-2024)
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# PROMOVIDO A ACREDITADO (rev. maintainer 2026-05-30): condena firme del TS
+# (ECLI:ES:TS:2024:5577). Citas literales del Fallo incorporadas desde nota CGPJ N1.
+# Penas y multas verificadas en nota CGPJ y prensa identificable cruzada.

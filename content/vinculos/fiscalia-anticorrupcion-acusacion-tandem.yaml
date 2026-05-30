@@ -1,0 +1,16 @@
+id: fiscalia-anticorrupcion-acusacion-tandem
+naturaleza: acusacion_institucional_en_caso
+descripcion: "La Fiscalía Especial contra la Corrupción y la Criminalidad Organizada (Fiscalía Anticorrupción) ejerce la acusación pública en la macrocausa Tándem (Diligencias Previas 96/2017) desde su apertura en noviembre de 2017, incluyendo las piezas Iron, Land, Pintor, Dina, BBVA/Trampa y Kitchen."
+sujeto_organizacion_id: fiscalia-anticorrupcion
+objeto_organizacion_id: audiencia-nacional
+desde: "2017-11-03"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [tandem]
+documentos_respaldo:
+  - documento_id: elpais-detencion-villarejo-2017-11-03
+    pasaje: "El País recoge la apertura de la causa tras la detención de Villarejo el 3 de noviembre de 2017 en una operación que contó con la participación de la Fiscalía Anticorrupción."
+  - documento_id: theobjective-fiscalia-173-anos-bbva-gonzalez-2026-03-18
+    pasaje: "The Objective informa del escrito de acusación de la Fiscalía Anticorrupción en la pieza 9 (BBVA/Trampa), solicitando 173 años para Francisco González y 180 millones de multa para el BBVA."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

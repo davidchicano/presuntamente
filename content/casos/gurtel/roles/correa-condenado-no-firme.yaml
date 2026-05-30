@@ -1,0 +1,18 @@
+id: correa-condenado-no-firme
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: francisco-correa-sanchez
+rol: condenado_no_firme
+delitos_atribuidos:
+  - cohecho
+  - blanqueo-de-capitales
+  - falsedad-documental
+  - organizacion-criminal
+fecha_inicio: "2018-05-24"
+fecha_fin: "2020-10-14"
+hito_origen_id: gurtel-sentencia-epoca-i-an-2018
+hito_fin_id: gurtel-sentencia-firme-ts-2020
+notas: |
+  Condenado en primera instancia por la Audiencia Nacional a 51 años
+  y 11 meses por la Época I, en sentencia recurrible en casación. La
+  presunción de inocencia formal se mantenía hasta la firmeza.

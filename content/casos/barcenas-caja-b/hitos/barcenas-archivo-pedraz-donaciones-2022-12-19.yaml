@@ -1,0 +1,30 @@
+id: barcenas-archivo-pedraz-donaciones-2022-12-19
+caso_id: barcenas-caja-b
+tipo: archivo_provisional
+fecha: "2022-12-19"
+fecha_precision: dia
+titulo: >-
+  El juez Pedraz sobresee provisionalmente la pieza de donaciones al no quedar
+  acreditada la relación entre aportaciones y contratos
+descripcion: |
+  El 19 de diciembre de 2022, el magistrado Santiago Pedraz, titular del
+  Juzgado Central de Instrucción nº 5 de la Audiencia Nacional, acuerda el
+  sobreseimiento provisional de la última rama activa de la pieza de los
+  «papeles de Bárcenas»: la investigación sobre si las presuntas aportaciones
+  de empresarios del entorno Gürtel al Partido Popular se realizaban a cambio
+  de adjudicaciones concretas de contratos públicos. El auto se dicta a
+  petición de la Fiscalía Anticorrupción, tras recibir el informe de la
+  Intervención General del Estado (IGAE) de 4 de noviembre de 2022, que no
+  detectó incumplimientos de la normativa de contratación aplicable ni
+  acreditó relación alguna entre los pagos o donaciones y los contratos
+  adjudicados. Pedraz señala en su resolución que «no existe una anotación,
+  un correo electrónico, un documento, una conversación grabada, una
+  declaración testifical… que aporte dato incriminatorio alguno».
+personas_afectadas:
+  - santiago-pedraz
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+  - fiscalia-anticorrupcion
+  - partido-popular
+documento_principal_id: eldebate-archivo-pedraz-donaciones-2022
+fase_resultante: archivo_provisional

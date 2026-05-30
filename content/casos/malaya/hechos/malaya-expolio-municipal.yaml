@@ -1,0 +1,56 @@
+id: malaya-expolio-municipal
+caso_id: malaya
+enunciado: |
+  La investigación y las sentencias documentan un perjuicio a los
+  fondos públicos del Ayuntamiento de Marbella estimado entre 300 y
+  550 millones de euros en concepto de fondos municipales detraídos
+  o defraudados durante el período de gobierno del GIL. A fecha de
+  2026, el Ayuntamiento ha recuperado aproximadamente 92 millones de
+  euros procedentes de las condenas dictadas por los tribunales, incluyendo
+  la venta de bienes de condenados (más de 60 M€ procedentes de los
+  bienes de Roca) y los procedimientos contables ante el Tribunal de
+  Cuentas (17 M€ aproximados). Las deudas heredadas por el periodo
+  corrupto ascienden a 450 millones de euros, pagados a lo largo de
+  los veinte años siguientes.
+tipo: atribuido
+# Candidato a 'acreditado' parcialmente: el importe de 92 M€ recuperados
+# está confirmado por fuentes periodísticas de 2026. El rango 300-550 M€ es
+# estimación periodística/investigadora, no cifra de un único documento judicial.
+# Ver NOTES.md del caso.
+fecha_o_periodo:
+  desde: "1991-01-01"
+  hasta: "2006-04-07"
+  precision: rango
+personas_implicadas:
+  - juan-antonio-roca
+  - marisol-yague
+  - julian-munoz
+organizaciones_implicadas:
+  - ayuntamiento-de-marbella
+  - grupo-independiente-liberal
+documentos_respaldo:
+  - documento_id: eldebate-malaya-recuperacion-marbella-2026
+    pasaje: "Marbella ha recuperado 92 millones en 20 años. Más de 60 M€ de venta de bienes de Roca. 17 M€ de Tribunal de Cuentas. Deudas heredadas: 450 M€."
+  - documento_id: nota-cgpj-sentencia-malaya-ap-malaga-2013
+    pasaje: "La sentencia ordena que los bienes decomisados y multas reviertan al Ayuntamiento de Marbella para pagar deudas con Hacienda y Seguridad Social."
+nivel_fuente_efectivo: 1
+importe: 92000000
+importe_moneda: EUR
+importe_alcance: componente
+importe_clase: consecuencia
+importe_naturaleza: responsabilidad_civil
+importe_nota: |
+  Importe de lo efectivamente recuperado por el Ayuntamiento de Marbella
+  en 20 años, según El Debate (2026). El perjuicio total estimado (300-550
+  M€) no se estructura como importe porque es una horquilla periodística
+  sin respaldo en un único documento judicial. Anti-doble-conteo: este
+  importe es la recuperación (consecuencia), no el objeto.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: ayuntamiento-de-marbella
+    papel: acreedor
+    nota: "Beneficiario de las condenas económicas y la ejecución de sentencia."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,383 @@
+# Cobertura mediática general — caso pujol
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: pujol
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Pujol"
+    - "familia Pujol Ferrusola"
+    - "Jordi Pujol Soley"
+    - "Jordi Pujol Ferrusola"
+    - "patrimonio Pujol Andorra"
+    - "Audiencia Nacional Pujol juicio"
+  ventanas_temporales:
+    - desde: "2014-07-01"
+      hasta: "2014-12-31"
+      notas: >-
+        Confesión pública de Jordi Pujol Soley el 25-jul-2014: reconoce fondos no
+        regularizados en el extranjero. Apertura de la investigación judicial ante
+        la AN. Hito fundacional del caso en la cobertura mediática.
+    - desde: "2021-06-01"
+      hasta: "2021-12-31"
+      notas: >-
+        El juez Santiago Pedraz dicta apertura de juicio oral (jun 2021).
+        Confirmación por la Sala de lo Penal de la AN de indicios para juzgar a
+        la familia.
+    - desde: "2024-07-01"
+      hasta: "2025-10-31"
+      notas: >-
+        Décimo aniversario de la confesión (jul 2024). Señalamiento del juicio
+        oral (oct 2024). Cobertura previa al inicio de las sesiones en noviembre
+        de 2025.
+    - desde: "2025-11-01"
+      hasta: "2026-05-30"
+      notas: >-
+        Celebración del juicio oral (nov 2025 – abr 2026). Exclusión de Jordi
+        Pujol Soley por deterioro cognitivo (abr 2026). Visto para sentencia
+        (may 2026).
+  fuentes_buscadas:
+    - eldiario.es
+    - elespanol.com
+    - cronicaglobal.elespanol.com
+    - vozpopuli.com
+    - publico.es
+    - okdiario.com
+    - infolibre.es
+  criterios_inclusion: >-
+    Se incluyen piezas que mencionan el caso en el titular o en el lead. Se
+    incluyen noticias, reportajes, análisis, cronologías y columnas firmadas.
+    Se incluyen piezas de agencia republicadas cuando el titular o lead las
+    identifica claramente con el caso.
+  criterios_exclusion: >-
+    Se excluyen menciones de pasada en piezas sobre otros temas (p. ej.,
+    mención de Jordi Pujol en piezas sobre el «procés» si el caso de la
+    fortuna oculta no es el asunto principal). Se excluyen republicaciones
+    palabra por palabra de agencia sin valor añadido. Se excluyen medios
+    con paywall duro no accesibles en este rastreo (elpais.com, elmundo.es,
+    abc.es, lavanguardia.com). No se buscó en medios en catalán (ARA,
+    Vilaweb, NacióDigital) en esta primera pasada; constituyen un corpus
+    propio relevante para una segunda pasada.
+  notas: >-
+    Rastreo inicial v1 sobre cuatro ventanas temporales (jul 2014 – may 2026).
+    La causa es de las más longevas del inventario (instrucción 2013-2021; juicio
+    2025-2026). El País, El Mundo, ABC y La Vanguardia tienen cobertura propia y
+    relevante no incluida en este corpus por restricciones de acceso del agente.
+    La cobertura en catalán (ARA, Vilaweb, NacióDigital, 324/TV3) tiene entidad
+    propia y se deja para una segunda pasada. Las url_archivo se rellenan con
+    pnpm archive:catchup (ver docs/web/features/archive-org-pre-commit.md).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: CONFESIÓN Y APERTURA (jul–dic 2014) ─────────────────────────
+
+  - id: publico-ocho-claves-causa-pujol-2014
+    url: "https://publico.es/politica/ocho-claves-causa-abierta-familia.html"
+    medio_id: publico-es
+    titular: "Ocho claves de la causa abierta a la familia Pujol"
+    fecha_publicacion: "2014-07-01"
+    resumen: >-
+      Pieza explicativa que repasa los ocho puntos clave de la causa judicial
+      abierta en la Audiencia Nacional contra la familia Pujol, desde la
+      denuncia de la exnovia del primogénito hasta el reconocimiento del
+      expresident de fondos no declarados en el extranjero.
+    tipo_pieza: analisis
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      URL canónica sin fecha explícita en la ruta; el contenido corresponde al
+      período de apertura de la causa (jul 2014). Verificar fecha exacta de
+      publicación contra la web.
+
+  - id: publico-pujol-version-herencia-margen-negocios
+    url: "https://www.publico.es/politica/pujol-aferra-version-fortuna-oculta-herencia-margen-negocios-hijo.html"
+    medio_id: publico-es
+    titular: "Pujol se aferra a su versión: la fortuna oculta es una herencia y él está al margen de los negocios de su hijo"
+    fecha_publicacion: "2014-07-25"
+    resumen: >-
+      Pieza que recoge la versión del expresident Jordi Pujol Soley tras su
+      confesión pública: atribuye el origen de los fondos no regularizados
+      mantenidos en el extranjero a una herencia de su padre, y se desmarca de
+      los negocios de su hijo mayor. La tesis de la herencia es la base de la
+      estrategia de defensa de la familia desde el inicio del procedimiento.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 2: APERTURA JUICIO ORAL (jun–dic 2021) ─────────────────────────
+
+  - id: publico-an-confirma-indicios-organizacion-criminal
+    url: "https://www.publico.es/politica/audiencia-nacional-confirma-hay-indicios-juzgar-familia-pujol-organizacion-criminal.html"
+    medio_id: publico-es
+    titular: "La Audiencia Nacional confirma que hay indicios para juzgar a la familia Pujol por organización criminal"
+    fecha_publicacion: "2021-07-01"
+    resumen: >-
+      La Sala de lo Penal de la Audiencia Nacional ratifica el auto del
+      instructor José de la Mata y confirma que existen indicios suficientes
+      para juzgar a la familia Pujol por organización criminal, blanqueo de
+      capitales y otros delitos. La decisión confirma la apertura de juicio oral.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      URL sin fecha en la ruta; el hito corresponde a la confirmación por la
+      Sala de lo Penal (2021). Verificar fecha exacta de publicación.
+
+  - id: infolibre-familia-pujol-pierde-recursos-juicio
+    url: "https://www.infolibre.es/politica/familia-pujol-pierde-recursos-e-ira-juicio-organizacion-criminal-blanqueo-fraude_1_1196582.html"
+    medio_id: infolibre
+    titular: "La familia Pujol pierde los recursos e irá a juicio por organización criminal, blanqueo y fraude"
+    fecha_publicacion: "2021-07-01"
+    resumen: >-
+      El tribunal desestima los recursos presentados por la defensa de la
+      familia Pujol y confirma la apertura de juicio oral por delitos de
+      organización criminal, blanqueo de capitales y fraude fiscal. La causa
+      pasa a la fase de juicio oral tras años de instrucción.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      URL indica 2021; verificar fecha exacta de publicación contra la web.
+      Pieza de Infolibre independiente de la de Publico sobre el mismo hito.
+
+  # ── VENTANA 3: SEÑALAMIENTO DEL JUICIO (jul 2024 – oct 2025) ───────────────
+
+  - id: eldiario-confesion-diez-anos-2024-07-25
+    url: "https://www.eldiario.es/catalunya/confesion-jordi-pujol-fortuna-oculta-cumple-diez-anos-juicio-vista_1_11539274.html"
+    medio_id: eldiario-es
+    titular: "La confesión de Jordi Pujol sobre su fortuna oculta cumple diez años sin juicio a la vista"
+    fecha_publicacion: "2024-07-25"
+    resumen: >-
+      Pieza de balance publicada en el décimo aniversario de la confesión de
+      Jordi Pujol Soley: diez años después del reconocimiento de la fortuna no
+      regularizada, la causa sigue sin juicio oral celebrado, con la
+      Audiencia Nacional sin haberlo señalado aún pese a que el caso estaba
+      listo para ello desde 2021.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-an-celebrara-juicio-noviembre-2025-abril-2026
+    url: "https://www.eldiario.es/catalunya/audiencia-nacional-celebrara-juicio-familia-pujol-noviembre-2025-abril-2026_1_11799937.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional celebrará el juicio contra la familia Pujol entre noviembre de 2025 y abril de 2026"
+    fecha_publicacion: "2024-10-01"
+    resumen: >-
+      La Sección Primera de la Sala de lo Penal de la Audiencia Nacional
+      señala el juicio oral contra el expresident Jordi Pujol y sus siete
+      hijos para el período comprendido entre noviembre de 2025 y abril de 2026,
+      con un total de 51 sesiones programadas en la sede de San Fernando de
+      Henares.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      Fecha de publicación aproximada (oct 2024); verificar fecha exacta de
+      publicación contra la web.
+
+  - id: okdiario-an-fija-juicio-clan-pujol-2024
+    url: "https://okdiario.com/espana/audiencia-nacional-fija-juicio-contra-clan-jordi-pujol-noviembre-2025-abril-2026-13783833"
+    medio_id: okdiario
+    titular: "La Audiencia Nacional fija el juicio contra el 'clan' Pujol entre noviembre de 2025 y abril de 2026"
+    fecha_publicacion: "2024-10-01"
+    resumen: >-
+      Pieza de Okdiario sobre el señalamiento del juicio oral para la familia
+      Pujol ante la Sección Primera de la Sala de lo Penal de la Audiencia
+      Nacional. Detalla las fechas de las 51 sesiones programadas entre
+      noviembre de 2025 y abril de 2026 y las penas solicitadas por la
+      Fiscalía Anticorrupción.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-an-celebrara-juicio-noviembre-2025-abril-2026
+    notas: >-
+      Pieza independiente de Okdiario sobre el mismo hito del señalamiento
+      del juicio; no es republicación de agencia. Fecha aproximada; verificar.
+
+  - id: vozpopuli-an-juzgara-pujol-noviembre-2025
+    url: "https://www.vozpopuli.com/espana/la-audiencia-nacional-juzgara-a-la-familia-pujol-en-noviembre-de-2025.html"
+    medio_id: vozpopuli
+    titular: "La Audiencia Nacional juzgará a la familia Pujol en noviembre de 2025 por una causa que se abrió en 2012"
+    fecha_publicacion: "2024-10-01"
+    resumen: >-
+      Vozpópuli informa sobre el señalamiento oficial del juicio oral contra la
+      familia Pujol, subrayando los doce años transcurridos desde la apertura
+      de la causa en 2012 y hasta la celebración de las sesiones. La pieza
+      contextualiza las penas solicitadas y los delitos atribuidos.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-an-celebrara-juicio-noviembre-2025-abril-2026
+    notas: >-
+      Pieza independiente de Vozpópuli sobre el mismo hito. Fecha aproximada;
+      verificar.
+
+  # ── VENTANA 4: EL JUICIO ORAL Y SU CIERRE (nov 2025 – may 2026) ────────────
+
+  - id: eldiario-cronologia-confesion-juicio-11-anos
+    url: "https://www.eldiario.es/catalunya/cronologia-confesion-juicio-11-anos-resolver-enigma-fortuna-pujol_1_12782795.html"
+    medio_id: eldiario-es
+    titular: "Cronología: de la confesión al juicio, más de 11 años sin resolver el enigma de la fortuna de los Pujol"
+    fecha_publicacion: "2025-11-01"
+    resumen: >-
+      Reportaje cronológico de elDiario.es que reconstruye el itinerario del
+      caso desde la confesión del expresident el 25 de julio de 2014 hasta el
+      inicio del juicio oral en noviembre de 2025, subrayando el período de
+      instrucción de más de once años. Pieza de referencia para seguir la
+      evolución del caso.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      Fecha de publicación aproximada (inicio del juicio oral, nov 2025);
+      verificar fecha exacta de publicación.
+
+  - id: eldiario-pujol-banquillo-juicio-tardio-2025
+    url: "https://www.eldiario.es/catalunya/pujol-banquillo-juicio-tardio-cruza-rehabilitacion-politica-expresident_1_12784699.html"
+    medio_id: eldiario-es
+    titular: "Los Pujol, al banquillo: un juicio tardío que se cruza en la rehabilitación política del expresident"
+    fecha_publicacion: "2025-11-10"
+    resumen: >-
+      Análisis de fondo de elDiario.es sobre el inicio del juicio oral:
+      examina cómo el proceso judicial, después de más de una década, coincide
+      con los intentos de rehabilitación de la imagen pública del expresident
+      en el entorno del movimiento independentista catalán. Contextualiza el
+      peso simbólico del juicio más allá del fallo judicial.
+    tipo_pieza: analisis
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: cronica-global-forenses-pujol-condiciones-juicio-2025
+    url: "https://cronicaglobal.elespanol.com/politica/20251117/pujol-comparecera-audiencia-nacional-videoconferencia-explicar-juicio/1003742708111_0.html"
+    medio_id: cronica-global
+    titular: "Los forenses no ven a Pujol \"en condiciones físicas ni cognitivas\" de ir a juicio"
+    fecha_publicacion: "2025-11-17"
+    resumen: >-
+      Crónica Global informa sobre el informe forense que concluye que el
+      expresident Jordi Pujol Soley, de 95 años, no se encuentra en condiciones
+      físicas ni cognitivas de asistir presencialmente al juicio. El tribunal
+      evalúa la posibilidad de que participe mediante videoconferencia desde
+      su domicilio en Barcelona.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-an-decide-juzgar-pujol-pese-salud-2025
+    url: "https://www.eldiario.es/catalunya/audiencia-nacional-decide-juzgar-jordi-pujol-fortuna-familiar-pese-deteriorada-salud_1_12791096.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional decide juzgar a Jordi Pujol por la fortuna familiar pese a su deteriorada salud"
+    fecha_publicacion: "2025-11-24"
+    resumen: >-
+      El tribunal de la Sección Primera decide continuar juzgando a Jordi Pujol
+      pese a los informes que alertan sobre su deterioro cognitivo, y acuerda
+      que el expresident siga el juicio mediante videoconferencia desde su
+      domicilio. La decisión prolonga el proceso hasta que la situación se
+      reevalúe.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-pujol-nonagenario-audiencia-caso-estudio-2026
+    url: "https://www.eldiario.es/catalunya/jordi-pujol-caso-estudio-nonagenario-audiencia-nacional-pese-unanimidad-forense_1_13164761.html"
+    medio_id: eldiario-es
+    titular: "Jordi Pujol, caso de estudio: un nonagenario en la Audiencia Nacional pese a la unanimidad forense"
+    fecha_publicacion: "2026-04-20"
+    resumen: >-
+      Análisis de fondo que examina cómo el expresident Jordi Pujol Soley pudo
+      ser juzgado durante meses pese a que los forenses coincidían en
+      diagnosticarle un deterioro cognitivo grave. La pieza plantea si el
+      sistema procesal dispone de garantías suficientes para evitar que personas
+      sin capacidad de autodefensa sean sometidas a juicio.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: vozpopuli-an-archiva-causa-pujol-mantiene-hijos-2026
+    url: "https://www.vozpopuli.com/espana/cataluna/la-audiencia-nacional-archiva-la-causa-contra-jordi-pujol-por-su-estado-de-salud-y-mantiene-el-juicio-para-sus-siete-hijos.html"
+    medio_id: vozpopuli
+    titular: "La Audiencia Nacional archiva la causa contra Jordi Pujol por su estado de salud y mantiene el juicio para sus siete hijos"
+    fecha_publicacion: "2026-04-27"
+    resumen: >-
+      El tribunal de la Sección Primera de la Sala de lo Penal de la Audiencia
+      Nacional sobresee la causa contra el expresident Jordi Pujol Soley al
+      constatar que su deterioro cognitivo le impide ejercer su derecho de
+      defensa. El juicio continúa para sus siete hijos, que se enfrentan a
+      penas de entre 8 y 29 años solicitadas por la Fiscalía Anticorrupción.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-an-exime-pujol-juicio-deterioro-cognitivo-2026
+    url: "https://www.eldiario.es/catalunya/audiencia-nacional-exime-jordi-pujol-juicio-fortuna-oculta-deterioro-cognitivo_1_13166394.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional exime a Jordi Pujol del juicio sobre la fortuna oculta por su deterioro cognitivo"
+    fecha_publicacion: "2026-04-27"
+    resumen: >-
+      La Sección Primera de la Sala de lo Penal de la Audiencia Nacional
+      acuerda el sobreseimiento libre de la causa contra el expresident Jordi
+      Pujol Soley, de 95 años, al constatar que padece un trastorno
+      neurocognitivo mayor mixto (tipo Alzheimer y tipo vascular) que le impide
+      defenderse con plenas capacidades. El juicio continúa para sus siete hijos.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: vozpopuli-an-archiva-causa-pujol-mantiene-hijos-2026
+    notas: >-
+      Pieza independiente de elDiario.es sobre el mismo hito. No es
+      republicación de agencia.
+
+  - id: elespanol-pujol-vistos-sentencia-83-anos-2026-05-15
+    url: "https://www.elespanol.com/espana/tribunales/20260515/pujol-vistos-sentencia-clan-simbolo-cataluna-nacionalismo-afronta-anos-carcel-corrupcion/1003744246738_0.html"
+    medio_id: el-espanol
+    titular: "Los Pujol, vistos para sentencia: el clan, \"símbolo de Cataluña\" para el nacionalismo, afronta 83 años de cárcel por corrupción"
+    fecha_publicacion: "2026-05-15"
+    resumen: >-
+      El Español publica un reportaje de cierre del juicio oral: tras 38
+      sesiones celebradas a lo largo de seis meses, el caso queda visto para
+      sentencia. Los siete hijos del expresident se enfrentan a un total de
+      83 años de penas de prisión solicitadas por la Fiscalía Anticorrupción,
+      siendo Jordi Pujol Ferrusola el que afronta la mayor pena (29 años).
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-juicio-termina-seis-meses-2026-05
+    url: "https://www.eldiario.es/catalunya/juicio-pujol-termina-seis-meses-despues-hijos-expresident-usen-ultima-palabra_1_13220593.html"
+    medio_id: eldiario-es
+    titular: "El juicio a los Pujol termina seis meses después sin que los hijos del expresident usen la última palabra"
+    fecha_publicacion: "2026-05-15"
+    resumen: >-
+      ElDiario.es informa del cierre del juicio oral contra la familia Pujol:
+      concluye sin que los hijos del expresident hicieran uso de su derecho a
+      la última palabra. El tribunal queda deliberando sobre un caso que
+      comenzó a instruirse en 2013 y cuyo juicio se ha prolongado durante
+      seis meses, con 38 sesiones.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: elespanol-pujol-vistos-sentencia-83-anos-2026-05-15
+    notas: >-
+      Pieza independiente de elDiario.es sobre el mismo hito (cierre del
+      juicio oral). No es republicación de agencia.

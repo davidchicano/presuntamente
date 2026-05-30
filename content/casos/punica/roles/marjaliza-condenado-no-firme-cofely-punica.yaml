@@ -1,0 +1,24 @@
+id: marjaliza-condenado-no-firme-cofely-punica
+caso_id: punica
+sujeto_tipo: persona
+sujeto_persona_id: david-marjaliza
+rol: condenado_no_firme
+delitos_atribuidos:
+  - organizacion-criminal
+  - blanqueo-de-capitales
+  - fraude-administraciones-publicas
+  - prevaricacion
+  - cohecho
+  - falsedad-documental
+fecha_inicio: "2025-12-22"
+hito_origen_id: sentencia-cofely-punica-2025-12-22
+notas: |
+  Por sentencia de la Audiencia Nacional de 22 de diciembre de 2025,
+  David Marjaliza fue condenado en la pieza de los contratos de
+  eficiencia energética a ocho años y dos meses de prisión por los
+  delitos indicados, con apreciación de atenuantes de dilaciones
+  indebidas y de confesión y reparación del daño. La sentencia no es
+  firme y cabe recurso de casación ante el Tribunal Supremo, por lo
+  que rige la presunción de inocencia formal. El delito de
+  falsedad-documental modela la falsedad en documento mercantil
+  apreciada por el tribunal.

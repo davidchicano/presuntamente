@@ -8,20 +8,35 @@ descripcion: |
   La Unidad Central Operativa (UCO) de la Guardia Civil entrega al
   Juzgado de Instrucción nº 41 de Madrid un informe pericial sobre
   los hechos investigados en la causa seguida contra Begoña Gómez
-  Fernández y otros.
+  Fernández y otros. Según la cobertura periodística cruzada, se trata
+  de un atestado fechado el 21 de mayo de 2026 y de varios cientos de
+  páginas.
 
-  Según la cobertura de elDiario.es, el informe no encontraría
-  ingresos opacos o irregulares imputables a la investigada. Según
-  la cobertura de El Español, el mismo informe habría detectado que
-  las adjudicaciones del software licitado por la Fundación General
-  de la Universidad Complutense de Madrid para el proyecto vinculado
-  a la cátedra extraordinaria habrían sido planeadas con antelación y
-  sin cumplir la normativa de contratación pública.
+  Las distintas líneas editoriales coinciden en dos conclusiones
+  centrales del informe. Por un lado, la UCO concluye que la Cátedra
+  Extraordinaria de Transformación Social Competitiva de la Universidad
+  Complutense de Madrid se creó conforme a la normativa universitaria
+  vigente y que, analizadas las cuentas personales de la investigada, no
+  se han detectado ingresos opacos ni un incremento patrimonial
+  irregular —conclusión que, según la cobertura de elDiario.es, se aparta
+  de la tesis del instructor sobre un presunto enriquecimiento. Por otro
+  lado, el informe aprecia irregularidades en la contratación del
+  software vinculado a la cátedra: según la cobertura de El Español y de
+  The Objective, las adjudicaciones habrían sido «premeditadas» y los
+  contratos con Deloitte Consulting (por un total de 78.648,79 euros)
+  se habrían elaborado como «mero marco administrativo» para «dar
+  apariencia de legalidad» a servicios previamente acordados, mientras
+  que el pago a Making Science Group (24.200 euros) se habría tramitado
+  prescindiendo del procedimiento administrativo pese a superar el límite
+  de los contratos menores.
 
-  La cobertura mediática de la misma jornada presenta, por tanto,
-  conclusiones divergentes sobre el contenido del informe UCO según
-  la línea editorial del medio. A fecha de barrido (27-may-2026), el
-  informe íntegro no ha sido publicado con URL canónica oficial.
+  La cobertura recoge además que la UCO atribuye indiciariamente a la
+  investigada el registro a su nombre de la marca y el dominio de la
+  plataforma Transforma TSC —desarrollada con fondos de la UCM—, así como
+  una breve «actividad comercial» de la herramienta. Estos extremos están
+  vinculados al objeto de apropiación indebida que ya se investiga en la
+  causa. A fecha del barrido, el informe íntegro no ha sido publicado con
+  URL canónica oficial.
 
   Conforme al principio de presunción de inocencia, la condición de
   investigada no implica valoración de culpabilidad y persiste mientras
@@ -30,7 +45,12 @@ personas_afectadas:
   - begona-gomez
 organizaciones_afectadas:
   - juzgado-instruccion-41-madrid
+  - uco-guardia-civil
+  - universidad-complutense-madrid
 documento_principal_id: eldiario-informe-uco-bg-2026-05-25
 documentos_relacionados:
   - elespanol-informe-uco-bg-2026-05-25
+  - theobjective-informe-uco-contratos-bg-2026-05-25
+hechos_introducidos:
+  - bg-uco-contratacion-software-2026-05-25
 fase_resultante: fase_intermedia

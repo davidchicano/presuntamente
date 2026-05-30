@@ -1,0 +1,25 @@
+id: elespanol-detenciones-punica-2014-10-27
+titulo: "Operación Púnica: la Guardia Civil detiene a medio centenar de personas por una trama de corrupción en adjudicaciones públicas"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura periodística de referencia (El Español / hemeroteca de
+  prensa de octubre de 2014 y posteriores reconstrucciones) sobre la
+  operación policial de la UCO del 27 de octubre de 2014 y las
+  detenciones. Cumple V-13 con cruce en Wikipedia (que cita prensa de
+  múltiples cabeceras) y Vozpópuli. El atestado de la UCO y el auto
+  de incoación del JCI nº 6 serían N1/N2; pendiente_primario.
+  # LLM-incierto: url_canonica apunta a la cobertura retrospectiva de
+  # El Español sobre el patrimonio oculto de Granados (nov-2015), que
+  # es la pieza localizada con fecha y autoría verificables; la
+  # cobertura del día exacto de las detenciones debe sustituirse por
+  # una pieza fechada el 27-oct-2014 en una pasada futura.
+productor_organizacion_id: el-espanol
+fecha_documento: "2014-10-27"
+fecha_publicacion: "2015-11-18"
+url_canonica: "https://www.elespanol.com/espana/20151118/80242031_0.html"
+estado_acceso: publico
+idioma: es
+caso_principal_id: punica
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

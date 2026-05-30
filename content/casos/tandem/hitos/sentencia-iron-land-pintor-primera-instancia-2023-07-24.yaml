@@ -1,0 +1,31 @@
+id: sentencia-iron-land-pintor-primera-instancia-2023-07-24
+caso_id: tandem
+tipo: sentencia_primera_instancia
+fecha: "2023-07-24"
+fecha_precision: dia
+titulo: "Sentencia de la Sección Cuarta de la AN: 19 años para Villarejo en piezas Iron, Land y Pintor"
+descripcion: |
+  El 24 de julio de 2023 la Sección Cuarta de la Sala de lo Penal de la
+  Audiencia Nacional dictó sentencia en el juicio conjunto de las piezas
+  Iron, Land y Pintor del caso Tándem. Villarejo fue condenado a 19 años
+  de prisión: 4 años por revelación de secretos de empresa (pieza Iron),
+  3 años por falsedad continuada en documento mercantil (pieza Iron),
+  3 años por falsedad en documento mercantil (pieza Land) y 9 años por
+  tres delitos de revelación de secretos de particulares (pieza Land).
+  Fue absuelto de cohecho en todas las piezas y de extorsión en grado
+  de conspiración (pieza Pintor). Rafael Redondo fue condenado a 13 años.
+  Gemma Alcalá Garcés fue absuelta. El total de condenados fue de 11 sobre
+  26 acusados; 16 fueron absueltos. La sentencia constó de 351 páginas.
+  El tribunal consideró que Villarejo actuó en el ámbito privado y no en
+  ejercicio de su cargo policial, lo que determinó la absolución por cohecho.
+personas_afectadas:
+  - jose-manuel-villarejo
+  - rafael-redondo-rodriguez
+  - gemma-alcala-garces
+organizaciones_afectadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documento_principal_id: cgpj-nota-condena-villarejo-iron-land-pintor-2023-07-24
+documentos_relacionados:
+  - newtral-claves-condena-villarejo-tandem-2023-07-24
+fase_resultante: sentencia_primera_instancia

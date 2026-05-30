@@ -1,0 +1,19 @@
+id: unifica-sl
+nombre: "Unifica S.L."
+nombres_alternativos:
+  - "Unifica"
+  - "empresa Unifica"
+tipo: empresa
+sector: "construccion y arquitectura"
+localidad: "Madrid"
+descripcion_corta: |
+  Empresa constructora con sede en Madrid especializada en arquitectura e
+  interiorismo. Sus administradores (Gonzalo Urquijo y Belen Garcia) fueron
+  condenados por sentencia firme del Tribunal Supremo el 15 de noviembre de
+  2024 (ECLI:ES:TS:2024:5577) por un delito contra la Hacienda Publica al
+  haber acordado con el entonces tesorero del PP Luis Barcenas que una parte
+  de los pagos correspondientes a las obras de reforma de la sede del partido
+  en la calle Genova de Madrid se realizaran fuera de facturacion oficial y
+  sin declarar a Hacienda.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,20 @@
+id: roca-procesado
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: juan-antonio-roca
+rol: procesado
+delitos_atribuidos:
+  - cohecho
+  - blanqueo-de-capitales
+  - malversacion-caudales-publicos
+  - prevaricacion
+  - trafico-de-influencias
+  - fraude-administraciones-publicas
+  - delito-contra-hacienda-publica
+fecha_inicio: "2007-07-23"
+fecha_fin: "2013-10-04"
+hito_fin_id: malaya-sentencia-ap-malaga-2013
+notas: |
+  Auto de procesamiento del Juzgado de Instrucción nº 5 de Marbella
+  de 23 de julio de 2007 (Sumario 7/07). La presunción de inocencia
+  rige mientras no haya sentencia firme.

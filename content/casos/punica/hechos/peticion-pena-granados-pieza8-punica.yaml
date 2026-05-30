@@ -1,0 +1,31 @@
+id: peticion-pena-granados-pieza8-punica
+caso_id: punica
+enunciado: |
+  En el auto de apertura de juicio oral de 21 de mayo de 2026 de la
+  pieza relativa a presuntas adjudicaciones irregulares de suelo y
+  obra pública entre 2003 y 2011, la Fiscalía Especial contra la
+  Corrupción y la Criminalidad Organizada solicita cuarenta y dos
+  años de prisión para Francisco Granados Lerena por presuntos
+  delitos de prevaricación administrativa, cohecho, tráfico de
+  influencias, malversación de caudales públicos, fraude a las
+  administraciones públicas y falsedad documental. Se trata de una
+  petición de pena no firme formulada por la acusación; rige la
+  presunción de inocencia.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-05-21"
+  precision: dia
+personas_implicadas:
+  - francisco-granados
+organizaciones_implicadas:
+  - fiscalia-anticorrupcion
+  - audiencia-nacional
+documentos_respaldo:
+  - documento_id: infobae-apertura-juicio-pieza8-punica-2026-05-26
+  - documento_id: publico-apertura-juicio-pieza8-punica-2026-05-26
+  - documento_id: eldebate-apertura-juicio-pieza8-punica-2026-05-27
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

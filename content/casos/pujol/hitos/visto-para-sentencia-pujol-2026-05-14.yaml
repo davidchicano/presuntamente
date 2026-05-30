@@ -1,0 +1,32 @@
+id: pujol-visto-sentencia-2026-05-14
+caso_id: pujol
+tipo: auto_diligencias
+fecha: "2026-05-14"
+fecha_precision: dia
+titulo: "El juicio oral queda visto para sentencia tras 38 sesiones"
+descripcion: >-
+  El 14 de mayo de 2026 el tribunal declaró visto para sentencia el juicio oral
+  contra los siete hijos de Jordi Pujol Soley y demás acusados, tras concluir
+  los informes de las acusaciones y las defensas. El juicio se prolongó durante
+  seis meses y 38 sesiones, con más de 200 testigos declarados. Los siete hijos
+  del expresident no hicieron uso de su derecho a la última palabra. La Fiscalía
+  Anticorrupción, en sus conclusiones definitivas, mantuvo íntegras las penas
+  solicitadas: 29 años para Jordi Pujol Ferrusola (el mayor), 17 años para su
+  ex esposa Mercè Gironès, 14 años para Josep Pujol y 8 años para cada uno de
+  los otros cinco hermanos (Oriol, Marta, Mireia, Pere y Oleguer). El tribunal
+  queda en fase de deliberación; no existe sentencia en esta causa a fecha de
+  la última revisión editorial.
+personas_afectadas:
+  - jordi-pujol-ferrusola
+  - oriol-pujol-ferrusola
+  - oleguer-pujol-ferrusola
+  - pere-pujol-ferrusola
+  - marta-pujol-ferrusola
+  - mireia-pujol-ferrusola
+  - josep-pujol-ferrusola
+organizaciones_afectadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documento_principal_id: noticia-pujol-visto-sentencia-elespanol-2026
+documentos_relacionados:
+  - noticia-pujol-visto-sentencia-eldiario-2026

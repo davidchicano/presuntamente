@@ -1,0 +1,28 @@
+id: senalamiento-juicio-2027-ga-2026-01
+caso_id: gonzalez-amador
+tipo: auto_diligencias
+fecha: "2026-01-14"
+fecha_precision: dia
+titulo: "Trasciende que el juicio oral contra González Amador no se celebrará hasta 2027 por la saturación de los juzgados de lo penal de Madrid"
+descripcion: |
+  El 14 de enero de 2026 trasciende, según la cobertura periodística
+  (con origen atribuido a la Cadena SER), que el juicio oral contra
+  Alberto González Amador y los demás procesados por el presunto fraude
+  fiscal y la falsedad documental no se celebrará hasta 2027. La
+  cobertura atribuye el aplazamiento a la saturación de los juzgados de
+  lo penal de Madrid, competentes para el enjuiciamiento tras la
+  apertura del juicio oral acordada el 22 de septiembre de 2025, y a la
+  entrada en vigor de la reforma de eficiencia de la Justicia. La
+  cobertura de mayo de 2026 reitera que la vista queda emplazada a 2027.
+  Conforme al principio de presunción de inocencia, la condición de
+  procesado no implica valoración de culpabilidad y persiste mientras no
+  recaiga sentencia firme.
+personas_afectadas:
+  - alberto-gonzalez-amador
+organizaciones_afectadas:
+  - juzgado-instruccion-19-madrid
+documento_principal_id: madridiario-juicio-2027-ga-2026-01
+documentos_relacionados:
+  - elplural-juicio-2027-ga-2026-05
+  - eldiario-juicio-2027-ga-2026-05
+fase_resultante: fase_intermedia

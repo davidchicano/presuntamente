@@ -1,0 +1,31 @@
+id: detencion-villarejo-apertura-causa-2017-11-03
+caso_id: tandem
+tipo: imputacion
+fecha: "2017-11-03"
+fecha_precision: dia
+titulo: "Detención de Villarejo, Salamanca y Redondo; apertura de Diligencias Previas 96/2017"
+descripcion: |
+  El 3 de noviembre de 2017 agentes de la UCO de la Guardia Civil y de
+  la Fiscalía Anticorrupción procedieron a la detención del comisario
+  jubilado José Manuel Villarejo Pérez, de su esposa Gemma Alcalá Garcés,
+  de su socio abogado Rafael Redondo Rodríguez, del comisario en activo
+  Carlos Salamanca Sánchez, de José Manuel Villarejo Gil (hijo), y de
+  otros colaboradores. Por auto de 5 de noviembre de 2017 la magistrada
+  del Juzgado Central de Instrucción nº 3 de la Audiencia Nacional
+  Carmen Lamela Díez acordó prisión provisional para Villarejo, Redondo
+  y Salamanca, y libertad con cargos con entrega de pasaporte para el
+  resto. La causa se incoó como Diligencias Previas 96/2017. La
+  instrucción fue asumida posteriormente por el magistrado Manuel
+  García-Castellón García-Lomas del Juzgado Central de Instrucción
+  nº 6 de la Audiencia Nacional, que dirige la causa desde entonces.
+personas_afectadas:
+  - jose-manuel-villarejo
+  - rafael-redondo-rodriguez
+  - carlos-salamanca-sanchez
+  - gemma-alcala-garces
+organizaciones_afectadas:
+  - juzgado-central-instruccion-6
+  - fiscalia-anticorrupcion
+  - uco-guardia-civil
+documento_principal_id: elindependiente-detencion-villarejo-prision-2017-11-05
+fase_resultante: instruccion

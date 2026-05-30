@@ -1,0 +1,29 @@
+id: auto-procesamiento-ruz-forum-2014-10-08
+caso_id: forum-filatelico
+tipo: auto_procesamiento
+fecha: "2014-10-08"
+fecha_precision: dia
+titulo: "Auto de procesamiento de 32 acusados por perjuicio de 3.702 millones de euros"
+descripcion: |
+  El magistrado Pablo Ruz, titular del Juzgado Central de Instrucción nº 5,
+  dicta auto de procesamiento contra 32 personas como responsables del fraude
+  de Fórum Filatélico S.A. Los procesa por los delitos de estafa continuada
+  agravada, falseamiento de cuentas anuales, insolvencia punible y blanqueo
+  de capitales. El auto cuantifica el perjuicio a los 269.203 inversores en
+  3.702 millones de euros. Impone una fianza de responsabilidad civil de la
+  misma cuantía a 22 de los 32 procesados. La condición de procesado no implica
+  valoración de culpabilidad; rige la presunción de inocencia.
+personas_afectadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+  - antonio-merino-blanco
+  - pablo-ruz-gutierrez
+organizaciones_afectadas:
+  - forum-filatelico-sa
+  - juzgado-central-instruccion-5
+documento_principal_id: publico-forum-procesamiento-ruz-2014-10-08
+documentos_relacionados:
+  - elindependiente-forum-sentencia-an-2018-07-13
+hechos_introducidos:
+  - ff-procesamiento-32-personas-perjuicio
+fase_resultante: fase_intermedia

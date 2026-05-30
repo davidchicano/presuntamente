@@ -1,0 +1,17 @@
+id: bankia
+nombre: "Bankia, S.A."
+nombres_alternativos:
+  - "Bankia"
+  - "Grupo BFA-Bankia"
+  - "BFA-Bankia"
+tipo: entidad_financiera
+descripcion_corta: >-
+  Entidad bancaria espanola constituida en 2010-2011 a partir de la integracion
+  de Caja Madrid y otras cajas de ahorros (grupo BFA). Salio a bolsa en 2011 y
+  fue intervenida y nacionalizada en 2012. Hereda el ambito societario en el que
+  se enjuiciaron las tarjetas opacas de Caja Madrid. En 2021 se fusiono con
+  CaixaBank. Figura como perjudicada en el caso de las tarjetas black y como
+  entidad cuya salida a bolsa es objeto del caso bankia-salida-bolsa.
+  # pendiente_primario: completar fechas y datos registrales desde fuente oficial.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

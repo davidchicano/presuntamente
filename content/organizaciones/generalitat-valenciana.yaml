@@ -1,0 +1,15 @@
+id: generalitat-valenciana
+nombre: "Generalitat Valenciana"
+nombres_alternativos:
+  - "Comunitat Valenciana"
+  - "Generalitat de la Comunitat Valenciana"
+  - "GVA"
+tipo: organismo_publico
+ambito_territorial: autonomico
+comunidad_autonoma: "Comunitat Valenciana"
+descripcion_corta: |
+  Gobierno autonómico de la Comunitat Valenciana. Suscribió contratos con el Instituto Nóos
+  presuntamente de forma irregular. Varios de sus ex altos cargos fueron acusados en el caso
+  Nóos, aunque resultaron absueltos en sentencia firme.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

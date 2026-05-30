@@ -1,0 +1,21 @@
+id: palau-pieza-ejecucion-cdc-2022
+caso_id: palau-musica
+tipo: auto_diligencias
+fecha: "2022-02-15"
+fecha_precision: dia
+titulo: "La Audiencia de Barcelona paraliza la pieza de ejecución del comiso a CDC por el procedimiento concursal del partido"
+descripcion: |
+  El 15 de febrero de 2022, la Sección 10ª de la Audiencia Provincial
+  de Barcelona se declara incompetente para determinar si el Partit
+  Demòcrata Europeu Català (PDeCat) y Junts per Catalunya son
+  sucesores de Convergència Democràtica de Catalunya a efectos de la
+  ejecución del comiso de 6.676.105,58 euros acordado en la sentencia
+  firme. La Audiencia deriva la competencia al Juzgado Mercantil 9 de
+  Barcelona, donde se tramita el procedimiento concursal abierto contra
+  CDC desde marzo de 2020. El importe del comiso queda integrado en la
+  masa de acreedores del concurso.
+organizaciones_afectadas:
+  - audiencia-provincial-barcelona
+  - convergencia-democratica-de-catalunya
+documento_principal_id: nota-cgpj-ap-barcelona-pieza-ejecucion-cdc-2022
+fase_resultante: ejecucion

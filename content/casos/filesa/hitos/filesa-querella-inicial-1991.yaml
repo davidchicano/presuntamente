@@ -1,0 +1,22 @@
+id: filesa-querella-inicial-1991
+caso_id: filesa
+tipo: querella_presentada
+fecha: "1991-06-07"
+fecha_precision: dia
+titulo: "Presentación de querellas iniciales que dan origen a la Causa Especial"
+descripcion: |
+  En junio de 1991, diversas partes presentan querellas ante la Sala
+  Segunda del Tribunal Supremo por presuntas irregularidades en la
+  financiación del PSOE a través de las empresas Filesa, Malesa y
+  Time Export. La condición de aforado ante el Tribunal Supremo del
+  senador Josep Maria Sala i Grisó determina la competencia de la Sala
+  Segunda para conocer el asunto, dando origen a la Causa Especial
+  nº 880/1991.
+personas_afectadas:
+  - jose-maria-sala-i-griso
+  - carlos-navarro-gomez
+organizaciones_afectadas:
+  - tribunal-supremo
+  - psoe
+  - partido-popular
+fase_resultante: denuncia_o_querella

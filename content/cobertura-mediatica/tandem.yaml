@@ -1,0 +1,419 @@
+# Cobertura mediática general — caso tandem
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: tandem
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Tándem"
+    - "caso Villarejo"
+    - "macrocausa Villarejo"
+    - "Operación Tándem"
+    - "Cenyt Villarejo"
+    - "comisario Villarejo espionaje"
+  ventanas_temporales:
+    - desde: "2017-11-01"
+      hasta: "2018-12-31"
+      notas: "Apertura del caso: detención de Villarejo el 3 de noviembre de 2017, incoación de Diligencias Previas 96/2017 en el JCI nº 6 ante Carmen Lamela; primeras revelaciones sobre la estructura de la macrocausa y las piezas."
+    - desde: "2019-01-01"
+      hasta: "2021-10-31"
+      notas: "Instrucción avanzada: ampliación de piezas (hasta 31+), imputación de directivos del Ibex 35 (BBVA, Repsol, Iberdrola, CaixaBank), salida de prisión provisional de Villarejo en noviembre de 2020. Primer juicio oral (Iron/Land/Pintor) iniciado en octubre de 2021."
+    - desde: "2023-06-01"
+      hasta: "2023-12-31"
+      notas: "Primera sentencia de la macrocausa: condena a Villarejo a 19 años de prisión por las piezas Iron, Land y Pintor (24 julio 2023)."
+    - desde: "2025-09-01"
+      hasta: "2025-12-31"
+      notas: "Sentencia de apelación Iron/Land/Pintor: la Sala de Apelación de la AN rebaja la condena de 19 a 13 años (septiembre 2025), absolviendo por falsedad documental."
+    - desde: "2026-01-01"
+      hasta: "2026-05-30"
+      notas: "Hitos recientes: sentencia pieza Dina (mayo 2026, 3 años y medio para Villarejo); confirmación del procesamiento del BBVA y Francisco González (febrero 2026); acusación de Anticorrupción con 173 años pedidos para González (marzo 2026)."
+  fuentes_buscadas:
+    - eldiario.es
+    - infolibre.es
+    - publico.es
+    - elespanol.com
+    - vozpopuli.com
+    - okdiario.com
+    - el-confidencial.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso Tándem o a Villarejo en el titular o lead.
+    Se incluyen noticias, reportajes, análisis y piezas de investigación. Se priorizan
+    hitos procesales clave (detención, primeras sentencias, sentencias de apelación,
+    nuevas piezas con relevancia) y momentos de revelación editorial significativa
+    (investigaciones periodísticas sobre los encargos).
+  criterios_exclusion: >
+    Se excluyen republicaciones palabra por palabra de agencia sin valor añadido.
+    Se excluyen menciones laterales en piezas centradas en otra causa (p. ej. Bárcenas
+    o Kitchen como caso independiente). Se excluyen editoriales anónimos sin firma.
+    El País (elpais.com), El Mundo (elmundo.es), ABC (abc.es), El Confidencial
+    (elconfidencial.com) y La Vanguardia (lavanguardia.com) no son accesibles
+    vía WebSearch con filtro de dominio en el entorno del agente; su cobertura
+    se anota como limitación pendiente.
+  notas: >
+    Rastreo inicial v1 sobre cinco ventanas temporales (nov 2017 — may 2026). La macrocausa
+    Tándem es la causa judicial más extensa de España contemporánea en número de piezas
+    separadas (más de 47); la cobertura periodística es inabarcable y este corpus es un
+    muestreo sistemático, no un listado exhaustivo. Las url_archivo se rellenan con
+    scripts/archivar-n4.mjs (pnpm archive:catchup). Medios con cobertura propia muy
+    relevante no incluida en este rastreo por limitaciones técnicas de acceso: El País,
+    El Mundo, El Confidencial, ABC. El Confidencial tiene investigaciones propias
+    fundamentales sobre la pieza BBVA/Trampa (periodismo de investigación sobre el
+    Proyecto Trampa). Pendiente rastrear en sesión futura con acceso directo.
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: DETENCIÓN Y APERTURA (nov 2017 — dic 2018) ───────────────────
+
+  - id: publico-dos-anos-macrocausa-2019-11-03
+    url: "https://www.publico.es/politica/caso-villarejo-cumple-dos-anos-convertido-macrocausa-casi-50-imputados-10-piezas-miles-datos-abrir.html"
+    medio_id: publico-es
+    titular: "El caso Villarejo cumple dos años convertido en macrocausa: casi 50 imputados, 10 piezas y miles de datos por abrir"
+    fecha_publicacion: "2019-11-03"
+    resumen: >
+      Balance de los dos primeros años desde la detención de Villarejo el 3 de noviembre
+      de 2017. La causa acumula ya diez piezas separadas y cerca de cincuenta personas
+      imputadas. El reportaje describe cómo la instrucción se ha convertido en una
+      macrocausa con múltiples focos: espionaje corporativo del Ibex 35, la operación
+      Kitchen contra Bárcenas y la filtración del móvil de Dina Bousselham.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Pieza de balance en el segundo aniversario de la detención. Referencia histórica para contextualizar el arranque de la macrocausa."
+
+  - id: publico-villarejo-sale-libertad-provisional-2020
+    url: "https://publico.es/politica/villarejo-sale-libertad-provisional-fiscalia.html"
+    medio_id: publico-es
+    titular: "Villarejo sale en libertad provisional porque Fiscalía nunca pidió cárcel por el resto de las 28 piezas de la causa 'Tándem'"
+    fecha_publicacion: "2020-11-04"
+    resumen: >
+      José Manuel Villarejo abandona la prisión provisional tras más de tres años
+      en prisión. La Fiscalía no había solicitado prisión preventiva para las piezas
+      distintas de las tres iniciales, por lo que el comisario queda en libertad
+      provisional mientras continúa la instrucción de las decenas de piezas pendientes.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 2: INSTRUCCIÓN AVANZADA E IBEX 35 (2019–2021) ────────────────────
+
+  - id: infolibre-imputados-ibex-lista-2022
+    url: "https://www.infolibre.es/economia/lista-interminable-imputados-ibex-caso-villarejo-33-directivos-iberdrola-bbva-repsol-caixa_1_1206973.html"
+    medio_id: infolibre
+    titular: "La lista interminable de imputados del Ibex por el 'caso Villarejo': 33 directivos de Iberdrola, BBVA, Repsol y Caixa"
+    fecha_publicacion: "2022-03-15"
+    resumen: >
+      Reportaje de balance sobre el impacto del caso Villarejo en las grandes corporaciones
+      del Ibex 35. La causa tiene ya treinta y tres directivos imputados de Iberdrola, BBVA,
+      Repsol y CaixaBank por presuntos encargos de espionaje al excomisario. El texto
+      desglosa las piezas por empresa y los cargos procesales de cada directivo.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-ibex-directivos-villarejo-imputados
+    url: "https://www.eldiario.es/economia/escandalo-villarejo-golpea-vieja-guardia-ibex-suma-treinta-directivos-imputados_1_8075781.html"
+    medio_id: eldiario-es
+    titular: "El escándalo Villarejo golpea a la vieja guardia del Ibex y ya suma más de treinta directivos imputados"
+    fecha_publicacion: "2022-01-14"
+    resumen: >
+      Pieza de análisis sobre la expansión de la macrocausa Tándem al entorno empresarial.
+      Más de treinta directivos de grandes empresas del Ibex están imputados por presuntos
+      encargos ilegales de espionaje al excomisario Villarejo. El texto analiza cómo el
+      caso ha afectado a la élite corporativa española y el perfil de los investigados.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: infolibre-villarejo-cien-anos-primer-juicio-2021
+    url: "https://www.infolibre.es/politica/villarejo-enfrenta-cien-anos-carcel-primer-juicio-macrocausa-tandem_1_1211666.html"
+    medio_id: infolibre
+    titular: "Villarejo se enfrenta a más de cien años de cárcel en el primer juicio de la macrocausa 'Tándem'"
+    fecha_publicacion: "2021-10-04"
+    resumen: >
+      Contexto previo al inicio del primer juicio oral de la macrocausa. La Fiscalía
+      Anticorrupción solicita más de cien años de prisión para Villarejo en las piezas
+      Iron, Land y Pintor. La pieza describe los encargos juzgados: espionaje corporativo
+      a empresas rivales por clientes privados, mediante el uso de recursos y bases de
+      datos policiales.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-primer-macrojuicio-inicio-2021
+    url: "https://www.publico.es/politica/comienza-primer-macrojuicio-villarejo-juega-110-anos-prision.html"
+    medio_id: publico-es
+    titular: "Comienza el primer macrojuicio contra Villarejo, que se juega 110 años de prisión"
+    fecha_publicacion: "2021-10-04"
+    resumen: >
+      Pieza informativa sobre el inicio del juicio oral de las piezas Iron, Land y Pintor
+      de la macrocausa Tándem, el primero de los múltiples juicios previstos para el
+      excomisario. Villarejo se enfrenta a una acusación de más de ciento diez años de
+      prisión. La pieza describe los hechos juzgados en cada una de las tres piezas.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: infolibre-villarejo-cien-anos-primer-juicio-2021
+    notas: "Pieza independiente de Público sobre el mismo hito; no es republicación de agencia."
+
+  # ── VENTANA 3: PRIMERA SENTENCIA IRON/LAND/PINTOR (jul–dic 2023) ─────────────
+
+  - id: eldiario-sentencia-19-anos-iron-land-pintor-2023
+    url: "https://www.eldiario.es/politica/audiencia-nacional-condena-villarejo-19-anos-primera-sentencia-macrocausa-comisario_1_10401602.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional condena a Villarejo a 19 años en la primera sentencia de la macrocausa contra el comisario"
+    fecha_publicacion: "2023-07-24"
+    resumen: >
+      La Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional condena a
+      Villarejo a diecinueve años de prisión por las piezas Iron, Land y Pintor del
+      caso Tándem. La condena incluye delitos de revelación de secretos y falsedad
+      documental, pero el tribunal absuelve al excomisario del delito de cohecho,
+      señalando que las actividades no se realizaron "en el ejercicio de su cargo".
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: infolibre-sentencia-19-anos-villarejo-2023
+    url: "https://www.infolibre.es/politica/audiencia-nacional-condena-villarejo-19-anos-prision-primera-sentencia-encargos-privados_1_1557582.html"
+    medio_id: infolibre
+    titular: "La Audiencia Nacional condena a Villarejo a 19 años por revelación de secretos y falsedad documental"
+    fecha_publicacion: "2023-07-24"
+    resumen: >
+      La Audiencia Nacional dicta la primera sentencia de la macrocausa Tándem y condena
+      al excomisario José Manuel Villarejo a diecinueve años de prisión por delitos de
+      revelación de secretos y falsedad documental. El tribunal le absuelve de cohecho,
+      rechazando que los encargos privados estuvieran vinculados al ejercicio de su cargo.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-sentencia-19-anos-iron-land-pintor-2023
+    notas: "Pieza independiente de Infolibre sobre el mismo hito."
+
+  - id: vozpopuli-condena-19-anos-libra-cohecho-2023
+    url: "https://www.vozpopuli.com/espana/audiencia-condena-19-anos-villarejo-libra-cohecho.html"
+    medio_id: vozpopuli
+    titular: "La Audiencia condena a 19 años de cárcel a Villarejo frente a los 80 que afrontaba y le libra del cohecho"
+    fecha_publicacion: "2023-07-24"
+    resumen: >
+      La Audiencia Nacional condena a Villarejo a diecinueve años de prisión en las piezas
+      Iron, Land y Pintor, una pena muy inferior a los ochenta años solicitados por la
+      Fiscalía. El tribunal absuelve al excomisario del delito de cohecho, un fallo que
+      tiene implicaciones para la macrocausa al reducir la responsabilidad penal directa
+      por usar el cargo policial.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-absolucion-cohecho-clave-macrocausa-2023
+    url: "https://www.eldiario.es/politica/caso-villarejo-debilita-exculpacion-poderosos-absolucion-cohecho-comisario_1_10416033.html"
+    medio_id: eldiario-es
+    titular: "El caso Villarejo se debilita con la exculpación de los más poderosos y la absolución por cohecho del comisario"
+    fecha_publicacion: "2023-07-25"
+    resumen: >
+      Análisis sobre las consecuencias de la primera sentencia de la macrocausa Tándem.
+      La absolución por cohecho del excomisario Villarejo debilita la causa contra los
+      clientes empresariales que le contrataron, ya que sin el delito de cohecho activo
+      resulta más difícil imputar a los directivos del Ibex que pagaron por los servicios.
+      El texto examina cómo la sentencia afecta a las piezas pendientes.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 4: APELACIÓN Y REDUCCIÓN A 13 AÑOS (sept–dic 2025) ───────────────
+
+  - id: eldiario-apelacion-rebaja-13-anos-2025
+    url: "https://www.eldiario.es/politica/sala-apelaciones-audiencia-nacional-rebaja-19-anos-13-primera-condena-villarejo_1_12610095.html"
+    medio_id: eldiario-es
+    titular: "La sala de apelaciones de la Audiencia Nacional rebaja de 19 años a 13 la primera condena a Villarejo"
+    fecha_publicacion: "2025-09-17"
+    resumen: >
+      La Sala de Apelación de la Audiencia Nacional reduce de diecinueve a trece años
+      la condena impuesta a Villarejo en las piezas Iron, Land y Pintor. La reducción
+      se debe a la absolución de dos delitos de falsedad en documento mercantil. El
+      tribunal mantiene la absolución del delito de cohecho ya fijada en la primera
+      sentencia. La condena no es firme y podría ser recurrida ante el Tribunal Supremo.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-apelacion-rebaja-villarejo-13-anos-2025
+    url: "https://www.elespanol.com/espana/tribunales/20250917/audiencia-nacional-rebaja-anos-primera-condena-villarejo-vuelve-absolverle-delito-cohecho/1003743928832_0.html"
+    medio_id: el-espanol
+    titular: "La Audiencia Nacional rebaja de 19 a 13 años de cárcel la primera condena de Villarejo y vuelve a absolverle de cohecho"
+    fecha_publicacion: "2025-09-17"
+    resumen: >
+      La Sala de Apelación de la Audiencia Nacional dicta nueva sentencia en las piezas
+      Iron, Land y Pintor, rebajando la condena de diecinueve a trece años por la
+      absolución de dos delitos de falsedad documental. El tribunal mantiene la
+      absolución del cohecho que la Fiscalía Anticorrupción había recurrido.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-apelacion-rebaja-13-anos-2025
+    notas: "Pieza independiente de El Español sobre el mismo hito."
+
+  # ── VENTANA 5: HITOS RECIENTES (ene–may 2026) ────────────────────────────────
+
+  - id: eldiario-bbva-francisco-gonzalez-banquillo-2026
+    url: "https://www.eldiario.es/politica/audiencia-nacional-aboca-banquillo-bbva-francisco-gonzalez-presuntos-encargos-ilegales-villarejo_1_13007918.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional aboca al banquillo al BBVA y Francisco González por los presuntos encargos ilegales a Villarejo"
+    fecha_publicacion: "2026-02-20"
+    resumen: >
+      La Sala de lo Penal de la Audiencia Nacional confirma el procesamiento del BBVA
+      y su expresidente Francisco González por los presuntos encargos ilegales al
+      excomisario Villarejo entre 2004 y 2016. El tribunal desestima los recursos
+      presentados y avala que la entidad bancaria y doce personas más sean juzgadas
+      por cohecho continuado y revelación de secretos. La Fiscalía solicita 173 años
+      de prisión para González.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-bbva-gonzalez-procesamiento-confirmado-2026
+    url: "https://www.elespanol.com/invertia/empresas/banca/20260220/audiencia-nacional-avala-bbva-expresidente-francisco-gonzalez-juzgados-caso-villarejo/1003744139241_0.html"
+    medio_id: el-espanol
+    titular: "La Audiencia Nacional avala que el BBVA y su expresidente Francisco González sean juzgados por el 'caso Villarejo'"
+    fecha_publicacion: "2026-02-20"
+    resumen: >
+      La Audiencia Nacional confirma el procesamiento del BBVA y su expresidente Francisco
+      González por los presuntos encargos ilegales a Villarejo. La Sala descarta todos
+      los recursos de las defensas y avala que hay indicios suficientes para sentar a
+      banco y directivos en el banquillo por cohecho y revelación de secretos.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-bbva-francisco-gonzalez-banquillo-2026
+    notas: "Pieza independiente de El Español sobre el mismo hito."
+
+  - id: infolibre-bbva-gonzalez-confirmacion-juicio-2026
+    url: "https://www.infolibre.es/politica/audiencia-nacional-confirma-juzgara-bbva-francisco-gonzalez-contratar-villarejo_1_2149013.html"
+    medio_id: infolibre
+    titular: "La Audiencia Nacional confirma que se juzgará a BBVA y a Francisco González por contratar a Villarejo"
+    fecha_publicacion: "2026-02-20"
+    resumen: >
+      La Audiencia Nacional ratifica el procesamiento del BBVA y de su expresidente
+      Francisco González en la pieza 9 del caso Tándem. La confirmación del procesamiento
+      supone que banco y exdirectivos afrontarán un juicio oral por los presuntos encargos
+      ilegales al excomisario entre 2004 y 2016, por valor de más de diez millones de euros.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-bbva-francisco-gonzalez-banquillo-2026
+    notas: "Pieza independiente de Infolibre sobre el mismo hito; se vincula a la de ElDiario como pieza de referencia del mismo hecho."
+
+  - id: infolibre-anticorrupcion-173-anos-gonzalez-2026
+    url: "https://www.infolibre.es/politica/anticorrupcion-pide-173-anos-carcel-expresidente-bbva-francisco-gonzalez_1_2164385.html"
+    medio_id: infolibre
+    titular: "Anticorrupción pide 173 años de cárcel para el expresidente del BBVA Francisco González"
+    fecha_publicacion: "2026-03-01"
+    resumen: >
+      La Fiscalía Anticorrupción presenta el escrito de acusación en la pieza 9 del caso
+      Tándem y solicita ciento setenta y tres años de prisión para Francisco González,
+      expresidente del BBVA, por delitos de cohecho activo y revelación de secretos.
+      También pide doscientos dieciséis años para Villarejo y multas de 184 millones
+      de euros para la entidad bancaria.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-anticorrupcion-173-anos-gonzalez-2026
+    url: "https://www.eldiario.es/politica/anticorrupcion-pide-173-anos-carcel-expresidente-bbva-francisco-gonzalez_1_13079981.html"
+    medio_id: eldiario-es
+    titular: "Anticorrupción pide 173 años de cárcel para el expresidente de BBVA Francisco González"
+    fecha_publicacion: "2026-03-01"
+    resumen: >
+      La Fiscalía Anticorrupción solicita ciento setenta y tres años de prisión para
+      Francisco González en la pieza BBVA del caso Villarejo, junto a doscientos dieciséis
+      años para el excomisario y doscientos cuarenta y tres para el exjefe de Seguridad
+      Julio Corrochano. La entidad bancaria afronta una multa de 184,3 millones de euros.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: infolibre-anticorrupcion-173-anos-gonzalez-2026
+    notas: "Pieza independiente de ElDiario sobre el mismo hito."
+
+  - id: eldiario-sentencia-dina-villarejo-tres-anos-2026
+    url: "https://www.eldiario.es/politica/audiencia-nacional-condena-villarejo-tres-anos-medio-carcel-filtrar-datos-movil-dina-bousselham-periodistas_1_13196935.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional condena a Villarejo a tres años y medio de cárcel por el caso Dina"
+    fecha_publicacion: "2026-05-05"
+    resumen: >
+      La Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional condena a
+      Villarejo a tres años y seis meses de prisión en la pieza Dina (pieza 10 del
+      caso Tándem) por revelar el contenido del móvil robado a Dina Bousselham,
+      asesora de Pablo Iglesias. La sentencia declara probado que Villarejo facilitó
+      la información a periodistas de su entorno con el fin de desprestigiar a Podemos.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-sentencia-dina-operacion-policial-podemos-2026
+    url: "https://www.eldiario.es/politica/sentencia-caso-dina-certifica-primera-vez-operacion-policial-desprestigio_1_13206211.html"
+    medio_id: eldiario-es
+    titular: "La sentencia del caso Dina certifica por primera vez una operación policial para el \"desprestigio\" de Podemos"
+    fecha_publicacion: "2026-05-07"
+    resumen: >
+      Análisis de la sentencia de la pieza Dina del caso Tándem. El texto subraya que
+      la condena de Villarejo implica que por primera vez un tribunal da por probada la
+      existencia de una operación de inteligencia policial dirigida a desprestigiar a
+      Podemos mediante la filtración del contenido del móvil de Dina Bousselham.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-sentencia-dina-villarejo-2026
+    url: "https://www.publico.es/sociedad/audiencia-nacional-rebaja-19-13-anos-carcel-pena-villarejo.html"
+    medio_id: publico-es
+    titular: "La Audiencia Nacional condena a Villarejo a tres años y medio de cárcel por el 'caso Dina'"
+    fecha_publicacion: "2026-05-05"
+    resumen: >
+      La Audiencia Nacional condena al excomisario Villarejo a tres años y seis meses
+      de prisión por la filtración del contenido del móvil de la exasesora de Podemos
+      Dina Bousselham. El tribunal da por probado que el excomisario entregó los datos
+      a periodistas de su entorno para dañar la imagen del partido.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-sentencia-dina-villarejo-tres-anos-2026
+    notas: "Pieza independiente de Público sobre el mismo hito."
+
+  - id: okdiario-sentencia-dina-condena-2026
+    url: "https://okdiario.com/espana/condenan-villarejo-revelar-contenido-del-movil-dina-mientras-ex-vicedircom-sanchez-va-rositas-16735856"
+    medio_id: okdiario
+    titular: "Condenan a Villarejo por revelar el contenido del móvil de Dina mientras el ex 'vicedircom' de Sánchez se va de rositas"
+    fecha_publicacion: "2026-05-05"
+    resumen: >
+      Okdiario recoge la condena de Villarejo en la pieza Dina, con énfasis en que el
+      exasesor de comunicación de la Moncloa relacionado con la causa no fue juzgado.
+      La pieza ofrece el ángulo de la impunidad de otros investigados del entorno del
+      Gobierno frente a la condena del excomisario.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Ángulo editorial diferenciado al de otras cabeceras sobre el mismo hito."

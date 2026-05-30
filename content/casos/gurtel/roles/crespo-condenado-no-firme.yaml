@@ -1,0 +1,18 @@
+id: crespo-condenado-no-firme
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: pablo-crespo-sabaris
+rol: condenado_no_firme
+delitos_atribuidos:
+  - cohecho
+  - blanqueo-de-capitales
+  - falsedad-documental
+  - organizacion-criminal
+fecha_inicio: "2018-05-24"
+fecha_fin: "2020-10-14"
+hito_origen_id: gurtel-sentencia-epoca-i-an-2018
+hito_fin_id: gurtel-sentencia-firme-ts-2020
+notas: |
+  Condenado en primera instancia a 37 años y 6 meses por la Época I,
+  en sentencia recurrible. La presunción de inocencia formal se
+  mantenía hasta la firmeza.

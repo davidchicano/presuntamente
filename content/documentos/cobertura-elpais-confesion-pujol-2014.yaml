@@ -1,0 +1,17 @@
+id: cobertura-elpais-confesion-pujol-2014
+titulo: "Cobertura de El País sobre la confesión pública de Jordi Pujol (25-jul-2014)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: >-
+  Cobertura periodística de El País sobre la confesión de Jordi Pujol. Constituye
+  una de las líneas editoriales para satisfacer V-13. URL exacta pendiente de
+  localizar.
+productor_organizacion_id: el-pais
+fecha_documento: "2014-07-25"
+# url_canonica: LLM-incierto: URL exacta del artículo pendiente de localizar
+# (sin acceso web en la sesión de creación). Pendiente en NOTES.md.
+estado_acceso: acceso_restringido_pero_citable
+caso_principal_id: pujol
+idioma: es
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,16 @@
+id: pujol-fallecimiento-marta-ferrusola-2024
+caso_id: pujol
+tipo: auto_diligencias
+fecha: "2024-09-22"
+fecha_precision: dia
+titulo: "Fallecimiento de Marta Ferrusola y extinción de su responsabilidad penal"
+descripcion: >-
+  El fallecimiento de Marta Ferrusola Lladós extingue la responsabilidad penal
+  a su respecto conforme al artículo 130.1.1ª del Código Penal, quedando
+  excluida del eventual juicio oral contra el resto de la familia.
+# LLM-incierto: fecha exacta de fallecimiento pendiente de verificar; marcada
+# fecha_precision dia (22-sep-2024 según registro consolidado de prensa).
+personas_afectadas:
+  - marta-ferrusola-llados
+organizaciones_afectadas:
+  - audiencia-nacional

@@ -1,0 +1,49 @@
+id: malaya-trama-urbanistica
+caso_id: malaya
+enunciado: |
+  La sentencia firme del Tribunal Supremo de 27 de julio de 2015
+  declara probada la existencia de una «trama de corrupción política
+  y económica generalizada» en el Ayuntamiento de Marbella bajo el
+  poder de hecho ejercido por Juan Antonio Roca, asesor del área de
+  Urbanismo. La conducta atribuida consistía en el favorecimiento
+  mercantil de promotores, constructores e inversores mediante
+  resoluciones municipales a cambio de dádivas, vulnerando
+  sistemáticamente la normativa urbanística en perjuicio del
+  interés general y de las arcas municipales.
+  La presunción de inocencia decae con carácter general respecto
+  de los 48 condenados por sentencia firme; quedan absueltos los
+  restantes.
+tipo: acreditado
+# Promovido a 'acreditado' el 2026-05-30 (rev. maintainer V-04).
+# Respaldo: nota oficial CGPJ (N1) sobre sentencia TS de 27-jul-2015 confirma
+# que el TS mantiene la existencia de la trama corrupta declarada por la AP
+# Málaga (sentencia 535/2013); nota oficial CGPJ (N1) sobre sentencia AP Málaga
+# de 4-oct-2013 describe la práctica corrupta con detalle. La sentencia del TS
+# es firme. El enunciado usa verbos y calificaciones tomados de los propios
+# documentos del CGPJ; no se añaden calificaciones propias.
+fecha_o_periodo:
+  desde: "1991-01-01"
+  hasta: "2006-04-07"
+  precision: rango
+personas_implicadas:
+  - juan-antonio-roca
+  - marisol-yague
+  - julian-munoz
+  - tomas-renones
+  - montserrat-corulla
+  - isabel-garcia-marcos
+  - pedro-roman-malaga
+organizaciones_implicadas:
+  - ayuntamiento-de-marbella
+  - grupo-independiente-liberal
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-malaya-ts-2015
+    pasaje: "El TS confirma la mayoría de las penas del caso Malaya [resolución de 48 recursos de casación; ponente Juan Saavedra Ruiz; sentencia de 27-jul-2015]. La sentencia confirma la existencia de la trama de corrupción en el Ayuntamiento de Marbella y el poder de hecho de Juan Antonio Roca."
+  - documento_id: nota-cgpj-sentencia-malaya-ap-malaga-2013
+    pasaje: "La práctica corrupta consistía en el favorecimiento mercantil por medio de resoluciones municipales a favor de promotores, constructores e inversores, que a cambio de dádivas vulneraban la normativa urbanística [sentencia 535/2013, AP Málaga Sección 1ª, 4-oct-2013; ponentes: José Godino, Rafael Linares, Manuel Caballero]."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

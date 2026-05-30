@@ -1,0 +1,27 @@
+id: granados-investigado-punica
+caso_id: punica
+sujeto_tipo: persona
+sujeto_persona_id: francisco-granados
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - prevaricacion
+  - trafico-de-influencias
+  - malversacion-caudales-publicos
+  - fraude-administraciones-publicas
+  - falsedad-documental
+  - blanqueo-de-capitales
+  - organizacion-criminal
+fecha_inicio: "2014-10-27"
+hito_origen_id: operacion-uco-detenciones-punica-2014-10-27
+notas: |
+  Tras la detención del 27 de octubre de 2014 en el marco de la
+  Operación Púnica, Francisco Granados Lerena adquirió la condición
+  procesal de investigado en las diligencias instruidas por el
+  Juzgado Central de Instrucción nº 6 de la Audiencia Nacional. Esta
+  condición de investigado se refiere a la macrocausa y a las piezas
+  no concluidas; su trayectoria procesal posterior varía por pieza
+  (condena firme en la pieza de la filtración; acusado en la pieza de
+  adjudicaciones de suelo y obra pública). La condición de
+  investigado no implica valoración de culpabilidad: rige la
+  presunción de inocencia.

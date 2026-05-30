@@ -1,0 +1,31 @@
+id: tarjetas-black-conexion-bankia-salida-bolsa
+caso_a_id: tarjetas-black
+caso_b_id: bankia-salida-bolsa
+tipo: conexion_factual
+descripcion: |
+  El caso de las tarjetas black de Caja Madrid/Bankia y el caso de la
+  salida a bolsa de Bankia están conectados factualmente: el asunto de
+  las tarjetas afloró públicamente en octubre de 2014 a partir de la
+  documentación remitida al Juzgado Central de Instrucción nº 4 de la
+  Audiencia Nacional en el marco de la causa por la salida a bolsa de
+  Bankia (Diligencias Previas 59/2012).
+
+  Ambas causas comparten la entidad central (Caja Madrid / Bankia) y
+  solapan personas investigadas (Rodrigo Rato aparece en la causa de la
+  salida a bolsa y fue condenado en firme en el caso de las tarjetas black
+  por la Audiencia Nacional en 2017 y por el Tribunal Supremo en 2018).
+  Sin embargo, son procedimientos penales independientes: la causa de las
+  tarjetas black se instruyó en el JCI nº 6 de la Audiencia Nacional
+  (DP 95/2013), mientras la causa de la salida a bolsa se instruyó en el
+  JCI nº 4. No son pieza separada la una de la otra: el nexo es el origen
+  del descubrimiento documental y la identidad de la entidad investigada.
+
+  La sentencia de la Audiencia Nacional de 23 de febrero de 2017 sobre
+  las tarjetas black recoge la cronología y el origen de la investigación,
+  incluyendo la aportación de documentación por parte de la causa de
+  la salida a bolsa.
+documentos_respaldo:
+  - sentencia-an-tarjetas-black-2017
+fecha_inicio: "2014-10-01"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,20 @@
+id: rol-manuel-chaves-condenado
+caso_id: eres-andalucia
+sujeto_tipo: persona
+sujeto_persona_id: manuel-chaves-gonzalez
+rol: condenado_firme
+delitos_atribuidos:
+  - prevaricacion
+fecha_inicio: "2022-07-26"
+hito_origen_id: hito-sentencia-ts-casacion-2022
+notas: |
+  Manuel Chaves fue condenado por la Audiencia de Sevilla (2019) y de
+  forma firme por el Tribunal Supremo (2022) por un delito de
+  prevaricación, con pena de inhabilitación. No fue condenado por
+  malversación, por lo que el amparo del TC de 2024 —que afectó a la
+  condena por malversación de otros condenados— no le beneficia en ese
+  extremo. Toda referencia a su responsabilidad se limita a lo
+  declarado por los tribunales. Rige la presunción de inocencia para
+  cualquier extremo no amparado por sentencia.
+  # LLM-incierto: duración exacta de la pena de inhabilitación, sin
+  # verificar en vivo. Verificar contra los primarios.

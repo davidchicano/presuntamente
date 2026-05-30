@@ -1,0 +1,17 @@
+id: perez-bigotes-condenado-firme
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: alvaro-perez-alonso
+rol: condenado_firme
+delitos_atribuidos:
+  - cohecho
+  - falsedad-documental
+fecha_inicio: "2023-04-10"
+hito_origen_id: gurtel-sentencia-firme-visita-papa-2023
+notas: |
+  Responsable de la rama valenciana de la red (Orange Market),
+  condenado con firmeza en las piezas valencianas del caso (visita
+  del Papa y Fitur). Los delitos atribuidos quedan pendientes de
+  afinar contra las sentencias íntegras de cada pieza. La presunción
+  de inocencia decae respecto de los hechos declarados probados y
+  firmes.

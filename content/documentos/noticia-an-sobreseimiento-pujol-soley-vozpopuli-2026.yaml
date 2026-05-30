@@ -1,0 +1,19 @@
+id: noticia-an-sobreseimiento-pujol-soley-vozpopuli-2026
+titulo: "La Audiencia Nacional archiva la causa contra Jordi Pujol por su estado de salud y mantiene el juicio para sus siete hijos (Vozpópuli)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: >-
+  Noticia de Vozpópuli (línea editorial de centro-derecha independiente) sobre el
+  sobreseimiento libre de Jordi Pujol Soley dictado el 27 de abril de 2026. URL
+  verificada el 2026-05-30. Incluida en el corpus de cobertura-mediatica/pujol.yaml.
+  Se usa como primer respaldo N4 (V-13) junto a la cobertura de elDiario.es para
+  el hito de sobreseimiento.
+productor_organizacion_id: vozpopuli
+fecha_documento: "2026-04-27"
+fecha_publicacion: "2026-04-27"
+url_canonica: "https://www.vozpopuli.com/espana/cataluna/la-audiencia-nacional-archiva-la-causa-contra-jordi-pujol-por-su-estado-de-salud-y-mantiene-el-juicio-para-sus-siete-hijos.html"
+estado_acceso: publico
+caso_principal_id: pujol
+idioma: es
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

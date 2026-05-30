@@ -1,0 +1,21 @@
+id: filesa-cambio-instructor-bacigalupo-1995
+caso_id: filesa
+tipo: cambio_juez
+fecha: "1995-09-18"
+fecha_precision: dia
+titulo: "Enrique Bacigalupo Zapater sustituye a Marino Barbero como instructor"
+descripcion: |
+  Tras la renuncia de Marino Barbero Santos a su cargo de magistrado el
+  31 de julio de 1995, el Consejo General del Poder Judicial acepta la
+  dimisión el 13 de septiembre de 1995. El 18 de septiembre de 1995 se
+  designa al magistrado Enrique Bacigalupo Zapater como nuevo instructor
+  de la Causa Especial nº 880/1991. La renuncia de Barbero se produjo
+  en un contexto de fuertes presiones sobre su labor instructora,
+  documentado en hemeroteca.
+personas_afectadas:
+  - marino-barbero-santos
+  - enrique-bacigalupo-zapater
+organizaciones_afectadas:
+  - tribunal-supremo
+  - consejo-general-poder-judicial
+fase_resultante: instruccion

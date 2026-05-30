@@ -1,0 +1,25 @@
+id: inicio-juicio-oral-forum-2017-09-18
+caso_id: forum-filatelico
+tipo: inicio_vista_oral
+fecha: "2017-09-18"
+fecha_precision: dia
+titulo: "Inicio del juicio oral ante la Sección Primera de la Sala de lo Penal de la Audiencia Nacional"
+descripcion: |
+  El 18 de septiembre de 2017, once años después de la intervención policial,
+  comienza el juicio oral del caso Fórum Filatélico ante la Sección Primera
+  de la Sala de lo Penal de la Audiencia Nacional. En el banquillo se sientan
+  27 acusados. La acusación popular ejercida por ADICAE solicita penas que en
+  conjunto suman 195 años de prisión. La vista oral se prolonga hasta el 15 de
+  abril de 2018, con numerosas sesiones que incluyen la práctica de prueba
+  pericial y testifical.
+personas_afectadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+  - antonio-merino-blanco
+  - ramon-saez-valcarcel
+organizaciones_afectadas:
+  - audiencia-nacional
+  - forum-filatelico-sa
+  - adicae
+  - fiscalia-anticorrupcion
+fase_resultante: juicio_oral

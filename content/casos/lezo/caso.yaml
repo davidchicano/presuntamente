@@ -150,7 +150,7 @@ resumen_cifras: |
   de euros (cobertura cruzada de Público y El Diario, 2019-2020).
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-23"
+ultima_revision_editorial: "2026-05-30"
 nivel_relevancia_editorial: capital
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
@@ -167,5 +167,5 @@ estado_ficha:
   conexiones: pendiente
   cobertura_mediatica_general: parcial
   revision_editorial: completo
-  notas: "Sentencia primera instancia de la pieza Inassa pendiente de CENDOJ; estado actual de la pieza Navalcarnero pendiente de la agenda de señalamientos del CGPJ. Notas oficiales del CGPJ sobre los autos históricos de Emissao y golf pendientes de localización."
-  fecha_actualizacion: "2026-05-26"
+  notas: "Sentencia primera instancia de la pieza Inassa pendiente de CENDOJ; estado actual de la pieza Navalcarnero pendiente de la agenda de señalamientos del CGPJ. Notas oficiales del CGPJ sobre los autos históricos de Emissao y golf pendientes de localización. Barrido de actualidad 2026-05-30 sin hito nuevo modelable: señal probable pero no confirmada a doble cabecera de reseñalamiento del juicio de la pieza Inassa a septiembre-octubre de 2026 (mundiario 29-may-2026; falta segunda cabecera o primario); pendiente prioritario para la próxima pasada. Ver NOTES.md."
+  fecha_actualizacion: "2026-05-30"

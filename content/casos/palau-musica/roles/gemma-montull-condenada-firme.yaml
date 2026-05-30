@@ -1,0 +1,17 @@
+id: gemma-montull-condenada-firme
+caso_id: palau-musica
+sujeto_tipo: persona
+sujeto_persona_id: gemma-montull-mir
+rol: condenado_firme
+delitos_atribuidos:
+  - apropiacion-indebida
+  - falsedad-documental
+  - blanqueo-de-capitales
+fecha_inicio: "2020-04-30"
+hito_origen_id: palau-sentencia-firme-ts-2020
+notas: |
+  Condena firme confirmada por la STS 813/2020 del Tribunal Supremo
+  (30 de abril de 2020): condena reducida por el TS a 4 años de
+  prisión (de los 4 años, 6 meses y 22 días de primera instancia)
+  y multa de 2,6 millones de euros. La presunción de inocencia
+  decae respecto de los hechos declarados probados por sentencia firme.

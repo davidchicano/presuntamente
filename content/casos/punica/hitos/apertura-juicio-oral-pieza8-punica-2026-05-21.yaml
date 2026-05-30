@@ -1,0 +1,35 @@
+id: apertura-juicio-oral-pieza8-punica-2026-05-21
+caso_id: punica
+tipo: apertura_juicio_oral
+fecha: "2026-05-21"
+fecha_precision: dia
+titulo: "El instructor Antonio Piña dicta auto de apertura de juicio oral contra Francisco Granados y otras cuarenta personas por presuntas adjudicaciones irregulares de suelo y obra pública entre 2003 y 2011"
+descripcion: |
+  El magistrado Antonio Piña Alonso, titular del Juzgado Central de
+  Instrucción nº 6 de la Audiencia Nacional, dicta auto de apertura
+  de juicio oral en la pieza del caso Púnica relativa a presuntas
+  irregularidades cometidas entre 2003 y 2011 en adjudicaciones de
+  suelo público para vivienda y en obras vinculadas a la empresa
+  pública regional Arpegio y a infraestructuras de transporte. La
+  causa se dirige contra el ex consejero madrileño Francisco Granados
+  Lerena y otras cuarenta personas, a quienes se atribuyen presuntos
+  delitos de prevaricación administrativa, cohecho, tráfico de
+  influencias, malversación de caudales públicos, fraude a las
+  administraciones públicas y falsedad documental. La Fiscalía
+  Especial contra la Corrupción y la Criminalidad Organizada solicita
+  cuarenta y dos años de prisión para Francisco Granados; se trata de
+  una petición de pena no firme. Rige la presunción de inocencia.
+personas_afectadas:
+  - francisco-granados
+organizaciones_afectadas:
+  - juzgado-central-instruccion-6
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+  - comunidad-de-madrid
+documento_principal_id: infobae-apertura-juicio-pieza8-punica-2026-05-26
+documentos_relacionados:
+  - publico-apertura-juicio-pieza8-punica-2026-05-26
+  - eldebate-apertura-juicio-pieza8-punica-2026-05-27
+hechos_introducidos:
+  - peticion-pena-granados-pieza8-punica
+fase_resultante: fase_intermedia

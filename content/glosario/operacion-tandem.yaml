@@ -1,0 +1,18 @@
+id: operacion-tandem
+label: "Operación Tándem"
+nombres_alternativos:
+  - "Caso Tándem"
+  - "Caso Villarejo"
+  - "Macrocausa Villarejo"
+  - "Tándem"
+categoria: operacion_policial
+descripcion_breve: |
+  Nombre con el que se conoce mediáticamente la macrocausa incoada como
+  Diligencias Previas 96/2017 en el Juzgado Central de Instrucción nº 6
+  de la Audiencia Nacional, que agrupa más de cuarenta y siete piezas
+  separadas sobre la presunta venta de servicios de espionaje e inteligencia
+  privada por el comisario jubilado José Manuel Villarejo a través de su
+  empresa Cenyt, valiéndose de su condición policial y del acceso a bases
+  de datos reservadas del Estado.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,48 @@
+id: pp-afectado-indirecto-tarjetas-black
+naturaleza: afectacion_indirecta_en_caso
+descripcion: >-
+  El Partido Popular queda alcanzado de forma indirecta por el procedimiento
+  de las tarjetas black de Caja Madrid / Bankia en su condicion de partido del
+  que provenia Rodrigo de Rato y Figaredo, Vicepresidente Primero del Gobierno
+  y Ministro de Economia (1996-2004), quien fue condenado de forma firme por
+  el Tribunal Supremo (2018) por apropiacion indebida en relacion con el uso de
+  tarjetas de empresa durante su presidencia de Caja Madrid y Bankia (2010-2012).
+  El PP no es sujeto procesal del caso. Se senala que el consejo de administracion
+  de Caja Madrid era de designacion plural, con representantes de distintas
+  formaciones politicas y organizaciones sindicales, por lo que el alcance
+  indirecto del caso no es exclusivo de ningun partido.
+sujeto_organizacion_id: partido-popular
+objeto_organizacion_id: audiencia-nacional
+desde: "2017-02-23"
+precision_desde: dia
+vigente: false
+hasta: "2018-06-08"
+precision_hasta: dia
+relevancia_para_caso_ids: [tarjetas-black]
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: >-
+      La sentencia de la Audiencia Nacional de 23 de febrero de 2017 condena
+      a Rodrigo de Rato y Figaredo, exvicepresidente primero del Gobierno
+      espanol y exministro de Economia (cargos desempenados en representacion
+      del PP durante los Gobiernos Aznar 1996-2004), por apropiacion indebida
+      en relacion con el uso de tarjetas de empresa de Caja Madrid / Bankia.
+  - documento_id: sentencia-ts-tarjetas-black-2018
+    pasaje: >-
+      La Sala Segunda del Tribunal Supremo confirma en casacion la condena de
+      Rodrigo de Rato y Figaredo, identificando su trayectoria politica previa
+      en el Partido Popular como contexto del caso.
+nivel_afectacion: indirecta
+justificacion_afectacion: >-
+  Rodrigo de Rato y Figaredo fue Vicepresidente Primero del Gobierno y Ministro
+  de Economia en los Ejecutivos del PP de Jose Maria Aznar (1996-2004) antes de
+  presidir Caja Madrid y Bankia (2010-2012). Su condena firme por apropiacion
+  indebida en el procedimiento de las tarjetas black alcanza indirectamente al
+  Partido Popular como partido del cargo publico condenado. Se aplica una
+  interpretacion analogica a la regla de afectacion indirecta del partido del
+  cargo investigado (vinculada al doc 08): el alcance es reputacional y no
+  procesal; el PP no es parte del procedimiento. La afectacion indirecta no es
+  exclusiva del PP dado el caracter plural de la composicion politica del
+  consejo de administracion de Caja Madrid.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

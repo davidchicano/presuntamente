@@ -1,0 +1,18 @@
+id: juzgado-instruccion-26-madrid
+nombre: "Juzgado de Instrucción nº 26 de Madrid"
+nombres_alternativos:
+  - "JI nº 26 de Madrid"
+  - "JI 26 Madrid"
+tipo: juzgado
+jurisdiccion: penal
+ambito_territorial: local
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+descripcion_corta: |
+  Juzgado de Instrucción nº 26 de Madrid que instruye la rama Viajes
+  Ceres del caso Filesa, reabierta por el Tribunal Supremo en 2022.
+  Investiga la presunta desviación de subvenciones del Imserso hacia
+  la red de empresas pantalla de la trama Filesa.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

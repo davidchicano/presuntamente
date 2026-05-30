@@ -1,0 +1,20 @@
+id: prensa-sentencia-filesa-libertad-digital-2001
+titulo: "Las penas a los ocho condenados del caso Filesa"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Artículo de Libertad Digital (libertaddigital.com) publicado el 4 de
+  junio de 2001 que detalla las penas individuales de los ocho
+  condenados del caso Filesa. Se usa como fuente N4 de los datos de
+  condena individuales que la STS 1/1997 no tiene disponible en N1
+  completo. Los datos son coherentes con la STC 126/2001 y 127/2001
+  (N1) respecto a Oliveró, Álvarez y Molledo, lo que permite su uso
+  por V-13 (cruce de líneas editoriales).
+productor_organizacion_id: libertad-digital
+fecha_documento: "2001-06-04"
+url_canonica: "https://www.libertaddigital.com/espana/2001-06-04/las-penas-a-los-ocho-condenados-del-caso-filesa-32154/"
+estado_acceso: publico
+idioma: es
+caso_principal_id: filesa
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

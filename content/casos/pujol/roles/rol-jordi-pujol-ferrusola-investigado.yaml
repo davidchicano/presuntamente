@@ -1,0 +1,17 @@
+id: rol-jordi-pujol-ferrusola-investigado
+caso_id: pujol
+sujeto_tipo: persona
+sujeto_persona_id: jordi-pujol-ferrusola
+rol: investigado
+delitos_atribuidos:
+  - blanqueo-de-capitales
+  - organizacion-criminal
+  - delito-contra-hacienda-publica
+  - cohecho
+fecha_inicio: "2014-07-01"
+notas: >-
+  Jordi Pujol Ferrusola, primogénito de la familia, está investigado y es la
+  persona sobre la que la instrucción centró el presunto cobro de comisiones y
+  los movimientos de capital en el extranjero. Investigado bajo plena presunción
+  de inocencia; no existe sentencia condenatoria. Atribución de delitos
+  pendiente de verificar contra resolución oficial; ver NOTES.md.

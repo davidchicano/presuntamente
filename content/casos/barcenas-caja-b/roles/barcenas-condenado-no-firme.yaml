@@ -1,0 +1,19 @@
+id: barcenas-condenado-no-firme
+caso_id: barcenas-caja-b
+sujeto_tipo: persona
+sujeto_persona_id: luis-barcenas
+rol: condenado_no_firme
+delitos_atribuidos:
+  - delito-contra-hacienda-publica
+  - falsedad-documental
+fecha_inicio: "2021-10-28"
+fecha_fin: "2024-11-15"
+hito_origen_id: barcenas-sentencia-an-genova-2021-10-28
+hito_fin_id: barcenas-sentencia-firme-ts-2024-11-15
+notas: |
+  Condenado por la Sección Segunda de la Audiencia Nacional el 28 de octubre
+  de 2021 a dos años de prisión y multa de 1,2 millones de euros como
+  cooperador necesario en un delito continuado de falsedad en documento
+  mercantil y un delito contra la Hacienda Pública. Sentencia recurrible en
+  casación ante el Tribunal Supremo. La presunción de inocencia formal se
+  mantiene hasta la firmeza.

@@ -1,0 +1,15 @@
+id: gemma-alcala-investigada-absuelta
+caso_id: tandem
+sujeto_tipo: persona
+sujeto_persona_id: gemma-alcala-garces
+rol: absuelto
+fecha_inicio: "2017-11-03"
+fecha_fin: "2023-07-24"
+hito_origen_id: detencion-villarejo-apertura-causa-2017-11-03
+hito_fin_id: sentencia-iron-land-pintor-primera-instancia-2023-07-24
+notas: |
+  Gemma Alcalá Garcés fue absuelta por la Sección Cuarta de la Sala de lo
+  Penal de la Audiencia Nacional en el juicio conjunto de las piezas Iron,
+  Land y Pintor (sentencia julio 2023). Sigue figurando como investigada
+  en otras piezas del procedimiento troncal sin sentencia. Rige la
+  presunción de inocencia respecto de las piezas activas.

@@ -1,0 +1,11 @@
+id: del-moral-juez-ponente-ts
+caso_id: barcenas-caja-b
+sujeto_tipo: persona
+sujeto_persona_id: antonio-del-moral
+rol: juez_ponente
+fecha_inicio: "2024-11-15"
+hito_origen_id: barcenas-sentencia-firme-ts-2024-11-15
+notas: |
+  Magistrado de la Sala Segunda del Tribunal Supremo, ponente de la sentencia
+  ECLI:ES:TS:2024:5577 de 15 de noviembre de 2024 que resuelve los recursos
+  de casación y confirma en lo esencial la condena de la Audiencia Nacional.

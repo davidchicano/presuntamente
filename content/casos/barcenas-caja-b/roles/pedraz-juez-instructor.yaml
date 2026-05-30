@@ -1,0 +1,13 @@
+id: pedraz-juez-instructor
+caso_id: barcenas-caja-b
+sujeto_tipo: persona
+sujeto_persona_id: santiago-pedraz
+rol: juez_instructor
+fecha_inicio: "2020-11-01"
+fecha_fin: "2022-12-19"
+hito_fin_id: barcenas-archivo-pedraz-donaciones-2022-12-19
+notas: |
+  Santiago Pedraz asumió la instrucción de la pieza de donaciones de la caja B
+  del PP cuando José de la Mata marchó a Eurojust en noviembre de 2020. Dictó
+  el auto de sobreseimiento provisional de la pieza el 19 de diciembre de 2022
+  a petición de la Fiscalía Anticorrupción.

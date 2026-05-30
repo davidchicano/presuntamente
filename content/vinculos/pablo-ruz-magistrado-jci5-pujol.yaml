@@ -1,0 +1,19 @@
+id: pablo-ruz-magistrado-jci5-pujol
+naturaleza: cargo_judicial
+descripcion: "Magistrado titular del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional entre 2010 y 2015 aproximadamente. En esa condición inició la investigación sobre el patrimonio de la familia Pujol Ferrusola en 2014, antes de ser relevado por José de la Mata."
+sujeto_persona_id: pablo-ruz-gutierrez
+objeto_organizacion_id: juzgado-central-instruccion-5
+cargo_o_rol: "Magistrado-juez del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+desde: "2010-05-01"
+hasta: "2015-03-01"
+precision_desde: mes
+precision_hasta: mes
+vigente: false
+relevancia_para_caso_ids: [pujol]
+documentos_respaldo:
+  - documento_id: auto-transformacion-procedimiento-abreviado-pujol
+    pasaje: "El auto de transformación a procedimiento abreviado del JCI nº 5 de la Audiencia Nacional referencia la fase instrucción iniciada por Pablo Ruz Gutiérrez sobre el patrimonio de la familia Pujol."
+  - documento_id: cobertura-elpais-confesion-pujol-2014
+    pasaje: "El País menciona la instrucción iniciada en el JCI nº 5 de la Audiencia Nacional sobre el patrimonio de la familia Pujol en el momento de la confesión pública, cuando Pablo Ruz era el magistrado instructor."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

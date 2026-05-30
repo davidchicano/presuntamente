@@ -1,0 +1,18 @@
+id: cenyt-entidad-investigada-tandem
+naturaleza: entidad_investigada_en_caso
+descripcion: "El grupo de sociedades Cenyt es el vehículo empresarial central investigado en el caso Tándem. A través de sus distintas sociedades se habrían facturado más de diez millones de euros en servicios de inteligencia privada, espionaje e investigación de dudosa legalidad a clientes corporativos y particulares entre 2004 y 2017, presuntamente valiéndose de la condición policial de su director efectivo, el comisario jubilado José Manuel Villarejo."
+sujeto_organizacion_id: cenyt
+objeto_organizacion_id: audiencia-nacional
+desde: "2017-11-03"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [tandem]
+nivel_afectacion: directa
+justificacion_afectacion: "Cenyt es la entidad empresarial cuya actividad presuntamente delictiva origina el procedimiento principal del caso Tándem; figura como entidad investigada en el procedimiento y sus contratos con clientes son el objeto de múltiples piezas separadas."
+documentos_respaldo:
+  - documento_id: cgpj-nota-condena-villarejo-iron-land-pintor-2023-07-24
+    pasaje: "La nota del CGPJ sobre la sentencia de julio de 2023 identifica a Cenyt como la empresa instrumental a través de la cual se articularon los encargos de espionaje e inteligencia privada objeto de las piezas Iron, Land y Pintor."
+  - documento_id: newtral-claves-condena-villarejo-tandem-2023-07-24
+    pasaje: "Newtral describe la estructura del grupo Cenyt y su papel como vehículo empresarial de los servicios presuntamente ilegales investigados en la macrocausa Tándem."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

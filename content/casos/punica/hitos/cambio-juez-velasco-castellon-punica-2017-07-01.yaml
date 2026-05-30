@@ -1,0 +1,22 @@
+id: cambio-juez-velasco-castellon-punica-2017-07-01
+caso_id: punica
+tipo: cambio_juez
+fecha: "2017-07-01"
+fecha_precision: mes
+titulo: "Manuel García-Castellón sucede a Eloy Velasco como titular del Juzgado Central de Instrucción nº 6 y asume la instrucción de Púnica"
+descripcion: |
+  En junio de 2017 el magistrado Eloy Velasco cesa como titular del
+  Juzgado Central de Instrucción nº 6 de la Audiencia Nacional al
+  ascender por concurso a la Sala de Apelaciones de la Audiencia
+  Nacional, de reciente creación. La titularidad del juzgado y la
+  instrucción de las macrocausas Púnica y Lezo, entre otras, las
+  asume el magistrado Manuel María García-Castellón García-Lomas,
+  que continuará al frente de la instrucción hasta su jubilación
+  forzosa por edad en septiembre de 2024.
+personas_afectadas:
+  - eloy-velasco-nunez
+  - manuel-garcia-castellon
+organizaciones_afectadas:
+  - juzgado-central-instruccion-6
+  - audiencia-nacional
+fase_resultante: instruccion

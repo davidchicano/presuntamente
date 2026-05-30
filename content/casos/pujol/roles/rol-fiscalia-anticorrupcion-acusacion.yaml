@@ -1,0 +1,10 @@
+id: rol-fiscalia-anticorrupcion-acusacion
+caso_id: pujol
+sujeto_tipo: organizacion
+sujeto_organizacion_id: fiscalia-anticorrupcion
+rol: querellante
+fecha_inicio: "2014-07-01"
+notas: >-
+  La Fiscalía Anticorrupción ejerce la acusación pública en la causa contra la
+  familia Pujol, habiendo calificado indiciariamente los hechos como
+  organización criminal y blanqueo de capitales, entre otros delitos.

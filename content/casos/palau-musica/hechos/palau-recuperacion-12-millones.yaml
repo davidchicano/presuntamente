@@ -1,0 +1,38 @@
+id: palau-recuperacion-12-millones
+caso_id: palau-musica
+enunciado: |
+  En el trámite de ejecución de la sentencia firme STS 813/2020, las
+  instituciones perjudicadas —el Consorci del Palau de la Música
+  Catalana, la Fundació Privada Orfeó Català-Palau de la Música
+  Catalana y la Associació Orfeó Català— recuperaron más de
+  12 millones de euros de los más de 23 millones de euros expoliados,
+  según la cobertura periodística de 2022. De los condenados se
+  recuperaron más de 6 millones de euros de Fèlix Millet, más de
+  1,6 millones de Jordi Montull, y casi 3 millones de Marta Vallès
+  (cónyuge de Millet) y sus herederos. La recuperación del comiso
+  de 6,67 millones de euros a CDC quedó derivada al procedimiento
+  concursal del partido en el Juzgado Mercantil 9 de Barcelona
+  (auto Audiencia Provincial de Barcelona de 15 de febrero de 2022).
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2020-05-01"
+  hasta: "2022-11-01"
+  precision: rango
+personas_implicadas:
+  - felix-millet-tusell
+  - jordi-montull-bagur
+organizaciones_implicadas:
+  - fundacio-orfeo-catala-palau-musica
+  - associacio-orfeo-catala
+  - consorci-palau-musica-catalana
+  - convergencia-democratica-de-catalunya
+documentos_respaldo:
+  - documento_id: eldiario-recuperacion-fondos-palau-2022
+    pasaje: "Más de 12 millones recuperados del saqueo del Palau de la Música"
+  - documento_id: nota-cgpj-ap-barcelona-pieza-ejecucion-cdc-2022
+    pasaje: "La Audiencia de Barcelona paraliza la ejecución del comiso a CDC y la remite al concurso del partido"
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

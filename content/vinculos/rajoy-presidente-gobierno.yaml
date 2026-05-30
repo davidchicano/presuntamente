@@ -10,7 +10,7 @@ precision_desde: dia
 precision_hasta: dia
 vigente: false
 gobierno_o_legislatura: "X y XI Legislaturas (Gobierno Rajoy I y II)"
-relevancia_para_caso_ids: [kitchen]
+relevancia_para_caso_ids: [kitchen, gurtel]
 documentos_respaldo:
   - documento_id: boe-rd1823-2011-nombramiento-rajoy-presidente
     pasaje: "Real Decreto 1823/2011, de 21 de diciembre: nombramiento de Mariano Rajoy Brey como Presidente del Gobierno, publicado en BOE nº 308 del 23 de diciembre de 2011."

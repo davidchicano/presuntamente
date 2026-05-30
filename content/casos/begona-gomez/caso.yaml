@@ -38,7 +38,7 @@ sintesis_caso:
     - "El procedimiento empezó en abril de 2024 por una denuncia de Manos Limpias."
     - "El instructor propuso en abril de 2026 que el caso pase a Tribunal del Jurado por varios delitos presuntos."
     - "La Fiscalía sostiene que no hay indicios suficientes y ha pedido el archivo."
-  estado_actual: "El caso está en fase intermedia; no hay sentencia firme."
+  estado_actual: "El caso está en fase intermedia, a la espera de la audiencia previa al juicio ante el Tribunal del Jurado convocada para el 9 de junio de 2026, en la que el instructor decidirá sobre la apertura de juicio oral; la defensa ha pedido aplazarla. No hay sentencia firme."
   cifras_clave:
     - "113.509,32 € de gasto UCM citado"
     - "4 delitos presuntos en la causa"
@@ -67,7 +67,7 @@ resumen_cifras: |
   la propia universidad).
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-30"
 nivel_relevancia_editorial: capital
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
@@ -84,5 +84,5 @@ estado_ficha:
   conexiones: pendiente
   cobertura_mediatica_general: parcial
   revision_editorial: completo
-  notas: "Cuatro autos de instrucción y un escrito de Fiscalía siguen pendientes de aparecer en fuente oficial verificable. Los Juzgados de Instrucción ordinarios no publican autos en CENDOJ; se reanalizará cuando el CGPJ los publique o cuando aparezcan en un mirror auditable. Cobertura mediática: corpus inicial de 29 piezas verificadas (14 medios, 5 ventanas temporales abr 2024–may 2026). Parcial por ausencia de El País, El Mundo y ABC; pendiente segunda pasada con esos medios."
-  fecha_actualizacion: "2026-05-25"
+  notas: "Cuatro autos de instrucción y un escrito de Fiscalía siguen pendientes de aparecer en fuente oficial verificable. Los Juzgados de Instrucción ordinarios no publican autos en CENDOJ; se reanalizará cuando el CGPJ los publique o cuando aparezcan en un mirror auditable. Cobertura mediática: corpus inicial de 29 piezas verificadas (14 medios, 5 ventanas temporales abr 2024–may 2026). Parcial por ausencia de El País, El Mundo y ABC; pendiente segunda pasada con esos medios. Barrido de actualidad 2026-05-30: incorporado el detalle del informe UCO del 25-may y la fiscalización de la Cámara de Cuentas de la Comunidad de Madrid (26-may); pendientes de V-13 la presunta prevaricación y el aplazamiento del 9-jun (ver NOTES)."
+  fecha_actualizacion: "2026-05-30"

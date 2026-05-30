@@ -1,0 +1,17 @@
+id: correa-condenado-firme
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: francisco-correa-sanchez
+rol: condenado_firme
+delitos_atribuidos:
+  - cohecho
+  - blanqueo-de-capitales
+  - falsedad-documental
+  - organizacion-criminal
+fecha_inicio: "2020-10-14"
+hito_origen_id: gurtel-sentencia-firme-ts-2020
+notas: |
+  Condena confirmada y firme por el Tribunal Supremo (51 años por la
+  Época I), además de las condenas firmes de las piezas valencianas.
+  La presunción de inocencia decae respecto de los hechos declarados
+  probados y firmes.

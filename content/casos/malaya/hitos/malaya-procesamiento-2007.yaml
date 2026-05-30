@@ -1,0 +1,34 @@
+id: malaya-procesamiento-2007
+caso_id: malaya
+tipo: auto_procesamiento
+fecha: "2007-07-23"
+fecha_precision: dia
+titulo: "Auto de procesamiento del Juzgado de Instrucción nº 5 de Marbella: 86 procesados"
+descripcion: |
+  El 23 de julio de 2007 el Juzgado de Instrucción nº 5 de Marbella
+  dicta auto de procesamiento contra 86 personas (de las 95 que
+  llegaron a ser investigadas) por los delitos de cohecho, malversación
+  de caudales públicos, prevaricación, tráfico de influencias, blanqueo
+  de capitales, fraude a las administraciones públicas y delitos
+  urbanísticos. La instrucción queda cerrada el 17 de julio de 2007,
+  con el Sumario 7/07 del Juzgado de Instrucción nº 5 de Marbella,
+  elevado a la Audiencia Provincial de Málaga como Rollo Sumario
+  21/2007 (Sección 1ª). El propio instructor Torres Segura ha sido
+  trasladado previamente a Granada y la instrucción final corresponde
+  al magistrado sustituto.
+personas_afectadas:
+  - juan-antonio-roca
+  - marisol-yague
+  - julian-munoz
+  - tomas-renones
+  - montserrat-corulla
+  - isabel-garcia-marcos
+  - jose-maria-del-nido
+  - pedro-roman-malaga
+organizaciones_afectadas:
+  - juzgado-instruccion-5-marbella
+  - audiencia-provincial-malaga
+  - fiscalia-anticorrupcion
+documento_principal_id: nota-cgpj-sentencia-malaya-ap-malaga-2013
+hechos_introducidos: []
+fase_resultante: fase_intermedia

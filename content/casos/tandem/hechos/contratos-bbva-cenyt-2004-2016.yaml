@@ -1,0 +1,65 @@
+id: contratos-bbva-cenyt-2004-2016
+caso_id: tandem
+enunciado: |
+  La Fiscalía Anticorrupción atribuye en su escrito de acusación de marzo de
+  2026 (pieza separada nº 9 del caso Tándem, conocida como pieza BBVA o
+  Trampa) que el Banco Bilbao Vizcaya Argentaria, con el impulso de su
+  entonces presidente Francisco González Rodríguez, contrató entre 2004 y
+  2016 los servicios de la empresa Cenyt y sociedades vinculadas al comisario
+  José Manuel Villarejo Pérez para la realización de encargos presuntamente
+  ilegales. Según la acusación, esos encargos incluían vigilancias a personas
+  concretas, interceptación de comunicaciones, consulta de bases de datos
+  reservadas y elaboración de informes de inteligencia sobre competidores,
+  accionistas críticos y otras personas del entorno del banco. La Sala de lo
+  Penal de la Audiencia Nacional confirmó en febrero de 2026 el procesamiento
+  de Francisco González, del BBVA como persona jurídica y de otros trece
+  imputados. La Fiscalía solicita 173 años de prisión para Francisco González
+  y 180 millones de euros de multa para el BBVA. La condición de procesados
+  no implica valoración de culpabilidad; rige la presunción de inocencia
+  mientras no recaiga sentencia firme.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2004-01-01"
+  hasta: "2016-12-31"
+  precision: rango
+personas_implicadas:
+  - francisco-gonzalez-rodriguez
+  - jose-manuel-villarejo
+  - rafael-redondo-rodriguez
+organizaciones_implicadas:
+  - bbva
+  - cenyt
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: theobjective-fiscalia-173-anos-bbva-gonzalez-2026-03-18
+    pasaje: "La Fiscalía pide 173 años de cárcel para Francisco González y 180 millones de multa para el BBVA por contratos con Cenyt entre 2004 y 2016 para encargos presuntamente ilegales."
+nivel_fuente_efectivo: 4
+importe: 10000000
+importe_alcance: componente
+importe_clase: objeto
+importe_naturaleza: comision_ilicita
+importe_nota: >-
+  La Fiscalía cuantifica los contratos del BBVA con Cenyt en más de
+  10 millones de euros entre 2004 y 2016. Esta cifra es un componente del
+  importe total del caso Tándem (ya estructurado en el hecho troncal de
+  Cenyt), por lo que se registra aquí como 'componente' para evitar el
+  doble cómputo (V-23). Los 180 millones de multa pedidos al BBVA son
+  una petición de pena (consecuencia), no el objeto de la conducta.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: bbva
+    papel: activo
+    nota: El BBVA es quien habría contratado y pagado los servicios de Cenyt.
+  - sujeto_tipo: persona
+    sujeto: francisco-gonzalez-rodriguez
+    papel: activo
+    nota: Según la acusación, González impulsó o autorizó la contratación de Cenyt.
+  - sujeto_tipo: organizacion
+    sujeto: cenyt
+    papel: beneficiario
+    nota: Cenyt percibió los importes de los contratos; beneficiario de los pagos.
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

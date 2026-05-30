@@ -1,0 +1,21 @@
+id: daniel-osacar-escrig
+nombre_completo: "Daniel Osàcar Escrig"
+nombres_alternativos:
+  - "Daniel Osacar"
+  - "Osàcar"
+  - "Osácar"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Tesorero de Convergència Democràtica de Catalunya"
+    organizacion_id: convergencia-democratica-de-catalunya
+    desde: "1999-01-01"
+    hasta: "2009-07-27"
+biografia_corta: |
+  Extesorero de Convergència Democràtica de Catalunya (CDC). Considerado
+  el enlace entre Ferrovial-Agroman y el partido en el esquema de comisiones
+  ilícitas a cambio de adjudicaciones de obra pública en Cataluña (1999-2009).
+  Condenado por la STS 813/2020 del Tribunal Supremo a 3 años y 6 meses de
+  prisión (reducidos por el TS respecto a los 4 años y 5 meses de primera
+  instancia) y multa de 3,7 millones de euros en el marco del caso Palau.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

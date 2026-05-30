@@ -1,0 +1,16 @@
+id: del-nido-condenado-firme
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: jose-maria-del-nido
+rol: condenado_firme
+delitos_atribuidos:
+  - fraude-administraciones-publicas
+  - malversacion-caudales-publicos
+fecha_inicio: "2015-07-27"
+hito_origen_id: malaya-sentencia-firme-ts-2015
+notas: |
+  La Fiscalía Anticorrupción le señaló como cooperador necesario en
+  delitos de fraude en concurso con prevaricación y malversación.
+  Condenado en el caso Malaya y también en el caso Fergocon (causa
+  conexa). La presunción de inocencia decae respecto a los hechos
+  declarados probados y firmes.

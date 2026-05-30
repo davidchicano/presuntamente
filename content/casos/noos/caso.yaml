@@ -1,14 +1,88 @@
 id: noos
-nombre_oficial: "Diligencias Previas — Juzgado de Instrucción nº 3 de Palma de Mallorca (caso Nóos, pieza 25 del caso Palma Arena)"
+nombre_oficial: "Procedimiento Abreviado 58/2015 — Audiencia Provincial de les Illes Balears, Sección Primera (pieza separada nº 25 del caso Palma Arena, instruida por el Juzgado de Instrucción nº 3 de Palma; casación ante la Sala Segunda del Tribunal Supremo, STS 277/2018)"
 nombre_mediatico: "Caso Nóos"
 nombres_alternativos:
+  - "Caso Urdangarin"
   - "Instituto Nóos"
-  - "Caso Urdangarín"
+  - "caso Noos"
+
+descripcion_corta: |
+  Procedimiento penal instruido por el Juzgado de Instrucción nº 3 de Palma (magistrado José
+  Castro) como pieza separada del caso Palma Arena, que investigó el presunto desvío de fondos
+  públicos de las administraciones autonómicas de Baleares y la Comunitat Valenciana hacia la
+  Asociación Instituto Nóos y su sociedad vinculada Nóos Consultoría Estratégica S.L., ambas
+  dirigidas por Iñaki Urdangarin (cuñado del entonces Príncipe Felipe) y su socio Diego Torres.
+  La Sala Segunda del Tribunal Supremo dictó sentencia firme el 12 de junio de 2018
+  (STS 277/2018, ECLI:ES:TS:2018:2056, ponente Antonio del Moral García) condenando a siete
+  personas: Urdangarin (5 años y 10 meses), Torres (5 años y 8 meses) y Matas (3 años y 8 meses),
+  entre otros. La Infanta Cristina de Borbón, investigada durante la instrucción por la acusación
+  popular de Manos Limpias, resultó absuelta penalmente en ambas instancias, aunque condenada al
+  pago de 136.950 euros como partícipe a título lucrativo.
+
+sintesis_caso:
+  que_se_investiga: "El presunto desvío de fondos públicos autonómicos hacia el Instituto Nóos a través de contratos adjudicados de forma irregular al margen de los procedimientos legales de contratación pública."
+  hechos_clave:
+    - "Instruida desde julio de 2010 como pieza separada nº 25 del caso Palma Arena ante el Juzgado de Instrucción nº 3 de Palma, por el juez José Castro Aragón."
+    - "La sentencia de la Audiencia Provincial de Palma del 17 de febrero de 2017 condenó a 7 de los 17 acusados; el Tribunal Supremo confirmó las condenas en firme el 12 de junio de 2018."
+    - "La Infanta Cristina de Borbón, acusada por Manos Limpias de dos delitos fiscales, fue absuelta penalmente en ambas instancias pero condenada a pagar 136.950 euros como partícipe a título lucrativo."
+    - "Iñaki Urdangarin cumplió la condena íntegra: ingresó en prisión el 18 de junio de 2018 y se extinguió su pena en abril de 2024."
+  estado_actual: "En fase de ejecución completada. La condena de Iñaki Urdangarin (5 años y 10 meses) fue extinguida en abril de 2024. La causa está cerrada con sentencia firme del Tribunal Supremo (STS 277/2018)."
+  cifras_clave:
+    - "445.000 € de fondos públicos percibidos sin contraprestación correlativa (cuantificado por el TS)"
+    - "7 condenados de 17 acusados"
+    - "5 años y 10 meses de prisión (pena más alta, Iñaki Urdangarin)"
+    - "136.950 € de responsabilidad civil a título lucrativo (Infanta Cristina)"
 
 organo_judicial_id: tribunal-supremo
+numero_procedimiento: "Procedimiento Abreviado 58/2015 (AP Palma) / Recurso de casación 1206/2017 (TS)"
+tipo_procedimiento: procedimiento_abreviado
+
 fase_actual: ejecucion
-fecha_apertura: "2010-02-01"
+fecha_apertura: "2010-07-20"
 
-origen_denuncia: fiscalia_anticorrupcion
+origen_denuncia: oficio_judicial
 
-estado_publicacion: pendiente
+delitos_atribuidos_en_la_causa:
+  - malversacion-caudales-publicos
+  - prevaricacion
+  - fraude-administraciones-publicas
+  - delito-contra-hacienda-publica
+  - trafico-de-influencias
+  - falsedad-documental
+  - blanqueo-de-capitales
+
+resumen_cifras: |
+  El Tribunal Supremo cuantificó en 445.000 euros los fondos públicos percibidos por el
+  Instituto Nóos sin la correlativa contraprestación de servicios (importe objeto del caso).
+  Las responsabilidades civiles en sentencia firme ascienden a 136.950 euros para Cristina de
+  Borbón y 172.550 euros para Ana María Tejeiro (esposa de Torres), ambas como partícipes a
+  título lucrativo absueltas penalmente. No se suman entre sí objeto y consecuencia:
+  los 445.000 € son el quebranto investigado; las responsabilidades civiles son la consecuencia
+  económica del procedimiento, no el importe malversado.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: capital
+
+estado_ficha:
+  cronologia: parcial
+  roles_procesales: completo
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: completo
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: pendiente
+  conexiones: parcial
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: |
+    Modelado inicial completo con todos los hitos procesales principales y los 7 condenados.
+    Pendiente: localizar sentencias íntegras en CENDOJ (AP Palma 2017 y TS 277/2018) para
+    descarga como primario y citas literales precisas. Roles de acusados absueltos de Valencia
+    (Alfonso Grau, Jorge Vela, Elisa Maldonado, Luis Lobón, José Manuel Aguilar) y otros
+    acusados menores pendientes de modelar. Vínculos institucionales (Govern Balear, Generalitat
+    Valenciana, Partido Popular como partido del cargo) pendientes de documentar.
+    Cobertura mediática: rastreo inicial parcial v1 (2026-05-30), 8 piezas en 5 ventanas
+    temporales (2010-2024). Pendiente ampliar con El País, El Mundo, ABC y prensa balear
+    (Ultima Hora, Diari de Balears) y valenciana (Levante, Las Provincias).
+  fecha_actualizacion: "2026-05-30"

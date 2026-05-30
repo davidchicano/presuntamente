@@ -1,0 +1,17 @@
+id: francisco-gonzalez-presidente-bbva
+naturaleza: cargo_directivo_organizacion_privada
+descripcion: "Presidente del Banco Bilbao Vizcaya Argentaria (BBVA) de 2000 a 2018. En el marco del caso Tándem, la Sala de lo Penal de la Audiencia Nacional confirmó su procesamiento en la pieza separada nº 9 (BBVA/Trampa) al apreciar indicios de que, durante su presidencia, contrató los servicios de Cenyt para encargos de presunta ilegalidad entre 2004 y 2016."
+sujeto_persona_id: francisco-gonzalez-rodriguez
+objeto_organizacion_id: bbva
+cargo_o_rol: "Presidente del Banco Bilbao Vizcaya Argentaria"
+desde: "2000-01-01"
+hasta: "2018-12-31"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+relevancia_para_caso_ids: [tandem]
+documentos_respaldo:
+  - documento_id: theobjective-fiscalia-173-anos-bbva-gonzalez-2026-03-18
+    pasaje: "The Objective informa del escrito de acusación de la Fiscalía Anticorrupción que solicita 173 años de cárcel para González por delitos cometidos durante su etapa como presidente del BBVA entre 2004 y 2016."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

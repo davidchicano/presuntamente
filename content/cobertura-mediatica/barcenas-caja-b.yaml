@@ -1,0 +1,296 @@
+# Cobertura mediática general — caso barcenas-caja-b
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: barcenas-caja-b
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Bárcenas"
+    - "papeles de Bárcenas"
+    - "caja B del PP"
+    - "caja B PP"
+    - "Luis Bárcenas sentencia"
+    - "Unifica reforma Génova"
+  ventanas_temporales:
+    - desde: "2020-12-01"
+      hasta: "2021-07-31"
+      notas: >
+        Apertura del juicio oral ante la Sección Segunda de la Sala Penal de la AN
+        (8 de febrero de 2021) y conclusión de las sesiones (mayo 2021). La sentencia
+        de la Audiencia Nacional fue dictada el 28 de octubre de 2021.
+    - desde: "2021-08-01"
+      hasta: "2022-12-31"
+      notas: >
+        Sentencia AN (28 oct 2021) y archivo de la pieza de donaciones finalistas
+        por auto del juez Pedraz (19 dic 2022).
+    - desde: "2024-01-01"
+      hasta: "2024-11-30"
+      notas: >
+        Sentencia de casación del Tribunal Supremo (15 nov 2024,
+        ECLI:ES:TS:2024:5577) que confirma la condena al PP como responsable
+        civil subsidiario y reduce penas por dilaciones indebidas.
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - infolibre.es
+    - okdiario.com
+    - elespanol.com
+    - theobjective.com
+    - confilegal.com
+    - noticiasdenavarra.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o en el lead. Se incluyen
+    noticias, reportajes, análisis y columnas firmadas que abordan los hitos
+    procesales principales: apertura del juicio oral (feb 2021), sentencia de la AN
+    (oct 2021), archivo de la pieza de donaciones (dic 2022) y sentencia de casación
+    del TS (nov 2024). No se incluyen editoriales anónimos ni republicaciones sin
+    autoría diferenciada.
+  criterios_exclusion: >
+    Se excluyen menciones de pasada en piezas sobre otros temas (caso Gürtel
+    principal, caso Kitchen). Se excluyen republicaciones idénticas de sueltos
+    de agencia. Se excluye El País (elpais.com) y El Mundo (elmundo.es) en este
+    rastreo por limitaciones de acceso vía WebSearch. El Confidencial presenta
+    cobertura relevante no recuperable mediante búsqueda directa en este rastreo.
+  notas: >
+    Rastreo inicial v1 sobre tres ventanas temporales (dic 2020 — nov 2024).
+    El caso tiene cobertura amplia en todos los medios nacionales; este corpus
+    es un muestreo sistemático por hitos procesales, no un listado exhaustivo.
+    El País y El Mundo tienen cobertura propia y relevante no incluida por las
+    limitaciones de acceso señaladas. Las url_archivo se rellenan con
+    scripts/archivar-n4.mjs (pnpm archive:catchup).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: APERTURA DEL JUICIO ORAL (feb–may 2021) ─────────────────────
+
+  - id: publico-juicio-caja-b-2021-fecha
+    url: "https://www.publico.es/politica/papeles-barcenas-juicio-caja-b-pp-empezara-8-febrero-2021.html"
+    medio_id: publico-es
+    titular: "Papeles de Bárcenas: El juicio por la caja B del PP empezará el 8 de febrero de 2021"
+    fecha_publicacion: "2020-12-01"
+    autor: "Redacción"
+    resumen: >
+      La Sección Segunda de la Sala Penal de la Audiencia Nacional fijó el inicio
+      del juicio oral para el 8 de febrero de 2021. La causa, pendiente de enjuiciamiento
+      desde que el juez José de la Mata abrió el juicio oral años antes, investiga si el PP
+      sufragó con fondos de su contabilidad B las obras de reforma de su sede de Génova.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: confilegal-juicio-barcenas-minimo-5-anos-2021-02-08
+    url: "https://confilegal.com/20210208-el-extesorero-del-pp-luis-barcenas-se-juega-en-este-juicio-de-la-caja-b-del-pp-un-minimo-de-5-anos-de-carcel/"
+    medio_id: confilegal
+    titular: "El extesorero del PP, Luis Bárcenas, se juega en este juicio de la \"caja B\" del PP un mínimo de 5 años de cárcel"
+    fecha_publicacion: "2021-02-08"
+    autor: "Redacción"
+    resumen: >
+      Con el inicio del juicio oral en la AN, el medio especializado en información
+      jurídica detalla los cargos que afronta Bárcenas —acusado de fraude fiscal,
+      falsedad documental, apropiación indebida y blanqueo— y la petición de penas
+      que superan los 5 años de prisión por parte de la acusación. El PP acude como
+      responsable civil subsidiario.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: infolibre-juicio-visto-sentencia-2021
+    url: "https://www.infolibre.es/politica/juicio-caja-b-pp-visto-sentencia-tribunal-valorara-veracidad-papeles-barcenas_1_1197605.html"
+    medio_id: infolibre
+    titular: "El juicio por la caja b del PP, visto para sentencia: el tribunal valorará la veracidad de los 'papeles de Bárcenas'"
+    fecha_publicacion: "2021-05-01"
+    autor: "Redacción"
+    # LLM-incierto: la fecha exacta del acto de conclusión del juicio no ha podido
+    # verificarse con certeza; se aproxima a primera mitad de mayo de 2021 según
+    # la duración declarada del juicio (feb-may). Verificar con CGPJ o hemeroteca.
+    resumen: >
+      Tras tres meses de sesiones, la Sección Segunda de la AN da por visto el juicio
+      para sentencia. El tribunal deberá evaluar la veracidad de los papeles de Bárcenas
+      y determinar si hubo pagos en negro para las obras de la sede del PP, lo que acredita
+      o no la existencia de una contabilidad paralela institucionalizada.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 2: SENTENCIA AN + ARCHIVO PIEZA DONACIONES (oct 2021 – dic 2022) ─
+
+  - id: eldiario-sentencia-caja-b-hechos-probados-2021-10-28
+    url: "https://www.eldiario.es/politica/hechos-probados-sentencia-pp-barcenas-manejo-donativos-metalico-traves-contabilidad-b_1_8439559.html"
+    medio_id: eldiario-es
+    titular: "Los hechos probados de la sentencia: Bárcenas manejó donativos en metálico a través de la caja B del PP"
+    fecha_publicacion: "2021-10-28"
+    autor: "Redacción"
+    resumen: >
+      El medio publica los hechos probados de la sentencia de la Sección Segunda de la AN
+      que condena a Luis Bárcenas por fraude fiscal como cooperador necesario al abonar
+      más de un millón de euros en negro a Unifica para la reforma de la sede del PP.
+      La sala declara probada la existencia de una contabilidad B del PP manejada por Bárcenas
+      y condena al PP como responsable civil subsidiario por 123.669 euros.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-tercera-sentencia-negacionismo-pp-2021-10-28
+    url: "https://www.eldiario.es/politica/tercera-sentencia-caja-b-entierra-decada-negacionismo-pp_1_8440848.html"
+    medio_id: eldiario-es
+    titular: "La tercera sentencia sobre la caja B entierra una década de negacionismo del PP"
+    fecha_publicacion: "2021-10-28"
+    autor: "Redacción"
+    resumen: >
+      El análisis sitúa la sentencia de la AN sobre los papeles de Bárcenas como
+      la tercera resolución judicial que acredita la existencia de una caja B en el PP,
+      después de las sentencias de Gürtel de 2018 y del TS de 2020 que la avalaron.
+      La pieza destaca el impacto acumulado de los distintos pronunciamientos judiciales
+      sobre la tesis oficial del partido de que la contabilidad B era responsabilidad
+      exclusiva de Bárcenas.
+    tipo_pieza: analisis
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: theobjective-archivo-donaciones-2022-12-19
+    url: "https://theobjective.com/espana/tribunales/2022-12-19/audiencia-donaciones-pp/"
+    medio_id: the-objective
+    titular: "La Audiencia archiva la causa de las supuestas donaciones reflejadas en la 'caja B' del PP"
+    fecha_publicacion: "2022-12-19"
+    autor: "Redacción"
+    resumen: >
+      El juez Santiago Pedraz de la AN acuerda el sobreseimiento provisional de la pieza
+      que investigaba si empresarios aportaron fondos a la caja B del PP a cambio de
+      adjudicaciones de obra pública. La resolución se adopta a petición de la Fiscalía
+      Anticorrupción, tras un informe de la IGAE que no acreditó la relación causal
+      entre las donaciones y los contratos investigados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: confilegal-archivo-pieza-donaciones-2022-12-19
+    url: "https://confilegal.com/20221219-la-an-archiva-la-pieza-de-los-papeles-de-barcenas-que-investigaba-adjudicaciones-de-obra-publica-a-cambio-de-donaciones/"
+    medio_id: confilegal
+    titular: "La AN archiva la pieza de los 'papeles de Bárcenas' que investigaba adjudicaciones de obra pública a cambio de donaciones"
+    fecha_publicacion: "2022-12-19"
+    autor: "Redacción"
+    resumen: >
+      Cobertura especializada del sobreseimiento provisional de la pieza de donaciones.
+      El medio jurídico detalla el razonamiento del juez Pedraz: el informe de la IGAE
+      analizó los procedimientos de contratación y no encontró irregularidades ni nexo
+      causal entre las aportaciones recogidas en los papeles de Bárcenas y los contratos
+      públicos adjudicados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 3: SENTENCIA TS CASACIÓN (nov 2024) ────────────────────────────
+
+  - id: okdiario-supremo-confirma-condena-pp-2024-11-15
+    url: "https://okdiario.com/espana/supremo-reduce-2-anos-8-meses-condena-carcel-barcenas-reforma-b-genova-13821691"
+    medio_id: okdiario
+    titular: "El Supremo confirma que el PP pagó en B la reforma de su sede, pero rebaja la condena a Bárcenas"
+    fecha_publicacion: "2024-11-15"
+    autor: "Redacción"
+    resumen: >
+      El Tribunal Supremo confirma en casación la condena de la Audiencia Nacional
+      que acreditó el pago de más de un millón de euros en negro para las obras de
+      reforma de la sede del PP. La Sala reduce la condena de Bárcenas de 2 años a
+      8 meses de prisión y la de los administradores de Unifica de 2 años y 9 meses
+      a 9 meses, apreciando dilaciones indebidas; absuelve del delito de falsedad.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-supremo-condena-pp-dilaciones-2024-11-15
+    url: "https://www.elespanol.com/espana/tribunales/20241115/supremo-confirma-condena-pago-sede-pp-reduce-penas-debido-dilaciones/901410036_0.html"
+    medio_id: el-espanol
+    titular: "El Supremo confirma la condena por el pago en B de la sede del PP pero reduce las penas debido a las dilaciones"
+    fecha_publicacion: "2024-11-15"
+    autor: "Redacción"
+    resumen: >
+      La Sala Segunda del TS ratifica en casación la sentencia de la AN sobre los
+      papeles de Bárcenas. Mantiene los hechos probados y la condena del PP como
+      responsable civil subsidiario por 123.669 euros, pero rebaja las penas privativas
+      de libertad por apreciar la circunstancia atenuante de dilaciones indebidas
+      —transcurrieron ocho años entre la apertura de la instrucción y la sentencia.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: infolibre-supremo-confirma-condena-pp-2024-11-15
+    url: "https://www.infolibre.es/politica/supremo-confirma-condena-pp-reforma-sede-genova-pagos-negro_1_1899312.html"
+    medio_id: infolibre
+    titular: "El Supremo confirma la condena al PP por reformar su sede de Génova con dinero de su caja B"
+    fecha_publicacion: "2024-11-15"
+    autor: "Redacción"
+    resumen: >
+      El TS ratifica en lo sustancial la sentencia de la AN que declaró probado que
+      el PP reformó su sede de Génova con fondos de la caja B. La resolución mantiene
+      la responsabilidad civil subsidiaria del PP y confirma la existencia de la
+      contabilidad paralela institucionalizada, aunque reduce las penas aplicando
+      la atenuante de dilaciones indebidas.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-supremo-confirma-caja-b-pp-2024-11-15
+    url: "https://www.eldiario.es/politica/supremo-confirma-pp-reformo-sede-dinero-negro-caja-b_1_11416358.html"
+    medio_id: eldiario-es
+    titular: "El Supremo confirma que el PP reformó su sede con dinero negro de su 'caja B'"
+    fecha_publicacion: "2024-11-15"
+    autor: "Redacción"
+    resumen: >
+      El Tribunal Supremo confirma en casación la condena que acredita que la reforma
+      de la sede del PP en Génova fue sufragada con fondos de la caja B, ratificando
+      los hechos probados de la sentencia de la AN de 2021. La pena de Bárcenas baja
+      de 2 años a 8 meses por dilaciones indebidas; el PP mantiene su condena
+      como responsable civil subsidiario.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: noticiasdenavarra-tercera-sentencia-opinion-2024-11-17
+    url: "https://www.noticiasdenavarra.com/opinion/2024/11/17/tercera-sentencia-caja-b-pp-8942363.html"
+    medio_id: noticias-de-navarra
+    titular: "Tercera sentencia por la caja B del PP"
+    fecha_publicacion: "2024-11-17"
+    autor: "Redacción"
+    resumen: >
+      Columna de opinión que contextualiza la sentencia del TS como la tercera
+      resolución judicial firme que ratifica la existencia de la caja B del PP,
+      tras las sentencias de Gürtel (2018) y del TS (2020). El texto analiza
+      el impacto de la sucesión de condenas sobre la trayectoria del partido
+      y el negacionismo sostenido durante más de una década.
+    tipo_pieza: opinion
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: confilegal-ts-reduce-condenas-absuelve-falsedad-2024-11-15
+    url: "https://confilegal.com/20241115-el-ts-reduce-las-condenas-de-los-papeles-de-barcenas-absuelve-por-el-delito-de-falsedad-y-aprecia-dilaciones-indebidas/"
+    medio_id: confilegal
+    titular: "El TS reduce las condenas de los papeles de Bárcenas: absuelve por el delito de falsedad y aprecia dilaciones indebidas"
+    fecha_publicacion: "2024-11-15"
+    autor: "Redacción"
+    resumen: >
+      Cobertura especializada de la casación del TS que detalla el razonamiento
+      técnico-jurídico: la Sala absuelve del delito de falsedad documental —que la
+      AN había condenado en concurso con el fraude fiscal— y aprecia dilaciones
+      indebidas que reducen las penas. La condena por fraude fiscal y la responsabilidad
+      civil subsidiaria del PP permanecen intactas.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"

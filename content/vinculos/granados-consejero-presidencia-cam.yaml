@@ -1,0 +1,23 @@
+id: granados-consejero-presidencia-cam
+naturaleza: cargo_publico_designado
+descripcion: "Consejero de Presidencia, Justicia e Interior de la Comunidad de Madrid durante los gobiernos de Esperanza Aguirre (VII y VIII Legislatura), cargo que desempeñó entre noviembre de 2003 y diciembre de 2011."
+sujeto_persona_id: francisco-granados
+objeto_organizacion_id: comunidad-de-madrid
+cargo_o_rol: "Consejero de Presidencia, Justicia e Interior"
+desde: "2003-11-21"
+hasta: "2011-12-31"
+precision_desde: dia
+precision_hasta: mes
+vigente: false
+gobierno_o_legislatura: "Comunidad de Madrid - Aguirre (VII y VIII Legislatura)"
+relevancia_para_caso_ids: [punica]
+documentos_respaldo:
+  - documento_id: elespanol-detenciones-punica-2014-10-27
+    pasaje: "El Español identifica a Francisco Granados como ex consejero de Presidencia de la Comunidad de Madrid en la cobertura de las detenciones de la Operación Púnica del 27 de octubre de 2014."
+  - documento_id: publico-apertura-juicio-pieza8-punica-2026-05-26
+    pasaje: "Público describe a Francisco Granados como 'exconsejero de Presidencia de la Comunidad de Madrid' al cubrir el auto de apertura de juicio oral de la pieza de suelo y obra pública, mayo de 2026."
+# pendiente_primario: BOCM de nombramiento como consejero (2003). Búsqueda en bocm.es
+# con fechas nov-2003 no localiza URL directa; sustituir este documento N4 cruzado
+# por el decreto BOCM cuando se localice.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

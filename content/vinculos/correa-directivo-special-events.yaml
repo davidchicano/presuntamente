@@ -1,0 +1,32 @@
+id: correa-directivo-special-events
+naturaleza: cargo_directivo_organizacion_privada
+descripcion: >
+  Francisco Correa Sánchez dirigió Special Events S.L. y otras sociedades
+  del entramado empresarial identificado en las resoluciones judiciales
+  de la Audiencia Nacional (sentencia 20/2018) y el Tribunal Supremo
+  (sentencia 507/2020) como vehículos de la trama Gürtel. La sentencia
+  de la Época I lo señala como cabecilla de la red y responsable de
+  articular las adjudicaciones públicas a cambio de comisiones.
+sujeto_persona_id: francisco-correa-sanchez
+objeto_organizacion_id: special-events
+cargo_o_rol: "Cabecilla y director de facto del entramado societario"
+desde: "1999-01-01"
+precision_desde: anio
+hasta: "2009-02-06"
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [gurtel]
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-gurtel-epoca-i-an-2018
+    pasaje: >
+      La nota del CGPJ identifica a Francisco Correa como responsable del
+      entramado societario de organización de eventos (incluyendo Special
+      Events) que articulaba las adjudicaciones públicas. La sentencia de
+      la Audiencia Nacional lo condena como cabecilla de la red.
+  - documento_id: publico-diez-anos-gurtel-2019
+    pasaje: >
+      Público describe a Francisco Correa como el jefe de la trama Gürtel
+      y líder del entramado de empresas de eventos que operó entre 1999 y
+      2005 obteniendo contratos con administraciones del Partido Popular.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

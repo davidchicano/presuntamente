@@ -1,0 +1,14 @@
+id: rol-mireia-pujol-ferrusola-investigada
+caso_id: pujol
+sujeto_tipo: persona
+sujeto_persona_id: mireia-pujol-ferrusola
+rol: investigado
+delitos_atribuidos:
+  - blanqueo-de-capitales
+  - organizacion-criminal
+fecha_inicio: "2014-07-01"
+notas: >-
+  Mireia Pujol Ferrusola está investigada bajo plena presunción de inocencia.
+  No existe sentencia condenatoria en este procedimiento. La condición de
+  investigada no implica culpabilidad. Atribución de delitos pendiente de
+  verificar; ver NOTES.md.

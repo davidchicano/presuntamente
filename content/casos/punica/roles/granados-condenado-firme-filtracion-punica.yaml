@@ -1,0 +1,20 @@
+id: granados-condenado-firme-filtracion-punica
+caso_id: punica
+sujeto_tipo: persona
+sujeto_persona_id: francisco-granados
+rol: condenado_firme
+delitos_atribuidos:
+  - revelacion-de-secretos
+fecha_inicio: "2019-03-14"
+hito_origen_id: sentencia-firme-filtracion-punica-2019-03-14
+notas: |
+  En la pieza del caso Púnica relativa a la filtración de
+  información sobre la propia investigación, Francisco Granados fue
+  condenado a dos años de prisión por sentencia de la Sección Primera
+  de la Sala de lo Penal de la Audiencia Nacional de 4 de diciembre
+  de 2017, confirmada por el Tribunal Supremo el 14 de marzo de 2019,
+  fecha en la que la condena de esta pieza adquirió firmeza. El delito
+  apreciado fue de aprovechamiento de secreto revelado por funcionario
+  público (modelado en el inventario como revelación de secretos). La
+  firmeza de esta pieza no se extiende a las restantes piezas de la
+  macrocausa, en las que rige la presunción de inocencia.

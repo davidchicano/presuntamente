@@ -1,0 +1,31 @@
+id: carlos-salamanca-sanchez
+nombre_completo: "Carlos Salamanca Sánchez"
+nombres_alternativos:
+  - "Carlos Salamanca"
+  - "Salamanca"
+  - "el excomisario de Barajas"
+es_figura_publica: false
+cargos_publicos_historicos:
+  - cargo: "Comisario Jefe de Fronteras del aeropuerto Adolfo Suárez Madrid-Barajas"
+    organizacion_id: direccion-general-policia
+    desde: "2010-01-01"
+    hasta: "2017-11-03"
+nacionalidad: "española"
+biografia_corta: |
+  Carlos Salamanca Sánchez es un comisario español del Cuerpo Nacional
+  de Policía que se desempeñó como jefe de fronteras del aeropuerto
+  Adolfo Suárez Madrid-Barajas. Fue detenido el 3 de noviembre de 2017
+  junto a José Manuel Villarejo en el marco de la Operación Tándem. La
+  Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional le
+  condenó por un delito continuado de cohecho pasivo por haber recibido
+  regalos valorados en 273.915 euros —un Porsche Cayenne, uso de un
+  Porsche Panamera, dos relojes de lujo, un viaje a Londres, pago de un
+  estudio de grabación y cinco entregas en metálico por 135.000 euros—
+  entre 2010 y 2015, a cambio de dar trato preferente a ciudadanos
+  ecuatoguineanos vinculados a un empresario. La condena fue ratificada
+  en apelación, siendo firme desde enero de 2025. Rige el principio de
+  presunción de inocencia respecto de cualquier cargo no sentenciado
+  con firmeza.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

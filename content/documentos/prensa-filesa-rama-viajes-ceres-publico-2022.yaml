@@ -1,0 +1,19 @@
+id: prensa-filesa-rama-viajes-ceres-publico-2022
+titulo: "El Supremo fuerza la reapertura de una causa vinculada al caso Filesa, de financiación ilegal del PSOE, de hace 30 años"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Artículo de Público (publico.es) publicado en febrero de 2022 sobre
+  la decisión del Tribunal Supremo de ordenar la reapertura de la rama
+  Viajes Ceres. V-13: línea editorial distinta a El Debate y El Español,
+  con enfoque ideológico diferente, lo que refuerza la credibilidad
+  del hecho procesal (la reapertura judicial no es contestada por
+  ninguna de las fuentes consultadas).
+productor_organizacion_id: publico-es
+fecha_documento: "2022-02-01"
+url_canonica: "https://www.publico.es/politica/supremo-fuerza-reapertura-causa-vinculada-caso-filesa-financiacion-ilegal-psoe-30-anos.html"
+estado_acceso: publico
+idioma: es
+caso_principal_id: filesa
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

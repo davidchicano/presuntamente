@@ -1,0 +1,21 @@
+id: rato-condenado-firme-tarjetas-black
+caso_id: tarjetas-black
+sujeto_tipo: persona
+sujeto_persona_id: rodrigo-rato
+rol: condenado_firme
+delitos_atribuidos:
+  - apropiacion-indebida
+fecha_inicio: "2018-06-08"
+# LLM-incierto: fecha exacta de la STS a verificar en CENDOJ.
+hito_origen_id: tarjetas-black-sentencia-ts-firme-2018
+notas: |
+  Rodrigo de Rato y Figaredo fue presidente de Caja Madrid y Bankia en el
+  tramo final del periodo enjuiciado (aproximadamente 2010-2012). La Audiencia
+  Nacional lo condeno en primera instancia el 23 de febrero de 2017 por
+  apropiacion indebida en relacion con el uso de tarjetas de credito de empresa.
+  El Tribunal Supremo confirmo su condena en casacion en 2018, adquiriendo
+  firmeza. Esta condena es independiente y distinta de otros procedimientos en
+  los que figura Rodrigo Rato (ver caso rato-fraude-fiscal). La presuncion de
+  inocencia decae unicamente respecto de los hechos declarados probados y
+  firmes por la sentencia del Tribunal Supremo.
+  # LLM-incierto: pena exacta impuesta y confirmada a verificar en el texto de la STS.

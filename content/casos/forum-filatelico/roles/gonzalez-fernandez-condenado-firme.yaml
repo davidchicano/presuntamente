@@ -1,0 +1,17 @@
+id: gonzalez-fernandez-condenado-firme
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: juan-ramon-gonzalez-fernandez
+rol: condenado_firme
+delitos_atribuidos:
+  - estafa
+  - blanqueo-de-capitales
+fecha_inicio: "2020-03-05"
+hito_origen_id: sentencia-firme-ts-forum-2020-03-05
+notas: |
+  Condenado en sentencia firme STS 688/2019 de 5 de marzo de 2020 a
+  3 años y 3 meses de prisión y multa de 15,9 millones de euros (el TS
+  requalificó su participación de cooperador necesario a cómplice, reduciendo
+  así la pena respecto a los 6 años y 3 meses de la AN). Declarado
+  responsable civil solidario junto con Francisco Briones por el total de
+  las cantidades entregadas por los inversores.

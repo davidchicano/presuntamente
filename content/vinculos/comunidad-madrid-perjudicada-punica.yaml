@@ -1,0 +1,18 @@
+id: comunidad-madrid-perjudicada-punica
+naturaleza: perjudicado_institucional_en_caso
+descripcion: "La Comunidad de Madrid y sus municipios figuran entre las administraciones públicas perjudicadas por las adjudicaciones presuntamente irregulares investigadas en la macrocausa Púnica: los contratos de eficiencia energética adjudicados a Cofely España en ayuntamientos madrileños (pieza Cofely) y las adjudicaciones de suelo y obra pública entre 2003 y 2011 (pieza octava) son los actos investigados con impacto presunto sobre el erario público autonómico y local."
+sujeto_organizacion_id: comunidad-de-madrid
+objeto_organizacion_id: audiencia-nacional
+desde: "2014-10-27"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [punica]
+documentos_respaldo:
+  - documento_id: nota-cgpj-condena-cofely-punica-2025-12-22
+    pasaje: "La nota de la Audiencia Nacional describe los contratos adjudicados a Cofely España en ayuntamientos de la Comunidad de Madrid como objeto del procedimiento penal, identificando el daño patrimonial al erario local y autonómico madrileño."
+  - documento_id: publico-apertura-juicio-pieza8-punica-2026-05-26
+    pasaje: "Público detalla que la pieza octava investiga adjudicaciones de suelo y obra pública en el ámbito territorial de la Comunidad de Madrid entre 2003 y 2011, con impacto presunto sobre las arcas autonómicas y municipales."
+nivel_afectacion: directa
+justificacion_afectacion: "La Comunidad de Madrid y sus municipios son las administraciones públicas presuntamente perjudicadas por las adjudicaciones irregulares investigadas en las dos piezas principales de la macrocausa Púnica: la pieza Cofely (contratos de eficiencia energética en ayuntamientos madrileños) y la pieza octava (suelo y obra pública, 2003-2011)."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

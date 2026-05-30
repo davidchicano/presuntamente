@@ -1,15 +1,97 @@
 id: eres-andalucia
-nombre_oficial: "Procedimiento Abreviado — Audiencia Provincial de Sevilla (caso ERE de Andalucía)"
+nombre_oficial: "Diligencias Previas — Juzgado de Instrucción nº 6 de Sevilla (pieza política enjuiciada por la Sección Primera de la Audiencia Provincial de Sevilla)"
 nombre_mediatico: "Caso ERE de Andalucía"
 nombres_alternativos:
-  - "Caso ERE"
-  - "EREs Andalucía"
-  - "Caso de los ERE"
+  - "caso ERE"
+  - "ERE de Andalucía"
+  - "caso EREs"
+  - "EREs andaluces"
 
-organo_judicial_id: audiencia-provincial-sevilla
+descripcion_corta: |
+  Macrocausa por la presunta concesión irregular de ayudas sociolaborales
+  a prejubilados y ayudas directas a empresas en crisis por la Junta de
+  Andalucía gobernada por el PSOE-A, durante aproximadamente la década
+  2000-2010. La instrucción atribuye que las ayudas se canalizaron
+  mediante transferencias de financiación desde la Consejería de Empleo
+  a la agencia pública IFA/IDEA, eludiendo presuntamente los controles
+  de la Intervención y los procedimientos legales de concesión de
+  subvenciones. En noviembre de 2019, la Audiencia Provincial de Sevilla
+  condenó a exaltos cargos por prevaricación y, a varios de ellos,
+  también por malversación; el Tribunal Supremo confirmó las condenas en
+  casación en julio de 2022, y en 2024 el Tribunal Constitucional estimó
+  parcialmente varios amparos en lo relativo a la malversación.
+
+sintesis_caso:
+  que_se_investiga: >-
+    Si la Junta de Andalucía concedió durante una década ayudas
+    sociolaborales y a empresas eludiendo los controles legales de las
+    subvenciones públicas mediante el uso de transferencias de
+    financiación a la agencia IFA/IDEA.
+  hechos_clave:
+    - >-
+      La instrucción atribuye que las ayudas se pagaron a través de
+      transferencias de financiación a la agencia pública IFA/IDEA,
+      sorteando presuntamente la fiscalización de la Intervención.
+    - >-
+      La Audiencia Provincial de Sevilla dictó sentencia en la pieza
+      política en noviembre de 2019, condenando a exaltos cargos de la
+      Junta por prevaricación y, a varios, también por malversación.
+    - >-
+      El Tribunal Supremo confirmó en lo sustancial las condenas en
+      casación en julio de 2022, incluyendo votos particulares.
+    - >-
+      El Tribunal Constitucional estimó parcialmente varios amparos en
+      2024 en lo relativo a la condena por malversación; la condena por
+      prevaricación quedó intacta.
+  estado_actual: >-
+    Pieza política con sentencia firme tras la casación del TS (2022);
+    el TC resolvió en 2024 los amparos matizando parte de las condenas
+    por malversación. Otras piezas (ayudas específicas) en distintas
+    fases de tramitación.
+  cifras_clave:
+    - "Hasta unos 680 millones de euros en ayudas bajo investigación según la instrucción"
+
+organo_judicial_id: juzgado-instruccion-6-sevilla
+tipo_procedimiento: diligencias_previas
+
 fase_actual: ejecucion
-fecha_apertura: "2011-01-01"
+fecha_apertura: "2011-01-19"
 
-origen_denuncia: denuncia_organismo_publico
+origen_denuncia: fiscalia_anticorrupcion
+delitos_atribuidos_en_la_causa:
+  - prevaricacion
+  - malversacion-caudales-publicos
 
-estado_publicacion: pendiente
+resumen_cifras: |
+  La acusación cifró en torno a los 680 millones de euros el volumen de
+  ayudas afectado por el sistema de transferencias de financiación a lo
+  largo del periodo investigado. La sentencia condenatoria firme del
+  Tribunal Supremo (2022) abarca solo los hechos de la pieza política;
+  otras piezas con importes específicos están en distintas fases.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: capital
+
+estado_ficha:
+  cronologia: parcial
+  roles_procesales: parcial
+  documentos_primarios: pendiente
+  hechos_modelados: parcial
+  fuentes_cruzadas: parcial
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: pendiente
+  conexiones: pendiente
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: >-
+    Modelado inicial centrado en la pieza política (instrucción JI nº 6
+    de Sevilla, sentencia AP Sevilla 2019, casación TS 2022, amparos TC
+    2024). Faltan por modelar las numerosas piezas específicas (ayudas
+    concretas a empresas), los roles de acusados de segundo nivel, el
+    juez instructor y el ponente del TS. Todas las sentencias
+    (pendiente_primario) deben descargarse desde CENDOJ /
+    tribunalconstitucional.es antes de publicar. Las fechas y números de
+    sentencia están marcados como LLM-incierto y requieren verificación
+    humana contra los primarios.
+  fecha_actualizacion: "2026-05-30"

@@ -1,0 +1,19 @@
+id: jose-antonio-grinan-militante-psoe
+naturaleza: cargo_organico_partido
+descripcion: "Secretario General del PSOE de Andalucía (PSOE-A) durante su etapa como presidente de la Junta de Andalucía (2009-2013). Figura de referencia del socialismo andaluz en el periodo final investigado por la causa de los ERE."
+sujeto_persona_id: jose-antonio-grinan-martinez
+objeto_organizacion_id: psoe
+cargo_o_rol: "Secretario General del PSOE de Andalucía"
+desde: "2009-01-01"
+hasta: "2013-01-01"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+# LLM-incierto: fechas exactas del mandato como Secretario General del PSOE-A;
+# verificar contra actas de congresos regionales del PSOE-A.
+relevancia_para_caso_ids: [eres-andalucia]
+documentos_respaldo:
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "La sentencia del TS identifica a Griñán como la máxima figura del PSOE andaluz y presidente de la Junta en la fase final del periodo investigado."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

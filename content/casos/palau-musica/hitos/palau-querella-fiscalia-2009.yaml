@@ -1,0 +1,25 @@
+id: palau-querella-fiscalia-2009
+caso_id: palau-musica
+tipo: querella_presentada
+fecha: "2009-06-01"
+fecha_precision: mes
+titulo: "La Fiscalía Anticorrupción presenta querella e inicia la investigación del Palau de la Música"
+descripcion: |
+  En junio de 2009 la Fiscalía Anticorrupción presenta querella por
+  presuntos delitos de apropiación indebida y falsedad documental
+  contra Fèlix Millet i Tusell y otros directivos del Palau de la
+  Música Catalana. El 23 de julio de 2009 los Mossos d'Esquadra
+  registran la sede del Palau de la Música, desencadenando la
+  investigación formal de la causa. El mismo día Millet es forzado
+  a dimitir de la presidencia de la Fundació Orfeó Català-Palau
+  de la Música Catalana.
+personas_afectadas:
+  - felix-millet-tusell
+  - jordi-montull-bagur
+organizaciones_afectadas:
+  - fundacio-orfeo-catala-palau-musica
+  - juzgado-instruccion-30-barcelona
+  - fiscalia-anticorrupcion
+hechos_introducidos:
+  - palau-expolio-fondos-atribuido
+fase_resultante: instruccion

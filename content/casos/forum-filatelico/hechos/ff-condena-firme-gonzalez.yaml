@@ -1,0 +1,38 @@
+id: ff-condena-firme-gonzalez
+caso_id: forum-filatelico
+enunciado: |
+  La STS 688/2019 de 5 de marzo de 2020 reduce la condena a Juan Ramón
+  González Fernández de 6 años y 3 meses (impuesta por la Audiencia Nacional)
+  a 3 años y 3 meses de prisión, al requalificar su participación de cooperador
+  necesario a cómplice en el delito de estafa agravada y blanqueo de capitales.
+  Se le mantiene la multa de 15,9 millones de euros y la responsabilidad civil
+  solidaria. La condena es firme.
+tipo: atribuido
+# Candidato a 'acreditado': STS 688/2019 es firme. Pendiente revisión humana.
+fecha_o_periodo:
+  desde: "2020-03-05"
+  precision: dia
+personas_implicadas:
+  - juan-ramon-gonzalez-fernandez
+  - miguel-colmenero-menendez
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ts-forum-2020-03-05
+    pasaje: "«J.R.G.F. queda condenado a 3 años y 3 meses de prisión al calificarse su participación como cómplice, y no como cooperador necesario, en el delito de estafa.»"
+  - documento_id: publico-forum-sentencia-ts-2020-03-05
+    pasaje: "Juan Ramón González Fernández ve reducida su condena a 3 años y 3 meses de prisión más multa de 15,9 millones de euros."
+nivel_fuente_efectivo: 1
+importe: 15900000
+importe_alcance: individual
+importe_clase: consecuencia
+importe_naturaleza: multa_penal
+importe_nota: "Multa penal individual firme impuesta a Juan Ramón González Fernández por la STS 688/2019."
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: juan-ramon-gonzalez-fernandez
+    papel: obligado
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

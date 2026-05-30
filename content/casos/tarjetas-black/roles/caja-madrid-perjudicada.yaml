@@ -1,0 +1,14 @@
+id: caja-madrid-perjudicada-tarjetas-black
+caso_id: tarjetas-black
+sujeto_tipo: organizacion
+sujeto_organizacion_id: caja-madrid
+rol: perjudicado
+fecha_inicio: "2003-01-01"
+# LLM-incierto: inicio del periodo de uso de tarjetas a verificar en hechos probados.
+notas: |
+  Caja Madrid es la entidad financiera cuyas tarjetas de credito de empresa
+  fueron utilizadas para gastos personales no declarados por consejeros y
+  directivos. La Audiencia Nacional la reconocio como perjudicada en la
+  sentencia de 23 de febrero de 2017. Tras la fusion y posterior intervencion
+  la entidad opera como Bankia, que tambien figura como perjudicada en el
+  tramo final del periodo (2010-2012).

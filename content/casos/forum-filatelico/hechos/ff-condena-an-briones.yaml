@@ -1,0 +1,43 @@
+id: ff-condena-an-briones
+caso_id: forum-filatelico
+enunciado: |
+  La Sección Primera de la Sala de lo Penal de la Audiencia Nacional condena
+  en su sentencia de 13 de julio de 2018 a Francisco Briones Nieto,
+  expresidente de Fórum Filatélico S.A., a la pena de 12 años, 4 meses y
+  16 días de prisión por un concurso de delitos de estafa agravada continuada,
+  insolvencia punible, falseamiento de cuentas anuales y blanqueo de capitales.
+  Se le impone además una multa de 49,7 millones de euros e inhabilitación
+  especial para el ejercicio del derecho de sufragio pasivo y para la
+  administración de sociedades. La sentencia es recurrible en casación.
+tipo: atribuido
+# Candidato a 'acreditado' cuando se promueva la STS 688/2019 que la confirma (con ajuste de pena). Pendiente revisión humana.
+fecha_o_periodo:
+  desde: "2018-07-13"
+  precision: dia
+personas_implicadas:
+  - francisco-briones
+  - ramon-saez-valcarcel
+organizaciones_implicadas:
+  - audiencia-nacional
+  - forum-filatelico-sa
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-an-forum-2018-07-13
+    pasaje: "«Francisco B. es condenado como autor de un delito continuado de estafa agravada en concurso con un delito de insolvencia punible y otro de falseamiento de cuentas a la pena de 8 años, 7 meses y 16 días de prisión, más 3 años y 9 meses por el delito de blanqueo.»"
+  - documento_id: elindependiente-forum-sentencia-an-2018-07-13
+    pasaje: "Francisco Briones condenado a 12 años, 4 meses y 16 días; multa de 49,7 millones de euros."
+nivel_fuente_efectivo: 1
+importe: 49700000
+importe_alcance: individual
+importe_clase: consecuencia
+importe_naturaleza: multa_penal
+importe_nota: "Multa individual impuesta a Francisco Briones en la sentencia de la AN de 13-jul-2018."
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: francisco-briones
+    papel: obligado
+    nota: "Obligado a abonar la multa de 49,7 millones de euros impuesta en sentencia."
+vigencia: superado
+corregido_por: ff-condena-firme-briones
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

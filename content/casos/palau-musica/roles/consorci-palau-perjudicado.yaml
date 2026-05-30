@@ -1,0 +1,11 @@
+id: consorci-palau-perjudicado
+caso_id: palau-musica
+sujeto_tipo: organizacion
+sujeto_organizacion_id: consorci-palau-musica-catalana
+rol: perjudicado
+fecha_inicio: "2009-01-01" # LLM-incierto: fecha exacta de personación no verificada
+notas: |
+  El Consorci del Palau de la Música Catalana se constituyó como
+  acusación particular en el procedimiento y fue declarado perjudicado
+  con responsabilidad civil de 3.537.290,81 euros en la sentencia firme
+  STS 813/2020.

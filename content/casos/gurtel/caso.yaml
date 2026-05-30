@@ -1,14 +1,105 @@
 id: gurtel
-nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+nombre_oficial: "Sumario / Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional (Época I enjuiciada por la Sección 2ª de la Sala de lo Penal AN, sentencia 20/2018; casación TS, sentencia 507/2020)"
 nombre_mediatico: "Caso Gürtel"
 nombres_alternativos:
   - "Trama Gürtel"
   - "Operación Gürtel"
+  - "Gürtel"
 
-organo_judicial_id: tribunal-supremo
+descripcion_corta: |
+  Macrocausa de presunta corrupción instruida desde 2009 por el
+  Juzgado Central de Instrucción nº 5 de la Audiencia Nacional sobre
+  una red de adjudicaciones públicas a cambio de comisiones articulada
+  por el empresario Francisco Correa a través de un entramado de
+  sociedades de organización de eventos (Special Events, Orange
+  Market, entre otras), con presunta financiación irregular del
+  Partido Popular en varias comunidades autónomas. La investigación
+  estalló públicamente en febrero de 2009 a partir de denuncias ante
+  la Fiscalía Anticorrupción, siendo instructor inicial el magistrado
+  Baltasar Garzón y, tras su salida en mayo de 2010, el magistrado
+  Pablo Ruz. El sobrenombre «Gürtel» es la traducción al alemán de
+  «correa». La causa se dividió en numerosas piezas (Época I de
+  1999-2005, Boadilla, Majadahonda, Pozuelo, Fundación, las piezas
+  valencianas de Fitur y de la visita del papa Benedicto XVI a
+  Valencia en 2006, entre otras) y de su instrucción derivó además la
+  pieza de la «caja b» del Partido Popular, modelada como caso propio
+  en este inventario. La Sección Segunda de la Sala de lo Penal de la
+  Audiencia Nacional dictó la sentencia 20/2018 (fechada el 17 de
+  mayo y hecha pública el 24 de mayo de 2018) sobre la Época I, que
+  condenó a 29 de los 37 acusados —con la pena más alta para Francisco
+  Correa, 51 años y 11 meses— y declaró al Partido Popular partícipe a
+  título lucrativo por 245.492,80 euros; aquella sentencia, que
+  precedió en pocos días a la moción de censura que llevó a la salida
+  del Gobierno de Mariano Rajoy, fue confirmada en casación por la
+  Sala Segunda del Tribunal Supremo el 14 de octubre de 2020
+  (sentencia 507/2020, ECLI:ES:TS:2020:3191, ponente Juan Ramón
+  Berdugo). Las piezas valencianas ganaron firmeza con posteriores
+  sentencias del Tribunal Supremo en 2023. La regla de presunción de
+  inocencia rige en las piezas que no han alcanzado sentencia firme.
+
+sintesis_caso:
+  que_se_investiga: "Una red de adjudicaciones públicas a cambio de comisiones vinculada a cargos del Partido Popular y articulada por el empresario Francisco Correa."
+  hechos_clave:
+    - "Instruida desde 2009 por el Juzgado Central de Instrucción nº 5 de la Audiencia Nacional, primero por Baltasar Garzón y después por Pablo Ruz."
+    - "La sentencia de la Audiencia Nacional de mayo de 2018 sobre la Época I (1999-2005) condenó a 29 de los 37 acusados y fue confirmada por el Tribunal Supremo en 2020."
+    - "El Partido Popular fue declarado partícipe a título lucrativo y condenado a abonar 245.492,80 euros."
+    - "La causa se ramificó en numerosas piezas y de ella derivó la pieza de la «caja b» del partido."
+  estado_actual: "Varias piezas con sentencia firme (Época I confirmada en 2020; pieza valenciana de la visita del Papa en 2023); otras ramas del macroprocedimiento en distintas fases."
+  cifras_clave:
+    - "29 de 37 acusados condenados en la Época I"
+    - "Hasta 51 años de prisión (pena más alta, Francisco Correa)"
+    - "245.492,80 € de responsabilidad civil del PP a título lucrativo"
+    - "Cifras globales del caso (en torno a 200 M€ y unos 94 condenados sumando piezas) son agregaciones periodísticas, no de un documento oficial único"
+
+organo_judicial_id: juzgado-central-instruccion-5
+numero_procedimiento: "Diligencias Previas / Sumario (Época I enjuiciada por la Sección 2ª de la Sala de lo Penal de la Audiencia Nacional, sentencia 20/2018)"
+tipo_procedimiento: sumario_ordinario
+
 fase_actual: sentencia_firme
 fecha_apertura: "2009-02-06"
 
 origen_denuncia: fiscalia_anticorrupcion
+delitos_atribuidos_en_la_causa:
+  - cohecho
+  - prevaricacion
+  - blanqueo-de-capitales
+  - falsedad-documental
+  - malversacion-caudales-publicos
+  - trafico-de-influencias
+  - fraude-administraciones-publicas
+  - organizacion-criminal
+  - delito-contra-hacienda-publica
 
-estado_publicacion: pendiente
+resumen_cifras: |
+  La sentencia firme de la Época I (1999-2005) impuso las penas más
+  altas a Francisco Correa (51 años) y Pablo Crespo (36 años y 8 meses
+  tras el ajuste del Tribunal Supremo), y declaró al Partido Popular
+  partícipe a título lucrativo, condenándolo a abonar 245.492,80 euros
+  (133.628,48 por Majadahonda y 111.864,32 por Pozuelo). Las cifras
+  globales que circulan sobre el conjunto del caso —del orden de
+  200 millones de euros de responsabilidades económicas, en torno a 94
+  condenados y más de 750 años de prisión sumando todas las piezas—
+  son una agregación periodística del macroprocedimiento, no proceden
+  de un único documento judicial y no se contabilizan aquí como cifra
+  estructurada para evitar el doble cómputo entre piezas.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: capital
+
+# Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
+# (ver docs/web/features/estado-ficha-caso.md). No mide el procedimiento
+# judicial — su fase procesal está en `fase_actual`.
+estado_ficha:
+  cronologia: parcial
+  roles_procesales: parcial
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: completo
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: parcial
+  conexiones: parcial
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: "Modelado inicial centrado en la Época I (con sentencia firme TS 507/2020) y en la pieza valenciana de la visita del Papa (firme TS 2023). Faltan por modelar piezas relevantes (Boadilla, Fundación, Fitur con detalle, financiación PP) y numerosos roles de segundo nivel (Ricardo Costa, cargos valencianos y madrileños). Sentencias íntegras AN 20/2018 y TS 507/2020 pendientes de localizar en CENDOJ y descargar como primario; notas CGPJ de las piezas valencianas pendientes."
+  fecha_actualizacion: "2026-05-30"

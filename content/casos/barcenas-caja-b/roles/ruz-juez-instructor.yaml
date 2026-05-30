@@ -1,0 +1,14 @@
+id: ruz-juez-instructor
+caso_id: barcenas-caja-b
+sujeto_tipo: persona
+sujeto_persona_id: pablo-ruz-gutierrez
+rol: juez_instructor
+fecha_inicio: "2013-03-01"
+fecha_fin: "2015-05-28"
+hito_fin_id: barcenas-apertura-juicio-oral-2015-05-28
+notas: |
+  Pablo Ruz fue el magistrado instructor del Juzgado Central de Instrucción
+  nº 5 de la Audiencia Nacional que inició la investigación de la pieza
+  separada sobre los papeles de Bárcenas en 2013. Acordó el sobreseimiento
+  provisional de la pieza de donaciones el 23 de marzo de 2015 y dictó la
+  apertura de juicio oral de la pieza Génova.

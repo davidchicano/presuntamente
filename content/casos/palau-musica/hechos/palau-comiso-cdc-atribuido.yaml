@@ -1,0 +1,75 @@
+id: palau-comiso-cdc-atribuido
+caso_id: palau-musica
+enunciado: |
+  La sentencia de la Sección 10ª de la Audiencia Provincial de Barcelona
+  (PA 74/2016), confirmada como firme por la STS 813/2020 del Tribunal
+  Supremo (30 de abril de 2020), declara probado que Convergència
+  Democràtica de Catalunya (CDC) percibió un mínimo de 6.676.105,58
+  euros en comisiones ilícitas a través del Palau de la Música Catalana
+  como intermediario: la empresa Ferrovial-Agroman abonaba dichas
+  cantidades —a razón de un 2,5% de los contratos adjudicados— como
+  contraprestación por la adjudicación de obras públicas en Cataluña
+  durante el período 1999-2009. Las sentencias acuerdan el comiso de
+  dicho importe a CDC como ganancias obtenidas mediante tráfico de
+  influencias. Millet y Montull recibieron adicionalmente un mínimo de
+  3.505.895,37 euros por su "mediación" en el esquema.
+tipo: acreditado
+# PROMOVIDO A ACREDITADO: 2026-05-30. Autorización maintainer (V-04).
+# Respaldo: nota oficial CGPJ N1 (nota-cgpj-sts-palau-2020) y nota CGPJ
+# AP Barcelona N1 (nota-cgpj-sentencia-ap-barcelona-palau-2018), ambas
+# accesibles en poderjudicial.es y verificadas el 2026-05-30.
+fecha_o_periodo:
+  desde: "1999-01-01"
+  hasta: "2009-07-27"
+  precision: rango
+personas_implicadas:
+  - felix-millet-tusell
+  - jordi-montull-bagur
+  - daniel-osacar-escrig
+organizaciones_implicadas:
+  - convergencia-democratica-de-catalunya
+  - ferrovial-agroman
+  - fundacio-orfeo-catala-palau-musica
+documentos_respaldo:
+  - documento_id: nota-cgpj-sts-palau-2020
+    pasaje: "El alto tribunal confirma también el comiso de 6,6 millones de euros a la formación política Convergència Democràtica de Catalunya (CDC)"
+  - documento_id: nota-cgpj-sentencia-ap-barcelona-palau-2018
+    pasaje: "El Tribunal acuerda el comiso de las ganancias obtenidas por Convergència Democràtica de Catalunya...que ascienden...a 6.676.105'58 euros"
+  - documento_id: confilegal-sts-palau-2020
+    pasaje: "El Supremo confirma el comiso de 6,6 millones de euros a Convergència"
+nivel_fuente_efectivo: 1
+importe: 6676105
+importe_moneda: EUR
+importe_alcance: componente
+importe_clase: objeto
+importe_naturaleza: comision_ilicita
+importe_nota: |
+  Importe mínimo de las comisiones que Ferrovial-Agroman abonó a CDC
+  a través del Palau de la Música, a razón de un 2,5% de los contratos
+  adjudicados (del 4% total pactado, de los que Millet y Montull percibían
+  el 1,5% restante). Importe declarado como ganancias sujetas a comiso
+  en la sentencia firme STS 813/2020. Se trata de un componente del total
+  del caso (no duplicar sumando al perjuicio de 23 M€, que es distinto
+  concepto: el expolio institucional).
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: convergencia-democratica-de-catalunya
+    papel: beneficiario
+    importe_sujeto: 6676105
+    nota: "La sentencia firme declara probado que CDC percibió este importe como comisiones. Importe sujeto a comiso."
+  - sujeto_tipo: organizacion
+    sujeto: ferrovial-agroman
+    papel: activo
+    nota: "La sentencia declara probado que Ferrovial-Agroman abonó las comisiones. Los directivos acusados fueron absueltos por prescripción."
+  - sujeto_tipo: persona
+    sujeto: felix-millet-tusell
+    papel: activo
+    nota: "Actuó como intermediario en el esquema de comisiones, percibiendo 1,5% adicional junto a Montull."
+  - sujeto_tipo: persona
+    sujeto: jordi-montull-bagur
+    papel: activo
+    nota: "Actuó como intermediario en el esquema de comisiones, percibiendo 1,5% adicional junto a Millet."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,30 @@
+id: hecho-fondos-no-regularizados-extranjero
+caso_id: pujol
+enunciado: >-
+  Se investiga que la familia Pujol Ferrusola mantuvo durante décadas fondos no
+  regularizados en el extranjero, principalmente en Andorra, situación que el
+  propio Jordi Pujol Soley reconoció públicamente el 25 de julio de 2014
+  atribuyendo el origen del dinero a una herencia de su padre, Florenci Pujol.
+tipo: investigado
+fecha_o_periodo:
+  desde: "1980-01-01"
+  hasta: "2014-07-25"
+  precision: rango
+personas_implicadas:
+  - jordi-pujol-soley
+  - marta-ferrusola-llados
+  - jordi-pujol-ferrusola
+documentos_respaldo:
+  - documento_id: confesion-publica-jordi-pujol-2014
+    pasaje: "Comunicado de 25 de julio de 2014: reconocimiento de fondos no regularizados en el extranjero"
+  - documento_id: cobertura-elpais-confesion-pujol-2014
+  - documento_id: cobertura-vozpopuli-confesion-pujol-2014
+nivel_fuente_efectivo: 4
+# Nota: no se cuantifica el importe porque las cifras publicadas sobre el
+# patrimonio en el extranjero varían según la fuente y no han sido fijadas por
+# resolución firme. Pendiente de verificar contra el informe patrimonial de la
+# UCO y las resoluciones de la causa (ver NOTES.md).
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

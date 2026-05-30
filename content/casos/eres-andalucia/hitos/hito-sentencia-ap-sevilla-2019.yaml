@@ -1,0 +1,32 @@
+id: hito-sentencia-ap-sevilla-2019
+caso_id: eres-andalucia
+tipo: sentencia_primera_instancia
+fecha: "2019-11-19"
+fecha_precision: dia
+titulo: "La Audiencia de Sevilla condena a exaltos cargos de la Junta en la pieza política"
+descripcion: |
+  La Sección Primera de la Audiencia Provincial de Sevilla dicta
+  sentencia en la pieza política del caso ERE. El tribunal condena a un
+  grupo de exaltos cargos de la Junta de Andalucía por prevaricación y,
+  a varios de ellos, además por malversación de caudales públicos, por
+  el diseño y mantenimiento del sistema de ayudas. El expresidente
+  Manuel Chaves resulta condenado por prevaricación y el expresidente
+  José Antonio Griñán por prevaricación y malversación (con pena de
+  prisión). La sentencia es recurrible en casación ante el Tribunal
+  Supremo; las condenas no son firmes.
+personas_afectadas:
+  - manuel-chaves-gonzalez
+  - jose-antonio-grinan-martinez
+  - gaspar-zarrias
+  - vicente-fernandez-guerrero
+organizaciones_afectadas:
+  - audiencia-provincial-sevilla
+  - junta-de-andalucia
+documento_principal_id: sentencia-ap-sevilla-ere-2019
+hechos_introducidos:
+  - hecho-sistema-ayudas-transferencias-financiacion
+  - hecho-condena-prevaricacion-malversacion-2019
+fase_resultante: sentencia_primera_instancia
+# LLM-incierto: número de sentencia (se cita habitualmente como 490/2019)
+# y penas individualizadas exactas, sin verificar en vivo. NO promover los
+# hechos a 'acreditado': la sentencia de instancia no era firme. V-04.

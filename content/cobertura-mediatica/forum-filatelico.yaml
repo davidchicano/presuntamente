@@ -1,0 +1,267 @@
+# Cobertura mediática general — caso forum-filatelico
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: forum-filatelico
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "Fórum Filatélico"
+    - "Forum Filatelico"
+    - "Operación Atrio"
+    - "estafa piramidal sellos"
+    - "Francisco Briones Fórum"
+    - "Juzgado Central Instrucción 5 Forum"
+  ventanas_temporales:
+    - desde: "2006-05-09"
+      hasta: "2006-12-31"
+      notas: "Intervención judicial: Operación Atrio (9 mayo 2006); apertura pública del caso y primera cobertura masiva."
+    - desde: "2014-10-01"
+      hasta: "2014-12-31"
+      notas: "Auto de procesamiento del juez Ruz: 32 procesados, perjuicio de 3.700 millones a 269.203 personas."
+    - desde: "2017-09-01"
+      hasta: "2018-07-31"
+      notas: "Apertura del juicio oral (septiembre 2017) y sentencia de la Audiencia Nacional (13 julio 2018)."
+    - desde: "2019-01-01"
+      hasta: "2020-03-31"
+      notas: "Reportajes sobre víctimas sin recuperar dinero y sentencia firme del Tribunal Supremo (5 marzo 2020)."
+    - desde: "2025-01-01"
+      hasta: "2026-05-30"
+      notas: "Cierre del proceso concursal (mayo 2025) y decomiso de activos del prófugo Llorca en Liechtenstein (enero 2026)."
+  fuentes_buscadas:
+    - publico.es
+    - infolibre.es
+    - elespanol.com
+    - vozpopuli.com
+    - okdiario.com
+    - libertaddigital.com
+    - confilegal.com
+    - theobjective.com
+    - eldiario.es
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o en el lead.
+    Se incluyen noticias, reportajes y análisis sobre los hitos procesales clave
+    (intervención, procesamiento, juicio oral, sentencias AN y TS, concurso de
+    acreedores, decomiso Llorca) y piezas de largo aliento sobre las víctimas.
+    Se incluye cobertura con representación de líneas editoriales diversas (centroizquierda,
+    centroderecha, especializados jurídicos).
+  criterios_exclusion: >
+    Se excluyen republicaciones palabra por palabra de agencia sin valor añadido.
+    Se excluyen piezas centradas exclusivamente en Afinsa (causa paralela separada).
+    Se excluyen menciones laterales en piezas centradas en otro caso.
+    El País (elpais.com), El Mundo (elmundo.es) y El Confidencial (elconfidencial.com)
+    no son accesibles vía WebSearch con filtro de dominio en el entorno del agente;
+    su cobertura es notoriamente extensa y se anota como limitación.
+  notas: >
+    Rastreo inicial v1 sobre cinco ventanas temporales (mayo 2006 — mayo 2026). La cobertura
+    de este caso es especialmente intensa por el número de afectados (268.804 inversores) y la
+    duración del proceso (14 años hasta sentencia firme del TS, 15 hasta cierre del concurso).
+    Las url_archivo se rellenan con scripts/archivar-n4.mjs (pnpm archive:catchup).
+    Medios con cobertura propia muy relevante no incluida en este rastreo por limitaciones
+    técnicas de acceso: El País, El Mundo, El Confidencial, ABC.
+
+estado: parcial
+
+noticias:
+
+  # ── HITO 1: AUTO DE PROCESAMIENTO RUZ (octubre 2014) ─────────────────────────
+
+  - id: publico-ruz-procesa-32-forum-2014
+    url: "https://www.publico.es/politica/ruz-procesa-32-responsables-forum-filatelico-estafar-269-203-personas-causarles-perjuicio-3-700-millones-euros.html"
+    medio_id: publico-es
+    titular: "Ruz procesa a los 32 responsables de Forum Filatélico por estafar a 269.203 personas y causarles un perjuicio de 3.700 millones de euros"
+    fecha_publicacion: "2014-10-08"
+    autor: "Público"
+    resumen: >
+      El juez Pablo Ruz dicta auto de procesamiento contra 32 responsables de Fórum Filatélico
+      tras ocho años de instrucción. El auto cuantifica el perjuicio en 3.700 millones de euros
+      a 269.203 personas, y describe cómo los acusados valoraban los sellos en más de 4.000
+      millones de euros cuando su valor real de mercado era aproximadamente 86 millones.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── HITO 2: APERTURA DEL JUICIO ORAL (septiembre 2017) ───────────────────────
+
+  - id: elespanol-juicio-oral-forum-2017
+    url: "https://www.elespanol.com/espana/20170918/247725502_0.html"
+    medio_id: el-espanol
+    titular: "Acusados por Fórum van a juicio tras 11 años de la estafa a 269.000 inversores"
+    fecha_publicacion: "2017-09-18"
+    autor: "E.E. | AGENCIAS"
+    resumen: >
+      Francisco Briones y otros 28 acusados comparecen ante la Audiencia Nacional por una
+      presunta estafa que captó más de 3.200 millones de euros de casi 270.000 inversores
+      antes de la intervención judicial en 2006. La pieza contextualiza la apertura del
+      juicio oral once años después de la Operación Atrio.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── HITO 3: SENTENCIA AN (julio 2018) ────────────────────────────────────────
+
+  - id: publico-sentencia-an-forum-2018
+    url: "https://www.publico.es/espana/sentencia-12-anos-carcel-ex-presidente-forum-filatelico-estafa-blanqueo.html"
+    medio_id: publico-es
+    titular: "Doce años de cárcel para el expresidente de Fórum Filatélico por estafa y blanqueo"
+    fecha_publicacion: "2018-07-13"
+    autor: "EFE"
+    resumen: >
+      La Audiencia Nacional condena a Francisco Briones, expresidente de Fórum Filatélico,
+      a 12 años de prisión y multa de 49,7 millones de euros por estafa agravada, blanqueo
+      e insolvencia punible. El tribunal consideró que la empresa operó entre 1998 y 2006
+      como un esquema piramidal captando más de 3.000 millones de euros de pequeños
+      ahorradores mediante promesas de revalorización de sellos sin valor real de mercado.
+    tipo_pieza: pieza_agencia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: libertad-digital-sentencia-an-forum-2018
+    url: "https://www.libertaddigital.com/espana/2018-07-13/hasta-doce-anos-de-carcel-para-20-acusados-por-la-estafa-de-forum-filatelico-1276622005/"
+    medio_id: libertad-digital
+    titular: "Hasta doce años de cárcel para 20 acusados por la estafa de Fórum Filatélico"
+    fecha_publicacion: "2018-07-13"
+    autor: "Fernando Lorente"
+    resumen: >
+      Libertad Digital cubre la sentencia de la Audiencia Nacional que condena a 20 personas
+      por el esquema piramidal de Fórum Filatélico, con penas de hasta 12 años y 4 meses.
+      La pieza describe la naturaleza del fraude: los acusados compraban sellos sobrevalorados
+      a través de empresas pantalla y los reintroducían en el circuito de venta a la empresa,
+      que pagaba de nuevo por el mismo producto inflando artificialmente el activo.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── HITO 4: REPORTAJE VÍCTIMAS SIN RECUPERAR DINERO (marzo 2019) ─────────────
+
+  - id: infolibre-victimas-forum-afinsa-13-anos-2019
+    url: "https://www.infolibre.es/politica/estafa-piramidal-eterna-victimas-forum-afinsa-siguen-recuperar-dinero-despues-13-anos_1_1167872.html"
+    medio_id: infolibre
+    titular: "Una estafa piramidal y eterna: las víctimas de Fórum y Afinsa siguen sin recuperar su dinero después de 13 años"
+    fecha_publicacion: "2019-03-03"
+    autor: "Lara Carrasco"
+    resumen: >
+      Reportaje de infoLibre sobre la situación de las aproximadamente 470.000 víctimas de
+      Fórum Filatélico, Afinsa y Arte y Naturaleza trece años después de su intervención.
+      Solo Fórum ha devuelto el 20,5% del capital invertido y Afinsa el 10,5%, mientras los
+      fondos permanecen en proceso concursal sin solución política pese a las peticiones de
+      la asociación ADICAE al Congreso.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── HITO 5: SENTENCIA FIRME TS (marzo 2020) ──────────────────────────────────
+
+  - id: confilegal-ts-confirma-forum-2020
+    url: "https://confilegal.com/20200305-el-supremo-confirma-la-estafa-de-forum-filatelico-y-rebaja-levemente-la-condena-a-briones/"
+    medio_id: confilegal
+    titular: "El Supremo confirma la estafa de Fórum Filatélico y rebaja levemente la condena a Briones"
+    fecha_publicacion: "2020-03-05"
+    autor: "Agencias"
+    resumen: >
+      El Tribunal Supremo ratifica la condena por estafa piramidal a 16 responsables de
+      Fórum Filatélico y reduce la pena de Francisco Briones de 12 años y 4 meses a
+      11 años y 10 meses, aplicando la atenuante de dilaciones indebidas. La pieza
+      está orientada al análisis jurídico de la resolución y su alcance para los afectados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-ts-cierre-forum-2020
+    url: "https://www.elespanol.com/espana/tribunales/20200305/ts-punto-final-forum-filatelico-proceso-condenados/472453299_0.html"
+    medio_id: el-espanol
+    titular: "El TS pone punto final al caso Forum Filatélico tras 14 años de proceso y con 16 condenados"
+    fecha_publicacion: "2020-03-05"
+    autor: "E.E."
+    resumen: >
+      El Español recoge la sentencia 688/2019 del Tribunal Supremo que cierra el caso
+      penal de Fórum Filatélico con 16 condenados tras 14 años desde la Operación Atrio.
+      El expresidente Francisco Briones recibe la pena máxima de 11 años y 10 meses
+      más multa de 49,7 millones, y la empresa deberá responder subsidiariamente de las
+      indemnizaciones a los aproximadamente 268.000 clientes perjudicados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: infolibre-ts-confirma-forum-2020
+    url: "https://www.infolibre.es/politica/supremo-confirma-estafa-piramidal-forum-rebaja-levemente-condena-briones-dilaciones-indebidas_1_1180856.html"
+    medio_id: infolibre
+    titular: "El Supremo confirma la estafa piramidal de Fórum aunque rebaja levemente las condena a Briones por dilaciones indebidas"
+    fecha_publicacion: "2020-03-05"
+    autor: "infoLibre"
+    resumen: >
+      infoLibre recoge la sentencia del Tribunal Supremo que confirma la estafa agravada
+      de Fórum Filatélico, que afectó a 268.000 personas con más de 3.700 millones de euros.
+      La sala condena a 16 responsables y reduce levemente la pena de Briones por aplicación
+      de la atenuante de dilaciones indebidas en un proceso de más de 14 años de duración.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: confilegal-ts-confirma-forum-2020
+    notas: "Pieza del mismo hito que confilegal-ts-confirma-forum-2020; se conservan ambas por líneas editoriales distintas."
+
+  # ── HITO 6: CIERRE CONCURSO DE ACREEDORES (mayo 2025) ───────────────────────
+
+  - id: vozpopuli-cierre-concurso-forum-2025
+    url: "https://www.vozpopuli.com/economia/forum-filatelico-millones-muertos.html"
+    medio_id: vozpopuli
+    titular: "El caso Fórum Filatélico se cierra tras 15 años con un coste de 46 millones y 15.000 muertos"
+    fecha_publicacion: "2025-05-26"
+    autor: "Alberto Ortín"
+    resumen: >
+      Tras 15 años de proceso concursal, la administración de Fórum Filatélico presenta
+      su informe final antes de la disolución de la empresa: de los aproximadamente 300.000
+      acreedores, al menos 15.000 fallecieron durante el proceso y solo se pudo atender el
+      23,5% de los créditos reconocidos, con un coste de gestión concursal de 46 millones
+      de euros.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── HITO 7: DECOMISO ACTIVOS LLORCA EN LIECHTENSTEIN (enero 2026) ────────────
+
+  - id: theobjective-decomiso-llorca-2026
+    url: "https://theobjective.com/espana/tribunales/2026-01-15/audiencia-nacional-confisca-huido-forum-filatelico/"
+    medio_id: the-objective
+    titular: "La Audiencia Nacional confisca 2,6 millones a un huido por la estafa de Fórum Filatélico"
+    fecha_publicacion: "2026-01-15"
+    autor: "THE OBJECTIVE"
+    resumen: >
+      La Audiencia Nacional ordena el decomiso de 2,6 millones de euros de José Manuel
+      Llorca Rodríguez, prófugo de la justicia desde 2007, depositados en Liechtenstein
+      bajo la Fundación MALAPA. Los fondos serán destinados a indemnizar a las víctimas
+      mediante la figura del decomiso autónomo, que permite intervenir bienes sin sentencia
+      de condena cuando el imputado permanece en rebeldía.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-decomiso-llorca-liechtenstein-2026
+    url: "https://www.elespanol.com/castilla-y-leon/region/20260116/decomisa-millones-ocultos-liechtenstein-fugado-caso-forum-repartira-estafados/1003744091922_0.html"
+    medio_id: el-espanol
+    titular: "Decomisan 2,6 millones ocultos en Liechtenstein a un fugado del caso Fórum: se repartirá entre los estafados"
+    fecha_publicacion: "2026-01-16"
+    autor: "J.I. Fernández"
+    resumen: >
+      El Español recoge el decomiso de 2,6 millones de euros ordenado por la Audiencia
+      Nacional contra José Manuel Carlos Llorca, principal responsable de Fórum Filatélico
+      en rebeldía desde 2007, cuyos fondos estaban depositados en Liechtenstein. La pieza
+      aporta el contexto territorial de Castilla y León, región con más de 40.000 afectados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: theobjective-decomiso-llorca-2026
+    notas: "Pieza del mismo hito que theobjective-decomiso-llorca-2026; se conservan ambas por líneas editoriales distintas."

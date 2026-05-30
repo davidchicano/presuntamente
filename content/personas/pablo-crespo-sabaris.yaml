@@ -1,0 +1,21 @@
+id: pablo-crespo-sabaris
+nombre_completo: "Pablo Crespo Sabarís"
+nombres_alternativos:
+  - "Pablo Crespo"
+  - "Crespo"
+  - "Crespo Sabarís"
+es_figura_publica: true
+cargo_publico_actual: ""
+cargos_publicos_historicos:
+  - cargo: "Secretario de Organización del Partido Popular de Pontevedra"
+    organizacion_id: partido-popular
+    desde: "1997-01-01"
+    hasta: "2004-12-31"
+nacionalidad: "española"
+biografia_corta: |
+  Exsecretario de organización del Partido Popular de Pontevedra y,
+  según las resoluciones de la Audiencia Nacional, número dos de la
+  red empresarial de Francisco Correa en la trama Gürtel. Condenado
+  por sentencia firme en varias piezas del macroprocedimiento.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

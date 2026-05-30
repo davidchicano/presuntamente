@@ -1,0 +1,30 @@
+id: gurtel-publicacion-investigacion-2009
+caso_id: gurtel
+tipo: publicacion_investigacion_periodistica
+fecha: "2009-02-06"
+fecha_precision: dia
+titulo: "Estalla públicamente el caso Gürtel y se conoce la instrucción en el JCI nº 5"
+descripcion: |
+  En febrero de 2009 se hace pública la existencia de una
+  investigación de la Fiscalía Anticorrupción y del Juzgado Central de
+  Instrucción nº 5 de la Audiencia Nacional, instruido entonces por el
+  magistrado Baltasar Garzón, sobre una presunta red de adjudicaciones
+  públicas a cambio de comisiones vinculada al empresario Francisco
+  Correa. La investigación, bautizada «Gürtel» (traducción al alemán
+  de «correa»), tuvo su origen en denuncias presentadas ante la
+  Fiscalía Anticorrupción y se dirige contra el entramado societario
+  de Correa y contra cargos del Partido Popular en varias comunidades
+  autónomas. La condición de investigado no implica valoración de
+  culpabilidad: rige el principio de presunción de inocencia.
+personas_afectadas:
+  - francisco-correa-sanchez
+  - pablo-crespo-sabaris
+  - baltasar-garzon-real
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+  - fiscalia-anticorrupcion
+  - partido-popular
+documento_principal_id: elpais-cronologia-gurtel-2018
+documentos_relacionados:
+  - publico-diez-anos-gurtel-2019
+fase_resultante: instruccion

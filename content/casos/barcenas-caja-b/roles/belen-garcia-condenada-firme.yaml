@@ -1,0 +1,17 @@
+id: belen-garcia-condenada-firme
+caso_id: barcenas-caja-b
+sujeto_tipo: persona
+sujeto_persona_id: belen-garcia-mediavilla
+rol: condenado_firme
+delitos_atribuidos:
+  - delito-contra-hacienda-publica
+  - falsedad-documental
+fecha_inicio: "2024-11-15"
+hito_origen_id: barcenas-sentencia-firme-ts-2024-11-15
+notas: |
+  Condena firme por sentencia del Tribunal Supremo de 15 de noviembre de 2024
+  (ECLI:ES:TS:2024:5577). Coadministradora de Unifica S.L. Pena reducida a
+  nueve meses de prisión y multa de 200.000 euros por atenuante de dilaciones
+  indebidas. La presunción de inocencia decae respecto de los hechos probados
+  y firmes (coautora del delito contra la Hacienda Pública de Unifica,
+  ejercicio 2007).

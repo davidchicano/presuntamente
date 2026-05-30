@@ -1,0 +1,42 @@
+id: bankia-perjudicada-tarjetas-black
+naturaleza: perjudicado_institucional_en_caso
+descripcion: >-
+  Bankia figura en el procedimiento de las tarjetas black como entidad
+  financiera perjudicada en el tramo final del periodo enjuiciado (2011-2012),
+  una vez que el negocio bancario de Caja Madrid paso a integrar el grupo
+  BFA-Bankia. Sus consejeros y directivos continuaron disponiendo de tarjetas
+  de credito de empresa cargadas a la entidad para gastos personales al margen
+  de su retribucion formal declarada. La Audiencia Nacional la reconocio como
+  perjudicada en la sentencia de 23 de febrero de 2017, conjuntamente con
+  Caja Madrid.
+sujeto_organizacion_id: bankia
+objeto_organizacion_id: audiencia-nacional
+desde: "2010-12-01"
+hasta: "2012-05-31"
+precision_desde: mes
+precision_hasta: mes
+vigente: false
+relevancia_para_caso_ids: [tarjetas-black]
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: >-
+      La Audiencia Nacional reconoce a Bankia como entidad perjudicada en la
+      sentencia de 23 de febrero de 2017 sobre las tarjetas de credito de
+      empresa, conjuntamente con Caja Madrid, en el tramo final del periodo
+      enjuiciado una vez constituido el grupo BFA-Bankia.
+  - documento_id: sentencia-ts-tarjetas-black-2018
+    pasaje: >-
+      La sentencia del Tribunal Supremo de 2018 confirma el caracter de
+      perjudicada de Bankia en el procedimiento de las tarjetas black,
+      ratificando las condenas por apropiacion indebida a los acusados que
+      dispusieron de las tarjetas en el periodo en que la entidad operaba
+      bajo la denominacion Bankia.
+nivel_afectacion: directa
+justificacion_afectacion: >-
+  Bankia es la entidad financiera sucesora del negocio bancario de Caja Madrid
+  y perjudicada directa en el tramo final del periodo enjuiciado (2011-2012).
+  Sus fondos fueron objeto del mismo sistema de uso indebido de tarjetas de
+  empresa reconocido en la sentencia de la Audiencia Nacional y confirmado por
+  el Tribunal Supremo.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

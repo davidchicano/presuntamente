@@ -1,0 +1,25 @@
+id: sentencia-ap-malaga-malaya-535-2013
+titulo: "Sentencia 535/2013 de la Audiencia Provincial de Málaga (Sección 1ª), caso Malaya — Rollo Sumario 21/2007"
+tipo: sentencia
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Sentencia de órgano jurisdiccional (AP Málaga, Sección 1ª) dictada
+  el 4 de octubre de 2013, nº 535/2013, Rollo de Sala Sumario 21/2007.
+  Magistrados firmantes: José Godino (presidente y ponente), Rafael
+  Linares y Manuel Caballero. El texto íntegro consta de cinco tomos y
+  más de 5.000 folios, publicados en CENDOJ. La sentencia es la segunda
+  más consultada en CENDOJ durante 2024. La URL del tomo 4 (El Mundo)
+  se incluye como mirror de acceso público verificado, pero el documento
+  primario es la sentencia registrada en CENDOJ.
+productor_organizacion_id: audiencia-provincial-malaga
+fecha_documento: "2013-10-04"
+url_canonica: "https://www.poderjudicial.es/search/indexAN.jsp"
+# pendiente_primario: localizar URL directa de CENDOJ para sentencia 535/2013.
+# El acceso a CENDOJ requiere búsqueda manual. El mirror de El Mundo está en
+# https://e00-elmundo.uecdn.es/documentos/2013/10/04/sentencia_casomalaya_tomo4.pdf
+# pero no es URL canónica de lista blanca.
+estado_acceso: publico
+idioma: es
+caso_principal_id: malaya
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

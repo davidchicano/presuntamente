@@ -1,0 +1,25 @@
+id: malaya-apertura-instruccion-2005
+caso_id: malaya
+tipo: auto_diligencias
+fecha: "2005-11-01"
+fecha_precision: mes
+titulo: "Inicio de las Diligencias Previas 4796/2005 en el Juzgado de Instrucción nº 5 de Marbella"
+descripcion: |
+  El magistrado Miguel Ángel Torres Segura, titular del Juzgado de
+  Instrucción nº 5 de Marbella, inicia en noviembre de 2005 las
+  Diligencias Previas 4796/2005 —conocidas públicamente como
+  Operación Malaya— para investigar presuntos delitos de corrupción
+  urbanística, cohecho, malversación de caudales públicos y
+  blanqueo de capitales vinculados al Ayuntamiento de Marbella.
+  La instrucción responde a indicios localizados en el contexto de
+  la investigación sobre la gestión del Ayuntamiento durante el
+  período de gobierno del Grupo Independiente Liberal (GIL).
+personas_afectadas:
+  - miguel-angel-torres-segura
+organizaciones_afectadas:
+  - juzgado-instruccion-5-marbella
+  - fiscalia-anticorrupcion
+  - ayuntamiento-de-marbella
+hechos_introducidos:
+  - malaya-trama-urbanistica
+fase_resultante: instruccion

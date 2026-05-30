@@ -1,0 +1,19 @@
+id: filesa-designacion-instructor-barbero-1991
+caso_id: filesa
+tipo: cambio_juez
+fecha: "1991-11-11"
+fecha_precision: dia
+titulo: "Marino Barbero Santos es designado magistrado instructor de la Causa Especial nº 880/1991"
+descripcion: |
+  El 11 de noviembre de 1991 la Sala Segunda del Tribunal Supremo
+  designa al magistrado Marino Barbero Santos como instructor de la
+  Causa Especial nº 880/1991, conocida públicamente como caso Filesa.
+  Barbero Santos llevará la instrucción durante casi cuatro años,
+  período en el que se investigará la red de empresas Filesa, Malesa
+  y Time Export y sus vínculos presuntos con la financiación irregular
+  del PSOE.
+personas_afectadas:
+  - marino-barbero-santos
+organizaciones_afectadas:
+  - tribunal-supremo
+fase_resultante: instruccion

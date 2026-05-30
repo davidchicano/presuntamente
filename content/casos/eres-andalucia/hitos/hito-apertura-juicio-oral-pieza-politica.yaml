@@ -1,0 +1,25 @@
+id: hito-apertura-juicio-oral-pieza-politica
+caso_id: eres-andalucia
+tipo: inicio_vista_oral
+fecha: "2017-12-01"
+fecha_precision: mes
+titulo: "Comienza en la Audiencia de Sevilla el juicio de la pieza política del caso ERE"
+descripcion: |
+  La Sección Primera de la Audiencia Provincial de Sevilla inicia el
+  juicio oral de la denominada pieza política del caso ERE, que sienta
+  en el banquillo a exaltos cargos de la Junta de Andalucía, entre
+  ellos los expresidentes Manuel Chaves y José Antonio Griñán. El
+  juicio se prolonga durante meses con numerosas sesiones.
+personas_afectadas:
+  - manuel-chaves-gonzalez
+  - jose-antonio-grinan-martinez
+  - gaspar-zarrias
+  - vicente-fernandez-guerrero
+organizaciones_afectadas:
+  - audiencia-provincial-sevilla
+  - junta-de-andalucia
+fase_resultante: juicio_oral
+# LLM-incierto: fecha exacta de inicio del juicio (situada en diciembre de
+# 2017) y número total de acusados sentados en el banquillo de la pieza
+# política, sin verificar en vivo. Verificar contra cobertura N4 cruzada
+# y nota del TSJA/AP Sevilla.

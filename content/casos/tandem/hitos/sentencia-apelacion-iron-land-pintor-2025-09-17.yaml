@@ -1,0 +1,24 @@
+id: sentencia-apelacion-iron-land-pintor-2025-09-17
+caso_id: tandem
+tipo: sentencia_apelacion
+fecha: "2025-09-17"
+fecha_precision: dia
+titulo: "Sala de Apelación de la AN reduce la condena de Villarejo a 13 años en piezas Iron, Land y Pintor"
+descripcion: |
+  El 17 de septiembre de 2025 la Sala de Apelación de la Audiencia
+  Nacional dictó sentencia en los recursos presentados contra la sentencia
+  de primera instancia de julio de 2023. La Sala redujo la condena de
+  Villarejo de 19 a 13 años de prisión al absolverle del delito de falsedad
+  documental en dos de las piezas. La condena de Rafael Redondo fue
+  igualmente reducida de 13 a 9 años por el mismo motivo. La sentencia
+  de apelación mantiene las absoluciones por cohecho y extorsión dictadas
+  en primera instancia. La resolución tiene 310 páginas. A fecha de
+  revisión editorial (2026-05-30) no consta recurso de casación ante el
+  Tribunal Supremo, si bien el plazo podría no haber transcurrido.
+personas_afectadas:
+  - jose-manuel-villarejo
+  - rafael-redondo-rodriguez
+organizaciones_afectadas:
+  - audiencia-nacional
+documento_principal_id: infobae-sentencia-apelacion-villarejo-13-anos-2025-09-17
+fase_resultante: recurso

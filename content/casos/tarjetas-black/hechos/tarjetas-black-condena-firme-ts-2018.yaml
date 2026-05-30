@@ -1,0 +1,42 @@
+id: tarjetas-black-condena-firme-ts-2018
+caso_id: tarjetas-black
+enunciado: |
+  La Sala Segunda del Tribunal Supremo dicto el 3 de octubre de 2018 la
+  sentencia ECLI:ES:TS:2018:3253 (ponente: magistrado Miguel Colmenero),
+  que confirmo en casacion las condenas de la Audiencia Nacional de 23 de
+  febrero de 2017. Con esa resolucion adquirieron firmeza las condenas de
+  64 exdirectivos y exconsejeros de Caja Madrid por delito continuado de
+  apropiacion indebida: Rodrigo Rato fue condenado a 4 anos y 6 meses de
+  prision; las penas del resto oscilaron entre 4 meses y 4 anos y 6 meses
+  segun el importe individualmente dispuesto. La responsabilidad civil fijada
+  supero los 12 millones de euros (9,3 millones correspondientes al periodo de
+  presidencia de Miguel Blesa, 2003-2010, y 2,6 millones al de Rodrigo Rato,
+  2010-2012). La sentencia es firme; la presuncion de inocencia decae respecto
+  de los hechos declarados probados para los condenados cuya condena adquirio
+  firmeza. En el caso de Miguel Blesa, fallecido el 28 de julio de 2017 antes
+  de la resolucion, el TS declaro extinguida su responsabilidad penal y su
+  recurso desierto (ver hecho tarjetas-black-extincion-blesa).
+tipo: acreditado
+# V-04 aplicado: promovido a 'acreditado' el 2026-05-30 por revision humana
+# (maintainer autorizado). Respaldo: nota oficial CGPJ (N1) verificada en
+# poderjudicial.es el 2026-05-30 + ECLI:ES:TS:2018:3253. La confirmacion en
+# casacion por la Sala Segunda del TS hace firmes las condenas; la presuncion
+# de inocencia decae para los hechos declarados probados y firmes.
+fecha_o_periodo:
+  desde: "2018-10-03"
+  precision: dia
+  # Fecha verificada el 2026-05-30 via nota oficial CGPJ.
+personas_implicadas:
+  - rodrigo-rato
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: sentencia-ts-tarjetas-black-2018
+    pasaje: "FALLO — confirmacion de condenas por apropiacion indebida y declaracion de firmeza. ECLI:ES:TS:2018:3253, 3 de octubre de 2018, Sala Segunda, ponente magistrado Miguel Colmenero. Texto integro pendiente de localizar en CENDOJ para cita con pagina exacta."
+  - documento_id: cgpj-nota-tarjetas-black-ts-2018-10-03
+    pasaje: "Nota CGPJ de 03-10-2018: confirma 4 anos y 6 meses a Rato; 63 condenados mas con penas de 4 meses a 4 anos y 6 meses; responsabilidad civil total mas de 12 millones de euros (9,3 M periodo Blesa + 2,6 M periodo Rato)."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

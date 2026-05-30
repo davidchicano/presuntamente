@@ -1,0 +1,39 @@
+id: atico-confirmacion-archivo-apelacion-2020-11-09
+caso_id: atico-estepona
+enunciado: |
+  La Sección Novena de la Audiencia Provincial de Málaga, por
+  auto de 9 de noviembre de 2020 (notificado el 13 de noviembre),
+  desestimó el recurso de apelación de las acusaciones populares
+  y confirmó el sobreseimiento provisional acordado por el
+  Juzgado de Primera Instancia e Instrucción nº 5 de Estepona el
+  14 de julio de 2020 sobre la adquisición del ático de lujo en
+  esa localidad por Ignacio González González y su esposa, en el que también figuraba investigado el empresario
+  Enrique Cerezo Torres. Según la cobertura periodística, el
+  tribunal de apelación razonó que no constan indicios de cohecho
+  —no se infiere vínculo entre los contratos de la sociedad
+  estadounidense Coast Investors y la actuación de González como
+  vicepresidente o presidente de la Comunidad de Madrid— ni
+  indicios de un delito antecedente del que procediera el dinero
+  a efectos de blanqueo. El sobreseimiento se confirma con
+  carácter provisional: no implica condena ni absolución y queda
+  sujeto a eventual reapertura si aparecieran nuevas pruebas.
+tipo: exculpatorio
+fecha_o_periodo:
+  desde: "2020-11-09"
+  precision: dia
+personas_implicadas:
+  - ignacio-gonzalez
+  - enrique-cerezo
+organizaciones_implicadas:
+  - audiencia-provincial-malaga
+  - juzgado-primera-instancia-instruccion-5-estepona
+documentos_respaldo:
+  - documento_id: confilegal-ap-malaga-confirma-archivo-atico-2020-11-13
+    pasaje: "Cobertura del auto de la Sección 9ª de la AP de Málaga (9-nov-2020) que confirma el sobreseimiento provisional: no constan indicios de cohecho ni de delito antecedente de blanqueo."
+  - documento_id: elindependiente-ap-malaga-archiva-atico-2020-11-13
+    pasaje: "La Audiencia de Málaga ratifica «en su integridad» lo dictado por el juzgado de Estepona, desestimando el recurso de las acusaciones populares."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

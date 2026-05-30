@@ -1,0 +1,21 @@
+id: malaya-disolucion-ayuntamiento-2006
+caso_id: malaya
+tipo: cese
+fecha: "2006-04-07"
+fecha_precision: dia
+titulo: "Disolución del Ayuntamiento de Marbella por el Consejo de Ministros"
+descripcion: |
+  El 7 de abril de 2006 el Consejo de Ministros aprueba la disolución
+  del Ayuntamiento de Marbella, primera vez en la historia democrática
+  española en que un consistorio es disuelto por esta vía. La medida
+  se adopta como consecuencia directa de las detenciones y del
+  desmoronamiento del gobierno municipal tras la Operación Malaya.
+  Tomás Reñones, que ejercía como alcalde en funciones, cesa en el
+  cargo. Se designa una comisión gestora para administrar el municipio.
+personas_afectadas:
+  - tomas-renones
+organizaciones_afectadas:
+  - ayuntamiento-de-marbella
+  - grupo-independiente-liberal
+documentos_relacionados:
+  - nota-cgpj-sentencia-malaya-ap-malaga-2013

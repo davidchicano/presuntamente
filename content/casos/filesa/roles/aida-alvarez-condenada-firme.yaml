@@ -1,0 +1,15 @@
+id: aida-alvarez-condenada-firme
+caso_id: filesa
+sujeto_tipo: persona
+sujeto_persona_id: aida-alvarez-alvarez
+rol: condenado_firme
+delitos_atribuidos:
+  - falsedad-documental
+fecha_inicio: "1997-10-28"
+hito_origen_id: filesa-sentencia-firme-ts-1997
+notas: |
+  Condenada por la STS 1/1997 a 2 años, 4 meses y 1 día de prisión
+  por un delito de falsedad continuada en documento mercantil,
+  relacionado con facturas falsas emitidas por el Grupo 2020 a Filesa.
+  El TC desestimó su recurso de amparo (STC 127/2001). La presunción
+  de inocencia decae respecto de los hechos declarados probados.

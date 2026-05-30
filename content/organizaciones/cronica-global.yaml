@@ -1,0 +1,27 @@
+id: cronica-global
+nombre: "Crónica Global"
+nombres_alternativos:
+  - "CrónicaGlobal"
+  - "cronicaglobal.elespanol.com"
+  - "Crónica Global (El Español)"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Suplemento digital especializado en información de Catalunya editado
+  por El Español. Cubre política, tribunales y actualidad catalana con
+  especial seguimiento del caso Pujol y de la política institucional
+  de la Generalitat de Catalunya.
+ambito_territorial: autonomico
+localidad: "Barcelona"
+url_canonica: "https://cronicaglobal.elespanol.com/"
+
+naturaleza_editorial: generalista_politico
+
+grupo_editorial:
+  nombre: "El León de El Español Publicaciones S.A."
+  rol: matriz
+  cita: >-
+    Crónica Global es una publicación del Grupo El Español.
+  url: "https://cronicaglobal.elespanol.com/"
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,38 @@
+id: barcenas-sentencia-firme-ts-2024-11-15
+caso_id: barcenas-caja-b
+tipo: sentencia_firme
+fecha: "2024-11-15"
+fecha_precision: dia
+titulo: >-
+  El Tribunal Supremo confirma la condena en la pieza Génova y reduce las penas
+  por dilaciones indebidas
+descripcion: |
+  La Sala Segunda del Tribunal Supremo, con ponencia del magistrado Antonio del
+  Moral García, dicta el 15 de noviembre de 2024 la sentencia
+  ECLI:ES:TS:2024:5577 que resuelve los recursos de casación contra la
+  sentencia de la Audiencia Nacional de 28 de octubre de 2021. El Supremo
+  confirma en lo sustancial la condena: mantiene la culpabilidad de Luis
+  Bárcenas, Gonzalo Urquijo y Belén García por el delito de defraudación
+  tributaria, y la responsabilidad civil subsidiaria del Partido Popular.
+  Reduce las penas de prisión al apreciar una atenuante de dilaciones indebidas
+  (cinco años transcurridos entre el cierre de la instrucción y el juicio oral):
+  la pena de Bárcenas se reduce de dos años a ocho meses, y las de los
+  administradores de Unifica de dos años y nueve meses a nueve meses. Las
+  multas quedan fijadas en 180.000 euros para Bárcenas y 200.000 euros para
+  cada administrador. La cuota tributaria defraudada se recalcula en 374.000
+  euros (la AN la había fijado en 870.000 €). La sentencia gana firmeza con
+  esta resolución.
+personas_afectadas:
+  - luis-barcenas
+  - antonio-del-moral
+organizaciones_afectadas:
+  - tribunal-supremo
+  - partido-popular
+documento_principal_id: cgpj-sentencia-ts-barcenas-caja-b-2024
+documentos_relacionados:
+  - elespanol-sentencia-ts-barcenas-2024
+hechos_introducidos:
+  - barcenas-condena-firme-genova
+hechos_modificados:
+  - barcenas-pago-en-negro-obras-genova
+fase_resultante: sentencia_firme

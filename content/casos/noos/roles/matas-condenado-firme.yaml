@@ -1,0 +1,16 @@
+id: matas-condenado-firme
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: jaume-matas-palou
+rol: condenado_firme
+delitos_atribuidos:
+  - prevaricacion
+  - malversacion-caudales-publicos
+  - fraude-administraciones-publicas
+fecha_inicio: "2018-06-12"
+hito_origen_id: noos-sentencia-firme-ts-2018
+notas: |
+  Ex president del Govern de les Illes Balears. Condenado en sentencia firme (STS 277/2018)
+  a 3 años y 8 meses de prisión por su papel en la adjudicación irregular de contratos al
+  Instituto Nóos durante su mandato (2003-2007). La presunción de inocencia decae respecto
+  de los hechos declarados probados y firmes.

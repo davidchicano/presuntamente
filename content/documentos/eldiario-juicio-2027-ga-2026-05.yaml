@@ -1,0 +1,21 @@
+id: eldiario-juicio-2027-ga-2026-05
+titulo: "elDiario.es — El novio de Ayuso será juzgado en 2027 por el presunto fraude fiscal"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura de elDiario.es (línea editorial de centro-izquierda) sobre
+  el señalamiento del juicio oral contra Alberto González Amador para
+  2027 por la saturación de los juzgados de lo penal de Madrid. Nivel 4
+  por tratarse de un medio de comunicación. Cobertura cruzada con El
+  Plural y Madridiario (líneas editoriales distintas), cumpliendo V-13.
+productor_organizacion_id: eldiario-es
+fecha_documento: "2026-05-01"
+# LLM-incierto: fecha exacta de publicación y slug numérico final de la URL no
+# confirmados. La URL canónica se reconstruyó del snippet de búsqueda y los WebFetch
+# devolvieron error de Cloudflare. Verificar y precisar al rellenar url_archivo.
+url_canonica: "https://www.eldiario.es/madrid/novio-ayuso-juzgado-2027-presunto-fraude-fiscal"
+estado_acceso: publico
+idioma: es
+caso_principal_id: gonzalez-amador
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

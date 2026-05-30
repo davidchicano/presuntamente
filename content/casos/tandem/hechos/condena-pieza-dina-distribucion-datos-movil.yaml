@@ -1,0 +1,39 @@
+id: condena-pieza-dina-distribucion-datos-movil
+caso_id: tandem
+enunciado: |
+  La Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional condenó
+  el 5 de mayo de 2026, en la pieza separada nº 10 del caso Tándem (caso
+  Dina), a José Manuel Villarejo Pérez a tres años y seis meses de prisión
+  como autor de un delito de descubrimiento y revelación de secretos de
+  particulares con difusión a terceros, cometido con prevalimiento de su
+  condición de funcionario público. La sentencia declaró probado que en
+  noviembre de 2015 fue sustraído el teléfono móvil de la asesora de
+  Pablo Iglesias Dina Bousselham, y que en febrero de 2016 el periodista
+  Alberto Pozas entregó a Villarejo, durante una comida en el restaurante
+  Txistu de Madrid, una copia de la tarjeta microSD de dicho dispositivo;
+  Villarejo la descargó y distribuyó su contenido a periodistas de su
+  entorno para elaborar informaciones en descrédito de Podemos y de Pablo
+  Iglesias. La sentencia impone a Villarejo una multa de 18 meses a razón
+  de 10 euros diarios, seis años de inhabilitación absoluta e
+  indemnizaciones de 5.000 euros a Dina Bousselham y 1.000 euros a Pablo
+  Iglesias. La sentencia no es firme.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-05-05"
+  precision: dia
+personas_implicadas:
+  - jose-manuel-villarejo
+  - dina-bousselham
+  - pablo-iglesias
+organizaciones_implicadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+  - podemos
+documentos_respaldo:
+  - documento_id: infobae-condena-villarejo-pieza-dina-2026-05-05
+    pasaje: "AN condena a Villarejo a 3 años y medio de cárcel por filtrar datos del móvil de Dina Bousselham a periodistas; indemnizaciones de 5.000 € a Bousselham y 1.000 € a Iglesias."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

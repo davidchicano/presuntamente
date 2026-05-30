@@ -1,0 +1,30 @@
+id: rodrigo-rato-presidente-caja-madrid
+naturaleza: cargo_directivo_empresa_publica
+descripcion: >-
+  Presidente de Caja Madrid desde finales de 2010 hasta mayo de 2012, periodo
+  que coincide con el tramo final del uso de las tarjetas black enjuiciado.
+  Sucedio a Miguel Blesa en la presidencia. En su etapa como presidente de
+  Caja Madrid y de Bankia (entidad resultante de la fusion) dispuso de una de
+  las tarjetas de credito de empresa cuyo uso no declarado fue declarado probado
+  y condenado por apropiacion indebida por la Audiencia Nacional en sentencia
+  de 23 de febrero de 2017, condena confirmada y firme por la Sala Segunda del
+  Tribunal Supremo en 2018.
+sujeto_persona_id: rodrigo-rato
+objeto_organizacion_id: caja-madrid
+cargo_o_rol: "Presidente de Caja Madrid"
+desde: "2010-01-01"
+hasta: "2012-05-09"
+precision_desde: anio
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [tarjetas-black]
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: >-
+      La sentencia de la Audiencia Nacional de 23 de febrero de 2017 acredita
+      que Rodrigo de Rato y Figaredo presidio Caja Madrid y Bankia en el tramo
+      final del periodo enjuiciado y dispuso de tarjetas de empresa cuyos gastos
+      no constaban en su retribucion declarada. La condena lo identifica como
+      presidente de Caja Madrid en el periodo aproximadamente 2010-2012.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,21 @@
+id: hito-instruccion-juzgado-6-sevilla
+caso_id: eres-andalucia
+tipo: auto_diligencias
+fecha: "2011-01-01"
+fecha_precision: anio
+titulo: "El Juzgado de Instrucción nº 6 de Sevilla asume la instrucción de la causa de los ERE"
+descripcion: |
+  La investigación sobre la presunta concesión irregular de ayudas
+  sociolaborales y a empresas por la Junta de Andalucía se sustancia en
+  el Juzgado de Instrucción nº 6 de Sevilla, que dirige durante años la
+  instrucción y separa la causa en distintas piezas. La instrucción
+  indaga el uso de "transferencias de financiación" a la agencia
+  IFA/IDEA como cauce de las ayudas.
+organizaciones_afectadas:
+  - juzgado-instruccion-6-sevilla
+  - junta-de-andalucia
+  - agencia-idea
+# LLM-incierto: fecha exacta de incoación/asunción de la instrucción por
+# el JI nº 6 de Sevilla y el número de diligencias, sin verificar en vivo.
+# La causa tuvo instructora muy mediática en su fase inicial (Mercedes Alaya)
+# y cambios posteriores de titularidad; verificar contra poderjudicial.es.

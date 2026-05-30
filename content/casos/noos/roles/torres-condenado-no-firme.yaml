@@ -1,0 +1,16 @@
+id: torres-condenado-no-firme
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: diego-torres-perez
+rol: condenado_no_firme
+delitos_atribuidos:
+  - malversacion-caudales-publicos
+  - prevaricacion
+  - fraude-administraciones-publicas
+fecha_inicio: "2017-02-17"
+fecha_fin: "2018-06-12"
+hito_origen_id: noos-sentencia-primera-instancia-ap-palma-2017
+hito_fin_id: noos-sentencia-firme-ts-2018
+notas: |
+  Condenado en primera instancia a 8 años y 3 meses por la Audiencia Provincial de Palma.
+  Sentencia recurrible en casación ante el Tribunal Supremo.

@@ -1,0 +1,16 @@
+id: estafa
+nombre_tipico: "Estafa agravada"
+articulos_cp:
+  - "art. 248 CP"
+  - "art. 249 CP"
+  - "art. 250 CP"
+familia: contra_patrimonio_y_orden_socioeconomico
+descripcion_breve: |
+  Delito consistente en inducir a error mediante engaño bastante para que
+  alguien realice un acto de disposición patrimonial en perjuicio propio
+  o ajeno. La modalidad agravada (art. 250) cualifica la conducta por la
+  cuantía, el número de perjudicados o el carácter especialmente grave
+  del engaño. La estafa piramidal es una forma de estafa continuada
+  en la que el pago a inversores anteriores se financia con el dinero
+  captado de nuevos clientes.
+enlace_boe: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a248"

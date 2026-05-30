@@ -1,0 +1,14 @@
+id: garcia-marcos-condenada-firme
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: isabel-garcia-marcos
+rol: condenado_firme
+delitos_atribuidos:
+  - cohecho
+  - prevaricacion
+fecha_inicio: "2015-07-27"
+hito_origen_id: malaya-sentencia-firme-ts-2015
+notas: |
+  La AP Málaga la condenó a 4 años; el TS la redujo a 3 años y 6
+  meses en la sentencia firme de 27-jul-2015. La presunción de
+  inocencia decae respecto a los hechos probados y firmes.

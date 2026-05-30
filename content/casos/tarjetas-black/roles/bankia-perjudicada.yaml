@@ -1,0 +1,15 @@
+id: bankia-perjudicada-tarjetas-black
+caso_id: tarjetas-black
+sujeto_tipo: organizacion
+sujeto_organizacion_id: bankia
+rol: perjudicado
+fecha_inicio: "2010-01-01"
+# LLM-incierto: Bankia nace de la fusion de Caja Madrid con otras cajas en 2011;
+# el periodo de uso de tarjetas bajo la denominacion Bankia abarca el tramo 2010-2012.
+# Fechas exactas a verificar en hechos probados.
+fecha_fin: "2012-05-31"
+# LLM-incierto: fin del uso de tarjetas en torno a la intervencion de Bankia (mayo 2012).
+notas: |
+  Bankia es la entidad sucesora del negocio bancario de Caja Madrid (fusion en
+  2010-2011) y figura como perjudicada en el tramo final del periodo enjuiciado.
+  Junto con Caja Madrid fue reconocida como perjudicada por la Audiencia Nacional.

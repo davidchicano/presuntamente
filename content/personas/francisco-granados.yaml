@@ -1,0 +1,43 @@
+id: francisco-granados
+nombre_completo: "Francisco Granados Lerena"
+nombres_alternativos:
+  - "Francisco Granados"
+  - "Granados"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Consejero de Presidencia, Justicia e Interior de la Comunidad de Madrid"
+    organizacion_id: comunidad-de-madrid
+    desde: "2003-11-21"
+    hasta: "2011-12-31"
+  - cargo: "Secretario general del Partido Popular de Madrid"
+    organizacion_id: partido-popular
+    desde: "2004-01-01"
+    hasta: "2011-12-31"
+  - cargo: "Senador"
+    organizacion_id: comunidad-de-madrid
+    desde: "2011-12-01"
+    hasta: "2014-10-31"
+fecha_nacimiento: "1964-12-25"
+nacionalidad: "española"
+biografia_corta: |
+  Político español, ex consejero de la Comunidad de Madrid durante
+  los gobiernos de Esperanza Aguirre y ex secretario general del
+  Partido Popular de Madrid. El 27 de octubre de 2014 fue detenido
+  en el marco de la operación policial de la Unidad Central
+  Operativa de la Guardia Civil conocida como Operación Púnica e
+  ingresó en prisión provisional, de la que salió bajo fianza el 14
+  de junio de 2017. La instrucción del Juzgado Central de
+  Instrucción nº 6 de la Audiencia Nacional lo considera
+  indiciariamente una de las figuras centrales de la trama. Por
+  sentencia de la Audiencia Nacional de 4 de diciembre de 2017,
+  confirmada por el Tribunal Supremo el 14 de marzo de 2019, fue
+  condenado por su participación en la filtración de información
+  sobre la propia investigación. Está pendiente de juicio en la
+  pieza relativa a presuntas adjudicaciones irregulares de suelo y
+  obra pública entre 2003 y 2011, cuyo auto de apertura de juicio
+  oral se dictó el 21 de mayo de 2026. Rige el principio de
+  presunción de inocencia mientras no recaiga sentencia firme en
+  contrario en las piezas no concluidas.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

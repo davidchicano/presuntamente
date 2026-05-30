@@ -1,0 +1,18 @@
+id: briones-procesado
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: francisco-briones
+rol: procesado
+delitos_atribuidos:
+  - estafa
+  - insolvencia-punible
+  - falsedad-documental
+  - blanqueo-de-capitales
+fecha_inicio: "2014-10-08"
+fecha_fin: "2017-09-18"
+hito_origen_id: auto-procesamiento-ruz-forum-2014-10-08
+hito_fin_id: inicio-juicio-oral-forum-2017-09-18
+notas: |
+  Procesado desde el auto de procesamiento del juez Ruz (JCI nº 5) de 8 de
+  octubre de 2014. La condición de procesado no implica valoración de
+  culpabilidad; rige el principio de presunción de inocencia.

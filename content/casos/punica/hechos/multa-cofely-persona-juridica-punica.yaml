@@ -1,0 +1,43 @@
+id: multa-cofely-persona-juridica-punica
+caso_id: punica
+enunciado: |
+  La sentencia de la Audiencia Nacional de 22 de diciembre de 2025
+  (no firme) impone a Cofely España, como persona jurídica
+  responsable conforme al régimen de responsabilidad penal de las
+  personas jurídicas, una multa superior a 3,5 millones de euros por
+  delitos de cohecho y tráfico de influencias en la pieza de los
+  contratos de eficiencia energética. La condena no es firme y cabe
+  recurso de casación; rige la presunción de inocencia.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2025-12-22"
+  precision: dia
+organizaciones_implicadas:
+  - cofely-espana
+documentos_respaldo:
+  - documento_id: nota-cgpj-condena-cofely-punica-2025-12-22
+  - documento_id: infobae-condena-cofely-punica-2025-12-22
+  - documento_id: eldiario-condena-cofely-punica-2025-12-22
+nivel_fuente_efectivo: 1
+importe: 3500000
+importe_moneda: EUR
+importe_alcance: individual
+importe_clase: consecuencia
+importe_naturaleza: multa_penal
+importe_nota: |
+  Multa penal superior a 3,5 M€ impuesta a Cofely España como persona
+  jurídica en sentencia no firme. Es consecuencia del procedimiento
+  (no se suma con el objeto del contrato ni con las comisiones, que
+  son clase objeto). Cifra mínima conocida ("superior a 3,5 M€"); el
+  desglose exacto por delito (multa por cohecho y por tráfico de
+  influencias) debe afinarse con la sentencia íntegra cuando aparezca
+  en CENDOJ.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: cofely-espana
+    papel: obligado
+    nota: "Cofely España es la persona jurídica obligada al pago de la multa."
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

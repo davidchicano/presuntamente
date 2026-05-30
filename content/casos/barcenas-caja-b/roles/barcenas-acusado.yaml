@@ -1,0 +1,16 @@
+id: barcenas-acusado
+caso_id: barcenas-caja-b
+sujeto_tipo: persona
+sujeto_persona_id: luis-barcenas
+rol: acusado
+delitos_atribuidos:
+  - delito-contra-hacienda-publica
+  - falsedad-documental
+fecha_inicio: "2015-05-28"
+fecha_fin: "2021-10-28"
+hito_fin_id: barcenas-sentencia-an-genova-2021-10-28
+notas: |
+  Bárcenas fue acusado en la pieza Génova de la caja B por la Fiscalía
+  Anticorrupción como cooperador necesario en el delito contra la Hacienda
+  Pública y en la falsedad en documento mercantil. El juicio oral se celebró
+  en 2021. Rige la presunción de inocencia durante esta fase.

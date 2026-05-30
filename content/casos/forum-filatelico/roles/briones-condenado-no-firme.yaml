@@ -1,0 +1,18 @@
+id: briones-condenado-no-firme
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: francisco-briones
+rol: condenado_no_firme
+delitos_atribuidos:
+  - estafa
+  - insolvencia-punible
+  - falsedad-documental
+  - blanqueo-de-capitales
+fecha_inicio: "2018-07-13"
+fecha_fin: "2020-03-05"
+hito_origen_id: sentencia-an-forum-2018-07-13
+hito_fin_id: sentencia-firme-ts-forum-2020-03-05
+notas: |
+  Condenado en sentencia de la Audiencia Nacional de 13 de julio de 2018
+  a 12 años, 4 meses y 16 días de prisión (pena recurrible). La presunción
+  de inocencia formal se mantiene hasta sentencia firme.

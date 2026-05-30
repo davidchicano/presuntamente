@@ -1,0 +1,19 @@
+id: rol-gaspar-zarrias-condenado
+caso_id: eres-andalucia
+sujeto_tipo: persona
+sujeto_persona_id: gaspar-zarrias
+rol: condenado_firme
+delitos_atribuidos:
+  - prevaricacion
+fecha_inicio: "2022-07-26"
+hito_origen_id: hito-sentencia-ts-casacion-2022
+notas: |
+  Gaspar Zarrías, exconsejero de la Presidencia de la Junta de Andalucía,
+  fue condenado por la Audiencia de Sevilla y de forma firme por el
+  Tribunal Supremo por prevaricación. Toda referencia a su
+  responsabilidad se limita a lo declarado por los tribunales. Rige la
+  presunción de inocencia para cualquier extremo no amparado por
+  sentencia.
+  # LLM-incierto: confirmar que Zarrías fue condenado por prevaricación
+  # (y no también por malversación) y la pena de inhabilitación exacta,
+  # sin verificar en vivo. Verificar contra los primarios.

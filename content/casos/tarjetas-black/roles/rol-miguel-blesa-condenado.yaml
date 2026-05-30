@@ -1,0 +1,30 @@
+id: blesa-condenado-no-firme-tarjetas-black
+caso_id: tarjetas-black
+sujeto_tipo: persona
+sujeto_persona_id: miguel-blesa
+rol: condenado_no_firme
+# Miguel Blesa fue condenado en primera instancia por la AN (2017) pero fallecio antes
+# de que el TS dictara sentencia de casacion. Su responsabilidad penal quedo extinguida
+# por fallecimiento (art. 130.1.1.a CP). Se modela como condenado_no_firme porque esa
+# fue su condicion procesal al momento del fallecimiento; no existe condena firme.
+# Considera el modelado de una condicion 'extinguida' adicional si el schema lo permite
+# en una iteracion futura.
+delitos_atribuidos:
+  - apropiacion-indebida
+fecha_inicio: "2017-02-23"
+fecha_fin: "2017-07-17"
+# Fecha fin: fallecimiento de Blesa, que extingue la responsabilidad penal.
+# LLM-incierto: fecha exacta del fallecimiento a verificar.
+hito_origen_id: tarjetas-black-sentencia-an-2017
+notas: |
+  Miguel Blesa fue presidente de Caja Madrid desde 1996 hasta 2010. La Audiencia
+  Nacional lo condeno el 23 de febrero de 2017 por apropiacion indebida en relacion
+  con el uso de tarjetas de credito de empresa. Fallecio en julio de 2017, antes de
+  que el Tribunal Supremo dictara sentencia en casacion, por lo que su responsabilidad
+  penal quedo extinguida por fallecimiento conforme al articulo 130.1.1.a del Codigo
+  Penal. No existe condena firme contra Miguel Blesa en este caso. Se modela como
+  condenado_no_firme (condicion al momento del fallecimiento) con fecha_fin en la
+  fecha de fallecimiento. La presuncion de inocencia rige para cualquier extremo que
+  no haya sido declarado probado por resolucion firme, la cual no llego a dictarse.
+  # LLM-incierto: tratamiento exacto en la STS (declaracion de extincion y articulo CP
+  # aplicado) a verificar en CENDOJ.

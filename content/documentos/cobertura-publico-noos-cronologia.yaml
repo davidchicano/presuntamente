@@ -1,0 +1,16 @@
+id: cobertura-publico-noos-cronologia
+tipo: articulo_prensa
+titulo: "Cronología del caso Nóos"
+fecha_documento: "2018-06-12"
+fecha_publicacion: "2018-06-12"
+idioma: es
+productor_organizacion_id: publico-es
+url_canonica: "https://www.publico.es/politica/cronologia-caso-noos.html"
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura de Público.es (N4). Cronología verificada del procedimiento desde 2010 hasta 2018.
+  Fuente complementaria para hitos de instrucción (imputaciones, declaraciones) que no cuentan
+  con nota oficial CGPJ específica.
+estado_acceso: publico
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,22 @@
+id: granados-acusado-pieza8-punica
+caso_id: punica
+sujeto_tipo: persona
+sujeto_persona_id: francisco-granados
+rol: acusado
+delitos_atribuidos:
+  - prevaricacion
+  - cohecho
+  - trafico-de-influencias
+  - malversacion-caudales-publicos
+  - fraude-administraciones-publicas
+  - falsedad-documental
+fecha_inicio: "2026-05-21"
+hito_origen_id: apertura-juicio-oral-pieza8-punica-2026-05-21
+notas: |
+  En la pieza relativa a presuntas adjudicaciones irregulares de
+  suelo y obra pública entre 2003 y 2011, Francisco Granados adquirió
+  la condición de acusado con el auto de apertura de juicio oral
+  dictado por el instructor Antonio Piña el 21 de mayo de 2026. La
+  Fiscalía Anticorrupción solicita para él cuarenta y dos años de
+  prisión, petición de pena no firme. Rige la presunción de
+  inocencia mientras no recaiga sentencia firme en contrario.

@@ -1,0 +1,284 @@
+# Cobertura mediática general — caso filesa
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: filesa
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Filesa"
+    - "Trama Filesa"
+    - "Filesa Malesa Time Export"
+    - "Viajes Ceres financiación PSOE"
+    - "Causa Especial 880/1991"
+    - "financiación ilegal PSOE Filesa"
+  ventanas_temporales:
+    - desde: "1991-05-01"
+      hasta: "1997-10-31"
+      notas: >
+        Fase de instrucción y juicio oral ante el Tribunal Supremo: estallido
+        mediático del escándalo (29 may 1991), instrucción del magistrado Marino
+        Barbero, sustitución por Bacigalupo en 1995, apertura de juicio oral
+        (dic 1995) y sentencia STS 1/1997 (28 oct 1997). Cobertura hemeroteca
+        (El Mundo, El País 1991-1997) accesible parcialmente en mirrors y
+        archivos universitarios digitalizados; no accesible vía WebFetch.
+    - desde: "1997-11-01"
+      hasta: "2001-12-31"
+      notas: >
+        Período post-sentencia: recursos de amparo al TC (STCs 126/2001 y
+        127/2001), indultos parciales concedidos por el Gobierno Aznar en
+        diciembre de 2000 (RD 2700/2000 BOE Navarro; Flores y Oliveró en
+        mismo BOE). Cobertura de Libertad Digital y otros medios digitales
+        nacientes.
+    - desde: "2019-01-01"
+      hasta: "2022-03-31"
+      notas: >
+        Reapertura de la rama Viajes Ceres: Audiencia Provincial de Madrid
+        archiva el procedimiento por prescripción (2019); el Tribunal Supremo
+        estima el recurso del PP como acusación popular y ordena la reapertura
+        (1 feb 2022).
+    - desde: "2022-04-01"
+      hasta: "2026-05-30"
+      notas: >
+        Instrucción Viajes Ceres ante el Juzgado de Instrucción nº 26 de
+        Madrid, preparación del juicio oral en 2024. Reactivación editorial del
+        caso Filesa en 2026 como referente histórico ante nuevas investigaciones
+        sobre financiación del PSOE (registros UCO en Ferraz, may 2026).
+  fuentes_buscadas:
+    - elespanol.com
+    - publico.es
+    - theobjective.com
+    - vozpopuli.com
+    - eldebate.com
+    - libertaddigital.com
+    - confilegal.com
+    - eldiario.es
+    - newtral.es
+    - economistjurist.es
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso Filesa o la rama Viajes Ceres en
+    el titular o en el lead. Se incluyen noticias, reportajes, análisis y
+    piezas de opinión jurídica que aporten contexto factual verificable sobre
+    el procedimiento. Se incluyen piezas históricas de hemeroteca digital
+    accesibles online (no solo cobertura reciente).
+  criterios_exclusion: >
+    Se excluyen menciones de pasada a Filesa en piezas centradas en otros
+    casos (Gürtel, Koldo, Kitchen) cuando no abordan específicamente el
+    procedimiento Filesa o Viajes Ceres. Se excluyen republicaciones de
+    agencia palabra por palabra cuando no añaden valor propio. Se excluye El
+    País y El Mundo por no ser accesibles vía WebFetch en el entorno del
+    agente; su cobertura histórica de 1991-1997 es el núcleo mediático del
+    caso pero no pudo rastrearse directamente en esta pasada.
+  notas: >
+    Rastreo inicial v1 sobre cuatro ventanas temporales (may 1991 — may 2026).
+    El grueso de la cobertura mediática original del caso (1991-1997) se
+    generó en prensa impresa (El Mundo y El País principalmente) y solo es
+    accesible parcialmente en mirrors universitarios y hemerotecas digitalizadas
+    no rastreables vía WebFetch. Esta limitación estructural se refleja en el
+    estado "parcial" del corpus. El período de reapertura (2022) y el juicio
+    oral de Viajes Ceres (2024) son los tramos mejor cubiertos en medios
+    digitales actuales. Las url_archivo se rellenan con scripts/archivar-n4.mjs
+    (pnpm archive:catchup).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 2: POST-SENTENCIA (1997-2001) ─────────────────────────────────
+
+  - id: libertad-digital-penas-condenados-filesa-2001
+    url: "https://www.libertaddigital.com/espana/2001-06-04/las-penas-a-los-ocho-condenados-del-caso-filesa-32154/"
+    medio_id: libertad-digital
+    titular: "Las penas a los ocho condenados del «caso Filesa»"
+    fecha_publicacion: "2001-06-04"
+    autor: "Redacción"
+    resumen: >
+      Libertad Digital publica un cuadro con las penas definitivas impuestas a
+      los ocho condenados en la STS 1/1997 tras la resolución de los recursos
+      de amparo ante el Tribunal Constitucional. Se recogen las condenas
+      individuales de Josep Maria Sala i Grisó, Carlos Navarro Gómez, Alberto
+      Flores Valencia, Luis Oliveró Capellades, Aída Álvarez y su marido
+      Miguel Molledo, y otros condenados, así como los indultos parciales
+      concedidos por el Gobierno Aznar en diciembre de 2000.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >
+      Pieza de hemeroteca digital accesible. Uno de los pocos resúmenes
+      exhaustivos de las penas definitivas disponibles en abierto en la web.
+      Libertad Digital es de las primeras publicaciones digitales en cubrir el
+      desenlace del caso Filesa con este nivel de detalle.
+
+  # ── VENTANA 3: REAPERTURA VIAJES CERES (ene 2019 — mar 2022) ─────────────
+
+  - id: elespanol-pp-reabre-filesa-viajes-ceres-2022-02-01
+    url: "https://www.elespanol.com/espana/tribunales/20220201/pp-reabrir-ultima-filesa-financiacion-psoe-despues/646935411_0.html"
+    medio_id: el-espanol
+    titular: "El PP logra reabrir la última rama de Filesa, sobre financiación ilegal del PSOE, 30 años después"
+    fecha_publicacion: "2022-02-01"
+    resumen: >
+      El Tribunal Supremo estima el recurso presentado por el Partido Popular
+      como acusación popular contra el auto de la Audiencia Provincial de
+      Madrid de 2019 que archivó el procedimiento de la rama Viajes Ceres por
+      prescripción. La Sala Segunda del Supremo ordena la reapertura de la
+      instrucción ante el Juzgado de Instrucción nº 26 de Madrid, investigando
+      la presunta desviación de subvenciones del Imserso de unos 42,2 millones
+      de euros canalizados hacia la red Filesa.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-supremo-reabre-filesa-viajes-ceres-2022-02
+    url: "https://www.publico.es/politica/supremo-fuerza-reapertura-causa-vinculada-caso-filesa-financiacion-ilegal-psoe-30-anos.html"
+    medio_id: publico-es
+    titular: "El Supremo fuerza la reapertura de una causa vinculada al 'caso Filesa', de financiación ilegal del PSOE, de hace 30 años"
+    fecha_publicacion: "2022-02-01"
+    resumen: >
+      Público informa sobre el mismo hito de reapertura ordenado por el
+      Tribunal Supremo, con acento en que la decisión revoca el archivo por
+      prescripción acordado por la Audiencia Provincial en 2019 y que la causa
+      investiga la presunta desviación de subvenciones del Imserso recibidas
+      por Viajes Ceres hacia las empresas de la trama Filesa.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: elespanol-pp-reabre-filesa-viajes-ceres-2022-02-01
+    notas: >
+      Pieza de Público sobre el mismo hito de reapertura de Viajes Ceres el
+      1 feb 2022; no es republicación de agencia.
+
+  - id: theobjective-supremo-reabre-filesa-2022-02-01
+    url: "https://theobjective.com/espana/2022-02-01/supremo-caso-filesa-financiacion-irregular-psoe/"
+    medio_id: the-objective
+    titular: "El Supremo reabre el último fleco del 'caso Filesa' sobre la financiación irregular del PSOE"
+    fecha_publicacion: "2022-02-01"
+    resumen: >
+      The Objective cubre la resolución del Tribunal Supremo que revoca el
+      archivo de la rama Viajes Ceres y ordena continuar la instrucción ante
+      el Juzgado nº 26 de Madrid. La pieza contextualiza que la causa Viajes
+      Ceres investiga la gestión de subvenciones del Ministerio de Asuntos
+      Sociales para programas de turismo social del Imserso entre 1989 y 1991.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: elespanol-pp-reabre-filesa-viajes-ceres-2022-02-01
+    notas: >
+      Pieza de The Objective sobre el mismo hito; perspectiva editorial propia,
+      no republicación de agencia.
+
+  - id: vozpopuli-supremo-reabre-filesa-2022
+    url: "https://www.vozpopuli.com/economia_y_finanzas/caso-filesa-supremo.html"
+    medio_id: vozpopuli
+    titular: "El Tribunal Supremo reabre la última rama del 'caso Filesa' 30 años después"
+    fecha_publicacion: "2022-02-01"
+    resumen: >
+      Vozpópuli informa de la resolución del Supremo que ordena la reapertura
+      de la causa Viajes Ceres, la última rama del caso Filesa pendiente de
+      resolución. La pieza recoge que entre los investigados figuran personas
+      vinculadas a la dirección socialista de finales de los años ochenta,
+      incluyendo a un familiar de un ex ministro, y que la causa se reanuda
+      ante el Juzgado de Instrucción nº 26 de Madrid.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: elespanol-pp-reabre-filesa-viajes-ceres-2022-02-01
+    notas: >
+      Pieza de Vozpópuli sobre el mismo hito del 1 feb 2022; perspectiva y
+      datos propios, no republicación de agencia.
+
+  - id: eldebate-supremo-reabre-filesa-2022-02-01
+    url: "https://www.eldebate.com/espana/20220201/supremo-reabre-ultima-pieza-filesa-sobre-financiacion-ilegal-psoe.html"
+    medio_id: el-debate
+    titular: "El Supremo reabre la última pieza de «Filesa» sobre la financiación ilegal del PSOE"
+    fecha_publicacion: "2022-02-01"
+    resumen: >
+      El Debate cubre el auto del Tribunal Supremo que revoca el archivo de la
+      rama Viajes Ceres y ordena proseguir la instrucción ante el Juzgado de
+      Instrucción nº 26 de Madrid. La pieza detalla que la investigación afecta
+      a una agencia de viajes adjudicataria de concursos públicos del Imserso
+      en 1988-1990 que recibió subvenciones del Ministerio de Asuntos Sociales
+      de las que una parte presuntamente se desvió hacia las empresas de la
+      red Filesa.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: elespanol-pp-reabre-filesa-viajes-ceres-2022-02-01
+    notas: >
+      Pieza de El Debate sobre el mismo hito del 1 feb 2022; cubre el hito
+      desde perspectiva editorial propia, no es republicación de agencia.
+
+  # ── VENTANA 4: INSTRUCCIÓN VIAJES CERES / RESIGNIFICACIÓN 2022-2026 ───────
+
+  - id: eldebate-juzgado-prepara-juicio-viajes-ceres-2024-03-16
+    url: "https://www.eldebate.com/espana/20240316/juzgado-madrid-prepara-juicio-contra-rama-filesa-desvio-422-m-euros-financiar-psoe_182403.html"
+    medio_id: el-debate
+    titular: "Un juzgado de Madrid prepara el juicio contra una rama de Filesa que desvió 42,2 millones para financiar al PSOE"
+    fecha_publicacion: "2024-03-16"
+    resumen: >
+      El Debate informa de que el Juzgado de Instrucción nº 26 de Madrid
+      preparaba en marzo de 2024 el señalamiento del juicio oral contra la
+      causa Viajes Ceres, la última rama del caso Filesa, investigando la
+      presunta desviación de 42,2 millones de euros en subvenciones del
+      Imserso hacia la red de empresas vinculada a la trama. La pieza detalla
+      el objeto de la acusación y los perfiles de los nueve miembros del
+      consejo de administración de Viajes Ceres investigados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-financiacion-ilegal-partidos-filesa-contexto
+    url: "https://www.eldiario.es/agendapublica/nueva_politica/principales-financiacion-ilegal-partidos-politicos_1_4420229.html"
+    medio_id: eldiario-es
+    titular: "Las principales causas de la financiación ilegal de los partidos políticos"
+    fecha_publicacion: "2015-03-17"
+    resumen: >
+      elDiario.es publica un análisis estructural sobre los mecanismos de
+      financiación ilegal de los partidos políticos en España en el que el
+      caso Filesa figura como referente histórico de la utilización de empresas
+      pantalla para canalizar fondos electorales, junto con el caso Gürtel y
+      el "3%" de CDC. La pieza identifica cuatro causas estructurales: nivel
+      de gasto, bajo número de afiliados, falta de transparencia y ausencia
+      de controles administrativos.
+    tipo_pieza: analisis
+    relevancia_editorial: media
+    menciones: [cuerpo]
+    fecha_rastreo: "2026-05-30"
+    notas: >
+      Pieza de análisis contextual; el caso Filesa no es el tema central sino
+      un ejemplo estructural. Se incluye por ser la única pieza de elDiario.es
+      localizada con tratamiento explícito del caso Filesa en el corpus.
+
+  - id: confilegal-opinion-filesa-registros-ferraz-2026-05-29
+    url: "https://confilegal.com/20260529-caso-filesa-psoe-responsabilidad-penal-corrupcion-financiacion-ilegal/"
+    medio_id: confilegal
+    titular: "La historia vuelve a repetirse: nuevos registros en la sede federal del PSOE, en Madrid"
+    fecha_publicacion: "2026-05-29"
+    autor: "Manuel Jaén Vallejo"
+    resumen: >
+      Confilegal publica un artículo de opinión jurídica del magistrado jubilado
+      y profesor universitario Manuel Jaén Vallejo que analiza la reapertura de
+      la investigación sobre financiación del PSOE en 2026 (registros UCO en
+      la sede de Ferraz del 27 de mayo de 2026) en paralelo con el caso Filesa
+      de 1991-1997. El autor repasa los elementos comunes —red de empresas
+      pantalla, facturas ficticias, financiación de campañas— y señala que,
+      a diferencia de Filesa, la legislación actual sí contempla la
+      responsabilidad penal de personas jurídicas (art. 31 bis CP).
+    tipo_pieza: opinion
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >
+      Pieza de opinión jurídica firmada por un magistrado jubilado. Se incluye
+      por ser la única pieza de 2026 que conecta explícitamente el caso Filesa
+      histórico con la investigación de 2026, aportando análisis jurídico
+      propio sobre la evolución del marco legal de responsabilidad penal de
+      partidos.

@@ -1,0 +1,42 @@
+id: inicio-declaracion-acusados-kitchen-2026-05-28
+caso_id: kitchen
+tipo: declaracion_imputado
+fecha: "2026-05-28"
+fecha_precision: dia
+titulo: "Empiezan a declarar los acusados en el juicio de la pieza Kitchen: el ex secretario de Estado de Seguridad Francisco Martínez y el ex ministro del Interior Jorge Fernández Díaz son los primeros procesados en responder ante la Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional"
+descripcion: |
+  El 28 de mayo de 2026, tras concluir la fase de prueba testifical y
+  documental del juicio de la pieza separada nº 7 de las Diligencias
+  Previas 96/2017 (Operación Kitchen) —en la que, según la cobertura
+  cruzada, declararon más de un centenar de testigos y se reprodujeron
+  numerosas grabaciones atribuidas al comisario jubilado José Manuel
+  Villarejo Pérez aportadas a instancia del Partido Socialista Obrero
+  Español como acusación popular—, comenzó ante la Sección Cuarta de la
+  Sala de lo Penal de la Audiencia Nacional (rollo de sala 13/2024) la
+  declaración de los procesados. Abrieron el turno el ex secretario de
+  Estado de Seguridad Francisco Martínez Vázquez y el ex ministro del
+  Interior Jorge Fernández Díaz. Conforme a la cobertura periodística,
+  Fernández Díaz se desvinculó del presunto dispositivo de espionaje al
+  ex tesorero del Partido Popular Luis Bárcenas, sostuvo que no ordenó
+  ni conoció operación alguna y afirmó que tuvo noticia de los hechos
+  por la prensa a finales de 2015. Su declaración presentó
+  contradicciones con la de Francisco Martínez sobre quién conocía la
+  operación. La declaración de los acusados constituye la fase final
+  del juicio, previa a los informes de conclusiones; según la
+  cobertura, el juicio quedaría visto para sentencia en junio de 2026.
+  Rige el principio de presunción de inocencia respecto de todos los
+  procesados mientras no recaiga sentencia firme en contrario.
+personas_afectadas:
+  - francisco-martinez-vazquez
+  - jorge-fernandez-diaz
+organizaciones_afectadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+  - psoe
+documento_principal_id: elindependiente-declaracion-fernandez-diaz-kitchen-2026-05-28
+documentos_relacionados:
+  - eldiario-declaracion-fernandez-diaz-kitchen-2026-05-28
+  - publico-declaracion-acusados-kitchen-2026-05-28
+hechos_introducidos:
+  - declaracion-fernandez-diaz-juicio-kitchen-2026-05-28
+fase_resultante: juicio_oral

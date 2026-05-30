@@ -1,0 +1,34 @@
+id: ff-condena-an-pena-global
+caso_id: forum-filatelico
+enunciado: |
+  La sentencia de la Sección Primera de la Sala de lo Penal de la Audiencia
+  Nacional de 13 de julio de 2018 condena a 20 de los 27 acusados en el juicio
+  oral del caso Fórum Filatélico. Los cuatro miembros del Consejo de
+  Administración son absueltos. Las penas para los condenados distintos de
+  Francisco Briones oscilan entre 6 meses y 6 años y 3 meses de prisión, con
+  multas de hasta 63,5 millones de euros para algunos de ellos.
+  La acusación popular de ADICAE había solicitado penas que en conjunto
+  sumaban 195 años de prisión.
+tipo: atribuido
+# Candidato a 'acreditado' por la STS firme de 2020. Pendiente revisión humana.
+fecha_o_periodo:
+  desde: "2018-07-13"
+  precision: dia
+personas_implicadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+  - antonio-merino-blanco
+  - ramon-saez-valcarcel
+organizaciones_implicadas:
+  - audiencia-nacional
+  - adicae
+  - forum-filatelico-sa
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-an-forum-2018-07-13
+    pasaje: "20 de los 27 acusados condenados; penas de entre 6 meses y 12 años y 4 meses de prisión. Cuatro miembros del Consejo de Administración absueltos."
+nivel_fuente_efectivo: 1
+vigencia: superado
+corregido_por: ff-condena-firme-otros
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

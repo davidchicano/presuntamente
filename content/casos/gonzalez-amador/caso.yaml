@@ -38,7 +38,9 @@ descripcion_corta: |
   oral. La Audiencia Provincial de Madrid (Sección 3ª) ratificó el
   procesamiento por auto del 7 de noviembre de 2025, desestimando el
   recurso de apelación de las defensas. El procedimiento se encuentra
-  en fase intermedia a la espera del señalamiento de juicio oral.
+  en fase intermedia; según la cobertura periodística de mayo de 2026,
+  el juicio oral queda señalado para 2027 por la saturación de los
+  juzgados de lo penal de Madrid.
 
 sintesis_caso:
   que_se_investiga: "Un presunto fraude fiscal y falsedad documental atribuidos a Alberto González Amador y otros investigados."
@@ -46,11 +48,12 @@ sintesis_caso:
     - "La causa nace de una denuncia basada en un expediente de la AEAT sobre el Impuesto sobre Sociedades de 2020 y 2021."
     - "El juzgado cerró la instrucción y acordó la apertura de juicio oral en 2025."
     - "La Audiencia Provincial de Madrid confirmó el procesamiento en noviembre de 2025."
-  estado_actual: "El procedimiento está en fase intermedia; no hay sentencia firme."
+  estado_actual: "El procedimiento está en fase intermedia, con el juicio oral señalado para 2027 según la cobertura periodística; no hay sentencia firme."
   cifras_clave:
     - "350.951 € de perjuicio fiscal atribuido por la AEAT"
     - "3 años y 9 meses pide Fiscalía"
     - "5 años piden PSOE y Más Madrid"
+    - "Juicio oral señalado para 2027"
 
 organo_judicial_id: juzgado-instruccion-19-madrid
 numero_procedimiento: "Diligencias Previas"
@@ -83,7 +86,7 @@ resumen_cifras: |
   añadiendo delito contable continuado y pertenencia a grupo criminal.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-22"
+ultima_revision_editorial: "2026-05-30"
 nivel_relevancia_editorial: alta
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
@@ -100,5 +103,5 @@ estado_ficha:
   conexiones: pendiente
   cobertura_mediatica_general: pendiente
   revision_editorial: completo
-  notas: "Auto de la AP Madrid Sección 3ª que ratifica el procesamiento (07-11-2025) pendiente de aparecer en CENDOJ con ROJ asignado; cuando aparezca se descarga a /public/documentos/gonzalez-amador/."
-  fecha_actualizacion: "2026-05-25"
+  notas: "Auto de la AP Madrid Sección 3ª que ratifica el procesamiento (07-11-2025) pendiente de aparecer en CENDOJ con ROJ asignado; cuando aparezca se descarga a /public/documentos/gonzalez-amador/. Señalamiento del juicio para 2027 catalogado a nivel de mes con cobertura N4 cruzada (El Plural + elDiario.es); pendiente de localizar la providencia/auto de señalamiento del Juzgado de lo Penal para precisar fecha y órgano de enjuiciamiento."
+  fecha_actualizacion: "2026-05-30"

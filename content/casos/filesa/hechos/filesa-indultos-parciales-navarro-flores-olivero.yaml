@@ -1,0 +1,41 @@
+id: filesa-indultos-parciales-navarro-flores-olivero
+caso_id: filesa
+enunciado: |
+  El 1 de diciembre de 2000, el Gobierno de José María Aznar concedió
+  indultos parciales a Carlos Navarro Gómez (Real Decreto 2700/2000,
+  BOE), Alberto Flores Valencia y Luis Oliveró Capellades, reduciendo
+  a la mitad las penas de privación de libertad e inhabilitación
+  impuestas por la STS 1/1997, con la condición de no cometer delito
+  doloso durante el período ordinario de ejecución de la pena. Los tres
+  quedaron en libertad como consecuencia de los indultos. Carlos Navarro
+  había sido condenado a 11 años de prisión; Flores y Oliveró, a 10 años
+  cada uno.
+tipo: acreditado
+fecha_o_periodo:
+  desde: "2000-12-01"
+  precision: dia
+personas_implicadas:
+  - carlos-navarro-gomez
+  - alberto-flores-valencia
+  - luis-olivero-capellades
+organizaciones_implicadas:
+  - presidencia-del-gobierno
+documentos_respaldo:
+  - documento_id: boe-indulto-navarro-filesa-2000
+    pasaje: "Artículo único — 'indultar a don Carlos Navarro Gómez la mitad de las penas privativas de libertad e inhabilitación impuestas [...] a condición de que no vuelva a cometer delito doloso durante el tiempo de normal cumplimiento de la condena'"
+  - documento_id: boe-indulto-flores-filesa-2000
+    pasaje: "Artículo único — 'indultar a don Alberto Flores Valencia la mitad de las penas privativas de libertad e inhabilitación impuestas [...] a condición de que no vuelva a cometer delito doloso durante el tiempo de normal cumplimiento de la condena'"
+  - documento_id: boe-indulto-olivero-filesa-2000
+    pasaje: "Artículo único — 'indultar a don Luis Oliveró Capellades la mitad de las penas privativas de libertad e inhabilitación impuestas [...] a condición de que no vuelva a cometer delito doloso durante el tiempo de normal cumplimiento de la condena'"
+  - documento_id: prensa-sentencia-filesa-libertad-digital-2001
+    pasaje: "Indultados el 1 de diciembre de 2000"
+nivel_fuente_efectivo: 1
+# Promovido a 'acreditado' el 2026-05-30 (rev. maintainer autorizada).
+# Respaldo N1: RD 2700/2000 (Navarro, BOE-A-2000-23959), RD 2442/2000 (Flores,
+# BOE-A-2000-23478) y RD 2699/2000 (Oliveró, BOE-A-2000-23958). Los tres RD son
+# documentos primarios del BOE. Los últimos dos se localizaron en esta sesión
+# completando la cobertura N1 completa del hecho.
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

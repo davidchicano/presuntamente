@@ -1,0 +1,14 @@
+id: gonzalez-fernandez-investigado
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: juan-ramon-gonzalez-fernandez
+rol: investigado
+delitos_atribuidos:
+  - estafa
+  - blanqueo-de-capitales
+fecha_inicio: "2006-05-09"
+fecha_fin: "2014-10-08"
+hito_fin_id: auto-procesamiento-ruz-forum-2014-10-08
+notas: |
+  Investigado en el marco de las Diligencias Previas 148/2006 del JCI nº 5.
+  Rige el principio de presunción de inocencia.

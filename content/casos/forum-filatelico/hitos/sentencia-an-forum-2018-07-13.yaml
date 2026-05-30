@@ -1,0 +1,39 @@
+id: sentencia-an-forum-2018-07-13
+caso_id: forum-filatelico
+tipo: sentencia_primera_instancia
+fecha: "2018-07-13"
+fecha_precision: dia
+titulo: "Sentencia de la Audiencia Nacional: 20 de 27 acusados condenados, hasta 12 años y 4 meses de prisión"
+descripcion: |
+  La Sección Primera de la Sala de lo Penal de la Audiencia Nacional, con
+  magistrado ponente Ramón Sáez Valcárcel, dicta sentencia condenando a
+  20 de los 27 acusados. Califica el caso como «el paradigma de las estafas
+  piramidales». Francisco Briones, expresidente de Fórum Filatélico S.A.,
+  recibe la condena más alta: 12 años, 4 meses y 16 días de prisión por
+  delitos de estafa agravada continuada, insolvencia punible, falseamiento de
+  cuentas anuales y blanqueo de capitales, más multa de 49,7 millones de euros.
+  Juan Ramón González Fernández (exdirector jurídico) es condenado a 6 años
+  y 3 meses; Antonio Merino (exdirector general), a 2 años y 3 meses como
+  cómplice. Cuatro miembros del Consejo de Administración son absueltos.
+  Los condenados son declarados responsables civiles solidarios por las
+  cantidades entregadas por los 190.022 titulares de contratos reconocidos,
+  deducidas las recuperaciones del concurso. La sentencia es recurrible en
+  casación ante el Tribunal Supremo.
+personas_afectadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+  - antonio-merino-blanco
+  - ramon-saez-valcarcel
+organizaciones_afectadas:
+  - audiencia-nacional
+  - forum-filatelico-sa
+documento_principal_id: nota-cgpj-sentencia-an-forum-2018-07-13
+documentos_relacionados:
+  - elindependiente-forum-sentencia-an-2018-07-13
+hechos_introducidos:
+  - ff-condena-an-briones
+  - ff-condena-an-pena-global
+  - ff-perjuicio-civil
+hechos_modificados:
+  - ff-procesamiento-32-personas-perjuicio
+fase_resultante: sentencia_primera_instancia

@@ -1,0 +1,15 @@
+id: molina-vivas-condenado-firme
+caso_id: filesa
+sujeto_tipo: persona
+sujeto_persona_id: juan-antonio-molina-vivas
+rol: condenado_firme
+delitos_atribuidos:
+  - apropiacion-indebida
+fecha_inicio: "1997-10-28"
+hito_origen_id: filesa-sentencia-firme-ts-1997
+notas: |
+  Condenado por la STS 1/1997 a 6 meses de arresto e indemnización
+  de responsabilidad civil de aproximadamente 35 millones de pesetas,
+  por su participación en el esquema de financiación investigado como
+  representante de la empresa pública Enasa. La presunción de inocencia
+  decae respecto de los hechos declarados probados.

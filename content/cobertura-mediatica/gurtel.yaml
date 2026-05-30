@@ -1,0 +1,286 @@
+# Cobertura mediática general — caso gurtel
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: gurtel
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Gürtel"
+    - "trama Gürtel"
+    - "Francisco Correa"
+    - "Operación Gürtel"
+    - "Juzgado Central Instrucción 5 Gürtel"
+  ventanas_temporales:
+    - desde: "2009-02-01"
+      hasta: "2009-12-31"
+      notas: "Apertura pública del caso: la trama Gürtel se revela en febrero de 2009 tras denuncias ante la Fiscalía Anticorrupción; Baltasar Garzón asume la instrucción."
+    - desde: "2018-05-01"
+      hasta: "2018-06-30"
+      notas: "Hito central: sentencia 20/2018 de la Sección Segunda de la Sala de lo Penal de la AN (17-24 mayo 2018), 29 de 37 condenados; moción de censura que derriba a Rajoy el 1 de junio."
+    - desde: "2020-10-01"
+      hasta: "2020-10-31"
+      notas: "Casación: el Tribunal Supremo confirma la sentencia 20/2018 (sentencia 507/2020, 14 oct 2020); primera condena firme de la Época I."
+    - desde: "2022-04-01"
+      hasta: "2023-12-31"
+      notas: "Piezas secundarias: pieza Boadilla (sentencia AN abr 2022, firme TS nov 2023) y sentencias del TS sobre las piezas valencianas."
+    - desde: "2024-01-01"
+      hasta: "2026-05-30"
+      notas: "Cierre editorial: absolución de Camps (may 2024), pieza Arganda (may 2025), situación penitenciaria de Correa (2025)."
+  fuentes_buscadas:
+    - eldiario.es
+    - elespanol.com
+    - vozpopuli.com
+    - okdiario.com
+    - infolibre.es
+    - libertaddigital.com
+    - newtral.es
+    - confilegal.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o en el lead.
+    Se incluyen noticias, reportajes, análisis y piezas de verificación.
+    Se incluye cobertura de los hitos procesales clave (apertura, sentencias,
+    casación, absoluciones) y los grandes picos editoriales (sentencia AN may 2018,
+    moción de censura jun 2018, sentencia TS oct 2020).
+  criterios_exclusion: >
+    Se excluyen republicaciones palabra por palabra de agencia sin valor añadido.
+    Se excluyen editoriales anónimos sin firma. Se excluyen menciones laterales
+    en piezas centradas en otro caso. El País (elpais.com) y El Mundo (elmundo.es)
+    no son accesibles vía WebSearch con filtro de dominio en el entorno del agente;
+    su cobertura es notoriamente extensa y se anota como limitación pendiente.
+    El Confidencial (elconfidencial.com) tampoco es accesible vía WebSearch con
+    filtro de dominio en este entorno.
+  notas: >
+    Rastreo inicial v1 sobre cinco ventanas temporales (feb 2009 — may 2026). El caso
+    Gürtel es la macrocausa de corrupción más larga en la historia reciente española;
+    la cobertura periodística es inabarcable y este corpus es un muestreo sistemático,
+    no un listado exhaustivo. Las url_archivo se rellenan con scripts/archivar-n4.mjs
+    (pnpm archive:catchup; ver docs/web/features/archive-org-pre-commit.md).
+    Medios con cobertura propia muy relevante no incluida en este rastreo por
+    limitaciones técnicas de acceso: El País, El Mundo, El Confidencial, ABC y La Vanguardia.
+
+estado: parcial
+
+noticias:
+
+  # ── HITO 1: SENTENCIA AN 20/2018 — ÉPOCA I (mayo 2018) ─────────────────────
+
+  - id: eldiario-sentencia-an-2018-condenas
+    url: "https://www.eldiario.es/politica/audiencia-nacional-correa-barcenas_1_2109071.html"
+    medio_id: eldiario-es
+    titular: "Sentencia Gürtel: 51 años para Correa, 33 para Bárcenas y el PP condenado \"a título lucrativo\""
+    fecha_publicacion: "2018-05-24"
+    resumen: >
+      La Sección Segunda de la Sala de lo Penal de la Audiencia Nacional dicta la
+      sentencia 20/2018 sobre la Época I (1999-2005) de la trama Gürtel, con 29 de
+      los 37 acusados condenados. Francisco Correa recibe la pena más alta (51 años),
+      Luis Bárcenas es condenado a 33 años y el Partido Popular es declarado partícipe
+      a título lucrativo y condenado a abonar 245.492,80 euros. La pieza describe
+      el caso como "un auténtico y eficaz sistema de corrupción institucional".
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-sentencia-an-2018-claves
+    url: "https://www.elespanol.com/espana/tribunales/20180524/claves-sentencia-caso-gurtel/309720312_0.html"
+    medio_id: el-espanol
+    titular: "Cinco claves de la sentencia del caso Gürtel"
+    fecha_publicacion: "2018-05-24"
+    resumen: >
+      Pieza analítica publicada el mismo día de la sentencia que identifica los cinco
+      elementos editorialmente más relevantes: la cuantía de la condena al PP a título
+      lucrativo, la pena máxima de Correa, las implicaciones sobre la caja B, la
+      situación de los absueltos y las consecuencias políticas sobre la presidencia
+      de Mariano Rajoy.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-sentencia-an-2018-condenados
+    url: "https://www.elespanol.com/espana/tribunales/20180524/condenados-gurtel/309719429_0.html"
+    medio_id: el-espanol
+    titular: "Todos los condenados de Gürtel"
+    fecha_publicacion: "2018-05-24"
+    resumen: >
+      Listado detallado de las 29 condenas individuales dictadas por la Audiencia
+      Nacional en la Época I de la trama Gürtel, con las penas de prisión, las multas
+      y los delitos por los que cada acusado es declarado culpable. Pieza de servicio
+      publicada simultáneamente al análisis de las cinco claves.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: elespanol-sentencia-an-2018-claves
+    notas: "Pieza hermana del mismo medio publicada el mismo día; la vinculamos para dedup transparente aunque no es una republicación sino una pieza de servicio complementaria."
+
+  - id: okdiario-sentencia-an-2018-pp-lucrativo
+    url: "https://okdiario.com/espana/pp-condenado-pagar-245-000-euros-como-responsable-titulo-lucrativo-primera-epoca-gurtel-2325129"
+    medio_id: okdiario
+    titular: "El PP condenado a pagar 245.000 euros como responsable a título lucrativo en la primera época de Gürtel"
+    fecha_publicacion: "2018-05-24"
+    resumen: >
+      La Audiencia Nacional condena al Partido Popular como responsable civil a título
+      lucrativo por la primera época de la trama Gürtel, con la obligación de abonar
+      245.492,80 euros: 133.628,48 correspondientes a Majadahonda y 111.864,32 a Pozuelo
+      de Alarcón. La pieza destaca el carácter histórico de la condena a un partido político.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: vozpopuli-sentencia-an-2018-analisis
+    url: "https://www.vozpopuli.com/espana/sentencia-gurtel-claves_0_1302170985.html"
+    medio_id: vozpopuli
+    titular: "Sentencia de 'Gürtel': claves de una decisión salomónica que busca contentar a todos"
+    fecha_publicacion: "2018-05-24"
+    resumen: >
+      Vozpópuli publica un análisis de la sentencia de la Audiencia Nacional que
+      la califica de "salomónica": el PP es condenado a título lucrativo pero la
+      sala se divide sobre la existencia de la caja B, con los hechos probados
+      incluidos por dos votos contra uno. La pieza analiza las implicaciones
+      políticas sobre el partido y el Gobierno de Rajoy.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── HITO 2: CASACIÓN TS 507/2020 (octubre 2020) ─────────────────────────────
+
+  - id: eldiario-ts-ratifica-condena-pp-2020
+    url: "https://www.eldiario.es/politica/supremo-confirma-condena-pp-caso-guertel-elimina-alusiones-caja-b_1_6287711.html"
+    medio_id: eldiario-es
+    titular: "El Supremo ratifica la condena al PP por lucrarse con la trama Gürtel"
+    fecha_publicacion: "2020-10-14"
+    resumen: >
+      El Tribunal Supremo confirma en casación (sentencia 507/2020, ponente Juan Ramón
+      Berdugo) la condena al PP como partícipe a título lucrativo y las penas individuales
+      de la Época I, aunque elimina las referencias a la caja B del partido que la Audiencia
+      Nacional había incluido en los hechos probados. Es la primera sentencia firme de la
+      Época I de la trama.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-ts-financiacion-irregular-pp-2020
+    url: "https://www.eldiario.es/politica/tribunal-supremo-consagra-existencia-financiacion-irregular-pp-durante-decadas_1_6293137.html"
+    medio_id: eldiario-es
+    titular: "El Tribunal Supremo confirma la existencia de una financiación irregular en el PP durante dos décadas"
+    fecha_publicacion: "2020-10-14"
+    resumen: >
+      Pieza analítica de El Diario sobre el alcance doctrinal de la sentencia TS 507/2020:
+      el tribunal acredita la existencia de una estructura de financiación irregular del
+      PP durante al menos dos décadas, aunque matiza que su naturaleza de partícipe a
+      título lucrativo —y no de acusado— limita la extensión de la declaración de hechos
+      probados sobre la llamada caja B.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-ts-ratifica-condena-pp-2020
+    notas: "Pieza hermana del mismo medio publicada el mismo día; complementaria a la noticia, no una republicación."
+
+  - id: confilegal-ts-confirma-gurtel-2020
+    url: "https://confilegal.com/20201014-el-supremo-confirma-la-sentencia-de-la-audiencia-nacional-de-gurtel/"
+    medio_id: confilegal
+    titular: "El Supremo confirma la sentencia de la Audiencia Nacional de Gürtel"
+    fecha_publicacion: "2020-10-14"
+    resumen: >
+      Cobertura jurídico-especializada de Confilegal sobre la sentencia 507/2020 del
+      Tribunal Supremo que confirma en casación la sentencia de la Audiencia Nacional
+      en el caso Gürtel Época I. La pieza analiza los aspectos procesales y de
+      tipificación penal de la resolución, con énfasis en el tratamiento del principio
+      acusatorio respecto al Partido Popular.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── HITO 3: PIEZA BOADILLA Y SENTENCIAS VALENCIANAS (2022-2023) ─────────────
+
+  - id: libertad-digital-boadilla-pp-condena-2022
+    url: "https://www.libertaddigital.com/espana/2022-04-08/audiencia-nacional-condena-pp-pagar-204000-euros-responsable-gurtel-boadilla-6884975/"
+    medio_id: libertad-digital
+    titular: "Audiencia Nacional condena al PP a pagar 204.000 euros como responsable a título lucrativo por Gürtel en Boadilla"
+    fecha_publicacion: "2022-04-08"
+    resumen: >
+      La Audiencia Nacional dicta sentencia en la pieza Boadilla de la trama Gürtel,
+      condenando al PP al pago de 204.198,64 euros como responsable civil a título
+      lucrativo por la financiación irregular obtenida a través de adjudicaciones
+      municipales en Boadilla del Monte entre 2001 y 2009. El exalcalde Arturo González
+      Panero ('el Albondiguilla') recibe 36 años y 11 meses de condena.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: newtral-sentencias-pp-gurtel-2022
+    url: "https://www.newtral.es/sentencias-pp-gurtel/20220408/"
+    medio_id: newtral
+    titular: "Caso Gürtel: las sentencias que han condenado al PP por corrupción"
+    fecha_publicacion: "2022-04-08"
+    resumen: >
+      Pieza de verificación de Newtral que repasa cronológicamente todas las sentencias
+      que han condenado al Partido Popular en el marco de la trama Gürtel y sus piezas
+      derivadas, distinguiendo entre condenas a título lucrativo y condenas directas,
+      con énfasis en las que han adquirido firmeza en el Tribunal Supremo.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── HITO 4: REPORTAJE DE CONTEXTO (infolibre) ───────────────────────────────
+
+  - id: infolibre-gurtel-papeles-barcenas-contexto
+    url: "https://www.infolibre.es/veranolibre/caso-gurtel-papeles-barcenas-extensa-red-corrupcion-arraigada-pp_1_1186765.html"
+    medio_id: infolibre
+    titular: "El 'caso Gürtel' y los 'papeles de Bárcenas', una extensa red de corrupción arraigada en el PP"
+    fecha_publicacion: "2021-08-01"
+    resumen: >
+      Reportaje de fondo de infoLibre que contextualiza la trama Gürtel en el conjunto
+      de los casos de corrupción del PP, vinculando el caso con los papeles de Bárcenas
+      y la pieza de la caja B. Explica la estructura organizativa de la red de Francisco
+      Correa, los mecanismos de adjudicación y la cadena de retornos políticos que la
+      Audiencia Nacional acreditó en la sentencia 20/2018.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Fecha aproximada inferida de la URL (veranolibre). LLM-incierto: la fecha exacta de publicación original no pudo verificarse con WebFetch; se consigna 2021-08-01 como mejor estimación de la URL. Verificar al archivar."
+
+  # ── HITO 5: ABSOLUCIÓN CAMPS Y CIERRE EDITORIAL (2024-2025) ─────────────────
+
+  - id: eldiario-absolucion-camps-2024
+    url: "https://www.eldiario.es/comunitat-valenciana/audiencia-nacional-absuelve-francisco-camps-ultimo-juicio-caso-gurtel_1_11402199.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia Nacional absuelve a Francisco Camps en el último juicio del 'caso Gürtel'"
+    fecha_publicacion: "2024-05-29"
+    resumen: >
+      La Sección Segunda de la Sala de lo Penal de la Audiencia Nacional absuelve al
+      expresidente de la Generalitat Valenciana Francisco Camps en el que se considera
+      el último juicio del caso Gürtel, relativo a los contratos de la Generalitat con
+      empresas del Grupo Correa. El tribunal estima que los indicios aportados son
+      insuficientes para sostener los delitos de tráfico de influencias y prevaricación.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-camps-absolucion-2024
+    url: "https://www.elespanol.com/valencia/20240530/gurtel-formula-francisco-camps-absuelto-todas-imputaciones-anos-investigaciones/858914405_0.html"
+    medio_id: el-espanol
+    titular: "Ni Gürtel ni la Fórmula 1: Francisco Camps, absuelto de todas las imputaciones tras 15 años de investigaciones"
+    fecha_publicacion: "2024-05-30"
+    resumen: >
+      El Español repasa el historial judicial de Francisco Camps a raíz de su absolución
+      en la última pieza de Gürtel: cinco imputaciones en nueve causas a lo largo de
+      15 años sin una sola condena. La pieza analiza el contraste entre la relevancia
+      mediática del caso y el resultado judicial final para el expresidente valenciano.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"

@@ -1,0 +1,15 @@
+id: el-confidencial-digital
+nombre: "El Confidencial Digital"
+nombres_alternativos:
+  - "El Confidencial Digital"
+  - "ECD"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Medio digital español de información política, judicial y de actualidad
+  nacional. No debe confundirse con El Confidencial (elconfidencial.com),
+  con el que no tiene relación editorial.
+ambito_territorial: nacional
+url_canonica: "https://www.elconfidencialdigital.com"
+naturaleza_editorial: generalista_politico
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

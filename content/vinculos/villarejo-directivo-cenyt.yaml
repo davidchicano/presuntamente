@@ -1,0 +1,19 @@
+id: villarejo-directivo-cenyt
+naturaleza: cargo_directivo_organizacion_privada
+descripcion: "Titular y director efectivo del grupo de sociedades Cenyt, vehículo empresarial a través del cual se habrían prestado los servicios de inteligencia privada investigados en el caso Tándem. La empresa facturó más de diez millones de euros en encargos de dudosa legalidad según el auto instructor."
+sujeto_persona_id: jose-manuel-villarejo
+objeto_organizacion_id: cenyt
+cargo_o_rol: "Director efectivo del Grupo Cenyt"
+desde: "2004-01-01"
+hasta: "2017-11-03"
+precision_desde: anio
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [tandem]
+documentos_respaldo:
+  - documento_id: cgpj-nota-condena-villarejo-iron-land-pintor-2023-07-24
+    pasaje: "La nota del CGPJ sobre la sentencia de julio de 2023 identifica a Cenyt como la empresa a través de la cual Villarejo prestó los servicios objeto de las piezas Iron, Land y Pintor."
+  - documento_id: newtral-claves-condena-villarejo-tandem-2023-07-24
+    pasaje: "Newtral describe la estructura del grupo Cenyt y el papel de Villarejo como director efectivo, con facturación superior a diez millones de euros en encargos investigados."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

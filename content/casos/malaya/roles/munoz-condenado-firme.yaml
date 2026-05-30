@@ -1,0 +1,15 @@
+id: munoz-condenado-firme
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: julian-munoz
+rol: condenado_firme
+delitos_atribuidos:
+  - cohecho
+  - malversacion-caudales-publicos
+fecha_inicio: "2015-07-27"
+hito_origen_id: malaya-sentencia-firme-ts-2015
+notas: |
+  El Tribunal Supremo confirma el 27-jul-2015 la condena de 2 años de
+  prisión y 5 años de inhabilitación. La presunción de inocencia decae
+  respecto a los hechos probados y firmes. Julián Muñoz falleció en
+  enero de 2025.

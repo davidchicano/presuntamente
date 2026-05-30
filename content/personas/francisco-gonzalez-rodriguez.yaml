@@ -1,0 +1,31 @@
+id: francisco-gonzalez-rodriguez
+nombre_completo: "Francisco González Rodríguez"
+nombres_alternativos:
+  - "Francisco González"
+  - "FG"
+  - "el expresidente del BBVA"
+es_figura_publica: true
+cargos_publicos_historicos:
+  # cargo directivo no público sino privado; se registra para trazabilidad
+  - cargo: "Presidente del Banco Bilbao Vizcaya Argentaria (BBVA)"
+    desde: "2000-01-01"
+    hasta: "2018-12-31"
+fecha_nacimiento: "1944-10-06"
+nacionalidad: "española"
+biografia_corta: |
+  Francisco González Rodríguez es un economista español que presidió
+  el Banco Bilbao Vizcaya Argentaria (BBVA) entre los años 2000 y 2018.
+  En el marco del caso Tándem, la Sala de lo Penal de la Audiencia
+  Nacional confirmó su procesamiento en la pieza separada nº 9 (conocida
+  mediáticamente como pieza BBVA o Trampa) al rechazar en febrero de 2026
+  los recursos de apelación contra el auto que daba paso al procedimiento
+  abreviado. La Fiscalía Anticorrupción solicita en su escrito de
+  acusación de marzo de 2026 una pena de 173 años de cárcel por un
+  delito continuado de cohecho activo y cuarenta y dos delitos de
+  revelación de secretos de particulares, derivados de la contratación
+  entre 2004 y 2016 de la empresa Cenyt, vinculada al comisario Villarejo,
+  para la realización de encargos presuntamente ilegales. Rige el
+  principio de presunción de inocencia mientras no recaiga sentencia firme.
+fallecido: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

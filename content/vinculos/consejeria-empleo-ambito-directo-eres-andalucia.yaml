@@ -1,0 +1,20 @@
+id: consejeria-empleo-ambito-directo-eres-andalucia
+naturaleza: ambito_administrativo_directo_del_acto_en_caso
+descripcion: "La Consejería de Empleo de la Junta de Andalucía es el ámbito administrativo desde cuyo perímetro institucional se atribuye la emisión de las transferencias de financiación a IFA/IDEA investigadas. Según la instrucción y las sentencias, fue el departamento titular de las ayudas sociolaborales que, según el tribunal, se canalizaron eludiendo los controles legales de las subvenciones."
+sujeto_organizacion_id: consejeria-empleo-junta-andalucia
+objeto_organizacion_id: juzgado-instruccion-6-sevilla
+desde: "2000-01-01"
+hasta: "2010-12-31"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+relevancia_para_caso_ids: [eres-andalucia]
+nivel_afectacion: directa
+justificacion_afectacion: "La Consejería de Empleo fue el órgano desde el que, según los hechos probados, se articularon las transferencias de financiación a IFA/IDEA presuntamente irregulares durante el periodo investigado. Es el ámbito administrativo del que emana el acto investigado (regla 4 del doc 08)."
+documentos_respaldo:
+  - documento_id: sentencia-ap-sevilla-ere-2019
+    pasaje: "Hechos probados: descripción del sistema de transferencias de financiación desde la Consejería de Empleo a IFA/IDEA."
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "Fundamentos jurídicos sobre la calificación del sistema de transferencias articulado desde la Consejería de Empleo."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

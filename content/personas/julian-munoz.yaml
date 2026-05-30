@@ -1,0 +1,19 @@
+id: julian-munoz
+nombre_completo: "Julián Muñoz Brenes"
+nombres_alternativos:
+  - "Julián Muñoz"
+  - "Muñoz"
+
+es_figura_publica: true
+
+biografia_corta: |
+  Exalcalde de Marbella, elegido en 2000 con el Grupo Independiente
+  Liberal (GIL), quien accedió al cargo tras la dimisión de Jesús Gil.
+  Condenado por sentencia firme del Tribunal Supremo en 2015 en el
+  marco del caso Malaya. Falleció en enero de 2025.
+
+fallecido: true
+fecha_fallecimiento: "2025-01-01"
+nacionalidad: "ES"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

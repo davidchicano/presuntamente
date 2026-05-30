@@ -1,0 +1,23 @@
+id: barcenas-cambio-juez-pedraz-2020
+caso_id: barcenas-caja-b
+tipo: cambio_juez
+fecha: "2020-11-01"
+fecha_precision: mes
+titulo: >-
+  Santiago Pedraz asume la instrucción de la pieza de donaciones al marchar
+  José de la Mata a Eurojust
+descripcion: |
+  En noviembre de 2020, el juez José de la Mata es nombrado representante
+  de España ante Eurojust, lo que le obliga a abandonar el Juzgado Central
+  de Instrucción nº 5 de la Audiencia Nacional. El magistrado Santiago Pedraz
+  asume la instrucción de la pieza de las donaciones de la caja B del PP,
+  única pieza activa en ese momento al haberse abierto ya el juicio oral de
+  la pieza Génova. Pedraz hereda la causa en estado avanzado de instrucción.
+personas_afectadas:
+  - santiago-pedraz
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+# LLM-incierto: fecha exacta del nombramiento de De la Mata como representante
+# en Eurojust pendiente de verificar en BOE; noviembre 2020 es la fecha
+# habitualmente citada en prensa.
+fase_resultante: instruccion

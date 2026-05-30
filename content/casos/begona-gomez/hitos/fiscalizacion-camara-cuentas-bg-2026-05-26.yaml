@@ -1,0 +1,41 @@
+id: fiscalizacion-camara-cuentas-bg-2026-05-26
+caso_id: begona-gomez
+tipo: informe_organismo_publico
+fecha: "2026-05-26"
+fecha_precision: dia
+titulo: "La Cámara de Cuentas de la Comunidad de Madrid comunica al Juzgado de Instrucción nº 41 que fiscalizará los contratos del software de la cátedra"
+descripcion: |
+  Según la cobertura periodística, la Cámara de Cuentas de la Comunidad
+  de Madrid —órgano de control externo autonómico, presidido por Joaquín
+  Leguina— comunica el 26 de mayo de 2026 al Juzgado de Instrucción nº 41
+  de Madrid que ha incorporado a su programa de fiscalización los
+  contratos formalizados por la Cátedra Extraordinaria de Transformación
+  Social Competitiva de la Universidad Complutense de Madrid relacionados
+  con el desarrollo de la plataforma de software. La cobertura cifra en
+  al menos seis contratos por un total aproximado de 109.140 euros el
+  objeto de la fiscalización, entre ellos el de Making Science Group, S.A.
+  (24.200 euros) y dos de Deloitte Consulting. La fiscalización se
+  enmarca en un programa aprobado por el Consejo de la Cámara en febrero
+  de 2025 a iniciativa de la Asamblea de Madrid.
+
+  Se trata de una actuación de control del gasto público de naturaleza
+  administrativa, distinta e independiente del procedimiento penal que
+  instruye el Juzgado de Instrucción nº 41. El 28 de mayo de 2026 el
+  instructor dictó providencia dando traslado del escrito a las partes y
+  haciendo constar que en el procedimiento no rige el secreto de
+  sumario.
+
+  Conforme al principio de presunción de inocencia, la condición de
+  procesada de Begoña Gómez Fernández no implica valoración de
+  culpabilidad y persiste mientras no recaiga resolución firme en
+  contrario.
+personas_afectadas:
+  - begona-gomez
+organizaciones_afectadas:
+  - camara-de-cuentas-comunidad-de-madrid
+  - juzgado-instruccion-41-madrid
+  - universidad-complutense-madrid
+documento_principal_id: okdiario-camara-cuentas-software-bg-2026-05-29
+documentos_relacionados:
+  - libertaddigital-camara-cuentas-software-bg-2026-05-29
+fase_resultante: fase_intermedia

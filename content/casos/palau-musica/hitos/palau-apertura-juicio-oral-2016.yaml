@@ -1,0 +1,22 @@
+id: palau-apertura-juicio-oral-2016
+caso_id: palau-musica
+tipo: apertura_juicio_oral
+fecha: "2016-07-01"
+fecha_precision: mes
+titulo: "El Juzgado de Instrucción nº 30 envía el caso Palau a la Audiencia Provincial de Barcelona para juicio oral"
+descripcion: |
+  Tras más de siete años de instrucción, el Juzgado de Instrucción nº 30
+  de Barcelona envía el caso Palau de la Música Catalana a la Audiencia
+  Provincial de Barcelona para la celebración del juicio oral. Se siguen
+  diligencias como Procedimiento Abreviado 74/2016 ante la Sección 10ª
+  de la Audiencia Provincial de Barcelona.
+personas_afectadas:
+  - felix-millet-tusell
+  - jordi-montull-bagur
+  - gemma-montull-mir
+  - daniel-osacar-escrig
+organizaciones_afectadas:
+  - audiencia-provincial-barcelona
+  - juzgado-instruccion-30-barcelona
+documento_principal_id: nota-cgpj-sentencia-ap-barcelona-palau-2018
+fase_resultante: juicio_oral

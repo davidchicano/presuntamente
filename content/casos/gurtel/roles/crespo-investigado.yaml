@@ -1,0 +1,18 @@
+id: crespo-investigado
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: pablo-crespo-sabaris
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - blanqueo-de-capitales
+  - falsedad-documental
+  - organizacion-criminal
+fecha_inicio: "2009-02-06"
+fecha_fin: "2018-05-24"
+hito_origen_id: gurtel-publicacion-investigacion-2009
+hito_fin_id: gurtel-sentencia-epoca-i-an-2018
+notas: |
+  Investigado como presunto número dos de la red de Correa desde el
+  destape del caso. Rige la presunción de inocencia. El detalle
+  exacto de tipos penales queda pendiente de la sentencia íntegra.

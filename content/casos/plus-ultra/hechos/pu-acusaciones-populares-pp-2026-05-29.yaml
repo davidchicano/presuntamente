@@ -1,0 +1,41 @@
+id: pu-acusaciones-populares-pp-2026-05-29
+caso_id: plus-ultra
+enunciado: >-
+  Según la cobertura periodística del 29 de mayo de 2026, el JCI nº 4 de la
+  Audiencia Nacional acordó agrupar las ocho acusaciones populares personadas
+  en el caso Plus Ultra —entre ellas el Partido Popular, Vox, Hazte Oír, el
+  sindicato Manos Limpias, Ciudadanos, Iustitia Europa, la organización
+  Liberum y un particular— bajo una representación y dirección letrada
+  conjunta, atribuida al Partido Popular. El instructor consideró que la
+  personación de Vox, primera en presentarse, no era válida por carecer del
+  poder de representación exigido, y que la del PP fue la primera
+  procesalmente eficaz.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-05-29"
+  precision: dia
+personas_implicadas:
+  - jose-luis-rodriguez-zapatero
+organizaciones_implicadas:
+  - juzgado-central-instruccion-4
+  - audiencia-nacional
+  - partido-popular
+  - vox
+documentos_respaldo:
+  - documento_id: the-objective-acusaciones-populares-pp-2026-05-29
+    pasaje: >-
+      "El PP dirigirá a las acusaciones populares del caso Plus Ultra contra
+      Zapatero"; el juez "decide agrupar la representación y defensa de las
+      acusaciones populares" bajo el letrado del PP, al considerar que su
+      personación fue "la primera procesalmente idónea y eficaz".
+  - documento_id: infobae-acusaciones-populares-pp-2026-05-29
+    pasaje: >-
+      "El juez da al PP el timón de las acusaciones populares del 'caso Plus
+      Ultra'"; de las ocho acusaciones populares presentadas, Calama
+      considera que el PP "presenta una implantación institucional más
+      relevante" que el resto, incluida Vox.
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

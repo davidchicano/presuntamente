@@ -1,0 +1,15 @@
+id: redondo-condenado-no-firme-iron-land-pintor
+caso_id: tandem
+sujeto_tipo: persona
+sujeto_persona_id: rafael-redondo-rodriguez
+rol: condenado_no_firme
+delitos_atribuidos:
+  - revelacion-de-secretos
+fecha_inicio: "2025-09-17"
+hito_origen_id: sentencia-apelacion-iron-land-pintor-2025-09-17
+notas: |
+  Condena de 9 años de prisión en sentencia de la Sala de Apelación de la
+  Audiencia Nacional de 17 de septiembre de 2025 (reducida de 13 años
+  iniciales al absolverle del delito de falsedad documental). Condena no
+  firme. Además, figura procesado en la pieza 9 (BBVA/Trampa). Rige la
+  presunción de inocencia formal hasta firmeza.

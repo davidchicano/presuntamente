@@ -84,7 +84,7 @@ sintesis_caso:
     - "Según el instructor, el objetivo era obtener documentación sensible de Luis Bárcenas, ex tesorero del Partido Popular."
     - "Once personas fueron procesadas en 2021."
     - "María Dolores de Cospedal e Ignacio López del Hierro quedaron sobreseídos en la fase de instrucción."
-  estado_actual: "El juicio oral empezó en abril de 2026; no hay sentencia firme sobre los procesados."
+  estado_actual: "El juicio oral arrancó en abril de 2026; el 28 de mayo de 2026 empezaron a declarar los acusados (los primeros, Francisco Martínez y Jorge Fernández Díaz) y, según la cobertura, quedaría visto para sentencia en junio de 2026. No hay sentencia sobre los procesados."
   cifras_clave:
     - "11 personas procesadas en 2021"
     - "4 delitos atribuidos en la causa"
@@ -134,7 +134,7 @@ resumen_cifras: |
   jurisdiccional firme.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-24"
+ultima_revision_editorial: "2026-05-30"
 nivel_relevancia_editorial: capital
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
@@ -151,4 +151,4 @@ estado_ficha:
   conexiones: pendiente
   cobertura_mediatica_general: parcial
   revision_editorial: completo
-  fecha_actualizacion: "2026-05-26"
+  fecha_actualizacion: "2026-05-30"

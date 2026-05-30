@@ -1,0 +1,46 @@
+id: declaracion-fernandez-diaz-juicio-kitchen-2026-05-28
+caso_id: kitchen
+enunciado: |
+  En la sesión del 28 de mayo de 2026 del juicio de la pieza séptima de
+  las Diligencias Previas 96/2017 (Operación Kitchen) ante la Sección
+  Cuarta de la Sala de lo Penal de la Audiencia Nacional, declararon
+  como acusados el ex secretario de Estado de Seguridad Francisco
+  Martínez Vázquez y el ex ministro del Interior Jorge Fernández Díaz,
+  primeros procesados en responder tras la fase de prueba. Conforme a
+  la cobertura cruzada, Fernández Díaz, para quien la Fiscalía Especial
+  contra la Corrupción y la Criminalidad Organizada solicita quince
+  años de prisión, negó haber ordenado o conocido un dispositivo de
+  espionaje contra el ex tesorero del Partido Popular Luis Bárcenas,
+  sostuvo que nadie del partido le trasladó inquietud alguna sobre él y
+  afirmó que tuvo noticia de la operación por la prensa a finales de
+  2015; un perito propuesto por su defensa cuestionó la autenticidad de
+  los mensajes de 2013 incorporados a la causa y apreció en ellos,
+  según esa cobertura, indicios de manipulación. Su versión presentó
+  contradicciones con la de Francisco Martínez sobre quién conocía la
+  operación. Las manifestaciones vertidas en el plenario son
+  declaraciones de los acusados en ejercicio de su defensa y no
+  constituyen, por sí mismas, hechos acreditados; rige el principio de
+  presunción de inocencia mientras no recaiga sentencia firme en
+  contrario.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-05-28"
+  precision: dia
+personas_implicadas:
+  - jorge-fernandez-diaz
+  - francisco-martinez-vazquez
+organizaciones_implicadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: elindependiente-declaracion-fernandez-diaz-kitchen-2026-05-28
+    pasaje: "Cobertura del 28 de mayo de 2026 sobre la declaracion de Fernandez Diaz desvinculandose del espionaje a Barcenas y afirmando que nadie del PP le traslado inquietud sobre el."
+  - documento_id: eldiario-declaracion-fernandez-diaz-kitchen-2026-05-28
+    pasaje: "Cobertura cruzada en linea editorial distinta sobre la declaracion de Fernandez Diaz y la contradiccion con Francisco Martinez acerca de quien conocia la operacion."
+  - documento_id: publico-declaracion-acusados-kitchen-2026-05-28
+    pasaje: "Cobertura cruzada en tercera linea editorial sobre la declaracion conjunta, en la misma sesion, de Martinez y Fernandez Diaz como primeros acusados en responder."
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

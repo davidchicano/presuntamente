@@ -1,0 +1,20 @@
+id: ayudas-sociolaborales-ere-andalucia
+label: "Ayudas sociolaborales y a empresas (ERE de Andalucía)"
+nombres_alternativos:
+  - "fondo de reptiles"
+  - "ayudas sociolaborales"
+  - "ERE fraudulentos"
+  - "expedientes de regulación de empleo de la Junta"
+categoria: programa_publico
+descripcion_breve: |
+  Conjunto de ayudas públicas concedidas por la Junta de Andalucía entre
+  aproximadamente 2000 y 2010 para financiar prejubilaciones de
+  trabajadores y auxiliar a empresas en crisis, cuya concesión se
+  investiga por haberse canalizado presuntamente a través de
+  transferencias de financiación a la agencia IFA/IDEA eludiendo los
+  controles de subvenciones. La expresión coloquial "fondo de reptiles"
+  es etiqueta periodística, no categoría jurídica.
+  # LLM-incierto: confirmar la denominación exacta del programa
+  # presupuestario (citado como "31L") contra fuente primaria.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

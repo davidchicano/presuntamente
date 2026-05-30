@@ -1,0 +1,15 @@
+id: govern-illes-balears
+nombre: "Govern de les Illes Balears"
+nombres_alternativos:
+  - "Govern Balear"
+  - "Govern de Balears"
+  - "Gobierno Balear"
+tipo: organismo_publico
+ambito_territorial: autonomico
+comunidad_autonoma: "Illes Balears"
+descripcion_corta: |
+  Gobierno autonómico de las Illes Balears. Uno de los organismos públicos que suscribió
+  contratos con el Instituto Nóos presuntamente de forma irregular durante el mandato del
+  president Jaume Matas (PP, 2003-2007). Perjudicado institucional en el caso Nóos.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

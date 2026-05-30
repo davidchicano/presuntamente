@@ -1,0 +1,15 @@
+id: garzon-juez-instructor-inicial
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: baltasar-garzon-real
+rol: juez_instructor
+fecha_inicio: "2006-05-09"
+fecha_fin: "2010-05-01"
+# LLM-incierto: fecha exacta de salida de Garzón del JCI nº 5 estimada; fue inhabilitado en mayo de 2010 por el TS en el caso Gürtel.
+notas: |
+  Baltasar Garzón Real fue el magistrado titular del Juzgado Central de
+  Instrucción nº 5 de la Audiencia Nacional que firmó la orden de intervención
+  de Fórum Filatélico y Afinsa el 9 de mayo de 2006. Fue suspendido en sus
+  funciones en mayo de 2010 e inhabilitado en febrero de 2012 por el Tribunal
+  Supremo (aunque por un caso distinto, el Gürtel). La instrucción del caso
+  Fórum Filatélico pasó entonces al magistrado Pablo Ruz.

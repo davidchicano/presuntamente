@@ -26,7 +26,7 @@ descripcion_corta: |
   presunta donación encubierta o adquisición a precio inferior
   al de mercado del ático de lujo ubicado en esa localidad
   malagueña por parte del ex presidente de la Comunidad de
-  Madrid Ignacio González González y su esposa Lourdes Cavero.
+  Madrid Ignacio González González y su esposa.
   La causa investigaba si el inmueble había sido «regalado» por
   el empresario y presidente del Club Atlético de Madrid
   Enrique Cerezo Torres, tras alquilarlo en 2008 a la sociedad
@@ -48,16 +48,17 @@ descripcion_corta: |
   Audiencia Nacional que conoce de las piezas Lezo.
 
 sintesis_caso:
-  que_se_investiga: "La adquisición de un ático en Estepona vinculado a Ignacio González y Lourdes Cavero."
+  que_se_investiga: "La adquisición de un ático en Estepona vinculado a Ignacio González y su esposa."
   hechos_clave:
     - "La hipótesis investigada era si hubo una donación encubierta o una compra por debajo del valor de mercado."
     - "El procedimiento fue instruido por un juzgado de Estepona, no por la Audiencia Nacional."
+    - "El sobreseimiento provisional fue confirmado en apelación por la Audiencia Provincial de Málaga en noviembre de 2020."
     - "La conexión con Lezo es factual: comparte un investigado relevante, pero no es una pieza separada de esa macrocausa."
-  estado_actual: "El juez acordó el sobreseimiento provisional en julio de 2020."
+  estado_actual: "El juzgado acordó el sobreseimiento provisional en julio de 2020 y la Audiencia Provincial de Málaga lo confirmó en apelación en noviembre de 2020."
   cifras_clave:
     - "770.000 € de precio de adquisición citado"
     - "7 años de instrucción"
-    - "Archivo provisional en 2020"
+    - "Archivo provisional en 2020, confirmado en apelación"
 
 organo_judicial_id: juzgado-primera-instancia-instruccion-5-estepona
 numero_procedimiento: "Diligencias Previas (nº exacto pendiente de confirmación pública)"
@@ -82,7 +83,7 @@ resumen_cifras: |
   investigado.
 
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-24"
+ultima_revision_editorial: "2026-05-30"
 nivel_relevancia_editorial: media
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
@@ -99,5 +100,5 @@ estado_ficha:
   conexiones: pendiente
   cobertura_mediatica_general: pendiente
   revision_editorial: completo
-  notas: "Caso modelado como esqueleto inicial. Conexo factualmente con Lezo por compartir el principal investigado. Pendiente desarrollar a publicable o consolidar como sub-entidad de Lezo; la elección la decide el maintainer."
-  fecha_actualizacion: "2026-05-25"
+  notas: "Caso modelado como esqueleto inicial. Conexo factualmente con Lezo por compartir el principal investigado. Barrido de actualidad 2026-05-30: se añadió el hito de confirmación del sobreseimiento provisional en apelación por la AP de Málaga (9-nov-2020). El procedimiento sigue archivado provisionalmente; no se localizó novedad posterior a 2020. Pendiente el auto íntegro de la AP (hoy respaldado solo con N4). Pendiente desarrollar a publicable o consolidar como sub-entidad de Lezo; la elección la decide el maintainer."
+  fecha_actualizacion: "2026-05-30"

@@ -1,0 +1,30 @@
+id: ff-condena-firme-otros
+caso_id: forum-filatelico
+enunciado: |
+  La STS 688/2019 de 5 de marzo de 2020 confirma un total de 16 condenas
+  firmes —cuatro menos que las 20 dictadas por la Audiencia Nacional, al
+  absolver a cuatro condenados en primera instancia por falta de prueba
+  suficiente— con penas que oscilan entre 6 meses y 11 años y 10 meses de
+  prisión. Entre los confirmados se encuentra Antonio Merino (exdirector
+  general, condenado por blanqueo de capitales). El Supremo confirma asimismo
+  la condena de los dos auditores externos por falseamiento de cuentas
+  societarias (1 y 2 años respectivamente).
+tipo: atribuido
+# Candidato a 'acreditado': STS 688/2019 es firme. Pendiente revisión humana para todos los condenados.
+fecha_o_periodo:
+  desde: "2020-03-05"
+  precision: dia
+personas_implicadas:
+  - antonio-merino-blanco
+  - miguel-colmenero-menendez
+organizaciones_implicadas:
+  - tribunal-supremo
+  - forum-filatelico-sa
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ts-forum-2020-03-05
+    pasaje: "16 acusados condenados con penas de entre seis meses y once años de cárcel. Cuatro acusados absueltos respecto de la sentencia de la Audiencia Nacional."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

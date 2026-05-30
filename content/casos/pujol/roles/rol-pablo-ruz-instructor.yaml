@@ -1,0 +1,14 @@
+id: rol-pablo-ruz-instructor
+caso_id: pujol
+sujeto_tipo: persona
+sujeto_persona_id: pablo-ruz-gutierrez
+rol: juez_instructor
+fecha_inicio: "2014-07-01"
+fecha_fin: "2014-12-31"
+notas: >-
+  Magistrado que, como titular del Juzgado Central de Instrucción nº 5 de la
+  Audiencia Nacional, inició la investigación sobre el patrimonio de la familia
+  Pujol en 2014. Fue sustituido posteriormente por el magistrado José de la
+  Mata.
+# LLM-incierto: fecha exacta de la instrucción de Pablo Ruz en esta causa y
+# de la transición a José de la Mata pendientes de verificar. Ver NOTES.md.

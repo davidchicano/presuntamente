@@ -1,0 +1,18 @@
+id: briones-acusado
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: francisco-briones
+rol: acusado
+delitos_atribuidos:
+  - estafa
+  - insolvencia-punible
+  - falsedad-documental
+  - blanqueo-de-capitales
+fecha_inicio: "2017-09-18"
+fecha_fin: "2018-07-13"
+hito_origen_id: inicio-juicio-oral-forum-2017-09-18
+hito_fin_id: sentencia-an-forum-2018-07-13
+notas: |
+  Acusado en el juicio oral celebrado ante la Sección Primera de la Sala de
+  lo Penal de la Audiencia Nacional desde el 18 de septiembre de 2017.
+  Rige el principio de presunción de inocencia hasta sentencia firme.

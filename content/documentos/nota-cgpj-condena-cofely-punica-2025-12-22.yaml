@@ -1,0 +1,20 @@
+id: nota-cgpj-condena-cofely-punica-2025-12-22
+titulo: "Nota del CGPJ: la Audiencia Nacional condena a penas de hasta 8 años de cárcel por la adjudicación de contratos de eficiencia energética en ayuntamientos de la Comunidad de Madrid (pieza Cofely del caso Púnica)"
+tipo: nota_prensa_institucional
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Nota oficial de la Oficina de Comunicación de la Audiencia Nacional
+  publicada en poderjudicial.es (dominio oficial en lista blanca).
+  Recoge la sentencia dictada el 22 de diciembre de 2025 en la pieza
+  de la trama Púnica relativa a los contratos de eficiencia
+  energética adjudicados a Cofely España. Pendiente de localizar la
+  sentencia íntegra en CENDOJ; cuando aparezca se elevará el
+  documento sentencia a N1 con su propio id.
+productor_organizacion_id: audiencia-nacional
+fecha_documento: "2025-12-22"
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Audiencia-Nacional/Oficina-de-Comunicacion/Notas-de-prensa/La-Audiencia-Nacional-condena-a-penas-de-hasta-8-anos-carcel-por-la-adjudicacion-de-contratos-de-eficiencia-energetica-en-ayuntamientos-de-la-Comunidad-de-Madrid"
+estado_acceso: publico
+idioma: es
+caso_principal_id: punica
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

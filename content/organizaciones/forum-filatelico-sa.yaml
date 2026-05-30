@@ -1,0 +1,26 @@
+id: forum-filatelico-sa
+nombre: "Fórum Filatélico S.A."
+nombres_alternativos:
+  - "Forum Filatélico"
+  - "Fórum Filatélico Financiero S.A."
+  - "Fondo Filatélico Financiero S.A."
+tipo: empresa
+descripcion_corta: |
+  Empresa española de inversión filatélica fundada en 1979 (denominada
+  inicialmente «Fondo Filatélico Financiero S.A.»). Operó durante 27 años
+  captando el ahorro de cientos de miles de pequeños inversores mediante
+  contratos de compraventa de sellos con garantía de recompra y rentabilidades
+  prometidas superiores a las bancarias. Fue intervenida judicialmente el
+  9 de mayo de 2006 en la denominada «Operación Atrio» por orden del Juzgado
+  Central de Instrucción nº 5 de la Audiencia Nacional. El Juzgado de lo
+  Mercantil nº 7 de Madrid la declaró en concurso necesario el 22 de junio
+  de 2006 con un déficit patrimonial de 2.843.503.812 euros según la
+  administración concursal.
+fundacion: "1979-06-01"
+# LLM-incierto: fecha exacta de constitución no verificada; aproximación a 1979
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+comunidad_autonoma: "Comunidad de Madrid"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

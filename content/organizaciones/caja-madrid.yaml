@@ -1,0 +1,18 @@
+id: caja-madrid
+nombre: "Caja de Ahorros y Monte de Piedad de Madrid"
+nombres_alternativos:
+  - "Caja Madrid"
+  - "Caja de Madrid"
+  - "CajaMadrid"
+tipo: entidad_financiera
+descripcion_corta: >-
+  Caja de ahorros espanola con sede en Madrid, una de las mayores del pais.
+  En 2010-2011 integro el grupo BFA-Bankia junto a otras cajas de ahorros y
+  su negocio bancario paso a Bankia. Su consejo de administracion, comision de
+  control y alta direccion son el ambito en el que se enmarca el uso de las
+  llamadas tarjetas black. Figura como perjudicada en el caso de las tarjetas
+  black de Caja Madrid / Bankia.
+  # pendiente_primario: completar fechas de constitucion/extincion y datos
+  # registrales desde fuente oficial.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

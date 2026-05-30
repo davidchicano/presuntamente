@@ -1,0 +1,31 @@
+id: gurtel-sentencia-firme-ts-2020
+caso_id: gurtel
+tipo: sentencia_firme
+fecha: "2020-10-14"
+fecha_precision: dia
+titulo: "El Tribunal Supremo confirma las condenas de la Época I de Gürtel"
+descripcion: |
+  La Sala Segunda del Tribunal Supremo dicta el 14 de octubre de 2020
+  la sentencia 507/2020 (ECLI:ES:TS:2020:3191, ponente Juan Ramón
+  Berdugo) que resuelve los recursos de casación contra la sentencia
+  de la Audiencia Nacional sobre la Época I del caso Gürtel,
+  confirmando con ligeras variaciones las penas: 51 años para Francisco
+  Correa, 36 años y 8 meses para Pablo Crespo y 29 años y 1 mes para
+  Luis Bárcenas, entre otras. Confirma asimismo la responsabilidad
+  civil a título lucrativo del Partido Popular por 245.492,80 euros. La
+  sentencia gana firmeza con esta resolución.
+personas_afectadas:
+  - francisco-correa-sanchez
+  - pablo-crespo-sabaris
+  - luis-barcenas
+  - rosalia-iglesias
+  - juan-ramon-berdugo
+organizaciones_afectadas:
+  - tribunal-supremo
+  - partido-popular
+documento_principal_id: nota-cgpj-sentencia-gurtel-ts-2020
+documentos_relacionados:
+  - sentencia-ts-gurtel-epoca-i-2020
+hechos_introducidos:
+  - condena-firme-correa-crespo-epoca-i
+fase_resultante: sentencia_firme

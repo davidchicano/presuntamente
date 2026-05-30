@@ -4,6 +4,62 @@ Archivo de cierres de sesión y bloques largos movidos fuera de `ROADMAP.md`.
 
 El detalle granular anterior a la limpieza del 2026-05-25 sigue preservado en el historial de git. Este fichero toma el relevo como histórico legible para futuras sesiones.
 
+## 2026-05-30 — Tanda masiva de casos (workflow multiagente)
+
+Sesión orquestada con la herramienta de **workflows** (subagentes en
+paralelo, modelo Sonnet) a petición del maintainer: documentar "muchos
+casos del tirón". Reparto en dos pistas:
+
+- **Pista A — actualizar 8 ya fichados** con `/actualizar-caso`: barrido
+  de actualidad + cascada de coherencia. Hitos/hechos nuevos en
+  `kitchen` (declaración Fernández Díaz inicio juicio), `plus-ultra`
+  (acusación popular PP/Vox), `begona-gomez` (UCO software, Cámara de
+  Cuentas), `gonzalez-amador` (señalamiento juicio 2027),
+  `fiscal-general-del-estado` (amparo TC), `atico-estepona` (confirmación
+  archivo AP Málaga 2020).
+- **Pista B — investigar 12 nuevos** con `/investigar-caso` →
+  `/documentar-vinculos` → `/rastrear-cobertura` → `/revisar-caso`, en
+  pipeline por caso. Modelado completo desde esqueleto: `gurtel`,
+  `punica`, `pujol`, `eres-andalucia`, `noos`, `malaya`, `tarjetas-black`,
+  `barcenas-caja-b`, `filesa`, `tandem`, `palau-musica`,
+  `forum-filatelico`.
+
+**Incidencias operativas del workflow:** dos cortes por límite de uso
+del maintainer a mitad de ejecución. El trabajo en disco se conservó
+intacto cada vez; se relanzó en modo **incremental** (sin rehacer lo ya
+modelado), comprobando el estado real por `git status` antes de cada
+relanzamiento. Aprendizaje: los workflows largos deben diseñarse
+reanudables y verificar disco antes de re-spawnear, no confiar en que el
+run llega entero. El primer intento (Opus) se cambió a Sonnet por coste a
+petición del maintainer.
+
+**Resultado agregado:** +70 personas, +33 organizaciones, +~90
+documentos, +2 delitos (`estafa`, `insolvencia-punible`), +43 vínculos
+institucionales, +7 relaciones-entre-casos, +12 corpus de cobertura
+mediática. Dedup `pablo-ruz` → `pablo-ruz-gutierrez`. Relaciones nuevas
+descubiertas: gürtel↔bárcenas y gürtel↔kitchen (Bárcenas/Ruz),
+púnica↔tándem y púnica↔lezo (García-Castellón instructor simultáneo),
+palau↔3%, tarjetas-black↔bankia-OPS. `pnpm validate` **1341 OK / 0
+errores**.
+
+**Auditoría `/revisar-caso` de los 20 casos.** Bloqueantes **mecánicos
+corregidos** en una pasada Sonnet dedicada: bios desactualizadas que
+decían "no modelado" (Bárcenas, Rosalía Iglesias, Zarrías, Del Nido,
+López Madrid, De la Joya), `trama` sin comillas en prosa publicable
+(P-09; ~27 ficheros de gürtel/malaya/filesa/púnica + vínculo servinabar),
+`fecha_inicio` de los 4 roles `condenado_firme` de ERE (2019→2022, fecha
+de firmeza en casación), `querellante_inicial_id` erróneo en
+bárcenas-caja-b, referencia rota en hito noos, tildes ausentes en
+enunciado kitchen, alta de organización `el-confidencial-digital`.
+Bloqueantes **no-mecánicos** quedan en el `ROADMAP.md` ("Pendiente de
+decisión del maintainer (tanda 2026-05-30)") para revisión humana:
+excepción de nombre propio Gürtel, promociones a `acreditado` (V-04),
+`pujol` obsoleto, privados sin rol (Cavero, Muñoz Támara, García
+Cereceda), frontera afectación PSOE, URLs/primarios pendientes.
+
+**Sin commit:** todo en working tree por la norma de AGENTS.md; el
+maintainer revisa los bloqueantes no-mecánicos antes del commit final.
+
 ## 2026-05-25
 
 ### Limpieza estructural del roadmap

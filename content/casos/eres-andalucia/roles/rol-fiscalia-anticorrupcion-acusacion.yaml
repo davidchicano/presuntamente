@@ -1,0 +1,12 @@
+id: rol-fiscalia-anticorrupcion-acusacion
+caso_id: eres-andalucia
+sujeto_tipo: organizacion
+sujeto_organizacion_id: fiscalia-anticorrupcion
+rol: querellante
+fecha_inicio: "2011-01-01"
+notas: |
+  La Fiscalía Anticorrupción ejerció la acusación pública en la causa de
+  los ERE de Andalucía.
+  # LLM-incierto: confirmar si la acusación pública la ejerció la Fiscalía
+  # Anticorrupción y/o la Fiscalía de Sevilla, y los nombres de los fiscales
+  # actuantes, sin verificar en vivo.

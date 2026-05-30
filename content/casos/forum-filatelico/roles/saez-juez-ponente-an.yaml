@@ -1,0 +1,13 @@
+id: saez-juez-ponente-an
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: ramon-saez-valcarcel
+rol: juez_ponente
+fecha_inicio: "2017-09-18"
+fecha_fin: "2018-07-13"
+hito_origen_id: inicio-juicio-oral-forum-2017-09-18
+hito_fin_id: sentencia-an-forum-2018-07-13
+notas: |
+  Magistrado ponente de la Sección Primera de la Sala de lo Penal de la
+  Audiencia Nacional que redactó y firmó la sentencia de 13 de julio de 2018
+  en el caso Fórum Filatélico.

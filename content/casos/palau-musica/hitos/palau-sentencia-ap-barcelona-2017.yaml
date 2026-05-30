@@ -1,0 +1,41 @@
+id: palau-sentencia-ap-barcelona-2017
+caso_id: palau-musica
+tipo: sentencia_primera_instancia
+fecha: "2017-12-29"
+fecha_precision: dia
+titulo: "Sentencia de la Sección 10ª de la Audiencia Provincial de Barcelona: condena a Millet, Montull y otros en el caso Palau"
+descripcion: |
+  La Sección 10ª de la Audiencia Provincial de Barcelona (PA 74/2016),
+  presidida por la magistrada Montserrat Comas-d'Argemir y con el
+  magistrado Julio Hernández como ponente, dicta sentencia el 29 de
+  diciembre de 2017. El fallo condena a Fèlix Millet i Tusell a
+  9 años y 8 meses de prisión y multa de 4.120.540 euros; a Jordi
+  Montull Bagur a 7 años y 6 meses de prisión y multa de 2.998.284
+  euros; a Gemma Montull Mir a 4 años, 6 meses y 22 días de prisión
+  y multa de 2.663.955 euros; y a Daniel Osàcar Escrig a 4 años y
+  5 meses de prisión y multa de 3.796.555 euros. Otros cinco acusados
+  reciben penas de entre 8 meses y 1 año y 9 meses. Cuatro acusados
+  son absueltos, entre ellos los directivos de Ferrovial Pedro
+  Buenaventura y Juan Elízaga, por prescripción de los delitos
+  imputados. La sentencia acuerda el comiso de 6.676.105,58 euros
+  a Convergència Democràtica de Catalunya como ganancias obtenidas
+  por tráfico de influencias. La sentencia se hace pública el
+  15 de enero de 2018.
+personas_afectadas:
+  - felix-millet-tusell
+  - jordi-montull-bagur
+  - gemma-montull-mir
+  - daniel-osacar-escrig
+organizaciones_afectadas:
+  - audiencia-provincial-barcelona
+  - convergencia-democratica-de-catalunya
+  - fundacio-orfeo-catala-palau-musica
+  - associacio-orfeo-catala
+  - consorci-palau-musica-catalana
+documento_principal_id: nota-cgpj-sentencia-ap-barcelona-palau-2018
+documentos_relacionados:
+  - publico-sentencia-palau-2018
+hechos_introducidos:
+  - palau-comiso-cdc-atribuido
+  - palau-expolio-fondos-atribuido
+fase_resultante: recurso

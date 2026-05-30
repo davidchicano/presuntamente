@@ -1,0 +1,18 @@
+id: consejeria-empleo-junta-andalucia
+nombre: "Consejería de Empleo de la Junta de Andalucía"
+nombres_alternativos:
+  - "Consejería de Empleo"
+  - "Consejería de Empleo y Desarrollo Tecnológico"
+tipo: organismo_publico
+descripcion_corta: >-
+  Departamento del Gobierno andaluz competente en materia de empleo. En la
+  causa de los ERE se investiga su papel como órgano que tramitó y concedió
+  las ayudas sociolaborales y a empresas en crisis durante el periodo
+  investigado.
+ambito_territorial: autonomico
+comunidad_autonoma: "Andalucía"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# La denominación de la Consejería varió a lo largo del periodo (Empleo y
+# Desarrollo Tecnológico, Empleo). Se usa una entidad genérica para el
+# departamento competente en empleo.

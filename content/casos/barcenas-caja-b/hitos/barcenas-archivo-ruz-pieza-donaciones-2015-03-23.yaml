@@ -1,0 +1,28 @@
+id: barcenas-archivo-ruz-pieza-donaciones-2015-03-23
+caso_id: barcenas-caja-b
+tipo: archivo_provisional
+fecha: "2015-03-23"
+fecha_precision: dia
+titulo: >-
+  El juez Ruz sobresee provisionalmente la pieza de donaciones y mantiene
+  abierta la pieza Génova
+descripcion: |
+  El 23 de marzo de 2015, el juez Pablo Ruz acuerda el sobreseimiento
+  provisional de la investigación sobre las presuntas aportaciones de
+  empresarios al Partido Popular en los «papeles de Bárcenas», al no
+  hallar acreditada la relación causal entre las supuestas donaciones y
+  adjudicaciones concretas de contratos públicos. El juez declara, sin
+  embargo, que la financiación irregular del PP queda probada en el ámbito
+  de la pieza Gürtel principal. Mantiene abierta la pieza sobre la reforma
+  de la sede en Génova con fondos no declarados, que continúa instruyéndose.
+personas_afectadas:
+  - luis-barcenas
+  - pablo-ruz-gutierrez
+organizaciones_afectadas:
+  - partido-popular
+  - juzgado-central-instruccion-5
+documento_principal_id: cgpj-apertura-juicio-oral-barcenas-caja-b-2015
+# LLM-incierto: el auto de sobreseimiento provisional de Ruz de 23-mar-2015 no
+# tiene nota CGPJ propia localizada; se infiere de cobertura periodística cruzada.
+# Uso del documento de apertura de juicio oral como referencia más próxima.
+fase_resultante: archivo_provisional

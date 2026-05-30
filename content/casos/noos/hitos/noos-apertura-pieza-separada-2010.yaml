@@ -1,0 +1,25 @@
+id: noos-apertura-pieza-separada-2010
+caso_id: noos
+tipo: separacion_pieza
+fecha: "2010-07-20"
+fecha_precision: dia
+titulo: "El juez Castro abre la pieza separada nº 25 del caso Palma Arena sobre el Instituto Nóos"
+descripcion: |
+  El magistrado-juez del Juzgado de Instrucción nº 3 de Palma, José Castro Aragón,
+  acuerda el 20 de julio de 2010 abrir diligencias previas como pieza separada nº 25
+  del caso Palma Arena para investigar los contratos suscritos entre administraciones
+  autonómicas y la Asociación Instituto Nóos, presidida por Iñaki Urdangarin,
+  cuñado del entonces Príncipe Felipe. La investigación detectó contratos con el Govern
+  de les Illes Balears durante el mandato de Jaume Matas (PP) por importes que carecían,
+  según la investigación, de la correlativa contraprestación de servicios.
+personas_afectadas:
+  - inaki-urdangarin
+  - jose-castro-aragon
+organizaciones_afectadas:
+  - juzgado-instruccion-3-palma
+  - instituto-noos
+  - govern-illes-balears
+documentos_relacionados:
+  - cobertura-publico-noos-cronologia
+hechos_introducidos: []
+fase_resultante: instruccion

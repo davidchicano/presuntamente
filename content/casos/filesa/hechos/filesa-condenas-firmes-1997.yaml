@@ -1,0 +1,83 @@
+id: filesa-condenas-firmes-1997
+caso_id: filesa
+enunciado: |
+  La STS 1/1997 de la Sala Segunda del Tribunal Supremo (28 de octubre
+  de 1997, ponente José Augusto de Vega Ruiz) condenó a ocho personas
+  en la Causa Especial nº 880/1991: Carlos Navarro Gómez a 11 años de
+  prisión; Alberto Flores Valencia y Luis Oliveró Capellades a 10 años
+  cada uno (más multa solidaria de 258.827.765 pesetas por delito
+  fiscal); Josep Maria Sala i Grisó a 3 años de prisión y 6 años y un
+  día de inhabilitación especial; Aida Álvarez Álvarez y Miguel
+  Guillermo Molledo Martín a 2 años, 4 meses y 1 día cada uno;
+  Juan Antonio Molina Vivas y Eugenio García Mansilla a 6 meses de
+  arresto con indemnización. Tres acusados fueron absueltos (Luis
+  Sánchez Marcos, Francisco Javier Iglesias Díaz y Julio Calleja
+  González-Camino). La sentencia es firme al dictarse por el Tribunal
+  Supremo en única instancia.
+tipo: acreditado
+fecha_o_periodo:
+  desde: "1997-10-28"
+  precision: dia
+personas_implicadas:
+  - carlos-navarro-gomez
+  - alberto-flores-valencia
+  - luis-olivero-capellades
+  - jose-maria-sala-i-griso
+  - aida-alvarez-alvarez
+  - miguel-guillermo-molledo-martin
+  - juan-antonio-molina-vivas
+  - eugenio-garcia-mansilla
+  - jose-augusto-de-vega-ruiz
+organizaciones_implicadas:
+  - tribunal-supremo
+  - psoe
+documentos_respaldo:
+  - documento_id: boe-stc-123-2001-filesa
+    pasaje: "Antecedentes de Hecho 1 — condenas de Carlos Navarro Gómez: dos delitos continuados de falsedad en documento mercantil (3 años de prisión menor y multa de 100.000 pesetas por cada uno), un delito de asociación ilícita (3 años de prisión menor, 6 años y un día de inhabilitación especial, multa de 500.000 pesetas) y un delito contra la Hacienda pública (2 años de prisión menor y multa de 258.827.765 pesetas). Amparo desestimado: condenas plenamente firmes."
+  - documento_id: boe-stc-124-2001-filesa
+    pasaje: "Antecedentes de Hecho 1 — condenas de Josep Maria Sala i Grisó: un año de prisión menor y multa de 100.000 pesetas (falsedad en documento mercantil), dos años de prisión menor, seis años y un día de inhabilitación especial para cargo público y 250.000 pesetas de multa (asociación ilícita). Amparo desestimado: condenas plenamente firmes."
+  - documento_id: boe-stc-125-2001-filesa
+    pasaje: "Antecedentes de Hecho 1 — condenas de Alberto Flores Valencia: dos delitos continuados de falsedad (3 años de prisión menor y multa de 100.000 pesetas cada uno), un delito de asociación ilícita (2 años de prisión menor, 6 años y un día de inhabilitación especial, multa de 250.000 pesetas) y un delito contra la Hacienda pública (2 años de prisión menor y multa de 258.827.765 pesetas). Amparo desestimado: condenas plenamente firmes."
+  - documento_id: boe-stc-126-2001-filesa
+    pasaje: "Antecedentes de Hecho 1 — condenas de Luis Oliveró Capellades: dos delitos continuados de falsedad (3 años de prisión menor y multa de 100.000 pesetas por cada uno), un delito de asociación ilícita (2 años de prisión menor, 6 años y un día de inhabilitación especial), un delito contra la Hacienda pública (2 años de prisión menor y multa de 258.827.765 pesetas). Responsabilidad civil solidaria con otros dos: 258.827.765 pesetas. Amparo parcialmente desestimado."
+  - documento_id: boe-stc-127-2001-filesa
+    pasaje: "Antecedentes de Hecho 1 — condenas de Aida Álvarez Álvarez y Miguel Guillermo Molledo Martín: dos años, dos meses y un día de prisión menor y multa de 100.000 pesetas cada uno por un delito continuado de falsedad en documento mercantil. Amparo desestimado: condenas plenamente firmes."
+  - documento_id: sentencia-ts-filesa-1997
+    pasaje: "Fallo — condenas individuales de los ocho acusados condenados (N3, triangulado con STCs 123-127/2001 N1)"
+  - documento_id: prensa-sentencia-filesa-libertad-digital-2001
+    pasaje: "Penas individuales de los ocho condenados del caso Filesa — absueltos: Luis Sánchez Marcos, Francisco Javier Iglesias Díaz y Julio Calleja González-Camino"
+nivel_fuente_efectivo: 1
+# Promovido a 'acreditado' el 2026-05-30 (rev. maintainer autorizada).
+# Respaldo: STCs 123/2001, 124/2001, 125/2001, 126/2001 y 127/2001 (todas N1, BOE),
+# que desestiman los amparos de los cinco condenados principales y confirman con firmeza
+# constitucional plena las condenas de la STS 1/1997.
+# Corrección editorial: la NOTES.md inicial indicaba que el TC estimó parcialmente el
+# amparo de Sala i Grisó; la lectura directa de la STC 124/2001 (BOE-T-2001-12757)
+# muestra que el amparo fue desestimado íntegramente (ambas condenas permanecen).
+importe: 1558046
+importe_moneda: EUR
+importe_alcance: componente
+importe_clase: consecuencia
+importe_naturaleza: multa_penal
+importe_nota: |
+  Multa solidaria de 258.827.765 pesetas (≈ 1.558.046 EUR) impuesta
+  conjuntamente a Navarro, Flores y Oliveró por el delito fiscal.
+  Se estructura como componente (no acumulable con el importe del
+  objeto del caso ya estructurado en filesa-financiacion-irregular-psoe).
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: carlos-navarro-gomez
+    papel: obligado
+    nota: "Responsabilidad civil solidaria con Flores y Oliveró"
+  - sujeto_tipo: persona
+    sujeto: alberto-flores-valencia
+    papel: obligado
+    nota: "Responsabilidad civil solidaria con Navarro y Oliveró"
+  - sujeto_tipo: persona
+    sujeto: luis-olivero-capellades
+    papel: obligado
+    nota: "Responsabilidad civil solidaria con Navarro y Flores"
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

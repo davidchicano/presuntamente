@@ -1,0 +1,19 @@
+id: villarejo-comisario-cnp
+naturaleza: cargo_funcionarial_carrera
+descripcion: "Comisario del Cuerpo Nacional de Policía desde 1972 hasta su jubilación en 2016. La condición de funcionario en activo durante buena parte del periodo investigado es el contexto institucional central del caso Tándem: la presunta explotación de esa posición para acceder a bases de datos reservadas del Estado figura como elemento nuclear de la acusación."
+sujeto_persona_id: jose-manuel-villarejo
+objeto_organizacion_id: direccion-general-policia
+cargo_o_rol: "Comisario del Cuerpo Nacional de Policía"
+desde: "1972-01-01"
+hasta: "2016-01-01"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+relevancia_para_caso_ids: [tandem, kitchen]
+documentos_respaldo:
+  - documento_id: elpais-detencion-villarejo-2017-11-03
+    pasaje: "El País identifica a Villarejo como comisario jubilado del CNP en el momento de la detención del 3 de noviembre de 2017."
+  - documento_id: elindependiente-detencion-villarejo-prision-2017-11-05
+    pasaje: "El Independiente describe el auto de prisión provisional referenciando la condición de excomisario de Villarejo y el uso presunto de su condición policial en los encargos."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

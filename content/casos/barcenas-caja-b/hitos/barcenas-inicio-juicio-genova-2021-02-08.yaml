@@ -1,0 +1,24 @@
+id: barcenas-inicio-juicio-genova-2021-02-08
+caso_id: barcenas-caja-b
+tipo: inicio_vista_oral
+fecha: "2021-02-08"
+fecha_precision: dia
+titulo: >-
+  Comienza el juicio oral por la pieza Génova ante la Sección Segunda de la
+  Sala Penal de la Audiencia Nacional
+descripcion: |
+  El 8 de febrero de 2021 se inicia la vista oral de la pieza Génova ante la
+  Sección Segunda de la Sala Penal de la Audiencia Nacional, presidida por
+  el magistrado José Antonio Mora Alarcón. El juicio se extiende a lo largo
+  de 27 sesiones celebradas entre febrero y mayo de 2021, con Luis Bárcenas,
+  Cristóbal Páez, Gonzalo Urquijo, Belén García y Laura Montero como acusados
+  (Álvaro Lapuerta había fallecido en junio de 2018, tras ser sobreseído en
+  2016 por demencia sobrevenida). La vista concluye el 12 de mayo de 2021,
+  cuando el tribunal declara la causa «vista para sentencia».
+personas_afectadas:
+  - luis-barcenas
+organizaciones_afectadas:
+  - audiencia-nacional
+  - partido-popular
+  - fiscalia-anticorrupcion
+fase_resultante: juicio_oral

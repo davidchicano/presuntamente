@@ -1,0 +1,17 @@
+id: noos-ingreso-prision-urdangarin-2018
+caso_id: noos
+tipo: auto_diligencias
+fecha: "2018-06-18"
+fecha_precision: dia
+titulo: "Iñaki Urdangarin ingresa en la prisión de Brieva para cumplir la condena firme"
+descripcion: |
+  Iñaki Urdangarin ingresa el 18 de junio de 2018, a las 07:30 horas, en el centro penitenciario
+  de Brieva (Ávila) para iniciar el cumplimiento de la condena firme de 5 años y 10 meses
+  impuesta por el Tribunal Supremo (STS 277/2018). La ejecución de la sentencia da comienzo
+  a la fase de ejecución de la causa para los condenados.
+personas_afectadas:
+  - inaki-urdangarin
+organizaciones_afectadas:
+  - tribunal-supremo
+documentos_relacionados: []
+fase_resultante: ejecucion

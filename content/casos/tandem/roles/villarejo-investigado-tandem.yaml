@@ -1,0 +1,22 @@
+id: villarejo-investigado-tandem
+caso_id: tandem
+sujeto_tipo: persona
+sujeto_persona_id: jose-manuel-villarejo
+rol: investigado
+delitos_atribuidos:
+  - revelacion-de-secretos
+  - blanqueo-de-capitales
+  - cohecho
+  - organizacion-criminal
+  - falsedad-documental
+fecha_inicio: "2017-11-03"
+fecha_fin: "2023-07-24"
+hito_origen_id: detencion-villarejo-apertura-causa-2017-11-03
+hito_fin_id: sentencia-iron-land-pintor-primera-instancia-2023-07-24
+notas: |
+  Rol inicial de Villarejo en el procedimiento troncal (Diligencias Previas
+  96/2017). La detención del 3 de noviembre de 2017 marcó la apertura de
+  la causa. La sentencia de julio de 2023 transformó su situación procesal
+  en las piezas Iron, Land y Pintor; en el resto de piezas activas permanece
+  como investigado/procesado. Rige la presunción de inocencia en las piezas
+  sin sentencia firme.

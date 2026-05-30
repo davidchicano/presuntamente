@@ -1,0 +1,372 @@
+# Cobertura mediática general — caso eres-andalucia
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: eres-andalucia
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso ERE"
+    - "ERE de Andalucía"
+    - "EREs andaluces"
+    - "Griñán ERE"
+    - "Chaves ERE"
+    - "jueza Alaya ERE"
+    - "Diligencias Previas 174/2011"
+  ventanas_temporales:
+    - desde: "2011-01-19"
+      hasta: "2019-11-19"
+      notas: "Instrucción (apertura jueza Alaya ene 2011) hasta sentencia AP de Sevilla (19 nov 2019). Periodo más extenso; rastreo selectivo de hitos clave."
+    - desde: "2019-11-20"
+      hasta: "2022-07-31"
+      notas: "Desde la sentencia AP Sevilla hasta la casación del Tribunal Supremo (jul 2022)."
+    - desde: "2022-08-01"
+      hasta: "2024-07-31"
+      notas: "Desde la casación TS hasta las sentencias de amparo del TC (jul 2024)."
+    - desde: "2024-08-01"
+      hasta: "2026-05-30"
+      notas: "Desde los amparos TC hasta hoy: rebelión judicial AP Sevilla, cuestión prejudicial TJUE, respuesta Comisión Europea."
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - elespanol.com
+    - elindependiente.com
+    - infolibre.es
+    - okdiario.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en titular o lead. Se incluyen noticias,
+    reportajes, análisis y columnas sobre hitos judiciales clave (apertura instrucción,
+    sentencia AP, casación TS, amparos TC, cuestión prejudicial TJUE). Se incluyen
+    piezas de agencia republicadas cuando se identifican claramente. Se busca
+    diversidad de línea editorial con al menos cuatro medios distintos.
+  criterios_exclusion: >
+    Se excluyen menciones de pasada en piezas sobre otros temas.
+    Se excluyen republicaciones palabra por palabra de agencia sin valor añadido
+    identificable. Se excluyen El País, El Mundo, ABC y La Vanguardia: no son
+    accesibles vía WebFetch en el sandbox de esta sesión (dominios bloqueados).
+    Se excluyen columnas de opinión sin firmante identificable.
+  notas: >
+    Rastreo inicial v1 sobre cuatro ventanas temporales (ene 2011 — may 2026).
+    El caso tiene cobertura amplísima de prácticamente todos los medios nacionales
+    durante casi 15 años; este corpus es un muestreo sistemático, no un listado
+    exhaustivo. Las url_archivo se rellenan con scripts/archivar-n4.mjs
+    (pnpm archive:catchup; ver docs/web/features/archive-org-pre-commit.md).
+    El País, El Mundo y ABC tienen cobertura propia muy relevante no incluida por
+    las limitaciones de acceso señaladas. La AP de Sevilla elevó en 2025 una
+    cuestión prejudicial al TJUE impugnando las sentencias del TC, que aún está
+    pendiente de resolución (Comisión Europea solicitó su inadmisión en abr 2026).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: INSTRUCCIÓN Y JUICIO (ene 2011 – nov 2019) ──────────────────
+
+  - id: elespanol-diez-anos-ere-2021-01-10
+    url: "https://www.elespanol.com/espana/andalucia/20210110/anos-ere-sentencia-piezas-investigandose-juicios-pendientes/549696459_0.html"
+    medio_id: el-espanol
+    titular: "Diez años del 'caso ERE': una sola sentencia, 100 piezas aún investigándose y 40 juicios pendientes"
+    fecha_publicacion: "2021-01-10"
+    autor: "Inma León"
+    resumen: >
+      La pieza repasa el décimo aniversario del inicio de las diligencias previas
+      174/2011 instruidas por la jueza Mercedes Alaya, con balance de la magnitud
+      del caso (más de 300 investigados, 680 M€) y del estado de las numerosas
+      piezas separadas, la mayoría pendientes de juicio tras la primera sentencia
+      de la pieza política en noviembre de 2019.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Pieza de balance del décimo aniversario; documenta el estado completo de la macrocausa. Fuente: El Español."
+
+  - id: elindependiente-culebron-sentencia-ere-2019-11-02
+    url: "https://www.elindependiente.com/politica/2019/11/02/el-culebron-de-la-sentencia-del-caso-ere/"
+    medio_id: el-independiente
+    titular: "El culebrón de la sentencia del 'caso ERE'"
+    fecha_publicacion: "2019-11-02"
+    autor: "Antonio Salvador"
+    resumen: >
+      Pieza que explica los retrasos acumulados en la redacción de la sentencia de
+      la pieza política por el ponente Juan Antonio Calle: el TSJA concedió 15 días
+      adicionales de dedicación exclusiva, lo que retrasó el fallo más allá del
+      10 de noviembre de 2019.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 2: SENTENCIA AP SEVILLA Y CASACIÓN TS (nov 2019 – jul 2022) ────
+
+  - id: eldiario-cronologia-trece-anos-ere-2022-07-26
+    url: "https://www.eldiario.es/andalucia/jueza-alaya-fallo-supremo-cronologia-trece-anos-caso-ere_1_9179641.html"
+    medio_id: eldiario-es
+    titular: "De la jueza Alaya al fallo del Supremo: cronología de trece años del caso ERE"
+    fecha_publicacion: "2022-07-26"
+    autor: "Javier Ramajo"
+    resumen: >
+      Cronología extensa desde la grabación de 2009 que destapó el caso hasta la
+      casación del Tribunal Supremo de julio de 2022, pasando por la instrucción de
+      la jueza Alaya (ene 2011), el juicio de la pieza política y la sentencia de la
+      AP de Sevilla (nov 2019). Actualizada a 27 de julio de 2022.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-supremo-confirma-condena-ere-2022-07-26
+    url: "https://www.publico.es/politica/tribunal-supremo-confirma-condena-grinan-chaves-fraude-ere.html"
+    medio_id: publico-es
+    titular: "El Supremo confirma la condena a Griñán y Chaves por el fraude de los ERE"
+    fecha_publicacion: "2022-07-26"
+    autor: "Raúl Bocanegra"
+    resumen: >
+      El Tribunal Supremo confirma la condena de seis años y dos días de prisión
+      e inhabilitación absoluta de quince años para Griñán, y de nueve años de
+      inhabilitación especial para Chaves. Dos magistrados emitieron voto particular
+      discrepante sobre la malversación de Griñán.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-supremo-confirma-mayoria-ere-2022-07-26
+    url: "https://www.elespanol.com/espana/tribunales/20220726/mayoria-supremo-confirmar-condena-grinan-chaves-ere/686931736_0.html"
+    medio_id: el-espanol
+    titular: "El Supremo confirma por mayoría la condena a Griñán y Chaves por el fraude de los ERE"
+    fecha_publicacion: "2022-07-26"
+    autor: "María Peral"
+    resumen: >
+      La Sala Segunda del Tribunal Supremo avala la mayoría de las condenas de
+      la pieza política por tres votos frente a dos, ratificando que la administración
+      andaluza creó un sistema calificado de 'fraudulento'. El fallo rechaza 15 de
+      los 19 recursos presentados.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: publico-supremo-confirma-condena-ere-2022-07-26
+    notas: "Pieza independiente de El Español sobre el mismo hito; no es republicación de agencia."
+
+  - id: elindependiente-supremo-palmaria-ilegalidad-ere-2022-07-26
+    url: "https://www.elindependiente.com/espana/2022/07/26/el-supremo-confirma-que-grinan-y-chaves-fueron-conscientes-de-la-palmaria-ilegalidad-de-los-ere/"
+    medio_id: el-independiente
+    titular: "El Supremo confirma que Griñán y Chaves fueron \"conscientes de la palmaria ilegalidad\" de los ERE"
+    fecha_publicacion: "2022-07-26"
+    autor: "Carmen Lucas-Torres y Antonio Salvador"
+    resumen: >
+      La sentencia avala la mayoría de las condenas y establece que la administración
+      andaluza creó un sistema 'fraudulento'. El fallo sale adelante con tres votos
+      frente a dos; dos magistrados habrían absuelto a Griñán del delito de
+      malversación.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: publico-supremo-confirma-condena-ere-2022-07-26
+    notas: "Pieza independiente de El Independiente sobre el mismo hito."
+
+  - id: okdiario-pp-exige-grinan-cumpla-prision-2022-09-14
+    url: "https://okdiario.com/andalucia/pp-exige-que-grinan-cumpla-sentencia-prision-no-hay-ciudadanos-primera-segunda-9668159"
+    medio_id: okdiario
+    titular: "El PP-A exige que Griñán cumpla la condena a prisión: «No hay ciudadanos de primera y de segunda»"
+    fecha_publicacion: "2022-09-14"
+    autor: "OKDIARIO"
+    resumen: >
+      El secretario general del PP andaluz exige que la condena a prisión de
+      Griñán —ratificada por el Supremo por el desvío de 680 M€ destinados a
+      desempleados andaluces— se haga efectiva para evitar agravios comparativos
+      con otros condenados que sí ingresaron en prisión.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 3: AMPAROS TC (ago 2022 – jul 2024) ────────────────────────────
+
+  - id: publico-claves-juicio-historico-ere-supremo-2022
+    url: "https://www.publico.es/politica/claves-juicio-historico-causa-ere-andalucia-inminente-fallo-supremo.html"
+    medio_id: publico-es
+    titular: "Las claves del juicio histórico por la causa de los ERE en Andalucía ante el inminente fallo del Supremo"
+    fecha_publicacion: "2022-07-25"
+    autor: "Raúl Bocanegra"
+    resumen: >
+      Análisis previo al fallo del Supremo con las claves del caso: el sistema de
+      transferencias de financiación a IFA/IDEA para eludir controles, los argumentos
+      de la defensa, los votos particulares esperados y el alcance de la causa con
+      más de cien piezas separadas aún activas.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-sentencia-definitiva-tc-ere-2024-07-15
+    url: "https://www.publico.es/politica/sentencia-definitiva-caso-ere-constitucional-apuesta-anular-condena-grinan-rebajar-chaves.html"
+    medio_id: publico-es
+    titular: "La sentencia definitiva del 'caso ERE': el Constitucional apuesta por anular la condena de Griñán y rebajar la de Chaves"
+    fecha_publicacion: "2024-07-15"
+    autor: "Ana María Pascual"
+    resumen: >
+      El Pleno del TC inicia la deliberación sobre los recursos de amparo de
+      Chaves y Griñán. La ponente propone anular la condena de Griñán por
+      malversación y rebajar parcialmente la prevaricación de Chaves, en lo que
+      supondría el punto final judicial de la pieza política.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-fraude-ere-seis-claves-2024-06-19
+    url: "https://www.publico.es/politica/fraude-ere-caso-liquido-hegemonia-psoe-andalucia-seis-claves.html"
+    medio_id: publico-es
+    titular: "El fraude de los ERE: el caso que liquidó la hegemonía del PSOE en Andalucía en seis claves"
+    fecha_publicacion: "2024-06-19"
+    autor: "Raúl Bocanegra"
+    resumen: >
+      Reportaje de contexto en seis claves sobre cómo el caso ERE, con 679,2 M€
+      en ayudas de reparto opaco y arbitrario según la justicia, contribuyó al fin
+      de la hegemonía del PSOE-A tras 37 años de gobierno autonómico.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-tc-interpretacion-extravagante-ere-2024-07-17
+    url: "https://www.eldiario.es/andalucia/constitucional-afea-audiencia-supremo-interpretacion-extravagante-ley-condenar-chaves-grinan_1_11531327.html"
+    medio_id: eldiario-es
+    titular: "El Constitucional afea a la Audiencia y al Supremo su \"interpretación extravagante\" de la ley para condenar a Chaves y Griñán"
+    fecha_publicacion: "2024-07-17"
+    autor: "elDiarioand"
+    resumen: >
+      El Tribunal Constitucional reprocha a la Audiencia Provincial de Sevilla y al
+      Tribunal Supremo la interpretación de la normativa aplicada para condenar por
+      prevaricación y malversación. El TC ordena a los tribunales inferiores redactar
+      nuevas resoluciones eliminando el delito de malversación contra Griñán y
+      parcialmente el de prevaricación contra Chaves.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: infolibre-tc-anula-condenas-chaves-grinan-ere-2024-07-16
+    url: "https://www.infolibre.es/politica/constitucional-chaves-grinan-caso-ere_1_1842470.html"
+    medio_id: infolibre
+    titular: "El Constitucional anula las condenas a los expresidentes andaluces Chaves y Griñán por los 'ERE'"
+    fecha_publicacion: "2024-07-16"
+    autor: "infoLibre"
+    resumen: >
+      El Pleno del TC, por mayoría, anula las condenas de los expresidentes
+      Chaves y Griñán y ordena a la Audiencia de Sevilla que dicte nueva sentencia
+      sin considerar la prevaricación conforme al criterio de la ponente
+      vicepresidenta Inmaculada Montalbán.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-tc-interpretacion-extravagante-ere-2024-07-17
+    notas: "Pieza independiente de infoLibre sobre el mismo hito del TC."
+
+  - id: elespanol-15-hitos-ere-tc-2024-07-14
+    url: "https://www.elespanol.com/espana/andalucia/20240714/hitos-caso-ere-fallo-tribunal-constitucional-no-borrara-memoria-colectiva/868913480_0.html"
+    medio_id: el-espanol
+    titular: "Los 15 hitos del 'caso ERE' que el fallo del Tribunal Constitucional no borrará de la memoria colectiva"
+    fecha_publicacion: "2024-07-14"
+    autor: "Inma León"
+    resumen: >
+      La pieza repasa los quince momentos clave del caso desde la grabación de 2009
+      hasta la inminente resolución del TC. Señala que quedan más de 120 piezas
+      separadas pendientes en los juzgados sevillanos, y que el TC no puede borrar
+      el historial de hechos probados de la macrocausa.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-cronologia-14-anos-ere-2024-07-05
+    url: "https://www.publico.es/politica/cronologia-14-anos-caso-ere-investigacion-condena-revision-tribunal-constitucional.html"
+    medio_id: publico-es
+    titular: "Cronología de 14 años del 'caso de los ERE': investigación, condena y revisión del Tribunal Constitucional"
+    fecha_publicacion: "2024-07-05"
+    autor: "Raúl Bocanegra"
+    resumen: >
+      Cronología completa en catorce hitos, desde los orígenes del caso (extorsión
+      en Mercasevilla, 2009) hasta la revisión del TC (jul 2024), que pone punto
+      final a la pieza política aunque quedan abiertas más de un centenar de piezas
+      separadas sobre ayudas concretas.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-cronologia-trece-anos-ere-2022-07-26
+    notas: "Cronología propia de Público, con 14 hitos; complementaria (no republicación) de la de El Diario."
+
+  # ── VENTANA 4: REBELIÓN JUDICIAL Y CUESTIÓN PREJUDICIAL TJUE (ago 2024 – may 2026) ───
+
+  - id: infolibre-ap-sevilla-cuestiona-amparo-tc-ere-2025-03-19
+    url: "https://www.infolibre.es/politica/audiencia-sevilla-cuestiona-amparo-constitucional-chaves-grinan_1_1963126.html"
+    medio_id: infolibre
+    titular: "La Audiencia de Sevilla cuestiona el amparo del Constitucional a Chaves y Griñán"
+    fecha_publicacion: "2025-03-19"
+    autor: "infoLibre"
+    resumen: >
+      La Audiencia Provincial de Sevilla cuestiona que el amparo concedido por el TC
+      a condenados del caso ERE sea 'compatible' con el derecho de la UE, y pide
+      opinión a las partes sobre si el TC se 'extralimitó' e 'invadió' ámbitos
+      reservados a los jueces, en una inédita confrontación institucional.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-ap-sevilla-suspende-tc-envia-tjue-ere-2025-07-15
+    url: "https://www.publico.es/politica/audiencia-sevilla-suspende-sentencias-tc-sobre-ere-envia-caso-justicia-europea.html"
+    medio_id: publico-es
+    titular: "La Audiencia de Sevilla suspende las sentencias del TC sobre los ERE y envía el caso a la Justicia europea"
+    fecha_publicacion: "2025-07-15"
+    autor: "Raúl Bocanegra"
+    resumen: >
+      La Audiencia Provincial de Sevilla consolida su rebelión contra las sentencias
+      del TC sobre el caso ERE y eleva una cuestión prejudicial ante el TJUE,
+      suspendiendo la aplicación de los amparos que rebajaron las condenas a
+      Chaves y Griñán. La iniciativa es descrita como 'inédita pirueta jurídica'.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-ap-sevilla-lleva-tjue-ere-2025-07-15
+    url: "https://www.eldiario.es/andalucia/audiencia-sevilla-lleva-justicia-europea-sentencias-constitucional-anulan-condenas-caso-ere_1_12293725.html"
+    medio_id: eldiario-es
+    titular: "La Audiencia de Sevilla lleva a la Justicia europea las sentencias del Constitucional que anulan las condenas del caso ERE"
+    fecha_publicacion: "2025-07-15"
+    autor: "Javier Ramajo"
+    resumen: >
+      La Audiencia Provincial de Sevilla plantea cuatro cuestiones prejudiciales
+      ante el TJUE sobre si las sentencias del TC que anulan las condenas de
+      Chaves y Griñán son compatibles con el derecho europeo, en una iniciativa
+      sin precedentes en el constitucionalismo español.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: publico-ap-sevilla-suspende-tc-envia-tjue-ere-2025-07-15
+    notas: "Pieza independiente de elDiario.es sobre el mismo hito; no es republicación."
+
+  - id: eldiario-bruselas-frena-pp-tjue-ere-2026-04-20
+    url: "https://www.eldiario.es/andalucia/bruselas-frena-pp-justicia-europea-revise-fallo-tc-anulo-condenas-chaves-grinan_1_13155857.html"
+    medio_id: eldiario-es
+    titular: "Bruselas frena el intento del PP de que la Justicia Europea revise el fallo del TC que anuló las condenas a Chaves y Griñán"
+    fecha_publicacion: "2026-04-20"
+    autor: "elDiarioand"
+    resumen: >
+      La Comisión Europea solicita la inadmisión a trámite de la petición de la
+      Audiencia Provincial de Sevilla ante el TJUE, considerando que el tribunal
+      europeo 'es manifiestamente incompetente' para revisar las resoluciones del TC
+      sobre el caso ERE.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Hito más reciente rastreado. La resolución definitiva del TJUE queda pendiente."

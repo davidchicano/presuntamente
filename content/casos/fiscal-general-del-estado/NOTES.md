@@ -3,7 +3,48 @@
 Anotaciones internas. **No se publica.** Vive en el repo para humanos
 y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-05-27 (barrido prelaunch — amparo TC + informe indulto). Antes: 2026-05-23 (PR3 — tribunal de enjuiciamiento + hechos acreditados con cita literal).
+Última actualización: 2026-05-30 (barrido de actualidad — frontera amparo TC e indulto). Antes: 2026-05-27 (barrido prelaunch — amparo TC + informe indulto); 2026-05-23 (PR3 — tribunal de enjuiciamiento + hechos acreditados con cita literal).
+
+## Barrido de actualidad 2026-05-30
+
+Ventana cubierta: desde 2026-05-08 (último hito, informe Fiscalía indulto) y la última revisión editorial (2026-05-27) hasta 2026-05-30. Barrido en ≥3 líneas editoriales (eldiario.es, The Objective, El Español, Infobae, El Independiente, Libertad Digital, Confilegal, El Debate, Vozpópuli) + nota CGPJ TS + Wikipedia.
+
+**Conclusión:** no se ha producido ningún acto procesal nuevo en la causa. El caso sigue en `fase_actual: ejecucion`, condena firme. Las dos fronteras vivas (amparo TC e indulto) continúan abiertas y sin resolución. No se fabrican hitos.
+
+### Actualizado (descripción de hito existente)
+
+- `recurso-amparo-tc-fge-2026-04-10` — añadido matiz de calendario: según El Independiente (15-may-2026), el Tribunal Constitucional **tiene previsto resolver antes del verano de 2026** la admisión a trámite de los dos recursos de amparo (Fiscalía 10-abr y defensa de García Ortiz 13-abr). Es una previsión periodística (no consta auto ni nota oficial del TC), por lo que se modela como matiz de la descripción del hito y como `documentos_relacionados`, no como hito propio ni como Hecho. Documento nuevo creado: `elindependiente-amparo-resolver-verano-fge-2026-05-15.yaml` (N4). De paso se añadió a `documentos_relacionados` el ya existente `theobjective-amparo-tc-fge-2026-04-13` (recurso de la defensa), que respaldaba la descripción pero no estaba enlazado.
+
+### Cascada aplicada en `caso.yaml`
+
+- `sintesis_caso.estado_actual` — reescrito para reflejar las dos fronteras vivas: amparos pendientes de admisión + indulto en trámite con informe favorable de la Fiscalía pendiente de Consejo de Ministros (≤400 caracteres).
+- `ultima_revision_editorial` y `estado_ficha.fecha_actualizacion` → `2026-05-30`.
+- Resto de campos del `caso.yaml` revisados uno a uno: sin cambios. `fase_actual` (ejecucion), `delitos_atribuidos_en_la_causa`, `cifras_clave`, `hechos_clave`, `tipo_procedimiento`, `organo_judicial_id`, `ponente_actual_id` siguen vigentes (no hubo acto procesal que los altere). `estado_ficha.conexiones` y `cobertura_mediatica_general` se dejan como están: el barrido no abrió conexiones nuevas (ver cruce abajo) ni rehízo el corpus de cobertura.
+
+### Indulto: trámite gubernamental (verificado, pendiente de modelar)
+
+El barrido confirma, en varias líneas editoriales, la **cronología del expediente de indulto** que hoy sólo está parcialmente reflejada (hito del informe Fiscalía 8-may):
+
+- 28-ene-2026: el Gobierno (Ministerio de Justicia, Félix Bolaños) inicia el trámite de una **primera** petición de indulto y solicita informe preceptivo al Tribunal Supremo (Infobae, El Independiente, eldiario.es, Libertad Digital).
+- 19-feb-2026: se tramita una **segunda** petición de indulto que se acumula a la primera (El Debate).
+- 6-may-2026: el TS solicita a la Fiscalía su informe (eldiario.es).
+- 8-may-2026: la Fiscalía del TS informa a favor del indulto parcial (hito ya catalogado).
+- Pendiente: informe del propio TS + resolución del Consejo de Ministros (a 30-may-2026 sin decisión; Bolaños lo dio por "en trámite" el 8-may, Confilegal/Vozpópuli).
+
+**Candidato a hito retrospectivo** `tramite-indulto-gobierno-fge-2026-01-28` (apertura del expediente de indulto): predata la ventana de este barrido y carece de primario limpio (no hay BOE; es trámite administrativo). Se deja como pendiente para una pasada retrospectiva o para `/incorporar-hito` cuando aparezca un primario (acuerdo/resolución administrativa) o el Real Decreto si finalmente se concede.
+
+**Posible discrepancia para revisión humana:** el hito `informe-fiscalia-indulto-fge-2026-05-08` afirma que "La solicitud de indulto fue presentada por García Ortiz el 30 de enero de 2026". La cobertura cruzada de este barrido atribuye la **primera** petición (28-ene) a particulares y una **segunda** acumulada el 19-feb, sin que conste que la presentara el propio García Ortiz. No se corrige el hito sin primario, pero se marca para verificación: revisar autoría y fecha exacta de la(s) solicitud(es) de indulto.
+
+### Descartes
+
+- **Premio Christa Leem 2026 a García Ortiz** (Infobae, 28-may-2026; entrega prevista 26-jun-2026, otorgado por el colectivo "Un dels Nostres"). Descartado como Hito: es un galardón cívico, no un acto procesal del caso, y modelarlo o glosarlo introduciría un encuadre favorable al condenado, contrario a la neutralidad editorial (P-10, "no editorializar"). Se anota aquí sólo por trazabilidad del barrido.
+- **Nuevo destino de García Ortiz como fiscal de la Sala de lo Social del TS** (Infobae, 12-ene-2026). Ya estaba anotado en el barrido prelaunch como pendiente de `documentar-vinculos`; no es hito procesal de este caso. Sin cambios.
+
+### Cruce con otros casos del inventario
+
+Escaneo de `content/casos/` por las personas pivote (`alvaro-garcia-ortiz`, `alberto-gonzalez-amador`, `carlos-neira`): **ningún otro caso** del inventario los referencia salvo `gonzalez-amador`, ya enlazado por la relación existente `fge-deriva-de-gonzalez-amador` (`derivado_de`). No se confirma ningún nexo procesal nuevo. No se proponen relaciones entre casos nuevas. (La confluencia política con el caso de fondo de Ayuso/González Amador ya está cubierta; no hay nexo procesal con otros casos.)
+
+---
 
 ## Barrido prelaunch 2026-05-27
 

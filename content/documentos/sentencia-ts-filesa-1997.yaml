@@ -1,0 +1,25 @@
+id: sentencia-ts-filesa-1997
+titulo: "STS 1/1997 — Causa Especial nº 880/1991 — caso Filesa"
+tipo: sentencia
+nivel_fuente: 3
+nivel_fuente_justificacion: |
+  La sentencia íntegra no está disponible en CENDOJ (la cobertura de
+  CENDOJ para causas especiales del TS de 1997 es incompleta). El
+  portal Equipo Nizkor (derechos.org/nizkor) ofrece el texto completo
+  de antecedentes y fundamentos de la sentencia, que incluye la firma
+  del ponente (José Augusto de Vega Ruiz) y el número de causa. Se
+  cita como N3 filtrado_verificado con triangulación: el mismo
+  contenido se corresponde con la descripción procesal de la STC
+  126/2001 (BOE-T-2001-12759, N1) y la STC 127/2001, que citan y
+  reproducen fragmentos textuales de la STS 1/1997. Pendiente de
+  localizar en CENDOJ o archivo oficial del TS para elevar a N1.
+productor_organizacion_id: tribunal-supremo
+productor_personas_ids:
+  - jose-augusto-de-vega-ruiz
+fecha_documento: "1997-10-28"
+url_canonica: "https://www.derechos.org/nizkor/espana/doc/filesa.html"
+estado_acceso: filtrado_verificado
+idioma: es
+caso_principal_id: filesa
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

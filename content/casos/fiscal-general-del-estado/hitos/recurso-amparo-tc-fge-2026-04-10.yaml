@@ -17,11 +17,15 @@ descripcion: |
   suspensivo automático sobre la ejecución de la pena de inhabilitación
   especial ya ejecutada ni sobre las obligaciones económicas (multa e
   indemnización pagadas el 30-ene-2026). A fecha de este barrido
-  (27-may-2026), la admisibilidad del recurso aún no ha sido resuelta
-  por el TC (plazo habitual de 3-4 meses desde la presentación).
-  Conforme al principio de presunción de inocencia, la condena
-  adquirió firmeza el 26 de febrero de 2026 pero el amparo abre una
-  vía extraordinaria de revisión en sede constitucional.
+  (30-may-2026), la admisibilidad del recurso aún no ha sido resuelta
+  por el TC; según la cobertura periodística (El Independiente,
+  15-may-2026), el Tribunal Constitucional tiene previsto resolver la
+  admisión a trámite de los dos recursos de amparo —el de la Fiscalía
+  y el presentado por la defensa de García Ortiz el 13 de abril de
+  2026— antes del verano de 2026. Conforme al principio de presunción
+  de inocencia, la condena adquirió firmeza el 26 de febrero de 2026
+  pero el amparo abre una vía extraordinaria de revisión en sede
+  constitucional.
 personas_afectadas:
   - alvaro-garcia-ortiz
 organizaciones_afectadas:
@@ -30,4 +34,6 @@ organizaciones_afectadas:
 documento_principal_id: elindependiente-amparo-fiscalia-fge-2026-04-10
 documentos_relacionados:
   - libertaddigital-amparo-tc-fge-2026-04-10
+  - theobjective-amparo-tc-fge-2026-04-13
+  - elindependiente-amparo-resolver-verano-fge-2026-05-15
 fase_resultante: recurso

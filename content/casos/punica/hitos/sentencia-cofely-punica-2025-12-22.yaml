@@ -1,0 +1,40 @@
+id: sentencia-cofely-punica-2025-12-22
+caso_id: punica
+tipo: sentencia_primera_instancia
+fecha: "2025-12-22"
+fecha_precision: dia
+titulo: "La Audiencia Nacional condena a 29 personas en la pieza de los contratos de eficiencia energética adjudicados a Cofely, entre ellas David Marjaliza y seis exalcaldes de la Comunidad de Madrid"
+descripcion: |
+  La Sala de lo Penal de la Audiencia Nacional dicta sentencia en la
+  pieza del caso Púnica relativa a la presunta adjudicación
+  amañada de contratos de eficiencia energética a la empresa Cofely
+  España por ayuntamientos de la Comunidad de Madrid entre marzo de
+  2012 y octubre de 2014. La resolución, de 611 páginas, condena a 29
+  de las 37 personas físicas y jurídicas juzgadas y absuelve a las
+  restantes. El empresario David Marjaliza Torres, considerado por el
+  tribunal 'corruptor y cabecilla del entramado', es condenado a ocho
+  años y dos meses de prisión por delitos de organización criminal,
+  blanqueo de capitales, fraude a las administraciones públicas,
+  prevaricación, cohecho y falsedad en documento mercantil. Resultan
+  condenados también seis exalcaldes de la Comunidad de Madrid (cinco
+  del PP y uno del PSOE), directivos de Cofely y la propia Cofely
+  España como persona jurídica, a la que se impone una multa superior
+  a 3,5 millones de euros. El tribunal aprecia las atenuantes de
+  dilaciones indebidas y, en varios casos, de confesión y reparación
+  del daño. La sentencia no es firme y cabe recurso de casación ante
+  el Tribunal Supremo, por lo que rige la presunción de inocencia.
+personas_afectadas:
+  - david-marjaliza
+organizaciones_afectadas:
+  - audiencia-nacional
+  - cofely-espana
+  - comunidad-de-madrid
+documento_principal_id: nota-cgpj-condena-cofely-punica-2025-12-22
+documentos_relacionados:
+  - eldiario-condena-cofely-punica-2025-12-22
+  - infobae-condena-cofely-punica-2025-12-22
+  - theobjective-condena-cofely-punica-2025-12-22
+hechos_introducidos:
+  - amano-contratos-cofely-punica
+  - multa-cofely-persona-juridica-punica
+fase_resultante: recurso

@@ -1,15 +1,130 @@
 id: tarjetas-black
-nombre_oficial: "Procedimiento Abreviado — Juzgado Central de Instrucción nº 4 de la Audiencia Nacional (tarjetas opacas Caja Madrid-Bankia)"
-nombre_mediatico: "Caso Tarjetas Black"
+nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 6 de la Audiencia Nacional (DP 95/2013 y piezas derivadas)"
+nombre_mediatico: "Caso de las tarjetas black de Caja Madrid / Bankia"
 nombres_alternativos:
-  - "Tarjetas opacas Caja Madrid"
-  - "Tarjetas black Bankia"
-  - "Tarjetas black Caja Madrid"
+  - "Tarjetas black"
+  - "Tarjetas opacas de Caja Madrid"
+  - "Tarjetas B de Caja Madrid"
+  - "Tarjetas de empresa de Caja Madrid"
 
-organo_judicial_id: tribunal-supremo
-fase_actual: sentencia_firme
-fecha_apertura: "2014-01-01"
+descripcion_corta: |
+  Causa penal por el uso durante aproximadamente una decada (2003-2012) de
+  tarjetas de credito de empresa de Caja Madrid (y luego Bankia tras la
+  fusion y posterior intervencion) por parte de miembros del consejo de
+  administracion, de la comision de control y de altos directivos. Los
+  gastos, en su mayoria personales, se cargaban a la entidad fuera de la
+  retribucion formal declarada y sin tributar a la Hacienda Publica. El
+  asunto afloró publicamente en octubre de 2014 a partir de la documentacion
+  remitida al Juzgado Central de Instruccion nº 4 de la Audiencia Nacional
+  en el marco de la causa por la salida a bolsa de Bankia. La Audiencia
+  Nacional dicto sentencia el 23 de febrero de 2017 condenando a la mayoria
+  de los acusados por apropiacion indebida, con penas graduadas segun el
+  importe dispuesto por cada uno; el Tribunal Supremo confirmo en lo
+  sustancial dicha sentencia en 2018, convirtiendo en firmes la mayoria de
+  las condenas. Miguel Blesa, condenado en primera instancia, fallecio en
+  julio de 2017 antes de que se dictara la sentencia de casacion, por lo
+  que el Tribunal Supremo declaro extinguida su responsabilidad penal por
+  fallecimiento. La regla de presuncion de inocencia rige para cualquier
+  extremo no cubierto por una resolucion firme.
 
-origen_denuncia: denuncia_organismo_publico
+sintesis_caso:
+  que_se_investiga: >-
+    Si consejeros y directivos de Caja Madrid y Bankia usaron tarjetas de
+    credito opacas entre 2003 y 2012 para gastos personales cargados a la
+    entidad, al margen de su retribucion formal declarada y sin tributacion.
+  hechos_clave:
+    - >-
+      Entre aproximadamente 2003 y 2012, consejeros y directivos de Caja
+      Madrid y Bankia dispusieron de tarjetas de empresa cuyos gastos no
+      constaban en la retribucion declarada ni se justificaron como gasto
+      corporativo de la entidad.
+    - >-
+      La existencia del sistema afloró en octubre de 2014 a partir de
+      documentacion remitida a la Audiencia Nacional en la causa paralela
+      por la salida a bolsa de Bankia.
+    - >-
+      La Audiencia Nacional condeno el 23 de febrero de 2017 a la mayoria
+      de los acusados por apropiacion indebida, con penas graduadas segun
+      el importe dispuesto individualmente.
+    - >-
+      El Tribunal Supremo confirmo en lo sustancial las condenas en 2018,
+      declarando firmes las de quienes no habian fallecido ni obtenido la
+      absolucion; la de Blesa se extinguio por su fallecimiento en julio de 2017.
+  estado_actual: >-
+    Sentencia firme tras la STS de casacion de 2018. Fase de ejecucion de
+    penas y responsabilidad civil. La condena de Miguel Blesa se extinguio
+    por fallecimiento antes de la firmeza.
+  cifras_clave:
+    - >-
+      Importe total dispuesto con las tarjetas enjuiciadas: en torno a
+      12 millones de euros a lo largo del periodo.
+      # LLM-incierto: cifra de memoria; verificar en hechos probados de la sentencia.
 
-estado_publicacion: pendiente
+organo_judicial_id: juzgado-central-instruccion-6
+# LLM-incierto: el juzgado instructor se cree que fue el JCI nº 6 (magistrado Fernando
+# Andreu); el enjuiciamiento lo hizo la Sala de lo Penal de la Audiencia Nacional.
+# Verificar numero de DP y seccion de la sala de enjuiciamiento.
+numero_procedimiento: "DP 95/2013 (aprox.)"
+# LLM-incierto: numero exacto de DP a verificar en poderjudicial.es / CENDOJ.
+tipo_procedimiento: diligencias_previas
+
+fase_actual: ejecucion
+fecha_apertura: "2013-01-01"
+# LLM-incierto: fecha de apertura formal de las DP; el caso afloró publicamente en
+# octubre de 2014 pero la instruccion se inicio antes. Verificar fecha exacta del auto
+# de incoacion.
+fecha_cierre: "2018-06-08"
+# LLM-incierto: fecha de la STS confirmatoria usada como cierre de la fase de recurso.
+# Verificar fecha exacta de la STS en CENDOJ.
+
+origen_denuncia: fiscalia_anticorrupcion
+# LLM-incierto: la causa nacio en parte como pieza derivada de la causa Bankia y en
+# parte por iniciativa de la Fiscalia Anticorrupcion. Verificar el origen formal.
+
+delitos_atribuidos_en_la_causa:
+  - apropiacion-indebida
+
+resumen_cifras: |
+  El importe total dispuesto con las tarjetas black durante el periodo enjuiciado
+  (aprox. 2003-2012) asciende a en torno a 12 millones de euros (cifra pendiente
+  de verificar contra los hechos probados de la sentencia). Las penas individuales
+  se graduaron segun el importe que cada condenado dispuso. No existe una cifra
+  unica de responsabilidad civil global publicada oficialmente; la responsabilidad
+  civil fue sustituida en varios casos por la devolucion de cantidades.
+  # LLM-incierto: verificar cifras exactas y responsabilidades civiles en la sentencia.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: alta
+
+estado_ficha:
+  cronologia: parcial
+  roles_procesales: parcial
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: parcial
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: parcial
+  conexiones: parcial
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: >-
+    Modelado inicial con hitos de sentencia AN (2017) y TS (2018), hecho
+    central de uso de tarjetas y sentencia, y roles de Rato (condenado_firme)
+    y Blesa (extinguido por fallecimiento). Faltan sentencias primarias en
+    CENDOJ, cifras exactas por sujeto de los hechos probados, y roles de
+    los demas condenados (consejeros y directivos de multiples sensibilidades
+    politicas y sindicales, en torno a 65 acusados). Importe total del
+    caso pendiente de verificar contra la sentencia. Vinculos modelados:
+    Rato (cargo ministerial PP, presidente Caja Madrid y Bankia), Blesa
+    (presidente Caja Madrid 1996-2010), Caja Madrid y Bankia como
+    perjudicadas, PP como afectado indirecto. Pendiente: ~63 acusados
+    restantes y vinculos PSOE/sindicatos. Cobertura mediatica: primera
+    pasada el 2026-05-30 (16 piezas, 5 ventanas, 7 medios; ver NOTES.md).
+  fecha_actualizacion: "2026-05-30"
+  # Primera pasada de cobertura rastreada el 2026-05-30. Corpus en
+  # content/cobertura-mediatica/tarjetas-black.yaml (16 piezas, 5
+  # ventanas temporales, 7 medios). Faltan El Pais, El Mundo y ABC
+  # (acceso no disponible en el entorno del agente). El caso tiene
+  # una particularidad: eldiario.es es el medio que lo destapa (dic 2013)
+  # con la publicacion de los correos de Blesa.

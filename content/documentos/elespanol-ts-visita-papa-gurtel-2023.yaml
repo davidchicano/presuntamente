@@ -1,0 +1,21 @@
+id: elespanol-ts-visita-papa-gurtel-2023
+titulo: "El Supremo confirma las penas a Crespo, Correa y 'El Bigotes' por defraudar con la visita del Papa"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura periodística (Nivel 4) de El Español sobre la confirmación
+  por la Sala Segunda del Tribunal Supremo, en abril de 2023, de las
+  condenas de la pieza valenciana relativa al fraude vinculado a la
+  visita del papa Benedicto XVI a Valencia en 2006. Se cruza con la
+  cobertura de eldiario.es sobre la misma rama (V-13, líneas
+  editoriales distintas). Pendiente localizar la nota oficial del CGPJ
+  o el ECLI de la sentencia para elevar a Nivel 1 (pendiente_primario).
+productor_organizacion_id: el-espanol
+fecha_documento: "2023-04-10"
+fecha_publicacion: "2023-04-10"
+url_canonica: "https://www.elespanol.com/espana/comunidad-valenciana/20230410/supremo-confirma-crespo-correa-bigotes-defraudar-papa/755174664_0.html"
+estado_acceso: publico
+idioma: es
+caso_principal_id: gurtel
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

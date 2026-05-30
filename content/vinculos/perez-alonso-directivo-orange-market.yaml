@@ -1,0 +1,31 @@
+id: perez-alonso-directivo-orange-market
+naturaleza: cargo_directivo_organizacion_privada
+descripcion: >
+  Álvaro Pérez Alonso, conocido como «El Bigotes», dirigió Orange Market
+  S.L., la filial valenciana de la red empresarial de Francisco Correa.
+  Las resoluciones de la Audiencia Nacional y el Tribunal Supremo lo
+  sitúan como responsable de la rama valenciana de la trama Gürtel,
+  condenado con firmeza en las piezas relativas a la visita del papa
+  Benedicto XVI a Valencia y a Fitur.
+sujeto_persona_id: alvaro-perez-alonso
+objeto_organizacion_id: orange-market
+cargo_o_rol: "Director de Orange Market S.L. (rama valenciana de la trama Gürtel)"
+desde: "1999-01-01"
+precision_desde: anio
+hasta: "2009-02-06"
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [gurtel]
+documentos_respaldo:
+  - documento_id: eldiario-ts-visita-papa-gurtel-2023
+    pasaje: >
+      elDiario.es identifica a Álvaro Pérez «El Bigotes» como el responsable
+      de Orange Market y de la rama valenciana de la trama Gürtel, condenado
+      con firmeza por el Tribunal Supremo en la pieza de la visita del papa.
+  - documento_id: elespanol-ts-visita-papa-gurtel-2023
+    pasaje: >
+      El Español identifica a Álvaro Pérez «El Bigotes» como director de
+      Orange Market y principal condenado de la rama valenciana de la trama
+      Gürtel en la pieza de la visita del papa Benedicto XVI a Valencia.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

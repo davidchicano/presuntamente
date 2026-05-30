@@ -25,8 +25,12 @@ sintesis_caso:
     - "Se investiga si se habrían ofrecido 50.000 euros a una empresaria para que modificara su declaración judicial, y si se buscó información sensible sobre jueces y mandos UCO."
   estado_actual: |
     Causa bajo secreto sumarial (pieza separada JCI nº 5 AN) en fase de instrucción.
-    La UCO ejecutó el registro en Ferraz el 27 de mayo de 2026. El procedimiento ante el
-    JI nº 9 de Madrid se sustancia de forma paralela.
+    La UCO ejecutó el requerimiento de documentación en Ferraz el 27 de mayo de 2026.
+    El auto Pedraz del 26 de mayo de 2026 sitúa el presunto ofrecimiento de 50.000 euros
+    a una empresaria como un intento de que modificara su declaración sobre una entrega de
+    dinero en efectivo en la sede del PSOE, materia que la cobertura conecta con el entorno
+    del caso Koldo. El procedimiento ante el JI nº 9 de Madrid se sustancia de forma
+    paralela. Rige el principio de presunción de inocencia.
   cifras_clave:
     - "Presunta comisión superior a 700.000 euros en contratos SEPI (2021-2023)"
     - "188.000 euros mínimo documentado en pagos del PSOE a la red (auto Pedraz)"
@@ -58,7 +62,7 @@ resumen_cifras: |
   una empresaria para modificar su declaración judicial.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-28"
+ultima_revision_editorial: "2026-05-30"
 nivel_relevancia_editorial: capital
 pin_destacado: 2
 

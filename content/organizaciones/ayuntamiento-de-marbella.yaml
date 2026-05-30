@@ -1,0 +1,20 @@
+id: ayuntamiento-de-marbella
+nombre: "Ayuntamiento de Marbella"
+nombres_alternativos:
+  - "Consistorio marbellí"
+  - "Corporación Municipal de Marbella"
+
+tipo: organismo_publico
+descripcion_corta: |
+  Administración local de Marbella (Málaga). El ayuntamiento fue
+  disuelto por el Consejo de Ministros el 7 de abril de 2006 como
+  consecuencia de la Operación Malaya, la primera disolución de un
+  consistorio en la historia democrática española. El Ayuntamiento fue
+  reconocido como perjudicado en el caso Malaya.
+
+ambito_territorial: local
+localidad: "Marbella"
+provincia: "Málaga"
+comunidad_autonoma: "Andalucía"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

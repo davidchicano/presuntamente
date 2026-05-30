@@ -1,0 +1,25 @@
+id: sentencia-ts-tarjetas-black-2018
+titulo: "Sentencia de casacion del Tribunal Supremo que confirma las condenas de las tarjetas black (2018)"
+tipo: sentencia
+nivel_fuente: 1
+nivel_fuente_justificacion: >-
+  Sentencia de casacion de la Sala Segunda del Tribunal Supremo. ECLI verificado el
+  2026-05-30 via nota oficial CGPJ: ECLI:ES:TS:2018:3253. Ponente: magistrado Miguel
+  Colmenero. Fecha confirmada: 3 de octubre de 2018. Fuente primaria N1 por ser
+  sentencia de organo judicial espanol de maxima instancia penal. Texto integro
+  disponible en CENDOJ (pendiente de localizar URL exacta en poderjudicial.es/search).
+productor_organizacion_id: tribunal-supremo
+fecha_documento: "2018-10-03"
+# Fecha verificada el 2026-05-30 via nota oficial CGPJ (poderjudicial.es):
+# la STS se dicto el 3 de octubre de 2018. La fecha anterior (2018-06-08) era
+# LLM-incierto; corregida en la sesion de revision V-04.
+# ECLI verificado: ECLI:ES:TS:2018:3253. Ponente: magistrado Miguel Colmenero.
+estado_acceso: publico
+# Las sentencias judiciales espanolas son de dominio publico (art. 235.5 LOPJ).
+idioma: es
+caso_principal_id: tarjetas-black
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# pendiente_primario: localizar la STS en CENDOJ; completar url_canonica, ECLI y
+# hash_sha256 si el maintainer decide descargarla a /public/documentos/tarjetas-black/.
+# Verificar tratamiento del fallecimiento de Blesa (extincion responsabilidad penal).

@@ -1,0 +1,16 @@
+id: grupo-independiente-liberal
+nombre: "Grupo Independiente Liberal"
+nombres_alternativos:
+  - "GIL"
+  - "Partido GIL"
+  - "gilismo"
+
+tipo: partido_politico
+descripcion_corta: |
+  Partido político fundado por Jesús Gil y Gil que gobernó el
+  Ayuntamiento de Marbella durante gran parte de los años 1990 y
+  2000. Varios de sus cargos municipales resultaron condenados en el
+  caso Malaya. El partido fue declarado ilegal y disuelto.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

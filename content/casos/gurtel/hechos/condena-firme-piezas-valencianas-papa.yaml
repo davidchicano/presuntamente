@@ -1,0 +1,34 @@
+id: condena-firme-piezas-valencianas-papa
+caso_id: gurtel
+enunciado: |
+  En la pieza valenciana del caso Gürtel relativa a la visita del
+  papa Benedicto XVI a Valencia en 2006, el Tribunal Supremo confirmó
+  en abril de 2023 las condenas dictadas por la Audiencia Nacional
+  contra los responsables de la rama valenciana de la red (Orange
+  Market), entre ellos Pablo Crespo (la pena más alta de la pieza),
+  Francisco Correa (13 años y 7 meses según la cobertura) y Álvaro
+  Pérez «El Bigotes» (6 años y 9 meses). Con la confirmación en
+  casación esta rama ganó firmeza.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2023-04-10"
+  precision: dia
+personas_implicadas:
+  - pablo-crespo-sabaris
+  - francisco-correa-sanchez
+  - alvaro-perez-alonso
+organizaciones_implicadas:
+  - tribunal-supremo
+  - orange-market
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-gurtel-visita-papa-ts-2023
+    pasaje: "El Tribunal Supremo (ECLI:ES:TS:2023:1286, 10 de abril de 2023) confirma íntegramente la sentencia de la Audiencia Nacional en la pieza 'visita del Papa' del caso Gürtel, rechazando los recursos de siete acusados. La sentencia es firme para los 19 condenados. El sobrecoste con cargo a fondos públicos ascendió a 3.205.375,11 euros (RTVV)."
+  - documento_id: elespanol-ts-visita-papa-gurtel-2023
+    pasaje: "Penas confirmadas de la pieza de la visita del Papa: Francisco Correa 13 años y 7 meses; Álvaro Pérez 'El Bigotes' 6 años y 9 meses."
+  - documento_id: eldiario-ts-visita-papa-gurtel-2023
+    pasaje: "Confirmación por el Supremo de las penas a los cabecillas de la Gürtel por las irregularidades en la visita del Papa a València en 2006."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

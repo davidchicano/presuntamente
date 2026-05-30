@@ -1,0 +1,20 @@
+id: manuel-chaves-militante-psoe
+naturaleza: cargo_organico_partido
+descripcion: "Secretario General del PSOE de Andalucía (PSOE-A) durante el periodo en que ejerció la presidencia de la Junta de Andalucía. Figura central del partido socialista andaluz durante los años investigados en la causa ERE."
+sujeto_persona_id: manuel-chaves-gonzalez
+objeto_organizacion_id: psoe
+cargo_o_rol: "Secretario General del PSOE de Andalucía"
+desde: "1994-01-01"
+hasta: "2009-01-01"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+# LLM-incierto: fechas exactas del mandato como Secretario General del PSOE-A;
+# el periodo aproximado es de mediados de los noventa hasta 2009, verificación
+# pendiente contra fuentes del partido o cobertura cruzada N4.
+relevancia_para_caso_ids: [eres-andalucia]
+documentos_respaldo:
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "La sentencia del TS confirma la condena de Manuel Chaves por prevaricación en su condición de presidente de la Junta de Andalucía y máxima figura del PSOE andaluz durante el periodo investigado."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

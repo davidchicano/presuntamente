@@ -1,0 +1,29 @@
+id: hito-recursos-amparo-tc-2024
+caso_id: eres-andalucia
+tipo: recurso_amparo
+fecha: "2024-07-01"
+fecha_precision: mes
+titulo: "El Tribunal Constitucional resuelve los amparos y matiza parte de las condenas"
+descripcion: |
+  El Tribunal Constitucional resuelve los recursos de amparo presentados
+  por los condenados en la pieza política del caso ERE. El tribunal de
+  garantías estima parcialmente varios de los amparos en lo relativo a
+  la condena por malversación de caudales públicos, al apreciar que en
+  algunos casos se habría vulnerado un derecho fundamental, y desestima
+  las quejas referidas a la condena por prevaricación. La resolución
+  obliga a revisar el alcance de algunas condenas por malversación.
+personas_afectadas:
+  - jose-antonio-grinan-martinez
+  - manuel-chaves-gonzalez
+  - gaspar-zarrias
+  - vicente-fernandez-guerrero
+organizaciones_afectadas:
+  - tribunal-constitucional
+documento_principal_id: sentencias-tc-amparo-ere-2024
+hechos_modificados:
+  - hecho-condena-prevaricacion-malversacion-2019
+# LLM-incierto: fechas exactas de cada sentencia, números y el alcance
+# individualizado de cada estimación (quién se beneficia y en qué medida),
+# sin verificar en vivo. El sentido general (estimación parcial sobre la
+# malversación, desestimación sobre la prevaricación) está ampliamente
+# recogido; el detalle persona a persona requiere lectura de los primarios.

@@ -1,0 +1,17 @@
+id: rol-marta-ferrusola-investigada
+caso_id: pujol
+sujeto_tipo: persona
+sujeto_persona_id: marta-ferrusola-llados
+rol: investigado
+delitos_atribuidos:
+  - blanqueo-de-capitales
+  - organizacion-criminal
+fecha_inicio: "2014-07-01"
+fecha_fin: "2024-09-22"
+hito_fin_id: pujol-fallecimiento-marta-ferrusola-2024
+notas: >-
+  Marta Ferrusola Lladós estuvo investigada bajo plena presunción de inocencia.
+  No existe sentencia condenatoria; su fallecimiento extinguió la
+  responsabilidad penal conforme al artículo 130.1.1ª del Código Penal. La
+  condición de investigada no implica culpabilidad.
+# LLM-incierto: fecha exacta de fallecimiento pendiente de verificar. Ver NOTES.md.

@@ -1,0 +1,23 @@
+id: noos-imputacion-infanta-cristina-2014
+caso_id: noos
+tipo: imputacion
+fecha: "2014-01-08"
+fecha_precision: dia
+titulo: "El juez Castro vuelve a citar a la Infanta Cristina como investigada"
+descripcion: |
+  El juez José Castro vuelve a acordar la citación de la Infanta Cristina de Borbón como
+  investigada por su presunta participación en delitos fiscales vinculados a las actividades
+  del Instituto Nóos. Es la segunda vez que el juez la imputa; la primera (marzo de 2013)
+  fue anulada por la Audiencia Provincial de les Illes Balears en mayo de 2013. La acusación
+  que sostiene la imputación es la del sindicato Manos Limpias, pues la Fiscalía
+  Anticorrupción se opone a su investigación.
+personas_afectadas:
+  - cristina-de-borbon
+  - jose-castro-aragon
+organizaciones_afectadas:
+  - juzgado-instruccion-3-palma
+  - manos-limpias
+documento_principal_id: cobertura-publico-noos-cronologia
+documentos_relacionados: []
+hechos_introducidos: []
+fase_resultante: instruccion

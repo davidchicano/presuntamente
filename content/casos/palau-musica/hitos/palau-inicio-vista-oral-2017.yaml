@@ -1,0 +1,21 @@
+id: palau-inicio-vista-oral-2017
+caso_id: palau-musica
+tipo: inicio_vista_oral
+fecha: "2017-03-01"
+fecha_precision: dia
+titulo: "Inicio del juicio oral del caso Palau ante la Sección 10ª de la Audiencia Provincial de Barcelona"
+descripcion: |
+  El 1 de marzo de 2017 comienza el juicio oral ante la Sección 10ª
+  de la Audiencia Provincial de Barcelona, presidida por la magistrada
+  Montserrat Comas-d'Argemir, con magistrados José Antonio Lagares y
+  Julio Hernández como ponente. Se sientan en el banquillo 16 acusados.
+  El juicio se prolongará en unas cincuenta sesiones de vista pública
+  hasta el 16 de junio de 2017.
+personas_afectadas:
+  - felix-millet-tusell
+  - jordi-montull-bagur
+  - gemma-montull-mir
+  - daniel-osacar-escrig
+organizaciones_afectadas:
+  - audiencia-provincial-barcelona
+fase_resultante: juicio_oral

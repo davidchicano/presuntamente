@@ -1,0 +1,34 @@
+id: sentencia-ts-ere-2022
+titulo: "Sentencia 749/2022, de 13 de septiembre, de la Sala de lo Penal del Tribunal Supremo sobre los recursos de casación en el caso ERE"
+tipo: sentencia
+nivel_fuente: 1
+nivel_fuente_justificacion: >-
+  Sentencia de casación de la Sala de lo Penal del Tribunal Supremo, órgano
+  emisor en lista blanca (poderjudicial.es / CENDOJ). Dominio público
+  (art. 235.5 LOPJ). Número 749/2022 y fecha 13-09-2022 verificados: (1)
+  nota informativa oficial CGPJ / Sala II del TS en poderjudicial.es
+  (https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/Nota-informativa-de-la-Sala-II-del-Tribunal-Supremo-sobre-la-sentencia-del--caso-ERE--y-voto-particular);
+  (2) encabezados BOE-A-2024-17480 (STC 99/2024, Chaves) y BOE-A-2024-17481
+  (STC 100/2024, Griñán), que citan "sentencia núm. 749/2022, de 13 de
+  septiembre, de la Sala de lo Penal del Tribunal Supremo". La nota del CGPJ
+  anticipa el fallo (26-07-2022); la sentencia íntegra se notificó el 14-09-2022
+  una vez incorporado el voto particular. Pendiente descarga desde CENDOJ
+  para hash_sha256 y texto literal del Fallo.
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/Nota-informativa-de-la-Sala-II-del-Tribunal-Supremo-sobre-la-sentencia-del--caso-ERE--y-voto-particular"
+productor_organizacion_id: tribunal-supremo
+fecha_documento: "2022-09-13"
+estado_acceso: acceso_restringido_pero_citable
+idioma: es
+caso_principal_id: eres-andalucia
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# Verificado 2026-05-30: número 749/2022 y fecha 13-09-2022 confirmados (nota
+# CGPJ + encabezados BOE STCs 2024). Confirmaciones clave:
+# - Absolvió en casación a Aguado Hinojal, Sánchez García y Medina Varo
+#   (Secretarios Generales Técnicos condenados en 1ª instancia).
+# - Mantuvo condenas del resto; votos particulares de las magistradas Ana Ferrer
+#   García y Susana Polo García (abogaban por absolver de malversación a 5 más).
+# NOTA: fecha_documento corregida de 2022-07-26 (fallo anticipado) a 2022-09-13
+# (fecha real de la sentencia, verificada en BOE STCs 2024). El CGPJ anticipó
+# el fallo el 26-07-2022; la sentencia íntegra se notificó el 14-09-2022.
+# Primario (PDF íntegro) pendiente de descarga desde CENDOJ.

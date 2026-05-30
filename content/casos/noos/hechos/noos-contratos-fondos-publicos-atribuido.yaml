@@ -1,0 +1,68 @@
+id: noos-contratos-fondos-publicos-atribuido
+caso_id: noos
+enunciado: |
+  La sentencia de la Audiencia Provincial de Palma (2017), confirmada en casación por el
+  Tribunal Supremo (STS 277/2018), declaró que entre 2004 y 2007 el Instituto Nóos,
+  presidido por Iñaki Urdangarin, percibió fondos públicos de las administraciones autonómicas
+  de Baleares y la Comunitat Valenciana a través de contratos suscritos al margen de los
+  procedimientos legales de contratación pública y por los que no se prestaron los servicios
+  contratados o se prestaron de forma deficiente. La sentencia apreció que Urdangarin se valió
+  de su posición privilegiada derivada de su matrimonio con una hija del entonces Jefe del Estado
+  para influir sobre los responsables políticos y obtener la adjudicación de los contratos.
+  La cifra de fondos públicos percibidos sin contraprestación correlativa fue cuantificada en
+  445.000 euros por la Sala Segunda del Tribunal Supremo.
+tipo: acreditado
+# Promovido a 'acreditado' el 2026-05-30 (rev. maintainer). La nota CGPJ (N1) STS 277/2018
+# incluye el pasaje literal sobre los 445.000 euros sin contraprestación. La nota CGPJ AP
+# Palma 2017 respalda los contratos sin procedimiento legal.
+fecha_o_periodo:
+  desde: "2004-01-01"
+  hasta: "2007-12-31"
+  precision: rango
+personas_implicadas:
+  - inaki-urdangarin
+  - diego-torres-perez
+  - jaume-matas-palou
+  - jose-luis-ballester
+organizaciones_implicadas:
+  - instituto-noos
+  - noos-consultoria-estrategica
+  - govern-illes-balears
+  - generalitat-valenciana
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ap-palma-noos-2017
+    pasaje: "Nota CGPJ AP Palma 17-feb-2017: contratos del Govern de les Illes Balears adjudicados al Instituto Nóos sin seguir los procedimientos legales de contratación; Urdangarin se valió de su posición privilegiada derivada de su matrimonio con una hija del entonces Jefe del Estado para influir sobre los responsables políticos."
+  - documento_id: nota-cgpj-sentencia-ts-noos-2018
+    pasaje: "Nota CGPJ TS 12-jun-2018 (STS 277/2018): «445.000 euros, pagados a Noos pese a no haberse producido la correlativa contraprestación»."
+nivel_fuente_efectivo: 1
+importe: 445000
+importe_moneda: EUR
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: perjuicio
+importe_nota: |
+  Cifra cuantificada por la Sala Segunda del Tribunal Supremo en la STS 277/2018 como importe
+  de los fondos públicos percibidos por el Instituto Nóos sin prestación de los servicios
+  contratados. No incluye importes derivados de defraudación fiscal (delito contra la Hacienda
+  Pública) ni responsabilidades civiles impuestas en sentencia (consecuencias).
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: inaki-urdangarin
+    papel: activo
+    nota: "A su conducta atribuye el Tribunal Supremo la instrumentalización del Instituto Nóos para obtener los contratos irregulares."
+  - sujeto_tipo: persona
+    sujeto: diego-torres-perez
+    papel: activo
+    nota: "Co-responsable de la gestión del Instituto Nóos y de la sociedad Nóos Consultoría."
+  - sujeto_tipo: organizacion
+    sujeto: govern-illes-balears
+    papel: perjudicado
+    nota: "Administración pública balear cuyos fondos fueron percibidos sin contraprestación correlativa."
+  - sujeto_tipo: organizacion
+    sujeto: generalitat-valenciana
+    papel: perjudicado
+    nota: "Administración pública valenciana cuyos fondos fueron percibidos sin contraprestación correlativa."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

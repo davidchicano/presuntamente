@@ -1,0 +1,21 @@
+id: jose-antonio-grinan-consejero-hacienda-junta-andalucia
+naturaleza: cargo_publico_designado
+descripcion: "Consejero de Economía y Hacienda de la Junta de Andalucía durante parte del periodo investigado en la causa de los ERE. En esa etapa le correspondía la dirección presupuestaria que permitió las transferencias de financiación a IFA/IDEA investigadas."
+sujeto_persona_id: jose-antonio-grinan-martinez
+objeto_organizacion_id: junta-de-andalucia
+cargo_o_rol: "Consejero de Economía y Hacienda de la Junta de Andalucía"
+desde: "2004-01-01"
+hasta: "2009-04-01"
+precision_desde: anio
+precision_hasta: mes
+vigente: false
+gobierno_o_legislatura: "VII y VIII Legislaturas del Parlamento de Andalucía — Gobiernos Chaves IV y V"
+# LLM-incierto: fechas exactas de inicio y fin en la Consejería de Hacienda;
+# el periodo 2004-2009 es aproximado según conocimiento general del caso;
+# verificar contra BOE/BOJA de nombramiento y cese.
+relevancia_para_caso_ids: [eres-andalucia]
+documentos_respaldo:
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "La sentencia del Tribunal Supremo confirma la condena de José Antonio Griñán por prevaricación y malversación, identificándolo como consejero de Hacienda y posteriormente como presidente de la Junta en el periodo investigado."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

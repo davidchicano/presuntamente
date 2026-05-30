@@ -1,0 +1,20 @@
+id: junta-andalucia-perjudicada-eres-andalucia
+naturaleza: perjudicado_institucional_en_caso
+descripcion: "La Junta de Andalucía, como administración cuyo erario soportó el desembolso de las ayudas, figura como perjudicada institucional en la pieza de malversación de la causa de los ERE. Las sentencias aprecian que los fondos públicos autonómicos se destinaron a fines distintos de los previstos sin seguir los procedimientos legales."
+sujeto_organizacion_id: junta-de-andalucia
+objeto_organizacion_id: juzgado-instruccion-6-sevilla
+desde: "2000-01-01"
+hasta: "2010-12-31"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+relevancia_para_caso_ids: [eres-andalucia]
+nivel_afectacion: directa
+justificacion_afectacion: "La Junta de Andalucía es la administración cuyo patrimonio público resultó afectado por el sistema de ayudas investigado; es perjudicada institucional en la dimensión de malversación de la causa. El erario autonómico financió las transferencias a IFA/IDEA que los tribunales declararon irregulares."
+documentos_respaldo:
+  - documento_id: sentencia-ap-sevilla-ere-2019
+    pasaje: "Fallo y hechos probados: la Audiencia declara la existencia de perjuicio para el erario autonómico derivado del sistema de transferencias de financiación."
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "La sentencia del TS confirma la apreciación del perjuicio para la administración autonómica en el delito de malversación."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

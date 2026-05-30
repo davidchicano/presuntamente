@@ -1,0 +1,35 @@
+id: noos-sentencia-firme-ts-2018
+caso_id: noos
+tipo: sentencia_firme
+fecha: "2018-06-12"
+fecha_precision: dia
+titulo: "El Tribunal Supremo confirma las condenas y reduce la pena de Urdangarin a 5 años y 10 meses"
+descripcion: |
+  La Sala Segunda del Tribunal Supremo dicta el 12 de junio de 2018 la sentencia 277/2018
+  (ECLI:ES:TS:2018:2056, ponente Antonio del Moral García), resolviendo los recursos de
+  casación de los condenados. Confirma en lo sustancial las condenas pero modula algunas
+  penas: Urdangarin queda en 5 años y 10 meses (absuelto de falsedad en documento público),
+  Torres en 5 años y 8 meses (absuelto de tráfico de influencias, blanqueo y falsedad),
+  Matas en 3 años y 8 meses. Confirma la absolución penal de la Infanta Cristina pero rebaja
+  su responsabilidad civil a título lucrativo a 136.950 euros. La sentencia gana firmeza con
+  esta resolución. El recurso de nulidad presentado por Urdangarin es rechazado el 26 de
+  septiembre de 2018, con lo que la firmeza queda definitivamente consolidada.
+personas_afectadas:
+  - inaki-urdangarin
+  - diego-torres-perez
+  - jaume-matas-palou
+  - cristina-de-borbon
+  - jose-luis-ballester
+  - gonzalo-bernal-garcia
+  - juan-carlos-alia
+  - miguel-angel-bonet
+  - antonio-del-moral
+organizaciones_afectadas:
+  - tribunal-supremo
+documento_principal_id: nota-cgpj-sentencia-ts-noos-2018
+documentos_relacionados:
+  - cobertura-elespanol-noos-sentencia-ts
+hechos_introducidos:
+  - noos-condena-firme-urdangarin-torres
+  - noos-absoluciones
+fase_resultante: sentencia_firme

@@ -1,0 +1,13 @@
+id: ruz-juez-instructor
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: pablo-ruz-gutierrez
+rol: juez_instructor
+fecha_inicio: "2010-05-01"
+# LLM-incierto: fecha exacta en que Pablo Ruz asumió el JCI nº 5 (sustituyendo a Baltasar Garzón) no verificada con precisión; aproximación a mayo 2010.
+fecha_fin: "2015-12-01"
+# LLM-incierto: fecha exacta de cese de Ruz como instructor del JCI nº 5 no verificada
+notas: |
+  Pablo Ruz Gutiérrez asumió la instrucción del caso Fórum Filatélico en el
+  JCI nº 5 de la Audiencia Nacional tras la inhabilitación de Baltasar Garzón.
+  Firmó el auto de procesamiento de 32 personas el 8 de octubre de 2014.

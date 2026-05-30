@@ -1,0 +1,19 @@
+id: publico-sentencia-palau-2018
+titulo: "Público — Caso Palau: la Audiencia condena a 9 años a Millet y a 7 a Montull por el expolio del Palau de la Música (15 enero 2018)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura periodística de Público.es sobre la sentencia de primera
+  instancia de la Sección 10ª de la Audiencia Provincial de Barcelona
+  en el caso Palau (29 diciembre 2017, publicada el 15 enero 2018).
+  Sirve como segundo respaldo cruzado de la nota oficial N1 del CGPJ.
+  Cumple V-13 al ser línea editorial independiente de Confilegal.
+productor_organizacion_id: publico-es
+fecha_documento: "2018-01-15"
+fecha_publicacion: "2018-01-15"
+url_canonica: "https://publico.es/politica/caso-palau-audiencia-condena-9-anos-millet-7-montull-expolio-palau-musica.html"
+estado_acceso: publico
+idioma: es
+caso_principal_id: palau-musica
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

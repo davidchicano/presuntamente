@@ -1,0 +1,12 @@
+id: barbero-juez-instructor
+caso_id: filesa
+sujeto_tipo: persona
+sujeto_persona_id: marino-barbero-santos
+rol: juez_instructor
+fecha_inicio: "1991-11-11"
+fecha_fin: "1995-07-31"
+hito_fin_id: filesa-cambio-instructor-bacigalupo-1995
+notas: |
+  Magistrado instructor de la Causa Especial nº 880/1991 desde el 11
+  de noviembre de 1991 hasta su renuncia a la judicatura el 31 de julio
+  de 1995, en un contexto de fuertes presiones sobre su labor.

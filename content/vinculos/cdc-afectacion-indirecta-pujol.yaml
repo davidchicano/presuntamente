@@ -1,0 +1,18 @@
+id: cdc-afectacion-indirecta-pujol
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "Convergència Democràtica de Catalunya queda alcanzada de forma indirecta por el procedimiento Pujol. Jordi Pujol Soley, principal investigado, fue el fundador y líder del partido durante el periodo en que se atribuyen indiciariamente los hechos investigados (1980-2003). El procedimiento no investiga al partido como entidad sino a los miembros de la familia Pujol a título individual."
+sujeto_organizacion_id: convergencia-democratica-de-catalunya
+objeto_organizacion_id: audiencia-nacional
+desde: "2014-07-01"
+precision_desde: mes
+vigente: true
+relevancia_para_caso_ids: [pujol]
+documentos_respaldo:
+  - documento_id: cobertura-elpais-confesion-pujol-2014
+    pasaje: "El País relaciona la confesión de Jordi Pujol con su condición de fundador y líder histórico de Convergència Democràtica de Catalunya, partido que presidió durante el periodo investigado."
+  - documento_id: cobertura-vozpopuli-confesion-pujol-2014
+    pasaje: "Vozpópuli describe la repercusión institucional de la confesión de Pujol sobre Convergència Democràtica de Catalunya, partido que fundó y presidió durante el periodo investigado."
+nivel_afectacion: indirecta
+justificacion_afectacion: "CDC es el partido fundado y presidido por Jordi Pujol Soley durante el periodo al que se atribuyen indiciariamente los hechos investigados. El procedimiento no investiga al partido como entidad: la afectación es de segundo grado por ser el vehículo político del principal investigado durante su ejercicio como president de la Generalitat. Aplica regla 1 del doc 08: partido del cargo investigado durante los hechos."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

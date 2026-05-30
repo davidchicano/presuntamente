@@ -1,0 +1,20 @@
+id: agencia-idea-entidad-investigada-eres-andalucia
+naturaleza: entidad_investigada_en_caso
+descripcion: "La Agencia IDEA (y su predecesora IFA) aparece en la causa como la entidad pública a través de la cual, según la instrucción, transitaron las ayudas sociolaborales y a empresas concedidas presuntamente de forma irregular. Las sentencias condenatorias describen IFA/IDEA como el vehículo instrumental del sistema de transferencias de financiación investigado."
+sujeto_organizacion_id: agencia-idea
+objeto_organizacion_id: juzgado-instruccion-6-sevilla
+desde: "2000-01-01"
+hasta: "2010-12-31"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+relevancia_para_caso_ids: [eres-andalucia]
+nivel_afectacion: directa
+justificacion_afectacion: "IFA/IDEA es la entidad instrumental a través de la cual, según los hechos probados, se canalizaron las transferencias de financiación desde la Consejería de Empleo; su papel como vehículo del sistema es central para la descripción del ilícito investigado."
+documentos_respaldo:
+  - documento_id: sentencia-ap-sevilla-ere-2019
+    pasaje: "Hechos probados: descripción del papel de IFA/IDEA como receptor de las transferencias de financiación de la Consejería de Empleo y canal de distribución de las ayudas investigadas."
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "Fundamentos jurídicos sobre la calificación jurídica del papel de IFA/IDEA en el sistema de transferencias de financiación."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

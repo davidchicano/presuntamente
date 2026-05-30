@@ -1,0 +1,31 @@
+id: noos-absoluciones
+caso_id: noos
+enunciado: |
+  La Sala Segunda del Tribunal Supremo (STS 277/2018) confirmó la absolución penal de la
+  Infanta Cristina de Borbón de los dos delitos fiscales de los que la acusaba el sindicato
+  Manos Limpias, al igual que la Audiencia Provincial de Palma lo había hecho el 17 de febrero
+  de 2017. El Tribunal Supremo rebajó no obstante la responsabilidad civil a título lucrativo
+  impuesta a la Infanta Cristina de 265.088,42 euros a 136.950 euros, al entender que no debía
+  responder en esa forma por los delitos fiscales de su marido. También resultaron absueltos
+  en primera instancia y confirmados en casación cinco ex altos cargos de la Generalitat
+  Valenciana acusados de haber adjudicado al Instituto Nóos contratos sin concurso público.
+tipo: exculpatorio
+fecha_o_periodo:
+  desde: "2017-02-17"
+  hasta: "2018-06-12"
+  precision: rango
+personas_implicadas:
+  - cristina-de-borbon
+organizaciones_implicadas:
+  - audiencia-provincial-palma
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ap-palma-noos-2017
+    pasaje: "Nota CGPJ AP Palma 17-feb-2017: absolución de la Infanta Cristina de Borbón y Grecia de los dos delitos fiscales; condena como partícipe a título lucrativo, conjunta y solidariamente con Urdangarin, por 265.088,42 euros. También absueltos: Ana María Tejeiro, Miguel Tejeiro, Marco Antonio Tejeiro, Luis Lobón, José Manuel Aguilar, Jorge Vela, Elisa Maldonado, Mercedes Coghen, Alfonso Grau y Salvador Trinxet."
+  - documento_id: nota-cgpj-sentencia-ts-noos-2018
+    pasaje: "Nota CGPJ TS 12-jun-2018 (STS 277/2018): confirmación absolución penal de Cristina de Borbón; reducción de responsabilidad civil a título lucrativo de 265.088,42 euros a 136.950 euros (malversación y fraude), al no responder por los delitos fiscales del marido."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

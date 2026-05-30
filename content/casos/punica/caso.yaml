@@ -1,13 +1,139 @@
+# Caso Púnica — versión inicial modelada el 2026-05-29/30.
+#
+# Macrocausa por presunta corrupción en adjudicaciones públicas en la
+# Comunidad de Madrid, Valencia, Murcia y León articulada por el
+# empresario David Marjaliza Torres y el ex consejero y ex secretario
+# general del Partido Popular de Madrid Francisco Granados Lerena,
+# entre otros. Instruida por el Juzgado Central de Instrucción nº 6 de
+# la Audiencia Nacional. La operación policial de la Unidad Central
+# Operativa de la Guardia Civil del 27 de octubre de 2014 («Operación
+# Púnica») supuso la detención de medio centenar de personas. La causa
+# se articula como macrocausa con numerosas piezas separadas; las mejor
+# documentadas son la pieza de los contratos de eficiencia energética
+# adjudicados a Cofely España (sentencia AN 22-dic-2025, no firme,
+# 29 condenados) y la pieza de presuntas adjudicaciones irregulares de
+# suelo y obra pública entre 2003 y 2011 (auto de apertura de juicio
+# oral 21-may-2026, con 41 acusados encabezados por Francisco Granados).
+# Granados fue ya condenado con sentencia firme del Tribunal Supremo
+# (14-mar-2019) en la pieza de la filtración de la investigación.
+# La pieza de presunta financiación irregular del PP de Madrid fue
+# archivada en octubre de 2022, confirmándose el archivo por la AN.
+
 id: punica
 nombre_oficial: "Procedimiento Abreviado 91/2016 — Audiencia Nacional (caso Púnica, instruido por el Juzgado Central de Instrucción nº 6)"
 nombre_mediatico: "Caso Púnica"
 nombres_alternativos:
   - "Operación Púnica"
+  - "Trama Púnica"
+
+descripcion_corta: |
+  Macrocausa ante el Juzgado Central de Instrucción nº 6 de la
+  Audiencia Nacional sobre una presunta red de adjudicaciones públicas
+  irregulares en la Comunidad de Madrid y otras comunidades, articulada
+  presuntamente por el empresario David Marjaliza Torres y el ex
+  consejero y ex secretario general del PP de Madrid Francisco Granados
+  Lerena. La «Operación Púnica» de octubre de 2014 supuso la detención
+  de medio centenar de personas. La causa se ramificó en numerosas
+  piezas; la pieza de eficiencia energética (contratos adjudicados
+  presuntamente de forma amañada a Cofely España) se saldó con
+  sentencia de la Audiencia Nacional de 22 de diciembre de 2025
+  (no firme) que condenó a 29 personas, incluido Marjaliza (8 años y 2
+  meses de prisión). Francisco Granados ya cumplió condena firme de dos
+  años de prisión por la filtración de la investigación (sentencia firme
+  del Tribunal Supremo de 14 de marzo de 2019). En mayo de 2026 el
+  instructor Antonio Piña dictó auto de apertura de juicio oral en la
+  pieza de adjudicaciones de suelo y obra pública contra Granados y
+  otras cuarenta personas, con petición de la Fiscalía de cuarenta y
+  dos años de prisión para Granados. La pieza de presunta financiación
+  irregular del PP de Madrid fue archivada en octubre de 2022. Rige la
+  presunción de inocencia en todas las piezas no concluidas con
+  sentencia firme.
+
+sintesis_caso:
+  que_se_investiga: "Una presunta red de adjudicaciones públicas irregulares en la Comunidad de Madrid y otras comunidades autónomas, articulada a cambio de comisiones y vinculada a cargos del Partido Popular de Madrid."
+  hechos_clave:
+    - "La «Operación Púnica» de la UCO (27-oct-2014) supuso la detención de medio centenar de personas, entre ellas Francisco Granados y David Marjaliza, siendo instructor el magistrado Eloy Velasco."
+    - "La Audiencia Nacional condenó el 22 de diciembre de 2025 (no firme) a 29 personas en la pieza de los contratos de eficiencia energética adjudicados a Cofely España, incluido Marjaliza a 8 años y 2 meses de prisión."
+    - "El Tribunal Supremo confirmó el 14 de marzo de 2019 la condena firme de dos años de prisión a Francisco Granados por la filtración de la investigación."
+    - "En mayo de 2026 el instructor Antonio Piña dictó auto de apertura de juicio oral en la pieza de suelo y obra pública contra Granados y cuarenta personas más, con petición de 42 años de la Fiscalía."
+  estado_actual: "Múltiples piezas en fases distintas: pieza Cofely en recurso de casación (sentencia AN dic-2025, no firme); pieza de suelo y obra pública con juicio oral pendiente de señalamiento; pieza de financiación PP archivada definitivamente en 2022; pieza de la filtración con condena firme de Granados desde 2019."
+  cifras_clave:
+    - "224 M€: volumen de contratos de eficiencia energética adjudicados presuntamente de forma amañada a Cofely (pieza Cofely)"
+    - "Más de 3,5 M€ de multa a Cofely España como persona jurídica (sentencia AN dic-2025, no firme)"
+    - "42 años de prisión: petición de la Fiscalía para Francisco Granados en la pieza de suelo y obra pública (2026)"
+    - "2 años de prisión (firme): condena de Francisco Granados por la filtración de la investigación (TS, mar-2019)"
 
 organo_judicial_id: audiencia-nacional
+numero_procedimiento: "DP 85/2014 → PA 91/2016"
+tipo_procedimiento: procedimiento_abreviado
+
 fase_actual: juicio_oral
 fecha_apertura: "2014-06-13"
 
 origen_denuncia: fiscalia_anticorrupcion
+delitos_atribuidos_en_la_causa:
+  - cohecho
+  - prevaricacion
+  - trafico-de-influencias
+  - malversacion-caudales-publicos
+  - fraude-administraciones-publicas
+  - falsedad-documental
+  - blanqueo-de-capitales
+  - organizacion-criminal
+  - revelacion-de-secretos
+  - corrupcion-en-los-negocios
 
-estado_publicacion: pendiente
+resumen_cifras: |
+  La pieza de los contratos de eficiencia energética adjudicados a
+  Cofely España es la más avanzada con resultado conocido: la sentencia
+  de la Audiencia Nacional de 22 de diciembre de 2025 (no firme, cabe
+  casación) fija en torno a 224 millones de euros el volumen de
+  contratos adjudicados presuntamente de forma amañada entre 2012 y
+  2014, e impone a Cofely España como persona jurídica una multa
+  superior a 3,5 millones de euros. Las comisiones presuntamente
+  pagadas a intermediarios suman en torno a 2 millones de euros
+  conforme a lo confesado, según la misma sentencia. En la pieza de
+  adjudicaciones de suelo y obra pública (auto de apertura de juicio
+  oral de 21 de mayo de 2026), la Fiscalía Especial solicita cuarenta
+  y dos años de prisión para Francisco Granados, a quien se atribuyen
+  presuntamente los delitos más graves. Las cifras globales de la
+  macrocausa que circulan en la prensa son agregaciones por toda las
+  piezas y no proceden de un único documento oficial; se citan sólo
+  los importes verificados pieza por pieza.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: capital
+
+estado_ficha:
+  cronologia: parcial
+  roles_procesales: parcial
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: parcial
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: parcial
+  conexiones: pendiente
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: |
+    Ficha inicial modelada el 2026-05-29-30. Se han cubierto las dos
+    piezas con mayor actualidad (Cofely dic-2025 y apertura juicio oral
+    pieza suelo/obra pública may-2026) y la pieza firme de la filtración.
+    Pendientes: piezas menores (Arpegio, piezas valencianas, piezas de
+    León y Murcia si las hay), roles de los 40 acusados adicionales en
+    pieza8 distintos de Granados, documentos primarios de CENDOJ cuando
+    la sentencia Cofely aparezca indexada, y cruce con gurtel y
+    barcenas-caja-b. La pieza de financiación PP archivada en 2022 está
+    modelada como hito pero no se han modelado los roles archivados de
+    Aguirre, Cifuentes y González en esa pieza (requieren verificación
+    de la pieza exacta). Ver NOTES.md.
+    Vínculos (pasada 2026-05-30): modelados cargo consejero y secretario
+    general PP-Madrid de Granados, entidad investigada Cofely, perjudicado
+    Comunidad de Madrid, afectación indirecta PP. Pendientes: BOCM de
+    nombramiento de Granados (pendiente_primario), roles de alcaldes
+    condenados en pieza Cofely.
+    Cobertura mediática (pasada 2026-05-30): 9 piezas, 7 medios, 7 ventanas
+    (oct-2014 a may-2026). Estado parcial: falta elpais.com, elmundo.es,
+    abc.es y cobertura autonómica. url_archivo pendientes de archive:catchup.
+  fecha_actualizacion: "2026-05-30"

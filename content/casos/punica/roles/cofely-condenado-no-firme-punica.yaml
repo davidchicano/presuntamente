@@ -1,0 +1,19 @@
+id: cofely-condenado-no-firme-punica
+caso_id: punica
+sujeto_tipo: organizacion
+sujeto_organizacion_id: cofely-espana
+rol: condenado_no_firme
+delitos_atribuidos:
+  - cohecho
+  - trafico-de-influencias
+fecha_inicio: "2025-12-22"
+hito_origen_id: sentencia-cofely-punica-2025-12-22
+notas: |
+  Cofely España fue juzgada como persona jurídica conforme al régimen
+  de responsabilidad penal de las personas jurídicas (LO 5/2010) y
+  condenada por sentencia de la Audiencia Nacional de 22 de diciembre
+  de 2025 a una multa superior a 3,5 millones de euros por delitos de
+  cohecho y tráfico de influencias en la pieza de los contratos de
+  eficiencia energética; resultó absuelta del delito de blanqueo de
+  capitales. La sentencia no es firme y cabe recurso de casación; rige
+  la presunción de inocencia formal.

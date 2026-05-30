@@ -1,0 +1,18 @@
+id: iberdrola
+nombre: "Iberdrola S.A."
+nombres_alternativos:
+  - "Iberdrola"
+tipo: empresa
+descripcion_corta: |
+  Iberdrola S.A. es una empresa eléctrica española multinacional con sede
+  en Bilbao. En el marco del caso Tándem, el instructor del Juzgado
+  Central de Instrucción nº 6 de la Audiencia Nacional ordenó el envío
+  a juicio del ex jefe de Seguridad de Iberdrola, Antonio Asenjo, junto
+  a Rafael Redondo (socio de Villarejo), por encargos realizados a
+  empresas vinculadas al comisario entre 2004 y 2012 por más de un millón
+  de euros. Según los informes policiales de la UCO, esos encargos
+  incluían vigilancia sobre directivos de compañías competidoras y sobre
+  el presidente de ACS, Florentino Pérez. La entidad no es investigada
+  penalmente como persona jurídica en esta pieza separada.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

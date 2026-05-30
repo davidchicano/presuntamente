@@ -1,0 +1,12 @@
+id: fundacio-orfeo-acusacion-particular
+caso_id: palau-musica
+sujeto_tipo: organizacion
+sujeto_organizacion_id: fundacio-orfeo-catala-palau-musica
+rol: acusacion_particular
+fecha_inicio: "2009-01-01" # LLM-incierto: fecha exacta de personación no verificada
+notas: |
+  La Fundació Privada Orfeó Català-Palau de la Música Catalana se personó
+  como acusación particular en el procedimiento. Es simultáneamente
+  perjudicada (responsabilidad civil reconocida de 6.294.063,44 euros)
+  y acusación particular. El doble rol es procesalmente habitual en
+  España para la entidad víctima que además ejercita la acusación.

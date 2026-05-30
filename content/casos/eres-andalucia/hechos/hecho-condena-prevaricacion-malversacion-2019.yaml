@@ -1,0 +1,40 @@
+id: hecho-condena-prevaricacion-malversacion-2019
+caso_id: eres-andalucia
+enunciado: |
+  La Audiencia de Sevilla condenó a exaltos cargos de la Junta de
+  Andalucía por prevaricación y, a varios de ellos, también por
+  malversación; condenas que el Tribunal Supremo confirmó en lo
+  sustancial en casación (2022) y que el Tribunal Constitucional
+  matizó parcialmente en 2024 respecto de la malversación.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2019-11-19"
+  precision: dia
+personas_implicadas:
+  - manuel-chaves-gonzalez
+  - jose-antonio-grinan-martinez
+  - gaspar-zarrias
+  - vicente-fernandez-guerrero
+organizaciones_implicadas:
+  - audiencia-provincial-sevilla
+  - tribunal-supremo
+  - tribunal-constitucional
+documentos_respaldo:
+  - documento_id: sentencia-ap-sevilla-ere-2019
+    pasaje: "Fallo"
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "Fallo"
+  - documento_id: sentencias-tc-amparo-ere-2024
+    pasaje: "Fallo"
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# Candidato a 'acreditado' (V-04): hay condena firme tras casación del TS
+# (2022), pero la malversación quedó MATIZADA por el amparo del TC de 2024.
+# La promoción a 'acreditado' debe distinguir delito por delito y persona
+# por persona, y la decide la revisión humana con los primarios delante.
+# Anti-doble-conteo (V-23): no se estructura dinero aquí; la cifra del
+# programa está en hecho-sistema-ayudas-transferencias-financiacion.
+# LLM-incierto: penas concretas individualizadas, sin verificar en vivo.

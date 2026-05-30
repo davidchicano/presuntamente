@@ -26,7 +26,7 @@ sintesis_caso:
     - "La causa procede de cooperación internacional con Francia y Suiza y se instruye en la Audiencia Nacional."
     - "El JCI nº 4 (magistrado Calama) cita el 19 de mayo de 2026 como investigado a José Luis Rodríguez Zapatero por presuntos delitos de tráfico de influencias, pertenencia a organización criminal y falsedad documental."
     - "El instructor investiga también el posible uso irregular de fondos públicos y su conexión con esquemas de blanqueo con origen en Venezuela."
-  estado_actual: "La causa sigue en instrucción. José Luis Rodríguez Zapatero está citado como investigado por auto del 19 de mayo de 2026, con declaración aplazada al 17 y 18 de junio de 2026 tras la entrega del sumario (cerca de 4.000 folios en ocho tomos) a las partes. Rige el principio de presunción de inocencia."
+  estado_actual: "La causa sigue en instrucción. José Luis Rodríguez Zapatero está citado como investigado por auto del 19 de mayo de 2026, con declaración aplazada al 17 y 18 de junio de 2026 tras la entrega del sumario (cerca de 4.000 folios en ocho tomos) a las partes. El 29 de mayo de 2026 el instructor agrupó las ocho acusaciones populares personadas —entre ellas el Partido Popular, Vox, Hazte Oír y el sindicato Manos Limpias— bajo una representación y dirección letrada conjunta, atribuida al Partido Popular. Rige el principio de presunción de inocencia."
   cifras_clave:
     - "53 M€ de préstamo público"
     - "4 delitos atribuidos en la causa"
@@ -53,7 +53,7 @@ resumen_cifras: |
   por el Consejo de Ministros a través de la SEPI.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-21"
+ultima_revision_editorial: "2026-05-30"
 nivel_relevancia_editorial: capital
 pin_destacado: 1
 
@@ -71,4 +71,4 @@ estado_ficha:
   conexiones: parcial
   cobertura_mediatica_general: parcial
   revision_editorial: completo
-  fecha_actualizacion: "2026-05-26"
+  fecha_actualizacion: "2026-05-30"

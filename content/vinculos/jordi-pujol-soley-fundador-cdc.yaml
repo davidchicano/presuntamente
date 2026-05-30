@@ -1,0 +1,19 @@
+id: jordi-pujol-soley-fundador-cdc
+naturaleza: cargo_organico_partido
+descripcion: "Fundador y presidente histórico de Convergència Democràtica de Catalunya. Lideró el partido desde su fundación en 1974 hasta los años 2000, siendo la figura central del nacionalismo catalán moderado durante décadas."
+sujeto_persona_id: jordi-pujol-soley
+objeto_organizacion_id: convergencia-democratica-de-catalunya
+cargo_o_rol: "Presidente y fundador de Convergència Democràtica de Catalunya"
+desde: "1974-01-01"
+hasta: "2003-12-31"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+relevancia_para_caso_ids: [pujol]
+documentos_respaldo:
+  - documento_id: cobertura-elpais-confesion-pujol-2014
+    pasaje: "El País identifica a Jordi Pujol como líder histórico de Convergència Democràtica de Catalunya y fundador del partido al informar sobre su confesión pública."
+  - documento_id: cobertura-vozpopuli-confesion-pujol-2014
+    pasaje: "Vozpópuli describe a Jordi Pujol como el fundador y líder histórico de CDC al dar cuenta de su declaración pública de 2014."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

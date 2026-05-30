@@ -1,0 +1,37 @@
+id: palau-musica-conexion-tres-por-ciento-cataluna
+caso_a_id: palau-musica
+caso_b_id: tres-por-ciento-cataluna
+tipo: conexion_factual
+descripcion: |
+  El caso Palau de la Música y el caso del 3% de Cataluña (financiación
+  ilegal de CDC/Convergència ante la Audiencia Nacional) están conectados
+  factualmente: el caso Palau es el origen de la investigación judicial
+  sobre la financiación irregular de Convergència Democràtica de Catalunya
+  (CDC) mediante comisiones de contratos públicos.
+
+  La sentencia firme del Tribunal Supremo (STS 813/2020) declaró probado
+  que Ferrovial-Agroman pagó a CDC un mínimo de 6.676.105,58 euros en
+  concepto de comisiones del 2,5% de contratos de obra pública en Cataluña,
+  canalizadas a través del Palau de la Música como intermediario entre 1999
+  y 2009. Esta financiación ilegal, acreditada en sentencia firme, constituyó
+  el punto de partida de las diligencias instruidas ante el Juzgado Central
+  de Instrucción nº 5 de la Audiencia Nacional por el magistrado Santiago
+  Pedraz sobre el presunto sistema generalizado del 3% (financiación
+  sistemática de CDC mediante porcentajes sobre contratos públicos en
+  Cataluña). El JCI nº 5 acordó el archivo de la pieza referida específicamente
+  a CDC al no poder establecer que el dinero de los donantes vinculados al
+  partido en ese procedimiento tuviera origen en el esquema del Palau; sin
+  embargo, la causa del 3% en sus restantes vertientes sigue abierta ante
+  la Audiencia Nacional.
+
+  La conexión entre ambas causas es factual pero no procesal: el caso Palau
+  se instruyó y juzgó en Barcelona (JI nº 30 / AP Barcelona Sección 10ª) y
+  tiene sentencia firme; el caso 3% se instruye en Madrid (JCI nº 5 AN) y
+  está pendiente de juicio oral. La entidad condenada en el Palau (CDC) es
+  la misma que figura como presuntamente beneficiaria en el caso 3%.
+documentos_respaldo:
+  - nota-cgpj-sts-palau-2020
+  - nota-cgpj-ap-barcelona-pieza-ejecucion-cdc-2022
+fecha_inicio: "2009-06-01"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

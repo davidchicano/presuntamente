@@ -1,0 +1,39 @@
+id: malaya-sentencia-ap-malaga-2013
+caso_id: malaya
+tipo: sentencia_primera_instancia
+fecha: "2013-10-04"
+fecha_precision: dia
+titulo: "Sentencia 535/2013 de la Audiencia Provincial de Málaga: 52 condenados, 11 años de prisión a Roca"
+descripcion: |
+  La Sección 1ª de la Audiencia Provincial de Málaga dicta el
+  4 de octubre de 2013 la sentencia 535/2013 (Rollo Sumario 21/2007),
+  que condena a 52 de los 84 procesados y absuelve a los restantes.
+  Las penas más destacadas son: Juan Antonio Roca, 11 años de prisión
+  y multa de 240 millones de euros; Tomás Reñones, 12 años; Marisol
+  Yagüe, 7 años y 9 meses; Montserrat Corulla, 4 años y multa de
+  30 millones de euros; Pedro Román, 4 años; Isabel García Marcos,
+  4 años; Julián Muñoz, 2 años y 5 años de inhabilitación. Los
+  magistrados ponentes son José Godino (presidente), Rafael Linares
+  y Manuel Caballero. La sentencia ocupa cinco tomos y más de 5.000
+  folios. Se ordena que bienes decomisados reviertan al Ayuntamiento
+  de Marbella para satisfacer deudas públicas.
+personas_afectadas:
+  - juan-antonio-roca
+  - marisol-yague
+  - julian-munoz
+  - tomas-renones
+  - montserrat-corulla
+  - isabel-garcia-marcos
+  - jose-maria-del-nido
+  - pedro-roman-malaga
+organizaciones_afectadas:
+  - audiencia-provincial-malaga
+  - ayuntamiento-de-marbella
+  - fiscalia-anticorrupcion
+documento_principal_id: nota-cgpj-sentencia-malaya-ap-malaga-2013
+documentos_relacionados:
+  - sentencia-ap-malaga-malaya-535-2013
+hechos_introducidos:
+  - malaya-condenas-ap-malaga-2013
+  - malaya-expolio-municipal
+fase_resultante: recurso

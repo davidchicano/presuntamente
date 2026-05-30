@@ -1,0 +1,15 @@
+id: insolvencia-punible
+nombre_tipico: "Insolvencia punible"
+articulos_cp:
+  - "art. 257 CP"
+  - "art. 258 CP"
+  - "art. 259 CP"
+familia: contra_patrimonio_y_orden_socioeconomico
+descripcion_breve: |
+  Delito que castiga las conductas que perjudican a los acreedores mediante
+  la ocultación, distracción o enajenación fraudulenta de bienes, o mediante
+  la asunción de obligaciones que generan una insolvencia real o aparente.
+  Se aplica con frecuencia en macrocausas de fraude económico cuando los
+  administradores de una empresa generan dolosamente una situación de
+  insolvencia que impide a los acreedores cobrar sus deudas.
+enlace_boe: "https://www.boe.es/buscar/act.php?id=BOE-A-1995-25444#a257"

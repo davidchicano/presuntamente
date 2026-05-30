@@ -1,0 +1,36 @@
+id: barcenas-sentencia-an-genova-2021-10-28
+caso_id: barcenas-caja-b
+tipo: sentencia_primera_instancia
+fecha: "2021-10-28"
+fecha_precision: dia
+titulo: >-
+  La Sección Segunda de la Audiencia Nacional condena a Bárcenas y a los
+  administradores de Unifica por la reforma en negro de la sede del PP
+descripcion: |
+  La Sección Segunda de la Sala Penal de la Audiencia Nacional, con ponencia
+  de la magistrada María Fernanda García Pérez, dicta sentencia el 28 de
+  octubre de 2021 en la pieza Génova de la caja B del PP. La sentencia
+  condena a Luis Bárcenas —como cooperador necesario— a dos años de prisión
+  y multa de 1,2 millones de euros, y a los administradores de Unifica
+  Gonzalo Urquijo Fernández de Córdoba y Belén García Mediavilla —como autores—
+  a dos años y nueve meses de prisión y multa de 2,6 millones de euros cada
+  uno, por un delito continuado de falsedad en documento mercantil y un delito
+  contra la Hacienda Pública (cuota Impuesto de Sociedades de Unifica del
+  ejercicio 2007). Absuelve a Cristóbal Páez y a Laura Montero. El Partido
+  Popular queda condenado como responsable civil subsidiario por 123.669 euros
+  (cuota tributaria defraudada). La sentencia declara acreditada la existencia
+  de una contabilidad paralela institucionalizada en el PP gestionada por
+  Bárcenas, aunque no le otorga valor contable íntegro a la totalidad de los
+  «papeles de Bárcenas».
+personas_afectadas:
+  - luis-barcenas
+organizaciones_afectadas:
+  - audiencia-nacional
+  - partido-popular
+documento_principal_id: cgpj-sentencia-an-barcenas-genova-2021
+documentos_relacionados:
+  - eldiario-hechos-probados-sentencia-barcenas-2021
+hechos_introducidos:
+  - barcenas-pago-en-negro-obras-genova
+  - barcenas-caja-b-responsabilidad-civil-pp
+fase_resultante: sentencia_primera_instancia

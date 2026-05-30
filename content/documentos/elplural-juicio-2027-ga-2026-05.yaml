@@ -1,0 +1,23 @@
+id: elplural-juicio-2027-ga-2026-05
+titulo: "El Plural — La Justicia fija el juicio contra el novio de Ayuso para 2027, después de las elecciones de Madrid"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura periodística de El Plural sobre el señalamiento del juicio
+  oral contra Alberto González Amador, fijado para 2027 por la
+  saturación de los juzgados de lo penal de Madrid. Nivel 4 por
+  tratarse de un medio de comunicación. Cobertura cruzada con
+  elDiario.es (línea editorial distinta) y con la primera cobertura de
+  enero de 2026 (Madridiario, Cadena SER) que dio la noticia,
+  cumpliendo V-13.
+productor_organizacion_id: el-plural
+fecha_documento: "2026-05-01"
+# LLM-incierto: fecha exacta de publicación no confirmada. El WebFetch a la URL
+# devolvió error 522/403 de Cloudflare; sólo se dispone del snippet de búsqueda.
+# Se fija a nivel de mes (día 01 como convención). Precisar al rellenar url_archivo.
+url_canonica: "https://www.elplural.com/autonomias/madrid/justicia-fija-juicio-novio-ayuso-despues-elecciones-2027_378583102"
+estado_acceso: publico
+idioma: es
+caso_principal_id: gonzalez-amador
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

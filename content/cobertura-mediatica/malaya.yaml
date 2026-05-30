@@ -1,0 +1,318 @@
+# Cobertura mediática general — caso malaya
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: malaya
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Malaya"
+    - "Operación Malaya"
+    - "Juan Antonio Roca Marbella"
+    - "trama Malaya"
+    - "corrupción Marbella urbanismo"
+  ventanas_temporales:
+    - desde: "2006-03-01"
+      hasta: "2006-12-31"
+      notas: "Fase de detenciones (29-mar-2006) y disolución del Ayuntamiento (7-abr-2006). Máximo pico de impacto mediático inicial."
+    - desde: "2010-09-01"
+      hasta: "2013-12-31"
+      notas: "Juicio oral ante la AP Málaga (inicio sep 2010, casi 200 sesiones) y sentencia 535/2013 (4-oct-2013, Roca a 11 años y 240 M€)."
+    - desde: "2014-01-01"
+      hasta: "2015-12-31"
+      notas: "Recursos ante el Tribunal Supremo. Sentencia firme TS de 27-jul-2015 (Roca elevado a 17 años y 232 M€)."
+    - desde: "2016-01-01"
+      hasta: "2019-12-31"
+      notas: "Ejecución de sentencias: ingreso en prisión de 27 condenados (ene 2016), libertad condicional de Roca (feb 2019), 12 años de la operación (2018)."
+    - desde: "2024-01-01"
+      hasta: "2026-05-30"
+      notas: "Muerte de Julián Muñoz (sep 2024), detención del último prófugo Carlos Fernández (oct 2025), 20 años del caso con balance de recuperación de 92 M€ (abr 2026)."
+  fuentes_buscadas:
+    - confilegal.com
+    - eldiario.es
+    - elespanol.com
+    - vozpopuli.com
+    - publico.es
+    - eldebate.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso Malaya en el titular o en el lead.
+    Se incluyen noticias, reportajes, análisis y aniversarios del caso. Se incluyen
+    piezas de agencia republicadas cuando son la fuente identificable de un hito
+    procesal clave. El caso tiene sentencia firme desde 2015 y fase de ejecución:
+    se incluyen piezas que documentan hitos de ejecución (ingresos en prisión,
+    libertades condicionales, recuperación de bienes, prófugos).
+  criterios_exclusion: >
+    Se excluyen menciones de pasada en piezas sobre otros casos de corrupción o
+    sobre Marbella en general. Se excluyen piezas sobre los casos conexos Saqueo I,
+    Saqueo II y Fergocon salvo que mencionen el caso Malaya como contexto principal.
+    Se excluyen piezas sobre la prensa rosa relacionada con Julián Muñoz e Isabel
+    Pantoja en las que el caso Malaya sea mención secundaria. No se busca El País,
+    El Mundo, ABC ni La Vanguardia en este rastreo inicial: sus dominios no son
+    accesibles vía WebFetch en el entorno sandbox; su cobertura es igualmente
+    relevante pero queda pendiente para una pasada posterior.
+  notas: >
+    Primer rastreo del caso (v1, 2026-05-30). El caso Malaya es anterior a la
+    proliferación de medios digitales nativos: la cobertura de 2006-2010 es
+    mayoritariamente de medios tradicionales (El País, El Mundo, ABC, SUR)
+    cuyas hemerotecas digitales no son accesibles en el entorno sandbox.
+    El corpus cubre las fases clave con 6 medios de líneas editoriales distintas
+    (derecho especializado, generalista digital de izquierda, generalista digital
+    de centro-derecha, centro-derecha confesional, local-regional). url_archivo
+    se rellena con pnpm archive:catchup (ver docs/web/features/archive-org-pre-commit.md).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 2: SENTENCIA AP MÁLAGA 2013 ────────────────────────────────────
+
+  - id: vozpopuli-sentencia-ap-2013-10-04
+    url: "https://www.vozpopuli.com/sociedad/caso_malaya-marbella-juan_antonio_roca-sentencias-juicios_0_630836929.html"
+    medio_id: vozpopuli
+    titular: "Roca, condenado a 11 años de prisión por el 'caso Malaya'; Yagüe a 6 y Muñoz a 2"
+    fecha_publicacion: "2013-10-04"
+    autor: "Redacción Vozpópuli"
+    resumen: >
+      La Audiencia Provincial de Málaga dictó sentencia en el caso Malaya condenando
+      a Juan Antonio Roca a 11 años de prisión y 240 millones de euros de multa por
+      cohecho pasivo, blanqueo de capitales, fraude y prevaricación. La exalcaldesa
+      Marisol Yagüe recibió 6 años y el exalcalde Julián Muñoz 2 años por sus
+      respectivos delitos dentro de la trama marbellí.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 3: SENTENCIA FIRME TS 2015 ─────────────────────────────────────
+
+  - id: confilegal-supremo-17-anos-roca-2015-07-29
+    url: "https://confilegal.com/20150729-supremo-eleva-11-17-anos-condena-juan-antonio-roca-caso-malaya-29072015-1340/"
+    medio_id: confilegal
+    titular: "El Supremo eleva a 17 años la condena a Roca por el 'CASO MALAYA'"
+    fecha_publicacion: "2015-07-29"
+    autor: "Redacción Confilegal"
+    resumen: >
+      El Tribunal Supremo confirmó la mayoría de las condenas de la AP Málaga en el
+      caso Malaya, elevando la pena de Juan Antonio Roca de 11 a 17 años al añadir
+      fraude fiscal y agravar los delitos de cohecho y blanqueo. El alto tribunal
+      rebajó el total de condenados de 52 a 48, absolviendo a tres empresarios y
+      exonerando a un abogado.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-supremo-17-anos-roca-2015-07-29
+    url: "https://www.eldiario.es/politica/Supremo-Antonio-Roca-Caso-Malaya_0_414358968.html"
+    medio_id: eldiario-es
+    titular: "El Supremo condena a Juan Antonio Roca a 17 años de cárcel por el Caso Malaya"
+    fecha_publicacion: "2015-07-29"
+    autor: "EFE"
+    resumen: >
+      El Tribunal Supremo aumentó la condena del exasesor de Urbanismo de Marbella
+      Juan Antonio Roca a 17 años de prisión por el caso Malaya, añadiendo fraude
+      fiscal y agravando las penas por cohecho y blanqueo de capitales. La sentencia
+      también redujo las penas de la exalcaldesa Marisol Yagüe y de la exconcejal
+      Isabel García Marcos.
+    tipo_pieza: pieza_agencia
+    relevancia_editorial: alta
+    pieza_referenciada_id: confilegal-supremo-17-anos-roca-2015-07-29
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Pieza de agencia EFE publicada en elDiario.es. El mismo hito está cubierto con más detalle en confilegal-supremo-17-anos-roca-2015-07-29."
+
+  # ── VENTANA 4: EJECUCIÓN DE SENTENCIAS (2016-2019) ─────────────────────────
+
+  - id: confilegal-12-anos-malaya-condenados-libres-2018-03-30
+    url: "https://confilegal.com/20180330-la-operacion-malaya-cumple-12-anos-con-la-mayoria-de-los-condenados-fuera-de-prision/"
+    medio_id: confilegal
+    titular: "La operación Malaya cumple 12 años con la mayoría de los condenados fuera de prisión"
+    fecha_publicacion: "2018-03-30"
+    autor: "Redacción Confilegal"
+    resumen: >
+      En el duodécimo aniversario del inicio de la operación, sólo cuatro de los
+      46 condenados permanecían en prisión. Las autoridades habían liquidado
+      aproximadamente 30 millones de euros en bienes embargados a través de una
+      plataforma de venta online para beneficio del municipio y reembolso a
+      organismos públicos.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: vozpopuli-12-anos-malaya-2018-03-29
+    url: "https://www.vozpopuli.com/espana/caso-malaya-cumple-doce-anos-implicados-continuan-prision-quienes-marbella_0_1121888254.html"
+    medio_id: vozpopuli
+    titular: "El caso Malaya cumple doce años: solo cuatro implicados continúan en prisión"
+    fecha_publicacion: "2018-03-29"
+    autor: "EFE"
+    resumen: >
+      A doce años del inicio de la mayor trama de corrupción en un ayuntamiento
+      español, solo cuatro de los 46 condenados continuaban privados de libertad.
+      El caso supuso la disolución del Ayuntamiento de Marbella en abril de 2006
+      y el proceso judicial siguió con la venta de bienes incautados para reparar
+      el daño patrimonial al municipio.
+    tipo_pieza: pieza_agencia
+    relevancia_editorial: media
+    pieza_referenciada_id: confilegal-12-anos-malaya-condenados-libres-2018-03-30
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Pieza de agencia EFE sobre el mismo aniversario que confilegal-12-anos-malaya-condenados-libres-2018-03-30; incluida para documentar la segunda línea editorial."
+
+  - id: publico-libertad-condicional-roca-2019-02-07
+    url: "https://www.publico.es/politica/caso-malaya-juez-da-libertad-condicional-juan-antonio-roca.html"
+    medio_id: publico-es
+    titular: "El juez da la libertad condicional a Juan Antonio Roca"
+    fecha_publicacion: "2019-02-07"
+    autor: "Europa Press"
+    resumen: >
+      Un juez de la Audiencia Nacional concedió la libertad condicional a Juan
+      Antonio Roca, cerebro del caso Malaya, al haber cumplido tres cuartas partes
+      de su condena de 17 años y demostrar conducta positiva. La resolución impuso
+      condiciones como mantener residencia fija y continuar pagando las
+      responsabilidades civiles derivadas de la sentencia.
+    tipo_pieza: pieza_agencia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 5: HITOS RECIENTES 2024-2026 ───────────────────────────────────
+
+  - id: eldiario-muerte-julian-munoz-2024-09-24
+    url: "https://www.eldiario.es/andalucia/malaga/muere-julian-munoz-sucesor-jesus-gil-marbella-condenado-caso-malaya_1_11675499.html"
+    medio_id: eldiario-es
+    titular: "Muere Julián Muñoz, el sucesor de Jesús Gil en Marbella condenado por el 'caso Malaya'"
+    fecha_publicacion: "2024-09-24"
+    autor: "elDiario.es Andalucía"
+    resumen: >
+      El exalcalde de Marbella Julián Muñoz falleció a los 76 años de un cáncer de
+      pulmón. Muñoz fue uno de los condenados del caso Malaya, recibiendo dos años
+      de prisión por fraude, y protagonizó varias causas adicionales de corrupción
+      relacionadas con licencias urbanísticas y blanqueo de capitales.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-muerte-julian-munoz-2024-09-24
+    url: "https://www.elespanol.com/malaga/marbella/20240924/julian-munoz-exalcalde-marbella-icono-corrupcion-prensa-rosa/888411201_0.html"
+    medio_id: el-espanol
+    titular: "Julián Muñoz, el exalcalde de Marbella icono de la corrupción y la prensa rosa"
+    fecha_publicacion: "2024-09-24"
+    autor: "Andrea Jiménez Troyano"
+    resumen: >
+      Con motivo de la muerte del exalcalde, El Español publica un perfil de Julián
+      Muñoz que repasa su trayectoria desde la política marbellí bajo Jesús Gil hasta
+      sus condenas en el caso Malaya y la notoriedad pública que adquirió por su
+      relación con la cantante Isabel Pantoja.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-auge-caida-julian-munoz-2024-09-24
+    url: "https://www.eldiario.es/andalucia/malaga/auge-caida-julian-munoz-exalcalde-paseo-corrupcion-marbella-prime-time_1_11677905.html"
+    medio_id: eldiario-es
+    titular: "Auge y caída de Julián Muñoz, el sucesor de Jesús Gil que paseó la corrupción de Marbella por el 'prime time'"
+    fecha_publicacion: "2024-09-24"
+    autor: "Néstor Cenizo"
+    resumen: >
+      Reportaje que analiza la trayectoria de Julián Muñoz desde su ascenso como
+      delfín de Jesús Gil hasta su implicación en la Operación Malaya y sus décadas
+      de condenas por delitos urbanísticos, blanqueo y malversación. La pieza
+      contextualiza cómo su relación con Isabel Pantoja convirtió la corrupción
+      marbellí en contenido de televisión de máxima audiencia.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: confilegal-sentencia-2013-leida-2025-01-05
+    url: "https://confilegal.com/20250105-la-sentencia-del-caso-malaya-de-2013-es-la-segunda-mas-leida-en-2024-coincide-con-la-muerte-de-julian-munoz/"
+    medio_id: confilegal
+    titular: "La sentencia del 'caso Malaya' de 2013 es la segunda más leída en 2024: coincide con la muerte de Julián Muñoz"
+    fecha_publicacion: "2025-01-05"
+    autor: "Blanca Valdés"
+    resumen: >
+      La sentencia de la AP Málaga de 2013 sobre el caso Malaya se convirtió en la
+      segunda resolución judicial más consultada en CENDOJ durante 2024, con 3.117
+      visualizaciones, impulsada por el interés generado a raíz de la muerte de
+      Julián Muñoz en septiembre. El artículo recapitula los hechos probados y
+      la estructura de la corrupción urbanística en el Ayuntamiento de Marbella.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-detenido-carlos-fernandez-profugo-2025-10-29
+    url: "https://www.eldiario.es/andalucia/malaga/detenido-barajas-exconcejal-marbella-acusado-caso-malaya-fugado-2006_1_12724708.html"
+    medio_id: eldiario-es
+    titular: "Detenido en Barajas Carlos Fernández, el exconcejal de Marbella que se fugó en el Camino de Santiago para evitar la cárcel"
+    fecha_publicacion: "2025-10-29"
+    autor: "Néstor Cenizo"
+    resumen: >
+      El exconcejal de Marbella Carlos Fernández, acusado en el caso Malaya, fue
+      detenido en el aeropuerto de Madrid-Barajas al regresar de Argentina, donde
+      había residido casi veinte años tras fugarse en 2006 mientras alegaba estar
+      realizando el Camino de Santiago. La Audiencia Nacional acordó su libertad
+      provisional a la espera de juicio.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: vozpopuli-profugo-detenido-argentina-2025-10-29
+    url: "https://www.vozpopuli.com/espana/andalucia/carlos-fernandez-el-ultimo-profugo-del-caso-malaya-detenido-tras-casi-20-anos-de-fuga-en-argentina.html"
+    medio_id: vozpopuli
+    titular: "Carlos Fernández, el último prófugo del 'caso Malaya', detenido tras casi 20 años de fuga en Argentina"
+    fecha_publicacion: "2025-10-29"
+    autor: "Pedro González Malia"
+    resumen: >
+      El último prófugo de la Operación Malaya, Carlos Fernández, fue detenido
+      en el aeropuerto de Barajas procedente de Buenos Aires tras casi dos décadas
+      huyendo de la justicia española. El exconcejal había reconstruido su vida en
+      Argentina donde se casó y trabajó como entrenador antes de regresar
+      voluntariamente a Argentina en 2016.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    pieza_referenciada_id: eldiario-detenido-carlos-fernandez-profugo-2025-10-29
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Cubre el mismo hito que eldiario-detenido-carlos-fernandez-profugo-2025-10-29; se incluye por ser segunda línea editorial independiente (Vozpópuli)."
+
+  - id: elespanol-carlos-fernandez-profugo-2025-11-05
+    url: "https://www.elespanol.com/malaga/marbella/20251105/carlos-fernandez-concejal-profugo-operacion-malaya-reconoce-corrupto-libra-carcel/1003744000508_0.html"
+    medio_id: el-espanol
+    titular: "Carlos Fernández, el exconcejal prófugo de la 'operación Malaya', reconoce que fue corrupto pero se libra de la cárcel"
+    fecha_publicacion: "2025-11-05"
+    autor: "Ángel Recio"
+    resumen: >
+      En el juicio celebrado el 5 de noviembre de 2025, Carlos Fernández alcanzó
+      un acuerdo con los fiscales que le evita el ingreso en prisión a cambio de
+      pagar una multa de 4.095 euros y devolver al Ayuntamiento de Marbella más
+      de 258.000 euros más intereses por malversación de caudales públicos y
+      falsedad documental.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldebate-marbella-92-millones-2026-04-02
+    url: "https://www.eldebate.com/espana/andalucia/malaga/20260402/marbella-recupera-92-millones-veinte-anos-despues-caso-malaya-tuvimos-embargado-hasta-cementerio_402709.html"
+    medio_id: el-debate
+    titular: "Marbella recupera 92 millones veinte años después del 'caso Malaya': «Tuvimos embargado hasta el cementerio»"
+    fecha_publicacion: "2026-04-02"
+    autor: "Redacción El Debate"
+    resumen: >
+      En el vigésimo aniversario de la Operación Malaya, el Ayuntamiento de Marbella
+      cifra en 92 millones de euros la cantidad recuperada a través de la venta de
+      bienes embargados a condenados, en particular más de 60 millones procedentes
+      del patrimonio de Juan Antonio Roca y 17 millones de subastas inmobiliarias.
+      El reportaje incluye declaraciones del equipo municipal sobre la deuda heredada
+      de 450 millones de euros.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"

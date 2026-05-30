@@ -1,0 +1,30 @@
+id: hito-sentencia-ts-casacion-2022
+caso_id: eres-andalucia
+tipo: sentencia_firme
+fecha: "2022-07-26"
+fecha_precision: dia
+titulo: "El Tribunal Supremo confirma en casación las condenas de la pieza política"
+descripcion: |
+  La Sala Segunda del Tribunal Supremo resuelve los recursos de
+  casación contra la sentencia de la Audiencia de Sevilla y confirma,
+  en lo sustancial, las condenas por prevaricación y malversación
+  dictadas en la pieza política del caso ERE. La resolución incluye
+  votos particulares de parte de los magistrados. Con la casación, las
+  condenas devienen firmes en tanto no se resuelvan los recursos de
+  amparo pendientes ante el Tribunal Constitucional.
+personas_afectadas:
+  - manuel-chaves-gonzalez
+  - jose-antonio-grinan-martinez
+  - gaspar-zarrias
+  - vicente-fernandez-guerrero
+organizaciones_afectadas:
+  - tribunal-supremo
+documento_principal_id: sentencia-ts-ere-2022
+hechos_modificados:
+  - hecho-condena-prevaricacion-malversacion-2019
+fase_resultante: sentencia_firme
+# LLM-incierto: número de la STS y ponente, sin verificar en vivo (citada
+# habitualmente como STS 749/2022). La condena es firme tras la casación;
+# pendiente de los amparos del TC. Candidato a 'acreditado' SOLO tras
+# revisión humana del primario y considerando los efectos de los amparos
+# del TC de 2024 (ver NOTES.md).

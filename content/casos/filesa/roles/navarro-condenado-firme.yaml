@@ -1,0 +1,18 @@
+id: navarro-condenado-firme
+caso_id: filesa
+sujeto_tipo: persona
+sujeto_persona_id: carlos-navarro-gomez
+rol: condenado_firme
+delitos_atribuidos:
+  - falsedad-documental
+  - organizacion-criminal
+  - delito-contra-hacienda-publica
+fecha_inicio: "1997-10-28"
+hito_origen_id: filesa-sentencia-firme-ts-1997
+notas: |
+  Condenado por la STS 1/1997 a 11 años de prisión por falsedad
+  continuada en documento mercantil, asociación ilícita y delito fiscal,
+  más multa solidaria de 258.827.765 pesetas. La presunción de inocencia
+  decae respecto de los hechos declarados probados. Recibió indulto
+  parcial del Gobierno de Aznar el 1 de diciembre de 2000 (RD 2700/2000,
+  BOE), que redujo a la mitad la pena de prisión e inhabilitación.

@@ -1,0 +1,25 @@
+id: jaume-matas-palou
+nombre_completo: "Jaume Matas Palou"
+nombres_alternativos:
+  - "Jaume Matas"
+  - "Matas"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "President del Govern de les Illes Balears"
+    organizacion_id: govern-illes-balears
+    desde: "1996-01-01"
+    hasta: "1999-12-31"
+  - cargo: "Ministro de Medio Ambiente"
+    desde: "2000-01-01"
+    hasta: "2003-12-31"
+  - cargo: "President del Govern de les Illes Balears"
+    organizacion_id: govern-illes-balears
+    desde: "2003-01-01"
+    hasta: "2007-12-31"
+biografia_corta: |
+  Político del Partido Popular, ex presidente del Govern de les Illes Balears (1996-1999 y
+  2003-2007) y ex ministro de Medio Ambiente del Gobierno de Aznar. Condenado en sentencia
+  firme (STS 277/2018) a 3 años y 8 meses por prevaricación, malversación y fraude a la
+  Administración en el caso Nóos. Condenado asimismo en otras causas derivadas de su gestión.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

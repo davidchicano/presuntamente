@@ -1,0 +1,198 @@
+# Cobertura mediática general — caso noos
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: noos
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Nóos"
+    - "Instituto Nóos"
+    - "Urdangarin"
+    - "Iñaki Urdangarin"
+    - "caso Palma Arena pieza noos"
+    - "infanta Cristina juicio"
+  ventanas_temporales:
+    - desde: "2010-07-01"
+      hasta: "2013-12-31"
+      notas: "Apertura de la pieza separada nº 25 del caso Palma Arena (jul 2010); imputación inicial de Urdangarin (dic 2011); primera imputación de la Infanta Cristina (abr 2013)."
+    - desde: "2014-01-01"
+      hasta: "2015-06-30"
+      notas: "Declaración de la Infanta Cristina ante el juez Castro (feb 2014); cierre instrucción (jun 2014); apertura juicio oral."
+    - desde: "2016-11-01"
+      hasta: "2017-04-30"
+      notas: "Juicio oral en la Audiencia Provincial de Palma (nov-dic 2016) y sentencia AP Palma (17 feb 2017)."
+    - desde: "2018-01-01"
+      hasta: "2018-12-31"
+      notas: "Casación ante el Tribunal Supremo; STS 277/2018 (12 jun 2018); ingreso de Urdangarin en prisión (18 jun 2018)."
+    - desde: "2021-01-01"
+      hasta: "2024-06-30"
+      notas: "Tercer grado penitenciario (2021); extinción de condena de Urdangarin (abr 2024). Cierre definitivo de la ejecución."
+  fuentes_buscadas:
+    - elpais.com
+    - eldiario.es
+    - elconfidencial.com
+    - elespanol.com
+    - okdiario.com
+    - the-objective.com
+    - libertaddigital.com
+    - confilegal.com
+    - vozpopuli.com
+    - infolibre.es
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso en el titular o en el lead, o que
+    constituyen cobertura central del procedimiento (crónicas judiciales, análisis
+    de sentencia, reportajes cronológicos). Se incluyen noticias, reportajes y análisis.
+    Se incluyen piezas de agencia republicadas cuando el titular identifica claramente
+    el hecho judicial del caso.
+  criterios_exclusion: >
+    Se excluyen menciones de pasada en piezas sobre la Casa Real u otros asuntos no
+    judiciales del caso. Se excluyen republicaciones palabra por palabra de agencia
+    sin valor añadido identificable. Se excluyen piezas de prensa del corazón
+    (Hola, Diez Minutos, Semana) cuyo enfoque es exclusivamente personal-familiar
+    sin contenido procesal. No se modela El Mundo ni ABC en este primer rastreo por
+    no estar disponibles como Organizacion en el inventario ni haberse buscado sistemáticamente.
+  notas: >
+    Rastreo inicial v1 sobre cinco ventanas temporales (jul 2010 — jun 2024).
+    El caso Nóos tiene cobertura de prácticamente todos los medios nacionales durante
+    ocho años de proceso; este corpus es un muestreo sistemático y no exhaustivo.
+    Los url_archivo se rellenan con scripts/archivar-n4.mjs (pnpm archive:catchup;
+    ver docs/web/features/archive-org-pre-commit.md). El País y El Mundo tienen
+    cobertura propia y relevante no incluida aquí por las limitaciones de búsqueda
+    señaladas.
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: APERTURA E IMPUTACIONES INICIALES (2010–2013) ───────────────
+
+  - id: eldiario-papeles-perdidos-noos-2018
+    url: "https://www.eldiario.es/politica/papeles-extraviados-noos-supremo-calvario_1_2076628.html"
+    medio_id: eldiario-es
+    titular: "Caso Nóos: los ocho folios perdidos con los que arrancó el calvario judicial de la familia real"
+    fecha_publicacion: "2018-06-10"
+    resumen: >
+      Reportaje que reconstruye el origen del caso Nóos: los ocho folios de la denuncia
+      presentada en 2010 como pieza separada del caso Palma Arena ante el Juzgado de
+      Instrucción nº 3 de Palma, y el largo proceso judicial de más de ocho años que
+      condujo a la condena firme del Tribunal Supremo.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 2: INSTRUCCIÓN Y DECLARACIÓN DE LA INFANTA (2014–2015) ─────────
+
+  - id: theobjective-caso-noos-seis-anos-proceso-2017
+    url: "https://theobjective.com/further/espana/2017-02-17/el-caso-noos-punto-y-seguido-a-seis-anos-de-proceso-judicial/"
+    medio_id: the-objective
+    titular: "El caso Nóos: punto y seguido a seis años de proceso judicial"
+    fecha_publicacion: "2017-02-17"
+    resumen: >
+      Pieza de análisis publicada el mismo día de la sentencia de la Audiencia Provincial
+      de Palma que repasa los seis años de proceso judicial: desde la apertura de la
+      pieza en 2010 hasta el juicio oral de noviembre-diciembre de 2016, pasando por las
+      sucesivas imputaciones y las declaraciones de la Infanta Cristina ante el juez Castro.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 3: SENTENCIA AP PALMA (feb 2017) ───────────────────────────────
+
+  - id: eldiario-sentencia-ap-absuelve-infanta-2017
+    url: "https://www.eldiario.es/politica/tribunal-absuelve-noos-urdangarin-infanta_1_3579093.html"
+    medio_id: eldiario-es
+    titular: "El tribunal del caso Nóos absuelve a la infanta y condena a Urdangarin a 6 años de cárcel"
+    fecha_publicacion: "2017-02-17"
+    resumen: >
+      Crónica de la sentencia de la Audiencia Provincial de les Illes Balears (17 feb 2017)
+      que condena a siete de los diecisiete acusados y absuelve a la Infanta Cristina de
+      los dos delitos fiscales. Urdangarin recibe 6 años y 3 meses; Diego Torres, 8 años
+      y 6 meses; Jaume Matas, 3 años y 8 meses. La Infanta queda obligada al pago de
+      265.000 euros como partícipe a título lucrativo.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: confilegal-sentencia-noos-absolucion-infanta-2017
+    url: "https://confilegal.com/20170217-la-sentencia-del-caso-noos-confirma-la-absolucion-la-infanta-cristina/"
+    medio_id: confilegal
+    titular: "La sentencia del caso Nóos confirma la absolución de la infanta Cristina"
+    fecha_publicacion: "2017-02-17"
+    resumen: >
+      Análisis jurídico de la sentencia de la Audiencia Provincial de Palma publicado
+      por el medio especializado en información jurídica. La pieza examina los fundamentos
+      por los que el tribunal absolvió penalmente a la Infanta Cristina, la condena de
+      los siete acusados y las responsabilidades civiles impuestas.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 4: CASACIÓN TS Y SENTENCIA FIRME (jun 2018) ────────────────────
+
+  - id: eldiario-supremo-urdangarin-carcel-rebaja-2018
+    url: "https://www.eldiario.es/politica/tribunal-supremo-urdangarin-noos_1_2079775.html"
+    medio_id: eldiario-es
+    titular: "El Supremo aboca a Urdangarin a la cárcel con una rebaja leve en su condena"
+    fecha_publicacion: "2018-06-12"
+    resumen: >
+      Crónica de la STS 277/2018 (ponente: Antonio del Moral García) que reduce en cinco
+      meses la condena de Urdangarin —de 6 años 3 meses a 5 años 10 meses— al absolverle
+      del delito de falsedad en documento público por funcionario, y confirma las condenas
+      del resto de acusados. La sentencia abre el camino inmediato al ingreso en prisión.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-nombre-a-nombre-condenas-ts-2018
+    url: "https://www.eldiario.es/politica/nombre-condenas-tribunal-supremo-noos_1_2083303.html"
+    medio_id: eldiario-es
+    titular: "Nombre a nombre: todas las condenas del Tribunal Supremo por el caso Nóos"
+    fecha_publicacion: "2018-06-12"
+    resumen: >
+      Pieza informativa que detalla las condenas individuales impuestas por la STS 277/2018
+      a cada uno de los siete acusados condenados, con las penas de prisión, multas y
+      responsabilidades civiles correspondientes.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-urdangarin-ingresa-prision-brieva-2018
+    url: "https://www.elespanol.com/espana/20180617/inaki-urdangarin-ingresa-prision-brieva-cumplir-noos/315718805_0.html"
+    medio_id: el-espanol
+    titular: "Iñaki Urdangarin ingresa en la prisión de Brieva (Ávila) para cumplir su pena por el caso Noos"
+    fecha_publicacion: "2018-06-18"
+    resumen: >
+      Crónica del ingreso en prisión de Iñaki Urdangarin el 18 de junio de 2018 en el
+      centro penitenciario de Brieva (Ávila), primer familiar directo del rey en entrar
+      en un establecimiento penitenciario. El exduque de Palma debía cumplir 5 años y
+      10 meses de condena firme dictada por el Tribunal Supremo seis días antes.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 5: EJECUCIÓN Y EXTINCIÓN DE CONDENA (2021–2024) ────────────────
+
+  - id: elindependiente-urdangarin-libera-condena-2024
+    url: "https://www.elindependiente.com/espana/2024/04/07/inaki-urdangarin-se-libera-de-su-condena-por-el-caso-noos/"
+    medio_id: el-independiente
+    titular: "Iñaki Urdangarin se libera de su condena por el caso Nóos"
+    fecha_publicacion: "2024-04-07"
+    resumen: >
+      Pieza que recoge la extinción de la condena de Iñaki Urdangarin en abril de 2024,
+      doce años después de la apertura de la causa y seis años después de su ingreso en
+      prisión. Marca el cierre de la ejecución penal de la sentencia más emblemática
+      del caso, aunque la causa ya estaba cerrada con firmeza desde junio de 2018.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"

@@ -1,0 +1,19 @@
+id: noticia-pujol-visto-sentencia-elespanol-2026
+titulo: "Los Pujol, vistos para sentencia: el clan afronta 83 años de cárcel por corrupción (El Español)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: >-
+  Reportaje de El Español publicado el 15 de mayo de 2026 sobre el cierre del
+  juicio oral y el visto para sentencia de los siete hijos de Jordi Pujol Soley
+  tras 38 sesiones. Incluido en el corpus de cobertura-mediatica/pujol.yaml.
+  Línea editorial de centro-derecha independiente, diferente a elDiario.es.
+  URL verificada el 2026-05-30.
+productor_organizacion_id: el-espanol
+fecha_documento: "2026-05-15"
+fecha_publicacion: "2026-05-15"
+url_canonica: "https://www.elespanol.com/espana/tribunales/20260515/pujol-vistos-sentencia-clan-simbolo-cataluna-nacionalismo-afronta-anos-carcel-corrupcion/1003744246738_0.html"
+estado_acceso: publico
+caso_principal_id: pujol
+idioma: es
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

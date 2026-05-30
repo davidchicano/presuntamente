@@ -1,0 +1,31 @@
+id: operacion-uco-detenciones-punica-2014-10-27
+caso_id: punica
+tipo: imputacion
+fecha: "2014-10-27"
+fecha_precision: dia
+titulo: "La Unidad Central Operativa de la Guardia Civil ejecuta la Operación Púnica con medio centenar de detenidos, entre ellos Francisco Granados y David Marjaliza"
+descripcion: |
+  Agentes de la Unidad Central Operativa de la Guardia Civil
+  ejecutan la operación policial coordinada con el Juzgado Central
+  de Instrucción nº 6 de la Audiencia Nacional, cuyo titular es el
+  magistrado Eloy Velasco. La operación, conocida mediáticamente
+  como Operación Púnica, supone la detención de medio centenar de
+  personas en Madrid, León, Valencia y Murcia, entre ellas el ex
+  consejero de la Comunidad de Madrid y ex secretario general del
+  Partido Popular de Madrid Francisco Granados Lerena y el empresario
+  David Marjaliza Torres, a quienes la instrucción atribuye
+  indiciariamente un papel central en el entramado investigado. La investigación se
+  atribuye a presuntos delitos de cohecho, prevaricación, tráfico de
+  influencias, malversación de caudales públicos, fraude a las
+  administraciones públicas, falsedad documental, blanqueo de
+  capitales y organización criminal. La detención no implica
+  valoración de culpabilidad: rige la presunción de inocencia.
+personas_afectadas:
+  - francisco-granados
+  - david-marjaliza
+organizaciones_afectadas:
+  - juzgado-central-instruccion-6
+  - audiencia-nacional
+  - uco-guardia-civil
+documento_principal_id: elespanol-detenciones-punica-2014-10-27
+fase_resultante: instruccion

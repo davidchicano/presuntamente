@@ -1,0 +1,34 @@
+id: caja-madrid-perjudicada-tarjetas-black
+naturaleza: perjudicado_institucional_en_caso
+descripcion: >-
+  Caja Madrid figura en el procedimiento de las tarjetas black como entidad
+  financiera perjudicada. Sus consejeros, miembros de la comision de control y
+  altos directivos dispusieron de tarjetas de credito de empresa cargadas a la
+  entidad para gastos personales al margen de su retribucion formal declarada,
+  durante un periodo de aproximadamente una decada (2003-2011). La Audiencia
+  Nacional la reconocio como perjudicada en la sentencia de 23 de febrero de 2017.
+sujeto_organizacion_id: caja-madrid
+objeto_organizacion_id: audiencia-nacional
+desde: "2013-01-01"
+precision_desde: anio
+vigente: false
+hasta: "2018-06-08"
+precision_hasta: dia
+relevancia_para_caso_ids: [tarjetas-black]
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: >-
+      La Audiencia Nacional reconoce a Caja Madrid como entidad perjudicada en
+      la sentencia de 23 de febrero de 2017 sobre las tarjetas de credito de
+      empresa, cuyo coste fue cargado a la entidad fuera de la retribucion
+      declarada de los acusados, constituyendo segun el fallo una apropiacion
+      indebida.
+nivel_afectacion: directa
+justificacion_afectacion: >-
+  Caja Madrid es la entidad financiera cuyos fondos fueron objeto del uso
+  indebido de tarjetas de credito de empresa por parte de sus propios consejeros
+  y directivos durante el periodo 2003-2011. Figura como perjudicada institucional
+  directa reconocida en la sentencia de la Audiencia Nacional y confirmada por
+  el Tribunal Supremo.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

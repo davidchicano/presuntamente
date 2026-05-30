@@ -2,6 +2,138 @@
 
 Anotaciones internas. Excluido del build público.
 
+## Barrido de actualidad 2026-05-30 (`/actualizar-caso lezo`)
+
+**Resultado: sin Hito ni Hecho nuevo modelable, pero NO "nada nuevo".** Hay
+una señal procesal real y recurrente en la cobertura de 2026 (reseñalamiento
+del juicio de la pieza Inassa a septiembre-octubre de 2026) que **no supera
+el umbral de fuentes para modelarse como Hito** y queda como pendiente
+caliente prioritario para la próxima pasada. Última fecha conocida catalogada
+= 22-dic-2025 (señalamiento del juicio de la pieza del campo de golf para el
+13-30 de septiembre de **2027** ante la Sec. 2ª de la Sala de lo Penal de la
+AN), ya modelada y reconfirmada en esta pasada por doble cabecera de dic-2025
+(Confilegal 23-dic-2025 + El Debate 25-dic-2025) y por toda la cobertura de
+agenda de 2026. No consta sentencia firme ni de primera instancia en ninguna
+pieza.
+
+### Señal candidata NO modelada: reseñalamiento juicio pieza Inassa a sept-2026
+
+Varias piezas de cobertura de 2026 sitúan el **juicio de la pieza Inassa "en
+septiembre de 2026", prolongándose hasta octubre**, ante la Sec. 2ª de la AN,
+con los datos procesales estables y correctos de Inassa (22 procesados, entre
+ellos los exconsejeros Pedro Calvo y Juan Bravo; Anticorrupción pide 6-7 años
+de prisión y 12-15 de inhabilitación por malversación en concurso con
+prevaricación; responsabilidad civil de algo más de 19 M€ por el sobreprecio
+de la compra vía la panameña Aguas de América). Fuentes que lo recogen:
+mundiario.com 29-may-2026 («Junio judicial…») y la cobertura agregada de
+finales de mayo de 2026 (meneame «30 procesos de 2026»; un post de redes de
+activismo que data «Lezo junio y septiembre 2026»).
+
+**Reconstrucción procesal coherente** (cruzando iustel ref. 1232824 +
+eldiario sobre Gürtel-Camps): la vista oral de Inassa arrancó el 24-may-2023
+pero quedó afectada por las suspensiones por la huelga de funcionarios de
+Justicia y por la colisión con el juicio de Gürtel a Francisco Camps ante la
+misma Sección Segunda (cinco magistrados, no pueden celebrar dos juicios a la
+vez). El tribunal anunció que fijaría nueva fecha tras concluir Gürtel. Encaja
+con que la pieza Inassa se haya reseñalado a septiembre-octubre de 2026. Esto
+corrige la lectura de la sección «Barrido prelaunch 2026-05-27» de estas
+NOTES, que daba la vista por "reanudada el 10-may-2026 sin veredicto": esa
+fecha del 10-may corresponde a la reanudación de Gürtel, no de Inassa; la
+confusión venía de mezclar ambos juicios de la Sec. 2ª.
+
+**Por qué NO se modela todavía como Hito** (guardarraíles de la skill):
+
+1. **V-13 no superado con solidez.** La única cabecera periodística que pone
+   la fecha "septiembre 2026" sobre Inassa es mundiario; el resto que la
+   repite son agregadores/redes (meneame, threads), que no cuentan como línea
+   editorial propia. Las cabeceras de referencia leídas íntegras
+   (libertaddigital 02-ene-2026, El Plural 24-dic-2025, Confilegal, El Debate)
+   sólo confirman el **golf de 2027**, no el reseñalamiento de Inassa a 2026.
+2. **Sin primario localizado.** No se ha encontrado providencia/auto de la
+   Sec. 2ª de la AN ni nota CGPJ que fije la fecha de Inassa-2026. mundiario
+   devolvió 403 a la lectura íntegra: sólo se dispone del extracto del
+   buscador.
+3. **Riesgo de fecha reciclada.** Los resúmenes que dan "sept-2026" mezclan
+   detalle procesal histórico real de Inassa con una fecha cuya cadena de
+   procedencia no se ha podido auditar a segunda cabecera.
+
+**Acción para la próxima pasada / `/incorporar-hito`**: si aparece (a) una
+segunda cabecera datada en 2026 con la fecha del nuevo señalamiento, o (b) la
+providencia/nota CGPJ, modelar Hito `apertura_juicio_oral` (o
+`inicio_vista_oral` según corresponda) de la pieza Inassa con `fecha` de
+sept-2026, `documento_principal_id` N4 cruzado o N1 si hay nota CGPJ, y
+actualizar `sintesis_caso.estado_actual`. El reparto económico de Inassa
+(sobreprecio ~19 M€ de responsabilidad civil; 73 M$ de compra) ya tiene
+soporte en el Hecho `compra-inassa-sobreprecio-2001`; si se modela el Hecho de
+la petición fiscal, estructurar el importe como `componente` (petición de pena
+/ responsabilidad civil no firme), no como total que se sume, para no romper
+anti-doble-conteo (V-23).
+
+### Pieza separada nº 7 (señal débil, NO modelada)
+
+Una fuente única y de baja auditabilidad (casos-aislados.com, vía resumen del
+buscador) afirma que «la vista oral de la pieza separada nº 7 comenzó el 7 de
+enero de 2026». No se cruzó con ninguna cabecera de referencia ni se identificó
+el objeto de esa pieza nº 7 (el inventario tiene documentadas seis piezas:
+golf, Inassa, Emissao, Navalcarnero, Ruiz-Gallardón y la conexión
+ático-Estepona). Pendiente de verificar qué es la "pieza 7" y si existe; NO
+modelar hasta cruzar con fuente fiable.
+
+### Otras piezas (sin novedad procesal verificada)
+
+- **Emissao**: sigue pendiente de señalamiento de juicio oral; la cobertura de
+  agenda de 2026 la sitúa en 2027 (sin fecha firme cruzada). Sin novedad
+  modelable. La cobertura reitera que **Edmundo Rodríguez Sobrino** ha
+  reconocido los hechos que se le atribuyen (cooperador), sin acuerdo cerrado
+  de pena: mantener su rol `procesado` hasta que recaiga conformidad/sentencia.
+- **Navalcarnero**: sin señalamiento de fecha localizado; sin novedad.
+- **Ático Estepona** (caso conexo aparte): confirmado **archivado provisional
+  en julio de 2020** por "no haber indicios"; no es novedad, ya está modelado
+  como caso propio conexo.
+
+### Cruce con otros casos del inventario (paso 4 de la skill)
+
+Sin nexo procesal nuevo. La cobertura general de corrupción de finales de mayo
+de 2026 (p. ej. emol 27-may-2026) agrupa Plus Ultra/Zapatero, Begoña Gómez y
+caso Leire, pero esa coincidencia es **contexto político, no nexo procesal**
+con Lezo (no comparten persona imputada, organización afectada ni vehículo
+institucional con esta macrocausa). Gürtel y Lezo **comparten tribunal** (Sec.
+2ª AN) y agenda apretada, pero compartir órgano enjuiciador no es
+`RelacionEntreCasos` por sí solo (no hay persona/organización investigada en
+común). La única relación inter-caso vigente sigue siendo `atico-estepona`
+(conexión fáctica vía Ignacio González), ya modelada. Búsquedas específicas de
+nexo procesal Lezo↔Púnica, Lezo↔Gürtel o Lezo↔Kitchen en 2026 no devolvieron
+solapamiento documentado nuevo (sólo el lugar común editorial "macrocausas del
+PP madrileño eternizadas", que no es nexo).
+
+### Acciones aplicadas en esta pasada (cascada de coherencia)
+
+Sólo los dos campos de fecha que la skill marca como "casi siempre cambian" al
+cerrar una pasada — `ultima_revision_editorial` → `2026-05-30` y
+`estado_ficha.fecha_actualizacion` → `2026-05-30`, con una coletilla en
+`estado_ficha.notas` que remite a esta sección. **No** se tocó
+`sintesis_caso.estado_actual` ni `fase_actual`: el reseñalamiento de Inassa a
+2026 cambiaría el estado, pero al no estar confirmado a doble fuente no se
+refleja todavía en prosa publicable. Sin nuevos catalogados
+(personas/organizaciones/delitos/documentos). Sin `RelacionEntreCasos` nueva.
+
+### Pendientes abiertos para la próxima pasada (priorizados)
+
+1. **[ALTO] Reseñalamiento juicio pieza Inassa a sept-oct 2026**: confirmar a
+   doble cabecera o primario (providencia Sec. 2ª AN / nota CGPJ) y modelar
+   Hito. Es lo más probable que cambie el `estado_actual` del caso.
+2. **Sentencia 1ª instancia pieza Inassa**: rastrear CENDOJ / poderjudicial.es
+   tras el juicio. Si recae: Hito `sentencia_primera_instancia` + cadena de
+   roles `procesado → condenado_no_firme/absuelto` para los 22 acusados, sin
+   promover Hechos a `acreditado` de forma automática aunque sea firme (V-04;
+   dejar `atribuido` + candidato anotado para revisión humana).
+3. **Pieza separada nº 7** (objeto y existencia, vía fuente fiable).
+4. **Señalamiento pieza Emissao**; estado pieza Navalcarnero (agenda CGPJ).
+5. **Eventual rol procesal de Esperanza Aguirre** como testigo (verificar si
+   la diligencia se celebró y en qué pieza antes de crear Persona/Rol).
+
+---
+
 ## Barrido prelaunch 2026-05-27
 
 Estado de las piezas activas a fecha de barrido:

@@ -1,0 +1,20 @@
+id: psoe-afectado-indirecto-eres-andalucia
+naturaleza: afectacion_indirecta_en_caso
+descripcion: "El PSOE queda alcanzado de forma indirecta por la causa de los ERE de Andalucía en tanto que los gobiernos de la Junta de Andalucía que aprobaron el sistema de transferencias de financiación investigado (1990-2013) estuvieron presididos ininterrumpidamente por dirigentes del PSOE (Manuel Chaves y José Antonio Griñán, ambos condenados por sentencia firme)."
+sujeto_organizacion_id: psoe
+objeto_organizacion_id: junta-de-andalucia
+desde: "2000-01-01"
+hasta: "2013-09-07"
+precision_desde: anio
+precision_hasta: dia
+vigente: false
+# LLM-incierto: fecha de fin estimada como cese de Griñán en la presidencia (sept.
+# 2013); verificar contra BOJA. Es la fecha en que el PSOE dejó de gobernar la Junta.
+relevancia_para_caso_ids: [eres-andalucia]
+nivel_afectacion: indirecta
+justificacion_afectacion: "El PSOE fue el partido titular del Gobierno de la Junta de Andalucía durante todo el periodo investigado (2000-2010). Los dos presidentes condenados por sentencia firme (Manuel Chaves y José Antonio Griñán) eran los máximos dirigentes del partido en Andalucía. La afectación es de segundo grado: el procedimiento judicial no acusa al partido como persona jurídica, sino a sus dirigentes con cargo en el ejecutivo autonómico (regla 1 del doc 08: gobierno responsable del acto → afectación indirecta del partido titular)."
+documentos_respaldo:
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "La sentencia del TS confirma la condena de los dos presidentes del PSOE andaluz en el periodo investigado (Chaves y Griñán) por prevaricación y, en el caso de Griñán, también por malversación."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

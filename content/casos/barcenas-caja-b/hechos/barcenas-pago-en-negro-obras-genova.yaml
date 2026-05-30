@@ -1,0 +1,71 @@
+id: barcenas-pago-en-negro-obras-genova
+caso_id: barcenas-caja-b
+enunciado: |
+  Según los hechos declarados probados por la sentencia de la Audiencia
+  Nacional de 28 de octubre de 2021 —confirmados en casación por el Tribunal
+  Supremo el 15 de noviembre de 2024 (ECLI:ES:TS:2024:5577)—, Luis Bárcenas,
+  en su condición de tesorero y gerente del Partido Popular, acordó con los
+  administradores de la empresa Unifica S.L. (Gonzalo Urquijo y Belén García)
+  que una parte de los pagos correspondientes a las obras de reforma de la
+  sede del partido en la calle Génova 13 de Madrid, ejecutadas entre 2005 y
+  2010, se abonaría con fondos de la contabilidad B, fuera de facturación
+  oficial y sin declarar a la Hacienda Pública. El importe total de los pagos
+  realizados en estas condiciones ascendió a 1.072.000 euros, con un descuento
+  del 7-8 % acordado con Unifica sobre el importe de obra pagado con fondos
+  opacos.
+tipo: acreditado
+fecha_o_periodo:
+  desde: "2005-01-01"
+  hasta: "2010-12-31"
+  precision: rango
+personas_implicadas:
+  - luis-barcenas
+organizaciones_implicadas:
+  - partido-popular
+importe: 1072000
+importe_moneda: EUR
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: gasto_publico_cuestionado
+importe_nota: >-
+  Importe total de pagos realizados a Unifica fuera de facturación oficial
+  según hechos probados de la AN (28-oct-2021), confirmados por el TS
+  (15-nov-2024). La cuota tributaria defraudada al ejercicio de 2007 fue
+  fijada en 374.000 € por el TS (la AN la había establecido en 870.000 €).
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: luis-barcenas
+    papel: activo
+    nota: >-
+      Bárcenas acordó y ejecutó los pagos desde la contabilidad B del PP
+      según hechos probados firmes. Rol de cooperador necesario en el delito
+      fiscal de Unifica.
+  - sujeto_tipo: organizacion
+    sujeto: partido-popular
+    papel: beneficiario
+    nota: >-
+      El PP se benefició de la reforma de su sede ejecutada con fondos no
+      declarados y fue condenado como responsable civil subsidiario por
+      123.669 € (cuota del IS 2007 de Unifica defraudada).
+documentos_respaldo:
+  - documento_id: cgpj-sentencia-an-barcenas-genova-2021
+    pasaje: >-
+      Hechos Probados — «El importe total de las cantidades abonadas por el
+      acusado Sr. Bárcenas a Unifica por las obras realizadas en la sede central
+      del PP (c/ Génova, 13 de Madrid), al margen de la facturación oficial y
+      contabilidad, y sin declarar a la Hacienda Pública, ascendió a
+      1.072.000 euros» (sentencia AN 28-oct-2021, Sección Segunda Sala Penal AN)
+  - documento_id: cgpj-sentencia-ts-barcenas-caja-b-2024
+    pasaje: >-
+      Hechos Probados confirmados — el TS ratifica los hechos probados sobre el
+      pago de 1.072.000 euros a Unifica fuera de facturación oficial; confirma
+      cooperador necesario de Bárcenas en delito fiscal de Unifica del ejercicio
+      2007 (STS ECLI:ES:TS:2024:5577, 15-nov-2024)
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# PROMOVIDO A ACREDITADO (rev. maintainer 2026-05-30): hecho probado confirmado por
+# sentencia firme TS (ECLI:ES:TS:2024:5577). Cita literal de Hechos Probados AN-2021
+# verificada vía nota CGPJ N1 (poderjudicial.es) y prensa identificable cruzada.

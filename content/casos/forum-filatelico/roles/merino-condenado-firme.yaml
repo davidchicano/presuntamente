@@ -1,0 +1,16 @@
+id: merino-condenado-firme
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: antonio-merino-blanco
+rol: condenado_firme
+delitos_atribuidos:
+  - estafa
+  - blanqueo-de-capitales
+fecha_inicio: "2020-03-05"
+hito_origen_id: sentencia-firme-ts-forum-2020-03-05
+notas: |
+  Condenado en sentencia firme STS 688/2019 de 5 de marzo de 2020.
+  Ex director general de Fórum Filatélico S.A. Fue condenado como cómplice
+  de la estafa agravada y por blanqueo de capitales, con multa de 15,9 millones
+  de euros. La sentencia de la AN le impuso 2 años y 3 meses de prisión;
+  el TS confirmó la condena por blanqueo.

@@ -1,0 +1,61 @@
+id: ff-esquema-piramidal-captacion
+caso_id: forum-filatelico
+enunciado: |
+  La Sala de lo Penal del Tribunal Supremo declara probado, en su sentencia
+  688/2019 de 5 de marzo de 2020, que Fórum Filatélico S.A. operó durante años
+  un esquema de captación de ahorro mediante el que los inversores suscribían
+  contratos de compraventa de sellos con garantía de recompra y rentabilidades
+  superiores a las bancarias. Según el Alto Tribunal, los inversores desconocían
+  que los sellos adquiridos no valían ni una pequeña parte del dinero que
+  entregaban, que no se revalorizaban, y que el pago de rendimientos a los
+  inversores anteriores se financiaba exclusivamente con las aportaciones de
+  nuevos clientes —mecanismo constitutivo de la estafa piramidal—. El tribunal
+  califica los hechos de «paradigma de las estafas piramidales».
+tipo: atribuido
+# Candidato a 'acreditado': la STS 688/2019 firme declara hechos probados. Pendiente revisión humana antes de promover según guardarraíl V-04.
+fecha_o_periodo:
+  desde: "1998-01-01"
+  hasta: "2006-05-09"
+  precision: rango
+personas_implicadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+  - antonio-merino-blanco
+organizaciones_implicadas:
+  - forum-filatelico-sa
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ts-forum-2020-03-05
+    pasaje: "«Los inversores desconocían que los sellos adquiridos no valían ni una pequeña parte del dinero que entregaban, que no se revalorizaban, y que solo mediante la captación de nuevos clientes la empresa seguía devolviendo el capital invertido más los altos intereses garantizados.»"
+  - documento_id: nota-cgpj-sentencia-an-forum-2018-07-13
+    pasaje: "El tribunal califica el caso como «el paradigma de las estafas piramidales»."
+nivel_fuente_efectivo: 1
+importe: 3707127583
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: perjuicio
+importe_nota: >-
+  Perjuicio total cuantificado por la administración concursal: créditos
+  reconocidos a 268.804 titulares de 269.570 contratos filatélicos por importe
+  de 3.707.127.583 euros (capital más intereses pactados). El déficit
+  patrimonial establecido por la administración concursal es de 2.843.503.812
+  euros. La STS 688/2019 fija la responsabilidad civil penal como el total de
+  cantidades entregadas, minoradas en lo recuperado en el concurso, sin incluir
+  los intereses no abonados.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: francisco-briones
+    papel: activo
+    nota: "Expresidente de Fórum Filatélico S.A., condenado como autor principal."
+  - sujeto_tipo: persona
+    sujeto: juan-ramon-gonzalez-fernandez
+    papel: activo
+    nota: "Ex asesor jurídico. El TS rebajó su participación a la de cómplice."
+  - sujeto_tipo: organizacion
+    sujeto: forum-filatelico-sa
+    papel: perjudicado
+    nota: "Fórum Filatélico S.A. es la entidad concursada; el perjuicio económico lo sufren los inversores-acreedores, no la empresa."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

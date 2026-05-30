@@ -1,0 +1,60 @@
+id: ff-perjuicio-civil
+caso_id: forum-filatelico
+enunciado: |
+  La sentencia de la Audiencia Nacional de 13 de julio de 2018, confirmada por
+  el Tribunal Supremo el 5 de marzo de 2020, declara responsables civiles
+  solidarios a Francisco Briones, Juan Ramón González Fernández y, de forma
+  subsidiaria, a Fórum Filatélico S.A., por el total de las cantidades
+  entregadas por los 190.022 titulares de los 269.570 contratos filatélicos
+  reconocidos en el proceso concursal, minoradas en lo ya recuperado a través
+  de dicho proceso, y con exclusión de los intereses pactados no satisfechos.
+  La Administración Concursal del Juzgado de lo Mercantil nº 7 de Madrid había
+  cuantificado el déficit patrimonial de Fórum Filatélico S.A. en
+  2.843.503.812 euros, con créditos reconocidos por 3.707.127.583 euros.
+tipo: atribuido
+# Candidato a 'acreditado' por ser consecuencia declarada en STS firme. Pendiente revisión humana.
+fecha_o_periodo:
+  desde: "2018-07-13"
+  hasta: "2020-03-05"
+  precision: rango
+personas_implicadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+organizaciones_implicadas:
+  - forum-filatelico-sa
+  - audiencia-nacional
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ts-forum-2020-03-05
+    pasaje: "«Las víctimas serán compensadas por el total de las cantidades entregadas a Fórum, deduciendo lo recuperado en la liquidación concursal, excluidos los intereses pactados no abonados.»"
+  - documento_id: nota-cgpj-sentencia-an-forum-2018-07-13
+    pasaje: "Responsabilidad civil solidaria de F.B. y J.R.G.F. y Fórum Filatélico S.A. (responsable civil subsidiaria) por las cantidades entregadas por 190.022 titulares de 269.570 contratos."
+nivel_fuente_efectivo: 1
+importe: 3707127583
+importe_alcance: total_caso
+importe_clase: consecuencia
+importe_naturaleza: responsabilidad_civil
+importe_nota: >-
+  Importe de la responsabilidad civil solidaria declarada en sentencia
+  firme: total de créditos reconocidos en el concurso (3.707.127.583 euros,
+  incluidos intereses pactados), minorada en lo recuperado en la liquidación.
+  La cifra real pendiente de satisfacción es inferior; los afectados habían
+  recuperado en torno al 10-20% de sus ahorros a través del proceso concursal
+  al tiempo de la sentencia del TS.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: francisco-briones
+    papel: obligado
+    nota: "Responsable civil solidario junto con González Fernández y Fórum Filatélico S.A."
+  - sujeto_tipo: persona
+    sujeto: juan-ramon-gonzalez-fernandez
+    papel: obligado
+    nota: "Responsable civil solidario junto con Briones y Fórum Filatélico S.A."
+  - sujeto_tipo: organizacion
+    sujeto: forum-filatelico-sa
+    papel: obligado
+    nota: "Responsable civil subsidiaria. La recuperación real se canaliza a través del proceso concursal (Juzgado de lo Mercantil nº 7 de Madrid)."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

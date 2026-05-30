@@ -1,0 +1,22 @@
+id: generalitat-cataluna-ambito-administrativo-pujol
+naturaleza: ambito_administrativo_directo_del_acto_en_caso
+descripcion: "La Generalitat de Cataluña es el ámbito administrativo del que emanaron los contratos públicos a cuya adjudicación la instrucción atribuye indiciariamente el presunto cobro de comisiones por miembros de la familia Pujol durante la etapa de Jordi Pujol Soley como president (1980-2003)."
+sujeto_organizacion_id: generalitat-de-cataluna
+objeto_organizacion_id: audiencia-nacional
+desde: "1980-01-01"
+hasta: "2003-12-16"
+precision_desde: anio
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [pujol]
+documentos_respaldo:
+  - documento_id: hecho-presuntas-comisiones-jordi-pujol-ferrusola
+    # Nota: se referencia el Hecho como apoyo documental del ámbito; la fuente
+    # primaria es el informe-uco-patrimonio-pujol y el auto-transformacion-procedimiento-abreviado-pujol.
+    pasaje: "La instrucción atribuye el presunto cobro de comisiones a la adjudicación de contratos públicos durante la etapa de Jordi Pujol al frente de la Generalitat."
+  - documento_id: informe-uco-patrimonio-pujol
+    pasaje: "El informe patrimonial de la UCO sobre la familia Pujol incorporado a la causa analiza los movimientos de fondos vinculados al periodo de la Generalitat (1980-2003)."
+nivel_afectacion: directa
+justificacion_afectacion: "La Generalitat de Cataluña es el organismo de cuyo perímetro institucional se atribuye indiciariamente que emanaron los actos investigados (adjudicación de contratos públicos presuntamente comisionados) durante la etapa de Jordi Pujol Soley como president (1980-2003). Aplica regla 4 del doc 08: ámbito administrativo del que emana el acto investigado."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

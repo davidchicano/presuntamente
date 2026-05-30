@@ -1,0 +1,29 @@
+id: miguel-blesa
+nombre_completo: "Miguel Blesa de la Parra"
+nombres_alternativos:
+  - "Miguel Blesa"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Presidente de Caja Madrid"
+    organizacion_id: caja-madrid
+    desde: "1996-01-01"
+    hasta: "2010-01-01"
+    # LLM-incierto: fechas exactas de inicio y cese de presidencia a verificar.
+fallecido: true
+fecha_fallecimiento: "2017-07-17"
+# LLM-incierto: la fecha de fallecimiento que circula en prensa es julio de 2017;
+# la fecha exacta (17-07-2017) se basa en cobertura periodistica. Verificar.
+biografia_corta: |
+  Abogado del Estado y directivo bancario espanol. Fue presidente de Caja
+  Madrid desde 1996 hasta 2010. En el caso de las tarjetas opacas de Caja
+  Madrid / Bankia fue acusado y condenado en primera instancia por la
+  Audiencia Nacional en sentencia de 23 de febrero de 2017. Fallecio en
+  julio de 2017, antes de que la Sala Segunda del Tribunal Supremo dictara
+  sentencia de casacion, por lo que su responsabilidad penal quedo
+  extinguida por fallecimiento conforme al articulo 130.1.1.a del Codigo
+  Penal. No existe condena firme en su contra. La presuncion de inocencia
+  rige para cualquier extremo no cubierto por una resolucion firme.
+  # LLM-incierto: tratamiento exacto en la STS; verificar el texto de la
+  # resolucion en CENDOJ para confirmar el art. CP aplicado y la fecha.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

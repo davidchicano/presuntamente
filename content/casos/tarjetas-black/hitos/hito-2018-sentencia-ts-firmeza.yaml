@@ -1,0 +1,32 @@
+id: tarjetas-black-sentencia-ts-firme-2018
+caso_id: tarjetas-black
+tipo: sentencia_firme
+fecha: "2018-10-03"
+fecha_precision: dia
+# Fecha verificada el 2026-05-30 via nota oficial CGPJ (poderjudicial.es).
+# ECLI verificado: ECLI:ES:TS:2018:3253. Ponente: magistrado Miguel Colmenero.
+titulo: "El Tribunal Supremo confirma en casacion las condenas de las tarjetas black; Blesa: responsabilidad extinguida por fallecimiento"
+descripcion: |
+  La Sala Segunda del Tribunal Supremo resolvio los recursos de casacion y
+  confirmo en lo sustancial la sentencia de la Audiencia Nacional de febrero
+  de 2017, convirtiendo en firmes la mayoria de las condenas por apropiacion
+  indebida. Con esta resolucion la causa adquirio firmeza y paso a fase de
+  ejecucion. En el caso de Miguel Blesa, fallecido en julio de 2017 antes de
+  dictarse la sentencia de casacion, el Tribunal Supremo declaro extinguida su
+  responsabilidad penal por fallecimiento (art. 130.1.1.a CP), por lo que
+  no existe para el condena firme. La presuncion de inocencia decae respecto
+  de los hechos declarados probados y firmes de los condenados cuya sentencia
+  adquirio firmeza.
+  # LLM-incierto: numero de STS, ECLI y tratamiento exacto del fallecimiento de Blesa
+  # a verificar en el texto de la resolucion en CENDOJ.
+documento_principal_id: sentencia-ts-tarjetas-black-2018
+personas_afectadas:
+  - rodrigo-rato
+  - miguel-blesa
+organizaciones_afectadas:
+  - tribunal-supremo
+  - audiencia-nacional
+hechos_introducidos:
+  - tarjetas-black-condena-firme-ts-2018
+  - tarjetas-black-extincion-blesa
+fase_resultante: sentencia_firme

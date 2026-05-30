@@ -1,0 +1,32 @@
+id: condena-firme-correa-crespo-epoca-i
+caso_id: gurtel
+enunciado: |
+  La sentencia 507/2020 de la Sala Segunda del Tribunal Supremo (14 de
+  octubre de 2020) confirmó, con ligeras variaciones, las condenas de
+  la Época I del caso Gürtel y las hizo firmes: 51 años de prisión
+  para Francisco Correa, 36 años y 8 meses para Pablo Crespo, 29 años
+  y 1 mes para Luis Bárcenas y 12 años y 11 meses para Rosalía
+  Iglesias, entre otras. Con esta resolución la presunción de
+  inocencia decae respecto de los hechos declarados probados de esta
+  época.
+tipo: acreditado
+fecha_o_periodo:
+  desde: "2020-10-14"
+  precision: dia
+personas_implicadas:
+  - francisco-correa-sanchez
+  - pablo-crespo-sabaris
+  - luis-barcenas
+  - rosalia-iglesias
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-gurtel-ts-2020
+    pasaje: "El Tribunal Supremo confirma penas de hasta 51 años de prisión para los procesados en el 'caso Gürtel': Francisco Correa, 51 años; Pablo Crespo, 36 años y 8 meses; Luis Bárcenas, 29 años y 1 mes; Rosalía Iglesias, 12 años y 11 meses. La sentencia 507/2020 (ECLI:ES:TS:2020:3191), de 14 de octubre de 2020, hace firmes las condenas de la Época I."
+  - documento_id: sentencia-ts-gurtel-epoca-i-2020
+    pasaje: "Sentencia 507/2020, ECLI:ES:TS:2020:3191, ponente Juan Ramón Berdugo, Sala Segunda del Tribunal Supremo, 14 de octubre de 2020."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,38 @@
+id: sentencia-firme-ts-forum-2020-03-05
+caso_id: forum-filatelico
+tipo: sentencia_firme
+fecha: "2020-03-05"
+fecha_precision: dia
+titulo: "STS 688/2019: Tribunal Supremo confirma la condena firme con reducción a 16 condenados"
+descripcion: |
+  La Sala Segunda del Tribunal Supremo, mediante sentencia 688/2019 de fecha
+  5 de marzo de 2020 (recurso de casación 2891/2018, ponente Miguel Colmenero
+  Menéndez de Luarca), confirma que los hechos probados constituyen un delito
+  de estafa agravada en forma piramidal. Reduce el número de condenados de 20
+  a 16 al absolver a 4 de los anteriores condenados por la Audiencia Nacional.
+  La pena de Francisco Briones queda fijada en 11 años y 10 meses de prisión.
+  La de Juan Ramón González Fernández se reduce a 3 años y 3 meses al pasar su
+  participación de cooperador necesario a cómplice. La sentencia es firme y
+  pone punto final al procedimiento penal. La responsabilidad civil queda
+  fijada por el total de las cantidades entregadas a Fórum por los inversores,
+  minoradas en lo recuperado en el proceso concursal, excluidos los intereses
+  no pagados.
+personas_afectadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+  - antonio-merino-blanco
+  - miguel-colmenero-menendez
+organizaciones_afectadas:
+  - tribunal-supremo
+  - forum-filatelico-sa
+documento_principal_id: nota-cgpj-sentencia-ts-forum-2020-03-05
+documentos_relacionados:
+  - publico-forum-sentencia-ts-2020-03-05
+hechos_introducidos:
+  - ff-condena-firme-briones
+  - ff-condena-firme-gonzalez
+  - ff-condena-firme-otros
+hechos_modificados:
+  - ff-condena-an-briones
+  - ff-condena-an-pena-global
+fase_resultante: sentencia_firme

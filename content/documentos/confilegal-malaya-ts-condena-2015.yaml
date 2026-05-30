@@ -1,0 +1,19 @@
+id: confilegal-malaya-ts-condena-2015
+titulo: "El Supremo eleva a 17 años la condena a Roca por el caso Malaya (Confilegal, 29 julio 2015)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura de Confilegal (medio especializado en información jurídica)
+  del 29 de julio de 2015 sobre la sentencia del Tribunal Supremo en el
+  caso Malaya. Utilizado como V-13: segunda línea editorial distinta de
+  las notas CGPJ para cubrir las condenas del TS. El detalle de la
+  sentencia (ponente, número de recursos, cambios en condenas)
+  coincide con la nota oficial del CGPJ.
+productor_organizacion_id: confilegal
+fecha_documento: "2015-07-29"
+url_canonica: "https://confilegal.com/20150729-supremo-eleva-11-17-anos-condena-juan-antonio-roca-caso-malaya-29072015-1340/"
+estado_acceso: publico
+idioma: es
+caso_principal_id: malaya
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

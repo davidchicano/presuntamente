@@ -1,0 +1,19 @@
+id: villarejo-condenado-no-firme-iron-land-pintor
+caso_id: tandem
+sujeto_tipo: persona
+sujeto_persona_id: jose-manuel-villarejo
+rol: condenado_no_firme
+delitos_atribuidos:
+  - revelacion-de-secretos
+fecha_inicio: "2025-09-17"
+hito_origen_id: sentencia-apelacion-iron-land-pintor-2025-09-17
+notas: |
+  Condena de 13 años de prisión en sentencia de la Sala de Apelación de la
+  Audiencia Nacional de 17 de septiembre de 2025, que redujo la condena
+  inicial de 19 años al absolver del delito de falsedad documental.
+  No consta recurso de casación ante el Tribunal Supremo presentado o
+  admitido a fecha de revisión editorial (2026-05-30), si bien el plazo
+  podría no haber transcurrido. La condena se modela como no firme hasta
+  que se confirme la firmeza o se acredite sentencia del TS.
+  CANDIDATO A ACREDITADO: revisar si la condena ha ganado firmeza
+  (no hay recurso admitido a trámite conocido a 2026-05-30).

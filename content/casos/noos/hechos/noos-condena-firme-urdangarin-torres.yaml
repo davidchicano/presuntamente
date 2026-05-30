@@ -1,0 +1,39 @@
+id: noos-condena-firme-urdangarin-torres
+caso_id: noos
+enunciado: |
+  La Sala Segunda del Tribunal Supremo, en la sentencia 277/2018 (ECLI:ES:TS:2018:2056,
+  ponente Antonio del Moral García, dictada el 12 de junio de 2018), confirmó las condenas
+  penales de los principales acusados del caso Nóos con las siguientes penas definitivas:
+  Iñaki Urdangarin, 5 años y 10 meses de prisión por prevaricación continuada y malversación
+  (en concurso), tráfico de influencias, fraude a la Administración y dos delitos fiscales;
+  Diego Torres Pérez, 5 años y 8 meses por malversación, prevaricación y fraude;
+  Jaume Matas Palou, 3 años y 8 meses; y otros cuatro acusados con penas de entre 1 año y
+  15 meses sustituidas por multa. La sentencia es firme desde el 12 de junio de 2018;
+  el recurso de nulidad presentado por Urdangarin fue rechazado el 26 de septiembre de 2018.
+tipo: acreditado
+# Promovido a 'acreditado' el 2026-05-30 (rev. maintainer). Nota oficial CGPJ (N1) de
+# poderjudicial.es confirma las penas exactas de la STS 277/2018 (ECLI:ES:TS:2018:2056).
+# Firmeza definitiva: 26 de septiembre de 2018 (recurso de nulidad rechazado).
+fecha_o_periodo:
+  desde: "2018-06-12"
+  hasta: "2018-06-12"
+  precision: dia
+personas_implicadas:
+  - inaki-urdangarin
+  - diego-torres-perez
+  - jaume-matas-palou
+  - jose-luis-ballester
+  - gonzalo-bernal-garcia
+  - juan-carlos-alia
+  - miguel-angel-bonet
+  - antonio-del-moral
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ts-noos-2018
+    pasaje: "Nota CGPJ TS 12-jun-2018 (STS 277/2018): «5 años y 10 meses de prisión por los delitos de prevaricación continuada y malversación (ambos en concurso), tráfico de influencias, fraude a la Administración y dos delitos fiscales» (Urdangarin); Diego Torres, 5 años y 8 meses; Jaume Matas, 3 años y 8 meses; José Luis Ballester y Gonzalo Bernal, 15 meses; Juan Carlos Alía y Miguel Ángel Bonet, 1 año sustituido por multa."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

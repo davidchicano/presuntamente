@@ -1,0 +1,34 @@
+id: rodrigo-rato-presidente-bankia
+naturaleza: cargo_directivo_empresa_publica
+descripcion: >-
+  Presidente de Bankia desde la constitucion del grupo BFA-Bankia hasta su
+  dimision en mayo de 2012, coincidiendo con la intervencion de la entidad
+  por el Estado. En su periodo como presidente de Bankia dispuso de tarjetas
+  de credito de empresa cuyos gastos no constaban en su retribucion declarada,
+  siendo condenado por apropiacion indebida en sentencia de la Audiencia
+  Nacional de 23 de febrero de 2017, confirmada y firme por el Tribunal Supremo
+  en 2018.
+sujeto_persona_id: rodrigo-rato
+objeto_organizacion_id: bankia
+cargo_o_rol: "Presidente de Bankia"
+desde: "2010-12-01"
+hasta: "2012-05-09"
+precision_desde: mes
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [tarjetas-black, bankia-salida-bolsa]
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: >-
+      La sentencia de la Audiencia Nacional de 23 de febrero de 2017 identifica
+      a Rodrigo de Rato y Figaredo como presidente de Bankia en el tramo final
+      del periodo enjuiciado y acredita el uso de tarjetas de empresa cuyo coste
+      no figuraba en la retribucion declarada de la entidad.
+  - documento_id: sentencia-ts-tarjetas-black-2018
+    pasaje: >-
+      La sentencia del Tribunal Supremo confirma la condena de Rodrigo de Rato
+      y Figaredo identificando su cargo de presidente de Bankia como el contexto
+      en el que se produjo el uso de las tarjetas cuya apropiacion indebida
+      queda firme.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

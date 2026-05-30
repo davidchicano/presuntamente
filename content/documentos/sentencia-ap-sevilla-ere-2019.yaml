@@ -1,0 +1,30 @@
+id: sentencia-ap-sevilla-ere-2019
+titulo: "Sentencia 490/2019, de 19 de noviembre, de la Audiencia Provincial de Sevilla (Sección Primera) en la pieza política del caso ERE"
+tipo: sentencia
+nivel_fuente: 1
+nivel_fuente_justificacion: >-
+  Sentencia jurisdiccional de la Sección Primera de la Audiencia Provincial
+  de Sevilla, órgano emisor en lista blanca (poderjudicial.es / CENDOJ).
+  Dominio público (art. 235.5 LOPJ). Número 490/2019 y fecha 19-11-2019
+  verificados: (1) nota de prensa oficial CGPJ en poderjudicial.es
+  (https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/La-Audiencia-Provincial-de-Sevilla-notifica-la-sentencia-del-caso-de-los-ERE);
+  (2) encabezado BOE-A-2024-17480 (STC 99/2024 Chaves) y BOE-A-2024-17481
+  (STC 100/2024 Griñán), que citan explícitamente "sentencia núm. 490/2019,
+  de 19 de noviembre, dictada por la Sección Primera de la Audiencia
+  Provincial de Sevilla". Pendiente descarga íntegra desde CENDOJ para
+  obtener hash_sha256 y texto literal del Fallo.
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Noticias-Judiciales/La-Audiencia-Provincial-de-Sevilla-notifica-la-sentencia-del-caso-de-los-ERE"
+productor_organizacion_id: audiencia-provincial-sevilla
+fecha_documento: "2019-11-19"
+estado_acceso: acceso_restringido_pero_citable
+idioma: es
+caso_principal_id: eres-andalucia
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+# Verificado 2026-05-30: número 490/2019 y fecha 19-11-2019 confirmados desde
+# fuentes oficiales (nota CGPJ + encabezados BOE STCs). Condena: 19 de 21
+# acusados. Chaves: 9 años inhabilitación (prevaricación). Griñán: 6 años
+# 2 días prisión + 15 años 2 días inhabilitación absoluta (prevaricación +
+# malversación). Los 3 Secretarios Generales Técnicos (Aguado, Sánchez García,
+# Medina Varo) absueltos en casación. Primario (PDF íntegro) pendiente de
+# descarga desde CENDOJ.

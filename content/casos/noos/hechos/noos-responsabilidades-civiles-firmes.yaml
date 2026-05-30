@@ -1,0 +1,43 @@
+id: noos-responsabilidades-civiles-firmes
+caso_id: noos
+enunciado: |
+  La STS 277/2018 impuso responsabilidades civiles a título lucrativo (partícipes que se
+  beneficiaron de los delitos sin ser autores penalmente responsables): la Infanta Cristina
+  de Borbón fue condenada a abonar 136.950 euros por los delitos de malversación y fraude
+  a la Administración cometidos por su marido; Ana María Tejeiro, esposa de Diego Torres, a
+  172.550 euros por los mismos conceptos. Ambas habían sido absueltas penalmente tanto por la
+  Audiencia Provincial de Palma como por el Tribunal Supremo.
+tipo: acreditado
+# Promovido a 'acreditado' el 2026-05-30 (rev. maintainer). La nota CGPJ (N1) STS 277/2018
+# confirma literalmente los importes de responsabilidad civil a título lucrativo:
+# Cristina de Borbón 136.950 €, Ana María Tejeiro 172.550 €.
+fecha_o_periodo:
+  desde: "2018-06-12"
+  hasta: "2018-06-12"
+  precision: dia
+personas_implicadas:
+  - cristina-de-borbon
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ts-noos-2018
+    pasaje: "Nota CGPJ TS 12-jun-2018 (STS 277/2018): Cristina de Borbón, responsabilidad civil a título lucrativo de 136.950 euros (malversación y fraude a la Administración); absolviendo respecto de los delitos fiscales (128.138 euros). Ana María Tejeiro, responsabilidad civil a título lucrativo de 172.550 euros (malversación y fraude), absolviendo respecto de los delitos fiscales (172.384 euros)."
+nivel_fuente_efectivo: 1
+importe: 136950
+importe_moneda: EUR
+importe_alcance: individual
+importe_clase: consecuencia
+importe_naturaleza: responsabilidad_civil
+importe_nota: |
+  Importe de la responsabilidad civil a título lucrativo de Cristina de Borbón (136.950 €).
+  La responsabilidad de Ana María Tejeiro (172.550 €) se modela por separado en importe_sujeto.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: cristina-de-borbon
+    papel: obligado
+    importe_sujeto: 136950
+    nota: "Partícipe a título lucrativo por malversación y fraude a la Administración del marido. Absolta penalmente."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

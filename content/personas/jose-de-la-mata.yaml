@@ -1,0 +1,15 @@
+id: jose-de-la-mata
+nombre_completo: "José de la Mata Amaya"
+nombres_alternativos:
+  - "José de la Mata"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Magistrado titular del Juzgado Central de Instrucción nº 5 de la Audiencia Nacional"
+    organizacion_id: juzgado-central-instruccion-5
+    desde: "2015-03-01"
+    # LLM-incierto: fecha aproximada de toma de posesión en JCI-5; verificar con CGPJ
+biografia_corta: >-
+  Magistrado. Como titular del Juzgado Central de Instrucción nº 5 de la
+  Audiencia Nacional instruyó durante años la causa sobre el patrimonio de la
+  familia Pujol y dictó el auto de transformación a procedimiento abreviado.
+estado_publicacion: borrador

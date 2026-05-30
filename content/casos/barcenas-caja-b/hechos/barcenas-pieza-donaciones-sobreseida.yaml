@@ -1,0 +1,34 @@
+id: barcenas-pieza-donaciones-sobreseida
+caso_id: barcenas-caja-b
+enunciado: |
+  La pieza que investigaba si los empresarios anotados en la presunta caja B
+  del PP realizaban aportaciones a cambio de adjudicaciones concretas de
+  contratos públicos fue sobreseída provisionalmente por auto del juez Santiago
+  Pedraz el 19 de diciembre de 2022, a petición de la Fiscalía Anticorrupción,
+  tras recibir el informe de la Intervención General del Estado (IGAE) de
+  4 de noviembre de 2022, que no detectó incumplimientos de la normativa de
+  contratación ni acreditó relación entre aportaciones y adjudicaciones. El
+  juez señaló que «no existe una anotación, un correo electrónico, un
+  documento, una conversación grabada, una declaración testifical… que aporte
+  dato incriminatorio alguno». Esta decisión no implica pronunciamiento sobre
+  el fondo ni afecta a las condenas ya firmes de la pieza Génova.
+tipo: exculpatorio
+fecha_o_periodo:
+  desde: "2022-12-19"
+  precision: dia
+personas_implicadas:
+  - santiago-pedraz
+organizaciones_implicadas:
+  - juzgado-central-instruccion-5
+  - partido-popular
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: eldebate-archivo-pedraz-donaciones-2022
+    pasaje: >-
+      Auto de sobreseimiento provisional de 19-dic-2022 y cita literal del
+      juez Pedraz sobre ausencia de elementos incriminatorios
+vigencia: vigente
+nivel_fuente_efectivo: 4
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

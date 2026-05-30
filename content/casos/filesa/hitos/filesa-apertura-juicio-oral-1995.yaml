@@ -1,0 +1,30 @@
+id: filesa-apertura-juicio-oral-1995
+caso_id: filesa
+tipo: apertura_juicio_oral
+fecha: "1995-12-22"
+fecha_precision: dia
+titulo: "Bacigalupo decreta apertura de juicio oral contra siete acusados"
+descripcion: |
+  El 22 de diciembre de 1995 el magistrado instructor Enrique Bacigalupo
+  Zapater dicta auto decretando la apertura de juicio oral contra siete
+  de los acusados iniciales. El número de acusados que se sentarán
+  definitivamente en el banquillo será finalmente de doce, después de
+  que la propia Sala Segunda ajuste los escritos de acusación durante
+  el plenario. Guillermo Galeote, exresponsable de finanzas del PSOE,
+  quedará fuera del banquillo de los acusados pese a haber sido
+  investigado durante la instrucción.
+personas_afectadas:
+  - enrique-bacigalupo-zapater
+  - jose-maria-sala-i-griso
+  - carlos-navarro-gomez
+  - alberto-flores-valencia
+  - luis-olivero-capellades
+  - aida-alvarez-alvarez
+  - miguel-guillermo-molledo-martin
+  - juan-antonio-molina-vivas
+  - eugenio-garcia-mansilla
+organizaciones_afectadas:
+  - tribunal-supremo
+  - psoe
+documento_principal_id: prensa-sentencia-filesa-libertad-digital-2001
+fase_resultante: juicio_oral

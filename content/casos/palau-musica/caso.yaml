@@ -1,14 +1,124 @@
+# Caso Palau de la Música Catalana — modelado completo (sesión 2026-05-30).
+#
+# Macrocausa por presunto expolio del Palau de la Música Catalana y por la
+# financiación ilegal de Convergència Democràtica de Catalunya (CDC) a través
+# de comisiones de Ferrovial-Agroman canalizadas por Fèlix Millet i Tusell
+# y Jordi Montull Bagur. Instruida por el Juzgado de Instrucción nº 30 de
+# Barcelona y juzgada por la Sección 10ª de la Audiencia Provincial de
+# Barcelona (PA 74/2016). Sentencia firme STS 813/2020 del Tribunal Supremo
+# de 30 de abril de 2020 (ponente: Andrés Palomo del Arco). La presunción
+# de inocencia decae únicamente respecto de los hechos declarados probados
+# y firmes por la sentencia del TS; la ejecución de la responsabilidad civil
+# y el comiso a CDC siguen en trámite.
+
 id: palau-musica
-nombre_oficial: "Procedimiento Abreviado — Audiencia Provincial de Barcelona (caso Palau de la Música Catalana)"
+nombre_oficial: "Procedimiento Abreviado 74/2016 — Sección 10ª de la Audiencia Provincial de Barcelona"
 nombre_mediatico: "Caso Palau de la Música"
 nombres_alternativos:
   - "Caso Palau"
-  - "Palau de la Música Catalana"
+  - "Caso Palau-Millet"
+  - "Cas Palau"
+  - "Caso Millet"
+
+descripcion_corta: |
+  Macrocausa por presunto expolio de la Fundació Orfeó Català-Palau de la
+  Música Catalana —más de 23 millones de euros— y por la financiación
+  ilegal de Convergència Democràtica de Catalunya (CDC) a través de
+  comisiones de Ferrovial-Agroman canalizadas mediante el Palau como
+  intermediario (1999-2009). Fèlix Millet i Tusell (presidente de la
+  Fundació) y Jordi Montull Bagur (gerente) fueron los principales
+  condenados en la sentencia firme del Tribunal Supremo (STS 813/2020).
+  Daniel Osàcar, extesorero de CDC, también resultó condenado. CDC como
+  organización fue objeto de comiso de 6,67 millones de euros, cuya
+  ejecución sigue pendiente ante el Juzgado Mercantil 9 de Barcelona
+  por el procedimiento concursal del partido.
+
+sintesis_caso:
+  que_se_investiga: >-
+    El presunto expolio de fondos del Palau de la Música Catalana y la
+    presunta financiación ilegal de CDC a través de comisiones de Ferrovial
+    canalizadas por sus directivos.
+  hechos_clave:
+    - "Fèlix Millet y Jordi Montull desviaron más de 23 millones de euros de la Fundació Orfeó Català-Palau de la Música Catalana para uso personal durante 1999-2009."
+    - "Ferrovial-Agroman pagó un mínimo de 6,67 millones de euros en comisiones a CDC, a razón del 2,5% de contratos de obra pública en Cataluña, a través del Palau como intermediario."
+    - "La sentencia firme STS 813/2020 condenó a Millet a 9 años y 8 meses, a Montull a 7 años y 6 meses, y al extesorero de CDC Daniel Osàcar a 3 años y 6 meses. CDC fue condenada al comiso de 6,67 M€."
+    - "Los directivos de Ferrovial acusados en la causa fueron absueltos por prescripción de los delitos imputados."
+  estado_actual: >-
+    Sentencia firme desde el 30 de abril de 2020 (STS 813/2020). En trámite
+    de ejecución: más de 12 millones de euros recuperados por las entidades
+    perjudicadas; el comiso a CDC (6,67 M€) sigue pendiente ante el Juzgado
+    Mercantil 9 de Barcelona por el procedimiento concursal del partido (CDC
+    en concurso desde marzo de 2020). Fèlix Millet falleció el 16 de marzo
+    de 2023.
+  cifras_clave:
+    - "23,2 M€ expoliados de la Fundació, Associació y Consorci del Palau (sentencia firme)"
+    - "6,67 M€ en comisiones ilícitas a CDC acordadas como comiso"
+    - "9 años y 8 meses de prisión para Millet (condena firme)"
+    - "Más de 12 M€ ya recuperados por las entidades perjudicadas (2022)"
 
 organo_judicial_id: audiencia-provincial-barcelona
-fase_actual: sentencia_firme
-fecha_apertura: "2009-07-01"
+numero_procedimiento: "PA 74/2016"
+tipo_procedimiento: procedimiento_abreviado
+
+fase_actual: ejecucion
+fecha_apertura: "2009-06-01"
+fecha_cierre: "2020-04-30" # Sentencia firme STS 813/2020; la ejecución continúa
 
 origen_denuncia: fiscalia_anticorrupcion
+querellante_inicial_id: fiscalia-anticorrupcion
 
-estado_publicacion: pendiente
+delitos_atribuidos_en_la_causa:
+  - apropiacion-indebida
+  - malversacion-caudales-publicos
+  - falsedad-documental
+  - trafico-de-influencias
+  - blanqueo-de-capitales
+  - delito-contra-hacienda-publica
+
+resumen_cifras: |
+  La sentencia firme STS 813/2020 del Tribunal Supremo declara probado
+  que Fèlix Millet i Tusell y Jordi Montull Bagur desviaron un mínimo
+  de 23,2 millones de euros de las entidades gestoras del Palau de la
+  Música Catalana para uso particular. La responsabilidad civil se
+  distribuye: más de 6,29 M€ a la Fundació Orfeó Català-Palau de la
+  Música Catalana, más de 6,12 M€ a la Associació Orfeó Català, y más
+  de 3,53 M€ al Consorci del Palau de la Música Catalana. Marta Vallès
+  (cónyuge de Millet, fallecida) debe responder a título lucrativo por
+  6,41 M€ y su hija Laila Millet por 112.782 euros.
+  Adicionalmente, la sentencia acuerda el comiso de 6.676.105,58 euros
+  a Convergència Democràtica de Catalunya como ganancias obtenidas por
+  tráfico de influencias (comisiones del 2,5% de contratos de obra
+  pública pagadas por Ferrovial-Agroman). Millet y Montull percibieron
+  un mínimo de 3.505.895,37 euros como mediadores del esquema de
+  comisiones. Las multas penales individuales suman: Millet 4,12 M€,
+  Montull 2,99 M€, Gemma Montull 2,66 M€, Daniel Osàcar 3,79 M€.
+  En trámite de ejecución, las entidades perjudicadas han recuperado
+  más de 12 millones de euros (cobertura elDiario.es, 2022).
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: capital
+
+estado_ficha:
+  cronologia: completo
+  roles_procesales: completo
+  documentos_primarios: parcial
+  hechos_modelados: completo
+  fuentes_cruzadas: completo
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: pendiente
+  conexiones: pendiente
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: >-
+    Documentos primarios: sentencia AP Barcelona (PA 74/2016, 29-dic-2017) y
+    STS 813/2020 integros no localizados en CENDOJ a fecha 2026-05-30; se modela
+    con notas CGPJ N1 como respaldo principal. Pendiente primario: sentencia
+    completa en CENDOJ. Vínculos institucionales pendientes: afectacion CDC/
+    Generalitat pendiente de aplicar skill documentar-vinculos. Cobertura
+    mediatica: primera pasada completada (14 piezas, 7 medios, 5 ventanas
+    temporales); pendiente segunda pasada con medios en catalán (ARA, Vilaweb,
+    NacióDigital, 324) y medios con paywall (El País, El Mundo, La Vanguardia).
+    El caso 3% (JCI 5 AN / Santiago Pedraz) tiene vinculacion formal investigada
+    pero archivado; ver NOTES.md.
+  fecha_actualizacion: "2026-05-30"

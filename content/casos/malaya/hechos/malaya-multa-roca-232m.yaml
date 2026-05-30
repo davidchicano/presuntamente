@@ -1,0 +1,59 @@
+id: malaya-multa-roca-232m
+caso_id: malaya
+enunciado: |
+  La instrucción y las sentencias documentan que Juan Antonio Roca
+  habría ejercido como «alcalde de hecho» en el Ayuntamiento de
+  Marbella, decidiendo de facto la concesión de licencias urbanísticas
+  ilegales junto con los altos cargos municipales a cambio de
+  comisiones y dádivas a particulares. A través de su testaferro
+  Montserrat Corulla, habría controlado parte del dinero procedente de
+  los impuestos municipales de Marbella, invirtiéndolo en coches de
+  lujo, propiedades inmobiliarias de alto valor en Madrid y obras de
+  arte. El blanqueo de capitales atribuido a la red, según la
+  investigación, superaría los 250 millones de euros, habiéndose
+  acreditado judicialmente al menos 12 millones.
+tipo: atribuido
+# Candidato a 'acreditado' para revisión humana: los 12 M€ acreditados
+# están referenciados en wikipedia; pendiente localizar pasaje exacto en
+# sentencia TS. Ver NOTES.md del caso.
+fecha_o_periodo:
+  desde: "1991-01-01"
+  hasta: "2006-04-07"
+  precision: rango
+personas_implicadas:
+  - juan-antonio-roca
+  - montserrat-corulla
+organizaciones_implicadas:
+  - ayuntamiento-de-marbella
+  - grupo-independiente-liberal
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-malaya-ap-malaga-2013
+    pasaje: "Juan Antonio Roca ejercía como 'alcalde de hecho'. La práctica corrupta: favorecimiento mercantil de promotores y constructores a cambio de dádivas."
+  - documento_id: nota-cgpj-sentencia-malaya-ts-2015
+    pasaje: "El TS agrava la condena de Roca por blanqueo de capitales de 5 a 7 años."
+nivel_fuente_efectivo: 1
+importe: 12000000
+importe_moneda: EUR
+importe_alcance: componente
+importe_clase: objeto
+importe_naturaleza: perjuicio
+importe_nota: |
+  Importe del blanqueo de capitales acreditado judicialmente según
+  cobertura cruzada de la Wikipedia y prensa (estimación total: 250 M€,
+  acreditados 12 M€). El total de 250 M€ es estimación no cuantificada
+  en un único documento judicial; los 12 M€ son la cifra acreditada
+  en los autos. La diferencia entre perjuicio estimado y acreditado es
+  típica en macrocausas donde el blanqueo se documenta sólo parcialmente.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: juan-antonio-roca
+    papel: activo
+    nota: "Conducta de blanqueo atribuida a Roca (activo); no implica percepción directa de la cifra completa."
+  - sujeto_tipo: organizacion
+    sujeto: ayuntamiento-de-marbella
+    papel: perjudicado
+    nota: "Perjudicado institucional por el desvío de fondos municipales."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

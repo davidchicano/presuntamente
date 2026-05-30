@@ -153,3 +153,34 @@ URLs específicas en cada `Documento` que las cita, conforme al modelo.
 - **Javier Gómez Fidalgo es DESIMPUTADO.** Su rol vigente es `desimputado` desde el 29-may-2025 por sobreseimiento provisional. Cualquier redacción posterior debe respetarlo expresamente.
 - **El caso del Fiscal General del Estado es un caso distinto.** Aunque relacionado factualmente (el email del 2-feb-2024 fue origen de aquella causa), no se mezcla aquí. Esta ficha se circunscribe al procedimiento por presunto fraude fiscal y falsedad documental contra González Amador y otros cuatro investigados.
 - **Tratamiento sin cuota política.** El caso afecta a una persona cercana al gobierno autonómico de Madrid. La P-10 obliga a aplicar exactamente la misma estructura, badges y tono que a cualquier otro caso del inventario.
+
+## Barrido de actualidad 2026-05-30 (skill `/actualizar-caso`)
+
+Ventana barrida: desde el último hito catalogado (`ap-madrid-desestima-recurso-uco-ga-2026-04-09`, 9-abr-2026) hasta hoy (30-may-2026), con repesca de la noticia del señalamiento del juicio que databa de enero de 2026 y no estaba catalogada. Cobertura cruzada en ≥ 3 líneas editoriales (El Plural, elDiario.es, Madridiario, El Independiente, Público.es, infoLibre, The Objective).
+
+### Novedad real incorporada: el juicio no se celebrará hasta 2027
+
+- **Hito nuevo `senalamiento-juicio-2027-ga-2026-01`** (tipo `auto_diligencias`, fecha 14-ene-2026). La noticia trascendió el 14-ene-2026 (origen atribuido a la Cadena SER, recogido por Madridiario y otros) y la cobertura de mayo de 2026 (El Plural, elDiario.es) la reitera: el juicio oral contra González Amador y los demás procesados por el presunto fraude fiscal y la falsedad documental queda emplazado a 2027 por la saturación de los juzgados de lo penal de Madrid y la entrada en vigor de la reforma de eficiencia de la Justicia ("reforma Bolaños"). La causa permanece en `fase_intermedia` (el señalamiento no la transita a `juicio_oral`; eso ocurrirá con la celebración de la vista). Se eligió `tipo: auto_diligencias` por no existir un enum específico de "señalamiento" en el schema de Hito; es la decisión procesal de fijar (aplazar) la vista.
+- **3 documentos N4** (V-13 cumplido con creces, tres líneas editoriales distintas): `madridiario-juicio-2027-ga-2026-01` (Madridiario, documento principal, 14-ene-2026) + `elplural-juicio-2027-ga-2026-05` (El Plural) + `eldiario-juicio-2027-ga-2026-05` (elDiario.es). Cobertura adicional vista pero no catalogada (misma noticia, evitar inflar): El Boletín, Diario de León, El Constitucional, infoLibre.
+- **1 organización nueva**: `madridiario` (Madridiario, `medio_comunicacion` / `medio_digital`), por ser el medio que da la noticia y no existir aún en el catálogo.
+- **Cascada aplicada a `caso.yaml`**: `sintesis_caso.estado_actual` (añade "juicio oral señalado para 2027"); `cifras_clave` (+ "Juicio oral señalado para 2027"); `descripcion_corta` (cierre actualizado); `ultima_revision_editorial` 2026-05-22 → 2026-05-30; `estado_ficha.fecha_actualizacion` 2026-05-25 → 2026-05-30; `estado_ficha.notas` (apunta el señalamiento y el primario pendiente). NO se tocó `fase_actual` (sigue `fase_intermedia`), ni delitos, ni roles (el señalamiento no altera calificación ni estado procesal de ningún procesado), ni `ponente_actual_id` (sigue Antonio Viejo como instructor; el órgano de enjuiciamiento será un Juzgado de lo Penal aún no identificado).
+
+### Incertidumbres del señalamiento (LLM-incierto, pendientes de primario)
+
+- **Fecha exacta dentro de 2027 y número del Juzgado de lo Penal de Madrid** que enjuiciará: no confirmados. La cobertura habla genéricamente de "mediados de 2027" y "juzgados de lo penal de la calle Julián Camarillo". Los WebFetch a El Plural, Madridiario y Público devolvieron error 522/403 de Cloudflare; sólo se dispone de snippets de búsqueda. La `fecha_documento` de los dos documentos de mayo se fijó a nivel de mes (día 01 como convención) con comentario `# LLM-incierto`; la URL canónica de elDiario.es se reconstruyó del snippet (slug incierto).
+- **Pendiente_primario**: providencia o auto de señalamiento del Juzgado de lo Penal. CENDOJ no publica señalamientos de Juzgados ordinarios; probablemente no aparezca hasta que la causa suba a la AP o se dicte sentencia.
+
+### Continuidades (NO modeladas — sin novedad procesal)
+
+- **Informe UCO de la pieza Quirón sigue sin entregarse** (a finales de mayo de 2026, ~11 meses desde el encargo del 27-jun-2025) y el juez Antonio Viejo continúa sin autorizar el acceso a las cuentas bancarias del investigado. Es continuidad del estado ya recogido en el hecho `ga-informe-uco-pendiente` y en el hito `ap-madrid-desestima-recurso-uco-ga-2026-04-09`. No genera hito ni hecho nuevo: el estado no ha cambiado, sólo se ha prolongado. Reverificar en el próximo barrido; si el informe se entrega, crear `Hito(tipo=informe_organismo_publico)` + `Documento(tipo=informe_policial)` N1/N2.
+- **Estrategia de nulidad de la defensa apoyada en la condena del FGE**: ya modelada en el hecho `ga-defensa-invoca-fge-vulneracion-proceso` (19-feb-2026). La cobertura de mayo la reitera pero no aporta resolución del órgano sobre esa petición. Sin novedad modelable hasta que haya auto que resuelva.
+
+### Cruce con otros casos del inventario
+
+- **`fiscal-general-del-estado`** — nexo factual fuerte y documentable: el correo del abogado de González Amador del 2-feb-2024 (negociación de conformidad en la causa fiscal) es el secreto cuya filtración originó la condena al ex-FGE Álvaro García Ortiz. La ficha del FGE ya describe el vínculo en su `descripcion_corta` y la defensa de González Amador lo invoca en su escrito del 19-feb-2026. **Se PROPONE `RelacionEntreCasos(gonzalez-amador ↔ fiscal-general-del-estado)`** tipo `derivada_factual`, naturaleza `factual` (el agente de Reconciliación la materializa). Esta relación cierra parcialmente el pendiente histórico "Carlos Neira y caso del Fiscal General" de la sección "Pendiente para PR4 y siguientes": el caso FGE YA existe en el inventario, por lo que la relación es modelable ahora (la `Persona(carlos-neira)` y su rol `abogado_defensa` cruzado siguen pendientes aparte).
+- Resto del inventario: sin cruce procesal/funcional nuevo detectado en esta ventana.
+
+### Incidencia de calidad de datos detectada (fuera de scope de este barrido)
+
+- El documento `content/documentos/elespanol-defensa-invoca-fge-ga-2026-02-19.yaml` está corrupto: tiene la clave `nivel_fuente_justificacion` duplicada, un campo `tipo_pieza` no contemplado por el schema y decenas de líneas repetidas `documento_naturaleza: "noticia"`. No tocado en este barrido para no mezclar naturalezas de cambio; requiere limpieza específica (riesgo de que `pnpm validate` falle por `additionalProperties:false`).
+- Discrepancias documentales históricas aún abiertas (cierran con el auto íntegro en CENDOJ): cuantía 350.951 € vs 350.961 €; nombre "José Miguel" vs "José Antonio" Carrillo Saborido.

@@ -1,0 +1,29 @@
+id: malaya-inicio-juicio-oral-2010
+caso_id: malaya
+tipo: inicio_vista_oral
+fecha: "2010-09-27"
+fecha_precision: dia
+titulo: "Inicio del juicio oral del caso Malaya ante la Audiencia Provincial de Málaga (Sección 1ª)"
+descripcion: |
+  El 27 de septiembre de 2010 da comienzo la vista oral del caso
+  Malaya ante la Sección 1ª de la Audiencia Provincial de Málaga
+  (Rollo Sumario 21/2007), con 95 acusados inicialmente, que
+  finalmente quedan en 86 en el banquillo. El juicio se desarrolla a
+  lo largo de casi 200 sesiones hasta su conclusión. Es el mayor
+  macrojuicio por corrupción urbanística municipal en España.
+personas_afectadas:
+  - juan-antonio-roca
+  - marisol-yague
+  - julian-munoz
+  - tomas-renones
+  - montserrat-corulla
+  - isabel-garcia-marcos
+  - jose-maria-del-nido
+  - pedro-roman-malaga
+organizaciones_afectadas:
+  - audiencia-provincial-malaga
+  - fiscalia-anticorrupcion
+  - ayuntamiento-de-marbella
+documentos_relacionados:
+  - nota-cgpj-sentencia-malaya-ap-malaga-2013
+fase_resultante: juicio_oral

@@ -1,0 +1,14 @@
+id: fiscalia-anticorrupcion-acusacion-noos
+caso_id: noos
+sujeto_tipo: organizacion
+sujeto_organizacion_id: fiscalia-anticorrupcion
+rol: querellante
+fecha_inicio: "2010-07-20"
+notas: |
+  La Fiscalía Anticorrupción ejerció la acusación pública en el caso Nóos durante la
+  instrucción y el juicio oral. Durante la instrucción sostuvo reiteradamente que la Infanta
+  Cristina no debía ser investigada. En el juicio oral mantuvo la acusación contra los
+  principales acusados. El rol de acusación pública del Ministerio Fiscal no encaja
+  exactamente en el enum del schema (que diferencia entre querellante, acusacion_popular
+  y acusacion_particular para organizaciones); se usa querellante como el más próximo
+  para la Fiscalía como parte acusadora institucional.

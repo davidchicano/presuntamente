@@ -1,0 +1,31 @@
+id: tandem-conexion-barcenas-caja-b
+caso_a_id: tandem
+caso_b_id: barcenas-caja-b
+tipo: conexion_factual
+descripcion: |
+  El caso Tándem y el caso Bárcenas (caja B del PP) están conectados
+  factualmente a través de la pieza separada nº 7 del procedimiento
+  Tándem, conocida como Operación Kitchen. Según la acusación en Kitchen,
+  el Ministerio del Interior habría organizado entre 2013 y 2015 una
+  operación parapolicial para sustraer documentación sensible del ex
+  tesorero del Partido Popular Luis Bárcenas con el objetivo de que
+  dicha documentación no llegara al juez instructor del caso Bárcenas
+  (JCI nº 5 AN). El presunto vehículo operativo de esa actuación fue
+  el comisario José Manuel Villarejo Pérez, principal investigado de
+  la causa Tándem.
+
+  La conexión es factual, no procesal: el caso Bárcenas se instruyó
+  en el JCI nº 5 de la AN; el caso Tándem, en el JCI nº 6. Ambos
+  procedimientos corren paralelos y autónomos. La pieza Kitchen
+  se modela como caso propio (slug 'kitchen') en este inventario.
+
+  El nexo se acredita en el auto de apertura de la pieza Kitchen
+  (JCI nº 6, 19 de julio de 2018) que describe expresamente la
+  finalidad de la presunta operación respecto de la documentación
+  de Bárcenas, y en la cobertura periodística cruzada del mismo día.
+documentos_respaldo:
+  - eldiario-apertura-pieza-kitchen-2018-07-19
+  - infobae-apertura-pieza-kitchen-2018-07-19
+fecha_inicio: "2018-07-19"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

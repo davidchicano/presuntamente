@@ -1,0 +1,68 @@
+id: filesa-financiacion-irregular-psoe
+caso_id: filesa
+enunciado: |
+  Según la Sentencia 1/1997 de la Sala Segunda del Tribunal Supremo,
+  durante los años 1989 y 1991 la red de empresas Filesa, Malesa y
+  Time Export recaudó más de mil millones de pesetas —equivalentes a
+  aproximadamente 6 millones de euros— mediante la emisión de facturas
+  por estudios e informes que se atribuye que no correspondían a
+  servicios realmente prestados, destinados presuntamente a financiar
+  las campañas electorales del PSOE de 1989 (elecciones europeas y
+  generales). Las grandes empresas públicas y privadas que abonaron
+  dichas facturas figuran entre los obligados al pago en el esquema
+  investigado.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "1989-01-01"
+  hasta: "1991-12-31"
+  precision: rango
+personas_implicadas:
+  - carlos-navarro-gomez
+  - alberto-flores-valencia
+  - luis-olivero-capellades
+  - jose-maria-sala-i-griso
+organizaciones_implicadas:
+  - psoe
+  - filesa-sociedad
+  - malesa-sociedad
+  - time-export
+documentos_respaldo:
+  - documento_id: sentencia-ts-filesa-1997
+    pasaje: "Antecedentes de hecho — durante los años 1989 y 1991 se recaudaron más de mil millones de pesetas"
+  - documento_id: boe-stc-126-2001-filesa
+    pasaje: "Causa Especial Núm. 880/91 ante la Sala Segunda del Tribunal Supremo"
+nivel_fuente_efectivo: 1
+importe: 6000000
+importe_moneda: EUR
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: cobro_indebido
+importe_nota: |
+  La STS 1/1997 cifra la recaudación en "más de mil millones de pesetas"
+  (1.200 millones de pesetas según cobertura periodística cruzada), que
+  equivalen aproximadamente a 6-7,2 M€ en valores de 1990. Se estructura
+  el equivalente mínimo referenciado (1.000 millones de pesetas ≈ 6 M€)
+  como importe conservador. La STC 126/2001 cifra la multa por delito
+  fiscal en 258.827.765 pesetas (responsabilidad civil solidaria de
+  Navarro, Flores y Oliveró), que es cifra de consecuencia y no se suma.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: filesa-sociedad
+    papel: activo
+    nota: "Empresa a través de la cual se canalizó presuntamente la recaudación irregular"
+  - sujeto_tipo: organizacion
+    sujeto: malesa-sociedad
+    papel: activo
+    nota: "Empresa vinculada a la red de facturas ficticias que participó en el esquema"
+  - sujeto_tipo: organizacion
+    sujeto: time-export
+    papel: activo
+    nota: "Empresa vinculada a la red de facturas ficticias que participó en el esquema"
+  - sujeto_tipo: organizacion
+    sujeto: psoe
+    papel: beneficiario
+    nota: "La STS 1/1997 declara probado indiciariamente que los fondos se destinaron a financiar al PSOE"
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

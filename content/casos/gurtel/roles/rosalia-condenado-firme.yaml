@@ -1,0 +1,17 @@
+id: rosalia-condenado-firme
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: rosalia-iglesias
+rol: condenado_firme
+delitos_atribuidos:
+  - blanqueo-de-capitales
+fecha_inicio: "2020-10-14"
+hito_origen_id: gurtel-sentencia-firme-ts-2020
+notas: |
+  Condenada en primera instancia a 15 años y 1 mes (Audiencia
+  Nacional, 2018) y firme tras la confirmación del Tribunal Supremo,
+  que ajustó la pena a 12 años y 11 meses por la Época I de Gürtel. Los
+  delitos atribuidos quedan pendientes de afinar contra la sentencia
+  íntegra; provisionalmente se lista el nuclear de la pieza
+  (blanqueo). La presunción de inocencia decae respecto de los hechos
+  declarados probados y firmes.

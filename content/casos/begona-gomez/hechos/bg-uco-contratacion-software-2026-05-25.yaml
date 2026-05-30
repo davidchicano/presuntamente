@@ -1,0 +1,42 @@
+id: bg-uco-contratacion-software-2026-05-25
+caso_id: begona-gomez
+enunciado: |
+  Según el informe pericial de la Unidad Central Operativa (UCO) de la
+  Guardia Civil entregado al Juzgado de Instrucción nº 41 de Madrid el 25
+  de mayo de 2026 y recogido por la cobertura periodística cruzada, la
+  UCO concluye indiciariamente que la Cátedra Extraordinaria de
+  Transformación Social Competitiva de la Universidad Complutense de
+  Madrid se creó conforme a la normativa universitaria vigente, pero
+  aprecia irregularidades en la contratación del software vinculado a la
+  cátedra. El informe sostiene que el contrato con Making Science Group,
+  S.A. (24.200 euros por el desarrollo del backend de la plataforma) se
+  tramitó prescindiendo del procedimiento administrativo pese a superar
+  el límite de los contratos menores, y que los dos contratos suscritos
+  con Deloitte Consulting (por un total de 78.648,79 euros) habrían sido
+  elaborados, según la UCO, como «mero marco administrativo» para «dar
+  apariencia de legalidad» a servicios previamente acordados, con
+  «adjudicaciones premeditadas» y «ofertas simuladas» que habrían
+  limitado la concurrencia. El mismo informe precisa que no se han
+  detectado ingresos opacos ni un incremento patrimonial irregular en las
+  cuentas personales de Begoña Gómez. Las cifras citadas forman parte del
+  gasto del software ya cuantificado en la causa y no constituyen un
+  importe adicional. La valoración jurídica de estos indicios corresponde
+  en exclusiva al órgano judicial.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2026-05-25"
+  precision: dia
+personas_implicadas:
+  - begona-gomez
+organizaciones_implicadas:
+  - universidad-complutense-madrid
+  - uco-guardia-civil
+documentos_respaldo:
+  - documento_id: theobjective-informe-uco-contratos-bg-2026-05-25
+  - documento_id: elespanol-informe-uco-bg-2026-05-25
+  - documento_id: eldiario-informe-uco-bg-2026-05-25
+nivel_fuente_efectivo: 4
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

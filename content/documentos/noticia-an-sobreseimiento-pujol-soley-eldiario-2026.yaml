@@ -1,0 +1,19 @@
+id: noticia-an-sobreseimiento-pujol-soley-eldiario-2026
+titulo: "La Audiencia Nacional exime a Jordi Pujol del juicio sobre la fortuna oculta por su deterioro cognitivo (elDiario.es)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: >-
+  Noticia de elDiario.es (línea editorial de centro-izquierda independiente)
+  sobre el sobreseimiento libre de Jordi Pujol Soley dictado el 27 de abril de
+  2026 por trastorno neurocognitivo mayor mixto. URL verificada el 2026-05-30.
+  Incluida en el corpus de cobertura-mediatica/pujol.yaml. Se usa como segundo
+  respaldo N4 (V-13) junto a Vozpópuli para el hito de sobreseimiento.
+productor_organizacion_id: eldiario-es
+fecha_documento: "2026-04-27"
+fecha_publicacion: "2026-04-27"
+url_canonica: "https://www.eldiario.es/catalunya/audiencia-nacional-exime-jordi-pujol-juicio-fortuna-oculta-deterioro-cognitivo_1_13166394.html"
+estado_acceso: publico
+caso_principal_id: pujol
+idioma: es
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

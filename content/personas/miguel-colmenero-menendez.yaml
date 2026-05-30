@@ -1,0 +1,21 @@
+id: miguel-colmenero-menendez
+nombre_completo: "Miguel Colmenero Menéndez de Luarca"
+nombres_alternativos:
+  - "Miguel Colmenero"
+  - "Colmenero Menéndez de Luarca"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Magistrado de la Sala Segunda (Penal) del Tribunal Supremo"
+    organizacion_id: tribunal-supremo
+    desde: "2000-01-01"
+    # LLM-incierto: fecha exacta de nombramiento en la Sala Segunda no verificada
+biografia_corta: |
+  Magistrado de la Sala Segunda del Tribunal Supremo. Fue magistrado ponente
+  de la sentencia 688/2019, de 5 de marzo de 2020, que resolvió el recurso de
+  casación 2891/2018 del caso Fórum Filatélico, confirmando la condena a
+  Francisco Briones y a los restantes acusados con pequeñas modificaciones en
+  las penas. También fue ponente de las sentencias del Tribunal Supremo de
+  21 de noviembre de 2017 que resolvieron el caso Afinsa (expediente separado
+  pero conexo al Fórum Filatélico).
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

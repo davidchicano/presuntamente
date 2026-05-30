@@ -2,7 +2,51 @@
 
 Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-05-28 (barrido actualidad — aplazamiento declaración Zapatero 26-may-2026).
+Última actualización: 2026-05-30 (barrido actualidad — agrupación de acusaciones populares bajo el PP, 29-may; figuras económicas bajo secreto; relación propuesta con `leire-diez`).
+
+---
+
+## Barrido actualidad 2026-05-30
+
+Ventana: desde el último hito catalogado (`auto-aplazamiento-declaracion-zapatero-2026-05-26`) hasta hoy. Sweep en profundidad sobre el caso (cobertura general en ≥3 líneas editoriales, órgano judicial JCI nº 4 / magistrado Calama, cruce con casos del inventario).
+
+### Hito nuevo incorporado — `auto-acusaciones-populares-pp-2026-05-29`
+
+Única novedad procesal real desde el último hito catalogado (26-may). El 29 de mayo de 2026 el JCI nº 4 (magistrado Calama) dicta auto que **agrupa las ocho acusaciones populares personadas en el caso bajo una representación y dirección letrada conjunta, atribuida al Partido Popular**. Las ocho son: PP, Vox, Hazte Oír, Manos Limpias, Ciudadanos, Iustitia Europa, la organización Liberum y un particular (Borja Fernández). El instructor razona que la personación de Vox, primera en registrarse, no era "válida y plenamente eficaz" por faltarle el poder de representación, y que la del PP fue la primera procesalmente idónea; añade que el PP "presenta una implantación institucional más relevante".
+
+- **Tipo de hito usado:** `auto_diligencias` (resolución de ordenación procesal; no transita la fase ni amplía el objeto). `fase_resultante: instruccion`.
+- **V-13 cumplido:** dos N4 de líneas editoriales distintas con redacción propia: `the-objective-acusaciones-populares-pp-2026-05-29` (The Objective, centroderecha) + `infobae-acusaciones-populares-pp-2026-05-29` (Infobae España, generalista). La cobertura es masiva y multilínea (Moncloa.com, ElNacional.cat, Estrella Digital, Público) — V-13 holgado.
+- **Hecho derivado:** `pu-acusaciones-populares-pp-2026-05-29` (`tipo: atribuido`, N4).
+- **Roles nuevos creados:** `partido-popular-acusacion-popular-plus-ultra` y `vox-acusacion-popular-plus-ultra` (ambos `acusacion_popular`, `sujeto_tipo: organizacion`, `fecha_inicio: 2026-05-29`). Hazte Oír, Ciudadanos, Iustitia Europa, Liberum y el particular **NO se fichan como rol** en esta pasada: están personados pero su detalle individual no aporta a la ficha y Liberum/el particular ni siquiera tienen organización en el repo; si el maintainer quiere granularidad completa de las ocho, se amplía. Manos Limpias ya tenía rol `acusacion_popular` desde su querella (2025-12-23); este auto confirma su personación efectiva tras el traslado al JCI nº 4 (nota del rol existente actualizada).
+- **Pendiente:** no consta nota CGPJ ni auto íntegro en CENDOJ a 30-may; cuando aparezca, sustituir `documento_principal_id` por el primario oficial y subir `nivel_fuente`.
+
+### No se ha encontrado ningún artefacto de rol PSOE
+
+Verificado: **no existe** ningún `content/casos/plus-ultra/roles/psoe-acusacion-popular.yaml`. El listado real de roles del caso es Zapatero (investigado), tres ejecutivos (investigados), Manos Limpias (acusación popular), Calama (instructor) y los dos roles PP/Vox creados en esta pasada. Búsquedas específicas ("PSOE acusación popular caso Plus Ultra") no devuelven nada que sostenga una personación del PSOE como acusación popular en esta causa — algo que además sería procesalmente anómalo al estar investigado un expresidente del propio partido. No hay nada que retirar en Plus Ultra. (Sí existen roles `psoe-acusacion-popular` legítimos en otros casos del inventario —`gonzalez-amador`, `kitchen`—, ajenos a este barrido.)
+
+### No modelado — figuras económicas bajo secreto de sumario (a la espera de primario)
+
+El auto del 25-may-2026 (`auto-diligencias-pu-2026-05-25`) impuso **secreto absoluto sobre la actuación de la UDEF**. Las siguientes cifras circulan en cobertura de finales de mayo pero proceden del sumario/informe UDEF bajo secreto, sin auto del JCI nº 4 que las fije formalmente. Conforme al guardarraíl de sumario bajo secreto, **NO se modelan como Hecho** (ni se estructura su `importe`) hasta que un primario N1/N2 las acredite con cita y localización:
+
+- **Hasta 16 M€ presuntamente desviados a una red de blanqueo**, según atribución a la UDEF (El Español 24-may; Infobae 24-may). Si en el futuro hay auto o informe UDEF citable, modelar como Hecho `investigado`/`atribuido` con `importe: 16000000`, `importe_alcance: componente` (subconjunto de los 53 M€ ya estructurados en `pu-prestamo-sepi-2021-03-09`; NO sumar — V-23), `importe_naturaleza: blanqueo`, `importe_clase: consecuencia`.
+- **1,95 M€ al entorno de Zapatero** (1,52 M€ él + 423.779 € a sus hijas vía la sociedad Whathefav S.L.), **174 transferencias por 2,6 M€ (2020-2025)**, **40 empresas y 60 personas en el grafo UDEF** — ya anotados en barridos previos; siguen pendientes de primario. (Las hijas son familiares sin rol procesal formal: [doc 04 — "Ética"] prohíbe ficharlas; fuera del inventario hasta que un auto les atribuya rol.)
+- **Presunta inflación por la SEPI de empleos, cuota de mercado y situación financiera** de Plus Ultra para aprobar el rescate (El Español 27-may; El Debate 23-may; Libertad Digital 27-may, esta última sobre el interrogatorio de la fiscal a los peritos). Es la línea "inflación de datos de viabilidad" ya pendiente; ahora con más cobertura, pero deriva de prueba pericial/sumario bajo secreto. Pendiente de pericial o auto citable.
+
+### Contexto (no procesal, no modelado)
+
+- **Estado de devolución del préstamo**: a 23-may-2026 Plus Ultra no habría devuelto principal de los 53 M€ y sí ~12 M€ en intereses (El Debate). Dato contextual de seguimiento, no hito procesal.
+- **4 órdenes internacionales de detención** dictadas por Calama por blanqueo y tráfico de influencias (Vozpópuli; Euronews). Ya señalado como pendiente: verificar si están contenidas en el auto del 19-may ya catalogado o si requieren hito propio; pendiente del auto íntegro en CENDOJ.
+- **Investigación paralela del DOJ de EEUU** sobre presunto blanqueo de fondos venezolanos vinculados al entorno: sin N4 cruzado suficiente en este barrido. Sigue como seguimiento.
+
+### Cruce con casos del inventario
+
+- **`leire-diez` (nexo SEPI / Vicente Fernández Guerrero)** — **YA materializada** en el repo: existe `content/relaciones-entre-casos/leire-diez-conexion-factual-plus-ultra.yaml` (tipo `conexion_factual`), creada por la sesión que arrancó el caso Leire. El barrido reconfirma el nexo con fuentes nuevas: Vozpópuli ("El expresidente de la SEPI sondeó al entorno de Plus Ultra en la antesala del rescate") + Público ("El expresidente de la SEPI detenido junto a Leire Díez cobró 219.000 euros de Servinabar"). Fernández Guerrero presidió la SEPI (jun-2018/oct-2019) y mantuvo funciones ejecutivas hasta abr-2021, coincidiendo con la aprobación del rescate Plus Ultra (9-mar-2021); en Leire se le investiga por presuntas comisiones de operaciones SEPI 2021-2023. Nota de enum para futuras pasadas: el schema **NO contiene `vinculo_funcional`** (como suponían la versión previa de NOTES y la skill); los valores válidos son `derivado_de`, `comparte_actor_con`, `conexion_factual`, `misma_trama`, `contradiccion_factual`. La relación existente usa `conexion_factual`, que es aceptable; `comparte_actor_con` también encajaría (organización pivote SEPI + persona Fernández Guerrero). No se toca el fichero existente (lo gestiona reconciliación). **NO** se ficha a Fernández Guerrero como `RolEnCaso` en Plus Ultra: no tiene rol procesal formal en esta causa, sólo es persona mencionada en cobertura.
+- **`koldo` (nexo testaferro / sociedades pantalla)** — la UDEF habría conectado las dos tramas (El Independiente 25-may: "La UDEF conecta el 'caso Plus Ultra' con la trama Koldo a través de pagos a testaferros y contratos simulados"; Infobae 26-may; ElNacional.cat). Nexo concreto citado: Apamate Corporate and Trust firmó un contrato de 120.000 € con la consultora Análisis Relevante (vinculada a Julio Martínez, ya investigado en Plus Ultra) y pagó 300.000 € a Deluxe Fortune (sociedad vinculada a Víctor de Aldama, del caso Koldo). **NO se propone aún** `RelacionEntreCasos` plus-ultra↔koldo: el nexo procede del sumario bajo secreto y de cobertura, sin auto/informe que lo fije; esperar a primario para evitar relación basada en filtración. Anotado para seguimiento; si se confirma, candidata a `comparte_actor_con` (Julio Martínez / Aldama).
+- **`begona-gomez`, `david-sanchez-badajoz`** — aparecen agrupados con Plus Ultra en piezas de "casos que cercan al PSOE / entorno de Sánchez" (eldiario.es; emol.com 27-may), pero es **contexto político compartido, no nexo procesal**: distintos jueces, distintos órganos, sin persona/organización pivote común en el procedimiento. NO se propone relación (guardarraíl: "ambos afectan al PSOE" no es `RelacionEntreCasos`).
+
+### Conclusión del barrido
+
+Esta pasada aporta: (1) **un hito nuevo** `auto-acusaciones-populares-pp-2026-05-29` con su hecho, dos documentos N4 y dos roles (PP, Vox); (2) consolidación de figuras económicas bajo secreto pendientes de primario (16 M€ desviados, 1,95 M€ al entorno, etc.); (3) propuesta formal de la relación `plus-ultra` ↔ `leire-diez` con el tipo de enum correcto. Cascada de coherencia sobre `caso.yaml`: `estado_actual` actualizado para reflejar la agrupación de las acusaciones populares bajo el PP; `ultima_revision_editorial` y `estado_ficha.fecha_actualizacion` a 2026-05-30. `hechos_clave`, `que_se_investiga`, `fase_actual` (sigue `instruccion`), `delitos_atribuidos_en_la_causa` y `organo_judicial_id` no cambian (la agrupación no altera objeto, fase ni calificación). `estado_ficha.conexiones` se mantiene `parcial` (la `RelacionEntreCasos` la materializa la reconciliación).
 
 ---
 

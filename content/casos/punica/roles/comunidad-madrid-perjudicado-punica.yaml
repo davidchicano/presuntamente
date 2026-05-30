@@ -1,0 +1,17 @@
+id: comunidad-madrid-perjudicado-punica
+caso_id: punica
+sujeto_tipo: organizacion
+sujeto_organizacion_id: comunidad-de-madrid
+rol: perjudicado
+fecha_inicio: "2014-10-27"
+hito_origen_id: operacion-uco-detenciones-punica-2014-10-27
+notas: |
+  La Comunidad de Madrid y sus administraciones locales figuran entre
+  las administraciones presuntamente perjudicadas por las
+  adjudicaciones y contratos investigados en la macrocausa. La
+  determinación del perjuicio concreto y de la responsabilidad civil
+  corresponde a cada pieza; rige la presunción de inocencia respecto
+  de los investigados y condenados no firmes.
+  # LLM-incierto: la personación formal como acusación particular o la
+  # condición de perjudicado de cada administración local concreta no se
+  # ha verificado pieza por pieza; revisar al modelar las piezas menores.

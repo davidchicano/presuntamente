@@ -1,0 +1,17 @@
+id: francisco-gonzalez-procesado-bbva
+caso_id: tandem
+sujeto_tipo: persona
+sujeto_persona_id: francisco-gonzalez-rodriguez
+rol: procesado
+delitos_atribuidos:
+  - cohecho
+  - revelacion-de-secretos
+fecha_inicio: "2026-02-20"
+hito_origen_id: procesamiento-bbva-francisco-gonzalez-pieza-9-2026-02
+notas: |
+  Francisco González Rodríguez, expresidente del BBVA, fue procesado en
+  la pieza separada nº 9 del caso Tándem (pieza BBVA/Trampa) al confirmar
+  la Sala de lo Penal de la AN en febrero de 2026 el auto de apertura del
+  procedimiento abreviado. La Fiscalía solicita 173 años de prisión.
+  La causa está pendiente de señalamiento de juicio oral. Rige la
+  presunción de inocencia mientras no recaiga sentencia firme.

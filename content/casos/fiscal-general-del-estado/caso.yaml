@@ -69,7 +69,7 @@ sintesis_caso:
     - "El Tribunal Supremo investigó al entonces Fiscal General del Estado, Álvaro García Ortiz, y a la entonces Fiscal Jefa Provincial de Madrid, Pilar Rodríguez Fernández."
     - "El Supremo acordó el sobreseimiento respecto de Rodríguez Fernández."
     - "García Ortiz fue condenado por revelación de datos reservados."
-  estado_actual: "La condena es firme en la jurisdicción ordinaria, aunque hay recursos de amparo ante el Tribunal Constitucional."
+  estado_actual: "La condena es firme en la jurisdicción ordinaria. Siguen pendientes de admisión a trámite los recursos de amparo de la Fiscalía y de la defensa ante el Tribunal Constitucional. En paralelo, el Gobierno tramita una solicitud de indulto sobre la que la Fiscalía ha informado a favor del indulto parcial; la decisión final corresponde al Consejo de Ministros y está pendiente."
   cifras_clave:
     - "7.200 € de multa"
     - "2 años de inhabilitación especial"
@@ -102,7 +102,7 @@ resumen_cifras: |
   votos frente a dos.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-27"
+ultima_revision_editorial: "2026-05-30"
 nivel_relevancia_editorial: capital
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
@@ -119,4 +119,4 @@ estado_ficha:
   conexiones: pendiente
   cobertura_mediatica_general: parcial
   revision_editorial: completo
-  fecha_actualizacion: "2026-05-26"
+  fecha_actualizacion: "2026-05-30"

@@ -1,0 +1,15 @@
+id: cobertura-elespanol-noos-sentencia-ts
+tipo: articulo_prensa
+titulo: "Lea la sentencia completa del Caso Nóos"
+fecha_documento: "2018-06-12"
+fecha_publicacion: "2018-06-12"
+idioma: es
+productor_organizacion_id: el-espanol
+url_canonica: "https://www.elespanol.com/espana/tribunales/20180612/lea-sentencia-caso-noos/314468958_0.html"
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura de El Español (N4). Publicación del texto íntegro de la STS 277/2018 en la fecha
+  de su dictado. Fuente complementaria al N1 (nota CGPJ). Verificada contra nota CGPJ.
+estado_acceso: publico
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

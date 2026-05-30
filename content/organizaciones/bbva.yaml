@@ -1,0 +1,21 @@
+id: bbva
+nombre: "Banco Bilbao Vizcaya Argentaria"
+nombres_alternativos:
+  - "BBVA"
+  - "Banco Bilbao Vizcaya Argentaria S.A."
+tipo: entidad_financiera
+descripcion_corta: |
+  El Banco Bilbao Vizcaya Argentaria (BBVA) es una entidad bancaria
+  española con sede en Bilbao, cotizada en bolsa. En el marco del caso
+  Tándem, pieza separada nº 9 (conocida mediáticamente como pieza
+  BBVA o Trampa), la Sala de lo Penal de la Audiencia Nacional confirmó
+  en febrero de 2026 el procesamiento de la entidad junto a su
+  expresidente Francisco González Rodríguez y otros trece imputados
+  por haber contratado entre 2004 y 2016 los servicios de la empresa
+  Cenyt, vinculada al comisario Villarejo, para la realización de
+  encargos presuntamente ilegales consistentes en vigilancias,
+  escuchas y consultas de bases de datos reservadas.
+  La Fiscalía Anticorrupción solicita en su escrito de acusación una
+  multa de 180 millones de euros para la entidad.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

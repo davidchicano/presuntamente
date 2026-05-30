@@ -1,0 +1,30 @@
+id: miguel-blesa-presidente-caja-madrid
+naturaleza: cargo_directivo_empresa_publica
+descripcion: >-
+  Presidente de Caja Madrid desde 1996 hasta enero de 2010. En su etapa como
+  presidente implanto el sistema de tarjetas de credito de empresa cuyo uso no
+  declarado es el nucleo del caso tarjetas-black. Fue condenado en primera
+  instancia por la Audiencia Nacional en sentencia de 23 de febrero de 2017
+  por apropiacion indebida; fallecio en julio de 2017 antes de que el Tribunal
+  Supremo dictara sentencia de casacion, por lo que su responsabilidad penal
+  quedo extinguida por fallecimiento (art. 130.1.1.a CP) sin existir condena
+  firme en su contra.
+sujeto_persona_id: miguel-blesa
+objeto_organizacion_id: caja-madrid
+cargo_o_rol: "Presidente de Caja Madrid"
+desde: "1996-01-01"
+hasta: "2010-01-01"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+relevancia_para_caso_ids: [tarjetas-black]
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: >-
+      La sentencia de la Audiencia Nacional de 23 de febrero de 2017 identifica
+      a Miguel Blesa de la Parra como presidente de Caja Madrid en el periodo
+      de implantacion y uso de las tarjetas de credito de empresa cuyo cargo a
+      la entidad fuera de la retribucion declarada es el objeto del procedimiento.
+      El fallo lo condena por apropiacion indebida.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

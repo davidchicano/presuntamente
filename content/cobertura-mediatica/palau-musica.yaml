@@ -1,0 +1,407 @@
+# Cobertura mediática general — caso palau-musica
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: palau-musica
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Palau"
+    - "caso Palau de la Música"
+    - "Fèlix Millet"
+    - "Jordi Montull"
+    - "CDC Convergència comisiones Palau"
+    - "Palau de la Música expolio"
+  ventanas_temporales:
+    - desde: "2009-07-01"
+      hasta: "2009-12-31"
+      notas: >-
+        Registro policial el 23 de julio de 2009. Dimisión de Millet y Montull
+        (27 jul). Confesión pública del expolio (16 sept 2009). Hito fundacional
+        del caso en la cobertura mediática.
+    - desde: "2016-07-01"
+      hasta: "2018-01-31"
+      notas: >-
+        Séptimo aniversario del estallido sin juicio (jul 2016). Inicio del
+        juicio oral en la Sección 10ª de la AP Barcelona (1 mar 2017). Visto
+        para sentencia (16 jun 2017). Sentencia AP Barcelona hecha pública
+        (15 ene 2018).
+    - desde: "2019-07-01"
+      hasta: "2020-07-01"
+      notas: >-
+        Décimo aniversario (jul 2019). Deliberación del Tribunal Supremo
+        sobre 16 recursos (nov 2019). STS 813/2020 firme (30 abr 2020).
+        Ingreso en prisión de Millet y Osàcar (25 jun 2020).
+    - desde: "2022-01-01"
+      hasta: "2022-12-31"
+      notas: >-
+        AP Barcelona paraliza pieza civil sobre sucesores CDC (feb 2022).
+        Archivo causa contra Junts/PDeCat (feb 2022). Recuperación de más
+        de 12 millones de euros (nov 2022).
+    - desde: "2023-01-01"
+      hasta: "2026-05-30"
+      notas: >-
+        Quinto aniversario de la sentencia AP (ene 2023). Fallecimiento de
+        Fèlix Millet (16 mar 2023). Hijas de Millet frenan devolución
+        (oct 2023). Investigación hijas por ocultación de rentas (2024-2025).
+        Palau compra mansión Millet en L'Ametlla (feb 2025).
+  fuentes_buscadas:
+    - eldiario.es
+    - publico.es
+    - okdiario.com
+    - vozpopuli.com
+    - infolibre.es
+    - confilegal.com
+    - cronicaglobal.elespanol.com
+  criterios_inclusion: >-
+    Se incluyen piezas que mencionan el caso en el titular o en el lead. Se
+    incluyen noticias, reportajes, análisis y crónicas sobre los hitos
+    procesales clave (sentencias, ingresos en prisión, ejecución, fallecimiento
+    del condenado). Se incluyen piezas de agencia republicadas cuando el
+    titular o lead las identifica claramente con el caso. No se incluyen
+    columnas de opinión de articulistas externos sin desarrollo factual propio.
+  criterios_exclusion: >-
+    Se excluyen menciones de pasada en piezas sobre el «cas Palau» por
+    independencia o financiación de la Generalitat si el caso Palau de la
+    Música no es el asunto central. Se excluyen republicaciones palabra por
+    palabra de agencia sin valor añadido. Se excluyen medios con paywall
+    duro no accesibles al agente (elpais.com, elmundo.es, abc.es,
+    lavanguardia.com). No se buscó en medios en catalán (ARA, Vilaweb,
+    NacióDigital, 324) en esta primera pasada; constituyen un corpus propio
+    relevante para una segunda pasada dado que el caso tiene una dimensión
+    editorial barcelonesa muy marcada.
+  notas: >-
+    Rastreo inicial v1 sobre cinco ventanas temporales (jul 2009 – may 2026).
+    La causa tiene sentencia firme desde 2020 y un tramo de ejecución todavía
+    activo. El País, El Mundo, ABC y La Vanguardia tienen cobertura extensa
+    y propia no incluida por restricciones de acceso del agente. La cobertura
+    en catalán (ARA, Vilaweb, 324/TV3) tiene entidad editorial propia y se
+    deja para una segunda pasada. Las url_archivo se rellenan con
+    pnpm archive:catchup (ver docs/web/features/archive-org-pre-commit.md).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: APERTURA Y CONFESIÓN (jul–dic 2009) ─────────────────────────
+
+  - id: eldiario-7-anos-estallido-sin-juicio-2016-07-22
+    url: "https://www.eldiario.es/catalunya/politica/estallido-palau-convergencia-expolio-millet_1_3905285.html"
+    medio_id: eldiario-es
+    titular: "Siete años del estallido del caso Palau: Convergència y el expolio de Millet siguen sin juicio"
+    fecha_publicacion: "2016-07-22"
+    autor: "Oriol Solé Altimira"
+    resumen: >-
+      Pieza de balance en el séptimo aniversario del registro policial en el
+      Palau (23 jul 2009), que destaca que la investigación sobre el expolio
+      de 23 millones y las comisiones a CDC —más de seis millones a través de
+      Ferrovial— seguía sin juicio oral celebrado siete años después del
+      escándalo. Reconstituye los hechos fundacionales del caso y la cadena
+      de imputaciones desde la confesión de Millet y Montull en septiembre
+      de 2009.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      Pieza de balance que también documenta la apertura del caso (jul 2009).
+      Publicada en 2016 pero cubre la ventana 2009-2016 con perspectiva
+      histórica; se incluye aquí como referencia del hito de apertura.
+
+  # ── VENTANA 2: JUICIO Y SENTENCIA AP BARCELONA (2016–ene 2018) ──────────────
+
+  - id: publico-sentencia-ap-condena-millet-montull-2018-01-15
+    url: "https://publico.es/politica/caso-palau-audiencia-condena-9-anos-millet-7-montull-expolio-palau-musica.html"
+    medio_id: publico-es
+    titular: "La Audiencia condena a 9 años a Millet y a 7 a Montull por el expolio del Palau de la Música"
+    fecha_publicacion: "2018-01-15"
+    autor: "Agencias"
+    resumen: >-
+      La Sección 10ª de la Audiencia Provincial de Barcelona condena al
+      expresidente del Palau Fèlix Millet a nueve años y ocho meses de prisión
+      y al exdirector administrativo Jordi Montull a siete años y seis meses,
+      por el expolio de 23,6 millones de euros y por la financiación ilegal de
+      Convergència Democràtica de Catalunya a través de comisiones de Ferrovial.
+      La pieza recoge la notificación pública de la sentencia de primera
+      instancia firmada el 29 de diciembre de 2017.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-cdc-condenada-comisiones-sentencia-ap-2018-01-15
+    url: "https://www.eldiario.es/catalunya/politica/tribunal-caso-palau-convergencia_1_2924879.html"
+    medio_id: eldiario-es
+    titular: "Convergència, condenada por cobrar comisiones en el caso Palau"
+    fecha_publicacion: "2018-01-15"
+    autor: "Oriol Solé Altimira"
+    resumen: >-
+      ElDiario.es cubre la sentencia de la AP Barcelona poniendo el foco en la
+      condena a Convergència Democràtica de Catalunya: el partido queda
+      condenado al comiso de 6,67 millones de euros acreditados como comisiones
+      ilegales pagadas por Ferrovial-Agroman a cambio de obra pública en
+      Cataluña. La sentencia declara probado el «acuerdo criminal» entre el
+      extesorero Daniel Osàcar y la constructora.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: publico-sentencia-ap-condena-millet-montull-2018-01-15
+    notas: >-
+      Pieza independiente de elDiario.es sobre el mismo hito de sentencia de
+      primera instancia, con ángulo editorial sobre el eje CDC/financiación
+      ilegal. No es republicación de agencia.
+
+  - id: okdiario-sentencia-ap-millet-montull-2018-01-15
+    url: "https://okdiario.com/espana/caso-palau-millet-montull-condenados-9-7-anos-prision-1692616"
+    medio_id: okdiario
+    titular: "Caso Palau: Millet y Montull condenados a 9 y 7 años de prisión"
+    fecha_publicacion: "2018-01-15"
+    autor: "Miguel Ángel Pérez"
+    resumen: >-
+      Okdiario informa de la condena de la AP Barcelona a Fèlix Millet y Jordi
+      Montull, detallando las penas de prisión y las cifras del expolio.
+      La pieza subraya también la condena a CDC al comiso de 6,6 millones
+      de euros por la financiación ilegal del partido a través de comisiones
+      de Ferrovial adjudicataria de obra pública.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: publico-sentencia-ap-condena-millet-montull-2018-01-15
+    notas: >-
+      Pieza independiente de Okdiario sobre el mismo hito de sentencia AP.
+      No es republicación de agencia.
+
+  # ── VENTANA 3: DÉCIMO ANIVERSARIO Y STS 813/2020 (2019–jun 2020) ────────────
+
+  - id: eldiario-10-anos-devuelto-solo-6m-2019-07-21
+    url: "https://www.eldiario.es/catalunya/politica/palau-millet-montull-devuelto-saquearon_1_1430703.html"
+    medio_id: eldiario-es
+    titular: "Diez años del caso Palau: Millet y Montull han devuelto solo seis millones de los 23 que saquearon"
+    fecha_publicacion: "2019-07-21"
+    autor: "Oriol Solé Altimira"
+    resumen: >-
+      Pieza de balance en el décimo aniversario del registro policial en el
+      Palau: una década después de la confesión del expolio de 23 millones,
+      los dos principales condenados sólo habían restituido seis millones
+      al Palau y sus entidades gestoras. El artículo constata que la
+      sentencia de la AP Barcelona (2018) estaba recurrida ante el Tribunal
+      Supremo sin resolución.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-sts-813-cdc-condena-confirmada-2020-04-30
+    url: "https://www.eldiario.es/catalunya/politica/supremo-confirma-convergencia-comisiones-palau_1_1261438.html"
+    medio_id: eldiario-es
+    titular: "El Supremo confirma la condena a Convergència por cobrar comisiones ilegales en el caso Palau"
+    fecha_publicacion: "2020-04-30"
+    autor: "Oriol Solé Altimira"
+    resumen: >-
+      La Sala Segunda del Tribunal Supremo ratifica la STS 813/2020 que
+      confirma las condenas a Fèlix Millet (9 años y 8 meses), Jordi Montull
+      (7 años y 6 meses) y Daniel Osàcar (3 años y 6 meses), y mantiene el
+      comiso de 6,67 millones de euros a Convergència Democràtica de Catalunya
+      por las comisiones recibidas de Ferrovial-Agroman. La pieza subraya
+      que el acuerdo criminal para el cobro de las «mordidas» estaba probado
+      desde el comienzo de la trama.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-sts-confirmacion-condenas-2020-04-30
+    url: "https://www.publico.es/politica/supremo-confirma-condenas-millet-montull-caso-palau.html"
+    medio_id: publico-es
+    titular: "El Supremo confirma las condenas de Millet y Montull por el 'caso Palau'"
+    fecha_publicacion: "2020-04-30"
+    autor: "EFE"
+    resumen: >-
+      Pieza de agencia EFE republicada por Público que informa de la
+      sentencia firme del Tribunal Supremo STS 813/2020: confirma penas de 9
+      años y 8 meses de prisión y multa de 4,1 millones de euros para Millet,
+      y 7 años y 6 meses más 2,9 millones de euros de multa para Montull.
+      El Supremo rebaja las penas a Gemma Montull (de 4 años y 6 meses a
+      4 años) y a Osàcar (de 4 años y 5 meses a 3 años y 6 meses).
+    tipo_pieza: pieza_agencia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-sts-813-cdc-condena-confirmada-2020-04-30
+    notas: >-
+      Republicación EFE; la cobertura propia es la de elDiario.es del mismo día.
+
+  - id: vozpopuli-sts-corrupcion-convergencia-2020-05-01
+    url: "https://www.vozpopuli.com/espana/supremo-corrupcion-convergencia-caso-palau_0_1234977124.html"
+    medio_id: vozpopuli
+    titular: "El Supremo evidencia la corrupción de Convergència en la condena del 'caso Palau'"
+    fecha_publicacion: "2020-05-01"
+    autor: "Liliana Ochoa"
+    resumen: >-
+      Vozpópuli analiza la STS 813/2020 del Tribunal Supremo subrayando el
+      pasaje de la resolución en el que el alto tribunal establece que desde
+      el inicio de la trama el objetivo del tráfico de influencias era la
+      consecución de dádivas para el partido Convergència. La pieza describe
+      el esquema por el que Ferrovial pagaba un 4% sobre el importe de obra
+      pública adjudicada, distribuyendo un 2,5% a CDC y el 1,5% restante
+      a Millet y Montull como mediadores.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: confilegal-sts-millet-condena-2020-04-30
+    url: "https://confilegal.com/20200430-el-supremo-confirma-la-condena-a-9-anos-y-8-meses-de-prision-a-felix-millet-por-el-caso-palau/"
+    medio_id: confilegal
+    titular: "El Supremo confirma la condena a 9 años y 8 meses de prisión a Felix Millet por el 'caso Palau'"
+    fecha_publicacion: "2020-04-30"
+    autor: "Irene Casanueva"
+    resumen: >-
+      Confilegal informa de la ratificación de la STS 813/2020, detallando
+      las penas firmes para cada condenado y la confirmación del comiso de
+      6,67 millones de euros a CDC. La pieza recoge los fundamentos jurídicos
+      de la Sala Segunda y las cifras de responsabilidad civil distribuida
+      entre la Fundació, la Associació y el Consorci del Palau.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    pieza_referenciada_id: eldiario-sts-813-cdc-condena-confirmada-2020-04-30
+    notas: >-
+      Pieza independiente de Confilegal con enfoque jurídico. No es agencia.
+
+  - id: publico-millet-osacar-prision-2020-06-25
+    url: "https://www.publico.es/politica/caso-palau-felix-millet-entra-prision-brians-2-cumplir-nueve-anos-desfalco-palau.html"
+    medio_id: publico-es
+    titular: "Millet y Osàcar ingresan en prisión para cumplir condena por el caso Palau"
+    fecha_publicacion: "2020-06-25"
+    autor: "Agencias"
+    resumen: >-
+      Fèlix Millet ingresa en el centro penitenciario Brians 2 (Sant Esteve
+      Sesrovires, Barcelona) en ambulancia, justo cuando expira el plazo fijado
+      por el Tribunal Supremo. Daniel Osàcar también ingresa en prisión el
+      mismo día. Los condenados llegan en un estado de salud que ya anticipa
+      las solicitudes futuras de tercer grado. Jordi Montull había sido el
+      primero en ingresar.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 4: EJECUCIÓN Y PIEZA CDC (ene–dic 2022) ─────────────────────────
+
+  - id: infolibre-archivo-junts-pdecat-6-6m-2022-02-25
+    url: "https://www.infolibre.es/politica/archivada-causa-junts-pdecat-6-6-millones-caso-palau_1_1220476.html"
+    medio_id: infolibre
+    titular: "Archivada la causa contra Junts y PDeCAT por los 6,6 millones del 'caso Palau'"
+    fecha_publicacion: "2022-02-25"
+    autor: "infoLibre"
+    resumen: >-
+      La Sección 10ª de la AP Barcelona archiva la pieza civil abierta para
+      recuperar los 6,67 millones de euros del comiso acordado a CDC de sus
+      sucesores Junts per Catalunya y PDeCat, al declararse incompetente ante
+      el procedimiento concursal de CDC en el Juzgado Mercantil 9 de
+      Barcelona. El Palau de la Música se personó en el concurso para
+      recuperar su crédito.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-recuperacion-12m-expolio-2022-11-07
+    url: "https://www.eldiario.es/catalunya/justicia-logra-recuperar-12-millones-saqueo-palau-musica_1_9689454.html"
+    medio_id: eldiario-es
+    titular: "La Justicia logra recuperar más de 12 millones del saqueo del Palau de la Música"
+    fecha_publicacion: "2022-11-07"
+    autor: "Oriol Solé Altimira"
+    resumen: >-
+      La Sección 10ª de la AP Barcelona informa de que las entidades perjudicadas
+      —Fundació Orfeó Català-Palau de la Música Catalana, Associació Orfeó
+      Català y Consorci del Palau— han recuperado más de 12 millones de euros
+      de los 23,2 millones declarados como responsabilidad civil en sentencia
+      firme. La pieza contextualiza el estado de la ejecución y las
+      dificultades para recuperar el resto del importe.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 5: MILLET FALLECE Y EJECUCIÓN CONTINUA (2023–2026) ──────────────
+
+  - id: cronica-global-5-anos-sentencia-2023-01-15
+    url: "https://cronicaglobal.elespanol.com/vida/20230115/cinco-sentencia-del-palau-encuentran-responsables-expolio/733926630_0.html"
+    medio_id: cronica-global
+    titular: "Cinco años de la sentencia del 'caso Palau': así se encuentran hoy los responsables del expolio"
+    fecha_publicacion: "2023-01-15"
+    autor: "Sara Cid"
+    resumen: >-
+      Pieza de balance en el quinto aniversario de la sentencia de la AP
+      Barcelona: cinco años después, la mitad del dinero expoliado no ha sido
+      recuperada. La pieza repasa el estado penitenciario de cada condenado
+      (Millet en tercer grado desde noviembre 2022, Montull en tercer grado
+      desde enero 2023, Osàcar en tercer grado desde el inicio) y la situación
+      de la responsabilidad civil pendiente.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: publico-muerte-millet-2023-03-16
+    url: "https://www.publico.es/sociedad/muere-87-anos-felix-millet-saqueador-confeso-condenado-palau-musica.html"
+    medio_id: publico-es
+    titular: "Muere a los 87 años Fèlix Millet, el saqueador confeso y condenado del Palau de la Música"
+    fecha_publicacion: "2023-03-16"
+    autor: "Marc Font"
+    resumen: >-
+      El expresidente del Palau de la Música Fèlix Millet fallece a los 87 años
+      en una residencia donde cumplía en tercer grado la condena firme de nueve
+      años y ocho meses de prisión. Había cumplido algo más de dos años en
+      prisión efectiva tras acceder al tercer grado por deterioro de salud.
+      Público recuerda su perfil como miembro de la burguesía barcelonesa y
+      los fundamentos del expolio por el que fue condenado.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-muerte-millet-no-frena-venta-bienes-2023-03-17
+    url: "https://www.eldiario.es/catalunya/muerte-felix-millet-no-frena-venta-bienes-devolver-saqueo-palau_1_10043959.html"
+    medio_id: eldiario-es
+    titular: "La muerte de Fèlix Millet no frena la venta de sus bienes para devolver el saqueo del Palau"
+    fecha_publicacion: "2023-03-17"
+    autor: "Oriol Solé Altimira"
+    resumen: >-
+      El día después del fallecimiento de Millet, elDiario.es informa de que
+      la AP Barcelona confirmó que la responsabilidad civil no se extingue con
+      la muerte y que los bienes del fallecido seguirán siendo subastados para
+      resarcir al Palau. Dos inmuebles —una masía en L'Ametlla del Vallès
+      valorada en más de 1,9 millones y un cuadro valorado en más de 200.000
+      euros— serán sacados a subasta.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: cronica-global-hijas-millet-frenan-devolucion-2023-10-31
+    url: "https://cronicaglobal.elespanol.com/business/20231031/las-de-felix-millet-del-palau-musica/806169603_0.html"
+    medio_id: cronica-global
+    titular: "Las hijas de Fèlix Millet frenan la devolución del expolio del Palau de la Música"
+    fecha_publicacion: "2023-10-31"
+    autor: "Redacción"
+    resumen: >-
+      La declaración del concurso de acreedores de la herencia de Marta Vallès
+      Guarro (cónyuge fallecida de Millet, responsable a título lucrativo)
+      paraliza la ejecución de la responsabilidad civil gestionada por la AP
+      Barcelona. Las hijas de Millet son señaladas como obstáculo para la
+      recuperación del dinero expoliado al Palau de la Música.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      Hecho relevante para la ejecución del comiso y la responsabilidad civil;
+      hallazgo pendiente de valorar si merece un nuevo Hito en el caso.

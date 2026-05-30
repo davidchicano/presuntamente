@@ -1,0 +1,18 @@
+id: pujol-inicio-investigacion-2014
+caso_id: pujol
+tipo: auto_diligencias
+fecha: "2014-07-01"
+fecha_precision: mes
+titulo: "Apertura de la investigación sobre el patrimonio de la familia Pujol"
+descripcion: >-
+  El Juzgado Central de Instrucción nº 5 de la Audiencia Nacional, entonces a
+  cargo del magistrado Pablo Ruz, abrió diligencias para investigar el origen
+  del patrimonio de la familia Pujol en el extranjero.
+# LLM-incierto: fecha exacta de incoación de las diligencias pendiente de
+# verificar contra fuente oficial; marcada fecha_precision mes (julio 2014).
+personas_afectadas:
+  - jordi-pujol-soley
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+  - audiencia-nacional
+fase_resultante: instruccion

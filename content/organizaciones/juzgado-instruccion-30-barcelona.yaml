@@ -1,0 +1,18 @@
+id: juzgado-instruccion-30-barcelona
+nombre: "Juzgado de Instrucción nº 30 de Barcelona"
+nombres_alternativos:
+  - "JI 30 Barcelona"
+  - "Juzgado de Instrucción número 30 de Barcelona"
+tipo: juzgado
+jurisdiccion: penal
+ambito_territorial: provincial
+localidad: "Barcelona"
+provincia: "Barcelona"
+comunidad_autonoma: "Cataluña"
+descripcion_corta: >-
+  Juzgado de Instrucción de Barcelona que instruyó el caso Palau de la Música
+  Catalana desde la apertura del procedimiento en julio de 2009 hasta el envío
+  a la Audiencia Provincial de Barcelona para juicio oral en 2016. La causa
+  pasó por varios jueces instructores sucesivos.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

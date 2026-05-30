@@ -1,0 +1,61 @@
+id: espionaje-privado-cenyt-actividad-atribuida
+caso_id: tandem
+enunciado: |
+  La Fiscalía Anticorrupción atribuye a José Manuel Villarejo Pérez que,
+  valiéndose de su condición de comisario activo del Cuerpo Nacional de
+  Policía y del acceso privilegiado a bases de datos reservadas del Estado,
+  prestó a través de su empresa Cenyt Organizational Consultancy S.L. y de
+  las restantes sociedades del grupo Cenyt servicios de espionaje,
+  vigilancia e inteligencia privada a clientes corporativos y particulares
+  entre 2004 y 2017. Según el instructor, Cenyt facturó más de diez millones
+  de euros en encargos de dudosa legalidad, incluidos contratos con el BBVA
+  (pieza 9), con Iberdrola (pieza separada relativa a esa empresa), y con
+  clientes particulares (piezas Iron, Land y Pintor entre otras). El
+  instrumento central de la actividad atribuida era el uso de su posición
+  policial para acceder a información reservada y elaborar informes que
+  simulaban notas policiales. La condición de investigado/procesado no
+  implica valoración de culpabilidad; rige la presunción de inocencia.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2004-01-01"
+  hasta: "2017-11-03"
+  precision: rango
+personas_implicadas:
+  - jose-manuel-villarejo
+  - rafael-redondo-rodriguez
+  - gemma-alcala-garces
+organizaciones_implicadas:
+  - cenyt
+  - direccion-general-policia
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: elindependiente-detencion-villarejo-prision-2017-11-05
+    pasaje: "La investigación uncovered an alleged corruption network structured around Villarejo, who, using his company Cenyt, allegedly offered intelligence and espionage services to private clients."
+  - documento_id: cgpj-nota-condena-villarejo-iron-land-pintor-2023-07-24
+    pasaje: "Nota oficial del CGPJ sobre la condena de la Sección Cuarta AN a Villarejo a 19 años por revelación de secretos y falsedad."
+nivel_fuente_efectivo: 4
+importe: 10000000
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: comision_ilicita
+importe_nota: >-
+  El instructor del JCI nº 6 estima que Cenyt facturó más de 10 millones de
+  euros en encargos de dudosa legalidad en el conjunto del caso Tándem
+  (múltiples piezas). Esta cifra es una estimación del procedimiento
+  troncal, no suma de piezas individuales. No se suman aquí los importes
+  de piezas concretas para evitar doble conteo.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: cenyt
+    papel: activo
+    nota: >-
+      Cenyt es el vehículo de la actividad atribuida; la facturación estimada
+      de más de 10 M€ es el objeto de la conducta investigada, no percepción
+      confirmada por sentencia firme.
+  - sujeto_tipo: persona
+    sujeto: jose-manuel-villarejo
+    papel: activo
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

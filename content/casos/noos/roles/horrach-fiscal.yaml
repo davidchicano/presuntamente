@@ -1,0 +1,13 @@
+id: horrach-fiscal
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: pedro-horrach
+rol: fiscal
+fecha_inicio: "2010-07-20"
+fecha_fin: "2015-01-01"
+# LLM-incierto: fecha exacta de fin de actuación del fiscal Horrach; aproximada.
+notas: |
+  Fiscal de la Fiscalía Anticorrupción asignado al caso Nóos durante la instrucción.
+  Conocido por haber abogado reiteradamente por no investigar a la Infanta Cristina,
+  posición enfrentada a la del juez instructor Castro. La Fiscalía Anticorrupción fue
+  acusadora en el juicio oral pero no actuó como acusación particular de la Infanta.

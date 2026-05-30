@@ -1,0 +1,22 @@
+id: rol-vicente-fernandez-guerrero-condenado
+caso_id: eres-andalucia
+sujeto_tipo: persona
+sujeto_persona_id: vicente-fernandez-guerrero
+rol: condenado_firme
+delitos_atribuidos:
+  - prevaricacion
+  - malversacion-caudales-publicos
+fecha_inicio: "2022-07-26"
+hito_origen_id: hito-sentencia-ts-casacion-2022
+notas: |
+  Vicente Fernández Guerrero, exconsejero de Empleo de la Junta de
+  Andalucía, figura entre los condenados de la pieza política. Toda
+  referencia a su responsabilidad se limita a lo declarado por los
+  tribunales. Rige la presunción de inocencia para cualquier extremo no
+  amparado por sentencia.
+  # LLM-incierto: delitos exactos por los que fue condenado (prevaricación
+  # y/o malversación) y la pena, sin verificar en vivo. Se ha marcado
+  # provisionalmente con prevaricación y malversación por ser exconsejero
+  # de Empleo con atribución directa en el sistema; verificar contra el
+  # primario y, si el TC de 2024 le afecta en la malversación, anotar el
+  # efecto del amparo.

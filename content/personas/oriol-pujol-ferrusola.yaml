@@ -1,0 +1,17 @@
+id: oriol-pujol-ferrusola
+nombre_completo: "Oriol Pujol Ferrusola"
+nombres_alternativos:
+  - "Oriol Pujol"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Secretario general de Convergència Democràtica de Catalunya"
+    organizacion_id: convergencia-democratica-de-catalunya
+    desde: "2003-01-01"
+    hasta: "2013-01-01"
+fecha_nacimiento: "1966-08-25"
+biografia_corta: >-
+  Hijo de Jordi Pujol Soley. Fue secretario general de Convergència Democràtica
+  de Catalunya y diputado en el Parlament. Figura como investigado en la causa
+  de la Audiencia Nacional sobre el patrimonio familiar.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,17 @@
+id: briones-condenado-firme
+caso_id: forum-filatelico
+sujeto_tipo: persona
+sujeto_persona_id: francisco-briones
+rol: condenado_firme
+delitos_atribuidos:
+  - estafa
+  - insolvencia-punible
+  - falsedad-documental
+  - blanqueo-de-capitales
+fecha_inicio: "2020-03-05"
+hito_origen_id: sentencia-firme-ts-forum-2020-03-05
+notas: |
+  Condenado en sentencia firme STS 688/2019 de 5 de marzo de 2020 a
+  11 años y 10 meses de prisión, más multa de 49,7 millones de euros.
+  La sentencia del Tribunal Supremo es la última resolución del procedimiento
+  penal ordinario; no hay recurso ordinario pendiente.

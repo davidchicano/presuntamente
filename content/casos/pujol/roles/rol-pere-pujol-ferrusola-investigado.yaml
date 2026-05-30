@@ -1,0 +1,14 @@
+id: rol-pere-pujol-ferrusola-investigado
+caso_id: pujol
+sujeto_tipo: persona
+sujeto_persona_id: pere-pujol-ferrusola
+rol: investigado
+delitos_atribuidos:
+  - blanqueo-de-capitales
+  - organizacion-criminal
+fecha_inicio: "2014-07-01"
+notas: >-
+  Pere Pujol Ferrusola está investigado bajo plena presunción de inocencia. No
+  existe sentencia condenatoria en este procedimiento. La condición de
+  investigado no implica culpabilidad. Atribución de delitos pendiente de
+  verificar; ver NOTES.md.

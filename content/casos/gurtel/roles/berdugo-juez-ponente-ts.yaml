@@ -1,0 +1,11 @@
+id: berdugo-juez-ponente-ts
+caso_id: gurtel
+sujeto_tipo: persona
+sujeto_persona_id: juan-ramon-berdugo
+rol: juez_ponente
+fecha_inicio: "2020-10-14"
+hito_origen_id: gurtel-sentencia-firme-ts-2020
+notas: |
+  Magistrado ponente de la sentencia 507/2020 de la Sala Segunda del
+  Tribunal Supremo (ECLI:ES:TS:2020:3191) que resolvió los recursos de
+  casación de la Época I de Gürtel y confirmó su firmeza.

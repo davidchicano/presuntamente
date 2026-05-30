@@ -1,0 +1,28 @@
+id: tarjetas-black-sentencia-an-2017
+caso_id: tarjetas-black
+tipo: sentencia_primera_instancia
+fecha: "2017-02-23"
+fecha_precision: dia
+titulo: "Sentencia de la Audiencia Nacional: condena a la mayoria de acusados por apropiacion indebida"
+descripcion: |
+  La Sala de lo Penal de la Audiencia Nacional dicto sentencia el 23 de
+  febrero de 2017 condenando a la mayoria de los acusados por apropiacion
+  indebida en razon del uso de tarjetas de credito de empresa de Caja Madrid
+  y Bankia. Las penas se graduaron en funcion del importe dispuesto por cada
+  acusado. La sentencia no es firme; cabe recurso de casacion ante el Tribunal
+  Supremo. La condicion de condenados por sentencia de instancia no implica
+  firmeza ni decaimiento de la presuncion de inocencia hasta resolucion firme.
+  # LLM-incierto: numero de sentencia y seccion concreta de la Sala de lo Penal
+  # a verificar en CENDOJ / poderjudicial.es.
+documento_principal_id: sentencia-an-tarjetas-black-2017
+personas_afectadas:
+  - rodrigo-rato
+  - miguel-blesa
+organizaciones_afectadas:
+  - audiencia-nacional
+  - caja-madrid
+  - bankia
+hechos_introducidos:
+  - tarjetas-black-uso-tarjetas-opacas
+  - tarjetas-black-condena-an-2017
+fase_resultante: sentencia_primera_instancia

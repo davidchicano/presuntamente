@@ -1,0 +1,30 @@
+id: cambio-juez-castellon-pina-punica-2025-01-08
+caso_id: punica
+tipo: cambio_juez
+fecha: "2025-01-08"
+fecha_precision: dia
+titulo: "Antonio Piña Alonso sucede a Manuel García-Castellón como titular del Juzgado Central de Instrucción nº 6 y asume la instrucción de Púnica"
+descripcion: |
+  Por Acuerdo de 20 de junio de 2024 de la Comisión Permanente del
+  Consejo General del Poder Judicial, publicado en el «Boletín
+  Oficial del Estado» del 2 de septiembre de 2024 (BOE-A-2024-17653),
+  se declaró la jubilación forzosa por edad del magistrado Manuel
+  María García-Castellón García-Lomas, titular del Juzgado Central de
+  Instrucción nº 6 de la Audiencia Nacional. La magistrada María
+  Tardón asumió interinamente las causas pendientes. Por Real Decreto
+  1271/2024, de 10 de diciembre, publicado en el «Boletín Oficial del
+  Estado» del 8 de enero de 2025 (BOE-A-2025-350), el magistrado
+  Antonio Piña Alonso, anterior presidente de la Audiencia Provincial
+  de Ourense, pasó a desempeñar la plaza del JCI nº 6, asumiendo
+  desde entonces la instrucción del procedimiento Púnica y de las
+  restantes macrocausas del juzgado.
+personas_afectadas:
+  - manuel-garcia-castellon
+  - antonio-pina
+organizaciones_afectadas:
+  - juzgado-central-instruccion-6
+  - audiencia-nacional
+documento_principal_id: boe-cgpj-jubilacion-castellon-lezo-2024-09-02
+documentos_relacionados:
+  - boe-rd-pina-jci6-lezo-2025-01-08
+fase_resultante: fase_intermedia

@@ -1,0 +1,42 @@
+id: malaya-sentencia-firme-ts-2015
+caso_id: malaya
+tipo: sentencia_firme
+fecha: "2015-07-27"
+fecha_precision: dia
+titulo: "Sentencia firme del Tribunal Supremo: 48 condenados, Roca elevado a 17 años de prisión"
+descripcion: |
+  La Sala Segunda del Tribunal Supremo dicta el 27 de julio de 2015
+  sentencia resolviendo los 48 recursos de casación interpuestos
+  contra la sentencia 535/2013 de la Audiencia Provincial de Málaga,
+  con el magistrado Juan Saavedra Ruiz como ponente. La sentencia,
+  de 3.138 folios, reduce a 48 el número de condenados (frente a los
+  52 de la Audiencia) y modifica varias penas: eleva la condena de
+  Juan Antonio Roca de 11 a 17 años (añadiendo delito fiscal de 2002
+  y agravando el blanqueo de capitales), reduce levemente las de
+  Marisol Yagüe (de 7 años 9 meses a 5 años y 6 meses) e Isabel
+  García Marcos (de 4 a 3 años y 6 meses). Asimismo, revierte la
+  decisión sobre el destino de los bienes decomisados, que pasan al
+  Estado en lugar del Ayuntamiento de Marbella. La sentencia gana
+  firmeza con esta resolución. Es la sentencia firme más voluminosa
+  del inventario en casos de corrupción municipal.
+personas_afectadas:
+  - juan-antonio-roca
+  - marisol-yague
+  - julian-munoz
+  - tomas-renones
+  - montserrat-corulla
+  - isabel-garcia-marcos
+  - jose-maria-del-nido
+  - pedro-roman-malaga
+  - juan-saavedra-ruiz
+organizaciones_afectadas:
+  - tribunal-supremo
+  - ayuntamiento-de-marbella
+documento_principal_id: nota-cgpj-sentencia-malaya-ts-2015
+documentos_relacionados:
+  - sentencia-ts-malaya-2015
+  - confilegal-malaya-ts-condena-2015
+hechos_introducidos:
+  - malaya-condena-firme-roca
+  - malaya-multa-roca-232m
+fase_resultante: sentencia_firme

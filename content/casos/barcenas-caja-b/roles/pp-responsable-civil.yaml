@@ -1,0 +1,25 @@
+id: pp-responsable-civil
+caso_id: barcenas-caja-b
+sujeto_tipo: organizacion
+sujeto_organizacion_id: partido-popular
+rol: perjudicado
+# Nota editorial: el PP tiene en este caso un doble rol atípico: es el partido
+# cuyo tesorero comete el delito, pero formalmente es condenado como "responsable
+# civil subsidiario" —no como acusado penal ni perjudicado—. El schema no tiene
+# un rol "responsable_civil_subsidiario"; se modela como perjudicado (el único
+# compatible con organizaciones en la condición de sujeto pasivo de una
+# consecuencia económica firme) con la aclaración completa en notas. Si en el
+# futuro se amplía el enum para incluir "responsable_civil", actualizar este rol.
+fecha_inicio: "2021-10-28"
+hito_origen_id: barcenas-sentencia-an-genova-2021-10-28
+notas: |
+  El Partido Popular fue condenado como responsable civil subsidiario (no como
+  acusado penal) por la sentencia de la Audiencia Nacional de 28 de octubre de
+  2021, confirmada por el Tribunal Supremo el 15 de noviembre de 2024
+  (ECLI:ES:TS:2024:5577). Su condición es la de responsable civil subsidiario
+  del delito fiscal cometido por los administradores de Unifica S.L.: debe
+  abonar 123.669 euros correspondientes a la cuota del Impuesto de Sociedades
+  de 2007 no ingresada. Fue absuelto de los cargos penales que se le imputaban
+  (delito fiscal, organización criminal). El rol aquí se modela
+  provisionalmente como perjudicado por ausencia de un enum específico; ver
+  comentario editorial arriba.

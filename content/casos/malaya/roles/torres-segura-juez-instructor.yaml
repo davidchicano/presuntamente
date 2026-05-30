@@ -1,0 +1,14 @@
+id: torres-segura-juez-instructor
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: miguel-angel-torres-segura
+rol: juez_instructor
+fecha_inicio: "2005-11-01"
+fecha_fin: "2007-01-01"
+notas: |
+  Magistrado titular del Juzgado de Instrucción nº 5 de Marbella,
+  instructor principal de la Operación Malaya desde noviembre de 2005.
+  Fue trasladado a Granada en 2007, siendo relevado en la instrucción
+  por el magistrado sustituto Óscar Pérez.
+  # LLM-incierto: fecha exacta del traslado a Granada no confirmada en
+  # fuentes N1; se aproxima a 2007-01-01 por contexto procesal.

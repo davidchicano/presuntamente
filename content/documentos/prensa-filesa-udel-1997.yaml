@@ -1,0 +1,20 @@
+id: prensa-filesa-udel-1997
+titulo: "Penas de prisión a ocho de los acusados de Filesa (El País vía mirror udel.edu)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Artículo de El País archivado en el servidor de la Universidad de
+  Delaware (udel.edu), que reproduce cobertura contemporánea del
+  juicio de 1997. Se usa como fuente N4 secundaria para corroborar
+  los absueltos (Luis Sánchez Marcos, Francisco Javier Iglesias Díaz
+  y Julio Calleja González-Camino). V-13 cumplido: línea editorial
+  distinta a Libertad Digital. Fuente de archivo universitario:
+  aceptable como mirror secundario de registro histórico de prensa.
+productor_organizacion_id: el-pais
+fecha_documento: "1997-10-28"
+url_canonica: "http://www1.udel.edu/leipzig/texts4/ela29107.htm"
+estado_acceso: publico
+idioma: es
+caso_principal_id: filesa
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

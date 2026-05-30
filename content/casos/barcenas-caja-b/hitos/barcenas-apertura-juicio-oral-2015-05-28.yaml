@@ -1,0 +1,28 @@
+id: barcenas-apertura-juicio-oral-2015-05-28
+caso_id: barcenas-caja-b
+tipo: apertura_juicio_oral
+fecha: "2015-05-28"
+fecha_precision: dia
+titulo: >-
+  El juez José de la Mata abre juicio oral por la pieza Génova contra Bárcenas
+  y otros cinco acusados
+descripcion: |
+  El 28 de mayo de 2015, el magistrado José de la Mata, titular del Juzgado
+  Central de Instrucción nº 5 de la Audiencia Nacional, dicta auto de apertura
+  de juicio oral contra el extesorero del PP Luis Bárcenas, el extesorero
+  Álvaro Lapuerta, el exgerente Cristóbal Páez, el arquitecto Gonzalo Urquijo
+  Fernández de Córdoba, su socia Belén García Mediavilla y la empleada de
+  Unifica S.L. Laura Montero, por los delitos de organización criminal,
+  asociación ilícita, falsedad contable, tráfico de influencias, blanqueo de
+  capitales, delito electoral y delitos contra la Hacienda Pública. El juez
+  también acuerda el enjuiciamiento de la sociedad Unifica S.L. como
+  responsable civil directa y solidaria, y del Partido Popular como
+  responsable civil subsidiario. Se fijan fianzas que oscilan entre los
+  6,1 millones de euros y los 9 millones de euros.
+personas_afectadas:
+  - luis-barcenas
+organizaciones_afectadas:
+  - partido-popular
+  - juzgado-central-instruccion-5
+documento_principal_id: cgpj-apertura-juicio-oral-barcenas-caja-b-2015
+fase_resultante: juicio_oral

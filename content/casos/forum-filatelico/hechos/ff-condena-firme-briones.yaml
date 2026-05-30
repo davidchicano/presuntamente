@@ -1,0 +1,41 @@
+id: ff-condena-firme-briones
+caso_id: forum-filatelico
+enunciado: |
+  La Sala Segunda del Tribunal Supremo, en sentencia 688/2019 de 5 de marzo
+  de 2020 (recurso de casación 2891/2018, ponente Miguel Colmenero Menéndez
+  de Luarca), confirma la condena a Francisco Briones Nieto, expresidente de
+  Fórum Filatélico S.A., modificando ligeramente la pena de la Audiencia
+  Nacional y fijándola en 11 años y 10 meses de prisión más multa de
+  49,7 millones de euros, por los delitos de estafa agravada continuada en
+  concurso con insolvencia punible, falseamiento de cuentas anuales continuado
+  y blanqueo de capitales. La sentencia es firme.
+tipo: atribuido
+# Candidato a 'acreditado': STS 688/2019 es sentencia firme; los hechos de condena son probados. Pendiente revisión humana explícita (guardarraíl V-04).
+fecha_o_periodo:
+  desde: "2020-03-05"
+  precision: dia
+personas_implicadas:
+  - francisco-briones
+  - miguel-colmenero-menendez
+organizaciones_implicadas:
+  - tribunal-supremo
+  - forum-filatelico-sa
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-ts-forum-2020-03-05
+    pasaje: "El expresidente F.B. queda condenado a 11 años y 10 meses de prisión más multa de 49,7 millones de euros. Sentencia firme."
+  - documento_id: publico-forum-sentencia-ts-2020-03-05
+    pasaje: "El Supremo rebaja ligeramente la condena al expresidente a casi 12 años de prisión y confirma los delitos de estafa y blanqueo."
+nivel_fuente_efectivo: 1
+importe: 49700000
+importe_alcance: individual
+importe_clase: consecuencia
+importe_naturaleza: multa_penal
+importe_nota: "Multa penal individual firme impuesta a Francisco Briones por la STS 688/2019."
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: francisco-briones
+    papel: obligado
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

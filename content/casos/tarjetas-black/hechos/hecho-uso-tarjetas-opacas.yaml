@@ -1,0 +1,17 @@
+# FICHERO OBSOLETO — REEMPLAZADO POR tarjetas-black-uso-tarjetas-opacas.yaml
+# Este archivo se deja vacio para evitar errores de validacion del schema.
+# Borrar manualmente en la siguiente sesion.
+# NO contiene datos canonicos.
+id: hecho-uso-tarjetas-opacas-obsoleto
+caso_id: tarjetas-black
+enunciado: "Fichero obsoleto; ver tarjetas-black-uso-tarjetas-opacas.yaml."
+tipo: no_concluyente
+fecha_o_periodo:
+  desde: "2026-05-30"
+  precision: dia
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: "Ver fichero canonico tarjetas-black-uso-tarjetas-opacas.yaml."
+vigencia: retirado
+estado_publicacion: retirado_definitivamente
+ultima_revision_editorial: "2026-05-30"

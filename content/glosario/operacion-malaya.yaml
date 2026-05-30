@@ -1,0 +1,18 @@
+id: operacion-malaya
+label: "Operación Malaya"
+nombres_alternativos:
+  - "caso Malaya"
+  - "trama Malaya"
+  - "Malaya"
+categoria: operacion_policial
+descripcion_breve: |
+  Operación judicial y policial iniciada en noviembre de 2005 por el
+  magistrado Miguel Ángel Torres Segura en el Juzgado de Instrucción
+  nº 5 de Marbella, con la colaboración de la UCO (Guardia Civil) y
+  la Fiscalía Anticorrupción, para desarticular una trama de
+  corrupción urbanística y económica generalizada en el Ayuntamiento
+  de Marbella bajo el gobierno del Grupo Independiente Liberal (GIL).
+  La operación es considerada la mayor acción contra la corrupción
+  municipal registrada en España hasta esa fecha.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

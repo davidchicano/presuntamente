@@ -1,0 +1,20 @@
+id: camara-de-cuentas-comunidad-de-madrid
+nombre: "Cámara de Cuentas de la Comunidad de Madrid"
+nombres_alternativos:
+  - "Cámara de Cuentas de Madrid"
+  - "Cámara de Cuentas"
+tipo: organismo_publico
+descripcion_corta: |
+  Órgano de control externo del sector público de la Comunidad de
+  Madrid. Fiscaliza la actividad económico-financiera, la gestión y
+  las cuentas de la Administración autonómica, sus organismos y las
+  entidades que reciben fondos públicos de la Comunidad, y asesora a la
+  Asamblea de Madrid en la materia. Es distinto e independiente del
+  Tribunal de Cuentas estatal. Está presidido por Joaquín Leguina.
+ambito_territorial: autonomico
+comunidad_autonoma: "Comunidad de Madrid"
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.camaradecuentasmadrid.org/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

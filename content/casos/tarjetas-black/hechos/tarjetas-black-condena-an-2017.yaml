@@ -1,0 +1,35 @@
+id: tarjetas-black-condena-an-2017
+caso_id: tarjetas-black
+enunciado: |
+  La Sala de lo Penal de la Audiencia Nacional dicto sentencia el 23 de
+  febrero de 2017 condenando a la mayoria de los acusados por apropiacion
+  indebida en relacion con el uso de tarjetas de credito de empresa de Caja
+  Madrid y Bankia. Las penas se graduaron segun el importe dispuesto
+  individualmente por cada acusado a lo largo del periodo enjuiciado. La
+  sentencia no es firme en este momento; queda abierto el recurso de casacion
+  ante el Tribunal Supremo. La condicion de condenados en primera instancia
+  no implica firmeza ni decaimiento definitivo de la presuncion de inocencia.
+  # LLM-incierto: numero de sentencia, seccion exacta de la Sala y listado de
+  # condenados con sus penas individuales a verificar en CENDOJ.
+tipo: atribuido
+# V-04: aunque la sentencia de instancia declara hechos probados, al no ser firme
+# se mantiene como 'atribuido'. La firmeza del TS (2018) es candidata a 'acreditado';
+# ver NOTES.md.
+fecha_o_periodo:
+  desde: "2017-02-23"
+  precision: dia
+personas_implicadas:
+  - rodrigo-rato
+  - miguel-blesa
+organizaciones_implicadas:
+  - audiencia-nacional
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: "FALLO y Hechos Probados — condenas individuales por apropiacion indebida (paginas pendientes de localizar en CENDOJ)."
+nivel_fuente_efectivo: 1
+vigencia: superado
+# Superado por la sentencia firme del TS (hecho tarjetas-black-condena-firme-ts-2018).
+corregido_por: tarjetas-black-condena-firme-ts-2018
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

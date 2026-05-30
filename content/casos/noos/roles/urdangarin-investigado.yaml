@@ -1,0 +1,19 @@
+id: urdangarin-investigado
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: inaki-urdangarin
+rol: investigado
+delitos_atribuidos:
+  - malversacion-caudales-publicos
+  - prevaricacion
+  - fraude-administraciones-publicas
+  - delito-contra-hacienda-publica
+  - trafico-de-influencias
+  - falsedad-documental
+fecha_inicio: "2011-12-29"
+fecha_fin: "2017-02-17"
+hito_origen_id: noos-imputacion-urdangarin-2011
+hito_fin_id: noos-sentencia-primera-instancia-ap-palma-2017
+notas: |
+  Citado como investigado el 29 de diciembre de 2011 ante el Juzgado de Instrucción nº 3
+  de Palma. La presunción de inocencia es plena durante esta fase.

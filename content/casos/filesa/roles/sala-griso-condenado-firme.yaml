@@ -1,0 +1,22 @@
+id: sala-griso-condenado-firme
+caso_id: filesa
+sujeto_tipo: persona
+sujeto_persona_id: jose-maria-sala-i-griso
+rol: condenado_firme
+delitos_atribuidos:
+  - falsedad-documental
+  - organizacion-criminal
+fecha_inicio: "1997-10-28"
+hito_origen_id: filesa-sentencia-firme-ts-1997
+notas: |
+  Condenado por la STS 1/1997 a 3 años de prisión y 6 años y un día
+  de inhabilitación especial por delitos de falsedad continuada en
+  documento mercantil y asociación ilícita. El Tribunal Constitucional
+  estimó parcialmente su recurso de amparo (STC 124/2001 o concordante),
+  anulando la condena por el delito de falsedad en documento mercantil
+  y manteniendo la condena de 2 años por asociación ilícita. La
+  presunción de inocencia decae respecto de los hechos declarados
+  probados y firmes en la parte confirmada por el TC.
+  # LLM-incierto: número exacto de STC del recurso de Sala i Grisó no
+  # localizado directamente; se deduce de la STC 124/2001 mencionada
+  # en cobertura. Verificar en BOE.

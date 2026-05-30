@@ -1,0 +1,16 @@
+id: bbva-entidad-investigada-tandem
+naturaleza: entidad_investigada_en_caso
+descripcion: "El Banco Bilbao Vizcaya Argentaria (BBVA) fue procesado como persona jurídica en la pieza separada nº 9 del caso Tándem (conocida como pieza BBVA o Trampa). La Sala de lo Penal de la Audiencia Nacional confirmó el procesamiento en febrero de 2026 al rechazar los recursos de apelación contra el auto de apertura del procedimiento abreviado. La Fiscalía Anticorrupción solicita una multa de 180 millones de euros."
+sujeto_organizacion_id: bbva
+objeto_organizacion_id: audiencia-nacional
+desde: "2026-02-20"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [tandem]
+nivel_afectacion: directa
+justificacion_afectacion: "El BBVA es la entidad bancaria procesada como persona jurídica en la pieza separada nº 9 del caso Tándem, al atribuírsele responsabilidad penal por la contratación presuntamente ilegal de los servicios de Cenyt entre 2004 y 2016."
+documentos_respaldo:
+  - documento_id: theobjective-fiscalia-173-anos-bbva-gonzalez-2026-03-18
+    pasaje: "The Objective informa del procesamiento del BBVA como persona jurídica confirmado por la Sala de lo Penal de la AN en febrero de 2026 y del escrito de acusación de la Fiscalía que solicita 180 millones de multa para la entidad."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

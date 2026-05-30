@@ -1,0 +1,368 @@
+# Cobertura mediática general — caso tarjetas-black
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+# Ver docs/web/features/cobertura-mediatica-general.md
+
+caso_id: tarjetas-black
+fecha_rastreo: "2026-05-30"
+
+metodologia:
+  terminos_busqueda:
+    - "tarjetas black"
+    - "tarjetas black Caja Madrid"
+    - "tarjetas opacas Caja Madrid"
+    - "caso tarjetas black Bankia"
+    - "Rodrigo Rato tarjetas black"
+    - "Miguel Blesa tarjetas"
+  ventanas_temporales:
+    - desde: "2013-12-01"
+      hasta: "2014-12-31"
+      notas: >-
+        Exclusiva de eldiario.es (dic 2013) que publica los correos de Blesa
+        revelando la existencia de las tarjetas. Octubre 2014: confirmacion
+        publica de que Anticorrupcion investiga el gasto de 15 millones de euros.
+    - desde: "2015-01-01"
+      hasta: "2016-12-31"
+      notas: >-
+        Instruccion y fase de juicio oral. Apertura del juicio ante la AN.
+        Periodo de escasas grandes piezas; cobertura de seguimiento de diligencias.
+    - desde: "2017-01-01"
+      hasta: "2017-12-31"
+      notas: >-
+        Sentencia de la Audiencia Nacional (23 feb 2017): 65 condenas por
+        apropiacion indebida continuada. Fallecimiento de Miguel Blesa
+        (julio 2017) antes de la firmeza de su condena.
+    - desde: "2018-01-01"
+      hasta: "2018-12-31"
+      notas: >-
+        Tribunal Supremo confirma condenas en casacion (octubre 2018).
+        Firmeza de las condenas. Rato ingresa en prision. El TS declara
+        extinguida la responsabilidad penal de Blesa por fallecimiento.
+    - desde: "2019-01-01"
+      hasta: "2026-05-30"
+      notas: >-
+        Fase de ejecucion de penas. Condenados que acceden a tercer grado.
+        Piezas de aniversario (10 anos del escandalo, 2024). Seguimiento difuso.
+  fuentes_buscadas:
+    - eldiario.es
+    - elespanol.com
+    - okdiario.com
+    - vozpopuli.com
+    - el-independiente.com
+    - elindependiente.com
+    - confilegal.com
+    - el-confidencial.com
+    - publico.es
+    - poderjudicial.es
+  criterios_inclusion: >-
+    Se incluyen piezas cuyo titular o lead se centra en el caso de las tarjetas
+    black de Caja Madrid y Bankia o en sus protagonistas directos en el marco
+    del procedimiento. Se incluyen noticias, reportajes, analisis y piezas de
+    investigacion periodistica. Se incluyen piezas de agencia cuando son la
+    primera publicacion identificada de un hecho relevante.
+  criterios_exclusion: >-
+    Se excluyen menciones de pasada en piezas sobre otros casos o politicos
+    sin desarrollo de la tarjeta black como tema principal. Se excluyen
+    republicaciones palabra por palabra de agencia sin valor anadido. Se
+    excluyen editoriales institucionales sin firma. No se incluyen piezas de
+    El Pais (elpais.com) ni El Mundo (elmundo.es) por acceso no disponible
+    via WebSearch en el entorno del agente. No se incluye La Vanguardia ni
+    ABC por no estar modelados en el inventario en esta pasada.
+  notas: >-
+    Rastreo inicial v1 sobre cinco ventanas temporales (dic 2013 - may 2026).
+    Las noticias de El Pais y El Mundo (grandes cabeceras generalistas con
+    cobertura extensa del caso) no se incluyen por limitaciones de acceso del
+    agente; el maintainer puede ampliar el corpus en una segunda pasada.
+    El caso de las tarjetas black tiene una particularidad editorial clave:
+    eldiario.es es el medio que destapa el caso en diciembre 2013 mediante
+    la publicacion de los correos de Blesa, lo que lo convierte en actor
+    directo de la investigacion, no solo observador. Las url_archivo se
+    rellenan con scripts/archivar-n4.mjs (pnpm archive:catchup).
+
+estado: parcial
+
+noticias:
+
+  # ── VENTANA 1: EXCLUSIVA Y REVELACION PUBLICA (dic 2013 – oct 2014) ──────
+
+  - id: eldiario-exclusiva-tarjetas-caja-madrid-2013-12
+    url: "https://www.eldiario.es/politica/anticorrupcion-investiga-tarjetas-caja-madrid_1_4615282.html"
+    medio_id: eldiario-es
+    titular: "Anticorrupción investiga el gasto de 15 millones con tarjetas en 'negro' de la cúpula de Caja Madrid"
+    fecha_publicacion: "2014-10-01"
+    autor: "Redacción eldiario.es"
+    resumen: >-
+      Anticorrupcion investiga el uso de tarjetas de credito opacas por
+      parte de los maximos responsables de Caja Madrid y Bankia, cuyo
+      importe total asciende a 15 millones de euros entre 2003 y 2012.
+      La investigacion judicial se origino en la publicacion de los correos
+      de Miguel Blesa por eldiario.es en diciembre de 2013.
+    tipo_pieza: investigacion_periodistica
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      La pieza de octubre 2014 confirma publica la investigacion de
+      Anticorrupcion. El origen editorial es la exclusiva de dic 2013
+      sobre los correos de Blesa. La URL exacta de la pieza original de
+      diciembre 2013 puede diferir; se usa la version del articulo que
+      recoge la confirmacion de la investigacion.
+
+  - id: eldiario-como-salio-luz-escandalo-2014
+    url: "https://www.eldiario.es/economia/salio-luz-escandalo-tarjetas-black_1_2750767.html"
+    medio_id: eldiario-es
+    titular: "Cómo salió a la luz el escándalo de las tarjetas black"
+    fecha_publicacion: "2014-10-15"
+    autor: "Redacción eldiario.es"
+    resumen: >-
+      Pieza que reconstruye la cadena editorial y judicial que llevo a
+      la revelacion publica del uso de tarjetas de empresa opacas en
+      Caja Madrid: publicacion de los correos de Blesa (dic 2013),
+      auditoria interna de Bankia, informe al FROB y traslado a la
+      Fiscalia Anticorrupcion.
+    tipo_pieza: reportaje
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      Fecha aproximada; la pieza es una reconstruccion publicada
+      en el momento de maxima atencion mediatica (octubre 2014).
+      # LLM-incierto: fecha exacta de publicacion; verificar en la URL.
+
+  - id: eldiario-claves-tarjetas-caja-madrid-bankia-2014
+    url: "https://www.eldiario.es/politica/tarjetas-consejeros-caja-madrid-bankia_1_1909519.html"
+    medio_id: eldiario-es
+    titular: "Las claves de las black, las tarjetas que usaron \"a su antojo\" los consejeros de Caja Madrid y Bankia"
+    fecha_publicacion: "2014-10-16"
+    autor: "Redacción eldiario.es"
+    resumen: >-
+      Pieza explicativa sobre el funcionamiento de las tarjetas opacas:
+      limites de gasto de hasta 50.000 euros anuales, ausencia de control
+      sobre el destino de los fondos, falta de declaracion a Hacienda y
+      uso para gastos personales ajenos a la actividad de la entidad.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "# LLM-incierto: fecha exacta; estimada a partir del pico de octubre 2014."
+
+  # ── VENTANA 2: INSTRUCCION Y JUICIO ORAL (2015-2016) ────────────────────
+
+  - id: eldiario-banquillo-politicos-sindicalistas-2016
+    url: "https://www.eldiario.es/politica/tarjetas-banquillo-empresarios-sindicalistas-politicos_1_1907519.html"
+    medio_id: eldiario-es
+    titular: "Las tarjetas black: el caso que juntó en el banquillo a empresarios, sindicalistas y políticos de todo signo"
+    fecha_publicacion: "2016-10-01"
+    autor: "Redacción eldiario.es"
+    resumen: >-
+      Pieza de contexto previa al juicio oral que repasa la heterogeneidad
+      politica y sindical de los 65 acusados: consejeros propuestos por PP,
+      PSOE, IU y sindicatos (CCOO, UGT), junto a representantes de la
+      patronal y catedraticos. El caso se presenta como una radiografia
+      de la colonizacion de las cajas de ahorro por el poder politico
+      y social de la epoca.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "# LLM-incierto: fecha exacta de publicacion; estimada en el periodo del juicio oral."
+
+  - id: confilegal-juicio-visto-para-sentencia-2017-02
+    url: "https://confilegal.com/20170203-el-juicio-de-las-tarjetas-black-queda-visto-para-sentencia/"
+    medio_id: confilegal
+    titular: "El juicio de las tarjetas 'black' queda visto para sentencia"
+    fecha_publicacion: "2017-02-03"
+    resumen: >-
+      La Sala de lo Penal de la Audiencia Nacional declara visto para
+      sentencia el juicio oral del caso de las tarjetas black de Caja
+      Madrid y Bankia tras la conclusion del turno de conclusiones
+      definitivas y los informes finales de las partes.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 3: SENTENCIA AN Y FALLECIMIENTO BLESA (2017) ────────────────
+
+  - id: poderjudicial-nota-condenas-65-acusados-2017
+    url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Audiencia-Nacional/Noticias-Judiciales/Condenas-desde-tres-meses-a-seis-anos-de-prision-a-los-65-acusados-de-las--tarjetas-black-"
+    medio_id: consejo-general-poder-judicial
+    titular: "Condenas desde tres meses a seis años de prisión a los 65 acusados de las 'tarjetas black'"
+    fecha_publicacion: "2017-02-23"
+    resumen: >-
+      Nota de prensa del CGPJ sobre la sentencia de la Audiencia Nacional
+      que condena a los 65 acusados por delito continuado de apropiacion
+      indebida. Las penas oscilan entre tres meses y seis anos de prision;
+      las mas graves recaen sobre Miguel Blesa (seis anos) y Rodrigo Rato
+      (cuatro anos y seis meses).
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: >-
+      Fuente N1 (organo emisor). La nota del CGPJ es la referencia oficial
+      primaria sobre el contenido de la sentencia AN. No es un Documento
+      en el sentido editorial del inventario (ese es la sentencia integra
+      en CENDOJ), sino cobertura institucional del fallo.
+
+  - id: okdiario-condenas-65-blesa-rato-2017-02-23
+    url: "https://okdiario.com/investigacion/blesa-condenado-6-anos-rato-4-medio-tarjetas-black-776781"
+    medio_id: okdiario
+    titular: "6 años de cárcel para Blesa, 4 para Rato y los otros 63 procesados también condenados por las Black"
+    fecha_publicacion: "2017-02-23"
+    resumen: >-
+      La Audiencia Nacional condena a los 65 acusados del caso de las
+      tarjetas black de Caja Madrid y Bankia. Miguel Blesa recibe seis
+      anos y Rodrigo Rato cuatro anos y seis meses. Los otros 63 condenados
+      reciben penas graduadas segun el importe dispuesto con cada tarjeta.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elespanol-rato-condenado-sentencia-an-2017-02-23
+    url: "https://www.elespanol.com/espana/tribunales/20170223/195980683_0.html"
+    medio_id: el-espanol
+    titular: "Rato, condenado a cuatro años y medio de cárcel por las tarjetas black"
+    fecha_publicacion: "2017-02-23"
+    resumen: >-
+      La Audiencia Nacional dicta sentencia por el caso de las tarjetas
+      black y condena al ex vicepresidente del Gobierno y ex presidente
+      de Bankia Rodrigo Rato a cuatro anos y seis meses de prision por
+      apropiacion indebida continuada.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-juicio-era-tarjetas-black-2017
+    url: "https://www.eldiario.es/economia/juicio-banqueros-responderan_1_3820507.html"
+    medio_id: eldiario-es
+    titular: "Juicio a una era: las tarjetas black"
+    fecha_publicacion: "2017-02-23"
+    autor: "Redacción eldiario.es"
+    resumen: >-
+      Pieza de contexto que enmarca el juicio a los 65 acusados como
+      un proceso que pone en el banquillo la forma de gobernanza de las
+      cajas de ahorro espanolas durante la decada de los anos dos mil,
+      con implicacion transversal de partidos politicos, sindicatos y
+      patronal.
+    tipo_pieza: reportaje
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 4: FIRMEZA DE LAS CONDENAS — SUPREMO (2018) ─────────────────
+
+  - id: poderjudicial-nota-ts-confirma-rato-2018
+    url: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Tribunal-Supremo/Noticias-Judiciales/El-Tribunal-Supremo-confirma-la-condena-de-Rodrigo-Rato-a-cuatro-anos-y-medio-de-prision-por-las--tarjetas-black-"
+    medio_id: consejo-general-poder-judicial
+    titular: "El Tribunal Supremo confirma la condena de Rodrigo Rato a cuatro años y medio de prisión por las \"tarjetas black\""
+    fecha_publicacion: "2018-10-03"
+    resumen: >-
+      Nota del CGPJ sobre la sentencia de casacion del Tribunal Supremo
+      que confirma la condena de Rodrigo Rato a cuatro anos y seis meses
+      de prision, ratifica la culpabilidad de 63 exdirectivos y exmiembros
+      del consejo de administracion, y declara extinguida la responsabilidad
+      penal de Miguel Blesa por su fallecimiento en julio de 2017.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "Fuente N1. Referencia oficial primaria sobre la firmeza de las condenas."
+
+  - id: confilegal-supremo-confirma-rato-63-2018-10-03
+    url: "https://confilegal.com/20181003-el-supremo-confirma-4-anos-y-medio-carcel-rato-por-tarjetas-black-y-condena-a-otros-63-ex-directivos-o-exconsejeros/"
+    medio_id: confilegal
+    titular: "El Supremo confirma 4 años y medio cárcel Rato por 'tarjetas black' y condena a otros 63 ex directivos o exconsejeros"
+    fecha_publicacion: "2018-10-03"
+    resumen: >-
+      El Tribunal Supremo avala en casacion la sentencia de la Audiencia
+      Nacional, confirmando la condena de Rato a cuatro anos y seis meses
+      y las de otros 63 exdirectivos. Se establece como responsabilidad civil
+      la devolucion de mas de 12 millones de euros. Se declara extinguida
+      la responsabilidad penal de Blesa por fallecimiento.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: elindependiente-supremo-mantiene-rato-2018-10-03
+    url: "https://www.elindependiente.com/politica/2018/10/03/tarjetas-black-supremo-mantiene-la-condena-4-anos-seis-meses-prision-rato/"
+    medio_id: el-independiente
+    titular: "Tarjetas black: el Supremo mantiene la condena de 4 años y seis meses de prisión a Rato"
+    fecha_publicacion: "2018-10-03"
+    resumen: >-
+      El Tribunal Supremo ratifica en casacion las condenas de la Audiencia
+      Nacional por el caso de las tarjetas black de Caja Madrid y Bankia.
+      La condena de Rodrigo Rato a cuatro anos y seis meses queda firme;
+      la de Blesa se extingue por su muerte.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: eldiario-supremo-confirma-rato-tarjetas-black-2018
+    url: "https://www.eldiario.es/politica/tarjetas-rodrigo-rato-tribunal-supremo_1_2750446.html"
+    medio_id: eldiario-es
+    titular: "El Supremo confirma la condena de 4 años y seis meses de cárcel para Rodrigo Rato por las tarjetas black"
+    fecha_publicacion: "2018-10-03"
+    resumen: >-
+      El Tribunal Supremo ratifica la condena del exvicepresidente del
+      Gobierno y expresidente de Bankia a cuatro anos y seis meses de
+      prision por apropiacion indebida continuada en el caso de las
+      tarjetas black de Caja Madrid y Bankia.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: okdiario-supremo-confirma-rato-carcel-2018
+    url: "https://okdiario.com/espana/supremo-confirma-condena-4-anos-medio-rato-tarjetas-black-3187195"
+    medio_id: okdiario
+    titular: "Rodrigo Rato irá a la cárcel: el Supremo confirma su condena de cuatro años y medio por las black"
+    fecha_publicacion: "2018-10-03"
+    resumen: >-
+      El Tribunal Supremo confirma la condena firme de cuatro anos y seis
+      meses de prision a Rodrigo Rato. Rato habra de ingresar en prision
+      antes de finales de octubre de 2018 para cumplir condena por
+      apropiacion indebida continuada.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  # ── VENTANA 5: EJECUCION Y ANIVERSARIO (2019-2026) ──────────────────────
+
+  - id: confilegal-solo-4-de-15-en-prision-2019-08
+    url: "https://confilegal.com/20190807-solo-4-de-los-15-condenados-por-las-tarjetas-black-siguen-en-prision/"
+    medio_id: confilegal
+    titular: "Sólo 4 de los 15 condenados por las tarjetas \"black\" siguen en prisión"
+    fecha_publicacion: "2019-08-07"
+    resumen: >-
+      Tras cumplir parte de su condena, once de los quince condenados
+      con pena de prision por el caso de las tarjetas black de Caja
+      Madrid acceden al tercer grado penitenciario y cumplen el resto
+      en regimen de semilibertad. Solo cuatro permanecen internos
+      en un centro penitenciario.
+    tipo_pieza: reportaje
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+
+  - id: vozpopuli-diez-aniversario-tarjetas-black-2024
+    url: "https://www.vozpopuli.com/economia/banca/diez-anos-tarjetas-black-caja-madrid-suicidio-blesa.html"
+    medio_id: vozpopuli
+    titular: "Diez años de las tarjetas black de Caja Madrid y más de siete desde el suicidio de Blesa"
+    fecha_publicacion: "2024-10-01"
+    resumen: >-
+      Pieza de aniversario que repasa la decada transcurrida desde la
+      revelacion del escandalo de las tarjetas opacas de Caja Madrid,
+      la trayectoria procesal del caso, las condenas, la ejecucion de
+      penas y el fallecimiento de Miguel Blesa en julio de 2017 antes
+      de la firmeza de su condena.
+    tipo_pieza: reportaje
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-05-30"
+    notas: "# LLM-incierto: fecha exacta del articulo de aniversario; estimada en octubre 2024 por el decimo aniversario de octubre 2014."

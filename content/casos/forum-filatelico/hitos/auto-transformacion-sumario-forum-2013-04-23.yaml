@@ -1,0 +1,21 @@
+id: auto-transformacion-sumario-forum-2013-04-23
+caso_id: forum-filatelico
+tipo: auto_transformacion
+fecha: "2013-04-23"
+fecha_precision: dia
+titulo: "Auto de transformación a Sumario nº 3/2013"
+descripcion: |
+  El Juzgado Central de Instrucción nº 5 de la Audiencia Nacional, en este
+  período a cargo del magistrado Pablo Ruz, dicta el auto de transformación
+  de las Diligencias Previas 148/2006 en Sumario nº 3/2013. El auto acredita
+  que la instrucción, que ha abarcado más de 500.000 páginas de documentación
+  y 115 comisiones rogatorias a 25 países, está en condiciones de pasar a la
+  fase de juicio oral.
+personas_afectadas:
+  - francisco-briones
+organizaciones_afectadas:
+  - forum-filatelico-sa
+  - juzgado-central-instruccion-5
+documento_principal_id: publico-forum-procesamiento-ruz-2014-10-08
+# LLM-incierto: el documento más cercano disponible cubre el auto de procesamiento de octubre 2014; la fecha de la transformación a Sumario procede de varias fuentes N4 coincidentes (dlma.es, ElMundo auto PDF de 23 abr 2013). Pendiente documento oficial N1 en CENDOJ.
+fase_resultante: instruccion

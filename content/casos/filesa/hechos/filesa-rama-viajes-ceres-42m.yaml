@@ -1,0 +1,47 @@
+id: filesa-rama-viajes-ceres-42m
+caso_id: filesa
+enunciado: |
+  El Juzgado de Instrucción nº 26 de Madrid investiga que Viajes Ceres,
+  adjudicataria de contratos del Imserso para programas de turismo para
+  personas mayores entre 1988 y 1991, presuntamente desvió parte de las
+  subvenciones públicas recibidas del Ministerio de Asuntos Sociales
+  —cuantificadas por el instructor en 42,2 millones de euros (unos
+  7.000 millones de pesetas)— hacia la red de empresas pantalla Filesa,
+  Malesa y Time Export, contribuyendo así a financiar irregularmente al
+  PSOE. La causa fue reabierta por el Tribunal Supremo en 2022 tras
+  haberla sobreseído la Audiencia Provincial de Madrid por prescripción
+  en 2019.
+tipo: investigado
+fecha_o_periodo:
+  desde: "1988-01-01"
+  hasta: "1991-12-31"
+  precision: rango
+organizaciones_implicadas:
+  - juzgado-instruccion-26-madrid
+  - tribunal-supremo
+  - partido-popular
+documentos_respaldo:
+  - documento_id: prensa-filesa-rama-viajes-ceres-eldebate-2024
+    pasaje: "42,2 millones de euros desviados presuntamente de subvenciones del Imserso hacia la red Filesa"
+  - documento_id: prensa-filesa-rama-viajes-ceres-publico-2022
+    pasaje: "El Supremo fuerza la reapertura — inversión del sobreseimiento por prescripción"
+nivel_fuente_efectivo: 4
+importe: 42200000
+importe_moneda: EUR
+importe_alcance: componente
+importe_clase: objeto
+importe_naturaleza: fondo_publico_concedido
+importe_nota: |
+  El importe de 42,2 M€ es la cuantía investigada por el Juzgado de
+  Instrucción nº 26 de Madrid como subvención total recibida por Viajes
+  Ceres. El presunto desvío efectivo a la red Filesa es aproximadamente
+  el 40% de esa cifra (≈ 6 M€ según algunas fuentes). Se estructura el
+  total investigado como fondo_publico_concedido y alcance componente
+  (no acumulable con el importe del objeto del caso ya cifrado en
+  filesa-financiacion-irregular-psoe, que corresponde a la Causa
+  Especial principal). Se basa en fuentes N4; pendiente de elevar a N1
+  cuando el instructor dicte auto de procesamiento.
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

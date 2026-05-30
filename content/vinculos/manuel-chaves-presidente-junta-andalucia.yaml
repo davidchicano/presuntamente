@@ -1,0 +1,19 @@
+id: manuel-chaves-presidente-junta-andalucia
+naturaleza: cargo_publico_electo
+descripcion: "Presidente de la Junta de Andalucía durante el periodo investigado en la causa de los ERE. Ejerció el cargo durante cuatro legislaturas consecutivas (1990-2009), periodo que comprende la totalidad del sistema de transferencias de financiación a IFA/IDEA investigado."
+sujeto_persona_id: manuel-chaves-gonzalez
+objeto_organizacion_id: junta-de-andalucia
+cargo_o_rol: "Presidente de la Junta de Andalucía"
+desde: "1990-01-01"
+hasta: "2009-04-23"
+precision_desde: anio
+precision_hasta: dia
+vigente: false
+# LLM-incierto: fecha exacta de inicio del primer mandato (enero de 1990 es
+# aproximación; verificar fecha de investidura exacta en el Parlamento de Andalucía).
+relevancia_para_caso_ids: [eres-andalucia]
+documentos_respaldo:
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "La sentencia del Tribunal Supremo identifica a Manuel Chaves como presidente de la Junta de Andalucía durante el periodo en que se desarrolló el sistema de transferencias de financiación investigado, confirmando su condena por prevaricación."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

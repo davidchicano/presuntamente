@@ -1,0 +1,20 @@
+id: jose-maria-del-nido
+nombre_completo: "José María del Nido Benavente"
+nombres_alternativos:
+  - "Del Nido"
+  - "José María del Nido"
+
+es_figura_publica: true
+
+biografia_corta: |
+  Abogado y expresidente del Sevilla Fútbol Club. Condenado en el
+  marco de la corrupción de Marbella en el caso Malaya (modelado en
+  este inventario) por fraude, malversación y cohecho; también
+  condenado en el caso Fergocon, procedimiento no modelado en este
+  inventario. La Fiscalía Anticorrupción le señaló como cooperador
+  necesario en delitos de fraude y malversación de fondos municipales
+  de Marbella.
+
+nacionalidad: "ES"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

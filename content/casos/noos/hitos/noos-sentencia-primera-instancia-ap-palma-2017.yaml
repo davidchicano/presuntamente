@@ -1,0 +1,34 @@
+id: noos-sentencia-primera-instancia-ap-palma-2017
+caso_id: noos
+tipo: sentencia_primera_instancia
+fecha: "2017-02-17"
+fecha_precision: dia
+titulo: "La Audiencia Provincial de Palma condena a 7 acusados y absuelve a la Infanta Cristina"
+descripcion: |
+  La Audiencia Provincial de les Illes Balears, Sección Primera, presidida por la magistrada
+  Samanta Romero Torrente, dicta sentencia en el Procedimiento Abreviado 58/2015. Condena a
+  siete de los diecisiete acusados: Iñaki Urdangarin a 6 años y 3 meses de prisión, Diego
+  Torres a 8 años y 3 meses, Jaume Matas a 3 años y 8 meses, y otros cuatro a penas menores
+  sustituidas por multa. Absuelve a la Infanta Cristina de los dos delitos fiscales de los que
+  la acusaba Manos Limpias, aunque la condena como partícipe a título lucrativo al pago de
+  265.088,42 euros. Absuelve igualmente a cinco ex altos cargos valencianos y a otros acusados.
+  La sentencia no es firme: los condenados interponen recurso de casación ante el Tribunal Supremo.
+personas_afectadas:
+  - inaki-urdangarin
+  - diego-torres-perez
+  - jaume-matas-palou
+  - cristina-de-borbon
+  - jose-luis-ballester
+  - gonzalo-bernal-garcia
+  - juan-carlos-alia
+  - miguel-angel-bonet
+organizaciones_afectadas:
+  - audiencia-provincial-palma
+  - govern-illes-balears
+documento_principal_id: nota-cgpj-sentencia-ap-palma-noos-2017
+documentos_relacionados:
+  - cobertura-eldiario-sentencia-ap-palma-noos-2017
+hechos_introducidos:
+  - noos-contratos-fondos-publicos-atribuido
+  - noos-absoluciones
+fase_resultante: sentencia_primera_instancia

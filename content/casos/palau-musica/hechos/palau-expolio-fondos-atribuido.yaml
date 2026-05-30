@@ -1,0 +1,77 @@
+id: palau-expolio-fondos-atribuido
+caso_id: palau-musica
+enunciado: |
+  La sentencia de la Sección 10ª de la Audiencia Provincial de Barcelona
+  (PA 74/2016, 29 de diciembre de 2017), confirmada como firme por la
+  STS 813/2020 del Tribunal Supremo (30 de abril de 2020), declara
+  probado que Fèlix Millet i Tusell y Jordi Montull Bagur desviaron
+  fondos de la Fundació Orfeó Català-Palau de la Música Catalana, del
+  Consorci del Palau de la Música Catalana y de la Associació Orfeó
+  Català para uso particular durante aproximadamente la primera década
+  del siglo XXI, en un importe mínimo acreditado de 23.200.000 euros
+  de los que se atribuye a ambos responsabilidad civil solidaria de
+  devolución.
+tipo: acreditado
+# PROMOVIDO A ACREDITADO: 2026-05-30. Autorización maintainer (V-04).
+# Respaldo: nota oficial CGPJ N1 (nota-cgpj-sts-palau-2020) que recoge
+# el fallo de la STS 813/2020, sentencia de casación firme de la Sala
+# Segunda del Tribunal Supremo sin ulterior recurso ordinario.
+fecha_o_periodo:
+  desde: "1999-01-01"
+  hasta: "2009-07-27"
+  precision: rango
+personas_implicadas:
+  - felix-millet-tusell
+  - jordi-montull-bagur
+organizaciones_implicadas:
+  - fundacio-orfeo-catala-palau-musica
+  - associacio-orfeo-catala
+  - consorci-palau-musica-catalana
+documentos_respaldo:
+  - documento_id: nota-cgpj-sts-palau-2020
+    pasaje: "El Supremo ratifica además que ambos deberán devolver 23 millones de euros a las estructuras del Palau (Consorci, Fundació y Associació)"
+  - documento_id: nota-cgpj-sentencia-ap-barcelona-palau-2018
+    pasaje: "Responsabilidad civil declarada en primera instancia: 3.537.290'81 euros al Consorci del Palau; 6.294.063'44 euros a la Fundació Privada Orfeó Català-Palau; 6.129.714'01 euros a la Associació Orfeó Català"
+  - documento_id: publico-sentencia-palau-2018
+    pasaje: "El tribunal considera probado que Millet y Montull desviaron fondos del Palau de la Música"
+nivel_fuente_efectivo: 1
+importe: 23200000
+importe_moneda: EUR
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: perjuicio
+importe_nota: |
+  Importe mínimo declarado probado por la STS 813/2020. Distribuido
+  en responsabilidades civiles: más de 6,29 M€ a la Fundació Orfeó
+  Català; más de 6,12 M€ a la Associació Orfeó Català; y más de
+  3,53 M€ al Consorci del Palau. Responsabilidad solidaria de Millet
+  y Montull. Marta Vallès (cónyuge de Millet) declarada responsable
+  a título lucrativo por 6,41 M€ y su hija Laila Millet por 112.782 €.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: felix-millet-tusell
+    papel: activo
+    nota: "La sentencia firme le atribuye la dirección del esquema de expolio como presidente de la Fundació."
+  - sujeto_tipo: persona
+    sujeto: jordi-montull-bagur
+    papel: activo
+    nota: "La sentencia firme le atribuye participación directa como gerente de la Fundació."
+  - sujeto_tipo: organizacion
+    sujeto: fundacio-orfeo-catala-palau-musica
+    papel: perjudicado
+    importe_sujeto: 6294063
+    nota: "Responsabilidad civil declarada en sentencia firme: 6.294.063,44 €."
+  - sujeto_tipo: organizacion
+    sujeto: associacio-orfeo-catala
+    papel: perjudicado
+    importe_sujeto: 6129714
+    nota: "Responsabilidad civil declarada en sentencia firme: 6.129.714,01 €."
+  - sujeto_tipo: organizacion
+    sujeto: consorci-palau-musica-catalana
+    papel: perjudicado
+    importe_sujeto: 3537290
+    nota: "Responsabilidad civil declarada en sentencia firme: 3.537.290,81 €."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

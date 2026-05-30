@@ -1,0 +1,36 @@
+id: malaya-condenas-ap-malaga-2013
+caso_id: malaya
+enunciado: |
+  La sentencia 535/2013 de la Audiencia Provincial de Málaga (Sección 1ª)
+  de 4 de octubre de 2013 condena a 52 de los 84 procesados en el
+  caso Malaya. Las penas de prisión más relevantes son: Juan Antonio
+  Roca, 11 años y multa de 240 millones de euros; Tomás Reñones, 12
+  años; Marisol Yagüe, 7 años y 9 meses; Montserrat Corulla, 4 años y
+  30 millones de multa; Pedro Román, 4 años; Isabel García Marcos,
+  4 años; Julián Muñoz, 2 años de prisión y 5 de inhabilitación.
+  Esta sentencia es recurrible; no es firme.
+tipo: atribuido
+# La AP Málaga condena en 2013 pero la sentencia no es firme: el TS la
+# modifica en 2015. El hecho correcto acreditado es el de 2015.
+fecha_o_periodo:
+  desde: "2013-10-04"
+  precision: dia
+personas_implicadas:
+  - juan-antonio-roca
+  - marisol-yague
+  - julian-munoz
+  - tomas-renones
+  - montserrat-corulla
+  - isabel-garcia-marcos
+  - pedro-roman-malaga
+organizaciones_implicadas:
+  - audiencia-provincial-malaga
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-malaya-ap-malaga-2013
+    pasaje: "Juan Antonio Roca: 11 años de prisión y multa de 240 millones de euros. Tomás Reñones: 12 años. Marisol Yagüe: 7 años y 9 meses. Montserrat Corulla: 4 años y 30 millones de multa. Pedro Román: 4 años y 2,5 millones de multa. Isabel García Marcos: 4 años. Julián Muñoz: 2 años de prisión y 5 de inhabilitación."
+nivel_fuente_efectivo: 1
+corregido_por: malaya-condena-firme-roca
+vigencia: superado
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

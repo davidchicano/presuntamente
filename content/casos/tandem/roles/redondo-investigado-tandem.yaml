@@ -1,0 +1,19 @@
+id: redondo-investigado-tandem
+caso_id: tandem
+sujeto_tipo: persona
+sujeto_persona_id: rafael-redondo-rodriguez
+rol: investigado
+delitos_atribuidos:
+  - revelacion-de-secretos
+  - blanqueo-de-capitales
+  - cohecho
+  - falsedad-documental
+fecha_inicio: "2017-11-03"
+fecha_fin: "2023-07-24"
+hito_origen_id: detencion-villarejo-apertura-causa-2017-11-03
+hito_fin_id: sentencia-iron-land-pintor-primera-instancia-2023-07-24
+notas: |
+  Rafael Redondo Rodríguez fue detenido el 3 de noviembre de 2017 junto a
+  Villarejo y acordada su prisión provisional. Principal colaborador de
+  Villarejo en el grupo Cenyt. Rige la presunción de inocencia en las
+  piezas sin sentencia firme.

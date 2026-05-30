@@ -1,0 +1,43 @@
+id: filesa-sentencia-firme-ts-1997
+caso_id: filesa
+tipo: sentencia_firme
+fecha: "1997-10-28"
+fecha_precision: dia
+titulo: "El Tribunal Supremo condena a ocho personas en el caso Filesa (STS 1/1997)"
+descripcion: |
+  El 28 de octubre de 1997 la Sala Segunda del Tribunal Supremo dicta
+  la Sentencia 1/1997 de la Causa Especial nº 880/1991, ponente José
+  Augusto de Vega Ruiz. El fallo condena a ocho de los doce acusados
+  y absuelve a tres (Luis Sánchez Marcos, Francisco Javier Iglesias Díaz
+  y Julio Calleja González-Camino). Las penas más altas corresponden a
+  Carlos Navarro Gómez (11 años de prisión), Alberto Flores Valencia y
+  Luis Oliveró Capellades (10 años cada uno). La sentencia acredita que
+  la red de empresas Filesa, Malesa y Time Export recaudó más de mil
+  millones de pesetas destinados presuntamente a la financiación irregular
+  del PSOE. Al tratarse de una causa especial ante el Tribunal Supremo,
+  no cabe recurso de casación ordinario; la sentencia gana firmeza en
+  esta instancia.
+personas_afectadas:
+  - jose-augusto-de-vega-ruiz
+  - carlos-navarro-gomez
+  - alberto-flores-valencia
+  - luis-olivero-capellades
+  - jose-maria-sala-i-griso
+  - aida-alvarez-alvarez
+  - miguel-guillermo-molledo-martin
+  - juan-antonio-molina-vivas
+  - eugenio-garcia-mansilla
+organizaciones_afectadas:
+  - tribunal-supremo
+  - psoe
+  - filesa-sociedad
+  - malesa-sociedad
+  - time-export
+documento_principal_id: sentencia-ts-filesa-1997
+documentos_relacionados:
+  - boe-stc-126-2001-filesa
+  - boe-stc-127-2001-filesa
+hechos_introducidos:
+  - filesa-financiacion-irregular-psoe
+  - filesa-condenas-firmes-1997
+fase_resultante: sentencia_firme

@@ -1,0 +1,32 @@
+id: malaya-operacion-policial-fase1-2006
+caso_id: malaya
+tipo: imputacion
+fecha: "2006-03-29"
+fecha_precision: dia
+titulo: "Primera fase de detenciones de la Operación Malaya (29 de marzo de 2006)"
+descripcion: |
+  El 29 de marzo de 2006 se ejecuta la primera fase de la Operación
+  Malaya con la detención simultánea de 29 personas en Marbella,
+  Málaga, Madrid, Huelva, Cádiz y Murcia, e incautaciones iniciales
+  de bienes por un valor declarado de 2.600 millones de euros.
+  Entre los detenidos se encuentran el asesor de Urbanismo Juan
+  Antonio Roca, considerado figura central de la red de corrupción, su testaferro
+  Montserrat Corulla, la primera teniente de alcalde Isabel García
+  Marcos y el abogado José María del Nido. La operación policial
+  es presentada como la mayor acción contra la corrupción urbanística
+  municipal en España hasta ese momento.
+personas_afectadas:
+  - juan-antonio-roca
+  - montserrat-corulla
+  - isabel-garcia-marcos
+  - jose-maria-del-nido
+  - miguel-angel-torres-segura
+organizaciones_afectadas:
+  - juzgado-instruccion-5-marbella
+  - fiscalia-anticorrupcion
+  - uco-guardia-civil
+  - ayuntamiento-de-marbella
+documento_principal_id: nota-cgpj-sentencia-malaya-ap-malaga-2013
+hechos_introducidos:
+  - malaya-bienes-incautados-roca
+fase_resultante: instruccion

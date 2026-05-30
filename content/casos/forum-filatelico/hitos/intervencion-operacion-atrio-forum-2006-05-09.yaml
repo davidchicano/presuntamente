@@ -1,0 +1,23 @@
+id: intervencion-operacion-atrio-forum-2006-05-09
+caso_id: forum-filatelico
+tipo: auto_diligencias
+fecha: "2006-05-09"
+fecha_precision: dia
+titulo: "Intervención judicial de Fórum Filatélico en la «Operación Atrio»"
+descripcion: |
+  El 9 de mayo de 2006, por orden del Juzgado Central de Instrucción nº 5
+  de la Audiencia Nacional (entonces a cargo del magistrado Baltasar Garzón),
+  la Policía Nacional interviene simultáneamente las sedes de Fórum Filatélico
+  S.A. y Afinsa Bienes Tangibles S.A. en la denominada «Operación Atrio», en
+  el marco de las Diligencias Previas 148/2006. La Fiscalía Anticorrupción
+  había impulsado la investigación al detectar indicios de que ambas empresas
+  operaban como esquemas piramidales. La intervención supone el inicio del
+  procedimiento penal y el cese de la actividad de captación de ahorro.
+personas_afectadas: []
+organizaciones_afectadas:
+  - forum-filatelico-sa
+  - juzgado-central-instruccion-5
+  - fiscalia-anticorrupcion
+hechos_introducidos:
+  - ff-esquema-piramidal-captacion
+fase_resultante: instruccion

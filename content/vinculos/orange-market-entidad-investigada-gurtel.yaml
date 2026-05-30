@@ -1,0 +1,40 @@
+id: orange-market-entidad-investigada-gurtel
+naturaleza: entidad_investigada_en_caso
+descripcion: >
+  Orange Market S.L. es identificada en las resoluciones de la Audiencia
+  Nacional y del Tribunal Supremo como el vehículo de la rama valenciana
+  de la red de Francisco Correa, dirigida por Álvaro Pérez «El Bigotes».
+  Las piezas valencianas de la trama Gürtel (visita del papa Benedicto XVI
+  a Valencia, 2006, y pieza Fitur) concluyeron con sentencias firmes del
+  Tribunal Supremo en 2023. La actividad de Orange Market en esas piezas
+  forma parte del entramado investigado como asociación ilícita, cohecho,
+  blanqueo de capitales y otros delitos.
+sujeto_organizacion_id: orange-market
+objeto_organizacion_id: audiencia-nacional
+desde: "2009-02-06"
+precision_desde: dia
+vigente: false
+hasta: "2023-04-10"
+precision_hasta: dia
+relevancia_para_caso_ids: [gurtel]
+documentos_respaldo:
+  - documento_id: eldiario-ts-visita-papa-gurtel-2023
+    pasaje: >
+      elDiario.es identifica a Orange Market como la empresa de la rama
+      valenciana de la trama Gürtel dirigida por Álvaro Pérez «El Bigotes»,
+      cuya actividad en la pieza de la visita del papa Benedicto XVI fue
+      juzgada y confirmada en casación por el Tribunal Supremo.
+  - documento_id: elpais-cronologia-gurtel-2018
+    pasaje: >
+      El País incluye a Orange Market en el entramado societario de la
+      trama Gürtel, como filial valenciana bajo la dirección de Álvaro
+      Pérez «El Bigotes».
+nivel_afectacion: directa
+justificacion_afectacion: >
+  Orange Market S.L. es la entidad central de las piezas valencianas de
+  la trama Gürtel: las resoluciones judiciales firmes la sitúan como el
+  instrumento directo de la actividad investigada en la Comunidad
+  Valenciana, sin mediación entre la sociedad y los hechos declarados
+  probados en sentencias firmes.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

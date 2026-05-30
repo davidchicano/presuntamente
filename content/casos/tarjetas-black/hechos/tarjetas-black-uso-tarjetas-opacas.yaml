@@ -1,0 +1,81 @@
+id: tarjetas-black-uso-tarjetas-opacas
+caso_id: tarjetas-black
+enunciado: |
+  La Fiscalia Anticorrupcion sostuvo, y la Audiencia Nacional declaro en su
+  sentencia de 23 de febrero de 2017 (confirmada por el Tribunal Supremo),
+  que consejeros y directivos de Caja Madrid y luego Bankia dispusieron,
+  entre aproximadamente 2003 y 2012, de tarjetas de credito de empresa para
+  gastos en su mayoria personales, cargados a la entidad fuera de su
+  retribucion formal y sin declarar a la Hacienda Publica. El tribunal de
+  instancia califico esos hechos como constitutivos de un delito de
+  apropiacion indebida en perjuicio de la entidad. La condicion de acusados
+  no implica valoracion de culpabilidad hasta resolucion firme; las condenas
+  confirmadas por el Tribunal Supremo adquirieron firmeza para quienes no
+  habian fallecido ni sido absueltos.
+  # LLM-incierto: importe total (~12 M EUR) y periodo exactos a verificar en
+  # los hechos probados de la sentencia AN. La cifra de 12 M EUR procede del
+  # conocimiento del modelo, no de verificacion directa del texto judicial.
+tipo: atribuido
+# V-04: aunque la sentencia firme del TS declara hechos probados candidatos a
+# 'acreditado', este agente NO los promueve. Queda 'atribuido' con cita
+# pendiente. Candidato a 'acreditado' anotado en NOTES.md para revision humana
+# tras verificar el texto firme en CENDOJ.
+fecha_o_periodo:
+  desde: "2003-01-01"
+  hasta: "2012-05-31"
+  precision: rango
+  # LLM-incierto: periodo exacto a verificar en hechos probados de la sentencia.
+personas_implicadas:
+  - rodrigo-rato
+  - miguel-blesa
+organizaciones_implicadas:
+  - caja-madrid
+  - bankia
+  - fiscalia-anticorrupcion
+documentos_respaldo:
+  - documento_id: sentencia-an-tarjetas-black-2017
+    pasaje: "Hechos Probados — uso de tarjetas de credito de empresa, periodo e importe total dispuesto (paginas pendientes de localizar en CENDOJ)."
+  - documento_id: sentencia-ts-tarjetas-black-2018
+    pasaje: "Confirmacion de los hechos probados de la AN en casacion (localizacion pendiente)."
+nivel_fuente_efectivo: 1
+importe: 12000000
+# LLM-incierto: cifra de memoria (~12 M EUR); verificar cifra exacta en hechos probados.
+importe_moneda: EUR
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: cobro_indebido
+importe_nota: >-
+  Importe total aproximado dispuesto con las tarjetas de empresa durante el
+  periodo enjuiciado (~2003-2012), segun cobertura periodistica cruzada.
+  Cifra pendiente de verificar contra los hechos probados de la sentencia AN.
+  Clasificado como cobro_indebido (disposicion de fondos de la entidad sin
+  justificacion como gasto corporativo ni retribucion declarada).
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: caja-madrid
+    papel: perjudicado
+    nota: Caja Madrid como entidad emisora de las tarjetas y principal perjudicada.
+  - sujeto_tipo: organizacion
+    sujeto: bankia
+    papel: perjudicado
+    nota: Bankia como sucesora del negocio bancario de Caja Madrid en el tramo final del periodo.
+  - sujeto_tipo: persona
+    sujeto: rodrigo-rato
+    papel: activo
+    nota: >-
+      Presidente de Caja Madrid / Bankia en el tramo final; condenado por la AN
+      y por el TS. Importe individual dispuesto pendiente de verificar en la sentencia.
+  - sujeto_tipo: persona
+    sujeto: miguel-blesa
+    papel: activo
+    nota: >-
+      Presidente de Caja Madrid hasta 2010; condenado en primera instancia por la AN.
+      Fallecio en julio de 2017 antes de la firmeza; su responsabilidad penal se
+      extinguio por fallecimiento (art. 130.1.1.a CP).
+# GUARDARRAIL V-23: el quebranto del perjudicado (caja-madrid / bankia) no se suma
+# al importe atribuido a cada usuario. Las cifras individuales por sujeto se
+# modelaran en hechos separados una vez verificadas en la sentencia.
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

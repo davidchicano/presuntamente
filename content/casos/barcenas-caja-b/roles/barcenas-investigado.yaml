@@ -1,0 +1,18 @@
+id: barcenas-investigado
+caso_id: barcenas-caja-b
+sujeto_tipo: persona
+sujeto_persona_id: luis-barcenas
+rol: investigado
+delitos_atribuidos:
+  - delito-contra-hacienda-publica
+  - falsedad-documental
+  - blanqueo-de-capitales
+  - organizacion-criminal
+fecha_inicio: "2013-03-01"
+fecha_fin: "2015-05-28"
+hito_fin_id: barcenas-apertura-juicio-oral-2015-05-28
+notas: |
+  Luis Bárcenas fue investigado como extesorero y exgerente del PP en la pieza
+  separada sobre la presunta caja B del partido. La instrucción fue conducida
+  inicialmente por el juez Pablo Ruz. Rige la presunción de inocencia durante
+  esta fase.

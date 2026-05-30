@@ -72,3 +72,40 @@ No existía en el inventario. Se crea en PR1 como `medio_comunicacion` con `natu
 - [ ] Evaluar si la pieza B (JI nº 9 Madrid) merece modelado como caso hijo `leire-diez/pieza-jm9` o si se mantiene integrada en el caso raíz.
 - [ ] Vinculos institucionales (`/documentar-vinculos`): PSOE como organización directamente afectada; SEPI como ámbito del acto presuntamente irregular.
 - [ ] Modelo del magistrado Arturo Zamarriego (JI nº 9 Madrid, pieza B): crear persona y rol `juez_instructor` cuando se confirme el número de procedimiento.
+
+---
+
+## Barrido de actualidad — 2026-05-30 (`/actualizar-caso`)
+
+**Ventana revisada:** 2026-05-28 (última revisión editorial) → 2026-05-30. Última fecha procesal conocida ya catalogada: 27-may-2026 (requerimiento UCO en Ferraz). Búsqueda en ≥4 líneas editoriales (eldiario.es, The Objective, Infobae, Vozpópuli, El Español, Confilegal, OKDiario, Libertad Digital) + intento CGPJ.
+
+### Conclusión: SIN Hito procesal nuevo. No se fabrican hitos.
+Todo lo publicado entre el 28 y el 30 de mayo de 2026 es una de estas tres cosas, ninguna modelable como Hito:
+1. **Lectura más detallada del mismo auto del 26-may** (bajo secreto sumarial): el desglose del pago mensual (4.000 €/mes a Díez vía consultora "Zaño" vinculada a Zarrías, 16.000 € en cuatro meses desde junio de 2024), el detalle de las 39 reuniones Cerdán–Díez (22 en Ferraz) y la tesis de "incrustar" a Díez en la presidencia/jefatura de gabinete de la SEPI. Son matices del Hito ya catalogado `auto-pedraz-pieza-separada-2026-05-26`, no autos nuevos. **No se promueven a Hito** mientras el sumario siga secreto (riesgo activo nº 2 de este NOTES).
+2. **Reacción política**: Pedro Sánchez pide comparecer en el Congreso (28-may; previsiblemente tras el Consejo Europeo del 18-19 jun). Por neutralidad (P-10) y por la regla "no fabricar hitos sobre reacción política", **no es Hito** de este caso: no hay auto ni rol procesal.
+3. **Filtración / fuente única no auditable**: que Díez habría presentado recurso de reforma pidiendo el levantamiento del secreto (esdiario, fuente única, fecha dudosa) y que el procedimiento sería "DP 150/2025" (Pravda España, no auditable). **No modelar**; verificar con primario u N4 cruzada.
+
+### Hallazgo verificado relevante (refuerza nexo con caso Koldo, no nuevo Hito)
+El auto del 26-may sitúa el presunto ofrecimiento de **50.000 €** a la empresaria **Carmen Pano** como intento de que se retractara de su declaración sobre la entrega de **90.000 € en efectivo en Ferraz (octubre de 2020)**, entrega que Pano atribuye a instrucciones de **Víctor de Aldama** (conseguidor del caso Koldo). Pedraz aprecia indicios de que ese ofrecimiento se habría **canalizado a través de Leticia de la Hoz Calvo, abogada de Koldo García** (Oliver → Díez: "Negócialo. Si puedes, hazlo"). De la Hoz lo ha **negado** públicamente. Cruzado en ≥3 líneas (Infobae 27-may, Confilegal 27-may, The Objective 27-may, OKDiario 28-may, Telecinco 27-may).
+
+- **No se modela** `Persona`/`RolEnCaso` para **Leticia de la Hoz** (la cobertura habla de "indicios", no consta imputación formal en esta pieza), ni para **Carmen Pano** (persona privada / potencial perjudicada, decisión previa de no-modelado, V-17) ni para **Víctor de Aldama** (actor del caso Koldo, no de esta pieza). Si un auto futuro imputa formalmente a De la Hoz en la pieza Pedraz, crear persona + rol y elevar el nexo Koldo a `comparte_actor_con` con ella como tercer actor pivote.
+- **Acción propuesta (NO ejecutada aquí):** enriquecer la relación ya existente `leire-diez-comparte-actor-koldo` añadiendo este tercer hilo documentado (De la Hoz, abogada de Koldo, como presunto canal del ofrecimiento; y el sustrato Pano/Aldama/90.000 € del caso Koldo). Como las relaciones las consolida el agente de Reconciliación, se propone en la salida estructurada y no se edita el fichero en esta sesión.
+
+### Cruce con otros casos del inventario
+- **koldo**: nexo reforzado (ver arriba). Ya existe `leire-diez-comparte-actor-koldo` (Cerdán + Oliver); se propone ampliar descripción.
+- **plus-ultra**: ya existe `leire-diez-conexion-factual-plus-ultra` (pivote Fernández Guerrero / SEPI). Novedad colateral en plus-ultra (no de este caso): Zapatero citado a declarar el 17-18 jun (aplazado desde el 2 jun); cifra de 1,95 M€ atribuida a su entorno. Pertenece a plus-ultra, no se toca desde aquí.
+- **begona-gomez** y **david-sanchez-badajoz**: el auto del 26-may describe acciones presuntamente dirigidas a desestabilizar esos procedimientos (Peinado y la jueza del caso del hermano de Sánchez). Para Begoña Gómez ya existe `leire-diez-conexion-factual-begona-gomez`. **Pendiente nuevo:** evaluar una `conexion_factual` análoga leire-diez ↔ david-sanchez-badajoz (el auto menciona a la jueza de ese caso como objetivo). Propuesta en la salida; verificar respaldo documental antes de consolidar.
+- **fiscal-general-del-estado**: no se localizó nexo procesal documentado en esta ventana (la causa FGE es firme desde feb-2026); **no se propone** relación — sería cuota/contexto político, no nexo formal.
+
+### Cascada de coherencia aplicada sobre `caso.yaml`
+- `ultima_revision_editorial`: 2026-05-28 → **2026-05-30**.
+- `estado_ficha.fecha_actualizacion`: 2026-05-28 → **2026-05-30**; `notas` ampliada con el resumen del barrido.
+- `sintesis_caso.estado_actual`: precisado para situar el ofrecimiento de 50.000 € sobre la entrega en efectivo en Ferraz y su conexión con el entorno Koldo (matiz del auto ya catalogado; sin nuevos hitos/cifras).
+- **Sin tocar**: `hechos_clave`, `cifras_clave`, `que_se_investiga`, `fase_actual` (sigue `instruccion`), `delitos_atribuidos_en_la_causa`, roles y hechos (no hay auto nuevo que los altere).
+
+### Pendientes nuevos abiertos por este barrido
+- [ ] Ampliar descripción de `leire-diez-comparte-actor-koldo` con el hilo De la Hoz + Pano/Aldama/90.000 € (lo consolida Reconciliación; propuesto en salida).
+- [ ] Evaluar `conexion_factual` leire-diez ↔ david-sanchez-badajoz (auto Pedraz menciona a la jueza de ese caso como objetivo de la presunta operación de desestabilización). Verificar respaldo en el auto íntegro.
+- [ ] Vigilar imputación formal de Leticia de la Hoz en la pieza Pedraz; si llega, crear persona + rol y elevar nexo Koldo a `comparte_actor_con`.
+- [ ] Confirmar nº de DP de la pieza Pedraz ("DP 150/2025" citado sólo por fuente no auditable).
+- [ ] Refinar `hecho-presunta-obstruccion-judicial`: la cobertura precisa que el ofrecimiento de 50.000 € se habría canalizado vía De la Hoz y apunta a la retractación sobre los 90.000 € de Pano/Aldama; valorar añadir ese matiz al `enunciado`/`importe_nota` cuando se localice el auto íntegro (no se toca ahora para no introducir a De la Hoz sin imputación formal).

@@ -1,0 +1,15 @@
+id: corulla-condenada-firme
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: montserrat-corulla
+rol: condenado_firme
+delitos_atribuidos:
+  - blanqueo-de-capitales
+  - cohecho
+fecha_inicio: "2015-07-27"
+hito_origen_id: malaya-sentencia-firme-ts-2015
+notas: |
+  La AP Málaga la condenó a 4 años de prisión y 30 M€ de multa;
+  el TS confirma la condena en la sentencia firme de 27-jul-2015.
+  La presunción de inocencia decae respecto a los hechos probados
+  y firmes.

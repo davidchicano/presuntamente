@@ -1,0 +1,58 @@
+id: auto-acusaciones-populares-pp-2026-05-29
+caso_id: plus-ultra
+tipo: auto_diligencias
+fecha: "2026-05-29"
+fecha_precision: dia
+titulo: >-
+  El JCI nº 4 agrupa las acusaciones populares del caso Plus Ultra y atribuye
+  al Partido Popular su representación y dirección letrada conjunta
+descripcion: |
+  El magistrado José Luis Calama, titular del Juzgado Central de Instrucción
+  nº 4 de la Audiencia Nacional, dicta auto en el que acuerda agrupar las
+  acusaciones populares personadas en el caso Plus Ultra bajo una
+  representación y dirección letrada conjunta, que atribuye al Partido
+  Popular.
+
+  Según la cobertura periodística del 29-may-2026, el instructor tiene por
+  personadas como acusación popular a ocho partes —entre ellas el Partido
+  Popular, Vox, Hazte Oír, el sindicato Manos Limpias, los partidos
+  Ciudadanos e Iustitia Europa, la organización Liberum y un particular— y
+  designa al PP titular de la representación conjunta. El auto razona que,
+  aunque Vox presentó el primer escrito, su personación no era "válida y
+  plenamente eficaz" por carecer del poder de representación exigido, mientras
+  que la del PP, presentada momentos después, cumplía los requisitos
+  procesales; añade que el PP "presenta una implantación institucional más
+  relevante" que el resto, lo que, a juicio del instructor, refuerza la
+  idoneidad de su designación. El auto concede al letrado designado un plazo
+  de dos días para ratificar los escritos presentados hasta la fecha por las
+  distintas acusaciones.
+
+  Esta agrupación es una decisión de ordenación procesal: no altera el objeto
+  de la instrucción ni la condición de investigado del expresidente del
+  Gobierno José Luis Rodríguez Zapatero, cuya declaración sigue señalada para
+  los días 17 y 18 de junio de 2026.
+
+  A fecha de incorporación (30-may-2026) no consta nota oficial del CGPJ ni el
+  auto íntegro publicado en CENDOJ sobre esta resolución; el hito se respalda
+  en dos fuentes N4 de líneas editoriales distintas. Si aparece nota CGPJ o el
+  auto íntegro, actualizar `documento_principal_id` con el documento oficial.
+
+  Conforme al principio de presunción de inocencia, la condición de
+  investigado no implica valoración de culpabilidad y persiste mientras no
+  recaiga resolución firme en contrario.
+personas_afectadas:
+  - jose-luis-rodriguez-zapatero
+organizaciones_afectadas:
+  - juzgado-central-instruccion-4
+  - audiencia-nacional
+  - partido-popular
+  - vox
+  - hazte-oir
+  - manos-limpias
+  - iustitia-europa
+documento_principal_id: the-objective-acusaciones-populares-pp-2026-05-29
+documentos_relacionados:
+  - infobae-acusaciones-populares-pp-2026-05-29
+hechos_introducidos:
+  - pu-acusaciones-populares-pp-2026-05-29
+fase_resultante: instruccion

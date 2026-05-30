@@ -1,0 +1,40 @@
+id: rodrigo-rato
+nombre_completo: "Rodrigo de Rato y Figaredo"
+nombres_alternativos:
+  - "Rodrigo Rato"
+  - "Rato"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Vicepresidente Primero del Gobierno y Ministro de Economia"
+    organizacion_id: presidencia-del-gobierno
+    desde: "1996-05-05"
+    hasta: "2004-04-17"
+    # LLM-incierto: fechas exactas de ministerio a verificar en BOE.
+  - cargo: "Director Gerente del Fondo Monetario Internacional (FMI)"
+    desde: "2004-06-07"
+    hasta: "2007-10-31"
+    # LLM-incierto: fechas de mandato en el FMI a verificar.
+  - cargo: "Presidente de Bankia"
+    organizacion_id: bankia
+    desde: "2010-12-01"
+    hasta: "2012-05-09"
+    # LLM-incierto: fechas exactas de presidencia de Bankia a verificar.
+  - cargo: "Presidente de Caja Madrid"
+    organizacion_id: caja-madrid
+    desde: "2010-01-01"
+    hasta: "2012-05-09"
+    # LLM-incierto: Rato sucedio a Blesa en Caja Madrid/Bankia; fechas exactas a verificar.
+biografia_corta: |
+  Economista y politico espanol del Partido Popular. Fue Vicepresidente
+  Primero del Gobierno y Ministro de Economia (1996-2004) y Director Gerente
+  del Fondo Monetario Internacional (2004-2007). Posteriormente presidio Caja
+  Madrid y Bankia (2010-2012) hasta la intervencion de la entidad. Figura
+  en multiples procedimientos judiciales: en el caso de las tarjetas black de
+  Caja Madrid / Bankia fue condenado por la Audiencia Nacional (sentencia de
+  23 de febrero de 2017) y dicha condena fue confirmada y adquirio firmeza
+  por el Tribunal Supremo en 2018. Figura tambien como imputado/investigado
+  en procedimientos por fraude fiscal y blanqueo de capitales (caso
+  rato-fraude-fiscal). La presuncion de inocencia rige para los extremos
+  no cubiertos por resolucion firme.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

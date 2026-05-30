@@ -1,0 +1,36 @@
+id: palau-sentencia-firme-ts-2020
+caso_id: palau-musica
+tipo: sentencia_firme
+fecha: "2020-04-30"
+fecha_precision: dia
+titulo: "STS 813/2020: el Tribunal Supremo confirma y actualiza las condenas del caso Palau, sentencia firme"
+descripcion: |
+  La Sala Segunda del Tribunal Supremo dicta la STS 813/2020 el
+  30 de abril de 2020, con el magistrado Andrés Palomo del Arco
+  como ponente. La sentencia ratifica y parcialmente modifica las
+  condenas de primera instancia: Fèlix Millet i Tusell, 9 años y
+  8 meses de prisión y multa de 4,1 millones de euros; Jordi Montull
+  Bagur, 7 años y 6 meses de prisión y multa de 2,9 millones de
+  euros; Gemma Montull Mir, condena reducida a 4 años de prisión y
+  multa de 2,6 millones de euros; Daniel Osàcar Escrig, condena
+  reducida a 3 años y 6 meses de prisión y multa de 3,7 millones de
+  euros. El Supremo confirma el comiso de 6,6 millones de euros a
+  Convergència Democràtica de Catalunya como ganancias obtenidas por
+  tráfico de influencias. La sentencia deviene firme desde esta fecha
+  al no caber recurso ordinario ulterior.
+personas_afectadas:
+  - felix-millet-tusell
+  - jordi-montull-bagur
+  - gemma-montull-mir
+  - daniel-osacar-escrig
+organizaciones_afectadas:
+  - tribunal-supremo
+  - convergencia-democratica-de-catalunya
+documento_principal_id: nota-cgpj-sts-palau-2020
+documentos_relacionados:
+  - confilegal-sts-palau-2020
+hechos_introducidos:
+  - palau-comiso-cdc-atribuido
+hechos_modificados:
+  - palau-expolio-fondos-atribuido
+fase_resultante: sentencia_firme

@@ -1,0 +1,19 @@
+id: recurso-casacion-forum-2018
+caso_id: forum-filatelico
+tipo: recurso_casacion
+fecha: "2018-01-01"
+fecha_precision: mes
+# LLM-incierto: la fecha exacta de presentación del recurso de casación no está verificada; se sabe que el recurso de casación 2891/2018 está registrado en el TS, con lo que la interposición es de 2018.
+titulo: "Recurso de casación 2891/2018 ante el Tribunal Supremo"
+descripcion: |
+  Los condenados en la sentencia de la Audiencia Nacional de 13 de julio de 2018
+  interponen recursos de casación ante la Sala Segunda del Tribunal Supremo,
+  registrado como recurso de casación nº 2891/2018. El ponente designado es el
+  magistrado Miguel Colmenero Menéndez de Luarca.
+personas_afectadas:
+  - francisco-briones
+  - juan-ramon-gonzalez-fernandez
+  - antonio-merino-blanco
+organizaciones_afectadas:
+  - tribunal-supremo
+fase_resultante: recurso

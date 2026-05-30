@@ -1,0 +1,13 @@
+id: castro-juez-instructor
+caso_id: noos
+sujeto_tipo: persona
+sujeto_persona_id: jose-castro-aragon
+rol: juez_instructor
+fecha_inicio: "2010-07-20"
+fecha_fin: "2014-12-22"
+hito_origen_id: noos-apertura-pieza-separada-2010
+hito_fin_id: noos-apertura-juicio-oral-2014
+notas: |
+  Magistrado-juez del Juzgado de Instrucción nº 3 de Palma. Instructor desde la apertura
+  de la pieza separada en julio de 2010 hasta el auto de apertura de juicio oral en
+  diciembre de 2014, momento en que la causa se eleva a la Audiencia Provincial de Palma.

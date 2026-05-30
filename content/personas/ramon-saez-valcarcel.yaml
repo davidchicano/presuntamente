@@ -1,0 +1,21 @@
+id: ramon-saez-valcarcel
+nombre_completo: "Ramón Sáez Valcárcel"
+nombres_alternativos:
+  - "Ramón Sáez"
+  - "Sáez Valcárcel"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Magistrado de la Sección Primera de la Sala de lo Penal de la Audiencia Nacional (ponente en el caso Fórum Filatélico)"
+    organizacion_id: audiencia-nacional
+    desde: "2000-01-01"
+    # LLM-incierto: fecha de inicio en la Sección Primera no verificada con precisión
+biografia_corta: |
+  Magistrado de la Sala de lo Penal de la Audiencia Nacional. Fue magistrado
+  ponente de la sentencia de 13 de julio de 2018 de la Sección Primera de la
+  Sala de lo Penal de la Audiencia Nacional que condenó a 20 de los 27 acusados
+  en el caso Fórum Filatélico. Conocido por su posición crítica con el uso
+  de la prisión provisional y por sus opiniones doctrinales sobre garantías
+  procesales. La prensa le identifica como firmante de la sentencia del caso
+  Fórum Filatélico.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

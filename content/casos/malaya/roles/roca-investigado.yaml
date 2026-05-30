@@ -1,0 +1,20 @@
+id: roca-investigado
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: juan-antonio-roca
+rol: investigado
+delitos_atribuidos:
+  - cohecho
+  - blanqueo-de-capitales
+  - malversacion-caudales-publicos
+  - prevaricacion
+  - trafico-de-influencias
+  - fraude-administraciones-publicas
+  - delito-contra-hacienda-publica
+fecha_inicio: "2005-11-01"
+fecha_fin: "2007-07-23"
+hito_fin_id: malaya-procesamiento-2007
+notas: |
+  Juan Antonio Roca es señalado como figura central de la red de corrupción urbanística
+  desde el inicio de las Diligencias Previas 4796/2005. La presunción
+  de inocencia rige en este tramo temporal.

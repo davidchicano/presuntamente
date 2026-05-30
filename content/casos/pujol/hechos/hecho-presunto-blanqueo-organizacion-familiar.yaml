@@ -1,0 +1,32 @@
+id: hecho-presunto-blanqueo-organizacion-familiar
+caso_id: pujol
+enunciado: >-
+  La acusación sostiene que la familia Pujol habría operado como una estructura
+  organizada para ocultar y dar apariencia de licitud a fondos de origen no
+  acreditado, lo que la Fiscalía Anticorrupción califica indiciariamente como
+  blanqueo de capitales en el seno de una organización criminal.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "1980-01-01"
+  hasta: "2014-07-25"
+  precision: rango
+personas_implicadas:
+  - jordi-pujol-soley
+  - jordi-pujol-ferrusola
+  - oriol-pujol-ferrusola
+  - oleguer-pujol-ferrusola
+  - pere-pujol-ferrusola
+  - marta-pujol-ferrusola
+  - mireia-pujol-ferrusola
+  - josep-pujol-ferrusola
+documentos_respaldo:
+  - documento_id: auto-transformacion-procedimiento-abreviado-pujol
+    # LLM-incierto: localización exacta dentro del auto pendiente de verificar
+nivel_fuente_efectivo: 1
+# Nota: calificación indiciaria de la instrucción/acusación, nunca afirmación de
+# culpabilidad. Pendiente de verificar la atribución exacta de delitos por
+# persona contra la resolución oficial (ver NOTES.md).
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

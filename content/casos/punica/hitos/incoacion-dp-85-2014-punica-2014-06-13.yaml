@@ -1,0 +1,26 @@
+id: incoacion-dp-85-2014-punica-2014-06-13
+caso_id: punica
+tipo: auto_diligencias
+fecha: "2014-06-13"
+fecha_precision: dia
+titulo: "El Juzgado Central de Instrucción nº 6 incoa las Diligencias Previas 85/2014 y el magistrado Eloy Velasco declara el secreto de las actuaciones"
+descripcion: |
+  La investigación tiene origen en la Fiscalía Especial contra la
+  Corrupción y la Criminalidad Organizada, que abrió Diligencias de
+  investigación a partir de documentación bancaria y encargó las
+  pesquisas a la Unidad Central Operativa de la Guardia Civil. Tras
+  su judicialización en la Audiencia Nacional, las Diligencias
+  Previas 85/2014 se repartieron al Juzgado Central de Instrucción
+  nº 6, cuyo titular, el magistrado Eloy Velasco, asumió la
+  instrucción y declaró el secreto de las actuaciones. La incoación
+  no implica valoración de culpabilidad de persona alguna: rige la
+  presunción de inocencia.
+personas_afectadas:
+  - eloy-velasco-nunez
+organizaciones_afectadas:
+  - juzgado-central-instruccion-6
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+  - uco-guardia-civil
+documento_principal_id: elespanol-detenciones-punica-2014-10-27
+fase_resultante: instruccion

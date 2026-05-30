@@ -1,0 +1,30 @@
+id: filesa-inicio-vista-oral-1997
+caso_id: filesa
+tipo: inicio_vista_oral
+fecha: "1997-07-01"
+fecha_precision: dia
+titulo: "Inicio de la vista oral de la Causa Especial nº 880/1991 ante el Tribunal Supremo"
+descripcion: |
+  El 1 de julio de 1997 comienza la vista oral de la Causa Especial
+  nº 880/1991 ante la Sala Segunda del Tribunal Supremo, con doce
+  acusados sentados en el banquillo. El Ministerio Fiscal solicita
+  durante la sesión inicial que no se admita el escrito de acusación
+  formulado por el Partido Popular; el 19 de julio la Sala dicta auto
+  teniendo por no formulado el escrito del PP y ajustando el alcance
+  del proceso. El tribunal enjuiciador está presidido por el magistrado
+  José Augusto de Vega Ruiz, que actúa también como ponente.
+personas_afectadas:
+  - jose-augusto-de-vega-ruiz
+  - jose-maria-sala-i-griso
+  - carlos-navarro-gomez
+  - alberto-flores-valencia
+  - luis-olivero-capellades
+  - aida-alvarez-alvarez
+  - miguel-guillermo-molledo-martin
+  - juan-antonio-molina-vivas
+  - eugenio-garcia-mansilla
+organizaciones_afectadas:
+  - tribunal-supremo
+  - partido-popular
+  - psoe
+fase_resultante: juicio_oral

@@ -1,0 +1,18 @@
+id: cofely-espana-entidad-investigada-punica
+naturaleza: entidad_investigada_en_caso
+descripcion: "Cofely España, S.A. fue juzgada como persona jurídica en la pieza de los contratos de eficiencia energética del caso Púnica, conforme al régimen de responsabilidad penal de las personas jurídicas (LO 5/2010), y condenada por sentencia de la Audiencia Nacional de 22 de diciembre de 2025 (no firme, recurrible en casación) a una multa superior a 3,5 millones de euros por delitos de cohecho y tráfico de influencias. Rige la presunción de inocencia hasta firmeza."
+sujeto_organizacion_id: cofely-espana
+objeto_organizacion_id: audiencia-nacional
+desde: "2025-12-22"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [punica]
+documentos_respaldo:
+  - documento_id: nota-cgpj-condena-cofely-punica-2025-12-22
+    pasaje: "Nota oficial de la Audiencia Nacional: la empresa Cofely España fue condenada el 22-dic-2025 a una multa de más de 3,5 millones de euros como persona jurídica por los delitos de cohecho y tráfico de influencias en la pieza de los contratos de eficiencia energética."
+  - documento_id: eldiario-condena-cofely-punica-2025-12-22
+    pasaje: "elDiario.es confirma la condena de Cofely España como persona jurídica en la sentencia de 22 de diciembre de 2025 por los contratos de eficiencia energética adjudicados a ayuntamientos de la Comunidad de Madrid."
+nivel_afectacion: directa
+justificacion_afectacion: "Cofely España, S.A. es la persona jurídica condenada (sentencia AN 22-dic-2025, no firme) en la pieza de los contratos de eficiencia energética de la macrocausa Púnica, con papel de parte pasiva en el procedimiento penal."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

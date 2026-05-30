@@ -1,0 +1,29 @@
+id: hecho-presuntas-comisiones-jordi-pujol-ferrusola
+caso_id: pujol
+enunciado: >-
+  La instrucción atribuye a Jordi Pujol Ferrusola el presunto cobro de
+  comisiones vinculadas a la adjudicación de contratos públicos durante la etapa
+  de su padre al frente de la Generalitat, fondos que se habrían movido a través
+  de cuentas en el extranjero.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "1980-01-01"
+  hasta: "2003-12-31"
+  precision: rango
+personas_implicadas:
+  - jordi-pujol-ferrusola
+organizaciones_implicadas:
+  - generalitat-de-cataluna
+documentos_respaldo:
+  - documento_id: informe-uco-patrimonio-pujol
+    # LLM-incierto: localización exacta dentro del informe pendiente de verificar
+  - documento_id: auto-transformacion-procedimiento-abreviado-pujol
+nivel_fuente_efectivo: 2
+# Nota: no se estructura importe porque ninguna cifra concreta de comisiones ha
+# podido trazarse a una fuente verificable en esta sesión (sin acceso web).
+# El importe estructurado debe añadirse cuando se localice el informe UCO o la
+# resolución que lo fije. Ver NOTES.md.
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

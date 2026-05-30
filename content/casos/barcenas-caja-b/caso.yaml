@@ -1,14 +1,132 @@
 id: barcenas-caja-b
-nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia Nacional (caja B del PP)"
-nombre_mediatico: "Caso Bárcenas (caja B)"
+nombre_oficial: >-
+  Diligencias Previas — Juzgado Central de Instrucción nº 5 de la Audiencia
+  Nacional (pieza separada «Papeles de Bárcenas» / caja B del Partido Popular;
+  pieza Génova enjuiciada por la Sección Segunda de la Sala Penal de la AN,
+  sentencia 28/10/2021; casación TS, sentencia ECLI:ES:TS:2024:5577)
+nombre_mediatico: "Caso Bárcenas (caja B del PP)"
 nombres_alternativos:
   - "Papeles de Bárcenas"
   - "Caja B del PP"
+  - "Caso Bárcenas"
+
+caso_padre_id: gurtel
+tipo_pieza: pieza_separada
+
+descripcion_corta: |
+  Pieza separada del caso Gürtel instruida por el Juzgado Central de
+  Instrucción nº 5 de la Audiencia Nacional sobre la presunta contabilidad
+  paralela (caja B) del Partido Popular. Las investigaciones abarcaron dos
+  ramas: la pieza «Génova», que enjuició el pago en negro de más de un
+  millón de euros para la reforma de la sede del partido, y la pieza de las
+  «donaciones finalistas», que investigaba si empresarios del entorno Gürtel
+  realizaban aportaciones irregulares al PP a cambio de contratos públicos.
+  La pieza Génova concluyó con sentencia condenatoria de la Audiencia Nacional
+  el 28 de octubre de 2021 —confirmada en casación por el Tribunal Supremo el
+  15 de noviembre de 2024 (ECLI:ES:TS:2024:5577, ponente Antonio del Moral)—,
+  que acredita la existencia de una contabilidad B institucionalizada en el PP
+  y condena a Luis Bárcenas, a los administradores de Unifica S.L. (Gonzalo
+  Urquijo Fernández de Córdoba y Belén García), y declara al Partido Popular
+  responsable civil subsidiario. La pieza de donaciones fue sobreseída
+  provisionalmente por auto del juez Santiago Pedraz el 19 de diciembre de
+  2022, al no quedar acreditada la relación causal entre las aportaciones
+  y adjudicaciones concretas.
+
+sintesis_caso:
+  que_se_investiga: >-
+    La presunta existencia de una contabilidad paralela («caja B») en el
+    Partido Popular y el uso de fondos no declarados para sufragar obras de
+    reforma de su sede en la calle Génova de Madrid, así como la posible
+    correlación entre aportaciones de empresarios y adjudicaciones de
+    contratos públicos.
+  hechos_clave:
+    - >-
+      La pieza «Génova» culminó con sentencia firme (TS, 15 de noviembre de
+      2024, ECLI:ES:TS:2024:5577) que acredita que el entonces tesorero
+      Luis Bárcenas pagó 1.072.000 euros fuera de facturación oficial a la
+      empresa Unifica S.L. para la reforma de la sede del PP.
+    - >-
+      La Audiencia Nacional constató que Bárcenas gestionó una contabilidad
+      paralela institucionalizada en el PP entre 1982 y 2009; la sentencia
+      señala que los «papeles de Bárcenas» registran hechos reales o
+      plausibles corroborados por otros medios de prueba, aunque no les
+      reconoce valor contable íntegro.
+    - >-
+      La pieza de donaciones (relación entre aportaciones de empresarios y
+      contratos públicos) fue sobreseída provisionalmente por el juez Pedraz
+      el 19 de diciembre de 2022 a petición de la Fiscalía Anticorrupción
+      tras informe de la Intervención General del Estado (IGAE).
+    - >-
+      El extesorero Álvaro Lapuerta —también investigado— fue sobreseído en
+      2016 por demencia sobrevenida y falleció en junio de 2018; Cristóbal
+      Páez (exgerente del PP) y Laura Montero (empleada de Unifica) fueron
+      absueltos por la Audiencia Nacional.
+  estado_actual: >-
+    Sentencia firme en la pieza Génova (TS, 15 de noviembre de 2024,
+    ECLI:ES:TS:2024:5577). Pieza de donaciones sobreseída provisionalmente
+    (auto de 19 de diciembre de 2022).
+  cifras_clave:
+    - "1.072.000 € pagados fuera de contabilidad oficial a Unifica por obras en Génova"
+    - "8 meses de prisión (Luis Bárcenas, pena reducida por dilaciones indebidas en TS)"
+    - "9 meses de prisión (Gonzalo Urquijo y Belén García, pena reducida en TS)"
+    - "123.669 € de responsabilidad civil subsidiaria del Partido Popular"
 
 organo_judicial_id: tribunal-supremo
+numero_procedimiento: >-
+  Pieza separada de las Diligencias Previas del caso Gürtel (JCI nº 5 AN);
+  casación ECLI:ES:TS:2024:5577
+tipo_procedimiento: sumario_ordinario
+
 fase_actual: sentencia_firme
-fecha_apertura: "2013-01-31"
+fecha_apertura: "2013-03-07"
+fecha_cierre: "2024-11-15"
 
 origen_denuncia: denuncia_periodistica
+# LLM-incierto: el inicio formal de las diligencias previas en el JCI 5 se produce tras
+# la publicación de los «papeles» en El País (31-ene-2013) y El Mundo (18-ene-2013).
+# La fecha 2013-03-07 es la habitualmente citada como inicio de la instrucción
+# específica sobre los papeles; verificar auto exacto de incoación en CENDOJ pendiente.
 
-estado_publicacion: pendiente
+delitos_atribuidos_en_la_causa:
+  - delito-contra-hacienda-publica
+  - falsedad-documental
+  - blanqueo-de-capitales
+  - organizacion-criminal
+
+resumen_cifras: |
+  La pieza Génova acredita con sentencia firme (TS, 2024) que se pagaron
+  1.072.000 euros en negro a Unifica S.L. por obras de reforma de la sede
+  del PP en la calle Génova, correspondientes a un descuento del 7-8 %
+  pactado con Bárcenas sobre el importe de obra ejecutado entre 2005 y 2010.
+  La cuota tributaria defraudada al ejercicio de 2007 fue fijada en
+  374.000 euros (la AN la fijó inicialmente en 870.000 €; el TS la redujo
+  a 374.000 € al excluir importes de ejercicios no constitutivos de delito).
+  El Partido Popular fue condenado como responsable civil subsidiario por
+  123.669 euros. Las multas impuestas por el TS son de 180.000 € a Bárcenas
+  y de 200.000 € a cada administrador de Unifica. La pieza de donaciones
+  finalistas fue sobreseída sin cuantificación de daño acreditado.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: capital
+
+estado_ficha:
+  cronologia: parcial
+  roles_procesales: parcial
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: completo
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: pendiente
+  conexiones: parcial
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: >-
+    Modelado inicial centrado en la pieza Génova (sentencia firme TS 2024,
+    ECLI:ES:TS:2024:5577) y la pieza de donaciones (sobreseída 2022). Faltan
+    por modelar roles de segundo nivel (acusaciones populares del juicio 2021),
+    y verificar fecha exacta de incoación de diligencias previas en JCI nº 5.
+    Sentencia AN 28/10/2021 y STS 2024 pendientes de localizar en CENDOJ.
+    El archivo de la pieza donaciones (auto Pedraz 19-dic-2022) no tiene
+    número de diligencias identificado con certeza.
+  fecha_actualizacion: "2026-05-30"

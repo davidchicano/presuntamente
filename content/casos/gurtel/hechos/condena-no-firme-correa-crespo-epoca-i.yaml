@@ -1,0 +1,31 @@
+id: condena-no-firme-correa-crespo-epoca-i
+caso_id: gurtel
+enunciado: |
+  La sentencia 20/2018 de la Audiencia Nacional (hecha pública el 24
+  de mayo de 2018) impuso, en primera instancia y de forma recurrible,
+  las penas más altas de la Época I del caso Gürtel a Francisco
+  Correa (51 años y 11 meses de prisión) y a Pablo Crespo (37 años y 6
+  meses), además de penas a otros 27 condenados, entre ellos Luis
+  Bárcenas (33 años y 4 meses) y Rosalía Iglesias (15 años y 1 mes).
+  Al ser recurrible en casación, la resolución no era firme en esa
+  fecha y regía la presunción de inocencia hasta su confirmación.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2018-05-24"
+  precision: dia
+personas_implicadas:
+  - francisco-correa-sanchez
+  - pablo-crespo-sabaris
+  - luis-barcenas
+  - rosalia-iglesias
+organizaciones_implicadas:
+  - audiencia-nacional
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-gurtel-epoca-i-an-2018
+    pasaje: "Penas individuales: Francisco Correa 51 años y 11 meses; Pablo Crespo 37 años y 6 meses; Luis Bárcenas 33 años y 4 meses; Rosalía Iglesias 15 años y 1 mes."
+nivel_fuente_efectivo: 1
+vigencia: superado
+corregido_por: condena-firme-correa-crespo-epoca-i
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

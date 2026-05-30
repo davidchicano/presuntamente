@@ -1,0 +1,36 @@
+id: pujol-inicio-vista-oral-2025-11-10
+caso_id: pujol
+tipo: inicio_vista_oral
+fecha: "2025-11-10"
+fecha_precision: dia
+titulo: "Inicio del juicio oral contra la familia Pujol en la Audiencia Nacional"
+descripcion: >-
+  La Sección Primera de la Sala de lo Penal de la Audiencia Nacional dio inicio
+  el 10 de noviembre de 2025 al juicio oral contra Jordi Pujol Soley, sus siete
+  hijos y otras personas acusadas por los presuntos delitos de organización
+  criminal o asociación ilícita, blanqueo de capitales, delito contra la
+  Hacienda Pública y falsedad documental. El juicio, con 51 sesiones programadas
+  para celebrarse entre noviembre de 2025 y abril de 2026 en la sede de San
+  Fernando de Henares (Madrid), está presidido por la magistrada María Riera,
+  con la magistrada María Fernanda García como ponente y Carolina Rius como
+  tercera integrante. La Fiscalía Anticorrupción mantiene penas que van de 8 a
+  29 años de prisión. En los primeros días del juicio se constata el deterioro
+  cognitivo de Jordi Pujol Soley, de 95 años, que comparece mediante
+  videoconferencia desde su domicilio en Barcelona, conforme a un auto del
+  tribunal de 24 de noviembre de 2025.
+personas_afectadas:
+  - jordi-pujol-soley
+  - jordi-pujol-ferrusola
+  - oriol-pujol-ferrusola
+  - oleguer-pujol-ferrusola
+  - pere-pujol-ferrusola
+  - marta-pujol-ferrusola
+  - mireia-pujol-ferrusola
+  - josep-pujol-ferrusola
+organizaciones_afectadas:
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documento_principal_id: nota-cgpj-inicio-vista-oral-pujol-2025
+documentos_relacionados:
+  - noticia-an-inicio-vista-oral-pujol-eldiario-2025
+fase_resultante: juicio_oral

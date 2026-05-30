@@ -1,0 +1,26 @@
+id: sentencia-gurtel-epoca-i-an-2018
+titulo: "Sentencia 20/2018 de la Audiencia Nacional (Sección 2ª, Sala de lo Penal) sobre la Época I de la trama Gürtel"
+tipo: sentencia
+nivel_fuente: 3
+nivel_fuente_justificacion: |
+  Sentencia 20/2018, de 17 de mayo de 2018 (hecha pública el 24 de
+  mayo), de la Sección Segunda de la Sala de lo Penal de la Audiencia
+  Nacional sobre la Época I (1999-2005) de la trama Gürtel; figura como
+  ponente formal el magistrado Julio de Diego (la ponencia inicial de
+  Ángel Hurtado quedó en minoría en varios aspectos), con voto
+  particular del magistrado José Ricardo de Prada. Resolución de 1.687
+  páginas y 165 penas. Se modela provisionalmente como Nivel 3
+  (filtrado_verificado): el texto íntegro circuló a través de mirrors
+  periodísticos (entre ellos un PDF alojado por El Mundo) y su
+  contenido se triangula con la nota oficial del CGPJ del mismo día
+  (Nivel 1). Pendiente de localizar la resolución íntegra en CENDOJ
+  para elevar a Nivel 1 (pendiente_primario). No se descarga copia
+  local en esta sesión.
+productor_organizacion_id: audiencia-nacional
+fecha_documento: "2018-05-17"
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Audiencia-Nacional/Noticias-Judiciales/La-Audiencia-Nacional-condena-a-penas-de-hasta-51-anos-de-prision-a-29-de-los-37-acusados-en-el--caso-Gurtel-"
+estado_acceso: filtrado_verificado
+idioma: es
+caso_principal_id: gurtel
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

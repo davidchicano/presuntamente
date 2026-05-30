@@ -1,0 +1,18 @@
+id: auto-transformacion-procedimiento-abreviado-pujol
+titulo: "Auto de transformación a procedimiento abreviado en el caso Pujol"
+tipo: auto_judicial
+nivel_fuente: 1
+nivel_fuente_justificacion: >-
+  Resolución del órgano instructor (Juzgado Central de Instrucción nº 5 de la
+  Audiencia Nacional). Nivel 1 por proceder del órgano emisor. URL canónica y
+  fecha exacta pendientes de verificar contra CENDOJ o nota del CGPJ;
+  marcado pendiente_primario en NOTES.md.
+productor_organizacion_id: juzgado-central-instruccion-5
+fecha_documento: "2020-07-01"
+# LLM-incierto: fecha exacta del auto pendiente de verificar; aproximada
+# como julio 2020.
+estado_acceso: acceso_restringido_pero_citable
+caso_principal_id: pujol
+idioma: es
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

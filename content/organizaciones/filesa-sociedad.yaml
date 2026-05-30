@@ -1,0 +1,14 @@
+id: filesa-sociedad
+nombre: "Filesa, S.A."
+nombres_alternativos:
+  - "Filesa"
+  - "Filesa SA"
+tipo: empresa
+descripcion_corta: |
+  Sociedad mercantil constituida en Barcelona, epicentro de la trama
+  de financiación presuntamente irregular del PSOE investigada en la
+  Causa Especial nº 880/1991. Se atribuye que emitía facturas por
+  estudios e informes económicos a grandes empresas públicas y privadas,
+  ingresando los fondos presuntamente en beneficio del PSOE.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

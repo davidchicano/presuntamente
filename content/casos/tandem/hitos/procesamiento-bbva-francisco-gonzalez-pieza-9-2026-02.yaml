@@ -1,0 +1,32 @@
+id: procesamiento-bbva-francisco-gonzalez-pieza-9-2026-02
+caso_id: tandem
+tipo: auto_procesamiento
+fecha: "2026-02-20"
+fecha_precision: dia
+titulo: "La Sala de lo Penal confirma el procesamiento del BBVA y de Francisco González en la pieza 9 (Trampa/BBVA)"
+descripcion: |
+  El 20 de febrero de 2026 la Sala de lo Penal de la Audiencia Nacional
+  ratificó el auto que acordaba el procedimiento abreviado en la pieza
+  separada nº 9 del caso Tándem (conocida mediáticamente como pieza BBVA
+  o Trampa) al rechazar la totalidad de los once recursos de apelación
+  presentados por los acusados. Quedan a la espera de juicio oral el
+  Banco Bilbao Vizcaya Argentaria (BBVA) como persona jurídica, su
+  expresidente Francisco González Rodríguez y otros trece imputados,
+  entre ellos el ex consejero delegado Ángel Cano, el ex jefe de Seguridad
+  Ángel Corrochano y el socio de Villarejo Rafael Redondo Rodríguez.
+  La Fiscalía Anticorrupción presentó en marzo de 2026 su escrito de
+  acusación, solicitando 173 años de prisión para Francisco González y
+  180 millones de euros de multa para el BBVA, por contratar entre 2004
+  y 2016 los servicios de la empresa Cenyt para la realización de
+  encargos presuntamente ilegales. La causa sigue pendiente de señalamiento
+  de fecha para el juicio oral.
+personas_afectadas:
+  - francisco-gonzalez-rodriguez
+  - rafael-redondo-rodriguez
+  - jose-manuel-villarejo
+organizaciones_afectadas:
+  - bbva
+  - audiencia-nacional
+  - fiscalia-anticorrupcion
+documento_principal_id: theobjective-fiscalia-173-anos-bbva-gonzalez-2026-03-18
+fase_resultante: fase_intermedia

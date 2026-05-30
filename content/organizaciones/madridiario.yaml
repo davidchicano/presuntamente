@@ -1,0 +1,19 @@
+id: madridiario
+nombre: "Madridiario"
+nombres_alternativos:
+  - "Madridiario.es"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Diario digital español de información regional centrado en la
+  Comunidad de Madrid, fundado en 2000. Cubre actualidad política,
+  judicial y municipal del ámbito madrileño.
+ambito_territorial: autonomico
+localidad: "Madrid"
+url_canonica: "https://www.madridiario.es/"
+naturaleza_editorial: generalista_politico
+# orientacion_editorial_declarada / _percibida: sin clasificar. No se rellena
+# ninguna porque no se localizó autoadscripción ni estudio académico reputado
+# que clasifique a Madridiario en el eje izquierda-derecha (norma: no inventar
+# orientación sin cita verificable).
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

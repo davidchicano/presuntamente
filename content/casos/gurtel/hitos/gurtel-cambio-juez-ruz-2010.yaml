@@ -1,0 +1,22 @@
+id: gurtel-cambio-juez-ruz-2010
+caso_id: gurtel
+tipo: cambio_juez
+fecha: "2010-05-14"
+fecha_precision: dia
+titulo: "Pablo Ruz asume la instrucción de Gürtel tras la salida de Garzón del JCI nº 5"
+descripcion: |
+  Tras la pérdida de la condición de magistrado de Baltasar Garzón en
+  mayo de 2010 por una causa ajena a Gürtel, la instrucción del
+  procedimiento en el Juzgado Central de Instrucción nº 5 de la
+  Audiencia Nacional pasa al magistrado Pablo Ruz, que dirige la fase
+  que conduce a la apertura del juicio oral de la primera época del
+  procedimiento.
+personas_afectadas:
+  - baltasar-garzon-real
+  - pablo-ruz-gutierrez
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+documentos_relacionados:
+  - elpais-cronologia-gurtel-2018
+  - publico-diez-anos-gurtel-2019
+fase_resultante: instruccion

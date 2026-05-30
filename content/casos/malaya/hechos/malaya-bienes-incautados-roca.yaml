@@ -1,0 +1,32 @@
+id: malaya-bienes-incautados-roca
+caso_id: malaya
+enunciado: |
+  En la primera fase de la Operación Malaya (29 de marzo de 2006)
+  se declara la incautación de bienes cuyo valor se cifró inicialmente
+  en 2.600 millones de euros, incluyendo 251 fincas, 42 automóviles
+  de lujo, dos aviones, un banco y 30 millones en efectivo.
+  Según la investigación, Roca habría invertido los fondos municipales
+  desviados en coches de lujo, propiedades inmobiliarias en Madrid y
+  obras de arte de alto valor, utilizando como testaferro a Montserrat
+  Corulla. La cifra de 2.600 millones refleja la valoración provisional
+  policial inicial, no la cuantificada judicialmente como perjuicio.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2006-03-29"
+  precision: dia
+personas_implicadas:
+  - juan-antonio-roca
+  - montserrat-corulla
+organizaciones_implicadas:
+  - uco-guardia-civil
+  - ayuntamiento-de-marbella
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-malaya-ap-malaga-2013
+    pasaje: "Primera fase de detenciones con incautación de bienes por valor declarado de 2.600 millones de euros."
+  - documento_id: eldebate-malaya-recuperacion-marbella-2026
+    pasaje: "Más de 60 millones de euros obtenidos de la venta de bienes muebles e inmuebles vinculados a Roca; 251 fincas, 42 automóviles de lujo, dos aviones, un banco y 30 millones en efectivo."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

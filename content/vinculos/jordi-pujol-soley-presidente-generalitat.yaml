@@ -1,0 +1,19 @@
+id: jordi-pujol-soley-presidente-generalitat
+naturaleza: cargo_publico_electo
+descripcion: "Presidente de la Generalitat de Cataluña durante 23 años consecutivos (1980-2003). Ejerció el cargo como líder de Convergència i Unió y dejó el cargo en diciembre de 2003."
+sujeto_persona_id: jordi-pujol-soley
+objeto_organizacion_id: generalitat-de-cataluna
+cargo_o_rol: "President de la Generalitat de Catalunya"
+desde: "1980-04-11"
+hasta: "2003-12-16"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [pujol]
+documentos_respaldo:
+  - documento_id: cobertura-elpais-confesion-pujol-2014
+    pasaje: "El País describe a Jordi Pujol como expresidente de la Generalitat de Cataluña durante 23 años al dar cuenta de su confesión pública del 25 de julio de 2014."
+  - documento_id: cobertura-vozpopuli-confesion-pujol-2014
+    pasaje: "Vozpópuli recoge la condición de expresidente de la Generalitat de Cataluña de Jordi Pujol al informar de su reconocimiento público sobre fondos en el extranjero."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,39 @@
+id: special-events-entidad-investigada-gurtel
+naturaleza: entidad_investigada_en_caso
+descripcion: >
+  Special Events S.L. es identificada en las resoluciones de la Audiencia
+  Nacional (sentencia 20/2018) y del Tribunal Supremo (sentencia 507/2020)
+  como uno de los vehículos societarios de la red de Francisco Correa para
+  la obtención de contratos públicos con administraciones gobernadas por el
+  Partido Popular a cambio de comisiones. La sociedad integra el entramado
+  empresarial cuya actividad se investiga como asociación ilícita, cohecho,
+  blanqueo de capitales y otros delitos.
+sujeto_organizacion_id: special-events
+objeto_organizacion_id: audiencia-nacional
+desde: "2009-02-06"
+precision_desde: dia
+vigente: false
+hasta: "2020-10-14"
+precision_hasta: dia
+relevancia_para_caso_ids: [gurtel]
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-gurtel-epoca-i-an-2018
+    pasaje: >
+      La nota del CGPJ describe la red de sociedades de organización de
+      eventos que articulaba las adjudicaciones públicas, incluyendo a
+      Special Events como vehículo societario de Francisco Correa en la
+      Época I de la trama Gürtel.
+  - documento_id: elpais-cronologia-gurtel-2018
+    pasaje: >
+      El País identifica a Special Events como una de las empresas de
+      Francisco Correa en el núcleo de la trama de adjudicaciones que
+      constituye el caso Gürtel.
+nivel_afectacion: directa
+justificacion_afectacion: >
+  Special Events S.L. es una de las entidades del entramado empresarial
+  señaladas en las resoluciones judiciales de la Época I como instrumento
+  de la red de Francisco Correa para la contratación pública irregular.
+  Su papel es directo en los hechos investigados, sin intermediarios entre
+  la entidad y la actividad ilícita atribuida.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

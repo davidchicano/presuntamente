@@ -1,0 +1,19 @@
+id: salamanca-comisario-jefe-barajas
+naturaleza: cargo_funcionarial_carrera
+descripcion: "Comisario Jefe de Fronteras del aeropuerto Adolfo Suárez Madrid-Barajas entre 2010 y noviembre de 2017, fecha de su detención en el marco del caso Tándem. Su posición como mando policial en el aeropuerto figura en la pieza separada nº 1 de la causa (pieza Salamanca) como el contexto desde el que se atribuye el cohecho pasivo que derivó en condena firme."
+sujeto_persona_id: carlos-salamanca-sanchez
+objeto_organizacion_id: direccion-general-policia
+cargo_o_rol: "Comisario Jefe de Fronteras del aeropuerto Adolfo Suárez Madrid-Barajas"
+desde: "2010-01-01"
+hasta: "2017-11-03"
+precision_desde: anio
+precision_hasta: dia
+vigente: false
+relevancia_para_caso_ids: [tandem]
+documentos_respaldo:
+  - documento_id: estrelladigital-condena-salamanca-firme-2025-01-19
+    pasaje: "Estrella Digital identifica a Salamanca como excomisario jefe de Fronteras de Barajas y describe su condena firme de 3 años por cohecho pasivo continuado entre 2010 y 2015 en ese cargo."
+  - documento_id: elindependiente-detencion-villarejo-prision-2017-11-05
+    pasaje: "El Independiente menciona la detención de Salamanca junto a Villarejo y su condición de comisario en activo al momento de la detención."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

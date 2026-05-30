@@ -1,0 +1,21 @@
+id: noos-imputacion-urdangarin-2011
+caso_id: noos
+tipo: imputacion
+fecha: "2011-12-29"
+fecha_precision: dia
+titulo: "El juez Castro investiga a Iñaki Urdangarin por fraude fiscal, prevaricación, falsedad y malversación"
+descripcion: |
+  El magistrado-juez José Castro acuerda el 29 de diciembre de 2011 citar a Iñaki Urdangarin
+  como investigado por presuntos delitos de evasión de impuestos, fraude fiscal, prevaricación,
+  falsedad documental y malversación de caudales públicos en relación con la gestión del
+  Instituto Nóos. El Juzgado de Instrucción nº 3 de Palma de Mallorca es el órgano instructor.
+personas_afectadas:
+  - inaki-urdangarin
+  - jose-castro-aragon
+organizaciones_afectadas:
+  - juzgado-instruccion-3-palma
+documento_principal_id: cobertura-publico-noos-cronologia
+documentos_relacionados: []
+hechos_introducidos:
+  - noos-contratos-fondos-publicos-atribuido
+fase_resultante: instruccion

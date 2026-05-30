@@ -1,0 +1,28 @@
+id: archivo-financiacion-pp-punica-2022-10-14
+caso_id: punica
+tipo: archivo_provisional
+fecha: "2022-10-14"
+fecha_precision: dia
+titulo: "La Audiencia Nacional confirma el archivo de Esperanza Aguirre, Ignacio González y varios exconsejeros en la pieza de Púnica sobre presunta financiación irregular del PP de Madrid"
+descripcion: |
+  El instructor del Juzgado Central de Instrucción nº 6, Manuel
+  García-Castellón, acuerda el archivo de la pieza del caso
+  Púnica relativa a la presunta financiación irregular del Partido
+  Popular de Madrid respecto de las exjefas del Gobierno regional
+  Esperanza Aguirre y Cristina Cifuentes, del expresidente Ignacio
+  González y de varios exconsejeros y empresarios investigados. La
+  Sección Cuarta de la Sala de lo Penal de la Audiencia Nacional
+  confirma posteriormente ese archivo al rechazar los recursos
+  presentados, sustentándose esencialmente en la prescripción y en
+  la ausencia de indicios suficientes. El archivo deja sin efecto la
+  condición de investigados de los afectados en esta pieza; rige la
+  presunción de inocencia.
+personas_afectadas:
+  - ignacio-gonzalez
+  - manuel-garcia-castellon
+organizaciones_afectadas:
+  - audiencia-nacional
+  - partido-popular
+  - comunidad-de-madrid
+documento_principal_id: nota-cgpj-archivo-financiacion-pp-punica-2022-10
+fase_resultante: instruccion

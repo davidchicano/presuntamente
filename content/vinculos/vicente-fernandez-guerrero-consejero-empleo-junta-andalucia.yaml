@@ -1,0 +1,26 @@
+id: vicente-fernandez-guerrero-consejero-empleo-junta-andalucia
+naturaleza: cargo_publico_designado
+descripcion: "Consejero de Empleo de la Junta de Andalucía durante parte del periodo investigado en la causa de los ERE. La instrucción atribuye que la Consejería de Empleo fue el órgano desde el que se articularon las transferencias de financiación a IFA/IDEA investigadas."
+sujeto_persona_id: vicente-fernandez-guerrero
+objeto_organizacion_id: consejeria-empleo-junta-andalucia
+cargo_o_rol: "Consejero de Empleo de la Junta de Andalucía"
+desde: "2004-01-01"
+hasta: "2010-01-01"
+precision_desde: anio
+precision_hasta: anio
+vigente: false
+gobierno_o_legislatura: "VII y VIII Legislaturas del Parlamento de Andalucía — Gobiernos Chaves y Griñán"
+# LLM-incierto: fechas exactas del cargo como consejero de Empleo; el
+# periodo aproximado es coincidente con los hechos investigados (2000-2010);
+# verificar en BOJA y completar con fechas exactas de nombramiento y cese.
+# El nombre exacto de la Consejería varió (Empleo y Desarrollo Tecnológico,
+# Empleo); se usa la organización consejeria-empleo-junta-andalucia que
+# agrupa todas las denominaciones del periodo.
+relevancia_para_caso_ids: [eres-andalucia]
+documentos_respaldo:
+  - documento_id: sentencia-ap-sevilla-ere-2019
+    pasaje: "La sentencia de la Audiencia Provincial de Sevilla identifica a Vicente Fernández Guerrero como consejero de Empleo en el periodo investigado y le condena por los delitos atribuidos en el marco del sistema de transferencias de financiación."
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "La sentencia del Tribunal Supremo confirma la condena de Fernández Guerrero como exconsejero de Empleo de la Junta de Andalucía."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

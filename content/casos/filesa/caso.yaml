@@ -1,14 +1,83 @@
 id: filesa
-nombre_oficial: "Causa Especial — Sala Segunda del Tribunal Supremo (caso Filesa)"
+nombre_oficial: "Causa Especial nº 880/1991 — Sala Segunda del Tribunal Supremo (caso Filesa)"
 nombre_mediatico: "Caso Filesa"
 nombres_alternativos:
   - "Trama Filesa"
+  - "Filesa, Malesa y Time Export"
   - "Financiación ilegal PSOE Filesa"
 
+descripcion_corta: |
+  Causa especial instruida desde 1991 por la Sala Segunda del Tribunal
+  Supremo por la presunta financiación ilegal del Partido Socialista
+  Obrero Español a través de una red de empresas pantalla —Filesa, Malesa
+  y Time Export— que facturaron servicios ficticios o sobrevalorados a
+  grandes empresas públicas y privadas con el objetivo de recaudar fondos
+  para sufragar los gastos de las campañas electorales del PSOE en 1989.
+  La sentencia firme, dictada el 28 de octubre de 1997 (STS 1/1997),
+  condenó a ocho personas, entre ellas al exsenador Josep Maria Sala
+  i Grisó y al exdiputado Carlos Navarro Gómez. Tres de los principales
+  condenados recibieron indultos parciales del Gobierno de Aznar en
+  diciembre de 2000. Una rama del caso (Viajes Ceres) fue reabierta
+  por el Tribunal Supremo en 2022 y sigue en fase de instrucción
+  ante el Juzgado de Instrucción nº 26 de Madrid.
+
+sintesis_caso:
+  que_se_investiga: "La presunta financiación ilegal del PSOE mediante una red de empresas pantalla (Filesa, Malesa y Time Export) que emitieron facturas ficticias o infladas a grandes corporaciones para recaudar fondos destinados a sufragar campañas electorales."
+  hechos_clave:
+    - "La red de empresas Filesa, Malesa y Time Export recaudó, según la sentencia del Tribunal Supremo, más de mil millones de pesetas (≈ 6 M€) en fondos presuntamente destinados al PSOE entre 1989 y 1991, mediante facturas por estudios y servicios que se atribuye que no se prestaron realmente."
+    - "El magistrado instructor Marino Barbero Santos investigó el caso desde 1991 hasta su renuncia en 1995, siendo sustituido por Enrique Bacigalupo Zapater, quien dictó apertura de juicio oral para siete acusados en diciembre de 1995."
+    - "La STS 1/1997, de 28 de octubre, condenó a ocho personas; las penas más altas recayeron sobre Carlos Navarro Gómez (11 años), Alberto Flores Valencia (10 años) y Luis Oliveró Capellades (10 años), los tres indultados parcialmente por el Gobierno de Aznar en diciembre de 2000."
+    - "Una rama del caso (Viajes Ceres), que investiga la presunta desviación de 42,2 M€ de subvenciones del Imserso hacia la red Filesa, fue reabierta por el Tribunal Supremo en 2022 y en 2024 el Juzgado de Instrucción nº 26 de Madrid preparaba el señalamiento de juicio oral."
+  estado_actual: "La Causa Especial nº 880/1991 ante el Tribunal Supremo tiene sentencia firme desde el 28 de octubre de 1997. La rama Viajes Ceres, reinstruida por el Juzgado de Instrucción nº 26 de Madrid, se encontraba en fase de instrucción avanzada en 2024, con señalamiento de juicio pendiente."
+  cifras_clave:
+    - "Más de mil millones de pesetas (≈ 6 M€) recaudados presuntamente de forma ilegal según la STS 1/1997"
+    - "8 condenados a pena de prisión; 3 absueltos de las 12 personas que se sentaron en el banquillo"
+    - "11 años de prisión (pena más alta, Carlos Navarro Gómez)"
+    - "42,2 M€ presuntamente desviados por la rama Viajes Ceres según el instructor en 2018"
+
 organo_judicial_id: tribunal-supremo
+numero_procedimiento: "Causa Especial nº 880/1991"
+tipo_procedimiento: causa_especial_aforado
+
 fase_actual: sentencia_firme
-fecha_apertura: "1991-01-01"
+fecha_apertura: "1991-06-07"
+fecha_cierre: "1997-10-28"
 
 origen_denuncia: querella_particular
+querellante_inicial_id: partido-popular
 
-estado_publicacion: pendiente
+delitos_atribuidos_en_la_causa:
+  - falsedad-documental
+  - organizacion-criminal
+  - delito-contra-hacienda-publica
+  - apropiacion-indebida
+
+resumen_cifras: |
+  La STS 1/1997 acreditó que la red de empresas Filesa, Malesa y Time
+  Export recaudó más de mil millones de pesetas (≈ 6 millones de euros
+  en valores de 1990) destinados presuntamente a la financiación ilegal
+  del PSOE. La pena más alta fue para Carlos Navarro Gómez (11 años),
+  seguido de Alberto Flores Valencia y Luis Oliveró Capellades (10 años
+  cada uno, más multa solidaria de 258 millones de pesetas por delito
+  fiscal). Los indultos parciales concedidos por el Gobierno de Aznar
+  en diciembre de 2000 redujeron a la mitad las penas de prisión e
+  inhabilitación de estos tres condenados. La rama Viajes Ceres investiga
+  presuntos desvíos adicionales de 42,2 M€ en subvenciones del Imserso.
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"
+nivel_relevancia_editorial: alta
+
+estado_ficha:
+  cronologia: completo
+  roles_procesales: completo
+  documentos_primarios: parcial
+  hechos_modelados: completo
+  fuentes_cruzadas: completo
+  composicion_fuentes_citadas: parcial
+  vinculos_institucionales: pendiente
+  conexiones: parcial
+  cobertura_mediatica_general: parcial
+  revision_editorial: pendiente
+  notas: "Caso histórico con sentencia firme (1997). La sentencia íntegra de la STS 1/1997 no está disponible en CENDOJ pero sí en el portal Equipo Nizkor (derechos.org), que ofrece antecedentes y fundamentos aunque no el fallo completo. Se cita como N4 cruzado con dos líneas editoriales. Los indultos del año 2000 están documentados con BOE (N1). La rama Viajes Ceres, pendiente de juicio oral en 2024, se recoge en NOTES como caso derivado a fichar separadamente si prospera."
+  fecha_actualizacion: "2026-05-30"

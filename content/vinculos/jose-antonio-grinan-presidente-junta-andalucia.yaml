@@ -1,0 +1,22 @@
+id: jose-antonio-grinan-presidente-junta-andalucia
+naturaleza: cargo_publico_electo
+descripcion: "Presidente de la Junta de Andalucía entre 2009 y 2013, sucediendo a Manuel Chaves. La investigación de los ERE se extendió parcialmente a su mandato; fue condenado por prevaricación y malversación por la AP de Sevilla (2019) y por el TS en casación (2022). El TC estimó parcialmente su amparo en 2024 en relación con la condena por malversación."
+sujeto_persona_id: jose-antonio-grinan-martinez
+objeto_organizacion_id: junta-de-andalucia
+cargo_o_rol: "Presidente de la Junta de Andalucía"
+desde: "2009-04-23"
+hasta: "2013-09-07"
+precision_desde: dia
+precision_hasta: dia
+vigente: false
+# LLM-incierto: fecha exacta de cese como presidente (sept. 2013 es aproximación;
+# verificar contra BOJA o cobertura cruzada). La fecha de inicio (23-abril-2009) es
+# la toma de posesión cuando Chaves pasó al Gobierno central; verificar contra BOJA.
+relevancia_para_caso_ids: [eres-andalucia]
+documentos_respaldo:
+  - documento_id: sentencia-ts-ere-2022
+    pasaje: "La sentencia del Tribunal Supremo confirma la condena de Griñán como presidente de la Junta de Andalucía durante el periodo investigado, por prevaricación y malversación."
+  - documento_id: sentencias-tc-amparo-ere-2024
+    pasaje: "El Tribunal Constitucional estimó parcialmente el amparo de Griñán en relación con la condena por malversación."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

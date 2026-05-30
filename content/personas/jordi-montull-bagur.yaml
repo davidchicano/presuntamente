@@ -1,0 +1,18 @@
+id: jordi-montull-bagur
+nombre_completo: "Jordi Montull Bagur"
+nombres_alternativos:
+  - "Jaume Montull"
+  - "Montull"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Gerente de la Fundació Orfeó Català-Palau de la Música Catalana"
+    organizacion_id: fundacio-orfeo-catala-palau-musica
+    desde: "1990-01-01"
+    hasta: "2009-07-27"
+biografia_corta: |
+  Gerente de la Fundació Orfeó Català-Palau de la Música Catalana. Condenado
+  por la STS 813/2020 del Tribunal Supremo a 7 años y 6 meses de prisión y
+  multa de 2,9 millones de euros en el marco del caso Palau de la Música
+  Catalana. Alcanzó el tercer grado penitenciario en enero de 2023.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,36 @@
+id: red-adjudicaciones-comisiones-correa
+caso_id: gurtel
+enunciado: |
+  La Audiencia Nacional declaró que entre 1999 y 2005 (Época I del
+  procedimiento) existió una red liderada por el empresario Francisco Correa,
+  estructurada en torno a un entramado de sociedades de organización
+  de eventos, que obtenía adjudicaciones de contratos de
+  administraciones gobernadas por el Partido Popular a cambio de
+  comisiones y dádivas a cargos públicos. La sentencia 20/2018,
+  confirmada en casación por el Tribunal Supremo, apreció en distintos
+  acusados delitos de asociación ilícita, cohecho, prevaricación,
+  falsedad documental, blanqueo de capitales, malversación de caudales
+  públicos, fraude a las administraciones públicas y delitos contra la
+  hacienda pública, entre otros.
+tipo: acreditado
+fecha_o_periodo:
+  desde: "1999-01-01"
+  hasta: "2005-12-31"
+  precision: rango
+personas_implicadas:
+  - francisco-correa-sanchez
+  - pablo-crespo-sabaris
+organizaciones_implicadas:
+  - special-events
+  - partido-popular
+  - audiencia-nacional
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-gurtel-epoca-i-an-2018
+    pasaje: "La sentencia 20/2018 de la Audiencia Nacional (Sección 2ª de la Sala de lo Penal, 24 de mayo de 2018) declara probada la existencia de la red liderada por Francisco Correa, con condenas por asociación ilícita, prevaricación, cohecho, blanqueo de capitales, malversación de caudales públicos, falsedad documental, fraude a las administraciones públicas y delitos contra la hacienda pública, entre otros. 29 de los 37 acusados resultaron condenados."
+  - documento_id: nota-cgpj-sentencia-gurtel-ts-2020
+    pasaje: "La sentencia 507/2020 del Tribunal Supremo (ECLI:ES:TS:2020:3191, 14 de octubre de 2020) confirma en casación las condenas de la Época I de la red Gürtel, haciendo firmes los hechos declarados probados por la Audiencia Nacional."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

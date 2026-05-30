@@ -1,0 +1,12 @@
+id: rol-jose-de-la-mata-instructor
+caso_id: pujol
+sujeto_tipo: persona
+sujeto_persona_id: jose-de-la-mata
+rol: juez_instructor
+fecha_inicio: "2014-01-01"
+notas: >-
+  Magistrado que, como titular del Juzgado Central de Instrucción nº 5 de la
+  Audiencia Nacional, instruyó la causa y dictó el auto de transformación a
+  procedimiento abreviado.
+# LLM-incierto: la titularidad vigente del juzgado y la fecha exacta de
+# incorporación a la instrucción pendientes de verificar. Ver NOTES.md.

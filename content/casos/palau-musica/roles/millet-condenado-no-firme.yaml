@@ -1,0 +1,29 @@
+id: millet-condenado-no-firme
+caso_id: palau-musica
+sujeto_tipo: persona
+sujeto_persona_id: felix-millet-tusell
+rol: condenado_no_firme
+delitos_atribuidos:
+  - apropiacion-indebida
+  - malversacion-caudales-publicos
+  - falsedad-documental
+  - trafico-de-influencias
+  - blanqueo-de-capitales
+  - delito-contra-hacienda-publica
+delitos_codigo_penal:
+  - "art. 432 CP (malversación)"
+  - "art. 252 CP (apropiación indebida)"
+  - "art. 390 CP (falsedad documental)"
+  - "art. 428 CP (tráfico de influencias)"
+  - "art. 301 CP (blanqueo de capitales)"
+  - "art. 305 CP (delito contra la Hacienda Pública)"
+fecha_inicio: "2018-01-15"
+fecha_fin: "2020-04-30"
+hito_origen_id: palau-sentencia-ap-barcelona-2017
+hito_fin_id: palau-sentencia-firme-ts-2020
+notas: |
+  Condenado en primera instancia (sentencia AP Barcelona de 29 diciembre 2017,
+  hecha pública el 15 enero 2018) a 9 años y 8 meses de prisión y multa de
+  4.120.540 euros. Pendiente de resolución de recursos ante el Tribunal
+  Supremo durante este período. La presunción de inocencia formal se
+  mantuvo hasta la firmeza de la STS 813/2020.

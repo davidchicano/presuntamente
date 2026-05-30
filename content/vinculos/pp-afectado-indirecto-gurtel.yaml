@@ -1,0 +1,40 @@
+id: pp-afectado-indirecto-gurtel
+naturaleza: afectacion_indirecta_en_caso
+descripcion: >
+  El Partido Popular queda alcanzado de forma indirecta por la causa Gürtel en
+  doble condición: (a) la red de adjudicaciones operaba en administraciones
+  gobernadas por el PP y los acusados con roles de cargo público eran militantes
+  o cargos del partido; (b) la Audiencia Nacional, confirmada por el Tribunal
+  Supremo en su sentencia 507/2020, declaró al Partido Popular partícipe a
+  título lucrativo y lo condenó a abonar 245.492,80 euros (responsabilidad
+  civil, no condena penal). La presunción de inocencia rige en las piezas
+  del macroprocedimiento que no han ganado firmeza.
+sujeto_organizacion_id: partido-popular
+objeto_organizacion_id: audiencia-nacional
+desde: "2009-02-06"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [gurtel]
+documentos_respaldo:
+  - documento_id: nota-cgpj-sentencia-gurtel-epoca-i-an-2018
+    pasaje: >
+      La nota del CGPJ recoge que la Audiencia Nacional declaró al Partido
+      Popular partícipe a título lucrativo y lo condenó a abonar 245.492,80
+      euros, al apreciar que la formación se benefició económicamente de
+      actividades de la red de adjudicaciones.
+  - documento_id: nota-cgpj-sentencia-gurtel-ts-2020
+    pasaje: >
+      El Tribunal Supremo confirmó en casación la responsabilidad civil a
+      título lucrativo del Partido Popular por 245.492,80 euros fijada en
+      la sentencia de la Audiencia Nacional.
+nivel_afectacion: indirecta
+justificacion_afectacion: >
+  Los acusados que ejercían cargos públicos en el período investigado (1999-2005)
+  lo hacían en nombre de administraciones gobernadas por el PP y la red articuló
+  parte de su actividad en torno a contratos con esas administraciones (regla 4
+  del doc 08: partido del gobierno responsable del acto). Además, la AN y el TS
+  declararon al partido partícipe a título lucrativo, lo que supone un pronunciamiento
+  judicial expreso sobre el beneficio obtenido por la organización como consecuencia
+  directa de los hechos de la trama.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

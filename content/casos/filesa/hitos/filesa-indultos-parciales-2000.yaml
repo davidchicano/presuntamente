@@ -1,0 +1,27 @@
+id: filesa-indultos-parciales-2000
+caso_id: filesa
+tipo: auto_diligencias
+fecha: "2000-12-01"
+fecha_precision: dia
+titulo: "El Gobierno de Aznar concede indultos parciales a Navarro, Flores y Oliveró"
+descripcion: |
+  El 1 de diciembre de 2000 el Gobierno presidido por José María Aznar
+  (PP) concede indultos parciales a los tres principales condenados del
+  caso Filesa: Carlos Navarro Gómez (Real Decreto 2700/2000, publicado
+  en el BOE), Alberto Flores Valencia y Luis Oliveró Capellades (Reales
+  Decretos concordantes publicados en el BOE el 21 de diciembre de 2000).
+  Los indultos reducen a la mitad las penas de privación de libertad e
+  inhabilitación impuestas por la STS 1/1997, condicionados a que los
+  beneficiarios no cometan delito doloso durante el período normal de
+  ejecución de la pena. Los tres quedan en libertad tras haber cumplido
+  la parte no indultada de sus condenas.
+personas_afectadas:
+  - carlos-navarro-gomez
+  - alberto-flores-valencia
+  - luis-olivero-capellades
+organizaciones_afectadas:
+  - presidencia-del-gobierno
+documento_principal_id: boe-indulto-navarro-filesa-2000
+hechos_introducidos:
+  - filesa-indultos-parciales-navarro-flores-olivero
+fase_resultante: ejecucion

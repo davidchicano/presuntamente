@@ -1,0 +1,26 @@
+id: cgpj-nota-confirmacion-condena-salamanca-barajas-2025-01-15
+titulo: "Nota de prensa del CGPJ: la Audiencia Nacional confirma la condena de tres años de prisión para el excomisario del aeropuerto de Madrid-Barajas"
+tipo: nota_prensa_institucional
+nivel_fuente: 1
+nivel_fuente_justificacion: >-
+  Nota oficial de la Oficina de Comunicación de la Audiencia Nacional publicada
+  en poderjudicial.es (dominio oficial del CGPJ), de nivel 1 conforme a V-12.
+  Recoge los hechos probados y el fallo de la Sentencia 3/2025 de 15 de enero
+  de la Sala de Apelación de la Audiencia Nacional. Magristrado ponente: José
+  Ramón González Clavijo; presidenta: Manuela Fernández Prado. La nota no
+  menciona el número de rollo ni el ECLI, pero se corresponde inequívocamente
+  con la pieza separada 1 del caso Tándem (Diligencias Previas 96/2017 del JCI
+  nº 6). Triangulada con Confilegal (2025-01-15), economistjurist.es y Estrella
+  Digital (2025-01-19), que reproducen los mismos datos de hecho y pena.
+  IMPORTANTE: la propia Sentencia 3/2025 establece expresamente que no es firme
+  porque "contra ella cabe recurso de casación ante el Tribunal Supremo"
+  (fuente: economistjurist.es que cita literalmente el texto de la resolución).
+productor_organizacion_id: audiencia-nacional
+fecha_documento: "2025-01-15"
+fecha_publicacion: "2025-01-15"
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Audiencia-Nacional/Oficina-de-Comunicacion/Notas-de-prensa/La-Audiencia-Nacional-confirma-la-condena-de-tres-anos-de-prision-para-el-excomisario-del-aeropuerto-de-Madrid-Barajas-por-recibir-dadivas-de-empresarios-para-dar-trato-preferente-a-sus-clientes"
+estado_acceso: publico
+idioma: "es"
+caso_principal_id: tandem
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

@@ -1,0 +1,31 @@
+id: barcenas-instruccion-ruz-2013-03
+caso_id: barcenas-caja-b
+tipo: auto_diligencias
+fecha: "2013-03-01"
+fecha_precision: mes
+titulo: >-
+  El juez Pablo Ruz inicia la instrucción de la pieza separada sobre los
+  «papeles de Bárcenas» y la presunta caja B del PP
+descripcion: |
+  En marzo de 2013, el magistrado Pablo Ruz, titular del Juzgado Central de
+  Instrucción nº 5 de la Audiencia Nacional, acuerda iniciar las diligencias
+  previas sobre los presuntos documentos de contabilidad paralela del Partido
+  Popular publicados por El País, separando esta investigación como pieza
+  autónoma de las Diligencias Previas del caso Gürtel ya en instrucción.
+  El 27 de junio de 2013 Bárcenas ingresa en prisión preventiva por riesgo
+  de fuga, y en julio de 2013 declara ante Ruz y confirma la autoría de los
+  documentos, afirmando que el PP se financió irregularmente durante dos
+  décadas.
+personas_afectadas:
+  - luis-barcenas
+  - pablo-ruz-gutierrez
+organizaciones_afectadas:
+  - partido-popular
+  - juzgado-central-instruccion-5
+  - fiscalia-anticorrupcion
+hechos_introducidos:
+  - barcenas-caja-b-contabilidad-paralela
+fase_resultante: instruccion
+# LLM-incierto: la fecha exacta del auto de incoación de diligencias no ha sido
+# localizada en CENDOJ; pendiente_primario. La fecha aquí indicada (marzo 2013)
+# es la habitualmente referenciada en prensa y Wikipedia.

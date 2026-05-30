@@ -1,0 +1,16 @@
+id: orange-market
+nombre: "Orange Market S.L."
+nombres_alternativos:
+  - "Orange Market"
+tipo: empresa
+descripcion_corta: |
+  Filial valenciana de la red empresarial de Francisco Correa,
+  dirigida por Álvaro Pérez «El Bigotes». Las resoluciones de la
+  Audiencia Nacional la sitúan como vehículo de la trama Gürtel para
+  la contratación con la Generalitat Valenciana y otras
+  administraciones de la Comunidad Valenciana.
+sector: "Organización de eventos y comunicación"
+ambito_territorial: autonomico
+comunidad_autonoma: "Comunidad Valenciana"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-05-30"

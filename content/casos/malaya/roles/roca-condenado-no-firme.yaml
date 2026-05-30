@@ -1,0 +1,23 @@
+id: roca-condenado-no-firme
+caso_id: malaya
+sujeto_tipo: persona
+sujeto_persona_id: juan-antonio-roca
+rol: condenado_no_firme
+delitos_atribuidos:
+  - cohecho
+  - blanqueo-de-capitales
+  - malversacion-caudales-publicos
+  - prevaricacion
+  - fraude-administraciones-publicas
+delitos_codigo_penal:
+  - "art. 419 CP (cohecho pasivo continuo)"
+  - "art. 301 CP (blanqueo de capitales)"
+fecha_inicio: "2013-10-04"
+fecha_fin: "2015-07-27"
+hito_origen_id: malaya-sentencia-ap-malaga-2013
+hito_fin_id: malaya-sentencia-firme-ts-2015
+notas: |
+  La Audiencia Provincial de Málaga le condena el 4-oct-2013 (sentencia
+  535/2013) a 11 años de prisión y multa de 240 M€. Pendiente recurso
+  de casación ante el Tribunal Supremo; la presunción de inocencia
+  formal se mantiene mientras no sea firme.
