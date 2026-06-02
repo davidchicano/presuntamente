@@ -58,6 +58,21 @@ Y abre PR con cuerpo:
 - Cita del párrafo del documento que justifica cada hecho introducido (página + pasaje).
 - Validaciones del modelo (V-04, V-05, V-08, V-12, V-13, V-14) marcadas como verificadas o pendientes.
 
+### Proponer promoción de estado (cola para `/promover-caso`)
+
+Tú NO cambias `estado_publicacion`; lo decide el rubro + panel de [`/promover-caso`](../promover-caso/SKILL.md), que el maintainer autoriza. Incorporar un primario fuerte (una sentencia firme, un auto N1 que faltaba) suele ser justo lo que destraba una subida de nivel. Si tras incorporar el hito crees que el caso ya cumple para subir, **déjalo propuesto** en `content/casos/<slug>/caso.yaml`:
+
+```yaml
+promocion_propuesta:
+  estado_propuesto: <beta_publica|en_revision|publicado>
+  propuesto_por: incorporar-hito
+  fecha: "<hoy>"
+  razon: "<1-3 frases MUY concisas: qué del rubro destrabó este hito>"
+  estado: propuesta
+```
+
+Es una **propuesta para la cola**, no una autoevaluación: `/promover-caso` la verifica con su panel. `estado_propuesto` superior al actual; `razon` ≤ 400 caracteres. No la dejes si el hito abre más dudas de las que cierra. Si hay una `promocion_propuesta` con `estado: rechazada`, lee su `nota_resolucion` antes de reproponer.
+
 ## Guardarraíles obligatorios
 
 1. **NUNCA asignes `Hecho.tipo = acreditado` automáticamente.** Sólo `investigado`, `atribuido` o `no_concluyente`. Marcar `acreditado` requiere review humano explícito tras sentencia firme.

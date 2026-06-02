@@ -246,6 +246,21 @@ Titulares, breadcrumbs, nombres oficiales del caso y cabeceras de
 tabla NUNCA se enrutan por `RichProse` (son texto plano en el
 componente), así que ya están a salvo por construcción.
 
+### 6. Proponer promoción de estado (cola para `/promover-caso`)
+
+Tú NO cambias `estado_publicacion` (eso lo decide el rubro + panel de [`/promover-caso`](../promover-caso/SKILL.md), que el maintainer autoriza). Un caso nuevo arranca en `borrador` (o `pendiente` si lo dejas a medias). **Pero si al terminar crees que el caso ya está listo para subir** (típicamente `borrador → beta_publica`: modelado completo, hitos con fuente, hechos trazados, sin verbos prohibidos), **déjalo propuesto** en `content/casos/<slug>/caso.yaml`:
+
+```yaml
+promocion_propuesta:
+  estado_propuesto: beta_publica
+  propuesto_por: investigar-caso
+  fecha: "<hoy>"
+  razon: "<1-3 frases MUY concisas: qué del rubro crees que se cumple>"
+  estado: propuesta
+```
+
+Es sólo una **propuesta para la cola**, no una autoevaluación exhaustiva: `/promover-caso` la verifica con su panel antes de aplicar nada. Reglas: `estado_propuesto` debe ser superior al actual; `razon` ≤ 400 caracteres, sin floritura. Si el caso quedó incompleto o con dudas, **no dejes la bandera** (mejor un ROJO evitado que un falso candidato). Si ves un bloque `promocion_propuesta` con `estado: rechazada`, léelo: dice qué faltó la última vez — no repropongas sin haberlo resuelto.
+
 ## Guardarraíles obligatorios
 
 1. **Tensión brief vs realidad procesal en casos vivos.** Cuando el brief del usuario está desactualizado respecto a la realidad procesal (nuevo auto publicado, cambio de órgano reciente, persona imputada después del brief), respetar el brief, documentar la discrepancia en `NOTES.md` del caso + `ROADMAP.md → Decisiones pendientes`, y deferir al maintainer. NO improvisar ni asumir luz verde sobre incorporar la novedad.

@@ -301,6 +301,21 @@ Skill: documentar-vinculos v2
 - ...
 ```
 
+## Proponer promoción de estado (sólo modo caso; cola para `/promover-caso`)
+
+Tú NO cambias `estado_publicacion`; lo decide el rubro + panel de [`/promover-caso`](../promover-caso/SKILL.md), que el maintainer autoriza. Completar los vínculos institucionales de un caso cierra el chequeo `vinculos_institucionales` de su `estado_ficha`, que puede ser justo lo que faltaba para subir de nivel. **Sólo en modo caso** (`/documentar-vinculos <caso>`), si tras la pasada crees que el caso ya cumple para subir, deja la bandera en `content/casos/<slug>/caso.yaml`:
+
+```yaml
+promocion_propuesta:
+  estado_propuesto: <beta_publica|en_revision|publicado>
+  propuesto_por: documentar-vinculos
+  fecha: "<hoy>"
+  razon: "Vínculos institucionales completos; <qué más del rubro se cumple, 1-2 frases>."
+  estado: propuesta
+```
+
+En **modo persona** y **modo organización** la pasada cruza muchos casos a la vez: NO dejes banderas de promoción (no estás evaluando un caso concreto a fondo). Es una **propuesta para la cola**, no una autoevaluación: `/promover-caso` la verifica con su panel. `estado_propuesto` superior al actual; `razon` ≤ 400 caracteres. Si hay `promocion_propuesta` con `estado: rechazada`, lee su `nota_resolucion` antes de reproponer.
+
 ## Guardarraíles editoriales (los tres modos)
 
 1. **Sin documentos de respaldo, no entra.** Un vínculo intuido o asumido es invisible para esta skill.

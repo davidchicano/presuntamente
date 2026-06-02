@@ -172,6 +172,41 @@
         },
         "fecha_actualizacion": { "type": "string", "format": "date" }
       }
+    },
+
+    "promocion_propuesta": {
+      "type": "object",
+      "description": "Bandera INTERNA (no se renderiza en la web pública) que una skill de contenido deja cuando, al terminar su trabajo, cree que el caso ya merece subir de `estado_publicacion`. Es una cola de candidatos para la skill `/promover-caso`: ahí un panel de agentes verifica la propuesta contra el rubro antes de aplicar el cambio (el maintainer no revisa el caso, sólo autoriza la acción). Se RETIRA del YAML cuando `/promover-caso` resuelve la propuesta (aprobada → sube el estado y borra el bloque; rechazada → `estado: rechazada` con motivo). Ver .agents/skills/promover-caso/SKILL.md.",
+      "additionalProperties": false,
+      "required": ["estado_propuesto", "propuesto_por", "fecha", "razon"],
+      "properties": {
+        "estado_propuesto": {
+          "type": "string",
+          "enum": ["borrador", "beta_publica", "en_revision", "publicado"],
+          "description": "Estado al que la skill propone subir. Debe ser superior al `estado_publicacion` actual."
+        },
+        "propuesto_por": {
+          "type": "string",
+          "description": "Skill o agente que deja la propuesta (p. ej. `investigar-caso`, `actualizar-caso`, `revisar-caso`, `incorporar-hito`, `documentar-vinculos`)."
+        },
+        "fecha": { "type": "string", "format": "date" },
+        "razon": {
+          "type": "string",
+          "maxLength": 400,
+          "description": "Justificación MUY concisa (1-3 frases) de por qué se propone subir: qué se cumple del rubro. No es una auditoría — el panel de /promover-caso verifica; esto sólo orienta."
+        },
+        "estado": {
+          "type": "string",
+          "enum": ["propuesta", "rechazada"],
+          "default": "propuesta",
+          "description": "`propuesta`: pendiente de evaluar por /promover-caso. `rechazada`: el panel la evaluó y no pasó (ver `nota_resolucion`); se conserva para no reproponer en bucle."
+        },
+        "nota_resolucion": {
+          "type": "string",
+          "maxLength": 400,
+          "description": "Sólo si `estado: rechazada`. Motivo conciso por el que el panel rechazó, para que la próxima skill sepa qué falta antes de reproponer."
+        }
+      }
     }
   },
 

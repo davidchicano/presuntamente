@@ -184,6 +184,21 @@ Al volver, entrega un reporte estructurado:
 - Errores o ambigüedades que requieren decisión del agente principal o del maintainer.
 - Validaciones del modelo (V-04, V-05, V-12, V-13, V-14) marcadas como verificadas o pendientes.
 
+### Proponer promoción de estado (cola para `/promover-caso`)
+
+Tú NO cambias `estado_publicacion`; lo decide el rubro + panel de [`/promover-caso`](../promover-caso/SKILL.md), que el maintainer autoriza. Pero una actualización suele ser el momento natural en que un caso sube de nivel: si una pasada resuelve los huecos que lo mantenían en `beta_publica` (primarios localizados, sugerencias atendidas, hechos firmes ya promovidos a `acreditado`), **déjalo propuesto** en `content/casos/<slug>/caso.yaml`:
+
+```yaml
+promocion_propuesta:
+  estado_propuesto: en_revision     # o beta_publica si venía de borrador
+  propuesto_por: actualizar-caso
+  fecha: "<hoy>"
+  razon: "<1-3 frases MUY concisas: qué del rubro crees que ahora se cumple>"
+  estado: propuesta
+```
+
+Es una **propuesta para la cola**, no una autoevaluación: `/promover-caso` la verifica con su panel. `estado_propuesto` superior al actual; `razon` ≤ 400 caracteres. Si la pasada NO mejora el estado (o lo empeora — p. ej. detectas que un caso público quedó obsoleto), no propongas subir: anótalo en NOTES y, si procede, sugiere en el reporte que `/promover-caso` evalúe una posible bajada. Si ya hay `promocion_propuesta` con `estado: rechazada`, mira su `nota_resolucion` antes de reproponer.
+
 ## Guardarraíles obligatorios
 
 1. **NUNCA `Hecho.tipo = acreditado`** sin sentencia firme y revisión humana explícita. Sólo `investigado`, `atribuido` o `no_concluyente`.

@@ -338,6 +338,18 @@ Mensaje final al usuario con:
 2. Recordatorio explícito de que la skill **no ha tocado ningún archivo** y que las acciones sugeridas requieren intervención manual del maintainer.
 3. Si hay hallazgos `BLOQUEANTE`, una nota al final advirtiendo que el caso **no está listo para publicar / mergear** hasta que se resuelvan.
 4. Si la skill encontró cosas que no encajan en ninguno de los 13 chequeos pero le parecen relevantes editorialmente, una sección final `## Observaciones fuera de checklist` con esos hallazgos marcados explícitamente como heurísticos. Esta sección alimenta la iteración de la skill (ver "Iteración").
+5. **Propuesta de promoción (cola para `/promover-caso`)**: si la auditoría termina con **cero BLOQUEANTES** y crees que el caso supera el listón de un estado superior, deja la bandera en `content/casos/<slug>/caso.yaml` (esto SÍ es escribir, es la única excepción al "no toca archivos" — y sólo este bloque, nunca el contenido del caso):
+
+   ```yaml
+   promocion_propuesta:
+     estado_propuesto: <beta_publica|en_revision|publicado>
+     propuesto_por: revisar-caso
+     fecha: "<hoy>"
+     razon: "Auditoría sin bloqueantes; <qué del rubro se cumple, 1-2 frases>."
+     estado: propuesta
+   ```
+
+   `revisar-caso` es el motor del criterio "0 bloqueantes" del rubro, así que su propuesta es especialmente informativa para [`/promover-caso`](../promover-caso/SKILL.md) — pero igualmente el panel la verifica antes de aplicar. Si hay BLOQUEANTES, NO propongas (y si existe una `promocion_propuesta` previa que ya no se sostiene, sugiere en el informe marcarla `rechazada`). `razon` ≤ 400 caracteres.
 
 ## Iteración
 
