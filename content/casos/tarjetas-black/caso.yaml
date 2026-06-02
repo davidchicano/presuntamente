@@ -93,8 +93,8 @@ resumen_cifras: |
   Las penas individuales se graduaron segun el importe que cada condenado dispuso.
   Fuente: nota oficial CGPJ de 03-10-2018 (ECLI:ES:TS:2018:3253).
 
-estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-30"
+estado_publicacion: beta_publica
+ultima_revision_editorial: "2026-06-02"
 nivel_relevancia_editorial: alta
 
 estado_ficha:
@@ -121,7 +121,7 @@ estado_ficha:
     perjudicadas, PP como afectado indirecto. Pendiente: ~63 acusados
     restantes y vinculos PSOE/sindicatos. Cobertura mediatica: primera
     pasada el 2026-05-30 (16 piezas, 5 ventanas, 7 medios; ver NOTES.md).
-  fecha_actualizacion: "2026-05-30"
+  fecha_actualizacion: "2026-06-02"
   # Primera pasada de cobertura rastreada el 2026-05-30. Corpus en
   # content/cobertura-mediatica/tarjetas-black.yaml (16 piezas, 5
   # ventanas temporales, 7 medios). Faltan El Pais, El Mundo y ABC

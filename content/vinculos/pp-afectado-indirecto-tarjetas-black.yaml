@@ -16,7 +16,7 @@ objeto_organizacion_id: audiencia-nacional
 desde: "2017-02-23"
 precision_desde: dia
 vigente: false
-hasta: "2018-06-08"
+hasta: "2018-10-03"
 precision_hasta: dia
 relevancia_para_caso_ids: [tarjetas-black]
 documentos_respaldo:

@@ -60,8 +60,8 @@ resumen_cifras: |
   investigado; las responsabilidades civiles son la consecuencia económica del procedimiento,
   no el importe malversado.
 
-estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-30"
+estado_publicacion: beta_publica
+ultima_revision_editorial: "2026-06-02"
 nivel_relevancia_editorial: capital
 
 estado_ficha:
@@ -85,4 +85,4 @@ estado_ficha:
     Cobertura mediática: rastreo inicial parcial v1 (2026-05-30), 8 piezas en 5 ventanas
     temporales (2010-2024). Pendiente ampliar con El País, El Mundo, ABC y prensa balear
     (Ultima Hora, Diari de Balears) y valenciana (Levante, Las Provincias).
-  fecha_actualizacion: "2026-05-30"
+  fecha_actualizacion: "2026-06-02"

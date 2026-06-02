@@ -95,8 +95,8 @@ resumen_cifras: |
   En trámite de ejecución, las entidades perjudicadas han recuperado
   más de 12 millones de euros (cobertura elDiario.es, 2022).
 
-estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-30"
+estado_publicacion: beta_publica
+ultima_revision_editorial: "2026-06-02"
 nivel_relevancia_editorial: capital
 
 estado_ficha:
@@ -123,4 +123,4 @@ estado_ficha:
     Vínculos institucionales pendientes: afectacion CDC/Generalitat pendiente
     de aplicar skill documentar-vinculos. El caso 3% (JCI 5 AN / Santiago
     Pedraz) tiene vinculacion formal investigada pero archivado; ver NOTES.md.
-  fecha_actualizacion: "2026-05-30"
+  fecha_actualizacion: "2026-06-02"

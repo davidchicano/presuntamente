@@ -84,8 +84,8 @@ resumen_cifras: |
   procedimientos del Tribunal de Cuentas), frente a una deuda
   heredada que el consistorio cifra en 450 millones de euros.
 
-estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-30"
+estado_publicacion: beta_publica
+ultima_revision_editorial: "2026-06-02"
 nivel_relevancia_editorial: capital
 
 estado_ficha:
@@ -108,4 +108,4 @@ estado_ficha:
     Francisco Javier de Urquía (condenado por cohecho por el TSJA en 2008);
     vinculos institucionales con GIL y Ayuntamiento; causa paralela Saqueo
     (I y II) y Fergocon. Ver NOTES.md.
-  fecha_actualizacion: "2026-05-30"
+  fecha_actualizacion: "2026-06-02"
