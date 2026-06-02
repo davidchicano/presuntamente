@@ -153,14 +153,14 @@ base procesal real, no referenciado por ningún hito ni hecho.
 
 ### Pendientes nuevos / abiertos
 
-- **Rol procesal de Jordi Pujol Soley**: debería actualizarse de `investigado`
-  a `desimputado` (sobreseimiento libre). Cambio pendiente de revisión humana
-  (V-11) y de localizar el auto formal de sobreseimiento libre para añadir
-  `hito_fin_id`. Anotar: el sobreseimiento libre extingue la causa respecto de
-  él; no es una desimputación ordinaria.
-- **Roles de los siete hijos**: técnicamente pasaron de `investigado` a `acusado`
-  al iniciarse el juicio oral. Cambio pendiente de revisión humana (¿actualizar
-  los 7 RolEnCaso?) porque implica cambiar el badge visual.
+- ~~**Rol procesal de Jordi Pujol Soley**~~ → **RESUELTO 2026-06-02** (ver sección
+  abajo): actualizado a `desimputado` con `fecha_fin: 2026-04-27` y
+  `hito_fin_id: pujol-sobreseimiento-pujol-soley-2026-04-27`; eliminados sus
+  `delitos_atribuidos` (V-09). El auto formal de sobreseimiento libre sigue sin
+  localizar en CENDOJ (respaldo N4); reemplazar por primario cuando aparezca.
+- ~~**Roles de los siete hijos**~~ → **RESUELTO 2026-06-02** (ver sección abajo):
+  los 7 actualizados de `investigado` a `acusado` (auto de apertura de juicio
+  oral, 15-jun-2021).
 - **Auto formal de sobreseimiento libre (N1 o N2)**: no localizado el texto del
   auto en CENDOJ ni en poderjudicial.es en esta pasada. Cuando aparezca,
   reemplazar el respaldo N4 del hito de sobreseimiento por el primario.
@@ -182,6 +182,41 @@ base procesal real, no referenciado por ningún hito ni hecho.
 - **Infobae / agencias EFE** sobre el señalamiento: republicaciones de nota
   oficial, no añaden línea editorial nueva. Usada la nota CGPJ (N1) como
   primario.
+
+---
+
+## Actualización de roles procesales — 2026-06-02
+
+Aplicados los cambios de rol pendientes (autorizados por el maintainer), tras
+investigación con acceso web cruzado (Confilegal, El Nacional, The Objective,
+Infobae, Servimedia):
+
+- **7 hijos** (Jordi, Oriol, Josep, Marta, Mireia, Oleguer, Pere Pujol
+  Ferrusola): `investigado` → `acusado`. Acto: auto de apertura de juicio oral
+  de Santiago Pedraz, 15-jun-2021.
+- **Jordi Pujol Soley**: `investigado` → `desimputado` (sobreseimiento libre por
+  deterioro cognitivo, 27-abr-2026; anuncio formal 11-may-2026).
+- **NO hay sentencia** (visto para sentencia 14-may-2026; fallo esperado ~jul
+  2026). Ningún rol sube a `condenado`; presunción de inocencia intacta.
+
+**Incertidumbres abiertas (verificar antes de promover Pujol a beta):**
+
+1. **`fecha_inicio` de los roles `acusado`**: se conserva `2014-07-01` (inicio de
+   la implicación en la causa). Si la convención del modelo es "fecha del acto
+   que abre el rol vigente", debería ser `2021-06-15` (apertura de juicio oral).
+   Decidir contra `docs/diseno/01-modelo-de-datos.md` (V-09/V-10/V-11).
+2. **`cohecho` en Jordi Pujol Ferrusola**: se mantiene en `delitos_atribuidos`,
+   pero las penas finales reseñadas (may-2026) no lo enumeran explícitamente.
+   Cotejar contra el escrito de acusación íntegro de Anticorrupción.
+3. **Mercè Gironès y los empresarios acusados**: no están modelados como
+   `RolEnCaso` (17 años pedidos para Gironès; 5 para cada empresario). Laguna de
+   completitud; crear sus roles `acusado` si se quiere cerrar el cuadro procesal.
+4. **Fecha del hito de apertura de juicio oral**: `pujol-apertura-juicio-oral-2021`
+   está con `fecha: 2021-01-01` / `fecha_precision: anio`; la fecha real es
+   **15-jun-2021** (Pedraz). Corregir el hito.
+
+Nota: el `id` y el nombre de fichero de los roles conservan el sufijo
+`-investigado`/`-investigada` por estabilidad de slug; sólo cambia el campo `rol`.
 
 ---
 

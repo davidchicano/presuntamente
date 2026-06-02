@@ -2,17 +2,14 @@ id: rol-jordi-pujol-soley-investigado
 caso_id: pujol
 sujeto_tipo: persona
 sujeto_persona_id: jordi-pujol-soley
-rol: investigado
-delitos_atribuidos:
-  - organizacion-criminal
-  - blanqueo-de-capitales
-  - delito-contra-hacienda-publica
+rol: desimputado
 fecha_inicio: "2014-07-01"
+fecha_fin: "2026-04-27"
+hito_fin_id: pujol-sobreseimiento-pujol-soley-2026-04-27
 notas: >-
-  Jordi Pujol Soley está investigado bajo plena presunción de inocencia. No
-  existe sentencia condenatoria en esta causa. La condición de investigado no
-  implica culpabilidad. Atribución de delitos pendiente de verificar contra la
-  resolución oficial; ver NOTES.md.
-# LLM-incierto: fase procesal vigente tras la apertura de juicio oral
-# (técnicamente puede ser acusado) y atribución exacta de delitos por persona
-# pendientes de verificar.
+  Jordi Pujol Soley quedó fuera del juicio por su deterioro cognitivo y el
+  tribunal acordó el sobreseimiento libre de la causa respecto de él (decisión
+  comunicada en abril-mayo de 2026). El sobreseimiento libre cierra la causa
+  frente a él sin pronunciamiento sobre el fondo: no es absolución ni
+  declaración de culpabilidad. Rige plena presunción de inocencia. Detalle y
+  fuentes en NOTES.md.

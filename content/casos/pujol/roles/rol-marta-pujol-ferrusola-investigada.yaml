@@ -2,13 +2,13 @@ id: rol-marta-pujol-ferrusola-investigada
 caso_id: pujol
 sujeto_tipo: persona
 sujeto_persona_id: marta-pujol-ferrusola
-rol: investigado
+rol: acusado
 delitos_atribuidos:
   - blanqueo-de-capitales
   - organizacion-criminal
 fecha_inicio: "2014-07-01"
 notas: >-
-  Marta Pujol Ferrusola está investigada bajo plena presunción de inocencia. No
+  Marta Pujol Ferrusola está acusada bajo plena presunción de inocencia. No
   existe sentencia condenatoria en este procedimiento. La condición de
-  investigada no implica culpabilidad. Atribución de delitos pendiente de
+  acusada no implica culpabilidad. Atribución de delitos pendiente de
   verificar; ver NOTES.md.

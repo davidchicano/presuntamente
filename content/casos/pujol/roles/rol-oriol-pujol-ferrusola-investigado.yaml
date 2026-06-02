@@ -2,14 +2,14 @@ id: rol-oriol-pujol-ferrusola-investigado
 caso_id: pujol
 sujeto_tipo: persona
 sujeto_persona_id: oriol-pujol-ferrusola
-rol: investigado
+rol: acusado
 delitos_atribuidos:
   - blanqueo-de-capitales
   - organizacion-criminal
 fecha_inicio: "2014-07-01"
 notas: >-
-  Oriol Pujol Ferrusola figura como investigado en esta causa sobre el
+  Oriol Pujol Ferrusola figura como acusado en esta causa sobre el
   patrimonio familiar, con independencia de procedimientos distintos en los que
-  hubiera podido ser condenado. Investigado bajo plena presunción de inocencia
+  hubiera podido ser condenado. Acusado bajo plena presunción de inocencia
   en esta causa; no existe sentencia en ella. Atribución de delitos pendiente
   de verificar; ver NOTES.md.
