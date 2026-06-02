@@ -209,3 +209,11 @@ y se sustituyeron por comentarios que referencian el respaldo verificado.
   comparten entidad (Caja Madrid/Bankia) y solapan personas (Rato). Tipo: derivada_factual.
 - **rato-fraude-fiscal**: solapamiento de persona investigada (Rodrigo Rato) y
   entorno temporal; son procedimientos distintos. Tipo: causa_conexa.
+
+## Anotaciones migradas desde comentarios YAML (2026-06-02)
+
+Nota interna que vivía como comentario `#` dentro de un bloque de texto YAML, donde se renderizaba en el sitio público (ver regla V-26 en doc 01). Reubicada aquí; el YAML quedó limpio.
+
+- **`../../personas/miguel-blesa.yaml`** — Tratamiento exacto en la STS: verificar el texto de la resolución en CENDOJ para confirmar el artículo del CP aplicado y la fecha.
+- **`../../organizaciones/bankia.yaml`** — Completar fechas y datos registrales de Bankia desde fuente oficial.
+- **`../../organizaciones/caja-madrid.yaml`** — Completar fechas de constitución/extinción y datos registrales de Caja Madrid desde fuente oficial.

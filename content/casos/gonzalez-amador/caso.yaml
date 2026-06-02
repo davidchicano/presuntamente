@@ -103,5 +103,5 @@ estado_ficha:
   conexiones: pendiente
   cobertura_mediatica_general: pendiente
   revision_editorial: completo
-  notas: "Auto de la AP Madrid Sección 3ª que ratifica el procesamiento (07-11-2025) pendiente de aparecer en CENDOJ con ROJ asignado; cuando aparezca se descarga a /public/documentos/gonzalez-amador/. Señalamiento del juicio para 2027 catalogado a nivel de mes con cobertura N4 cruzada (El Plural + elDiario.es); pendiente de localizar la providencia/auto de señalamiento del Juzgado de lo Penal para precisar fecha y órgano de enjuiciamiento."
+  notas: "Auto de la AP Madrid Sección 3ª que ratifica el procesamiento (07-11-2025) pendiente de aparecer en CENDOJ con ROJ asignado. Señalamiento del juicio para 2027 catalogado a nivel de mes con cobertura N4 cruzada (El Plural + elDiario.es); la providencia o auto de señalamiento del Juzgado de lo Penal aún no consta en fuente oficial, por lo que la fecha exacta y el órgano de enjuiciamiento quedan por confirmar."
   fecha_actualizacion: "2026-05-30"

@@ -32,10 +32,6 @@ importe_nota: |
   cuantificación de la acusación. La cifra representa el volumen del
   programa cuya regularidad se discute; no todo ese importe equivale a
   perjuicio acreditado ni a enriquecimiento de persona alguna.
-  # LLM-incierto: convendría afinar contra el primario qué parte se
-  # considera concedida irregularmente y qué parte es perjuicio declarado.
-  # Anti-doble-conteo (V-23): esta es la única cifra estructurada como
-  # total_caso para ERE.
 importe_atribucion:
   - sujeto_tipo: organizacion
     sujeto: junta-de-andalucia

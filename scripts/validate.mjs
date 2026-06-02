@@ -11,7 +11,7 @@
 
 import { readFile } from 'node:fs/promises';
 import { glob } from 'glob';
-import { parse as parseYaml } from 'yaml';
+import { parse as parseYaml, parseDocument, visit, Scalar } from 'yaml';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 
@@ -139,6 +139,54 @@ for (const filepath of hechoFiles) {
       );
     }
   }
+}
+
+// --- V-26: comentarios internos no deben filtrarse en valores escalares ------
+// En YAML, un '#' dentro de un bloque escalar (| / >) o al inicio de un valor
+// citado NO es comentario, es texto literal → se renderiza en el sitio público.
+// Dos vectores, ambos cubiertos:
+//   (a) bloques '|' (literal) y '>' (folded): se inspecciona el SOURCE CRUDO del
+//       nodo. Imprescindible para folded: los saltos de línea se pliegan a
+//       espacios y un '# comentario' acabaría a mitad de frase en el valor
+//       parseado, donde un check "la línea empieza por #" no lo vería.
+//   (b) escalares plain/citados: el valor parseado no puede tener una línea que
+//       (tras trim) empiece por '#' (p. ej. notas: "# LLM-incierto …").
+// Los comentarios legítimos van a nivel de mapping (columna 0) o a NOTES.md.
+// Ver docs/diseno/01-modelo-de-datos.md §4 (V-26).
+function reportarV26(filepath, linea) {
+  errors++;
+  console.error(
+    `❌ ${filepath}\n   V-26: comentario interno filtrado dentro de un valor escalar: "${linea.trim().slice(0, 80)}".\n        Muévelo a NOTES.md (o a columna 0 como comentario real); dentro de un bloque "|"/">" se renderiza en el sitio.`,
+  );
+}
+for (const filepath of files) {
+  if (filepath === 'content/signals.yaml') continue;
+  const src = await readFile(filepath, 'utf-8');
+  let doc;
+  try {
+    doc = parseDocument(src);
+  } catch {
+    continue; // YAML inválido ya reportado en el bucle de schema
+  }
+  visit(doc, {
+    Scalar(_key, node) {
+      const esBloque =
+        node.type === Scalar.BLOCK_LITERAL || node.type === Scalar.BLOCK_FOLDED;
+      if (esBloque && node.range) {
+        // (a) bloque | o > : inspeccionar el source crudo del nodo
+        for (const linea of src.slice(node.range[0], node.range[2]).split('\n')) {
+          if (linea.trim().startsWith('#')) reportarV26(filepath, linea);
+        }
+        return;
+      }
+      // (b) plain/citado: valor parseado
+      if (typeof node.value === 'string' && node.value.includes('#')) {
+        for (const linea of node.value.split('\n')) {
+          if (linea.trim().startsWith('#')) reportarV26(filepath, linea);
+        }
+      }
+    },
+  });
 }
 
 console.log(

@@ -87,11 +87,11 @@ estado_ficha:
   notas: >-
     Modelado inicial centrado en la pieza política (instrucción JI nº 6
     de Sevilla, sentencia AP Sevilla 2019, casación TS 2022, amparos TC
-    2024). Faltan por modelar las numerosas piezas específicas (ayudas
+    2024). Quedan por modelar las numerosas piezas específicas (ayudas
     concretas a empresas), los roles de acusados de segundo nivel, el
-    juez instructor y el ponente del TS. Todas las sentencias
-    (pendiente_primario) deben descargarse desde CENDOJ /
-    tribunalconstitucional.es antes de publicar. Las fechas y números de
-    sentencia están marcados como LLM-incierto y requieren verificación
-    humana contra los primarios.
+    juez instructor y el ponente del TS. Las sentencias íntegras están
+    pendientes de incorporación desde CENDOJ y el Tribunal
+    Constitucional. Algunas fechas y números de sentencia son
+    provisionales, a la espera de contraste con las resoluciones
+    íntegras.
   fecha_actualizacion: "2026-05-30"

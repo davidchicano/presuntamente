@@ -91,3 +91,10 @@ Los siguientes hechos se mantienen en su tipo actual por insuficiencia de cita v
 
 - Con `gurtel`: ambos son macrocausas de corrupción con adjudicaciones ilegales a empresas privadas a cambio de comisiones; Malaya tiene ámbito municipal, Gürtel tiene alcance autonómico y nacional. Tipo propuesto: `causa_analoga`.
 - Con `barcenas-caja-b`: la financiación irregular del PP en Gürtel y Malaya tienen denominador común en las comisiones urbanísticas. Relación más débil (no hay conexión procesal directa). No se propone relación formal.
+
+## Anotaciones migradas desde comentarios YAML (2026-06-02)
+
+Notas internas que vivían como comentarios `#` dentro de bloques de texto YAML, donde se renderizaban en el sitio público (ver regla V-26 en doc 01). Reubicadas aquí; el YAML quedó limpio.
+
+- **`../../documentos/sentencia-ts-malaya-2015.yaml`** — pendiente_primario: localizar la URL directa en CENDOJ para elevar de N3 a N1.
+- **`../../personas/pedro-roman-malaga.yaml`** — El apellido completo no está confirmado en fuentes N1; se usa el nombre con el que aparece en los autos y en la cobertura de prensa.

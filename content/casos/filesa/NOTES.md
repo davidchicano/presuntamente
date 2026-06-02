@@ -92,3 +92,9 @@ Pendientes aún abiertos:
 - **filesa → gurtel**: tipo `causa_conexa` — ambas son macrocausas de financiación irregular de partidos (PSOE en Filesa, PP en Gürtel). No hay nexo jurisdiccional formal pero sí conexión editorial relevante.
 - **filesa → barcenas-caja-b**: tipo `causa_conexa` — la "caja b" del PP (caso Bárcenas) es el correlato temporal (años 90) de lo investigado en Filesa para el PSOE.
 - **filesa → tres-por-ciento-cataluna**: tipo `causa_conexa` — el "3%" de CDC en Cataluña como patrón de financiación irregular contemporáneo.
+
+## Anotaciones migradas desde comentarios YAML (2026-06-02)
+
+Nota interna que vivía como comentario `#` dentro de un bloque de texto YAML, donde se renderizaba en el sitio público (ver regla V-26 en doc 01). Reubicada aquí; el YAML quedó limpio.
+
+- **`roles/sala-griso-condenado-firme.yaml`** — Número exacto de la STC del recurso de amparo de Sala i Grisó no localizado directamente; se deduce de la STC 124/2001 citada en cobertura. Verificar en BOE (se enmarca en el bloque "Pendiente primario" de arriba: STC 123-127/2001).

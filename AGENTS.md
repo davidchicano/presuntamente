@@ -124,6 +124,8 @@ El sitio tiene tema claro y oscuro (`data-theme` en `<html>`). **Al crear o toca
 
 Cada `/content/casos/<slug>/NOTES.md` contiene anotaciones internas: contexto, "ojo con esta fuente porque…", decisiones tomadas, recordatorios para el LLM. **Excluido del build del sitio público.** Vive sólo en el repo para humanos y agentes.
 
+**Las anotaciones internas van AQUÍ, nunca como comentario `#` dentro de un campo de texto YAML.** En YAML un `#` dentro de un bloque escalar (`|` o `>`) —o al principio de un valor citado— **no es comentario: es texto literal y se renderiza en la web** (el `>` es especialmente traicionero: pliega el salto de línea y el `#` acaba a mitad de frase). Las incertidumbres, pendientes (`LLM-incierto`, `pendiente_primario`…) y correcciones de un dato van al `NOTES.md` del caso; para entidades sin `NOTES.md` propio (personas, organizaciones, documentos, glosario) van al `NOTES.md` del caso relacionado, citando el fichero de origen. La regla **V-26** (`scripts/validate.mjs`, [doc 01 — "Validaciones lógicas"](docs/diseno/01-modelo-de-datos.md#4-validaciones-lógicas-resumen-consolidado)) falla la validación si un `#` se cuela dentro de un valor escalar, en `|` y en `>`.
+
 ### Backlog por página en `docs/web/pages/`
 
 Cada página visible del sitio tiene (o puede tener) su propia ficha en `docs/web/pages/<ruta>.md` con estado actual, ideas futuras, aprendizajes editoriales y pendientes operativos. Norma incorporada el 2026-05-24 al cerrar la página `/cifras` por feedback del maintainer ("podríamos hacer algo en docs/web/pages, en un fichero por página, para ir anotando ideas").

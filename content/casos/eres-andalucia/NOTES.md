@@ -189,3 +189,16 @@ disponer del PDF con la página exacta de los hechos probados.
 - [ ] Verificar el cargo exacto y la STC individual de Gaspar Zarrías en el
       TC 2024 (inhabilitación rebajada, según fuentes periodísticas; pendiente
       verificar el número de STC desde BOE oficial).
+
+## Anotaciones migradas desde comentarios YAML (2026-06-02)
+
+Notas internas que vivían como comentarios `#` dentro de bloques de texto YAML, donde se renderizaban en el sitio público (ver regla V-26 en doc 01). Reubicadas aquí —su lugar correcto—; el YAML quedó limpio. Todas son verificaciones pendientes contra primarios.
+
+- **`hechos/hecho-sistema-ayudas-transferencias-financiacion.yaml`** (`importe_nota`) — Afinar contra el primario qué parte de los ~680 M€ se considera concedida irregularmente y qué parte es perjuicio declarado. Anti-doble-conteo (V-23): es la única cifra estructurada como `total_caso` para ERE.
+- **`roles/rol-fiscalia-anticorrupcion-acusacion.yaml`** — Confirmar si la acusación pública la ejerció la Fiscalía Anticorrupción y/o la Fiscalía de Sevilla, y los nombres de los fiscales actuantes.
+- **`roles/rol-gaspar-zarrias-condenado.yaml`** — Confirmar que Zarrías fue condenado por prevaricación (y no también por malversación) y la pena de inhabilitación exacta, contra los primarios.
+- **`roles/rol-jose-antonio-grinan-condenado.yaml`** — Pena exacta de prisión e inhabilitación y efecto preciso del amparo del TC de 2024 sobre su situación penitenciaria. Es la persona cuya condena por malversación quedó más matizada por el TC; verificar primarios antes de afinar el estado.
+- **`roles/rol-manuel-chaves-condenado.yaml`** — Duración exacta de la pena de inhabilitación (verificar contra los primarios).
+- **`roles/rol-vicente-fernandez-guerrero-condenado.yaml`** — Delitos exactos por los que fue condenado (prevaricación y/o malversación) y la pena. Marcado provisionalmente con prevaricación y malversación por ser exconsejero de Empleo con atribución directa; verificar contra el primario y, si el amparo del TC de 2024 le afecta en la malversación, anotar su efecto.
+- **`../../glosario/ayudas-sociolaborales-ere-andalucia.yaml`** — Confirmar la denominación exacta del programa presupuestario (citado como "31L") contra fuente primaria.
+- **`caso.yaml`** (`estado_ficha`) — Las sentencias íntegras (AP Sevilla 2019, casación TS 2022, amparos TC 2024) deben descargarse desde CENDOJ / tribunalconstitucional.es y las fechas y números de sentencia verificarse contra el primario antes de publicar.

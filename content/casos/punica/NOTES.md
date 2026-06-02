@@ -90,3 +90,10 @@ porque el archivo elimina su condición procesal en esta pieza.
 - Público conformidad Marjaliza (N4): dic-2025.
 - Nota CGPJ condena filtración (N1 citada en hito, documento pendiente de
   localización exacta en poderjudicial.es).
+
+## Anotaciones migradas desde comentarios YAML (2026-06-02)
+
+Notas internas que vivían como comentarios `#` dentro de bloques de texto YAML, donde se renderizaban en el sitio público (ver regla V-26 en doc 01). Reubicadas aquí; el YAML quedó limpio.
+
+- **`roles/comunidad-madrid-perjudicado-punica.yaml`** — La personación formal como acusación particular o la condición de perjudicado de cada administración local concreta no se ha verificado pieza por pieza; revisar al modelar las piezas menores.
+- **`../../documentos/elespanol-detenciones-punica-2014-10-27.yaml`** — `url_canonica` apunta a la cobertura retrospectiva de El Español sobre el patrimonio oculto de Granados (nov-2015), pieza localizada con fecha y autoría verificables; sustituir por una pieza fechada el 27-oct-2014 (día de las detenciones) en una pasada futura.

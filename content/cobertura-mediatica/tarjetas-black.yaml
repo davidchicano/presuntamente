@@ -126,8 +126,8 @@ noticias:
     fecha_rastreo: "2026-05-30"
     notas: >-
       Fecha aproximada; la pieza es una reconstruccion publicada
-      en el momento de maxima atencion mediatica (octubre 2014).
-      # LLM-incierto: fecha exacta de publicacion; verificar en la URL.
+      en el momento de maxima atencion mediatica (octubre 2014). Fecha
+      exacta de publicacion no verificada.
 
   - id: eldiario-claves-tarjetas-caja-madrid-bankia-2014
     url: "https://www.eldiario.es/politica/tarjetas-consejeros-caja-madrid-bankia_1_1909519.html"
@@ -144,7 +144,7 @@ noticias:
     relevancia_editorial: alta
     menciones: [titular, lead]
     fecha_rastreo: "2026-05-30"
-    notas: "# LLM-incierto: fecha exacta; estimada a partir del pico de octubre 2014."
+    notas: "Fecha exacta no verificada; estimada a partir del pico de octubre 2014."
 
   # ── VENTANA 2: INSTRUCCION Y JUICIO ORAL (2015-2016) ────────────────────
 
@@ -165,7 +165,7 @@ noticias:
     relevancia_editorial: alta
     menciones: [titular, lead]
     fecha_rastreo: "2026-05-30"
-    notas: "# LLM-incierto: fecha exacta de publicacion; estimada en el periodo del juicio oral."
+    notas: "Fecha exacta de publicacion no verificada; estimada en el periodo del juicio oral."
 
   - id: confilegal-juicio-visto-para-sentencia-2017-02
     url: "https://confilegal.com/20170203-el-juicio-de-las-tarjetas-black-queda-visto-para-sentencia/"
@@ -365,4 +365,4 @@ noticias:
     relevancia_editorial: media
     menciones: [titular, lead]
     fecha_rastreo: "2026-05-30"
-    notas: "# LLM-incierto: fecha exacta del articulo de aniversario; estimada en octubre 2024 por el decimo aniversario de octubre 2014."
+    notas: "Fecha exacta del articulo de aniversario no verificada; estimada en octubre 2024 por el decimo aniversario de octubre 2014."

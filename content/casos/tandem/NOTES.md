@@ -120,3 +120,10 @@ detallado por ser de relevancia editorial secundaria.
   presunto perjudicado de Kitchen (pieza de Tándem), es el protagonista del
   caso caja b del PP; la documentación intervenida en Kitchen se dirigía
   a impedir que llegara al juez del caso Bárcenas."
+
+## Anotaciones migradas desde comentarios YAML (2026-06-02)
+
+Correcciones de trazabilidad que vivían como comentarios `#` dentro de bloques de texto YAML, donde se renderizaban en el sitio público (ver regla V-26 en doc 01). Reubicadas aquí; el YAML quedó limpio.
+
+- **`hechos/condena-firme-salamanca-cohecho-barajas.yaml`** — Corrección 2026-05-30: la Sentencia 3/2025 establece expresamente que NO es firme (cabe casación ante el TS); se corrigió el enunciado y el Hecho se mantiene en tipo `atribuido` hasta firmeza acreditada.
+- **`hitos/condena-salamanca-firme-pieza-1-2025-01.yaml`** — Corrección 2026-05-30: el hito se etiquetaba como `sentencia_firme` pero la propia resolución establece que cabe casación ante el TS; corregido a `sentencia_apelacion` y `fase_resultante` actualizada.

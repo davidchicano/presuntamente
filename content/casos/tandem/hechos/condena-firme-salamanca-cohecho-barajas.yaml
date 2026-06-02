@@ -16,9 +16,6 @@ enunciado: |
   apelación no es firme: contra ella cabe recurso de casación ante el
   Tribunal Supremo (Sala Segunda); no consta a fecha de revisión que se
   haya resuelto dicho recurso.
-  # Corrección 2026-05-30: la Sentencia 3/2025 establece expresamente que
-  # no es firme (cabe casación ante el TS). Se corrige el enunciado.
-  # Hecho se mantiene en tipo: atribuido hasta firmeza acreditada.
 tipo: atribuido
 fecha_o_periodo:
   desde: "2010-01-01"

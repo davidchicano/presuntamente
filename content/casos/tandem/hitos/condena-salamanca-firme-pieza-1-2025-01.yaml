@@ -18,9 +18,6 @@ descripcion: |
   ciudadanos ecuatoguineanos. La resolución acordó asimismo el comiso de todos
   los bienes recibidos. La Sentencia 3/2025 no es firme: contra ella cabe
   recurso de casación ante el Tribunal Supremo (Sala Segunda).
-  # Corrección 2026-05-30: el hito se etiquetaba como sentencia_firme pero la
-  # propia resolución establece que cabe casación ante el TS; corregido a
-  # sentencia_apelacion y fase_resultante actualizada.
 personas_afectadas:
   - carlos-salamanca-sanchez
 organizaciones_afectadas:
