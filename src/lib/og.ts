@@ -132,14 +132,18 @@ export function formatFechaEs(fecha: string): string {
 
 // --- Pipeline de renderizado -------------------------------------------------
 
-async function renderNodeToPng(node: Node): Promise<Buffer> {
+async function renderNodeToPng(node: Node): Promise<Uint8Array<ArrayBuffer>> {
   const svg = await satori(node as any, {
     width: OG_WIDTH,
     height: OG_HEIGHT,
     fonts: loadFonts(),
   });
   const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: OG_WIDTH } });
-  return Buffer.from(resvg.render().asPng());
+  // Devolvemos Uint8Array<ArrayBuffer> (tipo web-estándar que `Response`/`BodyInit`
+  // acepta), no el Buffer de Node: a partir de Astro 6 los tipos (TS 5.7+) rechazan
+  // `Buffer<ArrayBufferLike>` como body, y `Uint8Array` a secas resuelve a
+  // `<ArrayBufferLike>`. `Uint8Array.from` fija `<ArrayBuffer>` y copia los bytes.
+  return Uint8Array.from(resvg.render().asPng());
 }
 
 // --- Layout común (chrome ministerial) --------------------------------------
@@ -285,7 +289,7 @@ export async function renderOgDefault(opts: {
   title: string;       // p.ej. "Inventario público de casos de corrupción en España"
   subtitle?: string;   // p.ej. la descripción de la página
   stats: StatItem[];   // cifras agregadas
-}): Promise<Buffer> {
+}): Promise<Uint8Array<ArrayBuffer>> {
   return renderNodeToPng(chrome({
     tag: 'INVENTARIO',
     body: [
@@ -323,7 +327,7 @@ export async function renderOgCaso(opts: {
   fase: string;
   ultimoHito?: { fecha: string; titulo: string } | null;
   stats: StatItem[];
-}): Promise<Buffer> {
+}): Promise<Uint8Array<ArrayBuffer>> {
   const phase = PHASE_STYLE[opts.fase] ?? { bg: T.surfaceMuted, fg: T.fg, label: opts.fase };
 
   return renderNodeToPng(chrome({
@@ -397,7 +401,7 @@ export async function renderOgPersona(opts: {
   rolActualLabel?: string;  // p.ej. "Procesada" o "Desimputado"
   rolActualColor?: { bg: string; fg: string }; // tonos del rol activo
   stats: StatItem[];
-}): Promise<Buffer> {
+}): Promise<Uint8Array<ArrayBuffer>> {
   return renderNodeToPng(chrome({
     tag: 'PERSONA',
     body: [
@@ -442,7 +446,7 @@ export async function renderOgOrganizacion(opts: {
   tipoLabel?: string;        // p.ej. "Órgano judicial", "Empresa", "Partido político"
   descripcionCorta?: string; // opcional, 1-2 líneas
   stats: StatItem[];
-}): Promise<Buffer> {
+}): Promise<Uint8Array<ArrayBuffer>> {
   return renderNodeToPng(chrome({
     tag: 'ORGANIZACIÓN',
     body: [

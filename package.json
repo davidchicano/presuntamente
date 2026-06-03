@@ -18,9 +18,9 @@
     "archive:dry": "node scripts/archivar-n4.mjs --catchup --dry-run"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.3",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^5.0.0",
+    "astro": "^6.4.2",
     "cytoscape": "^3.33.4",
     "d3-hierarchy": "^3.1.2",
     "d3-scale": "^4.0.2",
@@ -29,7 +29,7 @@
     "satori-html": "^0.3.2"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.0",
+    "@astrojs/check": "^0.9.9",
     "@types/d3-hierarchy": "^3.1.7",
     "@types/d3-scale": "^4.0.9",
     "ajv": "^8.17.0",
