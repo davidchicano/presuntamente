@@ -117,23 +117,12 @@ estado_ficha:
   cobertura_mediatica_general: parcial
   revision_editorial: pendiente
   notas: |
-    Ficha inicial modelada el 2026-05-29-30. Se han cubierto las dos
-    piezas con mayor actualidad (Cofely dic-2025 y apertura juicio oral
-    pieza suelo/obra pública may-2026) y la pieza firme de la filtración.
-    Pendientes: piezas menores (Arpegio, piezas valencianas, piezas de
-    León y Murcia si las hay), roles de los 40 acusados adicionales en
-    pieza8 distintos de Granados, documentos primarios de CENDOJ cuando
-    la sentencia Cofely aparezca indexada, y cruce con gurtel y
-    barcenas-caja-b. La pieza de financiación PP archivada en 2022 está
-    modelada como hito pero no se han modelado los roles archivados de
-    Aguirre, Cifuentes y González en esa pieza (requieren verificación
-    de la pieza exacta). Ver NOTES.md.
-    Vínculos (pasada 2026-05-30): modelados cargo consejero y secretario
-    general PP-Madrid de Granados, entidad investigada Cofely, perjudicado
-    Comunidad de Madrid, afectación indirecta PP. Pendientes: BOCM de
-    nombramiento de Granados (pendiente_primario), roles de alcaldes
-    condenados en pieza Cofely.
-    Cobertura mediática (pasada 2026-05-30): 9 piezas, 7 medios, 7 ventanas
-    (oct-2014 a may-2026). Estado parcial: falta elpais.com, elmundo.es,
-    abc.es y cobertura autonómica. url_archivo pendientes de archive:catchup.
+    La ficha cubre las piezas con mayor actualidad procesal: la pieza Cofely
+    (resolución de diciembre de 2025), la apertura de juicio oral de la pieza
+    de obra pública (mayo de 2026) y la pieza firme de la filtración. Quedan
+    por incorporar piezas menores, los roles de los acusados adicionales más
+    allá de Francisco Granados y los roles archivados de la pieza de
+    financiación del PP (sobreseída en 2022). La sentencia íntegra de la pieza
+    Cofely aún no consta indexada en CENDOJ y la cobertura mediática catalogada
+    es todavía parcial.
   fecha_actualizacion: "2026-06-03"
