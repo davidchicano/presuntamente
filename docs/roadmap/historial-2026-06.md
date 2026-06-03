@@ -2,6 +2,10 @@
 
 Detalle largo de las sesiones de junio 2026. El resumen vivo está en [`ROADMAP.md`](../../ROADMAP.md).
 
+## 2026-06-02 — Visibilidad de borradores blindada + lote 1 de promoción
+
+Gate "borrador no sale en prod" extendido a TODOS los vectores (fichas persona/org, feed, índices, `/cifras`, `/delitos`, OG, auto-enlaces `RichProse`) con el helper central [`src/lib/visibilidad.ts`](../../src/lib/visibilidad.ts). Build prod 8 casos / 90 personas / 82 orgs; `dist/` 0 fugas + 0 enlaces colgantes; `validate` 1359 OK. Ficha canónica: [`visibilidad-estados-publicacion.md`](../web/features/visibilidad-estados-publicacion.md). En la misma sesión, **lote 1 de promoción** (`noos`, `malaya`, `palau-musica`, `tarjetas-black` → `beta_publica`, panel 3/3 VERDE) y roles de Pujol actualizados (7 hijos→`acusado`, Pujol Soley→`desimputado`).
+
 ## 2026-06-03 — Cierre de los 8 borradores restantes (panel de promoción)
 
 Sesión para "atar los cabos" pendientes tras el lote 1 de promoción: las 4 incertidumbres de Pujol, la sugerencia de malaya y el panel `/promover-caso` sobre los 8 borradores.
@@ -47,3 +51,13 @@ Taxonomía: "asociación ilícita" se mapea a la ranura existente `organizacion-
 - eres/tándem: revisar firmeza (ERE → resolución del TJUE; Tándem → casación TS).
 - `archive:catchup` de los N4 nuevos (requiere red).
 - Crear entidad-delito `asociacion-ilicita` y reclasificar Pujol/filesa cuando proceda.
+
+## 2026-06-03 — API de datos abiertos (diseño, no implementado)
+
+A raíz de una petición pública de Menjòmetre (integrar los datos del inventario, en concreto "casos de Catalunya" y una posible API), se diseñó y **documentó** la capa de datos abiertos **sin tocar código**. Canon en [`docs/api/`](../api/README.md): contrato ([`README.md`](../api/README.md)), registro de decisiones D1-D10 ([`decisiones.md`](../api/decisiones.md)) y ficha interna ([`api-datos-abiertos.md`](../web/features/api-datos-abiertos.md)).
+
+Decisiones clave: datos JSON estáticos sobre Cloudflare Pages (sin servidor, mismo patrón que el feed); grafo caso/persona/organización con aristas inlineadas; acceso índice ligero + detalle bajo demanda + slices pre-construidos; faceta de partido como proyección de la afectación ([doc 08](../diseno/08-afectacion-directa-indirecta.md#7-modelo-de-datos)), sin agregados/rankings; **filtro territorial resuelto en cliente** vía organizaciones (el consumidor cruza por `cif`/NIF; descartado pre-construir `/territorio/`; modelar territorio en `Caso` queda diferido); sin SDK (`llms.txt` + schemas legibles por IA); propagación de datos a terceros asumida por el maintainer.
+
+Verificado que el modelo ya enlaza administraciones afectadas y empresas implicadas al caso vía `VinculoInstitucional` (no hay hueco de modelo; es serialización del grafo).
+
+Pendiente al implementar: endpoints estáticos `/api/v1/`; **poblar `cif`/NIF** de las orgs entidad de los casos beta+ (hoy 1/137, fuentes oficiales: BORME, Registro de Partidos, NIF de administraciones); `llms.txt`; valorar DIR3/Wikidata; gate `visibilidad.ts` + barrido anti-fugas sobre `/api/`.
