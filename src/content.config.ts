@@ -7,9 +7,32 @@
 // ejecutada por `pnpm validate`). Cada schema usa `.passthrough()` para no
 // romper si los YAML traen campos extra todavía no tipados aquí.
 //
-// IDs: por defecto el glob loader genera el id a partir del path. Para
-// `casos`, `hitos`, `hechos` y `roles` lo derivamos del campo `data.id`
-// del propio YAML — así los slugs en la app coinciden con los del YAML.
+// IDs: por defecto el glob loader genera el id a partir del path.
+//   - Entidades de primer nivel (`casos`, `personas`, `organizaciones`,
+//     `documentos`, `delitos`, `glosario`, `relaciones`, `vinculos`): el id de
+//     la collection es `data.id` del YAML, que es global y se usa como slug en
+//     las rutas (`/casos/<id>`, `/personas/<id>`…).
+//   - Subentidades anidadas en un caso (`roles`, `hitos`, `hechos`): su
+//     `data.id` sólo es único DENTRO de su caso (la misma persona puede tener
+//     el mismo rol descriptivo en varios casos, p. ej. `ruz-juez-instructor`),
+//     así que el id de collection se prefija con el slug del caso:
+//     `<caso>/<data.id>`. El glob loader exige id único por collection; sin el
+//     prefijo, dos casos con el mismo `data.id` colisionan y uno sobrescribe al
+//     otro (pérdida silenciosa de datos). La app nunca usa este id: filtra por
+//     `data.caso_id` y lee `data.id` (anclas `#hito-…`/`#hecho-…`, feed). Un
+//     duplicado real DENTRO de un mismo caso sigue avisando en build.
+
+// Prefija el id de collection con el slug del caso para las subentidades
+// anidadas. `entry` es la ruta relativa al base (`<caso>/<tipo>/<fichero>.yaml`).
+// El tipo de las opciones del loader (`GenerateIdOptions`) no se exporta desde
+// Astro, así que lo anotamos estructuralmente.
+const generateIdConCaso = ({
+  entry,
+  data,
+}: {
+  entry: string;
+  data: Record<string, unknown>;
+}) => `${entry.split('/')[0]}/${String(data.id)}`;
 
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
@@ -234,7 +257,7 @@ const hitos = defineCollection({
   loader: glob({
     pattern: '*/hitos/*.yaml',
     base: './content/casos',
-    generateId: ({ data }) => String(data.id),
+    generateId: generateIdConCaso,
   }),
   schema: z
     .object({
@@ -259,7 +282,7 @@ const hechos = defineCollection({
   loader: glob({
     pattern: '*/hechos/*.yaml',
     base: './content/casos',
-    generateId: ({ data }) => String(data.id),
+    generateId: generateIdConCaso,
   }),
   schema: z
     .object({
@@ -338,7 +361,7 @@ const roles = defineCollection({
   loader: glob({
     pattern: '*/roles/*.yaml',
     base: './content/casos',
-    generateId: ({ data }) => String(data.id),
+    generateId: generateIdConCaso,
   }),
   schema: z
     .object({
