@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-06-04 (**explorador de conexiones: rendimiento + separación por núcleos**). El layout orgánico migró de `cose` a **`fcose`** (`cytoscape-fcose`): cálculo en una sola pasada (~10× más rápido), sin la animación a trompicones ni el "2 s congelado → salto" del cose base; `animate: false` + **skeleton** de carga hasta el primer `layoutstop`. Fuerzas **conscientes del tipo**: los casos (núcleos) se repelen fuerte (`casoRepulsionFactor`) y sus satélites quedan pegados (aristas cortas y rígidas), las `caso_caso` largas → galaxias separadas, no separación global de nodos. Afinado visual de las constantes pendiente (viven en `layoutFor`). Canon: [`explorador-conexiones.md`](docs/web/features/explorador-conexiones.md).
+**Última actualización:** 2026-06-04 (**API de datos abiertos `/api/v1/` implementada de punta a punta**). 9 endpoints estáticos (índices casos/personas/orgs + detalle + slice de partido + dump + datapackage) + `/llms.txt` + `public/_headers` (CORS), reusando `visibilidad.ts`/`afectacion.ts`/`importe.ts`. Grafo de 3 nodos con CIF inline y arista inversa org→casos (D11); sobre `meta` con licencia + aviso "imputación ≠ condena"; **más estricta que la web**: excluye contenido retractado y el campo interno `promocion_propuesta`. **CIF poblado 1→67** (sweep de sub-agentes, fuente oficial/≥2 registrales, dígito de control validado; 16 pendientes documentados). **Tests: suite `vitest` (31: unit de `buildApiContext` + contrato sobre `dist/api`), `pnpm test`, en CI tras el build** — primera dependencia de testing del repo. Verificado: build limpio, `astro check` 0 errores, invocación HTTP 200, 0 fugas. Canon: [`docs/api/`](docs/api/README.md) + ficha [`api-datos-abiertos.md`](docs/web/features/api-datos-abiertos.md). **Sin commitear** (working tree).
 
-**Anterior (2026-06-04).** Regla 7 de afectación (caja/financiación de partido como objeto del caso → directa) + `leire-diez` al día (levantamiento parcial del secreto) + fix de IDs duplicados en collections anidadas + migración a Astro 6 (6.4.2). Detalle: [`historial-2026-06.md`](docs/roadmap/historial-2026-06.md).
+**Anterior (2026-06-04).** Explorador de conexiones: layout `cose`→`fcose` (~10× más rápido, skeleton de carga, fuerzas conscientes del tipo). Canon: [`explorador-conexiones.md`](docs/web/features/explorador-conexiones.md).
 
 ---
 
@@ -32,7 +32,8 @@
 - **Pre-launch cerrado:** Bloques A, B, C, E. **Bloque D:** suficiente (v1.x menor pendiente).
 - **Próximo paso:** **(1)** `git push` (lo decide el maintainer; `main` por delante de `origin`, listo para pushear). **(2)** `eres`/`tandem`: revisar firmeza (ERE→resolución del TJUE; Tándem→casación TS) antes de panelar. **(3)** Pujol: localizar el escrito de acusación íntegro (detalle cargos/penas, hoy N4) y la sentencia (~jul-2026); `archive:catchup` de los N4 nuevos. **(4)** Zapatero 17-18 jun.
 - **Infra:** dominio y emails operativos; Cloudflare Pages servida en apex + `www`; deploy automático en `main`.
-- **Dev:** `pnpm dev` → `http://localhost:4321`. **Git:** `main` directo; sin `git add`/`commit`/`push` salvo cierre explícito del maintainer ([`AGENTS.md`](AGENTS.md)).
+- **CI:** GitHub Action [`validate.yml`](.github/workflows/validate.yml) en push/PR a `main`: `install → validate (schemas+V-rules) → build → test (vitest: unit + contrato API)`. Mejora futura opcional: gate de deploy / job de `astro check` (tipos) si compensa.
+- **Dev:** `pnpm dev` → `http://localhost:4321`. **Tests:** `pnpm test` (rápido) · `pnpm test:api` (build + test). **Git:** `main` directo; sin `git add`/`commit`/`push` salvo cierre explícito del maintainer ([`AGENTS.md`](AGENTS.md)).
 
 ---
 
@@ -97,7 +98,7 @@ Pendiente v1.x (no bloquea launch blando):
 - [ ] Pills §7 cobertura mediática — [`filtros-pills-ficha-caso.md`](docs/web/features/filtros-pills-ficha-caso.md)
 - [~] **Importe presuntamente atribuido** — modelo + backfill (17 Hechos) **+ UI completa** (2026-05-29): ficha (dos tablas: dinero en juego / consecuencias), `/graficas` (2.ª sección, por clase × toggle nominal/€2025 + drill-down + CSV/JSON), preview en `/casos`. **`importe_clase`** (objeto/consecuencia, nunca sumadas) + **toggle inflación** (IPC INE). **Pendiente:** titular home (copy firmado), vista por persona/org (atribución por sujeto), comparativas externas (neutralidad), refinar enums por clase. Ficha [`importe-presunto.md`](docs/web/features/importe-presunto.md).
 - [ ] Fotos reales + logos: pausa hasta criterio legal
-- [ ] **API de datos abiertos** — diseño cerrado y documentado: contrato + decisiones D1-D10 en [`docs/api/`](docs/api/README.md), ficha [`api-datos-abiertos.md`](docs/web/features/api-datos-abiertos.md). Pendiente: implementar endpoints estáticos `/api/v1/` (índice+detalle+slices, gate `visibilidad.ts`), **poblar `cif`/NIF** de orgs entidad en casos beta+ (hoy 1/137), `llms.txt`, valorar DIR3/Wikidata. Origen: petición de Menjòmetre. **Al implementar: releer `docs/api/` entero** (el porqué está en `decisiones.md`).
+- [x] **API de datos abiertos** — **implementada (v1, 2026-06-04)**. Endpoints estáticos `/api/v1/` (índice+detalle+slice de partido+dump+datapackage) + `/llms.txt` + `_headers`, gate `visibilidad.ts`, CIF inline + arista inversa, sobre `meta`. CIF poblado 1→67. Contrato + decisiones D1-D12 en [`docs/api/`](docs/api/README.md), ficha [`api-datos-abiertos.md`](docs/web/features/api-datos-abiertos.md). Origen: petición de Menjòmetre. Pendiente v1.x: 16 CIF sin fuente (incl. precisar `el-pais`), valorar DIR3/Wikidata, verificar `_headers` en deploy CF real, posible página `/api`.
 
 #### Bloque E — higiene técnica `[x]`
 

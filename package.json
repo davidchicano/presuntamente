@@ -13,6 +13,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:api": "astro build && vitest run",
     "validate": "node scripts/validate.mjs",
     "archive:catchup": "node scripts/archivar-n4.mjs --catchup",
     "archive:dry": "node scripts/archivar-n4.mjs --catchup --dry-run"
@@ -39,6 +42,7 @@
     "lucide-static": "^1.16.0",
     "pagefind": "^1.5.2",
     "typescript": "^5.7.0",
+    "vitest": "^4.1.8",
     "yaml": "^2.6.0"
   },
   "packageManager": "pnpm@11.1.3",

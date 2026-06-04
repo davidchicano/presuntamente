@@ -28,3 +28,7 @@ jobs:
 
       - name: Build site
         run: pnpm build
+
+      - name: Run tests (unit + contrato de la API sobre dist/)
+        # Tras el build, así los tests de contrato encuentran dist/api y no se saltan.
+        run: pnpm test
