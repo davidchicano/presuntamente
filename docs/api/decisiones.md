@@ -5,8 +5,9 @@
 > que entre después entienda el razonamiento sin haber estado en la conversación.
 > El contrato resultante vive en [`README.md`](README.md).
 >
-> **Estado global: DISEÑO.** Nada de esto está implementado todavía; son las
-> decisiones tomadas antes de escribir código.
+> **Estado global: IMPLEMENTADA (v1).** Las decisiones D1-D11 se tomaron antes de
+> escribir código; D12 recoge las decisiones tomadas *al* implementar. Detalle de
+> mantenimiento en la [ficha de la feature](../web/features/api-datos-abiertos.md).
 
 ## Índice
 
@@ -21,6 +22,7 @@
 - [D9 — Versionado y promesa de estabilidad](#d9--versionado-y-promesa-de-estabilidad)
 - [D10 — Identificadores de organización para el join externo](#d10--identificadores-de-organización-para-el-join-externo)
 - [D11 — Denormalizar para el join externo (CIF inline y aristas bidireccionales)](#d11--denormalizar-para-el-join-externo-cif-inline-y-aristas-bidireccionales)
+- [D12 — Decisiones de implementación (junio 2026)](#d12--decisiones-de-implementación-junio-2026)
 
 ---
 
@@ -368,6 +370,62 @@ YAML en cada build, así que siempre van a la vez. Y empuja hacia el objetivo de
   ([D10](#d10--identificadores-de-organización-para-el-join-externo)); sin él, el inline
   queda vacío y el consumidor cae al match por nombre.
 - `/organizaciones/{cif}.json` queda como opcional, no necesario.
+
+---
+
+## D12 — Decisiones de implementación (junio 2026)
+
+**Contexto.** Al pasar de diseño (D1-D11) a código (`src/lib/api.ts` +
+`src/pages/api/v1/*` + `src/pages/llms.txt.ts`), surgieron cuestiones que el diseño no
+fijaba. Se resolvieron así:
+
+- **El contenido retractado no se propaga.** El gate de `visibilidad.ts` (D8) opera a
+  nivel de **caso**. Pero dentro de un caso visible puede haber un `Hecho` en
+  `vigencia: retirado` o una entidad en `estado_publicacion: retirado_*`. La web hoy
+  no filtra los hechos por su estado/vigencia (los renderiza todos), pero un contrato
+  machine-readable consumido por terceros que quizá no muestren el aviso de
+  retractación **no debe propagar un hecho retractado**. La API, por tanto, es **más
+  estricta que la web**: excluye `Hecho` con `vigencia: retirado` o
+  `estado_publicacion: retirado_*`, y vínculos/documentos/relaciones `retirado_*`.
+  (La incoherencia de la web —que sí muestra un hecho `retirado_definitivamente`— se
+  dejó anotada como follow-up editorial aparte; no es de la API.)
+- **Los campos internos no se exponen.** El `Caso` puede llevar `promocion_propuesta`
+  (cola interna de `/promover-caso`, nunca renderizada en web). Se elimina del payload
+  con una **denylist** (`CASO_CAMPOS_INTERNOS`), no una whitelist, para que los campos
+  públicos nuevos aparezcan solos (D9) pero los internos nunca se filtren.
+- **Las entidades heredan visibilidad del caso, no de su propio estado.** Una persona
+  en `estado_publicacion: borrador` que tiene rol en un caso `beta_publica` SÍ aparece
+  (su ficha web también se genera). El universo de personas/orgs es
+  `entidadesEnCasosVisibles` (el mismo helper que usan el grafo y las OG), no el estado
+  propio de la entidad.
+- **Poblado del `cif` (D10): 66 entidades en una pasada.** Sweep de investigación con
+  sub-agentes sobre las orgs de tipo entidad de los casos beta+ (82 candidatas). Se
+  poblaron **66** con fuente oficial (aviso legal de la propia entidad, BOE/BORME,
+  CNMV, registros oficiales —Partidos, Asociaciones, Fundaciones— o auto judicial que
+  cita el CIF) **o** ≥2 fuentes registrales coincidentes; todas con **dígito de control
+  validado**. Umbral conservador: ante duda, vacío. Quedaron 16 sin poblar (partidos
+  extintos sin registro online, órganos sin NIF propio que comparten el de su matriz,
+  marcas de medio sin editora española clara, asociaciones cuyo "NIF" publicado era el
+  DNI de una persona física —descartado por el guardarraíl de privacidad—). El detalle
+  applied/pending vive en la [ficha de la feature](../web/features/api-datos-abiertos.md#estado-del-poblado-de-cif).
+- **`datapackage.json` va sin el sobre `{ meta, datos }`.** Es el descriptor crudo que
+  el estándar Frictionless espera; envolverlo rompería su consumo por tooling.
+- **La arista inversa org→casos (`casos_relacionados`) es completa, no sólo vínculos.**
+  El join por CIF (D11, caso de uso de Menjòmetre) sólo sirve si "qué casos tocan a esta
+  organización" incluye TODAS las vías de implicación, no únicamente el `VinculoInstitucional`.
+  Se añadieron: rol procesal de la org (`rol_<rol>`), org implicada en un Hecho
+  (`implicada_en_hecho`) y org afectada en un Hito (`afectada_en_hito`), además de
+  vínculo/órgano/querellante. Sin esto, p. ej. Ferrovial Agromán (implicada por hecho en
+  Palau, sin vínculo) quedaba huérfana. **Se excluye a propósito** `documentos.
+  productor_organizacion_id`: un medio que publicó una pieza citada NO "está implicado"
+  en el caso (cubrir ≠ ser parte); aparece en el grafo como fuente, no como
+  `casos_relacionados`. Por eso los medios quedan con `casos_relacionados` vacío, lo cual
+  es correcto.
+
+**Razón.** Todas estas decisiones derivan de los principios irrenunciables (presunción
+de inocencia, trazabilidad, no exponer lo interno) aplicados al hecho de que el
+consumidor de la API no está bajo nuestro control: el guardarraíl tiene que viajar en
+el dato o ejercerse al serializar, no confiarse al renderizado del tercero.
 
 ---
 

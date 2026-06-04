@@ -1,0 +1,21 @@
+# Cabeceras de Cloudflare Pages.
+# Doc: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# La API de datos abiertos (/api/v1/*) es JSON estático pensado para consumo por
+# terceros: forzamos Content-Type JSON y abrimos CORS para que se pueda llamar
+# desde el navegador de cualquier origen (es dato público, CC BY-SA 4.0).
+# Los endpoints ya emiten estas cabeceras en build, pero declararlas aquí
+# garantiza el comportamiento del CDN para los ficheros servidos estáticamente.
+# Ficha: docs/web/features/api-datos-abiertos.md.
+
+/api/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, OPTIONS
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/api/v1/*.json
+  Content-Type: application/json; charset=utf-8
+
+/llms.txt
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8

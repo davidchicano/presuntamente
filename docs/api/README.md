@@ -1,10 +1,10 @@
 # API de datos abiertos — presuntamente.org
 
-> **Estado: DISEÑO. No implementado todavía.** Este documento describe el contrato
-> que queremos ofrecer; las rutas `/api/v1/...` aún no existen en el sitio. Es la
-> referencia de cara afuera (la lee quien quiera *consumir* los datos). El *por qué*
-> de cada decisión vive en [`decisiones.md`](decisiones.md). La ficha interna de
-> mantenimiento (cómo lo genera el build) vive en
+> **Estado: IMPLEMENTADA (v1).** Las rutas `/api/v1/...` se generan en el build y
+> se sirven desde el CDN. Es la referencia de cara afuera (la lee quien quiera
+> *consumir* los datos). El *por qué* de cada decisión vive en
+> [`decisiones.md`](decisiones.md). La ficha interna de mantenimiento (cómo lo
+> genera el build, call-sites) vive en
 > [`docs/web/features/api-datos-abiertos.md`](../web/features/api-datos-abiertos.md).
 
 ## Qué es
@@ -54,9 +54,11 @@ Nunca se mandan 500 fichas completas por defecto; eso es sólo el `dump` explíc
 (abajo). Detalle del razonamiento en
 [`decisiones.md` — D3](decisiones.md#d3--acceso-por-índice-detalle-y-slices).
 
-## Catálogo de endpoints (propuesto, v1)
+## Catálogo de endpoints (v1, en producción)
 
-> Ninguno existe aún. Es el mapa objetivo.
+> Todos generados estáticamente en el build. Cada respuesta (salvo
+> `datapackage.json`, que es el descriptor crudo Frictionless) va envuelta en el
+> sobre `{ meta, datos }`.
 
 | Ruta | Qué devuelve | Patrón |
 |---|---|---|
@@ -162,8 +164,17 @@ conserva su tipo discreto (`investigado`, `procesado`, `acusado`, `condenado`,
 La API es **un vector de publicación más** y pasa por el mismo gate que el resto del
 sitio ([`src/lib/visibilidad.ts`](../../src/lib/visibilidad.ts),
 [ficha](../web/features/visibilidad-estados-publicacion.md)): sólo se serializan casos
-en `beta_publica` o superior. Los borradores **no** salen por la API, igual que no
-salen por la home, el feed o las OG.
+en `beta_publica` o superior, y las personas/organizaciones enlazadas a ellos. Los
+borradores **no** salen por la API, igual que no salen por la home, el feed o las OG.
+
+Además, por ser un contrato consumido por terceros que quizá no rendericen el matiz
+editorial, la API es **más estricta que la web en dos puntos**:
+
+- **No propaga contenido retractado.** Las entidades en `estado_publicacion`
+  `retirado_*` y los `Hecho` con `vigencia: retirado` se excluyen (un hecho
+  retractado no debe viajar a un consumidor que no muestre el aviso de retractación).
+- **No expone campos internos.** El flag interno `promocion_propuesta` del `Caso`
+  (cola de la skill `/promover-caso`, nunca renderizado en web) se elimina del payload.
 
 ## Integrar sin SDK: clonar + preguntarle a tu IA
 
@@ -174,16 +185,16 @@ No mantenemos SDKs por lenguaje. La apuesta es hacer el repo **legible por un LL
    documentación de cada propiedad — y este `README` + [`llms.txt`](#).
 3. Te genera la integración a medida en tu lenguaje.
 
-Por eso el [`llms.txt`](#) propuesto incluirá, además del mapa de endpoints, **cómo
-respetar la presunción de inocencia al renderizar**: así un consumidor que se porta
-bien hereda los guardarraíles editoriales sin que nosotros controlemos nada.
+Por eso el [`llms.txt`](https://presuntamente.org/llms.txt) incluye, además del mapa de
+endpoints, **cómo respetar la presunción de inocencia al renderizar**: así un consumidor
+que se porta bien hereda los guardarraíles editoriales sin que nosotros controlemos nada.
 Razonamiento en [`decisiones.md` — D7](decisiones.md#d7--sin-sdk-legibilidad-por-llm).
 
-### Qué llevará `llms.txt`
+### Qué lleva `llms.txt`
 
 Un fichero servido en `https://presuntamente.org/llms.txt`, pensado para que una IA lo
 lea y sepa integrar sola, sin SDK. Alguien apunta su IA a esa URL y obtiene todo lo que
-necesita. Contenido objetivo:
+necesita. Contenido:
 
 - **Qué es** el proyecto en una línea + licencia (CC BY-SA 4.0) y la nota
   "imputación ≠ condena".

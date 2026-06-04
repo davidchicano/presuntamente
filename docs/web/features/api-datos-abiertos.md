@@ -1,15 +1,24 @@
 # API de datos abiertos
 
-> **Estado: DISEÑO. No implementado.** Esta ficha es la cara *interna*
-> (mantenimiento) de la feature. El **contrato de cara afuera** y el registro de
-> decisiones son el canon y viven en [`docs/api/`](../../api/README.md) ·
+> **Estado: IMPLEMENTADA (v1).** Esta ficha es la cara *interna* (mantenimiento) de
+> la feature. El **contrato de cara afuera** y el registro de decisiones son el canon
+> y viven en [`docs/api/`](../../api/README.md) ·
 > [`docs/api/decisiones.md`](../../api/decisiones.md). Aquí sólo lo propio de la
 > implementación; no se duplica el contrato.
 >
-> Archivos clave (cuando se implemente): `src/pages/api/v1/…` (endpoints) ·
-> `src/lib/api.ts` (serializadores) · reutiliza
-> [`src/lib/visibilidad.ts`](../../../src/lib/visibilidad.ts) ·
-> contrato de forma en [`/schemas/`](../../../schemas/).
+> Archivos clave:
+> - [`src/lib/api.ts`](../../../src/lib/api.ts) — serializadores (`buildApiContext`),
+>   sobre `meta`, gate de retractados, denormalización CIF, `loadApiInput`.
+> - `src/pages/api/v1/*` — endpoints: `casos.json.ts`, `personas.json.ts`,
+>   `organizaciones.json.ts` (índices); `casos/[slug].json.ts`,
+>   `personas/[slug].json.ts`, `organizaciones/[slug].json.ts` (detalle);
+>   `partido/[slug].json.ts` (slice); `dump.json.ts`; `datapackage.json.ts`.
+> - [`src/pages/llms.txt.ts`](../../../src/pages/llms.txt.ts) — `/llms.txt`.
+> - [`public/_headers`](../../../public/_headers) — Content-Type JSON + CORS en `/api/*`.
+> - Reutiliza [`src/lib/visibilidad.ts`](../../../src/lib/visibilidad.ts) (gate),
+>   [`src/lib/afectacion.ts`](../../../src/lib/afectacion.ts) (afectación),
+>   [`src/lib/importe.ts`](../../../src/lib/importe.ts) (importe atribuido); contrato
+>   de forma en [`/schemas/`](../../../schemas/).
 
 ## Qué hace
 
@@ -40,24 +49,87 @@ proyecto serio de datos abiertos. Detalle de audiencia y casos de uso en el
 - **Denormalización para el join externo**: el caso inlinea el `cif` de sus organizaciones
   y la organización lleva sus `casos_relacionados`; un consumidor con CIF va de CIF a casos
   con un solo fichero (decisión [D11](../../api/decisiones.md#d11--denormalizar-para-el-join-externo-cif-inline-y-aristas-bidireccionales)).
+  `casos_relacionados` es **completa**: incluye vínculo de afectación, órgano, querellante,
+  rol procesal (`rol_<rol>`), implicación en hecho (`implicada_en_hecho`) y afectación en
+  hito (`afectada_en_hito`) — pero NO al medio como productor de documento citado (cubrir ≠
+  ser parte), por eso los medios quedan vacíos a propósito ([D12](../../api/decisiones.md#d12--decisiones-de-implementación-junio-2026)).
 - **Gate de visibilidad obligatorio**: pasa por `visibilidad.ts`; sólo `beta_publica+`
   (decisión [D8](../../api/decisiones.md#d8--visibilidad-la-api-es-un-vector-más-del-gate)).
 
 ## Estado actual
 
-- **Nada implementado.** Sólo documentación de diseño en [`docs/api/`](../../api/README.md).
-- Base ya presente que la feature reutilizará: 12 [JSON Schema](../../../schemas/)
-  (contrato de forma), `visibilidad.ts` (gate), el patrón de endpoint estático del feed,
-  e IDs/slugs estables.
+- **Implementada (v1), junio 2026.** 9 endpoints en producción (3 índices + 3 detalle +
+  slice de partido + dump + datapackage) + `/llms.txt` + `public/_headers`. Build estático,
+  coste runtime cero. Verificada: build limpio, `astro check` 0 errores, JSON válido,
+  invocación HTTP real (200 + `application/json`), 0 fugas internas, contenido retractado
+  excluido. Genera 18 casos, 157 personas, 110 organizaciones, 4 slices de partido.
+- **CIF poblado: 67 de 110** orgs visibles (era 1 de 137). Ver "Estado del poblado de CIF".
+- Reutiliza: 12 [JSON Schema](../../../schemas/) (forma), `visibilidad.ts` (gate),
+  `afectacion.ts`, `importe.ts`, el patrón de endpoint estático del feed, IDs/slugs estables.
 - **Faceta territorial resuelta en cliente** (Menjòmetre, junio 2026): se expone el grafo
-  de organizaciones por caso y el consumidor cruza con su lista del territorio por
-  `cif`/NIF; el slice `/territorio/...` se retira y modelar territorio queda diferido. Ver
-  [D5](../../api/decisiones.md#d5--faceta-de-territorio-administración-afectada-pendiente-de-modelar).
+  de organizaciones por caso (con CIF inline) y el consumidor cruza con su lista del
+  territorio por `cif`/NIF; el slice `/territorio/...` se retira y modelar territorio queda
+  diferido. Ver [D5](../../api/decisiones.md#d5--faceta-de-territorio-administración-afectada-pendiente-de-modelar).
+- **Más estricta que la web** en dos puntos (D12): excluye contenido retractado
+  (`vigencia: retirado`, `estado_publicacion: retirado_*`) y el campo interno
+  `promocion_propuesta`.
+
+## Estado del poblado de CIF
+
+Sweep de junio 2026 (sub-agentes de investigación, fuente oficial o ≥2 registrales
+coincidentes, dígito de control validado, umbral conservador: ante duda, vacío). Ver
+[D10](../../api/decisiones.md#d10--identificadores-de-organización-para-el-join-externo)
+y [D12](../../api/decisiones.md#d12--decisiones-de-implementación-junio-2026).
+
+- **Poblados: 66** (+ `plus-ultra-lineas-aereas` previo = 67). Partidos (PP, PSOE, Podemos,
+  Más Madrid, Vox), asociaciones acusación popular (ADICAE, HazteOír, Manos Limpias,
+  Iustitia Europa), administraciones (AEAT, ayuntamientos Madrid/Marbella, CCAA, CGPJ,
+  ICAM, SEPI, UCM, Min. Interior, Presidencia…), empresas y financieras (Bankia,
+  Ferrovial, Cofely, Quirón Prevención, Servinabar, Maxwell Cremona, y extintas del caso
+  —Filesa, Fórum, Nóos Consultoría, Special Events…—), fundaciones y la mayoría de medios.
+- **Pendientes (16), por motivo documentado**:
+  - *Sin registro online accesible*: `convergencia-democratica-de-catalunya`,
+    `grupo-independiente-liberal` (partidos extintos), `movimiento-regeneracion-politica`,
+    `instituto-noos` (asociación, no en Reg. Mercantil), `malesa-sociedad`, `time-export`,
+    `orange-market`, `tct-sociedad` (sólo fuente comercial única → no aplicado).
+  - *Órgano sin NIF propio (comparte el de su matriz; DIR3 sería el id correcto)*:
+    `congreso-de-los-diputados`, `abogacia-del-estado`, `direccion-general-policia`,
+    `jefatura-del-estado`.
+  - *Entidad no española / marca sin editora española clara*: `infobae` (THX Medios,
+    Argentina), `actualidad-es` (Contents S.p.A., Italia), `el-pais` (ambigüedad entre dos
+    sociedades del grupo — pendiente de precisar).
+  - *Guardarraíl de privacidad*: `apif` publicaba como "NIF" un DNI de persona física →
+    descartado, nunca se expone el NIF de una persona.
+- **Notas de entity-resolution** (revisar si se cuestiona): `la-sexta` → CIF de Atresmedia
+  Corporación (marca sin editora separada); `el-correo-gallego` → EPI Prensa S.L. (vehículo
+  de Prensa Ibérica).
+
 - **Verificado** (junio 2026): el modelo ya enlaza administraciones afectadas y empresas
   implicadas al caso vía `VinculoInstitucional` ([doc 08](../../diseno/08-afectacion-directa-indirecta.md#7-modelo-de-datos));
   la API sólo las inlinea, no hay hueco de modelo.
-- **Pendiente de contenido**: poblar el `cif` (hoy **1 de 137**) para las orgs entidad de
-  los casos beta+. Ver [D10](../../api/decisiones.md#d10--identificadores-de-organización-para-el-join-externo).
+
+## Pruebas (vitest)
+
+Suite en [`tests/`](../../../tests/), corre con `pnpm test` (y en CI tras el build).
+**vitest** es la primera (y por ahora única) dependencia de testing del repo; el resto de
+validación sigue siendo el script `scripts/validate.mjs` (contenido) y `astro check` (tipos).
+
+- **`tests/api.unit.test.ts`** — unit de `buildApiContext` con un inventario sintético
+  ([`tests/fixtures.ts`](../../../tests/fixtures.ts)): gate de visibilidad, exclusión de
+  retractados, stripping de `promocion_propuesta`, CIF inline, arista inversa org→casos,
+  `personas_clave` = sólo imputados/condenados, acusación popular ≠ afectación, slice de
+  partido sin agregados, importe atribuido, sobre `meta`. No necesita build.
+- **`tests/api.contract.test.ts`** — contrato sobre el `dist/api/**` real: JSON válido +
+  sobre `meta`, integridad referencial índice↔detalle, 0 fugas de `promocion_propuesta`,
+  0 hechos retractados, **dígito de control de cada CIF** (`tests/helpers.ts`), aristas
+  bidireccionales coherentes, `datapackage`/`llms.txt`/`dump` bien formados. Requiere build
+  previo; si no hay `dist/`, **se salta con aviso** (no rompe). Local: `pnpm test:api`
+  (build + test).
+- **Cómo se fuerza el gate de producción en tests**: `import.meta.env.DEV` se lee en
+  runtime, así que [`tests/setup.ts`](../../../tests/setup.ts) lo stubea con `vi.stubEnv`
+  (poner `mode: 'production'` o `define` en la config no basta en vitest). El alias
+  `astro:content` se resuelve a un stub ([`tests/stubs/`](../../../tests/stubs/)) porque
+  `buildApiContext` recibe las colecciones ya cargadas y no llama a `getCollection`.
 
 ## Decisiones editoriales y aprendizajes
 
@@ -76,11 +148,14 @@ proyecto serio de datos abiertos. Detalle de audiencia y casos de uso en el
 
 ## Ideas futuras
 
+### Entregado en v1 (antes "sin compromiso")
+
+- **`/llms.txt`** ✓ — entrada para IAs consumidoras, con el mapa de endpoints y las
+  reglas de presunción de inocencia al renderizar.
+- **`datapackage.json`** ✓ — descriptor estándar Frictionless Data del dataset.
+
 ### v1.x — sin compromiso
 
-- **`/llms.txt`** de entrada para IAs consumidoras, con el mapa de endpoints y las
-  reglas de presunción de inocencia al renderizar.
-- **`datapackage.json`** (Frictionless Data) como descriptor estándar del dataset.
 - **Identificadores hermanos de organización**: `dir3` (administraciones) y `wikidata`
   (QID universal) junto al `cif`, para joins aún más limpios. **Fuertemente motivados** por
   la entity-resolution de consumidores reales (Menjòmetre: portales de transparencia sin id
@@ -97,15 +172,19 @@ proyecto serio de datos abiertos. Detalle de audiencia y casos de uso en el
 
 ## Pendientes operativos
 
-- [ ] **Poblar el `cif`/NIF** de las organizaciones de tipo entidad en casos beta+
-  (verificado contra registro oficial; vacío + nota en `NOTES.md` si no hay fuente). Hoy
-  1 de 137.
-- [ ] Confirmar el alcance del slice de partido (proyección de afectación, sin
-  agregados).
-- [ ] Valorar `dir3` + `wikidata` como identificadores hermanos del `cif` (D10).
+- [x] **Endpoints v1** (índice + detalle + slice + dump + datapackage), `llms.txt`,
+  `_headers` (Content-Type JSON + CORS) y barrido anti-fugas de `dist/api` — junio 2026.
+- [x] **Poblar el `cif`/NIF**: 66 nuevos (67 total) con fuente oficial / ≥2 registrales,
+  dígito de control validado. Ver "Estado del poblado de CIF".
+- [x] Alcance del slice de partido confirmado (proyección de afectación, sin agregados, D4).
+- [ ] **Completar los 16 CIF pendientes** cuando aparezca fuente: precisar `el-pais`
+  (sociedad editora correcta), buscar registro de partidos extintos, decidir si los
+  órganos sin NIF propio se dejan vacíos o se usa el de la matriz (mejor `dir3`).
+- [ ] Valorar `dir3` + `wikidata` como identificadores hermanos del `cif` (D10) —
+  especialmente `dir3` para las administraciones sin NIF propio.
 - [ ] (Diferido) Modelar dimensión territorial propia en `Caso` sólo si se quiere filtro
   territorial en la UI propia; ya no bloquea la API.
-- [ ] Cuando se implemente: extender el barrido anti-fugas de `dist/` para cubrir
-  `/api/`.
-- [ ] Cuando se implemente: añadir `_headers` de Cloudflare para `Content-Type:
-  application/json` y CORS (`Access-Control-Allow-Origin`) en `/api/`.
+- [ ] Verificar en el deploy real de Cloudflare que `public/_headers` aplica CORS y
+  Content-Type a `/api/*` (sólo comprobable en producción CF, no en `astro preview`).
+- [ ] (Opcional) Página `/api` o `/datos` en el sitio vivo enlazando a `llms.txt` y al
+  contrato, para no obligar a clonar el repo.
