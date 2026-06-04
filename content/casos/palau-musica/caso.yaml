@@ -113,7 +113,7 @@ estado_ficha:
   notas: >-
     Roles procesales (parcial): directivos de Ferrovial absueltos (Pedro
     Buenaventura, Juan Elízaga) no modelados como Persona; si se requiere
-    modelar el rol absuelto, añadir fichas (ver NOTES.md, decisión 2026-05-30).
+    modelar el rol absuelto, añadir fichas (decisión editorial de 2026-05-30).
     Fuentes cruzadas (parcial): primera pasada completada (14 piezas, 7 medios,
     5 ventanas temporales); pendiente segunda pasada con medios en catalán (ARA,
     Vilaweb, NacióDigital, 324) y medios con paywall (El País, El Mundo,
@@ -122,5 +122,5 @@ estado_ficha:
     2026-05-30; se modela con notas CGPJ N1 como respaldo principal.
     Vínculos institucionales pendientes: afectacion CDC/Generalitat pendiente
     de aplicar skill documentar-vinculos. El caso 3% (JCI 5 AN / Santiago
-    Pedraz) tiene vinculacion formal investigada pero archivado; ver NOTES.md.
+    Pedraz) tiene vinculacion formal investigada pero archivado.
   fecha_actualizacion: "2026-06-02"

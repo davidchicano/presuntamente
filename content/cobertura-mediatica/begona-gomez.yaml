@@ -64,10 +64,6 @@ metodologia:
     y ABC tienen cobertura propia y relevante no incluida aquí por las limitaciones
     de acceso señaladas. Las url_archivo se rellenan con scripts/archivar-n4.mjs
     (pnpm archive:catchup; ver docs/web/features/archive-org-pre-commit.md).
-    Francisco Martín Aguirre (delegado del Gobierno en Madrid) fue investigado
-    e imputado en el caso — hallazgo anotado en NOTES.md del caso para modelar
-    en PR4 como persona + roles. Air Europa (vínculo Barrabés-SEPI) también fue
-    línea de investigación archivada — también en NOTES.md.
 
 estado: parcial
 

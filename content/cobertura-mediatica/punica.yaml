@@ -68,7 +68,7 @@ metodologia:
     financiación PP (2022), sentencia pieza Cofely (dic-2025) y apertura JO
     pieza 8 (may-2026). Las url_archivo se rellenan mediante pnpm archive:catchup
     (ver docs/web/features/archive-org-pre-commit.md); se dejan vacías en esta pasada.
-    Hallazgo anotado en NOTES.md: okdiario.com publicó la salida de Granados de
+    Se detectó que okdiario.com publicó la salida de Granados de
     la cárcel presentándolo como inocente; no se incluye como pieza del corpus
     por carecer de rigor procesal contrastable, pero se anota para revisión editorial.
 

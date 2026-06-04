@@ -5,9 +5,8 @@ nivel_fuente: 2
 nivel_fuente_justificacion: >-
   Informe de la Unidad Central Operativa de la Guardia Civil incorporado a la
   instrucción. Nivel 2 conforme a la escala del proyecto (instrucción policial
-  oficial). Pendiente de localizar la referencia exacta y la fecha; marcado
-  pendiente_primario en NOTES.md hasta localizar la copia íntegra en fuente
-  judicial oficial (CENDOJ o nota CGPJ).
+  oficial). Pendiente de localizar la referencia exacta y la fecha, así como la
+  copia íntegra en fuente judicial oficial (CENDOJ o nota CGPJ).
 productor_organizacion_id: uco-guardia-civil
 fecha_documento: "2014-01-01"
 # LLM-incierto: fecha del informe pendiente de verificar contra fuente oficial.
