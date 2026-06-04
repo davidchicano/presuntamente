@@ -2,9 +2,16 @@ import cytoscape, {
   type Core,
   type EdgeSingular,
   type ElementDefinition,
+  type LayoutOptions,
   type NodeSingular,
   type StylesheetStyle,
 } from "cytoscape";
+import fcose from "cytoscape-fcose";
+
+// Layout force-directed rápido (init espectral + pocas iteraciones). Sustituye
+// al `cose` base, que a escala de inventario tardaba ~2 s y pintaba una
+// colocación intermedia antes del salto final. fcose calcula en una pasada.
+cytoscape.use(fcose);
 
 type NodeKind = "caso" | "persona" | "organizacion" | "documento";
 type FocusKind = NodeKind | "inventario";
@@ -1153,7 +1160,7 @@ function applyViewportFit(
   if (root) syncZoomControl(root, cy);
 }
 
-function layoutFor(root: HTMLElement, nodeCount: number) {
+function layoutFor(root: HTMLElement, nodeCount: number): LayoutOptions {
   const focusType = getFocusKind(root);
   const narrow = isNarrowGraphViewport(graphViewportWidth(root));
   const padding = fitPaddingForNodeCount(nodeCount, focusType, narrow);
@@ -1161,18 +1168,36 @@ function layoutFor(root: HTMLElement, nodeCount: number) {
   const name =
     qs<HTMLSelectElement>(root, "[data-graph-layout]")?.value ?? "cose";
   if (name === "cose") {
-    const baseRepulsion = focusType === "inventario" ? 21000 : 12500;
-    const baseEdgeLength = focusType === "inventario" ? 96 : 126;
+    const inventario = focusType === "inventario";
+    // Repulsión base de los nodos NO-caso (satélites: personas, orgs, docs).
+    const baseRepulsion = inventario ? 8000 : 7000;
+    // Los casos son los "núcleos": se repelen mucho más fuerte entre sí para
+    // que cada caso forme su propia galaxia, separada de las demás. No es
+    // separación global de nodos: sólo los casos empujan fuerte.
+    const casoRepulsionFactor = 8;
+    const baseEdgeLength = inventario ? 90 : 120;
+    // El selector de la UI mantiene el valor "cose" (modo "orgánico"); el
+    // motor real es fcose. Sin animación de asentamiento: fcose calcula el
+    // layout en una sola pasada (init espectral + pocas iteraciones) y pinta
+    // ya colocado, sin la colocación-intermedia-luego-salto del cose base.
+    // Nota de escalas: fcose NO usa la misma escala que cose para
+    // `edgeElasticity` (cose ~32-120, fcose ~0.45) ni para `gravity`.
     return {
-      name: "cose",
-      animate: true,
-      animationDuration: focusType === "inventario" ? 980 : 820,
+      name: "fcose",
+      quality: "default",
+      randomize: true,
+      animate: false,
       fit: false,
       padding,
       nodeRepulsion: (node: NodeSingular) => {
         const degree = node.connectedEdges().length;
         const hubBoost = Math.min(degree, 14) / 14;
-        return baseRepulsion * separation * (1 + hubBoost * (separation - 0.6));
+        // Sólo los casos reciben el factor de núcleo; el resto se queda suave
+        // para no disgregar el satélite de su caso.
+        const kindFactor = node.data("kind") === "caso" ? casoRepulsionFactor : 1;
+        return (
+          baseRepulsion * kindFactor * separation * (1 + hubBoost * (separation - 0.6))
+        );
       },
       idealEdgeLength: (edge: EdgeSingular) => {
         const degree = Math.max(
@@ -1180,20 +1205,32 @@ function layoutFor(root: HTMLElement, nodeCount: number) {
           edge.target().connectedEdges().length,
         );
         const hubBoost = Math.min(degree, 14) / 14;
-        return baseEdgeLength * separation * (1 + hubBoost * 0.42);
+        // `caso_caso` (núcleo↔núcleo): arista larga, casos relacionados pero a
+        // distancia. El resto (caso→satélite, vínculos): arista corta para que
+        // el satélite se pegue a su núcleo.
+        const kindLength =
+          edge.data("kind") === "caso_caso"
+            ? baseEdgeLength * 3.5
+            : baseEdgeLength * 0.72;
+        return kindLength * separation * (1 + hubBoost * 0.42);
       },
-      edgeElasticity: 120,
-      gravity: (focusType === "inventario" ? 0.18 : 0.11) / Math.max(separation, 0.8),
-      numIter: focusType === "inventario" ? 2200 : 1500,
-      refresh: 18,
-    };
+      edgeElasticity: (edge: EdgeSingular) =>
+        // Muelle rígido para sujetar el satélite a su caso pese a la repulsión
+        // del núcleo; `caso_caso` más blando para no pelear con la separación.
+        edge.data("kind") === "caso_caso" ? 0.2 : 0.55,
+      nodeSeparation: 75 * separation,
+      gravity: (inventario ? 0.16 : 0.32) / Math.max(separation, 0.8),
+      gravityRange: 3.8,
+      numIter: inventario ? 3000 : 1800,
+      tile: true,
+      packComponents: true,
+    } as unknown as LayoutOptions;
   }
   return {
     name: "breadthfirst",
     roots: getFocusNodeIds(root).length > 0 ? getFocusNodeIds(root) : undefined,
     directed: false,
-    animate: true,
-    animationDuration: 450,
+    animate: false,
     fit: false,
     padding,
     spacingFactor: (nodeCount <= 8 ? 1.55 : 1.25) * separation,
@@ -1639,6 +1676,9 @@ function renderGraph(
     applyViewportFit(cy!, nodeCount, focusType, root);
     delete root.dataset.graphViewportLocked;
     setCenteredState(root, true);
+    // El grafo ya está colocado: retira el skeleton de carga (sólo la primera
+    // vez; las relayout por filtro de fcose son rápidas y no lo remuestran).
+    root.dataset.graphReady = "true";
   });
   layout.run();
   renderTable(root, payload, displayEdges);

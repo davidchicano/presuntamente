@@ -61,3 +61,10 @@ Decisiones clave: datos JSON estáticos sobre Cloudflare Pages (sin servidor, mi
 Verificado que el modelo ya enlaza administraciones afectadas y empresas implicadas al caso vía `VinculoInstitucional` (no hay hueco de modelo; es serialización del grafo).
 
 Pendiente al implementar: endpoints estáticos `/api/v1/`; **poblar `cif`/NIF** de las orgs entidad de los casos beta+ (hoy 1/137, fuentes oficiales: BORME, Registro de Partidos, NIF de administraciones); `llms.txt`; valorar DIR3/Wikidata; gate `visibilidad.ts` + barrido anti-fugas sobre `/api/`.
+
+## 2026-06-04 — Regla 7 de afectación + leire-diez al día + Astro 6
+
+- **Regla 7 del [doc 08](../diseno/08-afectacion-directa-indirecta.md#aplicación-de-la-regla-7-2026-06-04):** partido cuya caja/financiación es **objeto** del procedimiento → afectación **directa** (naturaleza `caja_partido_objeto_investigacion_en_caso`). Aplicada a `leire-diez`, `filesa`, `barcenas-caja-b`, `gurtel`; `palau-musica`, `punica` y `pujol` siguen indirecta.
+- **`leire-diez` al día:** hito del levantamiento parcial del secreto del sumario (auto Pedraz 1-jun-2026 + nota CGPJ N1). Detalle en [`NOTES` leire](../../content/casos/leire-diez/NOTES.md).
+- **Infra/tooling:** fix de `scripts/archivar-n4.mjs` (bug con `url_canonica` plegada; reparadas 3 fichas caja-b). Antes en la misma tanda: migración a **Astro 6 (6.4.2)** y adaptación del render de OG images.
+- **Fix de IDs duplicados en collections anidadas:** las collections `roles`/`hitos`/`hechos` derivaban el id de Astro sólo de `data.id` (único **únicamente dentro de su caso**) → dos casos con el mismo `data.id` (p. ej. Ruz `juez_instructor` en bárcenas-caja-b, gürtel, forum-filatelico) colisionaban y uno sobrescribía al otro: **pérdida silenciosa de datos en build**. Fix en [`src/content.config.ts`](../../src/content.config.ts): id de collection `<caso>/<data.id>` (helper `generateIdConCaso`). No cambia ningún `data.id`, anclas ni feed (la app filtra por `caso_id`). `build` 0 warnings (antes 9).

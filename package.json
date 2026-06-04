@@ -22,6 +22,7 @@
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^6.4.2",
     "cytoscape": "^3.33.4",
+    "cytoscape-fcose": "^2.2.0",
     "d3-hierarchy": "^3.1.2",
     "d3-scale": "^4.0.2",
     "open-props": "^1.7.0",
