@@ -1,0 +1,305 @@
+---
+// PgApi — página de presentación de la API de datos abiertos. Capa fina de
+// "recepción para humanos": explica qué son los datos abiertos, lista los
+// endpoints (enlazados a los JSON reales) y deja viajar los guardarraíles
+// editoriales (CC BY-SA 4.0 + "imputación ≠ condena"). El contrato canónico
+// vive en docs/api/README.md; aquí sólo la cara web. Ficha:
+// docs/web/features/api-datos-abiertos.md.
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FichaTocSection from '@/components/FichaTocSection.astro';
+import Aclaracion from '@/components/Aclaracion.astro';
+import type { Lang } from '@/lib/labels';
+
+interface Props { lang?: Lang; }
+const { lang = 'es' } = Astro.props;
+
+const strings = {
+  title: 'API de datos abiertos',
+  description:
+    'El inventario de presuntamente.org como JSON estático y abierto (CC BY-SA 4.0): endpoints, modelo de grafo, guardarraíles editoriales y promesa de estabilidad. Datos para que otros proyectos los integren sin scrapear.',
+  eyebrow: 'Datos abiertos',
+  sub:
+    'El mismo inventario que ves en la web, servido también como JSON estable para que cualquier proyecto, ' +
+    'investigador o periodista pueda integrarlo. Datos abiertos bajo CC BY-SA 4.0, sin servidor ni claves.',
+};
+
+// Catálogo de endpoints (espejo de docs/api/README.md). `live` enlaza al JSON
+// real; los de detalle muestran patrón con <slug> + un ejemplo navegable.
+const indices = [
+  { ruta: '/api/v1/casos.json', desc: 'Índice de casos públicos (fila ligera para filtrar en cliente).' },
+  { ruta: '/api/v1/personas.json', desc: 'Índice de personas con rol en casos públicos.' },
+  { ruta: '/api/v1/organizaciones.json', desc: 'Índice de organizaciones, con su CIF/NIF y los casos en que aparecen.' },
+];
+const detalles = [
+  { patron: '/api/v1/casos/<slug>.json', ejemplo: '/api/v1/casos/kitchen.json', desc: 'Ficha completa de un caso.' },
+  { patron: '/api/v1/personas/<slug>.json', ejemplo: '/api/v1/personas/luis-barcenas.json', desc: 'Ficha completa de una persona.' },
+  { patron: '/api/v1/organizaciones/<slug>.json', ejemplo: '/api/v1/organizaciones/el-pais.json', desc: 'Ficha completa de una organización.' },
+  { patron: '/api/v1/partido/<slug>.json', ejemplo: '/api/v1/partido/psoe.json', desc: 'Casos que afectan a un partido (con su justificación de afectación).' },
+];
+const especiales = [
+  { ruta: '/api/v1/dump.json', desc: 'Todo el inventario público en un fichero. Opt-in, para investigación.' },
+  { ruta: '/api/v1/datapackage.json', desc: 'Descriptor estándar Frictionless Data del dataset.' },
+  { ruta: '/llms.txt', desc: 'Punto de entrada para una IA que vaya a integrar los datos (incluye las reglas de presunción de inocencia).' },
+];
+
+const repo = 'https://github.com/davidchicano/presuntamente';
+---
+
+<BaseLayout
+  title={strings.title}
+  lang={lang}
+  description={strings.description}
+  breadcrumb={[
+    { label: 'Inicio', href: lang === 'ca' ? '/cat' : '/' },
+    { label: 'API de datos abiertos' },
+  ]}
+>
+  <div class="ficha-detail">
+  <section class="page-id">
+    <div>
+      <p class="page-id__eyebrow">{strings.eyebrow}</p>
+      <h1 class="page-id__title">{strings.title}</h1>
+      <p class="page-id__sub">{strings.sub}</p>
+    </div>
+  </section>
+
+  <FichaTocSection num="1." title="Qué es" id="que-es">
+  <div class="prose">
+    <p>
+      La web enseña los datos como páginas <strong>para personas</strong>. La API enseña
+      <strong>los mismos datos en JSON, para programas</strong>. No es contenido nuevo: es el mismo
+      inventario en otro formato, igual que el <a href="/feed.xml">feed de hitos</a>. Sirve para que
+      otra web, un cuaderno de análisis o el script de un periodista integren los casos
+      <strong>sin copiar a mano ni scrapear el HTML</strong>.
+    </p>
+    <p>
+      <strong>No es una API de servidor.</strong> No hay backend, ni base de datos, ni clave de
+      acceso: son <strong>ficheros JSON estáticos generados en el build</strong> y servidos desde el
+      CDN, con coste de runtime cero. El contenido editorial está licenciado bajo
+      <strong>CC BY-SA 4.0</strong> (reutilizable citando la fuente y compartiendo igual); la API
+      sólo lo hace cómodo de consumir.
+    </p>
+    <p>
+      El razonamiento completo y el contrato de cara afuera viven en el repositorio:
+      <a href={`${repo}/blob/main/docs/api/README.md`} target="_blank" rel="noopener">contrato de la API</a>
+      y <a href={`${repo}/blob/main/docs/api/decisiones.md`} target="_blank" rel="noopener">registro de decisiones</a>.
+    </p>
+  </div>
+  </FichaTocSection>
+
+  <FichaTocSection num="2." title="El modelo es un grafo" id="grafo">
+  <div class="prose">
+    <p>
+      El inventario son <strong>tres tipos de nodo</strong> — <strong>Caso</strong>,
+      <strong>Persona</strong> y <strong>Organización</strong> — unidos por aristas (el rol de una
+      persona en un caso, el vínculo de una organización, la relación entre casos, la afectación a un
+      partido). Lo que hace los datos componibles es que <strong>cada nodo lleva sus aristas</strong>:
+      desde la ficha de una persona llegas a sus casos; desde la de un caso, a sus personas, órganos y
+      partidos afectados. Cada organización lleva además su <strong>CIF/NIF</strong> inline y la lista
+      de casos en que aparece, para cruzar por identificador sin <em>joins</em> frágiles por nombre.
+    </p>
+    <p>
+      Tres formas de acceso, combinables: un <strong>índice ligero</strong> por colección (lo
+      descargas una vez y filtras en tu lado), el <strong>detalle</strong> de cada nodo bajo demanda,
+      y algunos <strong>recortes</strong> pre-construidos por URL (por partido).
+    </p>
+  </div>
+  </FichaTocSection>
+
+  <FichaTocSection num="3." title="Endpoints" id="endpoints">
+  <div class="prose">
+    <p>Todos generados en el build. Cada respuesta va envuelta en el sobre <code>{'{ meta, datos }'}</code>.</p>
+  </div>
+
+  <h3 class="ep-group">Índices <span>— una fila por entidad, para filtrar en cliente</span></h3>
+  <ul class="endpoints">
+    {indices.map((e) => (
+      <li>
+        <a class="endpoints__ruta" href={e.ruta}><code>{e.ruta}</code></a>
+        <span class="endpoints__desc">{e.desc}</span>
+      </li>
+    ))}
+  </ul>
+
+  <h3 class="ep-group">Detalle <span>— ficha completa de un nodo</span></h3>
+  <ul class="endpoints">
+    {detalles.map((e) => (
+      <li>
+        <span class="endpoints__ruta"><code>{e.patron}</code> · <a href={e.ejemplo}>ej.</a></span>
+        <span class="endpoints__desc">{e.desc}</span>
+      </li>
+    ))}
+  </ul>
+
+  <h3 class="ep-group">Conjunto y contratos</h3>
+  <ul class="endpoints">
+    {especiales.map((e) => (
+      <li>
+        <a class="endpoints__ruta" href={e.ruta}><code>{e.ruta}</code></a>
+        <span class="endpoints__desc">{e.desc}</span>
+      </li>
+    ))}
+  </ul>
+
+  <div class="prose">
+    <p>
+      La forma de cada entidad está fijada por sus
+      <a href={`${repo}/tree/main/schemas`} target="_blank" rel="noopener">JSON Schema</a>: los campos
+      <code>description</code> de cada schema son la documentación de cada propiedad.
+    </p>
+  </div>
+  </FichaTocSection>
+
+  <FichaTocSection num="4." title="Los guardarraíles viajan con el dato" id="guardarrailes">
+  <div class="prose">
+    <p>
+      Cada respuesta lleva un objeto <code>meta</code> con la licencia, la atribución y el aviso de
+      que <strong>imputación no es condena</strong>. Y dentro de los datos: cada hecho conserva su
+      <strong>nivel de fuente</strong> (1–4) y cada rol procesal su <strong>tipo discreto</strong>
+      (investigado, procesado, acusado, condenado, absuelto, desimputado) con su trayectoria temporal.
+      Un consumidor que quisiera renderizar «X = culpable» tendría que ignorar activamente campos que
+      lleva delante.
+    </p>
+  </div>
+  <pre class="codeblock"><code>{`{
+  "meta": {
+    "licencia": "CC BY-SA 4.0",
+    "atribucion": "presuntamente.org, ficha <nombre>, consultada el <fecha>",
+    "aviso": "Imputación no es condena. Cada hecho lleva su nivel de fuente
+              (1-4) y cada rol procesal su tipo discreto y su trayectoria.",
+    "version": "v1",
+    "fuente": "https://presuntamente.org/casos/<slug>"
+  },
+  "datos": { /* ... */ }
+}`}</code></pre>
+  </FichaTocSection>
+
+  <FichaTocSection num="5." title="Sólo lo público" id="visibilidad">
+  <div class="prose">
+    <p>
+      La API es <strong>un vector de publicación más</strong> y pasa por el mismo filtro que el resto
+      del sitio: sólo se sirven casos en estado público (beta pública o superior) y las personas y
+      organizaciones enlazadas a ellos. Los borradores no salen, igual que no salen en la home ni en
+      el feed.
+    </p>
+    <p>
+      Por ser un contrato que consumen terceros, es incluso <strong>más estricta que la web</strong>
+      en dos puntos: no propaga contenido <strong>retractado</strong>, y no expone campos internos de
+      trabajo editorial.
+    </p>
+  </div>
+  </FichaTocSection>
+
+  <FichaTocSection num="6." title="Integrar y estabilidad" id="integrar">
+  <div class="prose">
+    <p>
+      <strong>No mantenemos SDKs.</strong> La apuesta es hacer el repositorio legible por una IA:
+      apunta tu modelo a <a href="/llms.txt">llms.txt</a> y a los
+      <a href={`${repo}/tree/main/schemas`} target="_blank" rel="noopener">JSON Schema</a>, y te genera
+      la integración en tu lenguaje. El <code>llms.txt</code> incluye, además del mapa de endpoints,
+      <strong>cómo respetar la presunción de inocencia al renderizar</strong>.
+    </p>
+    <p><strong>Promesa de estabilidad de la <code>v1</code>:</strong></p>
+    <ul class="meta-list">
+      <li>Podemos <strong>añadir</strong> campos nuevos sin avisar.</li>
+      <li>
+        <strong>No</strong> quitamos ni renombramos campos, ni cambiamos el significado de un
+        <code>id</code>, sin pasar a <code>v2</code> (ruta nueva; la <code>v1</code> se mantiene un
+        tiempo). Los <code>id</code>/slugs del inventario son estables por diseño.
+      </li>
+    </ul>
+    <p>
+      <a class="btn btn--primary" href="/api/v1/casos.json">Ver el índice de casos (JSON) →</a>
+    </p>
+  </div>
+  </FichaTocSection>
+
+  <FichaTocSection num="7." title="Licencia y repositorio" id="licencia">
+  <div class="prose">
+    <ul class="meta-list">
+      <li>
+        <strong>Datos / contenido editorial:</strong> CC BY-SA 4.0. Reutiliza citando
+        <em>presuntamente.org</em> y compartiendo bajo la misma licencia.
+      </li>
+      <li>
+        <strong>Código:</strong> AGPL-3.0-or-later.
+      </li>
+      <li>
+        <strong>Repositorio público:</strong>
+        <a href={repo} target="_blank" rel="noopener">github.com/davidchicano/presuntamente ↗</a>
+      </li>
+    </ul>
+  </div>
+  </FichaTocSection>
+  </div>
+
+  <Aclaracion nivel="media" posicion="bottom">
+    Los datos describen procedimientos judiciales, muchos en curso. Las personas mencionadas como
+    investigadas o procesadas se presumen inocentes hasta que recaiga sentencia firme. Cada hecho
+    lleva su nivel de fuente y cada rol su tipo procesal: respétalos al reutilizar los datos.
+  </Aclaracion>
+</BaseLayout>
+
+<style>
+  .ep-group {
+    margin: var(--space-3) 0 8px;
+    font: 600 12px/1.4 var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+  .ep-group span {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+
+  .endpoints {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .endpoints li {
+    display: grid;
+    grid-template-columns: minmax(220px, max-content) 1fr;
+    gap: 14px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--color-border);
+    align-items: baseline;
+  }
+  .endpoints li:last-child { border-bottom: 0; }
+  .endpoints__ruta code {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+  }
+  .endpoints__desc { font: 400 13px/1.5 var(--font-sans); }
+
+  @media (max-width: 540px) {
+    .endpoints li { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  .meta-list { margin: 0; padding-left: 18px; }
+  .meta-list li { margin: 6px 0; line-height: 1.55; }
+
+  .prose code {
+    font-family: var(--font-mono);
+    background: var(--color-surface-muted);
+    padding: 1px 4px;
+    border: 1px solid var(--color-border);
+    font-size: 0.9em;
+  }
+
+  .codeblock {
+    margin: 0 0 var(--space-4);
+    padding: 14px 16px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+    overflow-x: auto;
+    font: 400 12.5px/1.5 var(--font-mono);
+    color: var(--color-fg);
+  }
+  .codeblock code { font-family: inherit; }
+</style>

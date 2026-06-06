@@ -200,8 +200,18 @@ validación sigue siendo el script `scripts/validate.mjs` (contenido) y `astro c
 - **Cloudflare Pages Functions** (cómputo al edge) sólo si el inventario escala a
   decenas de miles de registros y el índice deja de caber en cliente (decisión
   [D1](../../api/decisiones.md#d1--datos-abiertos-estáticos-no-api-de-servidor)).
-- **Página `/api`** (o `/datos`) servida en el sitio vivo, para que ni haga falta
-  clonar el repo.
+
+### Entregado en v1.x
+
+- **Página `/api`** ✓ — recepción humana de la API en el sitio vivo
+  ([`src/components/pages/PgApi.astro`](../../../src/components/pages/PgApi.astro), wrapper
+  [`src/pages/api/index.astro`](../../../src/pages/api/index.astro)). Capa fina sobre el
+  contrato de [`docs/api/README.md`](../../api/README.md): qué es + modelo de grafo +
+  catálogo de endpoints (enlazados al JSON real) + sobre `meta` + gate de visibilidad +
+  promesa de estabilidad + licencia. Enlazada desde el footer (sección "Datos y
+  suscripción", junto a los feeds). No usa `activeNav` (no es pestaña del nav principal).
+  El `_headers` no la fuerza a JSON: la regla `Content-Type: application/json` aplica sólo a
+  `/api/v1/*.json`, no a `/api`.
 
 ## Pendientes operativos
 
