@@ -47,4 +47,5 @@ Verificación de no-fuga: build de producción + barrido de `dist/` (0 referenci
 
 ## Pendientes operativos
 
-- Ninguno. El guardarraíl es el barrido de `dist/` descrito arriba; conviene re-ejecutarlo si se añade un vector nuevo que cargue la colección `casos`.
+- **El filtro de retractación a nivel de `Hecho` vive sólo en [`PgCasoDetalle.astro`](../../../src/components/pages/PgCasoDetalle.astro).** Hoy es inocuo (tras borrar el placeholder de `tarjetas-black` no queda ningún `Hecho` retractado en el repo), pero las demás vistas que cargan `getCollection('hechos')` —`/graficas`, `/cifras`, fichas de persona/organización, home, feed…— **no** lo aplican. Si en el futuro se retracta un `Hecho` de un caso visible, sólo la ficha de caso lo ocultaría. **Mejora propuesta:** extraer un helper central (equivalente a `noRetirado` de [`src/lib/api.ts`](../../../src/lib/api.ts)) a [`src/lib/visibilidad.ts`](../../../src/lib/visibilidad.ts) y aplicarlo en todos los call-sites que rendericen hechos. Mientras tanto, el barrido de `dist/` debe incluir el enunciado de cualquier `Hecho` marcado retractado.
+- El guardarraíl general sigue siendo el barrido de `dist/` descrito arriba; conviene re-ejecutarlo si se añade un vector nuevo que cargue la colección `casos` o `hechos`.

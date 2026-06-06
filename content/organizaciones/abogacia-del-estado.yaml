@@ -3,6 +3,7 @@ nombre: "Abogacía General del Estado"
 nombres_alternativos:
   - "Abogacía del Estado"
 tipo: organismo_publico
+cif: "S2826007C"
 descripcion_corta: |
   Servicio Jurídico del Estado integrado en el Ministerio de Justicia
   encargado del asesoramiento jurídico y de la representación y defensa

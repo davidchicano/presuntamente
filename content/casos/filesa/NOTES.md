@@ -93,6 +93,38 @@ Pendientes aún abiertos:
 - **filesa → barcenas-caja-b**: tipo `causa_conexa` — la "caja b" del PP (caso Bárcenas) es el correlato temporal (años 90) de lo investigado en Filesa para el PSOE.
 - **filesa → tres-por-ciento-cataluna**: tipo `causa_conexa` — el "3%" de CDC en Cataluña como patrón de financiación irregular contemporáneo.
 
+## CIF/NIF de las sociedades de la trama (sweep API, 2026-06-04)
+
+Barrido de poblado de `cif` para la API de datos abiertos (ver [ficha API — "Estado del
+poblado de CIF"](../../../docs/web/features/api-datos-abiertos.md)). Umbral del proyecto:
+fuente oficial **o** ≥2 bases registrales independientes coincidentes, con dígito de
+control validado. Dos sociedades de Filesa quedan **sin aplicar** por no alcanzarlo —
+candidatos plausibles para verificar con nota informativa del Registro Mercantil de
+Barcelona:
+
+- **`malesa-sociedad` (Malesa, S.A.)** — candidato `A58559782` (Infonif, fuente comercial
+  **única**; dígito de control válido; coherente con el bloque A58 del Reg. Mercantil de
+  Barcelona donde está Filesa S.A. = A58554908). Extinguida el 14/02/2003. No aplicado:
+  falta 2.ª fuente independiente. Reg. Mercantil de Barcelona si se quiere confirmar.
+- **`time-export` (Time Export)** — candidato `B08531279` (Empresia, fuente registral
+  **única**; dígito de control válido). El BORME ([BORME-C-2004-17018](https://www.boe.es/buscar/doc.php?id=BORME-C-2004-17018))
+  confirma la **identidad** (absorbida por Filesa, S.A. el 11-dic-2003, administrador
+  único Luis Oliveró Capellades) pero no el CIF literal. **Ojo razón social:** los
+  registros la identifican como **S.L.U.**, no "S.A." como dice hoy `time-export.yaml` y
+  la prensa — revisar antes de tocar el campo `nombre`. No aplicado: fuente única del CIF.
+
+**2.ª pasada enfocada (2026-06-05):** confirmado que ambos siguen siendo **fuente única**.
+El BORME-C-2004-17018 acredita la *identidad* de Time Export (absorción por Filesa, S.A. el
+11-dic-2003, administrador Luis Oliveró) pero **no cita el CIF**. Señal de cautela adicional:
+una base registral muestra para "Filesa, S.A." un CIF distinto del conocido (`A58554908`) →
+**riesgo de homonimia** en esta trama. Se mantienen **vacíos** hasta nota registral oficial
+del Reg. Mercantil de Barcelona que cite el CIF literal. (Datos registrales de Malesa para
+esa nota: T 9358, F 225, S 8, H B 78643.)
+
+(El `instituto-noos` del caso Nóos quedó igualmente vacío: es asociación, no está en el
+Reg. Mercantil; su NIF empezaría por G y estaría en el Reg. de Asociaciones de Cataluña.
+Anotado en la ficha de la API.)
+
 ## Anotaciones migradas desde comentarios YAML (2026-06-02)
 
 Nota interna que vivía como comentario `#` dentro de un bloque de texto YAML, donde se renderizaba en el sitio público (ver regla V-26 en doc 01). Reubicada aquí; el YAML quedó limpio.

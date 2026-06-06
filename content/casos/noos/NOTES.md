@@ -89,6 +89,22 @@ datos procesales verificados sobre sus roles concretos. Deben añadirse en PR2:
 - **Auto apertura pieza separada 2010**: No publicado por el juzgado; cobertura N4 cruzada
   disponible. Anotar como `pendiente_primario`.
 
+## CIF/NIF del Instituto Nóos — pendiente_primario (sweep API, 2026-06-05)
+
+El poblado de `cif` para la API de datos abiertos dejó `instituto-noos` **vacío**: es una
+asociación (no está en el Reg. Mercantil, así que no aparece en bases comerciales) y ninguna
+fuente auditable online cita su NIF. Dos pasadas de sub-agentes lo confirmaron.
+
+- **NIF esperado:** empieza por **G**, previsiblemente `G08xxxxx` (domicilio en Barcelona,
+  08021 — Carrer Mestre Nicolau 19, Sarrià-Sant Gervasi).
+- **Dónde está casi seguro:** en los **antecedentes de hecho de la sentencia íntegra de la
+  AP de Palma** (PA 1/2013 / proc. 58/2015, 17-feb-2017, ~742 pp.) o de la STS 277/2018,
+  donde se identifican las personas jurídicas investigadas con su CIF. No extraíble vía
+  WebFetch (PDF de 742 pp. / CENDOJ requiere navegador con JS). También en el **Registre
+  d'Associacions de la Generalitat de Catalunya**, sin consulta pública online del NIF.
+- **Acción para el maintainer:** al descargar el PDF íntegro de la sentencia (ya pendiente
+  arriba para `ruta_local`+`hash`), buscar el CIF y poblar `instituto-noos.yaml`.
+
 ## Relaciones con otros casos
 
 - **Palma Arena**: El caso Nóos es la pieza separada nº 25 del caso Palma Arena (macrocausa

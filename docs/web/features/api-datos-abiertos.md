@@ -63,7 +63,7 @@ proyecto serio de datos abiertos. Detalle de audiencia y casos de uso en el
   coste runtime cero. Verificada: build limpio, `astro check` 0 errores, JSON válido,
   invocación HTTP real (200 + `application/json`), 0 fugas internas, contenido retractado
   excluido. Genera 18 casos, 157 personas, 110 organizaciones, 4 slices de partido.
-- **CIF poblado: 67 de 110** orgs visibles (era 1 de 137). Ver "Estado del poblado de CIF".
+- **CIF poblado: 73 de 110** orgs visibles (era 1 de 137). Ver "Estado del poblado de CIF".
 - Reutiliza: 12 [JSON Schema](../../../schemas/) (forma), `visibilidad.ts` (gate),
   `afectacion.ts`, `importe.ts`, el patrón de endpoint estático del feed, IDs/slugs estables.
 - **Faceta territorial resuelta en cliente** (Menjòmetre, junio 2026): se expone el grafo
@@ -76,33 +76,66 @@ proyecto serio de datos abiertos. Detalle de audiencia y casos de uso en el
 
 ## Estado del poblado de CIF
 
-Sweep de junio 2026 (sub-agentes de investigación, fuente oficial o ≥2 registrales
-coincidentes, dígito de control validado, umbral conservador: ante duda, vacío). Ver
+Dos pasadas de sub-agentes de investigación (junio 2026), mismo umbral: fuente oficial o
+≥2 registrales coincidentes, **dígito de control validado** (el test de contrato lo
+re-verifica), umbral conservador (ante duda, vacío). Ver
 [D10](../../api/decisiones.md#d10--identificadores-de-organización-para-el-join-externo)
 y [D12](../../api/decisiones.md#d12--decisiones-de-implementación-junio-2026).
 
-- **Poblados: 66** (+ `plus-ultra-lineas-aereas` previo = 67). Partidos (PP, PSOE, Podemos,
-  Más Madrid, Vox), asociaciones acusación popular (ADICAE, HazteOír, Manos Limpias,
-  Iustitia Europa), administraciones (AEAT, ayuntamientos Madrid/Marbella, CCAA, CGPJ,
-  ICAM, SEPI, UCM, Min. Interior, Presidencia…), empresas y financieras (Bankia,
-  Ferrovial, Cofely, Quirón Prevención, Servinabar, Maxwell Cremona, y extintas del caso
-  —Filesa, Fórum, Nóos Consultoría, Special Events…—), fundaciones y la mayoría de medios.
-- **Pendientes (16), por motivo documentado**:
-  - *Sin registro online accesible*: `convergencia-democratica-de-catalunya`,
-    `grupo-independiente-liberal` (partidos extintos), `movimiento-regeneracion-politica`,
-    `instituto-noos` (asociación, no en Reg. Mercantil), `malesa-sociedad`, `time-export`,
-    `orange-market`, `tct-sociedad` (sólo fuente comercial única → no aplicado).
-  - *Órgano sin NIF propio (comparte el de su matriz; DIR3 sería el id correcto)*:
-    `congreso-de-los-diputados`, `abogacia-del-estado`, `direccion-general-policia`,
-    `jefatura-del-estado`.
-  - *Entidad no española / marca sin editora española clara*: `infobae` (THX Medios,
-    Argentina), `actualidad-es` (Contents S.p.A., Italia), `el-pais` (ambigüedad entre dos
-    sociedades del grupo — pendiente de precisar).
-  - *Guardarraíl de privacidad*: `apif` publicaba como "NIF" un DNI de persona física →
-    descartado, nunca se expone el NIF de una persona.
+- **Poblados: 72** (+ `plus-ultra-lineas-aereas` previo = **73**). Partidos (PP, PSOE,
+  Podemos, Más Madrid, Vox, **CDC**), asociaciones acusación popular (ADICAE, HazteOír,
+  Manos Limpias, Iustitia Europa), administraciones (AEAT, ayuntamientos Madrid/Marbella,
+  CCAA, CGPJ, ICAM, SEPI, UCM, Min. Interior, Presidencia, **Congreso de los Diputados**,
+  **Abogacía General del Estado**…), empresas y financieras (Bankia, Ferrovial, Cofely,
+  Quirón Prevención, Servinabar, Maxwell Cremona, **Orange Market**, **Tecnoconcret**, y
+  extintas del caso —Filesa, Fórum, Nóos Consultoría, Special Events…—), fundaciones y la
+  mayoría de medios (incl. **El País**).
+
+### 2.ª pasada (junio 2026) — 6 nuevos
+
+| Org | CIF | Fuente |
+|---|---|---|
+| `convergencia-democratica-de-catalunya` | `G08547994` | BORME oficial ([BORME-C-2008-113095](https://www.boe.es/diario_borme/txt.php?id=BORME-C-2008-113095), cita literal del NIF) |
+| `orange-market` | `B97364301` | 4 bases registrales coincidentes (Axesor, Empresia, Datoscif, eInforma) |
+| `tct-sociedad` | `B83663047` | 4 bases registrales coincidentes (Axesor, Iberinform, Empresite, eInforma); razón social registral "Tecnoconcret Proyectos e Ingeniería SL" |
+| `congreso-de-los-diputados` | `S2804002J` | Plataforma de Contratación del Sector Público (NIF de la Mesa del Congreso, su órgano de gobierno) |
+| `abogacia-del-estado` | `S2826007C` | Plataforma de Contratación (NIF propio de la Abogacía General del Estado — Dir. del Servicio Jurídico, **distinto** del Min. Justicia S2813001A) |
+| `el-pais` | `B85635910` | Aviso legal de elpais.com + 4 bases registrales; editora resuelta a **Ediciones El País, S.L.** (no Prisa Noticias, extinta 2022; no Diario El País, S.L., el holding) |
+
+### Pendientes (10), por motivo documentado
+
+- *Sin fuente registral suficiente* (no aplicado por umbral): `grupo-independiente-liberal`
+  (partido ilegalizado y disuelto 2007, sin huella registral pública indexada),
+  `movimiento-regeneracion-politica` (sólo el nº 618.750 del Registro Nacional de
+  Asociaciones, que **no** es el NIF fiscal), `instituto-noos` (asociación, no en Reg.
+  Mercantil; el NIF empezaría por G y estaría en el Reg. de Asociaciones de Cataluña).
+- *Candidatos por debajo de umbral* (fuente comercial única, dígito de control válido pero
+  sin 2.ª fuente independiente → **no aplicado**, anotados para verificación futura en
+  [`content/casos/filesa/NOTES.md`](../../../content/casos/filesa/NOTES.md)):
+  `malesa-sociedad` (`A58559782`, Infonif), `time-export` (`B08531279`, Empresia; además su
+  razón social registral parece ser S.L.U., no S.A.).
+- *Órgano modelado sin NIF propio* — vacío a propósito (`dir3` sería el id correcto):
+  `direccion-general-policia` (el NIF hallado `S2816015H` es de una **subunidad**, la
+  División Económica y Técnica del CNP, no de la DGP; DIR3 de la DGP: E04931201),
+  `jefatura-del-estado` (órgano constitucional sin NIF fiscal; el `S2801001E` que aparece es
+  de la **Casa de S.M. el Rey**, entidad distinta no modelada).
+- *Entidad no española / sin editora española* — VACÍO razonado: `infobae` (THX Medios S.A.,
+  Argentina, CUIT 30-70789668-6, sin sociedad editora española), `actualidad-es` (Contents
+  S.p.A., Milán; sin editora española inscrita).
+- *Guardarraíl de privacidad*: `apif` publicaba como "NIF" un DNI de persona física →
+  descartado, nunca se expone el NIF de una persona.
+- **Pasada enfocada sobre los 5 recuperables** (junio 2026: BORME para las sociedades;
+  sentencia Nóos / Tribunal de Cuentas / RNA para asociaciones y partido): **0 nuevos
+  aplicables**. Bloqueos exactos documentados en la `NOTES.md` de cada caso — homonimia en
+  la trama Filesa + BORME que no cita el CIF (`filesa`), CIF en el PDF de 742 pp. de la
+  sentencia AP Palma no extraíble vía web (`noos`), informes del Tribunal de Cuentas
+  escaneados sin OCR (`malaya`/GIL), MRPE sin NIF público en ninguna fuente (`begona-gomez`).
+  Cada uno necesita una operación fuera del alcance del agente (descarga de PDF grande, OCR,
+  consulta registral presencial).
 - **Notas de entity-resolution** (revisar si se cuestiona): `la-sexta` → CIF de Atresmedia
   Corporación (marca sin editora separada); `el-correo-gallego` → EPI Prensa S.L. (vehículo
-  de Prensa Ibérica).
+  de Prensa Ibérica); `el-pais` → Ediciones El País, S.L. (prosa de `descripcion_corta` ya
+  corregida: "editado por Ediciones El País, S.L., sociedad del grupo PRISA").
 
 - **Verificado** (junio 2026): el modelo ya enlaza administraciones afectadas y empresas
   implicadas al caso vía `VinculoInstitucional` ([doc 08](../../diseno/08-afectacion-directa-indirecta.md#7-modelo-de-datos));
@@ -174,12 +207,18 @@ validación sigue siendo el script `scripts/validate.mjs` (contenido) y `astro c
 
 - [x] **Endpoints v1** (índice + detalle + slice + dump + datapackage), `llms.txt`,
   `_headers` (Content-Type JSON + CORS) y barrido anti-fugas de `dist/api` — junio 2026.
-- [x] **Poblar el `cif`/NIF**: 66 nuevos (67 total) con fuente oficial / ≥2 registrales,
-  dígito de control validado. Ver "Estado del poblado de CIF".
+- [x] **Poblar el `cif`/NIF**: 72 nuevos (73 total) con fuente oficial / ≥2 registrales,
+  dígito de control validado (en dos pasadas, junio 2026). Ver "Estado del poblado de CIF".
 - [x] Alcance del slice de partido confirmado (proyección de afectación, sin agregados, D4).
-- [ ] **Completar los 16 CIF pendientes** cuando aparezca fuente: precisar `el-pais`
-  (sociedad editora correcta), buscar registro de partidos extintos, decidir si los
-  órganos sin NIF propio se dejan vacíos o se usa el de la matriz (mejor `dir3`).
+- [ ] **Completar los 10 CIF pendientes** cuando aparezca fuente (lista y motivos en
+  "Estado del poblado de CIF"): nota registral del Reg. Mercantil de Barcelona para
+  `malesa`/`time-export` (hoy candidatos de fuente única), Reg. de Asociaciones de
+  Cataluña para `instituto-noos`, sentencia íntegra Nóos (AP Palma) que cite el NIF;
+  partidos extintos (`grupo-independiente-liberal`) y asociaciones recientes
+  (`movimiento-regeneracion-politica`) si afloran en Tribunal de Cuentas / AEAT. `el-pais`
+  **resuelto** (Ediciones El País, S.L.); los órganos sin NIF propio (`direccion-general-policia`,
+  `jefatura-del-estado`) y los medios extranjeros (`infobae`, `actualidad-es`) se quedan
+  vacíos a propósito; `apif` nunca (privacidad).
 - [ ] Valorar `dir3` + `wikidata` como identificadores hermanos del `cif` (D10) —
   especialmente `dir3` para las administraciones sin NIF propio.
 - [ ] (Diferido) Modelar dimensión territorial propia en `Caso` sólo si se quiere filtro

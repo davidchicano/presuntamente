@@ -4,10 +4,12 @@ nombres_alternativos:
   - "Diario El País"
   - "elpais.com"
 tipo: medio_comunicacion
+cif: "B85635910"
 descripcion_corta: |
   Diario español de información general fundado en Madrid en 1976 y
-  editado por Prisa Noticias. Es uno de los periódicos de referencia
-  del país en cobertura de tribunales y asuntos políticos.
+  editado por Ediciones El País, S.L., sociedad del grupo PRISA. Es
+  uno de los periódicos de referencia del país en cobertura de
+  tribunales y asuntos políticos.
 ambito_territorial: nacional
 localidad: "Madrid"
 provincia: "Madrid"

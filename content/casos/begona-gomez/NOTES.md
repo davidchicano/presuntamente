@@ -75,6 +75,23 @@ Ejecutada con la skill `documentar-vinculos` v0 en sesión paralela `vinculos-bg
 
 **Recomendación editorial (2026-05-25):** este vínculo probablemente no sea necesario. El vínculo `cristina-alvarez-asesora-presidencia-gobierno` (`cargo_publico_designado`) ya lleva `gobierno_o_legislatura: "Gobierno Sánchez I / Sánchez II / Sánchez III"`, lo que captura exactamente la misma información. La naturaleza `nombramiento_por_gobierno` tiene más sentido cuando el acto de nombramiento es en sí mismo un hecho editorialmente relevante (p. ej. el gobierno designa a alguien en el TC). Para Cristina Álvarez el hecho relevante es el cargo, no el acto de nombramiento. Valorar si cerrar este pendiente y dar por completo el bloque de vínculos.
 
+### CIF/NIF del MRPE — pendiente_primario (sweep API, 2026-06-05)
+
+El poblado de `cif` para la API dejó `movimiento-regeneracion-politica` **vacío**. Dos
+pasadas de sub-agentes no localizaron su NIF en ninguna fuente auditable:
+
+- Su propia web (mrpe.social) **omite el NIF** en el aviso legal y la política de privacidad
+  (sólo da el nº 618.750 del Registro Nacional de Asociaciones, que **no** es el NIF fiscal).
+- El RNA tiene consulta pública por denominación pero **no expone el NIF** online; los
+  escritos de personación como acusación popular (JI nº 41) donde se identificó con su NIF
+  **no son públicos**; no consta como beneficiaria en BDNS.
+- **NIF esperado:** empieza por **G** (`G48xxxxxx`, domicilio en Bilbao, 48001).
+- **Cuidado (guardarraíl):** el sub-agente descartó un candidato `B95698155` que **no** es del
+  MRPE sino del despacho de su letrado (Defensa y Reclamación Legal, S.L. — Aitor Guisasola).
+  No confundir el CIF del abogado con el de la asociación.
+- **Acción:** RNA por sede electrónica del Min. Interior, o un escrito judicial del caso
+  reproducido íntegro por un medio.
+
 ### Nota de merge para el maintainer
 
 El `estado_ficha.vinculos_institucionales` en `caso.yaml` ha sido añadido en este worktree con valor `parcial`. El campo también ha sido añadido por la sesión paralela `bloque-d-base` en el working tree principal (con valor `pendiente`). Al hacer merge, conservar el bloque `estado_ficha` de `bloque-d-base` y cambiar sólo `vinculos_institucionales: pendiente` → `vinculos_institucionales: parcial`.
