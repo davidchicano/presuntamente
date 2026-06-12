@@ -1,0 +1,10 @@
+id: rtve
+nombre: RTVE
+nombres_alternativos: []
+tipo: medio_comunicacion
+estado_publicacion: publicado
+naturaleza_editorial: servicio_publico_estatal
+orientacion_editorial_percibida: 
+  valor: sin_clasificar
+  fuente: No aplica
+url_canonica: https://www.rtve.es

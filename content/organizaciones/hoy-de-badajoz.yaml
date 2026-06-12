@@ -1,0 +1,10 @@
+id: hoy-de-badajoz
+nombre: Hoy de Badajoz
+nombres_alternativos: []
+tipo: medio_comunicacion
+estado_publicacion: publicado
+naturaleza_editorial: generalista_politico
+orientacion_editorial_percibida:
+  valor: centro
+  fuente: CIS
+url_canonica: https://www.hoy.es
