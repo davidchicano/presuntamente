@@ -1,0 +1,10 @@
+id: la-razon
+nombre: La Razón
+nombres_alternativos: []
+tipo: medio_comunicacion
+estado_publicacion: publicado
+naturaleza_editorial: generalista_politico
+orientacion_editorial_percibida:
+  valor: derecha
+  fuente: CIS
+url_canonica: https://www.larazon.es
