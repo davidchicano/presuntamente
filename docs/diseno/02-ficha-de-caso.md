@@ -40,6 +40,8 @@
 
 [Hechos clasificados por estado epistémico]
 
+[Contenido considerado y no modelado — si el caso tiene ítems]
+
 [Documentos — biblioteca del caso]
 
 [Piezas — si Caso tiene hijos]
@@ -235,6 +237,25 @@ Meta-sección. Parte de la ficha, no del footer. Contenido:
 - **Licencia del contenido**: propuesta CC BY-SA 4.0 (compatibilidad con AGPL del código se discute en doc 05).
 - **Última actualización** completa con timestamp.
 
+### 2.13 Contenido considerado y no modelado {#213-contenido-considerado-y-no-modelado}
+
+**Incorporada el 2026-06-12** a raíz de la propuesta externa de la issue #3, aceptada por el maintainer con condiciones. Posición en página: inmediatamente después de los Hechos (sección 2.7), de los que es el complemento negativo. Sólo se renderiza si el caso tiene ítems.
+
+**Qué es.** El trabajo editorial de decidir qué NO se modela (referencias indirectas en documentos de la causa que la prensa identifica con personas concretas; relaciones entre casos evaluadas y descartadas) vivía sólo en los `NOTES.md` internos. Ese silencio no es neutro: el lector que echa en falta un nombre o una conexión rellena el hueco con su sesgo. Esta sección publica la decisión, su regla y sus fuentes — enseña lo que pasa en el sumario sin afirmar lo que pasa en el sumario.
+
+**Fuente de datos.** Campo `contenido_no_modelado` de `caso.yaml` (ver `schemas/caso.schema.json`): lista de ítems con `id` (ancla estable), `texto` (prosa), `fecha_revision` y `fuentes[]` opcionales (`medio_id` + `titular` + `fecha` + `url` + `url_archivo`).
+
+**Regla P-11 — condiciones innegociables** (cada una corta un modo de fallo distinto):
+
+1. **Prosa atribuida, nunca tabla.** Una rejilla «referencia = persona» hace que el sitio firme la identificación por mucho disclaimer que lleve debajo; en prosa, las negaciones van pegadas al nombre («ningún órgano judicial ha hecho suya esa identificación», «X no tiene rol procesal en esta causa»). Misma información, autoría distinta.
+2. **Sólo cargos públicos en su función pública.** Presidente del Gobierno, ministra, directora general: nombrables (doc 04, apartado 4: riesgo bajo). Particulares y semi-públicos: nunca — para ellos sigue rigiendo el silencio (o el `NOTES.md` interno). Es el umbral que impide que el patrón se deslice hacia «personas que aparecieron en agendas y no fueron imputadas».
+3. **Cruce de líneas editoriales obligatorio.** La interpretación debe constar en al menos 2 medios de líneas editoriales distintas (campo `fuentes`). Si sólo la hace una trinchera, no se publica: es munición, no «lo que se dice». Defensa mecánica del principio «sin cuota política».
+4. **Sin entidad, sin nodo, sin badge.** La mención no crea `Persona`, `RolEnCaso`, vínculo ni nodo del grafo; el nombre vive sólo en esa prosa. En render, `RichProse` sólo auto-enlaza personas con rol formal en ESE caso (exclusión mecánica del resto, aunque la persona exista en el inventario por otro caso).
+
+**Render.** `Aclaracion` introductoria fija (qué es la sección y qué NO implica) + un bloque por ítem: prosa, lista de fuentes (medio enlazado a su ficha + titular enlazado a la pieza + fecha) y línea de `fecha_revision` con compromiso de reevaluación.
+
+**Reevaluación.** Un ítem no es eterno: si aparece primario accesible o resolución judicial, el contenido se modela como `Hecho` (y el ítem se retira o se reescribe), o se corrige. La `fecha_revision` hace auditable ese ciclo.
+
 ---
 
 ## 3. Patrones de UI específicos {#3-patrones-de-ui-específicos}
@@ -302,6 +323,7 @@ Obligatorias para cualquier ficha. CI valida lo automatizable; el resto es revie
 | P-08 | Cada ficha enlaza a política editorial y mecanismo de rectificación | layout |
 | P-09 | Lenguaje neutro obligatorio en titulares, hitos y enunciados. Lista negra de adjetivos editoriales prohibidos ("escándalo", "trama", "mafia"...) excepto en cita literal de fuente | CI (lista negra simple) + review |
 | P-10 | Ningún color, icono o badge se asocia a partido político | revisión visual + skill design |
+| P-11 | Menciones paraprocesales (persona sin rol procesal nombrada en la ficha) sólo en la sección "Contenido considerado y no modelado" y bajo sus 4 condiciones: prosa atribuida con negaciones pegadas al nombre, sólo cargos públicos en su función, cruce de ≥2 líneas editoriales en `fuentes`, sin entidad/rol/nodo (ver "2.13 Contenido considerado y no modelado") | dato (schema) + render + review (`/revisar-caso`) |
 
 ---
 

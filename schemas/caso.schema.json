@@ -174,6 +174,56 @@
       }
     },
 
+    "contenido_no_modelado": {
+      "type": "array",
+      "description": "Sección pública «Contenido considerado y no modelado»: decisiones editoriales de NO modelar contenido que circula sobre el caso (referencias indirectas de documentos de la causa interpretadas por la prensa, relaciones entre casos evaluadas y descartadas). Regla canónica en doc 02, sección 2.13 (P-11); análisis legal en doc 04, apartado 4. Condiciones innegociables: (1) prosa atribuida, nunca tablas o estructuras «referencia = persona»; (2) sólo se nombra a cargos públicos en su función pública, nunca a particulares ni semi-públicos; (3) la interpretación debe constar en cobertura de varias líneas editoriales (campo `fuentes`); (4) la mención no crea Persona, RolEnCaso, vínculo ni nodo del grafo: el nombre vive sólo en esta prosa. El texto lleva pegadas las negaciones (ningún órgano judicial ha hecho la identificación; la persona no tiene rol procesal en la causa).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "texto", "fecha_revision"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "Slug estable del ítem (ancla pública y trazabilidad de correcciones)."
+          },
+          "texto": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Prosa de la decisión: qué contiene el documento o qué se evaluó, qué interpreta la cobertura (atribuida), por qué NO se modela (regla citada), y las negaciones pegadas al nombre si se nombra a un cargo público."
+          },
+          "fecha_revision": {
+            "type": "string",
+            "format": "date",
+            "description": "Última revisión editorial de esta decisión (puede cambiar si aparece primario o rol procesal)."
+          },
+          "fuentes": {
+            "type": "array",
+            "description": "Piezas de cobertura que hacen la interpretación descrita. Obligatorias cuando el ítem atribuye una interpretación a la prensa (cruce de líneas: al menos 2 medios de líneas editoriales distintas); innecesarias en decisiones puramente editoriales (p. ej. relación entre casos descartada).",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["medio_id", "titular", "fecha", "url"],
+              "properties": {
+                "medio_id": {
+                  "type": "string",
+                  "description": "Slug de la organización (medio) en content/organizaciones/."
+                },
+                "titular": { "type": "string", "minLength": 1 },
+                "fecha": { "type": "string", "format": "date" },
+                "url": { "type": "string", "format": "uri" },
+                "url_archivo": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Captura en archive.org/archive.ph (rellenable a posteriori con el flujo de archivado)."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
     "promocion_propuesta": {
       "type": "object",
       "description": "Bandera INTERNA (no se renderiza en la web pública) que una skill de contenido deja cuando, al terminar su trabajo, cree que el caso ya merece subir de `estado_publicacion`. Es una cola de candidatos para la skill `/promover-caso`: ahí un panel de agentes verifica la propuesta contra el rubro antes de aplicar el cambio (el maintainer no revisa el caso, sólo autoriza la acción). Se RETIRA del YAML cuando `/promover-caso` resuelve la propuesta (aprobada → sube el estado y borra el bloque; rechazada → `estado: rechazada` con motivo). Ver .agents/skills/promover-caso/SKILL.md.",

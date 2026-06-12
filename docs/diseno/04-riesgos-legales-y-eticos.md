@@ -89,6 +89,19 @@ Riesgo más alto. Sólo aparecen si tienen rol formal en el procedimiento. Datos
 Aparecen como rol funcional, sin que eso implique nada sobre su persona. Citables por su actuación profesional pública.
 *Riesgo: bajo*, salvo afirmaciones sobre su independencia o competencia sin base.
 
+### 4.1 Menciones paraprocesales a cargos públicos {#41-menciones-paraprocesales-a-cargos-públicos}
+
+**Incorporado el 2026-06-12** (issue #3). Caso especial: nombrar en una ficha a una persona **sin rol procesal** porque la cobertura interpreta que referencias indirectas de un documento de la causa ("el presidente", "el one") aluden a ella. Sólo se permite en la sección "Contenido considerado y no modelado" y bajo la regla **P-11** ([doc 02 — "2.13 Contenido considerado y no modelado"](02-ficha-de-caso.md#213-contenido-considerado-y-no-modelado), canon de las 4 condiciones).
+
+Base del riesgo bajo, **acumulativa** (las cuatro patas a la vez):
+
+1. **Sujeto**: sólo cargos públicos en su función pública — el escalón de mayor tolerancia a la información en la ponderación honor/información (primer bloque de este apartado). Con particulares o semi-públicos la ponderación se invierte: prohibido.
+2. **Veracidad en la capa meta**: lo que el sitio afirma no es "la referencia es X" sino "medios de varias líneas publican que la referencia aludiría a X" — un hecho verificable con las piezas enlazadas (campo `fuentes`). La diligencia exigible queda documentada en el propio render.
+3. **Reportaje neutral**: la atribución es expresa (medios concretos, titulares, fechas) y el sitio no hace suya la identificación: publica simultáneamente que ningún órgano judicial la ha asumido y que la persona no tiene rol procesal. La prosa con las negaciones pegadas al nombre es lo que mantiene al sitio como transmisor y no como autor; una tabla "referencia = persona" rompería esa neutralidad (por eso P-11 la prohíbe).
+4. **Interés público**: la existencia de la interpretación periodística cruzada es, en sí misma, parte relevante del caso; callarla deja al lector a merced del medio único que consuma.
+
+**Qué sigue prohibido** aunque las cuatro patas parezcan cumplirse: insinuar conducta ("sabía", "ordenó", "estaba al tanto") en vez de describir la interpretación ajena; seleccionar fuentes de una sola línea editorial; mantener el ítem sin reevaluar cuando aparezca primario accesible (la `fecha_revision` del ítem compromete esa revisión); y cualquier formato estructurado que convierta la mención en dato consultable (entidad, rol, nodo, badge, tabla).
+
 ---
 
 ## 5. LOPD/RGPD {#5-lopdrgpd}

@@ -153,6 +153,20 @@ const hechos = hechosCol.filter((h) => {
 });
 const roles = rolesCol.filter((r) => r.data.caso_id === data.id);
 
+// «Contenido considerado y no modelado» (doc 02, sección 2.13, regla P-11).
+// Condición 4 de la regla: en esta sección sólo se auto-enlazan personas con
+// rol formal en ESTE caso; cualquier otra persona del inventario (p. ej. un
+// cargo público nombrado en la prosa sin rol procesal) queda como texto plano,
+// sin link y sin nodo. El cálculo es mecánico: exclusión = todas menos las
+// que tienen RolEnCaso aquí.
+const contenidoNoModelado = data.contenido_no_modelado ?? [];
+const personasConRolEnCaso = new Set(
+  roles.map((r) => r.data.sujeto_persona_id).filter(Boolean),
+);
+const personasSinRolEnCaso = personasCol
+  .map((p) => p.data.id)
+  .filter((id) => !personasConRolEnCaso.has(id));
+
 // Índices auxiliares
 const personaIndex = new Map(personasCol.map((p) => [p.data.id, p.data]));
 const orgIndex = new Map(organizacionesCol.map((o) => [o.data.id, o.data]));
@@ -1347,10 +1361,63 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
   })}
   </FichaTocSection>
 
+  <!-- 2.13 — Contenido considerado y no modelado (doc 02 §2.13, P-11).
+       Posición: inmediatamente tras los Hechos — es su complemento negativo
+       (lo que el sitio revisó y decidió NO modelar, con fuentes y regla). -->
+  {contenidoNoModelado.length > 0 && (
+    <FichaTocSection
+      num="7."
+      title="Contenido considerado y no modelado"
+      id="no-modelado"
+      right={`${contenidoNoModelado.length} decisión${contenidoNoModelado.length === 1 ? '' : 'es'}`}
+    >
+      <Aclaracion nivel="media">
+        Esta sección documenta contenido que circula sobre el caso y que el sitio ha revisado
+        y <strong>decidido no modelar</strong> como hecho, persona o relación: el documento
+        judicial accesible no lo contiene de forma literal, o su única base pública es
+        interpretación periodística (regla V-13). Se publica la decisión con sus fuentes para
+        que el lector pueda valorarla por sí mismo. Ninguna mención en esta sección implica
+        rol procesal ni atribuye conducta a nadie.
+      </Aclaracion>
+      <div class="grupo__cards">
+        {contenidoNoModelado.map((item) => (
+          <article class="no-modelado__item" id={`no-modelado-${item.id}`}>
+            <RichProse
+              text={item.texto}
+              as="div"
+              class="no-modelado__texto"
+              lang={lang}
+              excludePersonaIds={personasSinRolEnCaso}
+            />
+            {item.fuentes && item.fuentes.length > 0 && (
+              <ul class="no-modelado__fuentes" aria-label="Cobertura que hace la interpretación descrita">
+                {item.fuentes.map((f) => (
+                  <li>
+                    <a
+                      class="no-modelado__medio"
+                      href={lang === 'ca' ? `/cat/organizaciones/${f.medio_id}` : `/organizaciones/${f.medio_id}`}
+                    >{orgIndex.get(f.medio_id)?.nombre ?? f.medio_id}</a>
+                    {' — '}
+                    <a href={f.url} rel="nofollow noopener">{f.titular}</a>{' '}
+                    <time class="no-modelado__fecha" datetime={f.fecha}>({formatFechaEs(f.fecha)})</time>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p class="no-modelado__revision">
+              Decisión revisada por última vez el <time datetime={item.fecha_revision}>{formatFechaEs(item.fecha_revision)}</time>.
+              Se reevaluará si un documento primario accesible o una resolución judicial la confirma o la desmiente.
+            </p>
+          </article>
+        ))}
+      </div>
+    </FichaTocSection>
+  )}
+
   <!-- 2.7bis — Cifras del caso: dos clases que NUNCA se mezclan -->
   {hayCifras && (
     <FichaTocSection
-      num="7."
+      num="8."
       title="Cifras del caso"
       id="cifras"
       right={cifrasTotalPreview != null ? formatEurosCompact(cifrasTotalPreview) : undefined}
@@ -1401,7 +1468,7 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
 
   {coberturaCaso && coberturaRows.length > 0 && (
     <FichaTocSection
-      num="8."
+      num="9."
       title="Cobertura mediática general"
       id="cobertura-mediatica"
       right={`${coberturaRows.length} pieza${coberturaRows.length === 1 ? '' : 's'}`}
@@ -1518,7 +1585,7 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
 
   <!-- 2.8 — Biblioteca documental -->
   <FichaTocSection
-    num="9."
+    num="10."
     title="Biblioteca documental del caso"
     id="biblioteca"
     right={`${biblioteca.length} documento${biblioteca.length === 1 ? '' : 's'}`}
@@ -2001,6 +2068,40 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
   .meta-list { margin: 0; padding-left: 18px; }
   .meta-list li { margin: 4px 0; }
   .meta-list .mono { font-family: var(--font-mono); font-size: 12px; }
+
+  /* === 2.13 Contenido considerado y no modelado === */
+  .no-modelado__item {
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-border-strong);
+    background: var(--color-surface);
+    padding: 14px 16px;
+  }
+  .no-modelado__texto :global(p) {
+    margin: 0;
+    font: 400 14px/1.6 var(--font-sans);
+    color: var(--color-fg);
+  }
+  .no-modelado__fuentes {
+    margin: 10px 0 0;
+    padding-left: 18px;
+  }
+  .no-modelado__fuentes li {
+    margin: 4px 0;
+    font: 400 13px/1.5 var(--font-sans);
+    color: var(--color-fg-muted);
+  }
+  .no-modelado__medio {
+    font-weight: 600;
+  }
+  .no-modelado__fecha {
+    color: var(--color-fg-subtle);
+    font-size: 12px;
+  }
+  .no-modelado__revision {
+    margin: 10px 0 0;
+    font: 400 12px/1.5 var(--font-sans);
+    color: var(--color-fg-subtle);
+  }
 
   /* === 2.1 Flip 3D de la masthead — la cabecera se voltea con un botón
      textual explícito, revelando el reverso editorial (estado global +

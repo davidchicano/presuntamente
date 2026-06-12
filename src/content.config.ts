@@ -132,6 +132,27 @@ const casos = defineCollection({
           fecha_actualizacion: z.string().optional(),
         })
         .optional(),
+      // Sección «Contenido considerado y no modelado» (doc 02 §2.13, P-11).
+      contenido_no_modelado: z
+        .array(
+          z.object({
+            id: z.string(),
+            texto: z.string(),
+            fecha_revision: z.string(),
+            fuentes: z
+              .array(
+                z.object({
+                  medio_id: z.string(),
+                  titular: z.string(),
+                  fecha: z.string(),
+                  url: z.string(),
+                  url_archivo: z.string().optional(),
+                }),
+              )
+              .optional(),
+          }),
+        )
+        .optional(),
     })
     .passthrough(),
 });

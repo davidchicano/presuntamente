@@ -75,7 +75,7 @@ resumen_cifras: |
   una empresaria para modificar su declaración judicial.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-06-06"
+ultima_revision_editorial: "2026-06-12"
 nivel_relevancia_editorial: capital
 pin_destacado: 2
 
@@ -92,3 +92,75 @@ estado_ficha:
   revision_editorial: pendiente
   notas: "PR1+PR2: 4 hitos, 5 hechos, 10 roles investigados + 1 juez. Vínculos institucionales: 16 vínculos creados (3 afectación, 13 cargos/nombramientos), incluyendo BOE-A-2018-8601 (RD 616/2018, nombramiento Fernández Guerrero SEPI) descargado con hash_sha256 y nota FESOFI (N3) + Newtral (N4) para el cargo de Leire Díez en Correos. Faltan, para próximas pasadas: nota oficial CGPJ del auto Pedraz cuando aparezca; auto JI 9 con número exacto; cargo previo de Zarrías como Consejero de Presidencia de la Junta de Andalucía (1996-2008); BOE-A-2019-14254 de cese de Fernández Guerrero en SEPI (opcional); nombramiento BORME de Leire Díez como apoderada de Correos (acto registral 01-04-2022). Barrido 2026-06-03: levantamiento parcial del secreto (auto 01-jun) catalogado como hito; localizada y catalogada la nota oficial CGPJ del 27-may (N1, documentos_primarios reforzados: respaldo oficial del marco de delitos); delitos ampliados con organización criminal y prevaricación (CGPJ N1). Barrido 2026-06-06: catalogado el auto del 04-jun de rechazo (por el momento) de la personación del magistrado jubilado García-Castellón como acusación particular (hito auto_diligencias, N4 Confilegal+Público+The Objective). Anotados en NOTES sin modelar: recurso de Cerdán contra la petición de inhibición, petición de la Fiscalía de declaración testifical de Cristina Narbona, y contenido del sumario ya parcialmente público (libretas UCO; pieza de contratos SEPI/Tubos Reunidos que sigue secreta hasta julio)."
   fecha_actualizacion: "2026-06-06"
+
+contenido_no_modelado:
+  - id: referencias-one-presidente-informes-uco
+    fecha_revision: "2026-06-12"
+    texto: |
+      Los informes de la UCO incorporados a la causa y las agendas intervenidas a Leire Díez
+      contienen, según la cobertura publicada tras el levantamiento parcial del secreto del
+      sumario, referencias a "el one", "P.S." y "el presidente". Esa cobertura, de líneas
+      editoriales distintas, recoge que la propia UCO interpreta en un informe que "el one"
+      aludiría al presidente del Gobierno, Pedro Sánchez. Ningún órgano judicial ha hecho
+      suya esa identificación, Pedro Sánchez no tiene rol procesal en esta causa, y las
+      mismas piezas subrayan que no consta indicio de que conociera u ordenara las
+      actividades investigadas; fuentes de Moncloa han negado cualquier encuentro o
+      conocimiento. El sitio no modela estas referencias como Hecho: el documento primario
+      no está accesible de forma verificable y la identificación es interpretación recogida
+      en cobertura periodística (regla V-13).
+    fuentes:
+      - medio_id: eldiario-es
+        titular: 'Qué dice la UCO al juez sobre "el One" y las conversaciones de la trama Leire sobre Sánchez'
+        fecha: "2026-06-05"
+        url: "https://www.eldiario.es/politica/dice-uco-juez-one-conversaciones-trama-leire-sanchez_1_13277318.html"
+      - medio_id: publico-es
+        titular: "De los encuentros con la directora de la Guardia Civil al papel de Sánchez: hechos, indicios y suposiciones de la UCO en el 'caso Leire'"
+        fecha: "2026-06-05"
+        url: "https://www.publico.es/politica/tribunales/encuentros-directora-guardia-civil-papel-sanchez-hechos-indicios-suposiciones-uco-caso-leire.html"
+      - medio_id: the-objective
+        titular: "Leire Díez anotó una «reunión con P. S.» en su agenda en febrero de 2025"
+        fecha: "2026-06-05"
+        url: "https://theobjective.com/espana/tribunales/2026-06-05/leire-diez-reunion-sanchez-agenda/"
+
+  - id: mencion-mercedes-gonzalez-informes-uco
+    fecha_revision: "2026-06-12"
+    texto: |
+      La misma cobertura recoge que informes de la UCO y una nota del Servicio de
+      Información de la Guardia Civil incorporados a la causa describen tres encuentros
+      entre Leire Díez y la directora general de la Guardia Civil, Mercedes González, entre
+      2024 y 2025, así como anotaciones de Díez sobre su presunta capacidad de influir en
+      nombramientos del departamento. Mercedes González no tiene rol procesal en esta
+      causa y no consta imputación ni citación alguna contra ella; el ministro del Interior
+      ha sostenido públicamente que la directora no trató con Díez la trama investigada.
+      El sitio no crea ficha de persona ni rol procesal: la mención procede de informes
+      policiales según cobertura periodística (regla V-13) y, de consolidarse en un
+      documento primario accesible, se modelaría como hecho sobre el procedimiento, no
+      sobre la persona.
+    fuentes:
+      - medio_id: publico-es
+        titular: "De los encuentros con la directora de la Guardia Civil al papel de Sánchez: hechos, indicios y suposiciones de la UCO en el 'caso Leire'"
+        fecha: "2026-06-05"
+        url: "https://www.publico.es/politica/tribunales/encuentros-directora-guardia-civil-papel-sanchez-hechos-indicios-suposiciones-uco-caso-leire.html"
+      - medio_id: the-objective
+        titular: "Leire Díez maniobró contra Marlaska por no controlar la UCO y «desgastar» al Gobierno"
+        fecha: "2026-06-08"
+        url: "https://theobjective.com/espana/2026-06-08/leire-diez-marlaska-uco-desgastar-gobierno/"
+      - medio_id: the-objective
+        titular: "Marlaska insiste en que la directora de la Guardia Civil no habló de la trama con Leire Díez"
+        fecha: "2026-06-09"
+        url: "https://theobjective.com/espana/politica/2026-06-09/marlaska-directora-guardia-civil-leire-diez/"
+      - medio_id: okdiario
+        titular: "La Inteligencia de la Guardia Civil revela que la directora «conocía» que la cloaca del PSOE actuaba contra la UCO"
+        fecha: "2026-06-09"
+        url: "https://okdiario.com/espana/inteligencia-guardia-civil-revelan-que-directora-conocia-que-cloaca-del-psoe-actuaba-contra-uco-18155924"
+
+  - id: relacion-descartada-fiscal-general-del-estado
+    fecha_revision: "2026-06-12"
+    texto: |
+      Al evaluar las conexiones de este caso se consideró documentar una relación con el
+      caso del fiscal general del Estado, sugerida por la coincidencia temporal y de
+      protagonistas políticos en el debate público. Se descartó: no existe nexo procesal
+      documentado entre ambas causas (no comparten órgano, objeto ni investigados, y la
+      causa del fiscal general es firme desde febrero de 2026). Una relación basada sólo
+      en contexto político equivaldría a cuota, no a trazabilidad (principio editorial
+      "sin cuota política"). Se reevaluará si un documento judicial estableciera un nexo.

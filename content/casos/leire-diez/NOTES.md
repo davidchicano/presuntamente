@@ -179,3 +179,24 @@ La nota CGPJ enumera: organización criminal, cohecho, revelación de secretos, 
 - [ ] Vigilar la **resolución de la inhibición** JI nº 9 → AN (ahora recurrida por Cerdán); si se acepta, Hito `acumulacion_causas` y posible `cambio_organo`, y entonces reevaluar la personación de García-Castellón (que Pedraz dejó condicionada a la acumulación).
 - [ ] Cuando se levante el secreto de la **pieza de contratos SEPI** (~julio): enriquecer la relación con plus-ultra y valorar `comparte_actor_con`; revisar la derivada Tubos Reunidos / 112,8 M€.
 - [ ] `pnpm archive:catchup -- --caso=leire-diez` para los tres N4 nuevos del auto García-Castellón (Confilegal, Público, The Objective).
+
+---
+
+## Sección pública «Contenido considerado y no modelado» — 2026-06-12 (piloto)
+
+**Disparador:** issue #3 (propuesta de contribuyente externo, aceptada con condiciones por el maintainer). Este caso pilota la sección y el campo `contenido_no_modelado` de `caso.yaml` (regla canónica: doc 02, sección 2.13, P-11; análisis legal: doc 04, apartado 4).
+
+**Qué se elevó a la ficha pública** (deja de ser sólo nota interna; la decisión editorial ahora es visible al lector con sus fuentes):
+
+1. **Referencias "el one" / "P.S." / "el presidente"** en informes UCO y agendas intervenidas. La ola de cobertura del 5-jun (eldiario.es, Público, The Objective — tres líneas) recoge que la propia UCO interpreta "el one" como alusión al presidente del Gobierno. Verificadas titular/fecha/autor de las tres piezas vía fetch el 2026-06-12. La prosa pública nombra a Pedro Sánchez con las tres negaciones pegadas (sin identificación judicial, sin rol procesal, sin indicio de conocimiento según la propia cobertura + desmentido de Moncloa). Sigue sin modelarse como Hecho: V-13.
+2. **Mención a Mercedes González** (directora general de la Guardia Civil): tres encuentros con Díez según informes UCO + nota del SIGC del 29-abr-2025 ("Posibles estrategias de defensa ante investigaciones de la UCO", citada por OKDIARIO 9-jun). Cruce: Público (izq) + The Objective ×2 (c-der) + OKDIARIO (der). Sin ficha de persona, sin rol; negación de Interior incluida en la prosa.
+3. **Relación con FGE descartada** (antes sólo en este NOTES, línea ~98): razonamiento "sería cuota, no nexo formal" ahora público en la ficha.
+
+**Guardarraíl técnico aplicado:** en la sección, `RichProse` sólo auto-enlaza personas con rol en ESTE caso; Pedro Sánchez (persona existente por contexto Begoña Gómez) y cualquier otra mención quedan como texto plano, sin link, sin nodo (condición 4 de la regla).
+
+**Cobertura nueva 5-11 jun detectada al preparar el piloto, NO procesada** (pendiente de próximo `/actualizar-caso`, no era el objeto de esta sesión): detalle de agendas/libretas ("Pedro no se fía del DAO", anotación sobre el rescate de Air Europa meses antes de concederse — The Objective 11-jun), maniobras descritas contra Marlaska y nombramientos de Interior, petición de Cerdán sobre Marlaska/González (The Objective 11-jun), comparecencias políticas. Ojo: la pieza de Air Europa podría rozar un caso futuro (rescate SEPI), anotar si se ficha.
+
+### Pendientes nuevos por el piloto
+- [ ] `url_archivo` de las 6 piezas citadas en `contenido_no_modelado` (el script `archivar-n4.mjs` no lee este campo todavía — ver ficha de la feature, pendiente operativo).
+- [ ] Barrido `/actualizar-caso` de la ola 5-11 jun (ver arriba).
+- [ ] Revisar `fecha_revision` de los 3 ítems si el sumario íntegro accesible confirma/desmiente las interpretaciones (podrían pasar a Hecho o retirarse).
