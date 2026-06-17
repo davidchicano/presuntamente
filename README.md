@@ -13,7 +13,7 @@ Ofrecer una **referencia objetiva, trazable y sin cuota política** sobre los pr
 
 ## Estado
 
-Proyecto en fase beta, todavía sin publicar bajo dominio propio. El sitio es navegable localmente y el catálogo evoluciona en este repositorio. Las cifras actualizadas del inventario están en la página [`/cifras`](src/pages/cifras/index.astro) cuando el sitio está en ejecución.
+Proyecto en beta pública, publicado en [`presuntamente.org`](https://presuntamente.org/). El catálogo evoluciona en este repositorio y el sitio se despliega automáticamente desde `main`. Las cifras actualizadas del inventario están en la página [`/cifras`](https://presuntamente.org/cifras/).
 
 Estado vivo y backlog detallado en [`ROADMAP.md`](ROADMAP.md).
 
