@@ -12,7 +12,7 @@ Antes, estas decisiones vivían sólo en los `NOTES.md` internos: el lector veí
 
 - **Dato**: campo `contenido_no_modelado` en `caso.yaml` — lista de ítems `{id, texto, fecha_revision, fuentes[]}`; `fuentes[]` = `{medio_id, titular, fecha, url, url_archivo?}`. Schema: [`schemas/caso.schema.json`](../../../schemas/caso.schema.json) (descripción del campo = resumen de la regla en el punto de uso) + bloque zod en [`src/content.config.ts`](../../../src/content.config.ts).
 - **Render**: sección 7 de [`PgCasoDetalle.astro`](../../../src/components/pages/PgCasoDetalle.astro) (`id="no-modelado"`), tras los Hechos y sólo si hay ítems. `Aclaracion` fija + bloque por ítem (prosa `RichProse`, lista de fuentes con medio enlazado a su ficha, línea de `fecha_revision`).
-- **Guardarraíl de enlace** (condición 4 de P-11): en esta sección `RichProse` recibe `excludePersonaIds` = todas las personas del inventario **menos** las que tienen `RolEnCaso` en este caso. Una persona nombrada sin rol (aunque exista como entidad por otro caso, p. ej. `pedro-sanchez` por contexto de Begoña Gómez) queda como texto plano: sin link, sin nodo.
+- **Guardarraíl de enlace** (condición 4 de P-11): en esta sección `RichProse` recibe `excludePersonaIds` = todas las personas del inventario **menos** las que tienen `RolEnCaso` en este caso. Una persona nombrada sin rol (aunque exista como entidad por otro caso, p. ej. `pedro-sanchez` por contexto de Begoña Gómez) queda como texto plano: sin link, sin nodo. La validación **V-27** prohíbe además usar el escape hatch manual `[[persona:...]]` dentro de `contenido_no_modelado.texto`.
 - **API**: el campo fluye al detalle `/api/v1/casos/<slug>.json` por el passthrough con denylist de [`src/lib/api.ts`](../../../src/lib/api.ts) (decisión: se incluye — la prosa lleva las negaciones pegadas, cualquier cita la arrastra).
 - **Canon de la regla**: [doc 02 — "2.13 Contenido considerado y no modelado"](../../diseno/02-ficha-de-caso.md#213-contenido-considerado-y-no-modelado) (P-11, las 4 condiciones) y [doc 04 — "Menciones paraprocesales a cargos públicos"](../../diseno/04-riesgos-legales-y-eticos.md#41-menciones-paraprocesales-a-cargos-públicos) (análisis legal). Esta ficha no las duplica.
 
@@ -24,7 +24,7 @@ Antes, estas decisiones vivían sólo en los `NOTES.md` internos: el lector veí
 
 - **Prosa, no tabla.** La propuesta original (issue #3) pedía una tabla «referencia → persona → cobertura»; se rechazó ese formato: la rejilla hace que el sitio firme la identificación. El porqué completo vive en el canon (doc 02 §2.13); el aprendizaje operativo es que el formato ES la decisión editorial, no un detalle de render.
 - **El cruce de líneas se demuestra en el dato.** `fuentes[]` con `medio_id` obliga a que la condición 3 sea auditable mirando el YAML, sin confiar en la prosa.
-- **La exclusión de auto-enlaces tenía que ser mecánica.** Una lista manual de "personas a no enlazar" por ítem habría creado justo el dato estructurado persona↔caso que la condición 4 prohíbe. La fórmula "todas menos las con rol en este caso" lo resuelve sin datos nuevos.
+- **La exclusión de enlaces tenía que ser mecánica.** Una lista manual de "personas a no enlazar" por ítem habría creado justo el dato estructurado persona↔caso que la condición 4 prohíbe. La fórmula "todas menos las con rol en este caso" resuelve los auto-enlaces sin datos nuevos; V-27 cierra el bypass de enlaces manuales.
 
 ## Ideas futuras
 

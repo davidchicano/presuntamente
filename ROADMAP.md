@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-06-12 (**primer contribuyente externo + workflow post-MVP**). **Issue #3** (propuesta editorial externa): aceptada la idea de una sección pública «Contenido considerado y no modelado» en fichas de caso, con 4 condiciones (prosa atribuida, sólo cargos públicos en su función, cruce de líneas editoriales, sin entidad/nodo/badge); respondida en la issue, **pendiente formalizar la regla en doc 02/04 y pilotar en `leire-diez`**. **Issue #4** desgajada: completar catálogo de medios (`good first issue`). `AGENTS.md` + `CONTRIBUTING.md`: **cauce de PRs externos abierto** (el maintainer sigue directo a `main`). Detalle: [`historial-2026-06.md`](docs/roadmap/historial-2026-06.md). Pusheado (deploy automático).
+**Última actualización:** 2026-06-18 (**PR #6 issue #3 listo para merge**). **Issue #3**: formalizada la sección pública «Contenido considerado y no modelado» como P-11 en doc 02/04 + schema/render/API + piloto en `leire-diez`; mini-review cerrada con V-27 (sin `[[persona:...]]` en esa prosa), captura temporal retirada, `pnpm validate` 1392 OK y `pnpm build` OK. Pendiente tras merge: `archive:catchup` para `contenido_no_modelado[].fuentes[]` y añadir P-11 al checklist de `/revisar-caso`.
 
-**Anterior (2026-06-06).** Barrido `/actualizar-caso` leire-diez (hito nuevo `auto-pedraz-rechazo-personacion-garcia-castellon-2026-06-04`, N4 ×3 líneas) + plus-ultra (ventana tranquila, sin hito; próximo: Zapatero 17-18 jun). `validate` 1392 OK; `/revisar-caso leire-diez` 0 bloqueantes. Detalle: [`historial-2026-06.md`](docs/roadmap/historial-2026-06.md).
+**Anterior (2026-06-12).** Primer contribuyente externo + workflow post-MVP. **Issue #3** (propuesta editorial externa): aceptada la idea con 4 condiciones (prosa atribuida, sólo cargos públicos en su función, cruce de líneas editoriales, sin entidad/nodo/badge); **Issue #4** desgajada: completar catálogo de medios (`good first issue`). `AGENTS.md` + `CONTRIBUTING.md`: cauce de PRs externos abierto. Detalle: [`historial-2026-06.md`](docs/roadmap/historial-2026-06.md). Pusheado (deploy automático).
 
 ---
 

@@ -141,6 +141,30 @@ for (const filepath of hechoFiles) {
   }
 }
 
+// --- V-27: contenido no modelado no puede crear enlaces manuales a personas --
+// P-11 exige que las menciones paraprocesales no creen entidad, rol, nodo ni
+// badge. El render excluye auto-enlaces a personas sin rol en el caso, pero el
+// escape hatch explícito de RichProse (`[[persona:slug|label]]`) saltaría ese
+// guardarraíl. En `contenido_no_modelado.texto` queda prohibido.
+const casoFiles = await glob('content/casos/*/caso.yaml');
+for (const filepath of casoFiles) {
+  let data;
+  try {
+    data = parseYaml(await readFile(filepath, 'utf-8'));
+  } catch {
+    continue; // ya reportado arriba
+  }
+  for (const item of data?.contenido_no_modelado ?? []) {
+    if (typeof item?.texto !== 'string') continue;
+    const match = item.texto.match(/\[\[\s*persona\s*:/i);
+    if (!match) continue;
+    errors++;
+    console.error(
+      `❌ ${filepath}\n   V-27: contenido_no_modelado "${item.id ?? '(sin id)'}" usa un enlace manual [[persona:...]].\n        P-11 exige que la mención viva sólo como prosa: elimina el escape hatch y deja el nombre como texto plano.`,
+    );
+  }
+}
+
 // --- V-26: comentarios internos no deben filtrarse en valores escalares ------
 // En YAML, un '#' dentro de un bloque escalar (| / >) o al inicio de un valor
 // citado NO es comentario, es texto literal → se renderiza en el sitio público.

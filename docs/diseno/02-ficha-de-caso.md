@@ -250,7 +250,7 @@ Meta-sección. Parte de la ficha, no del footer. Contenido:
 1. **Prosa atribuida, nunca tabla.** Una rejilla «referencia = persona» hace que el sitio firme la identificación por mucho disclaimer que lleve debajo; en prosa, las negaciones van pegadas al nombre («ningún órgano judicial ha hecho suya esa identificación», «X no tiene rol procesal en esta causa»). Misma información, autoría distinta.
 2. **Sólo cargos públicos en su función pública.** Presidente del Gobierno, ministra, directora general: nombrables (doc 04, apartado 4: riesgo bajo). Particulares y semi-públicos: nunca — para ellos sigue rigiendo el silencio (o el `NOTES.md` interno). Es el umbral que impide que el patrón se deslice hacia «personas que aparecieron en agendas y no fueron imputadas».
 3. **Cruce de líneas editoriales obligatorio.** La interpretación debe constar en al menos 2 medios de líneas editoriales distintas (campo `fuentes`). Si sólo la hace una trinchera, no se publica: es munición, no «lo que se dice». Defensa mecánica del principio «sin cuota política».
-4. **Sin entidad, sin nodo, sin badge.** La mención no crea `Persona`, `RolEnCaso`, vínculo ni nodo del grafo; el nombre vive sólo en esa prosa. En render, `RichProse` sólo auto-enlaza personas con rol formal en ESE caso (exclusión mecánica del resto, aunque la persona exista en el inventario por otro caso).
+4. **Sin entidad, sin nodo, sin badge.** La mención no crea `Persona`, `RolEnCaso`, vínculo ni nodo del grafo; el nombre vive sólo en esa prosa. En render, `RichProse` sólo auto-enlaza personas con rol formal en ESE caso (exclusión mecánica del resto, aunque la persona exista en el inventario por otro caso). Además, la validación **V-27** prohíbe usar el escape hatch manual `[[persona:...]]` dentro de `contenido_no_modelado.texto`.
 
 **Render.** `Aclaracion` introductoria fija (qué es la sección y qué NO implica) + un bloque por ítem: prosa, lista de fuentes (medio enlazado a su ficha + titular enlazado a la pieza + fecha) y línea de `fecha_revision` con compromiso de reevaluación.
 
@@ -323,7 +323,7 @@ Obligatorias para cualquier ficha. CI valida lo automatizable; el resto es revie
 | P-08 | Cada ficha enlaza a política editorial y mecanismo de rectificación | layout |
 | P-09 | Lenguaje neutro obligatorio en titulares, hitos y enunciados. Lista negra de adjetivos editoriales prohibidos ("escándalo", "trama", "mafia"...) excepto en cita literal de fuente | CI (lista negra simple) + review |
 | P-10 | Ningún color, icono o badge se asocia a partido político | revisión visual + skill design |
-| P-11 | Menciones paraprocesales (persona sin rol procesal nombrada en la ficha) sólo en la sección "Contenido considerado y no modelado" y bajo sus 4 condiciones: prosa atribuida con negaciones pegadas al nombre, sólo cargos públicos en su función, cruce de ≥2 líneas editoriales en `fuentes`, sin entidad/rol/nodo (ver "2.13 Contenido considerado y no modelado") | dato (schema) + render + review (`/revisar-caso`) |
+| P-11 | Menciones paraprocesales (persona sin rol procesal nombrada en la ficha) sólo en la sección "Contenido considerado y no modelado" y bajo sus 4 condiciones: prosa atribuida con negaciones pegadas al nombre, sólo cargos públicos en su función, cruce de ≥2 líneas editoriales en `fuentes`, sin entidad/rol/nodo (ver "2.13 Contenido considerado y no modelado") | dato (schema) + render + V-27 + review (`/revisar-caso`) |
 
 ---
 

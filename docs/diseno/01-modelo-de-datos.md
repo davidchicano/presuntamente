@@ -714,6 +714,7 @@ Las reglas que CI ejecuta sobre los YAML antes de mergear cualquier PR. Cada una
 | V-24 | Cada `sujeto` de `importe_atribucion` figura en `personas_implicadas`/`organizaciones_implicadas` del mismo Hecho | bloqueante (validador `scripts/validate.mjs`) |
 | V-25 | El `papel` de `importe_atribucion` es coherente con `importe_clase`: `activo`/`beneficiario`/`perjudicado` ⇒ `objeto`; `obligado`/`acreedor` ⇒ `consecuencia` | bloqueante (validador `scripts/validate.mjs`) |
 | V-26 | Ningún valor escalar de un YAML de `content/` contiene una línea que (tras recortar espacios) empiece por `#`. En YAML un `#` dentro de un bloque escalar (`\|` / `>`) o al inicio de un valor citado **no es comentario, es texto literal** y se renderiza en el sitio público. Los comentarios internos (`# LLM-incierto`, correcciones, pendientes) van a nivel de mapping (columna 0 / nivel de clave) o a `NOTES.md` | bloqueante (validador `scripts/validate.mjs`) |
+| V-27 | `Caso.contenido_no_modelado[].texto` no puede usar el escape hatch `[[persona:...]]` de `RichProse`. La regla P-11 exige que una mención paraprocesal viva sólo como prosa atribuida: sin entidad, sin rol, sin nodo, sin badge y sin enlace manual a ficha de persona | bloqueante (validador `scripts/validate.mjs`) |
 
 V-17 es la salvaguarda LOPD/honor más sensible: una persona privada que fue temporalmente investigada y luego desimputada **tiene derecho a desaparecer** del sitio o a aparecer con identificadores reducidos. El sistema obliga a revisarlo.
 
