@@ -19,6 +19,7 @@ Antes, estas decisiones vivían sólo en los `NOTES.md` internos: el lector veí
 ## Estado actual
 
 - 2026-06-12 — Feature entregada con piloto en `leire-diez` (3 ítems: referencias "el one"/"P.S."/"el presidente" en informes UCO y agendas; mención a Mercedes González; relación con FGE descartada). Fuentes verificadas (titular/fecha/autor vía fetch) de 4 medios y 3 líneas editoriales. Detalle del piloto en el `NOTES.md` del caso.
+- 2026-06-18 — Post-merge: `archivar-n4.mjs` ya lee `contenido_no_modelado[].fuentes[]` y `/revisar-caso` incorpora CH15 para P-11.
 
 ## Decisiones editoriales y aprendizajes
 
@@ -33,6 +34,6 @@ Antes, estas decisiones vivían sólo en los `NOTES.md` internos: el lector veí
 
 ## Pendientes operativos
 
-- [ ] `archivar-n4.mjs` no lee `contenido_no_modelado[].fuentes[]`: extender el script para que `pnpm archive:catchup` capture también estas URLs y rellene `url_archivo` (hoy 6 piezas sin archivar en `leire-diez`).
-- [ ] Añadir el chequeo de P-11 al checklist de la skill `/revisar-caso` (verbos de conducta, cruce de líneas, negaciones pegadas al nombre) la próxima vez que se use.
+- [x] `archivar-n4.mjs` lee `contenido_no_modelado[].fuentes[]` y puede rellenar `url_archivo`.
+- [x] Añadido chequeo P-11 al checklist de la skill `/revisar-caso` (CH15).
 - [ ] Catalán pendiente como el resto de `PgCasoDetalle` (`// TODO i18n`).

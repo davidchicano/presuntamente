@@ -12,11 +12,11 @@ Pasar una auditoría editorial cualitativa sobre un caso ya fichado, leyendo tod
 La skill cubre exclusivamente la **capa B** del diseño de cuatro capas documentado en [ROADMAP.md → "Después de Fase 1 — antes de Fase 2"](../../../ROADMAP.md#después-de-fase-1--antes-de-fase-2):
 
 - **Capa A — Schema / V-rules mecánicas** → ya cubierta por `pnpm validate`. Esta skill no la duplica; si la capa A falla, el caso no debería siquiera llegar a revisión editorial.
-- **Capa B — Auditoría editorial cualitativa (esta skill).** Reglas P-01..P-10 del doc 02 + principios de [AGENTS.md → "Principios irrenunciables"](../../../AGENTS.md#principios-irrenunciables) que no son chequeables con AJV porque requieren leer texto.
+- **Capa B — Auditoría editorial cualitativa (esta skill).** Reglas P-01..P-11 del doc 02 + principios de [AGENTS.md → "Principios irrenunciables"](../../../AGENTS.md#principios-irrenunciables) que no son chequeables con AJV porque requieren leer texto.
 - **Capa C — Verificación externa de fuentes** → diferida a v2+.
 - **Capa D — Integración con PRs externas** → invocación manual con `gh pr checkout <num>` + `/revisar-caso <slug>` en local. Misma skill sirve para auto-revisión y para PR externa.
 
-Versión `v1` (2026-05-24): 13 chequeos tras la primera iteración real sobre los 6 casos publicables del Bloque A y refinamientos posteriores. La v0 original (8 chequeos) queda documentada en (ver "Histórico"). La skill se moldea con la experiencia tras cada uso real ([AGENTS.md → "Skills locales"](../../../AGENTS.md#skills-locales-agentsskills)), añadiendo guardarraíles a la sección Histórico cuando aparezcan falsos positivos o falsos negativos.
+Versión `v1` (2026-05-24, actualizada 2026-06-18): 15 chequeos tras la primera iteración real sobre los 6 casos publicables del Bloque A y refinamientos posteriores. La v0 original (8 chequeos) queda documentada en (ver "Histórico"). La skill se moldea con la experiencia tras cada uso real ([AGENTS.md → "Skills locales"](../../../AGENTS.md#skills-locales-agentsskills)), añadiendo guardarraíles a la sección Histórico cuando aparezcan falsos positivos o falsos negativos.
 
 ## Inputs aceptados
 
@@ -51,10 +51,10 @@ Si una referencia no resuelve (`getEntry` devuelve null), anotar como hallazgo `
 
 ### 2. Aplicación de la checklist
 
-Aplicar los 14 chequeos de la (ver "Checklist") sobre el material cargado. Cada hallazgo se acumula con:
+Aplicar los 15 chequeos de la (ver "Checklist") sobre el material cargado. Cada hallazgo se acumula con:
 
 - `nivel`: `BLOQUEANTE` (debe arreglarse antes de publicar / mergear) · `SUGERENCIA` (mejora editorial recomendable, no bloquea) · `OK` (chequeo pasado limpiamente — se reporta sólo en el resumen final, no como entrada individual).
-- `chequeo`: nombre corto del chequeo (CH1..CH10).
+- `chequeo`: nombre corto del chequeo (CH1..CH15).
 - `localizacion`: archivo + campo (`content/casos/X/hechos/Y.yaml → enunciado`).
 - `evidencia`: cita literal del fragmento problemático (si aplica).
 - `razon`: explicación breve de por qué se marca.
@@ -102,7 +102,7 @@ Si el caso es grande y la lista de hallazgos amenaza con desbordar el contexto, 
 
 ## Checklist
 
-14 chequeos tras la primera iteración del 2026-05-24 y refinamientos posteriores. Los 8 originales (CH1..CH8) del bullet del ROADMAP + CH9 (Documentos huérfanos), CH10 (Condena firme afirmada en biografía sin Documento modelado), CH11 (afectación directa/indirecta), CH12 (medios productores), CH13 (síntesis sobredimensionada o sin sujeto principal) y CH14 (atribución de dinero por sujeto + presunción de inocencia). Cada uno con qué busca, dónde lo busca y cómo clasifica.
+15 chequeos tras la primera iteración del 2026-05-24 y refinamientos posteriores. Los 8 originales (CH1..CH8) del bullet del ROADMAP + CH9 (Documentos huérfanos), CH10 (Condena firme afirmada en biografía sin Documento modelado), CH11 (afectación directa/indirecta), CH12 (medios productores), CH13 (síntesis sobredimensionada o sin sujeto principal), CH14 (atribución de dinero por sujeto + presunción de inocencia) y CH15 (contenido considerado y no modelado, P-11). Cada uno con qué busca, dónde lo busca y cómo clasifica.
 
 ### CH1 — Verbos prohibidos en Hechos no acreditados
 
@@ -312,6 +312,26 @@ Si no se cumple ninguna:
 
 **Clasificación**: como arriba. **Referencia**: [doc 01 §2.6](../../../docs/diseno/01-modelo-de-datos.md#26-hecho) (papeles, V-24/V-25), [ficha importe-presunto](../../../docs/web/features/importe-presunto.md), [doc 04 §3](../../../docs/diseno/04-riesgos-legales-y-eticos.md#3-presunción-de-inocencia-reglas-de-redacción).
 
+### CH15 — Contenido considerado y no modelado (P-11)
+
+**Regla**: para cada `Caso.contenido_no_modelado[]`, revisar que la sección cumple P-11 ([doc 02 — "Contenido considerado y no modelado"](../../../docs/diseno/02-ficha-de-caso.md#213-contenido-considerado-y-no-modelado)) y no convierte una decisión editorial negativa en dato estructurado.
+
+Comprobar:
+
+1. **Prosa atribuida, no tabla mental.** `texto` debe explicar quién interpreta qué y por qué el sitio no lo modela. Es hallazgo si el texto afirma directamente la identificación o relación descartada como propia del sitio, o si usa formato tipo "referencia = persona" dentro de la prosa.
+2. **Negaciones pegadas al nombre.** Si se nombra a una persona sin `RolEnCaso` en este caso, la misma frase o frase inmediata debe incluir cautelas como: ningún órgano judicial ha asumido la identificación, no tiene rol procesal en esta causa, no se le atribuye conducta. Si el nombre queda separado de esas negaciones, hallazgo.
+3. **Sólo cargos públicos en su función pública.** Si se nombra a una persona privada, familiar, asesor externo, testigo o figura semi-pública sin rol procesal formal, hallazgo. La excepción sólo cubre cargos públicos en su función pública.
+4. **Cruce de líneas editoriales.** Cuando el ítem atribuye una interpretación a la prensa, `fuentes[]` debe tener al menos 2 medios de líneas editoriales distintas. Una decisión puramente editorial interna (por ejemplo, relación entre casos descartada por falta de nexo formal) puede carecer de `fuentes[]` si el razonamiento está en `texto`.
+5. **Sin entidad, rol, nodo ni enlace manual.** El nombre vive sólo en la prosa. `pnpm validate` cubre V-27 (`[[persona:...]]` prohibido), pero la auditoría debe comprobar también que no se creó `Persona`, `RolEnCaso`, `RelacionEntreCasos` o vínculo institucional sólo para respaldar esta mención.
+6. **Reevaluación.** `fecha_revision` debe existir y el texto debe permitir reevaluar si aparece primario accesible o resolución judicial. Si el item describe algo ya confirmado por primario y aun así sigue en no-modelado, hallazgo.
+
+**Clasificación**:
+
+- `BLOQUEANTE` si se nombra una persona privada o semi-pública sin rol, se afirma como propia la identificación/conducta, falta el cruce de líneas en una interpretación periodística, o se creó una entidad/rol/nodo/enlace manual para la mención.
+- `SUGERENCIA` si las negaciones están pero demasiado separadas del nombre, si `fuentes[]` cumple en número pero no deja clara la diversidad editorial, o si `fecha_revision` está desfasada respecto a un primario sobrevenido.
+
+**Referencia**: doc 02 P-11, doc 04 apartado 4.1, V-27, ficha [`contenido-no-modelado.md`](../../../docs/web/features/contenido-no-modelado.md).
+
 ## Guardarraíles obligatorios
 
 1. **No auto-fix.** La skill **sólo señala**. Nunca edita YAMLs, nunca abre commits, nunca hace `git add`. Las acciones sugeridas se redactan en prosa para que el maintainer las aplique manualmente. Esto es una norma dura del diseño: el LLM no decide qué se publica.
@@ -337,7 +357,7 @@ Mensaje final al usuario con:
 1. El informe markdown completo (estructura de "Proceso", apartado 3).
 2. Recordatorio explícito de que la skill **no ha tocado ningún archivo** y que las acciones sugeridas requieren intervención manual del maintainer.
 3. Si hay hallazgos `BLOQUEANTE`, una nota al final advirtiendo que el caso **no está listo para publicar / mergear** hasta que se resuelvan.
-4. Si la skill encontró cosas que no encajan en ninguno de los 13 chequeos pero le parecen relevantes editorialmente, una sección final `## Observaciones fuera de checklist` con esos hallazgos marcados explícitamente como heurísticos. Esta sección alimenta la iteración de la skill (ver "Iteración").
+4. Si la skill encontró cosas que no encajan en ninguno de los 15 chequeos pero le parecen relevantes editorialmente, una sección final `## Observaciones fuera de checklist` con esos hallazgos marcados explícitamente como heurísticos. Esta sección alimenta la iteración de la skill (ver "Iteración").
 5. **Propuesta de promoción (cola para `/promover-caso`)**: si la auditoría termina con **cero BLOQUEANTES** y crees que el caso supera el listón de un estado superior, deja la bandera en `content/casos/<slug>/caso.yaml` (esto SÍ es escribir, es la única excepción al "no toca archivos" — y sólo este bloque, nunca el contenido del caso):
 
    ```yaml
@@ -362,9 +382,15 @@ Tras cada uso real de la skill, añadir una entrada en `## Histórico` con:
 - **Falsos negativos detectados**: cosas que el maintainer encontró mal en revisión humana posterior y que la skill no marcó. Si un patrón se repite, añadir un nuevo chequeo (CH11, CH12...) o ampliar uno existente.
 - **Heurísticas que merecen promocionarse**: si la sección `Observaciones fuera de checklist` revela un patrón reincidente, codificarlo como chequeo formal.
 
-La skill sigue el patrón de [AGENTS.md → "Skills locales"](../../../AGENTS.md#skills-locales-agentsskills): se moldea con la experiencia, no se diseña perfecta upfront. v0 fueron 8 chequeos; v1 crece con guardarrailes promocionados a CH9..CH13; v2 puede incorporar nuevos candidatos cuando se confirme reincidencia, o la capa C (verificación externa de fuentes).
+La skill sigue el patrón de [AGENTS.md → "Skills locales"](../../../AGENTS.md#skills-locales-agentsskills): se moldea con la experiencia, no se diseña perfecta upfront. v0 fueron 8 chequeos; v1 crece con guardarrailes promocionados a CH9..CH15; v2 puede incorporar nuevos candidatos cuando se confirme reincidencia, o la capa C (verificación externa de fuentes).
 
 ## Histórico
+
+### 2026-06-18 — Issue #3 / PR #6: P-11 entra en la auditoría
+
+- **Caso piloto**: `leire-diez`, sección pública `contenido_no_modelado`.
+- **Hallazgo que motiva el chequeo**: la feature introduce una capa editorial nueva que no es Hecho ni Rol, pero sí puede nombrar cargos públicos sin rol procesal. Necesita revisión cualitativa específica: prosa atribuida, negaciones pegadas al nombre, cruce de líneas editoriales y ausencia de entidad/rol/nodo.
+- **Cambio aplicado**: añadido **CH15 — Contenido considerado y no modelado (P-11)**. Complementa el guardarraíl mecánico V-27 (`[[persona:...]]` prohibido en esa prosa) con revisión editorial humana.
 
 ### 2026-05-24 — Primera pasada cualitativa sobre los 6 casos publicables del Bloque A
 

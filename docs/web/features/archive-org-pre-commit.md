@@ -12,6 +12,7 @@ Captura snapshots en [web.archive.org](https://web.archive.org) de URLs periodí
 |------|----------------|--------|
 | `content/documentos/*.yaml` | `url_canonica` | `nivel_fuente: 4`, sin `url_archivo` ni `url_archivo_no_disponible` |
 | `content/cobertura-mediatica/*.yaml` | `url` (por noticia en `noticias[]`) | sin `url_archivo` en ese ítem |
+| `content/casos/*/caso.yaml` | `url` (por fuente en `contenido_no_modelado[].fuentes[]`) | sin `url_archivo` en esa fuente |
 
 ## Cómo se dispara
 
@@ -43,7 +44,7 @@ Si acabas de un catchup largo interrumpido, conviene **esperar unos minutos** an
 
 ## Estado actual
 
-**Entregado 2026-05-26:** documentos N4 + cobertura mediática vía `scripts/archivar-n4.mjs`. **Retirado 2026-05-26:** hook `hooks/pre-commit` (incompatible con commits en sandbox sin red).
+**Entregado 2026-05-26:** documentos N4 + cobertura mediática vía `scripts/archivar-n4.mjs`. **Ampliado 2026-06-18:** fuentes de `contenido_no_modelado[].fuentes[]`. **Retirado 2026-05-26:** hook `hooks/pre-commit` (incompatible con commits en sandbox sin red).
 
 Backlog típico sin catchup: Kitchen (N4 sin `url_canonica`), cobertura de Begoña (29 noticias sin mirror), documentos N4 sueltos con URL pero sin pasar catchup.
 

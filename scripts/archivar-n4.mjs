@@ -5,6 +5,7 @@
  * Fuentes:
  *   - content/documentos/*.yaml — documentos N4 (campo url_canonica)
  *   - content/cobertura-mediatica/*.yaml — noticias del corpus (campo url por ítem)
+ *   - content/casos/<slug>/caso.yaml — contenido_no_modelado[].fuentes[] (campo url)
  *
  * Modos:
  *   --staged-only      Solo YAML en staging (tope 5 URLs por defecto; uso manual).
@@ -109,6 +110,13 @@ async function loadCandidateCoberturaFiles() {
   return glob('content/cobertura-mediatica/*.yaml');
 }
 
+async function loadCandidateCasoFiles() {
+  if (stagedOnly) {
+    return listStagedPaths('content/casos/').filter((p) => p.endsWith('/caso.yaml'));
+  }
+  return glob('content/casos/*/caso.yaml');
+}
+
 async function loadParsed(files) {
   const out = [];
   for (const file of files) {
@@ -161,6 +169,33 @@ function pickPendingCobertura(parsedCobertura) {
         id: noticia.id,
         url: noticia.url,
       });
+    }
+  }
+  return items;
+}
+
+function pickPendingContenidoNoModelado(parsedCasos) {
+  const items = [];
+  for (const { file, raw, data } of parsedCasos) {
+    if (!data?.id) continue;
+    if (casoFilter && data.id !== casoFilter) continue;
+    const decisiones = Array.isArray(data.contenido_no_modelado) ? data.contenido_no_modelado : [];
+    for (const decision of decisiones) {
+      if (!decision?.id) continue;
+      const fuentes = Array.isArray(decision.fuentes) ? decision.fuentes : [];
+      for (const fuente of fuentes) {
+        if (typeof fuente.url !== 'string' || !fuente.url) continue;
+        if (fuente.url_archivo) continue;
+        const medio = fuente.medio_id ? `${fuente.medio_id}: ` : '';
+        items.push({
+          source: 'no_modelado',
+          file,
+          raw,
+          id: `${decision.id} · ${medio}${fuente.fecha ?? 's/f'}`,
+          itemId: decision.id,
+          url: fuente.url,
+        });
+      }
     }
   }
   return items;
@@ -316,6 +351,35 @@ function insertUrlArchivoCobertura(rawYaml, targetUrl, archiveUrl) {
   return null;
 }
 
+function insertUrlArchivoContenidoNoModelado(rawYaml, targetItemId, targetUrl, archiveUrl) {
+  const lines = rawYaml.split('\n');
+  const itemRe = new RegExp(`^  - id:\\s*"?${targetItemId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"?\\s*$`);
+  const start = lines.findIndex((l) => itemRe.test(l));
+  if (start < 0) return null;
+
+  let end = lines.length;
+  for (let i = start + 1; i < lines.length; i++) {
+    if (/^  - id:\s/.test(lines[i])) {
+      end = i;
+      break;
+    }
+  }
+
+  const needle = targetUrl.replace(/"/g, '');
+  for (let i = start; i < end; i++) {
+    if (!/^        url:\s/.test(lines[i])) continue;
+    if (!lines[i].includes(needle)) continue;
+    const next = lines[i + 1];
+    if (next && /^        url_archivo:\s/.test(next)) {
+      lines[i + 1] = `        url_archivo: "${archiveUrl}"`;
+    } else {
+      lines.splice(i + 1, 0, `        url_archivo: "${archiveUrl}"`);
+    }
+    return lines.join('\n');
+  }
+  return null;
+}
+
 function gitAdd(file) {
   try {
     execFileSync('git', ['add', file], { stdio: 'pipe' });
@@ -335,19 +399,25 @@ function pauseAfterItem(method) {
 async function main() {
   const docFiles = await loadCandidateDocFiles();
   const cobFiles = await loadCandidateCoberturaFiles();
+  const casoFiles = await loadCandidateCasoFiles();
 
-  if (docFiles.length === 0 && cobFiles.length === 0) {
-    if (catchup) console.log('✅ No hay YAML de documentos ni cobertura mediática para revisar.');
+  if (docFiles.length === 0 && cobFiles.length === 0 && casoFiles.length === 0) {
+    if (catchup) console.log('✅ No hay YAML de documentos, cobertura mediática ni casos para revisar.');
     return;
   }
 
   const parsedDocs = docFiles.length ? await loadParsed(docFiles) : [];
   const parsedCob = cobFiles.length ? await loadParsed(cobFiles) : [];
+  const parsedCasos = casoFiles.length ? await loadParsed(casoFiles) : [];
 
-  let pending = [...pickPendingDocumentos(parsedDocs), ...pickPendingCobertura(parsedCob)];
+  let pending = [
+    ...pickPendingDocumentos(parsedDocs),
+    ...pickPendingCobertura(parsedCob),
+    ...pickPendingContenidoNoModelado(parsedCasos),
+  ];
 
   if (pending.length === 0) {
-    if (catchup) console.log('✅ Ninguna URL pendiente de archivar (documentos N4 + cobertura mediática).');
+    if (catchup) console.log('✅ Ninguna URL pendiente de archivar (documentos N4 + cobertura mediática + contenido no modelado).');
     return;
   }
 
@@ -393,10 +463,14 @@ async function main() {
     const r = await resolveArchiveUrl(d.url);
     if (r.ok) {
       let raw = fileCache.get(d.file) ?? d.raw;
-      const updated =
-        d.source === 'documento'
-          ? insertUrlArchivoDocumento(raw, r.archiveUrl)
-          : insertUrlArchivoCobertura(raw, d.url, r.archiveUrl);
+      let updated = null;
+      if (d.source === 'documento') {
+        updated = insertUrlArchivoDocumento(raw, r.archiveUrl);
+      } else if (d.source === 'cobertura') {
+        updated = insertUrlArchivoCobertura(raw, d.url, r.archiveUrl);
+      } else if (d.source === 'no_modelado') {
+        updated = insertUrlArchivoContenidoNoModelado(raw, d.itemId, d.url, r.archiveUrl);
+      }
 
       if (updated) {
         await writeFile(d.file, updated, 'utf-8');
