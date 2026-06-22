@@ -8,8 +8,7 @@ cif: "B82824194"
 descripcion_corta: |
   Diario español de información general fundado en 1903, uno de los
   decanos de la prensa española en activo. Editado por Diario ABC, S.L.,
-  del grupo Vocento, con cobertura nacional de política, sociedad y
-  tribunales.
+  con cobertura nacional de política, sociedad y tribunales.
 ambito_territorial: nacional
 localidad: "Madrid"
 provincia: "Madrid"
@@ -28,10 +27,6 @@ orientacion_editorial_percibida:
     siguientes periódicos…?». N=21.855. Desviación típica: 2,12.
   url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
   fecha: "2023-12-15"
-
-grupo_editorial:
-  nombre: "Vocento"
-  rol: matriz
 
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-06-22"
