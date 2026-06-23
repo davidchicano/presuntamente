@@ -1,0 +1,16 @@
+id: puertos-del-estado
+nombre: "Puertos del Estado"
+nombres_alternativos:
+  - "Organismo Público Puertos del Estado"
+tipo: organismo_publico
+descripcion_corta: |
+  Organismo público estatal adscrito al Ministerio de Transportes, con funciones de
+  coordinación y control de eficiencia del sistema portuario de titularidad estatal. Figura
+  en las fuentes del caso Koldo como una de las entidades vinculadas a contratos de
+  mascarillas investigados.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.puertos.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

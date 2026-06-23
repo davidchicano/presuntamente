@@ -12,6 +12,11 @@ descripcion: |
   domiciliario de tipo allanatorio sino un requerimiento de documentación autorizado
   judicialmente en el marco de la pieza separada bajo secreto sumarial. Rige el principio
   de presunción de inocencia respecto a todos los investigados.
+  El 22 de junio de 2026 el magistrado accede además a la petición del PSOE de separar y
+  expurgar en una pieza reservada la documentación ajena a la causa que fue aportada o
+  intervenida en ese requerimiento, con intervención del Ministerio Fiscal y de la parte
+  interesada. Se trata de una incidencia procesal posterior ligada al mismo requerimiento en
+  Ferraz, no de un nuevo registro ni de una ampliación autónoma del objeto de la causa.
 personas_afectadas: []
 organizaciones_afectadas:
   - psoe
@@ -23,5 +28,7 @@ documentos_relacionados:
   - infobae-uco-ferraz-2026-05-27
   - el-espanol-uco-ferraz-2026-05-27
   - eldiario-auto-pedraz-pieza-separada-2026-05-26
+  - rtve-expurgo-documentos-ferraz-leire-2026-06-22
+  - publico-expurgo-documentos-ferraz-leire-2026-06-22
 hechos_introducidos: []
 fase_resultante: instruccion

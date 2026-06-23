@@ -1,0 +1,21 @@
+id: rtve-pospone-audiencia-bg-2026-06-03
+titulo: "RTVE.es — El juez Peinado pospone al 15 de junio la audiencia a Begoña Gómez y avisa de su obligación de comparecer (3 junio 2026)"
+tipo: articulo_prensa
+nivel_fuente: 4
+nivel_fuente_justificacion: |
+  Cobertura periodística de RTVE.es sobre la providencia del Juzgado de
+  Instrucción nº 41 de Madrid de 3 de junio de 2026 por la que se deja
+  sin efecto el señalamiento del 9 de junio y se fija nueva audiencia
+  preliminar para el 15 de junio, manteniendo la comparecencia personal
+  obligatoria de los tres procesados. Nivel 4 por tratarse de un medio
+  de comunicación. Se usa sólo para actualizar descriptivamente un
+  hito existente; no se crea hito autónomo ni hecho estructurado a
+  partir de este documento.
+productor_organizacion_id: rtve
+fecha_documento: "2026-06-03"
+fecha_publicacion: "2026-06-03"
+url_canonica: "https://www.rtve.es/noticias/20260603/juez-pospone-15-junio-audiencia-a-begona-gomez-avisa-su-obligacion-comparecer/17098350.shtml"
+estado_acceso: publico
+idioma: es
+caso_principal_id: begona-gomez
+estado_publicacion: borrador

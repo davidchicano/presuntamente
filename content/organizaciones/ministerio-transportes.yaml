@@ -1,0 +1,17 @@
+id: ministerio-transportes
+nombre: "Ministerio de Transportes, Movilidad y Agenda Urbana"
+nombres_alternativos:
+  - "Ministerio de Transportes"
+  - "MITMA"
+  - "Ministerio de Fomento"
+tipo: organismo_publico
+descripcion_corta: |
+  Departamento ministerial de la Administración General del Estado competente, durante el
+  periodo investigado en el caso Koldo, sobre infraestructuras y transportes, incluyendo
+  entidades públicas vinculadas como Puertos del Estado y ADIF.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.transportes.gob.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

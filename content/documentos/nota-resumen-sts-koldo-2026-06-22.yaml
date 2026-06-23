@@ -1,0 +1,22 @@
+id: nota-resumen-sts-koldo-2026-06-22
+titulo: "Nota resumen oficial del Tribunal Supremo — Sentencia 418/2026, Causa Especial 20775/2020 (22 jun 2026)"
+tipo: nota_prensa_institucional
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Documento DOCX oficial alojado en `poderjudicial.es/stfls/TRIBUNAL SUPREMO/DOCUMENTOS
+  DE INTERÉS/`. Resume la Sentencia 418/2026 de la Sala Segunda en la Causa Especial
+  20775/2020, con identificación de condenados, delitos, penas y explicación de la
+  valoración jurídica. Dominio oficial en lista blanca. Metadatos del DOCX: creado y
+  modificado el 22-jun-2026 10:28 UTC; creadora Maria Gemma Moradillo Garcia; última
+  modificación Gemma Somalo Rodríguez.
+productor_organizacion_id: tribunal-supremo
+fecha_documento: "2026-06-22"
+fecha_publicacion: "2026-06-22"
+url_canonica: "https://www.poderjudicial.es/stfls/TRIBUNAL%20SUPREMO/DOCUMENTOS%20DE%20INTER%C3%89S/Nota%20resumen%20STS%20Causa%20Especial%2020775-2020%20Sala%20II%2022JUN26.docx"
+ruta_local: "/documentos/koldo/nota-resumen-sts-causa-especial-20775-2020-22jun26.docx"
+hash_sha256: "bccf04044793325a88655270d049bdf7df07a45c162e9708ac45ef01af50aeba"
+estado_acceso: publico
+idioma: es
+caso_principal_id: koldo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

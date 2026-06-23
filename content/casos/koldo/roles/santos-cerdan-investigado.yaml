@@ -1,0 +1,18 @@
+id: santos-cerdan-investigado-koldo-2026-02
+caso_id: koldo
+sujeto_tipo: persona
+sujeto_persona_id: santos-cerdan
+rol: investigado
+delitos_atribuidos:
+  - organizacion-criminal
+  - cohecho
+  - trafico-de-influencias
+fecha_inicio: "2025-09-23"
+hito_origen_id: separacion-pieza-obras-koldo-2025-09-23
+notas: |
+  La Sentencia TS 418/2026 reproduce el auto de 23 de septiembre de 2025 que forma la
+  pieza separada de obras públicas y enumera a Santos Cerdán García entre las personas
+  investigadas en esa pieza. La nota oficial del CGPJ del 2 de febrero de 2026 documenta
+  después la remisión de esa pieza al JCI nº 2 AN tras la pérdida de aforamiento de Ábalos.
+  El rol se limita a esa pieza y no lo vincula con la sentencia de mascarillas del 22 de
+  junio de 2026. Rige el principio de presunción de inocencia.

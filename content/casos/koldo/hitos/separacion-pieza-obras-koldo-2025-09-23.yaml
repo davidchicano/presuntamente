@@ -1,0 +1,27 @@
+id: separacion-pieza-obras-koldo-2025-09-23
+caso_id: koldo
+tipo: separacion_pieza
+fecha: "2025-09-23"
+fecha_precision: dia
+titulo: "El Supremo forma una pieza separada sobre adjudicaciones de obras públicas dentro de la causa especial"
+descripcion: |
+  La Sentencia TS 418/2026 reproduce la parte dispositiva del auto de 23 de septiembre de
+  2025 por el que se forma una pieza separada sobre adjudicaciones de obras públicas
+  dentro de la Causa Especial 003/20775/2020-II. Esa pieza conserva como investigados, en
+  ese momento, a José Luis Ábalos, Koldo García, Víctor de Aldama, Santos Cerdán, Joseba
+  Antxon Alonso y otras personas citadas en el fallo. El inventario no incorpora todavía a
+  todas las personas nombradas en esa pieza y limita la modelización nominal adicional a
+  Joseba Antxon Alonso porque ya tiene rol formal modelado en el caso Leire Díez.
+personas_afectadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+  - santos-cerdan
+  - joseba-antxon-alonso
+  - leopoldo-puente
+organizaciones_afectadas:
+  - tribunal-supremo
+documento_principal_id: sentencia-ts-418-2026-koldo
+documentos_relacionados:
+  - cgpj-remision-pieza-obras-koldo-2026-02-02
+fase_resultante: instruccion

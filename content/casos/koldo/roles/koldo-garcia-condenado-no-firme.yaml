@@ -1,0 +1,18 @@
+id: koldo-garcia-condenado-no-firme-koldo-2026-06
+caso_id: koldo
+sujeto_tipo: persona
+sujeto_persona_id: koldo-garcia
+rol: condenado_no_firme
+delitos_atribuidos:
+  - organizacion-criminal
+  - cohecho
+  - malversacion-caudales-publicos
+  - trafico-de-influencias
+fecha_inicio: "2026-06-22"
+hito_origen_id: sentencia-koldo-2026-06-22
+notas: |
+  La nota oficial del CGPJ y el fallo de la Sentencia TS 418/2026 informan de condena a
+  Koldo García Izaguirre por la pieza inicial de contratos de mascarillas, con absolución
+  parcial por otros delitos objeto de acusación. Se modela como `condenado_no_firme` por
+  cautela hasta verificar firmeza y eventuales incidentes o recursos. No se promueve ningún
+  hecho a `acreditado` sin revisión humana explícita.

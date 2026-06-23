@@ -1,0 +1,30 @@
+id: hecho-apertura-juicio-oral-koldo
+caso_id: koldo
+enunciado: |
+  El auto de apertura de juicio oral del 11 de diciembre de 2025 sentó en el banquillo a
+  José Luis Ábalos, Koldo García y Víctor de Aldama por la pieza inicial de contratos de
+  mascarillas. La parte dispositiva reproducida por el CGPJ enumera como calificaciones
+  provisionales integración en organización criminal, cohecho continuado, uso y
+  aprovechamiento de información privilegiada, tráfico de influencias, malversación de
+  fondos públicos, falsedad en documento oficial y prevaricación. La apertura de juicio oral
+  no implica culpabilidad.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2025-12-11"
+  precision: dia
+personas_implicadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: cgpj-apertura-juicio-oral-koldo-2025-12-11
+    pasaje: "Parte dispositiva del auto reproducida por la nota CGPJ: apertura de juicio oral y calificaciones provisionales."
+  - documento_id: cgpj-confirma-procedimiento-abreviado-koldo-2025-12-10
+    pasaje: "Nota CGPJ del 10-dic-2025 que ratifica el auto de procedimiento abreviado y subraya su naturaleza indiciaria."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

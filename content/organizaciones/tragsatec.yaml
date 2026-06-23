@@ -1,0 +1,14 @@
+id: tragsatec
+nombre: "Tecnologías y Servicios Agrarios S.A., S.M.E., M.P."
+nombres_alternativos:
+  - "TRAGSATEC"
+  - "Tragsatec"
+tipo: organismo_publico
+descripcion_corta: |
+  Sociedad mercantil estatal del Grupo Tragsa. La Sentencia TS 418/2026 del caso Koldo
+  la identifica como una de las entidades a las que José Luis Ábalos y Koldo García deben
+  indemnizar solidariamente.
+ambito_territorial: nacional
+url_canonica: "https://www.tragsa.es/es/grupo-tragsa/empresa-filiales/Paginas/tragsatec.aspx"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

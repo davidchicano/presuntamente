@@ -1,0 +1,28 @@
+id: pu-declaracion-zapatero-sin-cautelares-2026-06-17
+caso_id: plus-ultra
+enunciado: >-
+  El 17 de junio de 2026 José Luis Rodríguez Zapatero declaró como
+  investigado ante el JCI nº 4 de la Audiencia Nacional y, tras esa
+  comparecencia, el magistrado José Luis Calama rechazó retirarle el
+  pasaporte o imponerle comparecencias periódicas al no apreciar un riesgo
+  procesal actual que justificara esas medidas cautelares.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-06-17"
+  precision: dia
+personas_implicadas:
+  - jose-luis-rodriguez-zapatero
+organizaciones_implicadas:
+  - juzgado-central-instruccion-4
+  - audiencia-nacional
+documentos_respaldo:
+  - documento_id: auto-jci4-rechazo-medidas-zapatero-pu-2026-06-17
+    pasaje: >-
+      Nota CGPJ del 17-jun-2026: el juez rechaza la imposición de medidas
+      cautelares a Rodríguez Zapatero tras su declaración como investigado al
+      no apreciar un riesgo de fuga real y actual.
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

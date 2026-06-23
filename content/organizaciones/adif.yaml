@@ -1,0 +1,16 @@
+id: adif
+nombre: "Administrador de Infraestructuras Ferroviarias"
+nombres_alternativos:
+  - "ADIF"
+  - "Adif"
+tipo: organismo_publico
+descripcion_corta: |
+  Entidad pública empresarial responsable de la administración de infraestructuras
+  ferroviarias de titularidad estatal. Figura en las fuentes del caso Koldo como una de las
+  entidades vinculadas a contratos de mascarillas investigados.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.adif.es/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

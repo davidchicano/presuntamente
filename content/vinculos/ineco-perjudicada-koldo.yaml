@@ -1,0 +1,16 @@
+id: ineco-perjudicada-koldo
+naturaleza: perjudicado_institucional_en_caso
+descripcion: "La Sentencia TS 418/2026 fija una indemnización civil a favor de INECO en la pieza inicial del caso Koldo."
+sujeto_organizacion_id: ineco
+objeto_organizacion_id: tribunal-supremo
+desde: "2026-06-22"
+precision_desde: dia
+vigente: true
+relevancia_para_caso_ids: [koldo]
+documentos_respaldo:
+  - documento_id: sentencia-ts-418-2026-koldo
+    pasaje: "FALLO, p. 223: indemnización de 34.450 euros a INECO."
+nivel_afectacion: directa
+justificacion_afectacion: "INECO aparece como acreedora de una responsabilidad civil fijada en la sentencia de la pieza inicial."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

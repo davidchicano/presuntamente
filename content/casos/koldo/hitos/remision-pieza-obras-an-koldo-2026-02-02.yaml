@@ -1,0 +1,28 @@
+id: remision-pieza-obras-an-koldo-2026-02-02
+caso_id: koldo
+tipo: cambio_organo
+fecha: "2026-02-02"
+fecha_precision: dia
+titulo: "El Supremo remite al JCI nº 2 AN la pieza de obras públicas tras la pérdida de aforamiento de Ábalos"
+descripcion: |
+  El 2 de febrero de 2026 el magistrado Leopoldo Puente declara la pérdida de competencia
+  del Tribunal Supremo para continuar con la pieza separada relativa a adjudicaciones
+  presuntamente ilícitas de obras públicas, al haber perdido José Luis Ábalos la condición
+  de aforado y ser el único investigado que ostentaba esa condición. El auto remite la pieza
+  al Juzgado Central de Instrucción nº 2 de la Audiencia Nacional, órgano del que procede y
+  en el que se siguen actuaciones vinculadas respecto de otros investigados. La nota oficial
+  incluye en esa pieza a Ábalos, Santos Cerdán, Koldo García, Víctor de Aldama y otras ocho
+  personas. Rige el principio de presunción de inocencia.
+personas_afectadas:
+  - jose-luis-abalos
+  - santos-cerdan
+  - koldo-garcia
+  - victor-de-aldama
+  - leopoldo-puente
+organizaciones_afectadas:
+  - tribunal-supremo
+  - juzgado-central-instruccion-2
+documento_principal_id: cgpj-remision-pieza-obras-koldo-2026-02-02
+hechos_introducidos:
+  - hecho-pieza-obras-publicas-an-koldo
+fase_resultante: instruccion

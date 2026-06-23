@@ -1,0 +1,53 @@
+id: hecho-responsabilidad-civil-koldo-2026
+caso_id: koldo
+enunciado: |
+  La Sentencia TS 418/2026 acuerda que José Luis Ábalos y Koldo García indemnicen
+  conjunta y solidariamente a INECO y a TRAGSATEC por importes de 34.450 euros y
+  9.500,54 euros, respectivamente. Al tratarse de una sentencia reciente cuya firmeza no
+  se ha verificado en el inventario, la consecuencia económica se registra como atribuida
+  a la resolución y no como hecho firme.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-06-22"
+  precision: dia
+personas_implicadas:
+  - jose-luis-abalos
+  - koldo-garcia
+organizaciones_implicadas:
+  - tribunal-supremo
+  - ineco
+  - tragsatec
+documentos_respaldo:
+  - documento_id: sentencia-ts-418-2026-koldo
+    pasaje: "FALLO, p. 223: responsabilidad civil solidaria a favor de INECO (34.450 euros) y TRAGSATEC (9.500,54 euros)."
+nivel_fuente_efectivo: 3
+importe: 43950.54
+importe_moneda: EUR
+importe_alcance: componente
+importe_clase: consecuencia
+importe_naturaleza: responsabilidad_civil
+importe_nota: |
+  Suma de las dos indemnizaciones civiles fijadas en el fallo: 34.450 euros para INECO y
+  9.500,54 euros para TRAGSATEC. No se acumula como objeto del caso; es consecuencia
+  económica de sentencia no verificada como firme.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: jose-luis-abalos
+    papel: obligado
+    nota: "Responsabilidad civil conjunta y solidaria con Koldo García según el fallo."
+  - sujeto_tipo: persona
+    sujeto: koldo-garcia
+    papel: obligado
+    nota: "Responsabilidad civil conjunta y solidaria con José Luis Ábalos según el fallo."
+  - sujeto_tipo: organizacion
+    sujeto: ineco
+    papel: acreedor
+    importe_sujeto: 34450
+  - sujeto_tipo: organizacion
+    sujeto: tragsatec
+    papel: acreedor
+    importe_sujeto: 9500.54
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

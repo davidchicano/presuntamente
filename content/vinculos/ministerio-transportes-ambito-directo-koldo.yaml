@@ -1,0 +1,16 @@
+id: ministerio-transportes-ambito-directo-koldo
+naturaleza: ambito_administrativo_directo_del_acto_en_caso
+descripcion: "El caso Koldo alcanza directamente al Ministerio de Transportes, Movilidad y Agenda Urbana como ámbito administrativo desde el que, según la Sentencia TS 418/2026, se desplegaron actuaciones relacionadas con contratos de mascarillas y entidades públicas adscritas al departamento."
+sujeto_organizacion_id: ministerio-transportes
+objeto_organizacion_id: tribunal-supremo
+desde: "2020-03-01"
+precision_desde: mes
+vigente: true
+relevancia_para_caso_ids: [koldo]
+documentos_respaldo:
+  - documento_id: sentencia-ts-418-2026-koldo
+    pasaje: "Hechos probados, pp. 24-28 y fundamentos, pp. 80-90: papel del MITMA, Puertos del Estado y ADIF en las actuaciones examinadas."
+nivel_afectacion: directa
+justificacion_afectacion: "El acto investigado y enjuiciado se sitúa en el perímetro del Ministerio de Transportes y de entidades públicas adscritas, por lo que aplica la regla de ámbito administrativo directo del acto en caso."
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

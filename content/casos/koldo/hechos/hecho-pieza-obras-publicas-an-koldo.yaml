@@ -1,0 +1,33 @@
+id: hecho-pieza-obras-publicas-an-koldo
+caso_id: koldo
+enunciado: |
+  El Tribunal Supremo remitió el 2 de febrero de 2026 al Juzgado Central de Instrucción nº 2
+  de la Audiencia Nacional la pieza separada que investiga adjudicaciones presuntamente
+  ilícitas de obras públicas, al haber perdido José Luis Ábalos la condición de aforado. La
+  nota oficial del CGPJ y la Sentencia TS 418/2026 identifican en esa pieza a Ábalos,
+  Santos Cerdán, Koldo García, Víctor de Aldama, Joseba Antxon Alonso y otras personas,
+  y la distinguen de la pieza de mascarillas ya abierta a juicio oral ante el Supremo. Rige
+  el principio de presunción de inocencia.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2026-02-02"
+  precision: dia
+personas_implicadas:
+  - jose-luis-abalos
+  - santos-cerdan
+  - koldo-garcia
+  - victor-de-aldama
+  - joseba-antxon-alonso
+organizaciones_implicadas:
+  - tribunal-supremo
+  - juzgado-central-instruccion-2
+documentos_respaldo:
+  - documento_id: cgpj-remision-pieza-obras-koldo-2026-02-02
+    pasaje: "Nota oficial CGPJ del 2-feb-2026: pérdida de competencia del TS y remisión al JCI nº 2 AN de la pieza de obras públicas."
+  - documento_id: sentencia-ts-418-2026-koldo
+    pasaje: "Antecedente de hecho décimo, pp. 5-6: auto de 23-sep-2025 que forma la pieza separada y enumera investigados."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

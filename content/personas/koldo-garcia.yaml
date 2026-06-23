@@ -1,0 +1,21 @@
+id: koldo-garcia
+nombre_completo: "Koldo García Izaguirre"
+nombres_alternativos:
+  - "Koldo García"
+  - "Koldo"
+  - "Koldo García Balda"
+  - "Koldo García Izaguirre"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Asesor del ministro de Transportes José Luis Ábalos"
+    organizacion_id: ministerio-transportes
+    desde: "2018-06-01"
+    hasta: "2021-07-01"
+biografia_corta: |
+  Exasesor de José Luis Ábalos en el Ministerio de Transportes. Figura como uno de los
+  principales encausados del caso Koldo en relación con la contratación de mascarillas
+  durante la pandemia y con piezas conexas en la Audiencia Nacional. La sentencia del
+  Supremo del 22 de junio de 2026 le condena, según la nota oficial del CGPJ y la copia
+  íntegra localizada; en esta ficha se conserva el rol como no firme hasta verificar firmeza.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

@@ -1,0 +1,21 @@
+id: auto-jci4-rechazo-acusaciones-diligencias-pu-2026-06-16
+titulo: "Nota CGPJ — El JCI nº 4 rechaza que todas las acusaciones populares del caso Plus Ultra estén presentes en las diligencias de investigación (16 jun 2026)"
+tipo: nota_prensa_institucional
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Nota oficial publicada en `poderjudicial.es` (dominio oficial en lista
+  blanca DominiosOficiales de [doc 01 — "Enums catalogados"](docs/diseno/01-modelo-de-datos.md#3-enums-catalogados))
+  sobre el auto del JCI nº 4 de la Audiencia Nacional de 16 de junio de
+  2026. Recoge que el magistrado José Luis Calama rechaza que todas las
+  acusaciones populares personadas puedan estar presentes en las diligencias
+  de investigación y desestima los recursos de reforma contra la unificación
+  de su representación y defensa. Cumple V-12.
+productor_organizacion_id: juzgado-central-instruccion-4
+fecha_documento: "2026-06-16"
+fecha_publicacion: "2026-06-16"
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Audiencia-Nacional/Oficina-de-Comunicacion/Notas-de-prensa/El-juez-de-la-Audiencia-Nacional-del-caso--Plus-Ultra--rechaza-que-todas-las-acusaciones-puedan-estar-presentes-en-las-diligencias-de-investigacion"
+estado_acceso: publico
+idioma: es
+caso_principal_id: plus-ultra
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

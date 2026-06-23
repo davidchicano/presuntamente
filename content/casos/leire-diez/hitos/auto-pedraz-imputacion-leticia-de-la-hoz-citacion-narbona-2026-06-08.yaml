@@ -1,0 +1,31 @@
+id: auto-pedraz-imputacion-leticia-de-la-hoz-citacion-narbona-2026-06-08
+caso_id: leire-diez
+tipo: imputacion
+fecha: "2026-06-08"
+fecha_precision: dia
+titulo: "El juez Pedraz cita como investigada a Leticia de la Hoz y como testigo a Cristina Narbona en el caso Leire (8 junio 2026)"
+descripcion: |
+  El 8 de junio de 2026 el magistrado Santiago Pedraz, del JCI nº 5 de la Audiencia
+  Nacional, cita como investigada a la abogada Leticia de la Hoz Calvo, con declaración
+  señalada para el 14 de julio, y acuerda la citación como testigo de la presidenta del
+  PSOE, Cristina Narbona, para el 10 de julio. Según la cobertura cruzada, la diligencia se
+  conecta con la investigación sobre el presunto ofrecimiento de 50.000 euros a una
+  empresaria para que modificara su declaración y con la necesidad de aclarar comunicaciones
+  o reuniones relacionadas con la causa. El instructor reclama además a la Fiscalía General
+  del Estado información sobre reuniones mantenidas con Leire Díez y otros investigados entre
+  2024 y 2025. Rige el principio de presunción de inocencia respecto a todos los
+  investigados.
+personas_afectadas:
+  - santiago-pedraz
+  - leticia-de-la-hoz-calvo
+  - cristina-narbona
+  - leire-diez
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+  - fiscalia-general-del-estado
+  - psoe
+documento_principal_id: eldiario-imputacion-leticia-narbona-leire-2026-06-08
+documentos_relacionados:
+  - euronews-imputacion-leticia-narbona-leire-2026-06-08
+hechos_introducidos: []
+fase_resultante: instruccion

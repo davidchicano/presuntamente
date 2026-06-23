@@ -1,14 +1,85 @@
 id: koldo
-nombre_oficial: "Diligencias Previas — Juzgado Central de Instrucción nº 6 de la Audiencia Nacional (caso Koldo)"
+nombre_oficial: "Causa Especial 003/20775/2020 de la Sala Segunda del Tribunal Supremo y piezas conexas de la Audiencia Nacional (caso Koldo)"
 nombre_mediatico: "Caso Koldo"
 nombres_alternativos:
   - "Operación Koldo"
-  - "Trama Koldo"
+  - "Caso Ábalos"
+  - "Caso mascarillas"
 
-organo_judicial_id: juzgado-central-instruccion-6
-fase_actual: instruccion
+descripcion_corta: |
+  Procedimiento sobre la presunta contratación irregular de mascarillas y material sanitario
+  durante la pandemia de COVID-19, con una pieza principal enjuiciada por la Sala Segunda
+  del Tribunal Supremo por razón del aforamiento de José Luis Ábalos y piezas conexas en la
+  Audiencia Nacional.
+
+sintesis_caso:
+  que_se_investiga: |
+    La adjudicación presuntamente irregular de contratos de material sanitario durante la
+    pandemia y otras actuaciones conexas atribuidas a una red vinculada al entorno del
+    Ministerio de Transportes.
+  hechos_clave:
+    - "La Fiscalía Anticorrupción impulsó la investigación inicial sobre contratos de mascarillas adjudicados a Soluciones de Gestión y Apoyo a Empresas S.L."
+    - "El Tribunal Supremo asumió en diciembre de 2024 la investigación de José Luis Ábalos por su condición de aforado y atrajo los hechos directamente vinculados a Koldo García y Víctor de Aldama."
+    - "El 11 de diciembre de 2025 el instructor del Supremo abrió juicio oral contra Ábalos, Koldo García y Víctor de Aldama por la pieza inicial de contratos de mascarillas."
+    - "El 22 de junio de 2026 la Sala Segunda dictó la Sentencia 418/2026 contra los tres acusados; el inventario conserva los roles como condena no firme hasta verificar firmeza y revisión humana."
+  estado_actual: |
+    La pieza inicial de contratos de mascarillas fue sentenciada por la Sala Segunda del
+    Tribunal Supremo el 22 de junio de 2026. La nota oficial del CGPJ y la copia íntegra
+    localizada de la Sentencia 418/2026 informan de condenas para José Luis Ábalos, Koldo
+    García y Víctor de Aldama por delitos de organización criminal, cohecho, malversación y
+    tráfico de influencias, con absoluciones parciales por otros delitos objeto de acusación.
+    Hasta verificar firmeza y revisión humana explícita, el inventario conserva los roles como
+    `condenado_no_firme` y no promueve hechos subyacentes a `acreditado`. En paralelo, una
+    pieza separada sobre adjudicaciones de obras públicas fue remitida por el Supremo al JCI
+    nº 2 de la Audiencia Nacional el 2 de febrero de 2026 tras la pérdida de aforamiento de
+    Ábalos. Rige el principio de presunción de inocencia para las piezas no sentenciadas y
+    para cualquier extremo pendiente de firmeza.
+  cifras_clave:
+    - "24 años y 3 meses de prisión para José Luis Ábalos, según nota oficial del CGPJ del 22-jun-2026"
+    - "19 años, 8 meses y 1 día de prisión para Koldo García, según nota oficial del CGPJ del 22-jun-2026"
+    - "4 años y 6 meses de prisión para Víctor de Aldama, con suspensión condicionada según nota oficial del CGPJ del 22-jun-2026"
+    - "430.298 euros de decomiso de ganancias provenientes del cohecho, según el fallo de la Sentencia TS 418/2026"
+    - "43.950,54 euros de responsabilidad civil solidaria de Ábalos y Koldo García a favor de INECO y TRAGSATEC, según el fallo"
+
+organo_judicial_id: tribunal-supremo
+tipo_procedimiento: causa_especial_aforado
+ponente_actual_id: andres-martinez-arrieta
+numero_procedimiento: "Causa Especial 003/20775/2020 (pieza inicial de contratos de mascarillas); piezas conexas en JCI nº 2 AN"
+
+fase_actual: sentencia_primera_instancia
 fecha_apertura: "2024-02-20"
 
 origen_denuncia: fiscalia_anticorrupcion
+delitos_atribuidos_en_la_causa:
+  - organizacion-criminal
+  - cohecho
+  - malversacion-caudales-publicos
+  - trafico-de-influencias
+  - falsedad-documental
+  - prevaricacion
 
-estado_publicacion: pendiente
+resumen_cifras: |
+  La Sentencia TS 418/2026 permite estructurar dos consecuencias económicas de la pieza
+  inicial: 43.950,54 euros de responsabilidad civil solidaria a favor de INECO y TRAGSATEC,
+  y 430.298 euros de decomiso de ganancias provenientes del cohecho. Estas cifras se
+  modelan como consecuencias de sentencia no verificada como firme, no como importe total
+  del objeto investigado ni como total económico del caso. Las cifras de contratos y piezas
+  conexas quedan pendientes de primarios completos para evitar doble conteo.
+
+estado_publicacion: beta_publica
+ultima_revision_editorial: "2026-06-23"
+nivel_relevancia_editorial: capital
+
+estado_ficha:
+  cronologia: completo
+  roles_procesales: parcial
+  documentos_primarios: parcial
+  hechos_modelados: parcial
+  fuentes_cruzadas: parcial
+  composicion_fuentes_citadas: pendiente
+  vinculos_institucionales: parcial
+  conexiones: parcial
+  cobertura_mediatica_general: parcial
+  revision_editorial: parcial
+  notas: "Beta pública urgente del 23-jun-2026: cronología principal, roles formales, nota CGPJ, nota resumen oficial DOCX y copia local de la Sentencia TS 418/2026 ya están modeladas. Siguen parciales los primarios oficiales en CENDOJ/Poder Judicial, firmeza, piezas conexas AN, acusaciones/defensas, cobertura general y relaciones entre casos."
+  fecha_actualizacion: "2026-06-23"

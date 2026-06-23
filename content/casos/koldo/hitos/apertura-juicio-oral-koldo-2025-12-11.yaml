@@ -1,0 +1,27 @@
+id: apertura-juicio-oral-koldo-2025-12-11
+caso_id: koldo
+tipo: apertura_juicio_oral
+fecha: "2025-12-11"
+fecha_precision: dia
+titulo: "El Supremo abre juicio oral a Ábalos, Koldo García y Víctor de Aldama por la presunta contratación irregular de mascarillas"
+descripcion: |
+  El 11 de diciembre de 2025 el magistrado Leopoldo Puente dicta auto de apertura de juicio
+  oral contra José Luis Ábalos, Koldo García y Víctor de Aldama. La parte dispositiva
+  reproducida por el CGPJ acuerda la apertura por hechos provisionalmente calificados como
+  integración en organización criminal, cohecho continuado, uso y aprovechamiento de
+  información privilegiada, tráfico de influencias, malversación de fondos públicos,
+  falsedad en documento oficial y prevaricación. La apertura de juicio oral no implica
+  declaración de culpabilidad y rige el principio de presunción de inocencia.
+personas_afectadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+  - leopoldo-puente
+organizaciones_afectadas:
+  - tribunal-supremo
+documento_principal_id: cgpj-apertura-juicio-oral-koldo-2025-12-11
+documentos_relacionados:
+  - cgpj-composicion-sala-koldo-2026-01-14
+hechos_introducidos:
+  - hecho-apertura-juicio-oral-koldo
+fase_resultante: juicio_oral

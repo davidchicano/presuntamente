@@ -1,0 +1,31 @@
+id: sentencia-koldo-2026-06-22
+caso_id: koldo
+tipo: sentencia_primera_instancia
+fecha: "2026-06-22"
+fecha_precision: dia
+titulo: "La Sala Segunda del Supremo condena a José Luis Ábalos, Koldo García y Víctor de Aldama en la pieza inicial de mascarillas"
+descripcion: |
+  El 22 de junio de 2026 la Sala Segunda del Tribunal Supremo notifica sentencia en la pieza
+  inicial del caso Koldo, relativa a la contratación de mascarillas durante la pandemia. La
+  nota oficial del CGPJ y la copia íntegra localizada de la Sentencia TS 418/2026 informan
+  de condenas para José Luis Ábalos, Koldo García y Víctor de Aldama por delitos de
+  organización criminal, cohecho, malversación y tráfico de influencias, con suspensión
+  condicionada de la pena de prisión de Aldama y absoluciones parciales por otros delitos
+  objeto de acusación. Hasta verificar firmeza y revisión humana explícita, este inventario
+  modela los roles como `condenado_no_firme` y no marca hechos subyacentes como
+  `acreditado`.
+personas_afectadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+organizaciones_afectadas:
+  - tribunal-supremo
+documento_principal_id: cgpj-sentencia-koldo-2026-06-22
+documentos_relacionados:
+  - nota-resumen-sts-koldo-2026-06-22
+  - sentencia-ts-418-2026-koldo
+hechos_introducidos:
+  - hecho-sentencia-no-firme-koldo-2026
+  - hecho-responsabilidad-civil-koldo-2026
+  - hecho-decomiso-cohecho-koldo-2026
+fase_resultante: sentencia_primera_instancia

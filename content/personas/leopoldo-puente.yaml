@@ -1,0 +1,16 @@
+id: leopoldo-puente
+nombre_completo: "Leopoldo Puente Segura"
+nombres_alternativos:
+  - "Leopoldo Puente"
+  - "Puente"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Magistrado de la Sala Segunda (de lo Penal) del Tribunal Supremo"
+    organizacion_id: tribunal-supremo
+    desde: "2020-01-01"
+biografia_corta: |
+  Magistrado de la Sala Segunda del Tribunal Supremo. Actuó como instructor de la Causa
+  Especial 003/20775/2020 en la pieza del caso Koldo seguida contra José Luis Ábalos, Koldo
+  García y Víctor de Aldama.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

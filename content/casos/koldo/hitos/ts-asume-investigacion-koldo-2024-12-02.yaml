@@ -1,0 +1,26 @@
+id: ts-asume-investigacion-koldo-2024-12-02
+caso_id: koldo
+tipo: cambio_organo
+fecha: "2024-12-02"
+fecha_precision: dia
+titulo: "El Tribunal Supremo cita a José Luis Ábalos como investigado y asume los hechos directamente vinculados a Koldo García y Víctor de Aldama"
+descripcion: |
+  El 2 de diciembre de 2024 el magistrado Leopoldo Puente, instructor de la Sala Segunda del
+  Tribunal Supremo, cita a declarar voluntariamente como investigado al exministro José Luis
+  Ábalos por su condición de aforado y asume la competencia para investigar a Koldo García
+  y Víctor de Aldama respecto de los hechos que considera directa e inescindiblemente
+  vinculados al aforado. El Juzgado Central de Instrucción nº 2 de la Audiencia Nacional
+  continúa con el resto de diligencias sobre investigados y hechos no vinculados al aforado.
+  Rige el principio de presunción de inocencia.
+personas_afectadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+  - leopoldo-puente
+organizaciones_afectadas:
+  - tribunal-supremo
+  - juzgado-central-instruccion-2
+documento_principal_id: cgpj-ts-asume-investigacion-koldo-2024-12-02
+hechos_introducidos:
+  - hecho-ts-asume-pieza-mascarillas-koldo
+fase_resultante: instruccion

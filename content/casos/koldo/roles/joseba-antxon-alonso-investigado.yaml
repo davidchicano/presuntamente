@@ -1,0 +1,17 @@
+id: joseba-antxon-alonso-investigado-koldo-2025-09
+caso_id: koldo
+sujeto_tipo: persona
+sujeto_persona_id: joseba-antxon-alonso
+rol: investigado
+delitos_atribuidos:
+  - organizacion-criminal
+  - cohecho
+  - trafico-de-influencias
+fecha_inicio: "2025-09-23"
+hito_origen_id: separacion-pieza-obras-koldo-2025-09-23
+notas: |
+  La Sentencia TS 418/2026 reproduce el auto de 23 de septiembre de 2025 que forma la
+  pieza separada de obras públicas y enumera a Joseba Antxon Alonso Egurrola entre las
+  personas investigadas en esa pieza. Este rol se limita a la pieza separada y no lo vincula
+  con la sentencia de mascarillas del 22 de junio de 2026. Rige el principio de presunción
+  de inocencia.

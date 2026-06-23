@@ -106,7 +106,7 @@ El auto del 26-may sitúa el presunto ofrecimiento de **50.000 €** a la empres
 ### Pendientes nuevos abiertos por este barrido
 - [ ] Ampliar descripción de `leire-diez-comparte-actor-koldo` con el hilo De la Hoz + Pano/Aldama/90.000 € (lo consolida Reconciliación; propuesto en salida).
 - [ ] Evaluar `conexion_factual` leire-diez ↔ david-sanchez-badajoz (auto Pedraz menciona a la jueza de ese caso como objetivo de la presunta operación de desestabilización). Verificar respaldo en el auto íntegro.
-- [ ] Vigilar imputación formal de Leticia de la Hoz en la pieza Pedraz; si llega, crear persona + rol y elevar nexo Koldo a `comparte_actor_con`.
+- [x] ~~Vigilar imputación formal de Leticia de la Hoz en la pieza Pedraz; si llega, crear persona + rol y elevar nexo Koldo a `comparte_actor_con`.~~ **RESUELTO (barrido 2026-06-23):** Pedraz la cita como investigada el 8-jun-2026; se crean `content/personas/leticia-de-la-hoz-calvo.yaml`, `content/casos/leire-diez/roles/leticia-de-la-hoz-calvo-investigada.yaml` y el hito `auto-pedraz-imputacion-leticia-de-la-hoz-citacion-narbona-2026-06-08`. La propuesta de enriquecer el nexo con Koldo se deja para Reconciliación.
 - [ ] Confirmar nº de DP de la pieza Pedraz ("DP 150/2025" citado sólo por fuente no auditable).
 - [ ] Refinar `hecho-presunta-obstruccion-judicial`: la cobertura precisa que el ofrecimiento de 50.000 € se habría canalizado vía De la Hoz y apunta a la retractación sobre los 90.000 € de Pano/Aldama; valorar añadir ese matiz al `enunciado`/`importe_nota` cuando se localice el auto íntegro (no se toca ahora para no introducir a De la Hoz sin imputación formal).
 
@@ -161,7 +161,7 @@ La nota CGPJ enumera: organización criminal, cohecho, revelación de secretos, 
 
 ### Novedades NO modeladas (a propósito) — guardarraíles
 - **Recurso de Santos Cerdán contra la petición de inhibición** Pedraz → JI nº 9 (eldiario, 5-jun). Es **escrito de parte no resuelto**; sin `tipo` de Hito adecuado en instrucción. Se anota; no se modela hasta que se resuelva.
-- **La Fiscalía pide que Cristina Narbona (presidenta del PSOE) declare como testigo** (cobertura 5-jun). Es **solicitud no resuelta**; además "testigo" no es `RolEnCaso` de los tipos procesales del schema (investigado/procesado/…). No se crea persona ni rol. Si un auto la cita formalmente como testigo, seguirá sin ser rol de imputación: sólo se anotaría en la descripción del hito correspondiente.
+- **La Fiscalía pide que Cristina Narbona (presidenta del PSOE) declare como testigo** (cobertura 5-jun). Es **solicitud no resuelta**; no se crea persona ni rol sin auto que acuerde la citación. Si un auto la cita formalmente como testigo, el schema permite modelar `RolEnCaso.rol = testigo`, dejando claro que no es rol de imputación.
 - **Contenido del sumario recién accesible** (libretas/anotaciones de Díez intervenidas por la UCO — "libreta azul", "Pedro no se fía del DAO", supuesta tesis de "proteger a Sánchez"; mención a **Mercedes González**, directora de la Guardia Civil). Es **interpretación periodística de informes UCO**, no hallazgo judicial; ni Pedro Sánchez ni Mercedes González tienen rol procesal en esta causa. NO modelar (presunción de inocencia + no exposición de personas sin rol formal + cautela V-13 sobre interpretación de la prensa). Pendiente del barrido 03-jun: cuando el sumario esté íntegro, valorar elevar a N1 hechos hoy en N3 `filtrado_verificado`.
 - **Pieza de contratos públicos / SEPI sigue secreta hasta julio.** Mundiario (4-5 jun) publica que la UCO trabaja en esa pieza secreta y habría registrado **Tubos Reunidos** (nueva derivada SEPI, posible rescate de 112,8 M€ que rozaría al PNV). Es **la rama que conecta con Plus Ultra y que Pedraz mantiene bajo reserva**; además es fuente prácticamente única (Mundiario). NO modelar; vigilar cuando se levante ese secreto (~julio).
 
@@ -177,7 +177,7 @@ La nota CGPJ enumera: organización criminal, cohecho, revelación de secretos, 
 
 ### Pendientes nuevos / actualizados por este barrido
 - [ ] Vigilar la **resolución de la inhibición** JI nº 9 → AN (ahora recurrida por Cerdán); si se acepta, Hito `acumulacion_causas` y posible `cambio_organo`, y entonces reevaluar la personación de García-Castellón (que Pedraz dejó condicionada a la acumulación).
-- [ ] Cuando se levante el secreto de la **pieza de contratos SEPI** (~julio): enriquecer la relación con plus-ultra y valorar `comparte_actor_con`; revisar la derivada Tubos Reunidos / 112,8 M€.
+- [x] ~~Cuando se levante el secreto de la **pieza de contratos SEPI** (~julio): enriquecer la relación con plus-ultra y valorar `comparte_actor_con`; revisar la derivada Tubos Reunidos / 112,8 M€.~~ **PARCIALMENTE RESUELTO (barrido 2026-06-23):** el secreto de esa pieza se levantó el 15-jun-2026 y se cataloga como hito N4; la propuesta de enriquecer la relación con Plus Ultra se deja al agente de Reconciliación porque esta sesión no puede editar `content/relaciones-entre-casos/**`.
 - [ ] `pnpm archive:catchup -- --caso=leire-diez` para los tres N4 nuevos del auto García-Castellón (Confilegal, Público, The Objective).
 
 ---
@@ -200,3 +200,38 @@ La nota CGPJ enumera: organización criminal, cohecho, revelación de secretos, 
 - [ ] `url_archivo` de las 6 piezas citadas en `contenido_no_modelado` (el script `archivar-n4.mjs` no lee este campo todavía — ver ficha de la feature, pendiente operativo).
 - [ ] Barrido `/actualizar-caso` de la ola 5-11 jun (ver arriba).
 - [ ] Revisar `fecha_revision` de los 3 ítems si el sumario íntegro accesible confirma/desmiente las interpretaciones (podrían pasar a Hecho o retirarse).
+
+---
+
+## Barrido de actualidad — 2026-06-23 (`/actualizar-caso`)
+
+**Ventana revisada:** 2026-06-06 (última revisión editorial con hito nuevo) → 2026-06-23. Última fecha procesal previa catalogada antes de esta pasada: 04-jun-2026 (rechazo provisional de la personación de García-Castellón). Barrido multi-línea: elDiario.es, Cadena SER, RTVE, Euronews, Libertad Digital, El Debate, Público y consultas por órgano/juez.
+
+### Novedades MODELADAS
+1. **Hito nuevo** `auto-pedraz-info-financiera-psoe-psc-2026-06-04` (`tipo: auto_diligencias`). Pedraz acuerda nuevas diligencias de información tributaria y financiera sobre PSOE/PSC y varias personas o entidades vinculadas a la causa para 2024-2025. Se modela con `Documento` N4 en dos líneas propias: elDiario.es + Cadena SER. No se crea `Hecho` nuevo: es una diligencia procesal, no un hecho sustantivo autónomo.
+2. **Hito nuevo** `auto-pedraz-imputacion-leticia-de-la-hoz-citacion-narbona-2026-06-08` (`tipo: imputacion`). Pedraz cita como investigada a **Leticia de la Hoz Calvo** (declaración fijada para el 14-jul-2026) y como testigo a **Cristina Narbona** (10-jul-2026), además de pedir a la FGE información sobre reuniones con Leire Díez y otros investigados. Se crean persona + rol `investigado` para Leticia y persona + rol `testigo` para Narbona. Respaldo N4 cruzado: elDiario.es + Euronews.
+3. **Hito nuevo** `auto-pedraz-levantamiento-secreto-pieza-sepi-2026-06-15` (`tipo: auto_diligencias`). Pedraz levanta el secreto de la pieza separada relativa a presuntas irregularidades en operaciones de la SEPI, incluida la derivada Tubos Reunidos. Respaldo N4 cruzado: Libertad Digital + Euronews. No se promueven a `Hecho` las cifras y detalles del sumario (114.950 €, 112,8 M€, segunda operativa 2024-2025) porque siguen llegando vía cobertura periodística del contenido de las actuaciones y esta pasada no incorpora primario local.
+4. **Actualización de Hito existente** `uco-en-ferraz-2026-05-27`. Se añade el episodio procesal del **22-jun-2026**: Pedraz accede a abrir una pieza reservada de expurgo para apartar de la causa la documentación ajena al objeto del procedimiento aportada o intervenida en Ferraz. Se documenta con RTVE + Público. No se crea Hito propio: es una incidencia derivada del requerimiento ya catalogado en Ferraz.
+
+### Novedades NO modeladas (a propósito)
+- **12-jun-2026: fijación de fecha para la declaración de Jacobo Teijelo** (25-jun-2026). Se considera una actualización procesal menor sobre un investigado ya existente, sin cambio de rol ni de objeto. Se deja en NOTES y en el reporte, no como Hito propio.
+- **16-jun-2026: versión del PSOE sobre las facturas de Teijelo**. Es una alegación de parte / versión defensiva sobre pagos ya investigados; sin auto nuevo que la convierta en hito autónomo.
+- **23-jun-2026: inicio de la ronda de declaraciones / nueva explotación periodística del sumario SEPI**. A fecha de esta pasada son agenda en curso o lectura de cobertura sobre actuaciones ya abiertas, no resultado procesal cerrado.
+
+### Cruce con otros casos del inventario
+- **plus-ultra**: el levantamiento del secreto del 15-jun refuerza el nexo funcional ya conocido (SEPI / Vicente Fernández Guerrero / derivada Tubos Reunidos). **No se edita** `RelacionEntreCasos` por restricción de scope; se propone en la salida enriquecer `leire-diez-conexion-factual-plus-ultra` con el dato de que la pieza SEPI ya no está secreta.
+- **koldo**: la citación formal como investigada de **Leticia de la Hoz Calvo**, identificada en cobertura como abogada de Koldo García, refuerza el nexo ya existente. **No se edita** `RelacionEntreCasos` por scope; se propone enriquecer `leire-diez-comparte-actor-koldo`.
+- **david-sanchez-badajoz / begona-gomez**: sigue habiendo material periodístico sobre presuntas maniobras de desestabilización, pero en esta ventana no aparece un auto nuevo específico que justifique una relación nueva o una ampliación adicional distinta de lo ya anotado.
+
+### Cascada de coherencia aplicada sobre `caso.yaml`
+- `sintesis_caso.estado_actual`: **actualizado** para reflejar 04-jun (diligencias financieras), 08-jun (Leticia/Narbona), 15-jun (alzamiento del secreto de la pieza SEPI) y 22-jun (expurgo Ferraz), manteniendo también la inhibición pedida al JI nº 9 y el rechazo provisional de la personación de García-Castellón.
+- `ultima_revision_editorial` y `estado_ficha.fecha_actualizacion`: **2026-06-23**.
+- `estado_ficha.notas`: **actualizada** con el resumen de esta pasada.
+- **Sin tocar**: `hechos_clave`, `que_se_investiga`, `cifras_clave`, `resumen_cifras`, `fase_actual`, `delitos_atribuidos_en_la_causa`, `descripcion_corta`, `nivel_relevancia_editorial`. Motivo: la ventana añade diligencias y citaciones, pero no cambia el objeto nuclear ni aporta todavía un primario bastante sólido para promover nuevas cifras o reformular hechos estructurales.
+
+### Pendientes nuevos / actualizados por este barrido
+- [ ] Localizar el **auto** del 04-jun-2026 sobre información tributaria y financiera del PSOE/PSC para sustituir el soporte N4.
+- [ ] Localizar el **auto** del 08-jun-2026 que cita a Leticia de la Hoz y Cristina Narbona, así como la resolución o respuesta oficial de la FGE sobre reuniones con investigados.
+- [ ] Localizar el **auto** del 15-jun-2026 que levanta el secreto de la pieza `JG 150/2025-01` para decidir si algún detalle cuantitativo de la derivada SEPI/Tubos puede pasar de NOTES a `Hecho`.
+- [ ] Valorar en Reconciliación la actualización de `leire-diez-conexion-factual-plus-ultra` y `leire-diez-comparte-actor-koldo`.
+- [ ] Vigilar el resultado efectivo de las declaraciones señaladas para el 25-jun (Teijelo), 10-jul (Narbona) y 14-jul (De la Hoz): si se celebran o se suspenden, decidir si merecen Hito propio o simple actualización de notas/roles.

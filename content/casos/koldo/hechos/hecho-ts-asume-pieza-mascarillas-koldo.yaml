@@ -1,0 +1,28 @@
+id: hecho-ts-asume-pieza-mascarillas-koldo
+caso_id: koldo
+enunciado: |
+  El Tribunal Supremo asumió en diciembre de 2024 la investigación de José Luis Ábalos,
+  Koldo García y Víctor de Aldama respecto de los hechos directamente vinculados al
+  aforado, centrados en la supuesta contratación irregular de mascarillas y material
+  sanitario durante la pandemia. La nota oficial del CGPJ precisa que el Juzgado Central de
+  Instrucción nº 2 de la Audiencia Nacional continuaba con el resto de diligencias no
+  vinculadas al aforado. Rige el principio de presunción de inocencia.
+tipo: investigado
+fecha_o_periodo:
+  desde: "2024-12-02"
+  precision: dia
+personas_implicadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+organizaciones_implicadas:
+  - tribunal-supremo
+  - juzgado-central-instruccion-2
+documentos_respaldo:
+  - documento_id: cgpj-ts-asume-investigacion-koldo-2024-12-02
+    pasaje: "Nota oficial CGPJ del 2-dic-2024: citación de Ábalos como investigado y asunción de los hechos vinculados a Koldo García y Víctor de Aldama."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

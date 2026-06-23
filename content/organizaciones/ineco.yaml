@@ -1,0 +1,16 @@
+id: ineco
+nombre: "Ingeniería y Economía del Transporte S.M.E. M.P., S.A."
+nombres_alternativos:
+  - "INECO"
+  - "Ineco"
+tipo: organismo_publico
+descripcion_corta: |
+  Sociedad mercantil estatal especializada en ingeniería y consultoría del transporte.
+  La Sentencia TS 418/2026 del caso Koldo la identifica como una de las entidades a las
+  que José Luis Ábalos y Koldo García deben indemnizar solidariamente.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.ineco.com/"
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

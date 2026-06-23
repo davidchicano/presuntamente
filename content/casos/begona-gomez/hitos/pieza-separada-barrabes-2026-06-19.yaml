@@ -1,0 +1,42 @@
+id: pieza-separada-barrabes-bg-2026-06-19
+caso_id: begona-gomez
+tipo: auto_diligencias
+fecha: "2026-06-19"
+fecha_precision: dia
+titulo: "El Juzgado de Instrucción nº 41 de Madrid abre una pieza separada dirigida solo contra Juan Carlos Barrabés por un contrato de Red.es"
+descripcion: |
+  Mediante providencia fechada el 18 de junio de 2026 y conocida
+  públicamente el 19 de junio, el magistrado Juan Carlos Peinado,
+  titular del Juzgado de Instrucción nº 41 de Madrid, acuerda abrir una
+  pieza separada dentro del caso para investigar únicamente al
+  empresario Juan Carlos Barrabés por presuntos delitos de
+  prevaricación y fraude a los intereses financieros de la Unión
+  Europea en relación con una adjudicación de Red.es. Según la
+  cobertura periodística cruzada, la nueva línea se activa tras la
+  remisión al juzgado de documentación procedente de la Fiscalía
+  Europea y de un informe de la UCO sobre un contrato adjudicado a una
+  UTE participada por Innova Next, empresa vinculada a Barrabés.
+
+  La providencia fue aclarada horas después para precisar que la pieza
+  se abre solo respecto de Barrabés y no respecto de Begoña Gómez ni de
+  Cristina Álvarez, cuyos nombres aparecieron inicialmente en una
+  resolución previa de forma no delimitada. La nueva pieza no altera en
+  ese momento la situación procesal de la causa principal, que seguía
+  pendiente de la decisión sobre la apertura de juicio oral y sobre las
+  medidas cautelares solicitadas por las acusaciones populares.
+
+  Conforme al principio de presunción de inocencia, la apertura de esta
+  pieza separada no implica valoración de culpabilidad y la
+  responsabilidad penal de Barrabés solo podrá fijarse, en su caso, por
+  resolución firme.
+personas_afectadas:
+  - juan-carlos-barrabes
+organizaciones_afectadas:
+  - juzgado-instruccion-41-madrid
+  - fiscalia-europea
+  - red-es
+  - uco-guardia-civil
+documento_principal_id: rtve-pieza-separada-barrabes-bg-2026-06-19
+documentos_relacionados:
+  - eldiario-pieza-separada-barrabes-bg-2026-06-19
+fase_resultante: fase_intermedia

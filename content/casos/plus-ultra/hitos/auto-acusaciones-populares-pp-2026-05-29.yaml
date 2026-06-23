@@ -32,10 +32,22 @@ descripcion: |
   Gobierno José Luis Rodríguez Zapatero, cuya declaración sigue señalada para
   los días 17 y 18 de junio de 2026.
 
-  A fecha de incorporación (30-may-2026) no consta nota oficial del CGPJ ni el
-  auto íntegro publicado en CENDOJ sobre esta resolución; el hito se respalda
-  en dos fuentes N4 de líneas editoriales distintas. Si aparece nota CGPJ o el
-  auto íntegro, actualizar `documento_principal_id` con el documento oficial.
+  El 16 de junio de 2026, la Oficina de Comunicación del CGPJ informó de un
+  auto posterior en el que Calama rechazó que todas las acusaciones populares
+  personadas pudieran estar presentes en las diligencias de investigación y
+  confirmó que su intervención debía canalizarse a través de la
+  representación y dirección letrada unificadas. La misma resolución
+  desestimó los recursos de reforma de Liberum, Vox, Hazte Oír y un
+  particular contra la unificación acordada el 29 de mayo, reforzando así la
+  operatividad práctica de esa decisión previa.
+
+  A fecha de incorporación inicial (30-may-2026) no constaba nota oficial
+  del CGPJ ni el auto íntegro publicado en CENDOJ sobre la resolución del
+  29 de mayo; el hito se respaldó entonces en dos fuentes N4 de líneas
+  editoriales distintas. La nota oficial del 16 de junio documenta un auto
+  posterior que confirma la operatividad de la unificación y desestima los
+  recursos de reforma, pero sigue pendiente el auto íntegro del 29 de mayo
+  para elevar el respaldo original a N1/N3 y extraer cita literal.
 
   Conforme al principio de presunción de inocencia, la condición de
   investigado no implica valoración de culpabilidad y persiste mientras no
@@ -53,6 +65,7 @@ organizaciones_afectadas:
 documento_principal_id: the-objective-acusaciones-populares-pp-2026-05-29
 documentos_relacionados:
   - infobae-acusaciones-populares-pp-2026-05-29
+  - auto-jci4-rechazo-acusaciones-diligencias-pu-2026-06-16
 hechos_introducidos:
   - pu-acusaciones-populares-pp-2026-05-29
 fase_resultante: instruccion

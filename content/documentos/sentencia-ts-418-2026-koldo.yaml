@@ -1,0 +1,23 @@
+id: sentencia-ts-418-2026-koldo
+titulo: "Sentencia TS 418/2026 — Causa Especial 003/20775/2020, pieza inicial del caso Koldo (22 jun 2026)"
+tipo: sentencia
+nivel_fuente: 3
+nivel_fuente_justificacion: |
+  Texto íntegro de la Sentencia 418/2026 de la Sala Segunda del Tribunal Supremo,
+  localizado en descarga pública de El País el 23-jun-2026. El PDF incluye sello de
+  verificación en `administraciondejusticia.gob.es`, identifica la Causa Especial
+  003/20775/2020 y coincide con la nota oficial del CGPJ del 22-jun-2026 en tribunal,
+  acusados, fecha y sentido del fallo. Se cataloga provisionalmente como N3
+  `filtrado_verificado` hasta que aparezca copia oficial en CENDOJ/Poder Judicial; cuando
+  eso ocurra, debe sustituirse o elevarse manteniendo el hash histórico si coincide.
+productor_organizacion_id: tribunal-supremo
+fecha_documento: "2026-06-22"
+fecha_publicacion: "2026-06-22"
+url_canonica: "https://descargables.elpais.com/sentencia-abalos-caso-mascarillas.pdf"
+ruta_local: "/documentos/koldo/sentencia-ts-418-2026-caso-koldo.pdf"
+hash_sha256: "50a02d328a86a7619a9f2ba9cdb5df23220271b4587b227ebcf4c0019255cb90"
+estado_acceso: filtrado_verificado
+idioma: es
+caso_principal_id: koldo
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

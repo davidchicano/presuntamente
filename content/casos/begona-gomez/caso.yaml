@@ -28,21 +28,27 @@ descripcion_corta: |
   Tribunal del Jurado por presuntos delitos de tráfico de influencias,
   corrupción en los negocios, malversación de caudales públicos y
   apropiación indebida, archivando el delito de intrusismo profesional.
-  La Fiscalía Provincial de Madrid ha sostenido desde la apertura, de
-  forma reiterada, que no concurren indicios de delito y ha solicitado
-  el archivo.
+  El 20 de junio de 2026 el instructor acordó la apertura del juicio
+  oral y la imposición de medidas cautelares personales a Begoña Gómez
+  y Cristina Álvarez. Dos días antes, mediante providencia de 18 de
+  junio conocida el 19 de junio, abrió además una pieza separada
+  dirigida solo contra Barrabés por presunta prevaricación y fraude a
+  los intereses financieros de la Unión Europea en una adjudicación de
+  Red.es. La Fiscalía Provincial de Madrid ha sostenido desde la
+  apertura, de forma reiterada, que no concurren indicios de delito y
+  ha solicitado el archivo de la causa principal.
 
 sintesis_caso:
   que_se_investiga: "Si Begoña Gómez usó su posición institucional en relación con una cátedra de la Universidad Complutense y contratos vinculados a Juan Carlos Barrabés."
   hechos_clave:
     - "El procedimiento empezó en abril de 2024 por una denuncia de Manos Limpias."
-    - "El instructor propuso en abril de 2026 que el caso pase a Tribunal del Jurado por varios delitos presuntos."
+    - "El instructor abrió juicio oral el 20 de junio de 2026 contra Begoña Gómez, Cristina Álvarez y Juan Carlos Barrabés en la causa principal."
     - "La Fiscalía sostiene que no hay indicios suficientes y ha pedido el archivo."
-  estado_actual: "El caso está en fase intermedia, a la espera de la audiencia previa al juicio ante el Tribunal del Jurado convocada para el 9 de junio de 2026, en la que el instructor decidirá sobre la apertura de juicio oral; la defensa ha pedido aplazarla. No hay sentencia firme."
+  estado_actual: "La causa principal está en fase intermedia tras el auto de apertura de juicio oral de 20 de junio de 2026, con retirada de pasaporte, prohibición de salida de España y comparecencia quincenal para Begoña Gómez y Cristina Álvarez; no hay sentencia firme. En paralelo, desde el 18 de junio de 2026 el instructor tramita una pieza separada dirigida solo contra Barrabés por presunta prevaricación y fraude a los intereses financieros de la Unión Europea en un contrato de Red.es."
   cifras_clave:
     - "113.509,32 € de gasto UCM citado"
     - "4 delitos presuntos en la causa"
-    - "Tribunal del Jurado propuesto"
+    - "Apertura de juicio oral acordada"
 
 organo_judicial_id: juzgado-instruccion-41-madrid
 numero_procedimiento: "Diligencias Previas"
@@ -67,7 +73,7 @@ resumen_cifras: |
   la propia universidad).
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-05-30"
+ultima_revision_editorial: "2026-06-23"
 nivel_relevancia_editorial: capital
 
 # Honestidad editorial sobre el trabajo de presuntamente.org en esta ficha
@@ -84,5 +90,5 @@ estado_ficha:
   conexiones: pendiente
   cobertura_mediatica_general: parcial
   revision_editorial: completo
-  notas: "Cuatro autos de instrucción y un escrito de Fiscalía siguen pendientes de aparecer en fuente oficial verificable. Los Juzgados de Instrucción ordinarios no publican autos en CENDOJ; se reanalizará cuando el CGPJ los publique o cuando aparezcan en un mirror auditable. Cobertura mediática: corpus inicial de 29 piezas verificadas (14 medios, 5 ventanas temporales abr 2024–may 2026). Parcial por ausencia de El País, El Mundo y ABC; pendiente segunda pasada con esos medios. Barrido de actualidad 2026-05-30: incorporado el detalle del informe UCO del 25-may y la fiscalización de la Cámara de Cuentas de la Comunidad de Madrid (26-may); pendientes de V-13 la presunta prevaricación y el aplazamiento del 9-jun (ver NOTES)."
-  fecha_actualizacion: "2026-05-30"
+  notas: "Cuatro autos de instrucción y un escrito de Fiscalía siguen pendientes de aparecer en fuente oficial verificable; a 23-jun-2026 se añaden como pendientes de primario la providencia de 18-jun-2026 que abre pieza separada contra Barrabés y el auto de apertura de juicio oral de 20-jun-2026, ambos localizados solo vía cobertura N4 cruzada. Los Juzgados de Instrucción ordinarios no publican autos en CENDOJ; se reanalizará cuando el CGPJ los publique o cuando aparezcan en un mirror auditable. Barrido de actualidad 2026-06-23: incorporados el aplazamiento de la audiencia previa al 15-jun, la apertura de pieza separada solo contra Barrabés (19-jun) y la apertura de juicio oral con medidas cautelares (20-jun); citación para entrega de pasaporte el 24-jun anotada en NOTES como próximo hito vigilable."
+  fecha_actualizacion: "2026-06-23"

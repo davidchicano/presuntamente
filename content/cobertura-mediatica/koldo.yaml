@@ -1,0 +1,160 @@
+# Cobertura mediática general — caso koldo
+# Corpus rastreado con la skill /rastrear-cobertura v1.
+# Separado del corpus de Documentos que respaldan Hechos (content/documentos/).
+
+caso_id: koldo
+fecha_rastreo: "2026-06-23"
+
+metodologia:
+  terminos_busqueda:
+    - "caso Koldo"
+    - "caso Ábalos"
+    - "caso mascarillas"
+    - "Sentencia 418/2026"
+    - "Causa Especial 20775/2020"
+  ventanas_temporales:
+    - desde: "2024-02-01"
+      hasta: "2024-12-31"
+      notas: "Arranque mediático del caso y asunción parcial por el Tribunal Supremo tras la exposición razonada de la Audiencia Nacional."
+    - desde: "2025-01-01"
+      hasta: "2025-12-31"
+      notas: "Pase a procedimiento abreviado, apertura de juicio oral y separación de piezas."
+    - desde: "2026-01-01"
+      hasta: "2026-06-23"
+      notas: "Prisión provisional, señalamiento de juicio, vista oral y sentencia de la Sala Segunda del Supremo."
+  fuentes_buscadas:
+    - poderjudicial.es
+    - elpais.com
+    - cadenaser.com
+    - eldiario.es
+    - lasexta.com
+    - confilegal.com
+    - newtral.es
+    - vozpopuli.com
+  criterios_inclusion: >
+    Se incluyen piezas que mencionan el caso Koldo, Ábalos/Koldo o la sentencia del
+    Supremo en titular o lead. El corpus prioriza piezas informativas y análisis sobre
+    hitos procesales; no sustituye a los documentos probatorios del caso.
+  criterios_exclusion: >
+    Se excluyen directos políticos sin información procesal nueva, columnas puramente
+    opinativas y piezas que agrupan Koldo con otros casos sólo como clima político. Las
+    intenciones de recurso, incidente de nulidad o amparo se recogen sólo como cobertura
+    contextual si no hay resolución judicial nueva.
+  notas: >
+    Rastreo parcial creado en la beta pública urgente del 23-jun-2026. Queda pendiente
+    archivado en archive.org y ampliación retrospectiva sistemática por ventanas.
+
+estado: parcial
+ultima_revision_editorial: "2026-06-23"
+
+noticias:
+  - id: newtral-claves-querella-koldo-2024-02-26
+    url: "https://www.newtral.es/claves-querella-caso-koldo/20240226/"
+    medio_id: newtral
+    titular: "Las claves de la querella del caso Koldo"
+    fecha_publicacion: "2024-02-26"
+    resumen: >
+      Newtral explica el contenido inicial de la querella de Anticorrupción y el foco en
+      contratos de material sanitario adjudicados durante la pandemia. En el inventario se
+      usa esta pieza sólo como apoyo de arranque hasta localizar el primario inicial.
+    tipo_pieza: analisis
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-06-23"
+
+  - id: elpais-sentencia-abalos-koldo-2026-06-22
+    url: "https://elpais.com/espana/2026-06-22/el-supremo-condena-a-abalos-a-24-anos-y-tres-meses-de-carcel-a-koldo-garcia-a-19-anos-y-ocho-meses-y-a-aldama-a-cuatro-anos-y-medio.html"
+    medio_id: el-pais
+    titular: "El Supremo condena a Ábalos a 24 años y tres meses de cárcel, a Koldo García a 19 años y ocho meses y deja libre a Aldama"
+    fecha_publicacion: "2026-06-22"
+    autor: "Reyes Rincón"
+    resumen: >
+      El País informa de la sentencia de la Sala Segunda del Supremo, las penas impuestas
+      a Ábalos, Koldo García y Víctor de Aldama, y la suspensión condicionada de la pena de
+      prisión de Aldama.
+    tipo_pieza: noticia
+    relevancia_editorial: capital
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-06-23"
+
+  - id: cadenaser-sentencia-abalos-koldo-2026-06-22
+    url: "https://cadenaser.com/nacional/2026/06/22/el-supremo-condena-a-abalos-a-24-anos-y-a-19-a-koldo-garcia-y-deja-la-pena-de-aldama-en-4-anos-y-medio-cadena-ser/"
+    medio_id: cadena-ser
+    titular: "El Supremo condena a Ábalos a 24 años, a Koldo García a 19 y deja en 4 y medio la pena de Aldama, que no entrará en prisión"
+    fecha_publicacion: "2026-06-22"
+    resumen: >
+      La Cadena SER recoge el fallo, la unanimidad de la sentencia y la atenuante de
+      colaboración apreciada para Víctor de Aldama.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-06-23"
+
+  - id: lasexta-directo-caso-mascarillas-2026-06-22
+    url: "https://www.lasexta.com/noticias/nacional/caso-mascarillas-condena-koldo-abalos_202606226a3913989f03cb0254d8fa61.html"
+    medio_id: la-sexta
+    titular: "Última hora del 'caso Mascarillas' | Óscar López se pronuncia sobre la condena a Ábalos y Koldo"
+    fecha_publicacion: "2026-06-22"
+    resumen: >
+      Directo informativo sobre la reacción política y judicial a la sentencia del Supremo
+      en la pieza de mascarillas, con foco en las penas impuestas y en la situación de
+      Aldama.
+    tipo_pieza: tv_radio
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-06-23"
+
+  - id: elpais-decomiso-cohechos-koldo-2026-06-22
+    url: "https://elpais.com/espana/2026-06-22/el-supremo-estima-que-la-trama-de-las-mascarillas-se-embolso-430298-euros-en-cohechos.html"
+    medio_id: el-pais
+    titular: "El Supremo estima que la trama de las mascarillas se embolsó 430.298 euros en cohechos"
+    fecha_publicacion: "2026-06-22"
+    resumen: >
+      Pieza centrada en el desglose económico del decomiso fijado en la sentencia:
+      340.000 euros en pagos mensuales, 82.295 euros por la renta de una vivienda y
+      8.000 euros por un chalé en Marbella.
+    tipo_pieza: noticia
+    relevancia_editorial: alta
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-06-23"
+
+  - id: confilegal-analisis-aldama-colaboracion-2026-06-23
+    url: "https://confilegal.com/20260623-supremo-abalos-koldo-aldama-colaboracion-justicia-corrupcion/amp/"
+    medio_id: confilegal
+    titular: "La rebaja de la condena de Aldama: razones jurídicas de una decisión incómoda"
+    fecha_publicacion: "2026-06-23"
+    autor: "Carlos Carrizosa"
+    resumen: >
+      Análisis jurídico de la atenuante de colaboración aplicada a Aldama y de la lógica
+      penal de la sentencia 418/2026 del Tribunal Supremo.
+    tipo_pieza: analisis
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-06-23"
+
+  - id: eldiario-estrategia-nulidad-tc-2026-06-23
+    url: "https://www.eldiario.es/politica/abalos-koldo-fian-libertad-constitucional-sentencia-ven-politica-carente-motivacion_1_13324626.html"
+    medio_id: eldiario-es
+    titular: "Ábalos y Koldo fían su libertad al Constitucional tras una sentencia que ven política y carente de motivación"
+    fecha_publicacion: "2026-06-23"
+    resumen: >
+      El Diario informa de la estrategia de las defensas tras la sentencia, incluyendo la
+      intención de acudir al incidente de nulidad y al Tribunal Constitucional. No se modela
+      como hito porque no hay resolución judicial nueva.
+    tipo_pieza: noticia
+    relevancia_editorial: media
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-06-23"
+
+  - id: vozpopuli-reaccion-abalos-sentencia-2026-06-23
+    url: "https://www.vozpopuli.com/amp/espana/politica/abalos-a-vozpopuli-para-que-ha-habido-un-juicio-si-ya-estaba-condenado.html"
+    medio_id: vozpopuli
+    titular: "Ábalos, a Vozpópuli: \"¿Para qué ha habido un juicio si ya estaba condenado?\""
+    fecha_publicacion: "2026-06-23"
+    resumen: >
+      Vozpópuli recoge la reacción de José Luis Ábalos tras la sentencia. Se conserva como
+      cobertura contextual, no como fuente probatoria de hechos del caso.
+    tipo_pieza: noticia
+    relevancia_editorial: baja
+    menciones: [titular, lead]
+    fecha_rastreo: "2026-06-23"

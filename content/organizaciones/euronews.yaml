@@ -1,0 +1,16 @@
+id: euronews
+nombre: "Euronews"
+nombres_alternativos:
+  - "Euronews España"
+  - "es.euronews.com"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Medio paneuropeo de información multilingüe con edición en español y cobertura de
+  actualidad europea e internacional.
+ambito_territorial: europeo
+url_canonica: "https://es.euronews.com"
+
+naturaleza_editorial: generalista_politico
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

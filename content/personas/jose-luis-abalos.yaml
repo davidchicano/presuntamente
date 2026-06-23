@@ -1,0 +1,25 @@
+id: jose-luis-abalos
+nombre_completo: "José Luis Ábalos Meco"
+nombres_alternativos:
+  - "José Luis Ábalos"
+  - "Ábalos"
+  - "Jose Luis Abalos"
+  - "Abalos"
+es_figura_publica: true
+cargos_publicos_historicos:
+  - cargo: "Ministro de Transportes, Movilidad y Agenda Urbana"
+    organizacion_id: ministerio-transportes
+    desde: "2018-06-07"
+    hasta: "2021-07-12"
+  - cargo: "Diputado del Congreso"
+    organizacion_id: congreso-de-los-diputados
+    desde: "2009-01-01"
+    hasta: "2026-02-01"
+biografia_corta: |
+  Político español, exministro de Transportes y exdiputado. Figura en el caso Koldo por
+  la pieza de contratos de mascarillas enjuiciada por la Sala Segunda del Tribunal Supremo
+  y por piezas conexas remitidas a la Audiencia Nacional. La sentencia del Supremo del
+  22 de junio de 2026 le condena, según la nota oficial del CGPJ y la copia íntegra
+  localizada; en esta ficha se conserva el rol como no firme hasta verificar firmeza.
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

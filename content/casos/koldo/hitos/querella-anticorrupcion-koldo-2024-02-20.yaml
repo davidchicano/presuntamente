@@ -1,0 +1,24 @@
+id: querella-anticorrupcion-koldo-2024-02-20
+caso_id: koldo
+tipo: denuncia_presentada
+fecha: "2024-02-20"
+fecha_precision: dia
+titulo: "La Fiscalía Anticorrupción impulsa la investigación inicial sobre contratos de mascarillas vinculados a Soluciones de Gestión"
+descripcion: |
+  La investigación pública conocida como caso Koldo arranca a partir de diligencias de la
+  Fiscalía Anticorrupción y de una querella sobre presuntas comisiones en contratos de
+  material sanitario adjudicados durante la pandemia. La cobertura de Newtral, basada en la
+  querella de Anticorrupción, sitúa como eje inicial los contratos recibidos por Soluciones
+  de Gestión y Apoyo a Empresas S.L. y la intervención de Koldo García y Víctor de Aldama.
+  A falta de copia oficial pública de la querella, esta ficha conserva el hito como base
+  de arranque y lo marca para sustitución por primario cuando esté disponible. Rige el
+  principio de presunción de inocencia.
+personas_afectadas:
+  - koldo-garcia
+  - victor-de-aldama
+organizaciones_afectadas:
+  - fiscalia-anticorrupcion
+  - juzgado-central-instruccion-2
+  - soluciones-de-gestion
+documento_principal_id: newtral-claves-querella-koldo-2024-02-26
+fase_resultante: instruccion

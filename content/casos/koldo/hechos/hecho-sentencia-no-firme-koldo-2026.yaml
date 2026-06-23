@@ -1,0 +1,35 @@
+id: hecho-sentencia-no-firme-koldo-2026
+caso_id: koldo
+enunciado: |
+  La Sala Segunda del Tribunal Supremo notificó el 22 de junio de 2026 sentencia condenatoria
+  en la pieza inicial de contratos de mascarillas contra José Luis Ábalos, Koldo García y
+  Víctor de Aldama. Según la nota oficial del CGPJ, la sentencia impone a Ábalos 24 años y
+  3 meses de prisión, a Koldo García 19 años, 8 meses y 1 día, y a Aldama 4 años y 6 meses
+  con suspensión condicionada durante cinco años de la pena de prisión. La copia íntegra
+  localizada recoge además absoluciones parciales por otros delitos objeto de acusación y
+  condiciona la suspensión de Aldama a no delinquir, comparecer semestralmente e informar
+  de sus actividades, y realizar trabajos en beneficio de la comunidad durante un año.
+  Hasta verificar firmeza y revisión humana explícita, este hecho se registra como atribuido
+  y no convierte los hechos subyacentes en acreditados.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-06-22"
+  precision: dia
+personas_implicadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: cgpj-sentencia-koldo-2026-06-22
+    pasaje: "Nota oficial CGPJ del 22-jun-2026 sobre condenas por organización criminal, cohecho, malversación y tráfico de influencias."
+  - documento_id: nota-resumen-sts-koldo-2026-06-22
+    pasaje: "Nota resumen oficial del TS, 22-jun-2026: delitos y penas de Ábalos, Koldo García y Víctor de Aldama."
+  - documento_id: sentencia-ts-418-2026-koldo
+    pasaje: "FALLO, pp. 218-223: condenas, penas, absoluciones parciales, suspensión condicionada de Aldama, responsabilidad civil y decomiso."
+nivel_fuente_efectivo: 1
+vigencia: vigente
+redaccion_neutra_revisada: false
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

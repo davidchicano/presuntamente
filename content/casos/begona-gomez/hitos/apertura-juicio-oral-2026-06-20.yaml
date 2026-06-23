@@ -1,0 +1,45 @@
+id: apertura-juicio-oral-bg-2026-06-20
+caso_id: begona-gomez
+tipo: apertura_juicio_oral
+fecha: "2026-06-20"
+fecha_precision: dia
+titulo: "El Juzgado de Instrucción nº 41 de Madrid acuerda la apertura del juicio oral contra Begoña Gómez, Cristina Álvarez y Juan Carlos Barrabés"
+descripcion: |
+  Por auto de 20 de junio de 2026, el magistrado Juan Carlos Peinado,
+  titular del Juzgado de Instrucción nº 41 de Madrid, acuerda la
+  apertura del juicio oral de la causa principal contra Begoña Gómez,
+  María Cristina Álvarez Fernández y Juan Carlos Barrabés. Según la
+  cobertura periodística cruzada, el auto mantiene para Gómez y
+  Álvarez los presuntos delitos de tráfico de influencias, corrupción
+  en los negocios, malversación de caudales públicos y apropiación
+  indebida, mientras que respecto de Barrabés la apertura de juicio
+  oral se refiere a los presuntos delitos de tráfico de influencias y
+  corrupción en los negocios.
+
+  El instructor acuerda además, a petición de las acusaciones
+  populares, medidas cautelares personales para Gómez y Álvarez:
+  retirada del pasaporte, prohibición de salida del territorio
+  nacional y obligación de comparecer periódicamente en sede judicial
+  cada quince días. La resolución llega tras la audiencia preliminar
+  celebrada el 15 de junio de 2026, a la que se llegó después del
+  aplazamiento acordado el 3 de junio sobre la fecha inicialmente
+  señalada del 9 de junio.
+
+  Conforme al principio de presunción de inocencia, la apertura del
+  juicio oral y la adopción de medidas cautelares no implican
+  valoración de culpabilidad. A fecha del barrido no consta todavía una
+  resolución firme ni señalamiento de vista oral ante el tribunal de
+  enjuiciamiento.
+personas_afectadas:
+  - begona-gomez
+  - cristina-alvarez-fernandez
+  - juan-carlos-barrabes
+organizaciones_afectadas:
+  - juzgado-instruccion-41-madrid
+  - hazte-oir
+  - iustitia-europa
+  - vox
+documento_principal_id: rtve-apertura-juicio-oral-bg-2026-06-20
+documentos_relacionados:
+  - eldiario-apertura-juicio-oral-bg-2026-06-20
+fase_resultante: fase_intermedia

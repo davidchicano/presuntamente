@@ -1,0 +1,36 @@
+id: declaracion-zapatero-sin-cautelares-2026-06-17
+caso_id: plus-ultra
+tipo: declaracion_imputado
+fecha: "2026-06-17"
+fecha_precision: dia
+titulo: >-
+  José Luis Rodríguez Zapatero declara como investigado y el JCI nº 4
+  rechaza imponerle medidas cautelares
+descripcion: |
+  José Luis Rodríguez Zapatero comparece el 17 de junio de 2026 ante el
+  magistrado José Luis Calama, titular del Juzgado Central de Instrucción
+  nº 4 de la Audiencia Nacional, en calidad de investigado dentro del caso
+  Plus Ultra, después del aplazamiento acordado el 26 de mayo.
+
+  Tras esa declaración, el instructor rechaza las medidas cautelares
+  solicitadas por la Fiscalía Anticorrupción y por las acusaciones
+  populares, que incluían la retirada del pasaporte y comparecencias
+  periódicas. Según la nota oficial del CGPJ, el magistrado razona que la
+  comparecencia no desvirtúa los indicios expuestos en el auto de
+  imputación, pero tampoco aprecia un riesgo de fuga real y actual que haga
+  necesarias esas restricciones, dada la notoriedad pública y el arraigo del
+  investigado.
+
+  La resolución mantiene la causa en fase de instrucción y no altera por sí
+  sola la condición procesal de José Luis Rodríguez Zapatero, respecto del
+  que sigue rigiendo el principio de presunción de inocencia mientras no
+  recaiga una resolución firme en contrario.
+personas_afectadas:
+  - jose-luis-rodriguez-zapatero
+organizaciones_afectadas:
+  - juzgado-central-instruccion-4
+  - audiencia-nacional
+documento_principal_id: auto-jci4-rechazo-medidas-zapatero-pu-2026-06-17
+hechos_introducidos:
+  - pu-declaracion-zapatero-sin-cautelares-2026-06-17
+fase_resultante: instruccion

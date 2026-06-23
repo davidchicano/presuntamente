@@ -2,9 +2,55 @@
 
 Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-06-06 (barrido actualidad — ventana procesalmente tranquila; sin hito nuevo; refuerzo del nexo SEPI/Hirurok con `leire-diez`, pero en pieza secreta hasta julio).
+Última actualización: 2026-06-23 (barrido actualidad — declaración de Zapatero, rechazo de cautelares y revisión editorial de junio). Antes: 2026-06-06 (ventana procesalmente tranquila; sin hito nuevo; refuerzo del nexo SEPI/Hirurok con `leire-diez`, pero en pieza secreta hasta julio).
 
 ---
+
+## Barrido actualidad 2026-06-23
+
+**Disparador:** actualización de `plus-ultra` como worker paralelo.
+**Ventana:** desde la última revisión editorial (2026-06-06) hasta hoy. Sweep en varias líneas editoriales (elDiario.es, Vozpópuli, Infobae, EL PAÍS, Público, El Independiente, Cadena SER, infoLibre) + notas oficiales del CGPJ/Audiencia Nacional + query BOE/FASEE.
+
+### Novedad MODELADA
+
+- **Hito nuevo incorporado:** `declaracion-zapatero-sin-cautelares-2026-06-17` (`tipo: declaracion_imputado`). El 17-jun-2026 José Luis Rodríguez Zapatero declaró como investigado ante el JCI nº 4 y, tras la comparecencia, el magistrado José Luis Calama rechazó retirarle el pasaporte o imponerle comparecencias periódicas. El respaldo es **N1 oficial** mediante la nota del CGPJ `auto-jci4-rechazo-medidas-zapatero-pu-2026-06-17`; no hace falta V-13 al estar sostenido por fuente de nivel 1. Hecho derivado: `pu-declaracion-zapatero-sin-cautelares-2026-06-17` (`tipo: atribuido`, `nivel_fuente_efectivo: 1`).
+
+- **Actualización de Hito existente:** `auto-acusaciones-populares-pp-2026-05-29` se amplía con la nota oficial `auto-jci4-rechazo-acusaciones-diligencias-pu-2026-06-16`. El auto del 16-jun-2026 no merece hito propio: precisa la **ejecución práctica** de la unificación ya acordada el 29 de mayo y rechaza los recursos de reforma contra ella. Se clasifica como **actualización de descripción de Hito existente**, no como Hito nuevo.
+
+### Novedades NO modeladas (a propósito)
+
+- **Pieza separada sobre las joyas halladas en Ferraz (CGPJ, 12-jun-2026).** La nota oficial del CGPJ informa de que Calama abre una **pieza separada** para investigar a Zapatero por presuntos delitos fiscal y de contrabando en relación con joyas tasadas preliminarmente en 1.323.915 euros. **No se modela en esta pasada**: abre un objeto procesal autónomo, distinto del rescate/SEPI, y meterlo sin más en `plus-ultra` obligaría a decidir si el caso principal absorbe una pieza separada de naturaleza tributaria o si esa línea merece modelado específico aparte. Pendiente de criterio humano.
+
+- **Investigación formal del entorno inmediato de Zapatero (CGPJ, 18-jun-2026).** La nota oficial del CGPJ del 18-jun-2026 indica que el juez pone las actuaciones en conocimiento de dos familiares directos y de la secretaria del expresidente para que puedan personarse como investigadas. **No se modela aquí**: por prudencia editorial y V-17, la pasada evita crear fichas de personas privadas salvo decisión humana expresa sobre proporcionalidad, necesidad y forma de exposición. Queda anotado como pendiente humano, no como descarte fáctico.
+
+- **Escritos de la defensa sobre la licitud de la prueba procedente de EEUU (10-jun y 23-jun-2026).** EL PAÍS (10-jun) y Cadena SER (23-jun) describen escritos de la defensa de Zapatero pidiendo más información sobre el volcado del móvil de Rodolfo Reyes y sobre el disco duro "CRUCIAL", con posible alegación futura de nulidad. **No se modela**: son escritos de parte no resueltos, sin hito procesal autónomo todavía.
+
+- **BOE / FASEE / SEPI.** Query específica de BOE en esta ventana: **sin novedad normativa nueva** relevante para el caso. Se mantiene como marco el `boe-rdl25-2020-fondo-solvencia-fasee` ya catalogado.
+
+### Cruce con otros casos del inventario
+
+- **`leire-diez`** — la relación `leire-diez-conexion-factual-plus-ultra` ya existe y sigue siendo válida. La cobertura de junio (Vozpópuli, Telemadrid, EL PAÍS) refuerza el hilo SEPI / Bartolomé Lora / Tubos Reunidos, pero la rama de contratos SEPI que haría más fuerte el nexo sigue viva en material parcialmente reservado o recién aflorado. **No se toca** la relación existente; cuando se levante del todo el secreto de esa pieza, valorar enriquecerla.
+
+- **`koldo`** — el enlace ya no depende de una sola pieza aislada: EL PAÍS (23-may), El Independiente (25-may) e Infobae (26-may) documentan cruces entre el rescate de Plus Ultra y el entorno Ábalos/Koldo/Aldama, con Miguel Palomero y pagos/sociedades como nodos narrativos recurrentes. **Aun así no se modela desde esta pasada** por scope, y porque la base sigue siendo cobertura sobre material instructor. Queda **candidata seria** a `RelacionEntreCasos` en reconciliación.
+
+- **`begona-gomez`** — barrido sin nexo procesal nuevo. La coincidencia de agenda política/judicial o de abogados en cobertura no alcanza el estándar de `RelacionEntreCasos`.
+
+### Cascada de coherencia aplicada sobre `caso.yaml`
+
+- `sintesis_caso.estado_actual`: actualizado para sustituir la previsión de declaración por el hecho ya ocurrido el 17-jun-2026 y el rechazo de medidas cautelares.
+- `sintesis_caso.hechos_clave`: un bullet actualizado para reflejar la comparecencia efectiva de Zapatero y la decisión cautelar posterior.
+- `ultima_revision_editorial` y `estado_ficha.fecha_actualizacion`: **2026-06-06 → 2026-06-23**.
+- `roles/zapatero-investigado.yaml`: nota actualizada para reflejar la declaración del 17-jun y la ausencia de medidas cautelares.
+- **Sin tocar**: `que_se_investiga`, `cifras_clave`, `fase_actual`, `delitos_atribuidos_en_la_causa`, `organo_judicial_id`. La pieza separada de joyas no se absorbe editorialmente en esta pasada.
+
+### Pendientes abiertos / actualizados
+
+- [x] ~~Declaración de Zapatero 17-18 jun → será el próximo hito.~~ **Resuelto:** modelado el 17-jun-2026.
+- [ ] Auto íntegro del JCI nº 4 en CENDOJ (19-may y 25-may) → elevar N4 a N1 donde proceda y verificar si las 4 órdenes internacionales tienen hito propio.
+- [ ] Decisión humana sobre si la **pieza separada de joyas** (CGPJ, 12-jun-2026) debe integrarse como hito del caso `plus-ultra`, como pieza interna explícita o mantenerse sólo en NOTES hasta nueva pasada.
+- [ ] Decisión humana sobre si la nota oficial del **18-jun-2026** justifica crear personas/roles para personas privadas formalmente llamadas al proceso.
+- [ ] Seguir la tramitación de los **escritos de nulidad/licitud de prueba** de la defensa: si el juez resuelve, entonces sí podría haber hito `auto_diligencias`.
+- [ ] `plus-ultra` ↔ `koldo`: candidata a `RelacionEntreCasos` por `conexion_factual` / `comparte_actor_con` cuando el maintainer quiera consolidarla en reconciliación.
 
 ## Barrido actualidad 2026-06-06
 
@@ -98,12 +144,12 @@ Esta pasada aporta: (1) **un hito nuevo** `auto-acusaciones-populares-pp-2026-05
 
 El 27-may-2026 la UCO se presentó en la sede federal del PSOE (Ferraz, Madrid) durante aproximadamente 12 horas requiriendo documentación. **Es operación del `caso leire-diez`**, no de Plus Ultra: la orden de registro la dictó el magistrado Santiago Pedraz (JCI nº 5 AN, pieza separada del caso Leire), no Calama (JCI nº 4 AN, PU). No procede modelar como Hito de PU.
 
-Sí procede dejar constancia del **vínculo funcional** entre ambos casos:
+Sí procede dejar constancia de la **conexión factual** entre ambos casos:
 
 - **Nexo SEPI**: Plus Ultra es el rescate SEPI del 9-mar-2021 (53 M€). El caso Leire investiga si Vicente Fernández Guerrero (presidente SEPI jun-2018/oct-2019, director general SEPI hasta abr-2021) participó en una estructura (HIRUROK) que presuntamente desvió más de 700.000 € en comisiones de contratos SEPI 2021-2023. Fernández Guerrero seguía en SEPI cuando se aprobó Plus Ultra. Vozpópuli ([url](https://www.vozpopuli.com/espana/el-expresidente-de-la-sepi-sondeo-al-entorno-de-plus-ultra-en-la-antesala-del-rescate.html)) documenta que "sondeó al entorno de Plus Ultra en la antesala del rescate".
 - **Confluencia temporal de operaciones policiales en Ferraz**: el 19-may-2026 la UDEF registró la oficina de Zapatero en Ferraz por orden de Calama (PU); el 27-may-2026 la UCO entró en la sede del PSOE en Ferraz por orden de Pedraz (Leire). Dos órdenes distintas, dos procedimientos distintos, mismo edificio en ocho días.
 
-Acción pendiente: modelar `RelacionEntreCasos` entre `plus-ultra` y `leire-diez` con tipo apropiado del schema (probablemente `vinculo_funcional` o equivalente; verificar enum) y `nexo` documentado en Fernández Guerrero + SEPI. **NO** modelar a Fernández Guerrero como `RolEnCaso` en Plus Ultra: en el inventario de PU no tiene rol procesal formal; sólo es persona mencionada en cobertura. Cuando aparezca un primario de PU que lo cite como investigado, se promueve.
+Acción resuelta en sesiones posteriores: existe `content/relaciones-entre-casos/leire-diez-conexion-factual-plus-ultra.yaml` con tipo `conexion_factual`, que es el enum vigente para este nexo. **NO** modelar a Fernández Guerrero como `RolEnCaso` en Plus Ultra: en el inventario de PU no tiene rol procesal formal; sólo es persona mencionada en cobertura. Cuando aparezca un primario de PU que lo cite como investigado, se promueve.
 
 Este cruce es un aprendizaje editorial de la sesión 2026-05-28: la primera lectura del brief de Sonnet describió la confluencia como "sólo coincidencia de actualidad mediática"; al investigar más en profundidad, se ve que el nexo SEPI es funcional y documentado. Se recoge en la nueva skill `actualizar-caso` (creada en la misma sesión) como guardarraíl: cuando un barrido de actualidad detecta operaciones policiales o ecos mediáticos cruzados con otro caso del inventario, **no concluir "sin vínculo" hasta cruzar nombres de personas con rol formal en ambos casos** (en este caso: Fernández Guerrero + SEPI + época del rescate PU).
 

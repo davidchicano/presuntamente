@@ -6,6 +6,48 @@ Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes 
 
 ---
 
+## Barrido de actualidad 2026-06-23
+
+Ventana cubierta: desde la última revisión editorial de la ficha
+(2026-05-30) hasta el 23-jun-2026. Última fecha conocida previa:
+**2026-05-26** como último hito catalogado y **2026-05-30** como última
+revisión editorial.
+
+**Novedades incorporadas:**
+
+- **Aplazamiento de la audiencia previa del 9-jun al 15-jun (actualización de Hito existente).** El pendiente abierto el 30-may queda resuelto: el instructor dejó sin efecto el señalamiento inicial del **9-jun-2026** y fijó nueva audiencia preliminar para el **15-jun-2026** a las 18:00, manteniendo la comparecencia personal obligatoria de Begoña Gómez, Cristina Álvarez y Juan Carlos Barrabés bajo apercibimiento de conducción por la fuerza pública. Se actualiza descriptivamente el hito `auto-audiencia-previa-bg-2026-05-26` con respaldo de RTVE.es (03-jun). En la vista del 15-jun las acusaciones populares pidieron retirada de pasaporte, prohibición de salida y comparecencias quincenales para Gómez y Álvarez; el juez difirió su decisión. Respaldo adicional: Cadena SER (15-jun). No se crea hito autónomo ni hecho estructurado para el aplazamiento.
+
+- **Pieza separada nueva solo contra Barrabés (Hito nuevo).** Mediante providencia fechada el **18-jun-2026** y conocida el **19-jun-2026**, el JI nº 41 abrió una pieza separada dirigida únicamente contra Juan Carlos Barrabés por presuntos delitos de **prevaricación** y **fraude a los intereses financieros de la Unión Europea** en relación con una adjudicación de **Red.es**. La cobertura coincide en que la línea nace tras documentación remitida desde la Fiscalía Europea y un informe de la UCO; la pieza fue aclarada el mismo día para precisar que **no afectaba** a Begoña Gómez ni a Cristina Álvarez, cuyos nombres aparecieron inicialmente en una resolución previa no delimitada. Se crea el hito `pieza-separada-barrabes-bg-2026-06-19` con documentos N4 cruzados RTVE.es + elDiario.es.
+  - **Decisión de modelo:** no se crean `RolEnCaso` nuevos ni `Hecho` nuevo específico. La nueva pieza afecta solo a Barrabés, pero el caso raíz no está modelado aún como padre con subpieza autónoma y la cobertura disponible no aporta un primario oficial accesible del que colgar una trayectoria paralela limpia. Se deja la circunstancia documentada en hito y en `estado_actual`, pendiente de reevaluar si aparece el primario o si la pieza gana entidad propia.
+
+- **Apertura de juicio oral y medidas cautelares en la causa principal (Hito nuevo).** El **20-jun-2026** el instructor acordó la apertura del juicio oral contra Begoña Gómez, Cristina Álvarez y Juan Carlos Barrabés. La cobertura cruzada coincide en que impuso a **Gómez y Álvarez** retirada de pasaporte, prohibición de salida del territorio nacional y comparecencia periódica cada quince días; respecto de Barrabés, las piezas consultadas coinciden en la apertura de juicio oral pero no en la imposición de cautelares personales, que no se modelan para él. Se crea `apertura-juicio-oral-bg-2026-06-20` con RTVE.es + elDiario.es. El `caso.yaml` se actualiza en cascada (`estado_actual`, `descripcion_corta`, `hechos_clave`, fechas editoriales).
+  - **Precaución de fuente:** algunas coberturas secundarias del 20-jun mezclan o amplían indebidamente la calificación de Barrabés o la extienden a todos los acusados de forma homogénea. Para evitar sobrealcance, el hito conserva la distribución de delitos ya modelada en los roles vigentes: cuatro presuntos delitos para Gómez y Álvarez; tráfico de influencias y corrupción en los negocios para Barrabés en la causa principal.
+
+**Pendientes abiertos por este barrido (no modelados todavía):**
+
+- **Entrega material del pasaporte — acto futuro.** EL PAÍS publicó el **22-jun-2026** que el juzgado cita a Gómez y a Cristina Álvarez el **24-jun-2026** a las 18:00 para requerirles la entrega del pasaporte en ejecución de las cautelares. No se modela todavía por tratarse de un acto futuro a fecha de este barrido. Vigilar el 24-jun y, si se confirma su práctica o incidencia, añadir párrafo al hito `apertura-juicio-oral-bg-2026-06-20` o hito propio si adquiere relevancia autónoma.
+- **Auto/PDF íntegro de apertura de juicio oral.** EL PAÍS afirma el 20-jun que puede consultarse el auto íntegro, pero esta pasada no descarga PDF ni lo incorpora a `/public/documentos/` por la instrucción expresa del maintainer de no bajar PDFs grandes y por tratarse de mirror periodístico, no fuente oficial. Queda como `pendiente_primario`/mirror auditable para una sesión específica de `/incorporar-hito` si el maintainer lo autoriza.
+- **Pieza separada de Barrabés — primario pendiente.** Sigue pendiente la providencia íntegra de 18-jun-2026 y cualquier resolución posterior que concrete si la pieza evoluciona a caso hijo/pieza autónoma.
+
+**Descarte / no modelado de esta ventana:**
+
+- **Expediente o reacción del CGPJ por el auto de Peinado.** Es una derivada disciplinaria sobre el magistrado, no un hito del procedimiento penal principal de Begoña Gómez. Se descarta para esta ficha.
+- **Ruido político y comparecencias partidistas.** Reacciones del Gobierno, del PSOE, del PP, sindicatos policiales o tertulias sobre el auto del 20-jun: fuera del modelo por P-10 y por no alterar el estado procesal del caso.
+- **Vínculos de cuota con otros casos.** Aunque la cobertura conecta en discurso político este caso con `leire-diez`, `fiscal-general-del-estado` o `gonzalez-amador`, no aparece en esta ventana un nexo procesal nuevo bastante sólido para proponer una relación adicional a la ya existente `leire-diez-conexion-factual-begona-gomez`.
+
+**Cascada aplicada a `caso.yaml`:**
+
+- `descripcion_corta` y `sintesis_caso.estado_actual`: actualizados para reflejar la apertura de juicio oral del 20-jun-2026 y la pieza separada contra Barrabés del 18/19-jun-2026.
+- `sintesis_caso.hechos_clave`: sustituido el bullet obsoleto sobre la mera propuesta de jurado por la apertura de juicio oral ya acordada.
+- `ultima_revision_editorial` y `estado_ficha.fecha_actualizacion`: **2026-06-23**.
+- **Se mantiene** `fase_actual: fase_intermedia`: aunque existe auto de apertura de juicio oral, a fecha del barrido no consta todavía señalamiento de vista ni constitución del órgano de enjuiciamiento en una resolución accesible; se sigue el precedente de otras fichas del repo en esta fase.
+- **Se mantienen** `organo_judicial_id`, `delitos_atribuidos_en_la_causa` y los roles vigentes sin cambios estructurales: no hay resolución accesible que obligue a rehacer la trayectoria procesal en el modelo raíz.
+
+**Cruce con otros casos del inventario (paso 4):**
+
+- **`leire-diez`:** sin nexo nuevo; sigue vigente la relación ya existente `leire-diez-conexion-factual-begona-gomez`, basada en el uso presuntamente instrumental de este procedimiento como objetivo de la trama investigada allí. No se propone nuevo YAML.
+- **`fiscal-general-del-estado`, `gonzalez-amador`, `plus-ultra`, `david-sanchez-badajoz`:** sin personas, organizaciones ni acto procesal compartido nuevo documentado en esta ventana. No se propone relación nueva.
+
 ## Barrido de actualidad 2026-05-30
 
 Ventana cubierta: desde el último hito catalogado (auto de audiencia previa del 26-may-2026) hasta el 30-may-2026. Barrido con cobertura cruzada (≥3 líneas editoriales por novedad). Última fecha conocida previa: **2026-05-26**.

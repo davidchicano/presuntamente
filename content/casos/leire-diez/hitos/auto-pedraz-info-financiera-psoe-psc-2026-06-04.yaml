@@ -1,0 +1,31 @@
+id: auto-pedraz-info-financiera-psoe-psc-2026-06-04
+caso_id: leire-diez
+tipo: auto_diligencias
+fecha: "2026-06-04"
+fecha_precision: dia
+titulo: "El juez Pedraz acuerda nuevas diligencias de información tributaria y financiera sobre PSOE y PSC para 2024 y 2025 (4 junio 2026)"
+descripcion: |
+  El 4 de junio de 2026 se conoce que el magistrado Santiago Pedraz, del JCI nº 5 de la
+  Audiencia Nacional, acuerda nuevas diligencias de investigación de carácter tributario y
+  financiero sobre el PSOE, el PSC y varias personas o entidades vinculadas a la causa para
+  los ejercicios 2024 y 2025, a petición de la UCO. La cobertura cruzada sitúa entre los
+  destinatarios del requerimiento a la Agencia Tributaria y a entidades o sociedades
+  relacionadas con investigados ya presentes en la pieza. Se trata de una diligencia de
+  averiguación patrimonial y documental en fase de instrucción; no altera por sí sola el
+  objeto nuclear de la causa ni supone una transición de fase procesal. Rige el principio de
+  presunción de inocencia respecto a todos los investigados.
+personas_afectadas:
+  - santiago-pedraz
+  - leire-diez
+  - gaspar-zarrias
+  - ismael-oliver
+  - jacobo-teijelo
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+  - psoe
+  - uco-guardia-civil
+documento_principal_id: eldiario-info-financiera-psoe-psc-leire-2026-06-04
+documentos_relacionados:
+  - cadenaser-info-financiera-psoe-psc-leire-2026-06-04
+hechos_introducidos: []
+fase_resultante: instruccion

@@ -24,24 +24,23 @@ sintesis_caso:
     - "La UCO realizó un registro de 12 horas en la sede federal del PSOE (Ferraz) el 27 de mayo de 2026 en busca de documentación."
     - "Se investiga si se habrían ofrecido 50.000 euros a una empresaria para que modificara su declaración judicial, y si se buscó información sensible sobre jueces y mandos UCO."
   estado_actual: |
-    El 1 de junio de 2026 el juez Pedraz levantó parcialmente el secreto del sumario, al
-    considerar practicadas gran parte de las diligencias que lo motivaron, y mantuvo bajo
-    reserva un mes más una pieza del procedimiento —la relativa a presuntas irregularidades
-    en contratos públicos, en la que figuran como investigados Leire Díez, el expresidente de
-    la SEPI Vicente Fernández Guerrero y el empresario Antxon Alonso— para no perjudicar
-    diligencias pendientes. La rama cuyo secreto se levanta es la relativa a la presunta
-    estructura orientada a desestabilizar procedimientos judiciales que afectaran al PSOE o
-    al Gobierno. La causa sigue en fase de instrucción ante el JCI nº 5 de la Audiencia
-    Nacional. El auto del 26 de mayo de 2026 sitúa el presunto ofrecimiento de 50.000 euros
-    a una empresaria como un intento de que modificara su declaración sobre una entrega de
-    dinero en efectivo en la sede del PSOE, materia que la cobertura conecta con el entorno
-    del caso Koldo. En paralelo, el magistrado ha solicitado al Juzgado de Instrucción nº 9
-    de Madrid que se inhiba a su favor para asumir la causa abierta en 2025, por su
-    competencia sobre el presunto delito contra las instituciones del Estado. El 4 de junio
-    de 2026 el magistrado rechazó por el momento la personación como acusación particular del
-    magistrado jubilado Manuel García-Castellón, al considerar que los hechos que este alega se
-    investigan en el Juzgado de Instrucción nº 9 de Madrid y no están aún acumulados a esta
-    causa. Rige el principio de presunción de inocencia.
+    El 1 de junio de 2026 el juez Pedraz levantó parcialmente el secreto del sumario y dejó
+    bajo reserva la pieza relativa a presuntas irregularidades en operaciones y ayudas de la
+    SEPI. El 4 de junio acordó nuevas diligencias de información tributaria y financiera
+    sobre el PSOE, el PSC y varias personas y entidades vinculadas a la causa para los años
+    2024 y 2025. El 8 de junio citó como investigada a la abogada Leticia de la Hoz Calvo,
+    con declaración fijada para el 14 de julio, y como testigo a la presidenta del PSOE,
+    Cristina Narbona, para el 10 de julio; además reclamó a la Fiscalía General del Estado
+    información sobre reuniones mantenidas con Leire Díez y otros investigados. El 15 de
+    junio levantó también el secreto de la pieza separada sobre presuntas maniobras ligadas a
+    operaciones de la SEPI, incluida la derivada Tubos Reunidos. El 22 de junio accedió a la
+    petición del PSOE de expurgar en pieza separada la documentación ajena a la causa
+    intervenida en Ferraz. La causa sigue en fase de instrucción ante el JCI nº 5 de la
+    Audiencia Nacional. En paralelo, el magistrado ha solicitado al Juzgado de Instrucción
+    nº 9 de Madrid que se inhiba a su favor para asumir la causa abierta en 2025, por su
+    competencia sobre el presunto delito contra las instituciones del Estado, y el 4 de junio
+    rechazó por el momento la personación como acusación particular del magistrado jubilado
+    Manuel García-Castellón. Rige el principio de presunción de inocencia.
   cifras_clave:
     - "Presunta comisión superior a 700.000 euros en contratos SEPI (2021-2023)"
     - "188.000 euros mínimo documentado en pagos del PSOE a la red (auto Pedraz)"
@@ -75,7 +74,7 @@ resumen_cifras: |
   una empresaria para modificar su declaración judicial.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-06-12"
+ultima_revision_editorial: "2026-06-23"
 nivel_relevancia_editorial: capital
 pin_destacado: 2
 
@@ -89,9 +88,9 @@ estado_ficha:
   vinculos_institucionales: parcial
   conexiones: parcial
   cobertura_mediatica_general: pendiente
-  revision_editorial: pendiente
-  notas: "PR1+PR2: 4 hitos, 5 hechos, 10 roles investigados + 1 juez. Vínculos institucionales: 16 vínculos creados (3 afectación, 13 cargos/nombramientos), incluyendo BOE-A-2018-8601 (RD 616/2018, nombramiento Fernández Guerrero SEPI) descargado con hash_sha256 y nota FESOFI (N3) + Newtral (N4) para el cargo de Leire Díez en Correos. Faltan, para próximas pasadas: nota oficial CGPJ del auto Pedraz cuando aparezca; auto JI 9 con número exacto; cargo previo de Zarrías como Consejero de Presidencia de la Junta de Andalucía (1996-2008); BOE-A-2019-14254 de cese de Fernández Guerrero en SEPI (opcional); nombramiento BORME de Leire Díez como apoderada de Correos (acto registral 01-04-2022). Barrido 2026-06-03: levantamiento parcial del secreto (auto 01-jun) catalogado como hito; localizada y catalogada la nota oficial CGPJ del 27-may (N1, documentos_primarios reforzados: respaldo oficial del marco de delitos); delitos ampliados con organización criminal y prevaricación (CGPJ N1). Barrido 2026-06-06: catalogado el auto del 04-jun de rechazo (por el momento) de la personación del magistrado jubilado García-Castellón como acusación particular (hito auto_diligencias, N4 Confilegal+Público+The Objective). Anotados en NOTES sin modelar: recurso de Cerdán contra la petición de inhibición, petición de la Fiscalía de declaración testifical de Cristina Narbona, y contenido del sumario ya parcialmente público (libretas UCO; pieza de contratos SEPI/Tubos Reunidos que sigue secreta hasta julio). Piloto 2026-06-12: añadida sección pública contenido_no_modelado con 3 decisiones editoriales atribuidas y sin crear personas, roles ni nodos."
-  fecha_actualizacion: "2026-06-12"
+  revision_editorial: completo
+  notas: "PR1+PR2: 4 hitos, 5 hechos, 10 roles investigados + 1 juez. Vínculos institucionales: 16 vínculos creados (3 afectación, 13 cargos/nombramientos), incluyendo BOE-A-2018-8601 (RD 616/2018, nombramiento Fernández Guerrero SEPI) descargado con hash_sha256 y nota FESOFI (N3) + Newtral (N4) para el cargo de Leire Díez en Correos. Faltan, para próximas pasadas: nota oficial CGPJ del auto Pedraz cuando aparezca; auto JI 9 con número exacto; cargo previo de Zarrías como Consejero de Presidencia de la Junta de Andalucía (1996-2008); BOE-A-2019-14254 de cese de Fernández Guerrero en SEPI (opcional); nombramiento BORME de Leire Díez como apoderada de Correos (acto registral 01-04-2022). Barrido 2026-06-03: levantamiento parcial del secreto (auto 01-jun) catalogado como hito; localizada y catalogada la nota oficial CGPJ del 27-may (N1, documentos_primarios reforzados: respaldo oficial del marco de delitos); delitos ampliados con organización criminal y prevaricación (CGPJ N1). Barrido 2026-06-06: catalogado el auto del 04-jun de rechazo (por el momento) de la personación del magistrado jubilado García-Castellón como acusación particular (hito auto_diligencias, N4 Confilegal+Público+The Objective). Anotados en NOTES sin modelar: recurso de Cerdán contra la petición de inhibición, petición de la Fiscalía de declaración testifical de Cristina Narbona, y contenido del sumario ya parcialmente público (libretas UCO; pieza de contratos SEPI/Tubos Reunidos que sigue secreta hasta julio). Piloto 2026-06-12: añadida sección pública contenido_no_modelado con 3 decisiones editoriales atribuidas y sin crear personas, roles ni nodos. Barrido 2026-06-23: modelados el requerimiento de información financiera PSOE/PSC (04-jun), la citación como investigada de Leticia de la Hoz y como testigo de Cristina Narbona (08-jun), y el levantamiento del secreto de la pieza SEPI/Tubos (15-jun); actualizado el hito de Ferraz con el expurgo acordado el 22-jun."
+  fecha_actualizacion: "2026-06-23"
 
 contenido_no_modelado:
   - id: referencias-one-presidente-informes-uco
@@ -131,7 +130,7 @@ contenido_no_modelado:
       2024 y 2025, así como anotaciones de Díez sobre su presunta capacidad de influir en
       nombramientos del departamento. Mercedes González no tiene rol procesal en esta
       causa y no consta imputación ni citación alguna contra ella; el ministro del Interior
-      ha sostenido públicamente que la directora no trató con Díez la trama investigada.
+      ha sostenido públicamente que la directora no trató con Díez la red investigada.
       El sitio no crea ficha de persona ni rol procesal: la mención procede de informes
       policiales según cobertura periodística (regla V-13) y, de consolidarse en un
       documento primario accesible, se modelaría como hecho sobre el procedimiento, no

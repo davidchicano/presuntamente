@@ -1,0 +1,49 @@
+id: hecho-decomiso-cohecho-koldo-2026
+caso_id: koldo
+enunciado: |
+  La Sentencia TS 418/2026 acuerda respecto de los tres acusados el decomiso de las
+  ganancias provenientes del delito de cohecho por 430.298 euros. El fallo desglosa esa
+  cifra en 340.000 euros de pagos mensuales, 82.295 euros de renta de una vivienda y
+  8.000 euros de renta de un chalé en Marbella. Al tratarse de una sentencia reciente cuya
+  firmeza no se ha verificado en el inventario, el decomiso se registra como consecuencia
+  atribuida a la resolución.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2026-06-22"
+  precision: dia
+personas_implicadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+organizaciones_implicadas:
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: sentencia-ts-418-2026-koldo
+    pasaje: "FALLO, p. 223: decomiso de 430.298 euros con desglose de 340.000, 82.295 y 8.000 euros."
+nivel_fuente_efectivo: 3
+importe: 430298
+importe_moneda: EUR
+importe_alcance: componente
+importe_clase: consecuencia
+importe_naturaleza: otro
+importe_nota: |
+  Decomiso acordado en el fallo como consecuencia económica de la sentencia. No se suma
+  como objeto económico del caso porque no equivale al importe de contratos ni a
+  responsabilidad civil.
+importe_atribucion:
+  - sujeto_tipo: persona
+    sujeto: jose-luis-abalos
+    papel: obligado
+    nota: "El fallo acuerda el decomiso respecto de los tres acusados."
+  - sujeto_tipo: persona
+    sujeto: koldo-garcia
+    papel: obligado
+    nota: "El fallo acuerda el decomiso respecto de los tres acusados."
+  - sujeto_tipo: persona
+    sujeto: victor-de-aldama
+    papel: obligado
+    nota: "El fallo acuerda el decomiso respecto de los tres acusados."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-23"

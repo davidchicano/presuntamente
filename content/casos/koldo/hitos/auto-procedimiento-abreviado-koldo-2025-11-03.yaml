@@ -1,0 +1,25 @@
+id: auto-procedimiento-abreviado-koldo-2025-11-03
+caso_id: koldo
+tipo: auto_procesamiento
+fecha: "2025-11-03"
+fecha_precision: dia
+titulo: "El instructor del Supremo dicta auto de procedimiento abreviado contra Ábalos, Koldo García y Víctor de Aldama"
+descripcion: |
+  El 3 de noviembre de 2025 el magistrado instructor Leopoldo Puente dicta auto de
+  procedimiento abreviado contra José Luis Ábalos, Koldo García y Víctor de Aldama en la
+  pieza inicial de contratos de mascarillas. La nota oficial del CGPJ identifica los hechos
+  investigados como presuntas irregularidades en contratos de mascarillas durante la
+  pandemia y recoge una calificación provisional por cohecho, pertenencia a organización criminal, tráfico de
+  influencias y malversación de caudales públicos. La condición de procesado no implica
+  valoración de culpabilidad.
+personas_afectadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+  - leopoldo-puente
+organizaciones_afectadas:
+  - tribunal-supremo
+documento_principal_id: cgpj-auto-procedimiento-abreviado-koldo-2025-11-03
+documentos_relacionados:
+  - cgpj-confirma-procedimiento-abreviado-koldo-2025-12-10
+fase_resultante: fase_intermedia

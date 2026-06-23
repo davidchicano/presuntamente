@@ -1,0 +1,20 @@
+id: victor-de-aldama-condenado-no-firme-koldo-2026-06
+caso_id: koldo
+sujeto_tipo: persona
+sujeto_persona_id: victor-de-aldama
+rol: condenado_no_firme
+delitos_atribuidos:
+  - organizacion-criminal
+  - cohecho
+  - malversacion-caudales-publicos
+  - trafico-de-influencias
+fecha_inicio: "2026-06-22"
+hito_origen_id: sentencia-koldo-2026-06-22
+notas: |
+  La nota oficial del CGPJ y el fallo de la Sentencia TS 418/2026 informan de condena a
+  Víctor de Aldama con suspensión condicionada de la pena de prisión y absolución parcial
+  por otros delitos objeto de acusación. El fallo condiciona la suspensión durante cinco
+  años a no delinquir, comparecer semestralmente ante el Tribunal e informar de sus
+  actividades, y realizar un año de trabajos en beneficio de la comunidad. Se modela como
+  `condenado_no_firme` por cautela hasta verificar firmeza. No se promueve ningún hecho a
+  `acreditado` sin revisión humana explícita.
