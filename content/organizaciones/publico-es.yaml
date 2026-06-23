@@ -17,6 +17,19 @@ url_canonica: "https://www.publico.es/"
 
 naturaleza_editorial: generalista_politico
 
+orientacion_editorial_percibida:
+  valor: centroizquierda
+  fuente: cis
+  cita: >-
+    Media 3,86 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 22: «En lo que se refiere a los medios de comunicación, por lo que
+    Ud. sabe, usando una escala que va del 1 al 10, en la que 1 es 'lo más a
+    la izquierda' y 10 'lo más a la derecha', ¿dónde colocaría a los
+    siguientes periódicos…?». Estudio 3511 (mayo 2025). N=6.870.
+    Desviación típica: 2,20.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3511"
+  fecha: "2025-05-08"
+
 grupo_editorial:
   nombre: "Display Connectors S.L."
   rol: matriz

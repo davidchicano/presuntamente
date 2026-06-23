@@ -9,6 +9,20 @@ descripcion_corta: |
   económica, política y judicial. Publicó en mayo de 2025 las grabaciones que dieron
   origen al procedimiento ante el JI nº 9 de Madrid en el caso Leire Díez.
 naturaleza_editorial: generalista_politico
+
+orientacion_editorial_percibida:
+  valor: centroderecha
+  fuente: cis
+  cita: >-
+    Media 5,89 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 22: «En lo que se refiere a los medios de comunicación, por lo que
+    Ud. sabe, usando una escala que va del 1 al 10, en la que 1 es 'lo más a
+    la izquierda' y 10 'lo más a la derecha', ¿dónde colocaría a los
+    siguientes periódicos…?». Estudio 3511 (mayo 2025). N=7.576.
+    Desviación típica: 2,24.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3511"
+  fecha: "2025-05-08"
+
 url_canonica: "https://www.elconfidencial.com/"
 estado_publicacion: borrador
 ultima_revision_editorial: "2026-05-28"

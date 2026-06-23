@@ -24,6 +24,19 @@ orientacion_editorial_declarada:
     OK a la ideología liberal; OK a España unida; OK al libre mercado.
   url: "https://okdiario.com/espana/10-oks-127631"
 
+orientacion_editorial_percibida:
+  valor: derecha
+  fuente: cis
+  cita: >-
+    Media 7,31 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 22: «En lo que se refiere a los medios de comunicación, por lo que
+    Ud. sabe, usando una escala que va del 1 al 10, en la que 1 es 'lo más a
+    la izquierda' y 10 'lo más a la derecha', ¿dónde colocaría a los
+    siguientes periódicos…?». Estudio 3511 (mayo 2025). N=8.551.
+    Desviación típica: 2,60.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3511"
+  fecha: "2025-05-08"
+
 grupo_editorial:
   nombre: "Dos Mil Palabras S.L."
   rol: matriz
