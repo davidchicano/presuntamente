@@ -1,0 +1,38 @@
+id: onda-cero
+nombre: "Onda Cero"
+nombres_alternativos:
+  - "Onda Cero Radio"
+  - "ondacero.es"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Cadena de radio española generalista de cobertura nacional, fundada
+  en 1990 y operada por Uniprex, S.A.U., del grupo Atresmedia. Emite
+  programación de actualidad, información y entretenimiento.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.ondacero.es"
+
+naturaleza_editorial: generalista_politico
+
+orientacion_editorial_percibida:
+  valor: centroderecha
+  fuente: cis
+  cita: >-
+    Media 6,14 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 24: «¿Y dónde colocaría las siguientes emisoras de radio?».
+    N=19.800. Desviación típica: 1,86.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
+  fecha: "2023-12-15"
+
+grupo_editorial:
+  nombre: "Atresmedia Corporación de Medios de Comunicación S.A."
+  rol: matriz
+  cita: >-
+    Atresmedia Antena 3 laSexta Neox Nova Mega Atreseries Onda Cero Europa FM
+    Melodía FM Atresplayer Flooxer — Atresmedia Corporación de Medios de
+    Comunicación, S.A.
+  url: "https://www.atresmediacorporacion.com/"
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-22"

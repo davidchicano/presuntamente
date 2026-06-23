@@ -1,0 +1,30 @@
+id: la-razon
+nombre: "La Razón"
+nombres_alternativos:
+  - "larazon.es"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Diario español de información general fundado en 1998. Editado por
+  Audiovisual Española 2000, S.A., con cobertura nacional de política,
+  sociedad y tribunales.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.larazon.es"
+
+naturaleza_editorial: generalista_politico
+
+orientacion_editorial_percibida:
+  valor: derecha
+  fuente: cis
+  cita: >-
+    Media 7,66 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 22: «En lo que se refiere a los medios de comunicación, por lo que
+    Ud. sabe, usando una escala que va del 1 al 10, en la que 1 es 'lo más a
+    la izquierda' y 10 'lo más a la derecha', ¿dónde colocaría a los
+    siguientes periódicos…?». N=20.720. Desviación típica: 2,26.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
+  fecha: "2023-12-15"
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-22"

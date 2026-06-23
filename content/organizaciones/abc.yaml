@@ -1,0 +1,32 @@
+id: abc
+nombre: "ABC"
+nombres_alternativos:
+  - "Diario ABC"
+  - "abc.es"
+tipo: medio_comunicacion
+cif: "B82824194"
+descripcion_corta: |
+  Diario español de información general fundado en 1903, uno de los
+  decanos de la prensa española en activo. Editado por Diario ABC, S.L.,
+  con cobertura nacional de política, sociedad y tribunales.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.abc.es"
+
+naturaleza_editorial: generalista_politico
+
+orientacion_editorial_percibida:
+  valor: derecha
+  fuente: cis
+  cita: >-
+    Media 7,79 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 22: «En lo que se refiere a los medios de comunicación, por lo que
+    Ud. sabe, usando una escala que va del 1 al 10, en la que 1 es 'lo más a
+    la izquierda' y 10 'lo más a la derecha', ¿dónde colocaría a los
+    siguientes periódicos…?». N=21.855. Desviación típica: 2,12.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
+  fecha: "2023-12-15"
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-22"

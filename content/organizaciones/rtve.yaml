@@ -1,0 +1,23 @@
+id: rtve
+nombre: "RTVE"
+nombres_alternativos:
+  - "Corporación RTVE"
+  - "Radiotelevisión Española"
+  - "Corporación de Radio y Televisión Española"
+  - "rtve.es"
+tipo: medio_comunicacion
+descripcion_corta: |
+  Corporación pública de radio y televisión de ámbito estatal,
+  prestadora del servicio público de comunicación audiovisual del
+  Estado (Televisión Española, Radio Nacional de España y servicios
+  digitales). Opera bajo mandato legal de pluralismo y neutralidad
+  informativa.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.rtve.es"
+
+naturaleza_editorial: servicio_publico_estatal
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-22"

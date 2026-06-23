@@ -1,0 +1,42 @@
+id: el-mundo
+nombre: "El Mundo"
+nombres_alternativos:
+  - "El Mundo del Siglo XXI"
+  - "elmundo.es"
+tipo: medio_comunicacion
+cif: "B85157790"
+descripcion_corta: |
+  Diario español de información general fundado en Madrid en 1989 y
+  editado por Unidad Editorial. Es uno de los periódicos de referencia
+  del país, con cobertura destacada de tribunales, investigación
+  periodística y asuntos políticos.
+ambito_territorial: nacional
+localidad: "Madrid"
+provincia: "Madrid"
+url_canonica: "https://www.elmundo.es"
+
+naturaleza_editorial: generalista_politico
+
+orientacion_editorial_percibida:
+  valor: derecha
+  fuente: cis
+  cita: >-
+    Media 6,92 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 22: «En lo que se refiere a los medios de comunicación, por lo que
+    Ud. sabe, usando una escala que va del 1 al 10, en la que 1 es 'lo más a
+    la izquierda' y 10 'lo más a la derecha', ¿dónde colocaría a los
+    siguientes periódicos…?». N=22.227. Desviación típica: 2,07.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
+  fecha: "2023-12-15"
+
+grupo_editorial:
+  nombre: "Unidad Editorial"
+  rol: matriz
+  cita: >-
+    UNIDAD EDITORIAL INFORMACIÓN GENERAL, S.L.U. es una entidad cuyo domicilio
+    social se encuentra sito en la Avenida de San Luis, 25, 28033 Madrid y cuyo
+    CIF es B-85.157.790.
+  url: "https://www.elmundo.es/privacidad/avisolegal.html"
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-22"

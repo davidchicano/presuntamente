@@ -1,0 +1,43 @@
+id: la-vanguardia
+nombre: "La Vanguardia"
+nombres_alternativos:
+  - "lavanguardia.com"
+tipo: medio_comunicacion
+cif: "B61475257"
+descripcion_corta: |
+  Diario español de información general fundado en Barcelona en 1881,
+  editado por La Vanguardia Ediciones, S.L.U., del Grupo Godó. Publica
+  edición en castellano y en catalán, con cobertura nacional y fuerte
+  implantación en Cataluña.
+ambito_territorial: nacional
+localidad: "Barcelona"
+provincia: "Barcelona"
+comunidad_autonoma: "Cataluña"
+url_canonica: "https://www.lavanguardia.com"
+
+naturaleza_editorial: generalista_politico
+
+orientacion_editorial_percibida:
+  valor: centro
+  fuente: cis
+  cita: >-
+    Media 5,48 sobre 10 en escala izquierda (1) – derecha (10).
+    Pregunta 22: «En lo que se refiere a los medios de comunicación, por lo que
+    Ud. sabe, usando una escala que va del 1 al 10, en la que 1 es 'lo más a
+    la izquierda' y 10 'lo más a la derecha', ¿dónde colocaría a los
+    siguientes periódicos…?». N=18.569. Desviación típica: 2,16.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
+  fecha: "2023-12-15"
+
+grupo_editorial:
+  nombre: "Grupo Godó de Comunicación, S.A."
+  rol: matriz
+  cita: >-
+    Prestador del Servicio: La Vanguardia Ediciones, S.L.U. [...] Titulares:
+    GRUPO GODÓ DE COMUNICACIÓN SA, la cual está participada por D. Javier Godó
+    Muntañola (Editor), D. Carlos Godó Valls (Presidente Ejecutivo), Da. Ana
+    Maria Godó Valls (Consejera). Titular real: D. Javier Godó Muntañola.
+  url: "https://www.lavanguardia.com/avisolegal.html"
+
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-22"
