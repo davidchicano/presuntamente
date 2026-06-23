@@ -21,13 +21,14 @@ orientacion_editorial_percibida:
   valor: derecha
   fuente: cis
   cita: >-
-    Media 6,92 sobre 10 en escala izquierda (1) – derecha (10).
+    Media 6,84 sobre 10 en escala izquierda (1) – derecha (10).
     Pregunta 22: «En lo que se refiere a los medios de comunicación, por lo que
     Ud. sabe, usando una escala que va del 1 al 10, en la que 1 es 'lo más a
     la izquierda' y 10 'lo más a la derecha', ¿dónde colocaría a los
-    siguientes periódicos…?». N=22.227. Desviación típica: 2,07.
-  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
-  fecha: "2023-12-15"
+    siguientes periódicos…?». Estudio 3511 (mayo 2025). N=11.677.
+    Desviación típica: 2,23.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3511"
+  fecha: "2025-05-08"
 
 grupo_editorial:
   nombre: "Unidad Editorial"
@@ -39,4 +40,4 @@ grupo_editorial:
   url: "https://www.elmundo.es/privacidad/avisolegal.html"
 
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-06-22"
+ultima_revision_editorial: "2026-06-23"

@@ -98,7 +98,7 @@ Enum del eje: `izquierda_extrema · izquierda · centroizquierda · centro · ce
 - [ ] Implementar barra horizontal con toggle "Declarada · Percibida" sobre el corpus rastreado. Franjas separadas para medios fuera del eje político. Tooltip por medio con declarada, percibida y grupo editorial.
 - [x] Extender archivado archive.org a `content/cobertura-mediatica/`. **Entregado 2026-05-26:** `scripts/archivar-n4.mjs` + ficha [`archive-org-pre-commit.md`](archive-org-pre-commit.md).
 - [ ] Ejecutar `pnpm archive:catchup` para rellenar `url_archivo` del corpus completo. Backlog: ~135 piezas sin archivar (29 begona-gomez + 108 de los otros 5 casos rastreados en el sprint extendido).
-- [ ] Poblar `orientacion_editorial_percibida` con más fuentes externas cuando aparezcan accesibles (Pew, Political Watch reactivada, paper académico nuevo). Hoy 5 medios cubiertos por CIS 3421; 16 medios restantes del eje sin clasificación percibida.
+- [ ] Poblar `orientacion_editorial_percibida` con más fuentes externas cuando aparezcan accesibles (Pew, Political Watch reactivada, paper académico nuevo). Hoy 13 medios cubiertos por CIS 3511 en `main`; los medios no cubiertos por una fuente externa reputada siguen sin clasificación percibida.
 - [ ] Actualizar skill `/rastrear-cobertura` sólo si hace falta documentar el límite ("no clasificar medios") o el mantenimiento cruzado con medios del inventario.
 - [x] Poblar el primer caso piloto con `/rastrear-cobertura <slug>` lanzado en sub-agente paralelo. **Entregado 2026-05-25**: `begona-gomez`, 29 piezas.
 - [x] Diseñar el render en UI cuando exista corpus. **Entregado 2026-05-26**: sección propia en ficha de caso, separada de biblioteca documental.

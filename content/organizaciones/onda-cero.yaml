@@ -19,11 +19,11 @@ orientacion_editorial_percibida:
   valor: centroderecha
   fuente: cis
   cita: >-
-    Media 6,14 sobre 10 en escala izquierda (1) – derecha (10).
+    Media 6,00 sobre 10 en escala izquierda (1) – derecha (10).
     Pregunta 24: «¿Y dónde colocaría las siguientes emisoras de radio?».
-    N=19.800. Desviación típica: 1,86.
-  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
-  fecha: "2023-12-15"
+    Estudio 3511 (mayo 2025). N=10.870. Desviación típica: 2,01.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3511"
+  fecha: "2025-05-08"
 
 grupo_editorial:
   nombre: "Atresmedia Corporación de Medios de Comunicación S.A."
@@ -35,4 +35,4 @@ grupo_editorial:
   url: "https://www.atresmediacorporacion.com/"
 
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-06-22"
+ultima_revision_editorial: "2026-06-23"

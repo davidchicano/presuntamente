@@ -19,11 +19,11 @@ orientacion_editorial_percibida:
   valor: derecha
   fuente: cis
   cita: >-
-    Media 7,90 sobre 10 en escala izquierda (1) – derecha (10).
+    Media 7,67 sobre 10 en escala izquierda (1) – derecha (10).
     Pregunta 24: «¿Y dónde colocaría las siguientes emisoras de radio?».
-    N=22.738. Desviación típica: 2,03.
-  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
-  fecha: "2023-12-15"
+    Estudio 3511 (mayo 2025). N=12.232. Desviación típica: 2,16.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3511"
+  fecha: "2025-05-08"
 
 orientacion_editorial_declarada:
   valor: centroderecha
@@ -41,4 +41,4 @@ grupo_editorial:
   url: "https://www.cope.es/ideario.html"
 
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-26"
+ultima_revision_editorial: "2026-06-23"

@@ -29,7 +29,7 @@ La ficha de caso agrega sólo los documentos periodísticos efectivamente usados
 
 ## Estado actual
 
-**Modelo cerrado el 2026-05-26.** Schema patch + canon metodológico aplicados; la ficha agregadora en la UI está pendiente. Próxima sesión la entrega junto con la barra hermana de cobertura general.
+**Modelo cerrado el 2026-05-26.** Schema patch + canon metodológico aplicados; la ficha agregadora en la UI está pendiente. El mantenimiento de datos editoriales ya cubre 13 medios con orientación percibida CIS 3511 en `main`; la próxima sesión de UI entregará esta barra junto con la hermana de cobertura general.
 
 La idea anterior del ROADMAP hablaba de "barómetro de sesgo mediático"; tras la discusión del 2026-05-25 + 26 queda dividida en:
 
@@ -70,5 +70,5 @@ La idea anterior del ROADMAP hablaba de "barómetro de sesgo mediático"; tras l
 - [x] Decidir enum exacto de orientación editorial. **Decisión 2026-05-26**: enum 7+1 (`izquierda_extrema · izquierda · centroizquierda · centro · centroderecha · derecha · derecha_extrema · sin_clasificar`) en doble dimensión (declarada + percibida).
 - [x] Decidir fuente/metodología para clasificar medios. **Decisión 2026-05-26**: canon en [`doc 07`](../../diseno/07-clasificacion-editorial-medios.md). Cuatro fuentes admisibles para `percibida`; seis para `declarada`. Cita literal + URL obligatorias.
 - [x] Definir copy público. **Decisión 2026-05-26**: "Composición de fuentes citadas" (esta feature) frente a "Cobertura mediática general" (hermana). Léxico vetado: "sesgo", "veracidad", "fiabilidad", "imparcialidad".
-- [ ] Poblar `naturaleza_editorial` y las orientaciones en los ~24 medios del inventario. Sub-agente paralelo a partir del informe del 2026-05-26.
+- [ ] Poblar `naturaleza_editorial` y las orientaciones restantes del inventario. `naturaleza_editorial` está poblada en los medios actuales y 13 medios tienen `orientacion_editorial_percibida` por CIS 3511; el resto queda sin clasificar hasta fuente externa válida.
 - [ ] Implementar bloque en la ficha de caso sin introducir colores partidistas. Compartido con la barra de [`cobertura-mediatica-general.md`](cobertura-mediatica-general.md).

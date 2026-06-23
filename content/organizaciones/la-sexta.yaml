@@ -23,11 +23,12 @@ orientacion_editorial_percibida:
   valor: centroizquierda
   fuente: cis
   cita: >-
-    Media 3,75 sobre 10 en escala izquierda (1) – derecha (10).
+    Media 4,00 sobre 10 en escala izquierda (1) – derecha (10).
     Pregunta 23: «Y usando la misma escala de 1 a 10, ¿dónde colocaría las
-    siguientes cadenas de televisión?». N=24.697. Desviación típica: 2,41.
-  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3421"
-  fecha: "2023-12-15"
+    siguientes cadenas de televisión?». Estudio 3511 (mayo 2025). N=13.491.
+    Desviación típica: 2,49.
+  url: "https://www.cis.es/detalle-ficha-de-estudio?origen=estudio&codEstudio=3511"
+  fecha: "2025-05-08"
 
 grupo_editorial:
   nombre: "Atresmedia Corporación de Medios de Comunicación S.A."
@@ -39,4 +40,4 @@ grupo_editorial:
   url: "https://www.atresmediacorporacion.com/"
 
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-05-26"
+ultima_revision_editorial: "2026-06-23"

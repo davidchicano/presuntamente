@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-06-18 (**PR #6 issue #3 listo para merge**). **Issue #3**: formalizada la sección pública «Contenido considerado y no modelado» como P-11 en doc 02/04 + schema/render/API + piloto en `leire-diez`; mini-review cerrada con V-27 (sin `[[persona:...]]` en esa prosa), captura temporal retirada, `pnpm validate` 1392 OK y `pnpm build` OK. Pendiente tras merge: `archive:catchup` para `contenido_no_modelado[].fuentes[]` y añadir P-11 al checklist de `/revisar-caso`.
+**Última actualización:** 2026-06-23 (**Issue #4, catálogo editorial de medios**). PR #7 y #8 mergeadas: medios grandes ausentes catalogados y El Confidencial/Público/OKDIARIO reciben `orientacion_editorial_percibida` CIS 3511. Refresco editorial propio: 10 medios ya clasificados pasan de CIS 3421 a CIS 3511 (13 medios CIS 3511 en total); `eldiario-es` pasa a `centro` por media 4,60 y umbrales vigentes. `pnpm validate` 1398 OK + `pnpm build` OK. #4 sigue abierto sólo para medios locales/ausentes y fuentes externas no-CIS.
 
-**Anterior (2026-06-12).** Primer contribuyente externo + workflow post-MVP. **Issue #3** (propuesta editorial externa): aceptada la idea con 4 condiciones (prosa atribuida, sólo cargos públicos en su función, cruce de líneas editoriales, sin entidad/nodo/badge); **Issue #4** desgajada: completar catálogo de medios (`good first issue`). `AGENTS.md` + `CONTRIBUTING.md`: cauce de PRs externos abierto. Detalle: [`historial-2026-06.md`](docs/roadmap/historial-2026-06.md). Pusheado (deploy automático).
+**Anterior (2026-06-18).** **Issue #3**: formalizada la sección pública «Contenido considerado y no modelado» como P-11 en doc 02/04 + schema/render/API + piloto en `leire-diez`; mini-review cerrada con V-27. Pendiente: `archive:catchup` para `contenido_no_modelado[].fuentes[]` y añadir P-11 al checklist de `/revisar-caso`.
 
 ---
 
