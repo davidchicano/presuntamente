@@ -31,6 +31,10 @@ import Aclaracion from '@/components/Aclaracion.astro';
   Esta página es un panel agregado del inventario. La fuente de verdad de cada
   cifra es el <a href="https://github.com/davidchicano/presuntamente">repositorio público</a>.
 </Aclaracion>
+
+<Aclaracion nivel="baja" class="aclaracion--full">
+  Esta nota cierra una sección de datos y ocupa todo el ancho útil del bloque.
+</Aclaracion>
 ```
 
 ### Props
@@ -41,13 +45,13 @@ import Aclaracion from '@/components/Aclaracion.astro';
 | `posicion` | `'top' \| 'bottom'` | derivada: `alta`/`media` → `top`, `baja` → `bottom` | Sólo se pasa explícita cuando hay que romper el default justificadamente (e.g. `media-bottom` para disclaimer metodológico que cierra un bloque). |
 | `titulo` | `string` | `undefined` | Renderiza un `<h3>` interno y asocia `aria-labelledby`. Sólo cuando la aclaración necesita encabezado propio (multi-párrafo extenso). |
 | `id` | `string` | autogenerado del `titulo` | Override del id del heading interno. Útil cuando hay fragment links externos al heading. |
-| `class` | `string` | — | Clase extra (e.g. `aclaracion--centered` para baja al pie de página completa). |
+| `class` | `string` | — | Clase extra (e.g. `aclaracion--centered` para baja al pie de página completa; `aclaracion--full` para baja de sección a ancho completo). |
 
 ### Niveles, visualmente
 
 - **`alta`** — mostaza institucional. Border-left 4 px sólido (`--color-accent-secondary`), fondo `--color-accent-secondary-soft`, texto `#6b4d00` (en oscuro: `--color-fg`). Tipografía 13 px regular. Presunción de inocencia, advertencia normativa irrenunciable, "hechos bajo investigación", "lo que viene es preliminar". Va antes del contenido por defecto.
 - **`media`** — gris fuerte. Border-left 3 px (`--color-border-strong`), fondo `--color-surface-muted`, texto `--color-fg`. Aclaración metodológica o de alcance ("organizaciones afectadas", "alcance y límites del rastreo", fallbacks funcionales tipo "requiere JavaScript"). Va antes del contenido por defecto; admite `bottom` cuando cierra un bloque.
-- **`baja`** — sin caja. Border-top 1 px sutil opcional, texto `--color-fg-subtle`, 12 px, `max-width: 76ch`. Nota auxiliar, créditos, recordatorio operativo, pie de página. Va después del contenido por defecto. Con `class="aclaracion--centered"`, queda centrada y `max-width: 64ch` para cierres de página completa.
+- **`baja`** — sin caja. Border-top 1 px sutil opcional, texto `--color-fg-subtle`, 12 px, `max-width: 76ch`. Nota auxiliar, créditos, recordatorio operativo, pie de página. Va después del contenido por defecto. Con `class="aclaracion--centered"`, queda centrada y `max-width: 64ch` para cierres de página completa. Con `class="aclaracion--full"`, conserva el tratamiento de nota baja pero ocupa todo el ancho útil de la sección.
 
 ### Sub-clases internas opcionales
 

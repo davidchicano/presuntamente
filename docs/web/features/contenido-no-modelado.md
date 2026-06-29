@@ -20,12 +20,14 @@ Antes, estas decisiones vivían sólo en los `NOTES.md` internos: el lector veí
 
 - 2026-06-12 — Feature entregada con piloto en `leire-diez` (3 ítems: referencias "el one"/"P.S."/"el presidente" en informes UCO y agendas; mención a Mercedes González; relación con FGE descartada). Fuentes verificadas (titular/fecha/autor vía fetch) de 4 medios y 3 líneas editoriales. Detalle del piloto en el `NOTES.md` del caso.
 - 2026-06-18 — Post-merge: `archivar-n4.mjs` ya lee `contenido_no_modelado[].fuentes[]` y `/revisar-caso` incorpora CH15 para P-11.
+- 2026-06-29 — Segundo uso público en `koldo`: dos decisiones de prudencia editorial, no un listado de menciones personales. Una explica por qué no se publica todavía un total económico agregado de contratos/comisiones/piezas conexas; la otra por qué la relación Plus Ultra↔Koldo por Apamate/Aldama queda considerada pero no modelada sin primario judicial o policial accesible.
 
 ## Decisiones editoriales y aprendizajes
 
 - **Prosa, no tabla.** La propuesta original (issue #3) pedía una tabla «referencia → persona → cobertura»; se rechazó ese formato: la rejilla hace que el sitio firme la identificación. El porqué completo vive en el canon (doc 02 §2.13); el aprendizaje operativo es que el formato ES la decisión editorial, no un detalle de render.
 - **El cruce de líneas se demuestra en el dato.** `fuentes[]` con `medio_id` obliga a que la condición 3 sea auditable mirando el YAML, sin confiar en la prosa.
 - **La exclusión de enlaces tenía que ser mecánica.** Una lista manual de "personas a no enlazar" por ítem habría creado justo el dato estructurado persona↔caso que la condición 4 prohíbe. La fórmula "todas menos las con rol en este caso" resuelve los auto-enlaces sin datos nuevos; V-27 cierra el bypass de enlaces manuales.
+- **No todo lo no modelado merece sección pública.** El uso en Koldo separa decisiones útiles para el lector (cifras no agregadas, relación entre casos no creada) de material que debe quedarse interno hasta mejor soporte: reacciones políticas, tesis parlamentarias, chats aislados, testigos/personas privadas o ramificaciones todavía sin primario trabajado.
 
 ## Ideas futuras
 

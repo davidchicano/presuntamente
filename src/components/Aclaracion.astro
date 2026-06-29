@@ -144,6 +144,12 @@ const cls = [
     margin-right: auto;
     max-width: 64ch;
   }
+  /* Para cierres auxiliares que pertenecen a una sección tabular o de ancho
+     completo. Mantiene la estética de nivel baja sin limitar la línea a texto
+     corrido. */
+  .aclaracion--baja.aclaracion--full {
+    max-width: none;
+  }
 
   /* ─── Posición ────────────────────────────────────────────────────────── */
   .aclaracion--top {

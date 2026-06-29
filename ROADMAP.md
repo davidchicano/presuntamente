@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-06-29 (**barrido actualidad Plus Ultra · Koldo · Leire**). Plus Ultra incorpora hito sobre actuación de Calama ante filtraciones (25-jun) con nota CGPJ N1 archivada; nulidad queda pendiente. Leire incorpora declaración de Teijelo (25-jun) y ampliación SEPI/Tubos con María Belén Gualda investigada (29-jun); Carmen Pano queda sólo en NOTES por V-17/primario. Koldo: sin hito nuevo, pero Sentencia TS 418/2026 localizada en CENDOJ como ROJ STS 2553/2026 y elevada a N1; sigue pendiente firmeza. `pnpm validate` 1482 OK + `pnpm build` OK.
+**Última actualización:** 2026-06-29 (**Koldo · cifras y ficha pública**). Koldo incorpora cifra económica principal de la pieza sentenciada: 32,5 M€ en contratos de mascarillas Puertos del Estado+ADIF, separada de decomiso (430.298 €) y responsabilidad civil (43.950,54 €). Añadida sección pública de contenido considerado/no modelado para total global de piezas y relación Plus Ultra-Koldo; corregido overflow/ancho de ficha y nota inferior de cifras. `pnpm validate` 1483 OK + `pnpm build` OK.
 
-**Anterior (2026-06-23).** **Issue #4, catálogo editorial de medios**. PR #7 y #8 mergeadas: medios grandes ausentes catalogados y El Confidencial/Público/OKDIARIO reciben `orientacion_editorial_percibida` CIS 3511. Refresco editorial propio: 10 medios ya clasificados pasan de CIS 3421 a CIS 3511; `pnpm validate` 1398 OK + `pnpm build` OK. #4 sigue abierto sólo para medios locales/ausentes y fuentes externas no-CIS.
+**Anterior (2026-06-29).** **Barrido actualidad Plus Ultra · Koldo · Leire**. Plus Ultra incorpora hito sobre actuación de Calama ante filtraciones (25-jun) con nota CGPJ N1 archivada; nulidad queda pendiente. Leire incorpora declaración de Teijelo (25-jun) y ampliación SEPI/Tubos con María Belén Gualda investigada (29-jun); Carmen Pano queda sólo en NOTES por V-17/primario. Koldo localiza Sentencia TS 418/2026 en CENDOJ como ROJ STS 2553/2026 y la eleva a N1; sigue pendiente firmeza.
 
 ---
 
@@ -25,8 +25,8 @@
 
 ## Estado actual
 
-- **Fase activa:** **Post-launch temprano.** Fase 0, 1.0 y 1 cerradas; Fase 2 con **20 casos con contenido modelado** (18 en beta+ público · 2 en borrador). Sitio público, tráfico real.
-- **Casos públicos (beta+) — 18:** `plus-ultra` (pin#1), `leire-diez` (pin#2), `begona-gomez`, `gonzalez-amador`, `fiscal-general-del-estado`, `kitchen`, `lezo`, `gurtel`, `noos`, `malaya`, `palau-musica`, `tarjetas-black`, y **`barcenas-caja-b` · `atico-estepona` · `filesa` · `punica` · `forum-filatelico` · `pujol`** (subidos 2026-06-03 vía `/promover-caso`, panel + re-panel VERDE + autorización).
+- **Fase activa:** **Post-launch temprano.** Fase 0, 1.0 y 1 cerradas; Fase 2 con **21 casos con contenido modelado** (19 en beta+ público · 2 en borrador). Sitio público, tráfico real.
+- **Casos públicos (beta+) — 19:** `plus-ultra` (pin#1), `leire-diez` (pin#2), `koldo` (pin#3), `begona-gomez`, `gonzalez-amador`, `fiscal-general-del-estado`, `kitchen`, `lezo`, `gurtel`, `noos`, `malaya`, `palau-musica`, `tarjetas-black`, y **`barcenas-caja-b` · `atico-estepona` · `filesa` · `punica` · `forum-filatelico` · `pujol`** (subidos 2026-06-03 vía `/promover-caso`, panel + re-panel VERDE + autorización).
 - **Casos en borrador — 2:** `eres-andalucia` y `tandem`, **fuera del panel a propósito**: firmeza verificada no limpia (ERE suspendido esperando cuestión prejudicial al TJUE; Tándem sin condena firme, todo recurrible). Revisar cuando haya firmeza.
 - **Sistema de transición de estados — construido y probado:** skill [`/promover-caso`](.agents/skills/promover-caso/SKILL.md) (panel de 3 Sonnet ciegos + autorización del maintainer) + campo cola `promocion_propuesta` en `caso.yaml` + bloque "Proponer promoción" en las 5 skills de contenido. Rubro Puertas A/B/C, v0.1. La cola (`--cola`) escala a 500 casos sin reescanear todo.
 - **Pre-launch cerrado:** Bloques A, B, C, E. **Bloque D:** suficiente (v1.x menor pendiente).
@@ -134,7 +134,7 @@ Plan detallado fuera de git. Pre-requisitos: deploy + dominio → lanzamiento bl
 | Palau Música | borrador (2026-05-30) | 2 hechos firmes promovidos a `acreditado` (STS 813/2020); doc principal de la querella 2009; vínculos institucionales |
 | Fórum Filatélico | **beta_publica (2026-06-03)** | 2ª línea editorial (Confilegal) añadida al hecho del procesamiento; docs N1/N2 de hitos pendientes; `forum-filatelico-sa` mal como perjudicado en importe |
 | ático-estepona | **beta_publica (2026-06-03)** | Cavero anonimizada (V-17, caso archivado); vínculos institucionales pendientes |
-| Koldo/Cerdán | **beta_publica (2026-06-23)** | Sentencia TS 418/2026 modelada como no firme; pendiente confirmar firmeza, localizar primario oficial íntegro y desarrollar piezas conexas AN |
+| Koldo/Cerdán | **beta_publica (2026-06-23) · pin#3** | Sentencia TS 418/2026 modelada como no firme y CENDOJ N1; cifra principal 32,5 M€ de contratos de mascarillas ya estructurada; pendiente confirmar firmeza y desarrollar piezas conexas AN |
 
 ### Estado de los bloqueantes de la auditoría (tanda 2026-05-30)
 

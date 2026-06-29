@@ -1,0 +1,69 @@
+id: hecho-contratos-mascarillas-puertos-adif-koldo-2020
+caso_id: koldo
+enunciado: |
+  La Sentencia TS 418/2026 declara en la pieza inicial que Soluciones de Gestión
+  resultó adjudicataria de dos contratos de suministro de mascarillas vinculados al
+  Ministerio de Transportes: uno de Puertos del Estado por importe de 20.000.000
+  euros y otro de ADIF por importe de 12.500.000 euros. Hasta verificar firmeza y
+  revisión humana explícita, el inventario registra esta cifra como objeto económico
+  atribuido a la sentencia, no como hecho firme ni como total agregado de todas las
+  piezas conexas del caso Koldo.
+tipo: atribuido
+fecha_o_periodo:
+  desde: "2020-03-21"
+  hasta: "2020-03-27"
+  precision: rango
+personas_implicadas:
+  - jose-luis-abalos
+  - koldo-garcia
+  - victor-de-aldama
+organizaciones_implicadas:
+  - soluciones-de-gestion
+  - puertos-del-estado
+  - adif
+  - tribunal-supremo
+documentos_respaldo:
+  - documento_id: sentencia-ts-418-2026-koldo
+    pasaje: "Hechos probados, pp. 12-13: adjudicación a Soluciones de Gestión de 8 millones de mascarillas por Puertos del Estado por 20.000.000 euros y de 5 millones por ADIF por 12.500.000 euros."
+nivel_fuente_efectivo: 1
+importe: 32500000
+importe_moneda: EUR
+importe_alcance: total_caso
+importe_clase: objeto
+importe_naturaleza: objeto_contrato
+importe_nota: |
+  Suma de los dos contratos de mascarillas de la pieza inicial sentenciada:
+  20.000.000 euros de Puertos del Estado y 12.500.000 euros de ADIF. No incluye
+  otras adjudicaciones, facturación empresarial, comisiones, piezas conexas,
+  decomiso ni responsabilidad civil.
+importe_atribucion:
+  - sujeto_tipo: organizacion
+    sujeto: soluciones-de-gestion
+    papel: beneficiario
+    nota: "Adjudicataria de los dos contratos de mascarillas descritos por la sentencia."
+  - sujeto_tipo: organizacion
+    sujeto: puertos-del-estado
+    papel: perjudicado
+    importe_sujeto: 20000000
+    nota: "Entidad contratante del suministro de 8 millones de mascarillas."
+  - sujeto_tipo: organizacion
+    sujeto: adif
+    papel: perjudicado
+    importe_sujeto: 12500000
+    nota: "Entidad contratante del suministro de 5 millones de mascarillas."
+  - sujeto_tipo: persona
+    sujeto: jose-luis-abalos
+    papel: activo
+    nota: "La sentencia no firme le atribuye intervención en la adjudicación de los contratos."
+  - sujeto_tipo: persona
+    sujeto: koldo-garcia
+    papel: activo
+    nota: "La sentencia no firme le atribuye intervención en la adjudicación de los contratos."
+  - sujeto_tipo: persona
+    sujeto: victor-de-aldama
+    papel: activo
+    nota: "La sentencia no firme le atribuye intervención en la adjudicación de los contratos."
+vigencia: vigente
+redaccion_neutra_revisada: true
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-29"
