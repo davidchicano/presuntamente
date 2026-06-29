@@ -69,6 +69,7 @@ resumen_cifras: |
 estado_publicacion: beta_publica
 ultima_revision_editorial: "2026-06-29"
 nivel_relevancia_editorial: capital
+pin_destacado: 3
 
 estado_ficha:
   cronologia: completo

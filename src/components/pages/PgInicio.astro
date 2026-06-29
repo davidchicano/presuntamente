@@ -183,7 +183,7 @@ const destacados = casos
     if (a.score.fecha !== b.score.fecha) return b.score.fecha.localeCompare(a.score.fecha);
     return b.score.relevancia - a.score.relevancia;
   })
-  .slice(0, 2);
+  .slice(0, 3);
 
 // TODO i18n: rama 'ca' cuando se active el catalán.
 const strings = {
