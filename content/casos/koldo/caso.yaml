@@ -25,7 +25,7 @@ sintesis_caso:
   estado_actual: |
     La pieza inicial de contratos de mascarillas fue sentenciada por la Sala Segunda del
     Tribunal Supremo el 22 de junio de 2026. La nota oficial del CGPJ y la copia íntegra
-    localizada de la Sentencia 418/2026 informan de condenas para José Luis Ábalos, Koldo
+    oficial de CENDOJ de la Sentencia 418/2026 informan de condenas para José Luis Ábalos, Koldo
     García y Víctor de Aldama por delitos de organización criminal, cohecho, malversación y
     tráfico de influencias, con absoluciones parciales por otros delitos objeto de acusación.
     Hasta verificar firmeza y revisión humana explícita, el inventario conserva los roles como
@@ -67,7 +67,7 @@ resumen_cifras: |
   conexas quedan pendientes de primarios completos para evitar doble conteo.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-06-23"
+ultima_revision_editorial: "2026-06-29"
 nivel_relevancia_editorial: capital
 
 estado_ficha:
@@ -81,5 +81,5 @@ estado_ficha:
   conexiones: parcial
   cobertura_mediatica_general: parcial
   revision_editorial: parcial
-  notas: "Beta pública urgente del 23-jun-2026: cronología principal, roles formales, nota CGPJ, nota resumen oficial DOCX y copia local de la Sentencia TS 418/2026 ya están modeladas. Siguen parciales los primarios oficiales en CENDOJ/Poder Judicial, firmeza, piezas conexas AN, acusaciones/defensas, cobertura general y relaciones entre casos."
-  fecha_actualizacion: "2026-06-23"
+  notas: "Beta pública urgente del 23-jun-2026: cronología principal, roles formales, nota CGPJ, nota resumen oficial DOCX y copia íntegra de la Sentencia TS 418/2026 ya están modeladas. Barrido 29-jun: sin hito procesal nuevo posterior a la sentencia; primario oficial íntegro localizado en CENDOJ y pendiente sólo verificar firmeza/revisión humana. Siguen parciales piezas conexas AN, acusaciones/defensas, cobertura general y relaciones entre casos."
+  fecha_actualizacion: "2026-06-29"

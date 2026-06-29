@@ -4,9 +4,9 @@
 >
 > Roadmap conceptual: [`docs/diseno/06-roadmap-por-fases.md`](docs/diseno/06-roadmap-por-fases.md). Histórico largo: [`docs/roadmap/`](docs/roadmap/README.md).
 
-**Última actualización:** 2026-06-23 (**Issue #4, catálogo editorial de medios**). PR #7 y #8 mergeadas: medios grandes ausentes catalogados y El Confidencial/Público/OKDIARIO reciben `orientacion_editorial_percibida` CIS 3511. Refresco editorial propio: 10 medios ya clasificados pasan de CIS 3421 a CIS 3511 (13 medios CIS 3511 en total); `eldiario-es` pasa a `centro` por media 4,60 y umbrales vigentes. `pnpm validate` 1398 OK + `pnpm build` OK. #4 sigue abierto sólo para medios locales/ausentes y fuentes externas no-CIS.
+**Última actualización:** 2026-06-29 (**barrido actualidad Plus Ultra · Koldo · Leire**). Plus Ultra incorpora hito sobre actuación de Calama ante filtraciones (25-jun) con nota CGPJ N1 archivada; nulidad queda pendiente. Leire incorpora declaración de Teijelo (25-jun) y ampliación SEPI/Tubos con María Belén Gualda investigada (29-jun); Carmen Pano queda sólo en NOTES por V-17/primario. Koldo: sin hito nuevo, pero Sentencia TS 418/2026 localizada en CENDOJ como ROJ STS 2553/2026 y elevada a N1; sigue pendiente firmeza. `pnpm validate` 1482 OK + `pnpm build` OK.
 
-**Anterior (2026-06-18).** **Issue #3**: formalizada la sección pública «Contenido considerado y no modelado» como P-11 en doc 02/04 + schema/render/API + piloto en `leire-diez`; mini-review cerrada con V-27. Pendiente: `archive:catchup` para `contenido_no_modelado[].fuentes[]` y añadir P-11 al checklist de `/revisar-caso`.
+**Anterior (2026-06-23).** **Issue #4, catálogo editorial de medios**. PR #7 y #8 mergeadas: medios grandes ausentes catalogados y El Confidencial/Público/OKDIARIO reciben `orientacion_editorial_percibida` CIS 3511. Refresco editorial propio: 10 medios ya clasificados pasan de CIS 3421 a CIS 3511; `pnpm validate` 1398 OK + `pnpm build` OK. #4 sigue abierto sólo para medios locales/ausentes y fuentes externas no-CIS.
 
 ---
 
@@ -114,8 +114,8 @@ Plan detallado fuera de git. Pre-requisitos: deploy + dominio → lanzamiento bl
 
 | Caso | Estado | Pendiente principal |
 |------|--------|---------------------|
-| Plus Ultra | publicable · pin#1 | declaración Zapatero 17-18 jun; auto Calama íntegro en CENDOJ; ampliación CNI/Venezuela cuando aparezca auto |
-| Leire Díez | publicable · pin#2 | barrido 6-jun: hito rechazo personación García-Castellón (4-jun). Inhibición JI 9→AN recurrida por Cerdán (5-jun) sin resolver; pieza contratos SEPI/Tubos Reunidos secreta hasta julio (nexo plus-ultra); primarios cuando suba el sumario; recurso de nulidad de Díez; auto JI 9 con número |
+| Plus Ultra | publicable · pin#1 | nulidad/licitud prueba pendiente de resolución; auto filtraciones 25-jun con soporte N4; auto Calama íntegro en CENDOJ; ampliación CNI/Venezuela cuando aparezca auto |
+| Leire Díez | publicable · pin#2 | ampliación SEPI/Tubos 29-jun (Gualda investigada) pendiente de auto íntegro; declaración Pano sólo NOTES por V-17; inhibición JI 9→AN recurrida sin resolver; primarios cuando suba sumario; auto JI 9 con número |
 | Begoña Gómez | publicable | UCO prevaricación Cantó (1 fuente, V-13 pendiente); audiencia previa 9-jun |
 | González Amador | publicable | informe UCO Quirón (+300 días) |
 | FGE | publicable | amparo TC admisibilidad; indulto parcial pendiente CM |
@@ -134,7 +134,7 @@ Plan detallado fuera de git. Pre-requisitos: deploy + dominio → lanzamiento bl
 | Palau Música | borrador (2026-05-30) | 2 hechos firmes promovidos a `acreditado` (STS 813/2020); doc principal de la querella 2009; vínculos institucionales |
 | Fórum Filatélico | **beta_publica (2026-06-03)** | 2ª línea editorial (Confilegal) añadida al hecho del procesamiento; docs N1/N2 de hitos pendientes; `forum-filatelico-sa` mal como perjudicado en importe |
 | ático-estepona | **beta_publica (2026-06-03)** | Cavero anonimizada (V-17, caso archivado); vínculos institucionales pendientes |
-| Koldo/Cerdán | — | Cerdán ya catalogado como persona desde Leire; pendiente arrancar caso formal cuando decida el maintainer |
+| Koldo/Cerdán | **beta_publica (2026-06-23)** | Sentencia TS 418/2026 modelada como no firme; pendiente confirmar firmeza, localizar primario oficial íntegro y desarrollar piezas conexas AN |
 
 ### Estado de los bloqueantes de la auditoría (tanda 2026-05-30)
 

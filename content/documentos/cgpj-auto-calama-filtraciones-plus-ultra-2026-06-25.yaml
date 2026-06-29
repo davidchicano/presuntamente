@@ -1,0 +1,23 @@
+id: cgpj-auto-calama-filtraciones-plus-ultra-2026-06-25
+titulo: "Nota CGPJ — El juez Calama deduce testimonio para investigar filtraciones en el caso Plus Ultra (25 jun 2026)"
+tipo: nota_prensa_institucional
+nivel_fuente: 1
+nivel_fuente_justificacion: |
+  Nota oficial publicada en `poderjudicial.es` (dominio oficial en lista
+  blanca DominiosOficiales de [doc 01 — "Enums catalogados"](docs/diseno/01-modelo-de-datos.md#3-enums-catalogados))
+  sobre el auto del JCI nº 4 de la Audiencia Nacional de 25 de junio de
+  2026. La nota informa de que el magistrado José Luis Calama deduce
+  testimonio para investigar filtraciones del caso Plus Ultra y acuerda
+  formar una pieza de información sensible para preservar el carácter
+  reservado de actuaciones. Se conserva copia HTML local con hash.
+productor_organizacion_id: juzgado-central-instruccion-4
+fecha_documento: "2026-06-25"
+fecha_publicacion: "2026-06-25"
+url_canonica: "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Audiencia-Nacional/Noticias-Judiciales/El-juez-de-la-Audiencia-Nacional-deduce-testimonio-para-investigar-las-filtraciones-en-el-caso-Plus-Ultra-y-adopta-medidas-para-preservar-el-caracter-reservado-de-las-actuaciones"
+ruta_local: "/documentos/plus-ultra/cgpj-auto-calama-filtraciones-plus-ultra-2026-06-25.html"
+hash_sha256: "d4ad9acaf18a365819016aeb3d2d90455233715884c904bfe5de415b61059ed8"
+estado_acceso: publico
+idioma: es
+caso_principal_id: plus-ultra
+estado_publicacion: borrador
+ultima_revision_editorial: "2026-06-29"

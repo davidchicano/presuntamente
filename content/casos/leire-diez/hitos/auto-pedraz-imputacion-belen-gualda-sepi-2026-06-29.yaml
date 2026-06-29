@@ -1,0 +1,29 @@
+id: auto-pedraz-imputacion-belen-gualda-sepi-2026-06-29
+caso_id: leire-diez
+tipo: imputacion
+fecha: "2026-06-29"
+fecha_precision: dia
+titulo: "Pedraz amplía la pieza SEPI/Tubos e incorpora como investigada a la presidenta de la SEPI"
+descripcion: |
+  El 29 de junio de 2026 la cobertura cruzada informa de que el magistrado Santiago Pedraz,
+  titular del JCI nº 5 de la Audiencia Nacional, acuerda incorporar como investigada a María
+  Belén Gualda González, presidenta de la SEPI, junto a otras personas en la derivada de
+  presuntas adjudicaciones irregulares vinculadas a SEPI y Tubos Reunidos.
+
+  La ampliación refuerza la relevancia procesal de la pieza SEPI/Tubos, cuyo secreto se
+  había levantado el 15 de junio. Esta pasada sólo modela nominalmente a la presidenta de
+  SEPI por tratarse de una figura pública con cargo institucional y rol formal reflejado en
+  cobertura cruzada. El resto de personas mencionadas por la prensa queda pendiente de auto
+  íntegro o decisión humana antes de crear fichas individuales. Rige el principio de
+  presunción de inocencia.
+personas_afectadas:
+  - maria-belen-gualda
+  - santiago-pedraz
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+  - sepi
+documento_principal_id: eldiario-imputacion-belen-gualda-sepi-leire-2026-06-29
+documentos_relacionados:
+  - theobjective-imputacion-belen-gualda-sepi-leire-2026-06-29
+hechos_introducidos: []
+fase_resultante: instruccion

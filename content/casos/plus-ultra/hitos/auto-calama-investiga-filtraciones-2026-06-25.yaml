@@ -1,0 +1,29 @@
+id: auto-calama-investiga-filtraciones-2026-06-25
+caso_id: plus-ultra
+tipo: auto_diligencias
+fecha: "2026-06-25"
+fecha_precision: dia
+titulo: "El juez Calama abre una vía para investigar filtraciones de documentación del caso Plus Ultra"
+descripcion: |
+  El 25 de junio de 2026 el CGPJ informa de que el magistrado José Luis Calama acuerda
+  deducir testimonio para investigar filtraciones de documentación incorporada a la causa
+  Plus Ultra y formar una pieza de información sensible para preservar el carácter reservado
+  de actuaciones. La incidencia aparece tras los escritos de la defensa de José Luis
+  Rodríguez Zapatero sobre la licitud de parte del material incorporado a las actuaciones.
+
+  Este hito se limita a la dimensión procesal de la decisión sobre filtraciones. No modela
+  como hechos los contenidos filtrados, ni incorpora personas privadas citadas en esa
+  documentación, ni resuelve las alegaciones de nulidad formuladas por la defensa, que
+  quedan pendientes de resolución judicial. Rige el principio de presunción de inocencia.
+personas_afectadas:
+  - jose-luis-rodriguez-zapatero
+  - jose-luis-calama
+organizaciones_afectadas:
+  - juzgado-central-instruccion-4
+  - audiencia-nacional
+documento_principal_id: cgpj-auto-calama-filtraciones-plus-ultra-2026-06-25
+documentos_relacionados:
+  - eldiario-calama-filtraciones-pu-2026-06-25
+  - infobae-calama-filtraciones-pu-2026-06-25
+hechos_introducidos: []
+fase_resultante: instruccion

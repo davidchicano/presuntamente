@@ -26,7 +26,7 @@ sintesis_caso:
     - "La causa procede de cooperación internacional con Francia y Suiza y se instruye en la Audiencia Nacional."
     - "José Luis Rodríguez Zapatero declaró como investigado ante el JCI nº 4 el 17 de junio de 2026 y, tras esa comparecencia, el instructor rechazó imponerle medidas cautelares personales."
     - "El instructor investiga también el posible uso irregular de fondos públicos y su conexión con esquemas de blanqueo con origen en Venezuela."
-  estado_actual: "La causa sigue en instrucción. José Luis Rodríguez Zapatero declaró como investigado ante el JCI nº 4 el 17 de junio de 2026 y, tras su comparecencia, el magistrado José Luis Calama rechazó retirarle el pasaporte o imponerle comparecencias periódicas al no apreciar un riesgo procesal actual. El 29 de mayo de 2026 el instructor agrupó las ocho acusaciones populares personadas —entre ellas el Partido Popular, Vox, Hazte Oír y el sindicato Manos Limpias— bajo una representación y dirección letrada conjunta, atribuida al Partido Popular; un auto posterior de 16 de junio confirmó que su presencia en las diligencias debía canalizarse a través de esa representación unificada. Rige el principio de presunción de inocencia."
+  estado_actual: "La causa sigue en instrucción. José Luis Rodríguez Zapatero declaró como investigado ante el JCI nº 4 el 17 de junio de 2026 y, tras su comparecencia, el magistrado José Luis Calama rechazó retirarle el pasaporte o imponerle comparecencias periódicas al no apreciar un riesgo procesal actual. El 25 de junio, el CGPJ informó de que el instructor dedujo testimonio para investigar filtraciones de documentación y datos incorporados a la causa y acordó formar una pieza de información sensible; los escritos de nulidad de la defensa quedan pendientes de resolución. El 29 de mayo de 2026 el instructor agrupó las ocho acusaciones populares personadas bajo una representación y dirección letrada conjunta, atribuida al Partido Popular; un auto posterior de 16 de junio confirmó que su presencia en las diligencias debía canalizarse a través de esa representación unificada. Rige el principio de presunción de inocencia."
   cifras_clave:
     - "53 M€ de préstamo público"
     - "4 delitos atribuidos en la causa"
@@ -53,7 +53,7 @@ resumen_cifras: |
   por el Consejo de Ministros a través de la SEPI.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-06-23"
+ultima_revision_editorial: "2026-06-29"
 nivel_relevancia_editorial: capital
 pin_destacado: 1
 
@@ -71,4 +71,4 @@ estado_ficha:
   conexiones: parcial
   cobertura_mediatica_general: parcial
   revision_editorial: completo
-  fecha_actualizacion: "2026-06-23"
+  fecha_actualizacion: "2026-06-29"

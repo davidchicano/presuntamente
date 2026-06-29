@@ -33,9 +33,13 @@ sintesis_caso:
     Cristina Narbona, para el 10 de julio; además reclamó a la Fiscalía General del Estado
     información sobre reuniones mantenidas con Leire Díez y otros investigados. El 15 de
     junio levantó también el secreto de la pieza separada sobre presuntas maniobras ligadas a
-    operaciones de la SEPI, incluida la derivada Tubos Reunidos. El 22 de junio accedió a la
-    petición del PSOE de expurgar en pieza separada la documentación ajena a la causa
-    intervenida en Ferraz. La causa sigue en fase de instrucción ante el JCI nº 5 de la
+    operaciones de la SEPI, incluida la derivada Tubos Reunidos. El 25 de junio Jacobo
+    Teijelo declaró como investigado y el 29 de junio la cobertura cruzada informó de que
+    Pedraz ampliaba esa derivada e incorporaba como investigada a la presidenta de la SEPI,
+    María Belén Gualda González, junto a otras personas no modeladas nominalmente en esta
+    pasada. El 22 de junio accedió a la petición del PSOE de expurgar en pieza separada la
+    documentación ajena a la causa intervenida en Ferraz. La causa sigue en fase de
+    instrucción ante el JCI nº 5 de la
     Audiencia Nacional. En paralelo, el magistrado ha solicitado al Juzgado de Instrucción
     nº 9 de Madrid que se inhiba a su favor para asumir la causa abierta en 2025, por su
     competencia sobre el presunto delito contra las instituciones del Estado, y el 4 de junio
@@ -74,7 +78,7 @@ resumen_cifras: |
   una empresaria para modificar su declaración judicial.
 
 estado_publicacion: beta_publica
-ultima_revision_editorial: "2026-06-23"
+ultima_revision_editorial: "2026-06-29"
 nivel_relevancia_editorial: capital
 pin_destacado: 2
 
@@ -89,8 +93,8 @@ estado_ficha:
   conexiones: parcial
   cobertura_mediatica_general: pendiente
   revision_editorial: completo
-  notas: "PR1+PR2: 4 hitos, 5 hechos, 10 roles investigados + 1 juez. Vínculos institucionales: 16 vínculos creados (3 afectación, 13 cargos/nombramientos), incluyendo BOE-A-2018-8601 (RD 616/2018, nombramiento Fernández Guerrero SEPI) descargado con hash_sha256 y nota FESOFI (N3) + Newtral (N4) para el cargo de Leire Díez en Correos. Faltan, para próximas pasadas: nota oficial CGPJ del auto Pedraz cuando aparezca; auto JI 9 con número exacto; cargo previo de Zarrías como Consejero de Presidencia de la Junta de Andalucía (1996-2008); BOE-A-2019-14254 de cese de Fernández Guerrero en SEPI (opcional); nombramiento BORME de Leire Díez como apoderada de Correos (acto registral 01-04-2022). Barrido 2026-06-03: levantamiento parcial del secreto (auto 01-jun) catalogado como hito; localizada y catalogada la nota oficial CGPJ del 27-may (N1, documentos_primarios reforzados: respaldo oficial del marco de delitos); delitos ampliados con organización criminal y prevaricación (CGPJ N1). Barrido 2026-06-06: catalogado el auto del 04-jun de rechazo (por el momento) de la personación del magistrado jubilado García-Castellón como acusación particular (hito auto_diligencias, N4 Confilegal+Público+The Objective). Anotados en NOTES sin modelar: recurso de Cerdán contra la petición de inhibición, petición de la Fiscalía de declaración testifical de Cristina Narbona, y contenido del sumario ya parcialmente público (libretas UCO; pieza de contratos SEPI/Tubos Reunidos que sigue secreta hasta julio). Piloto 2026-06-12: añadida sección pública contenido_no_modelado con 3 decisiones editoriales atribuidas y sin crear personas, roles ni nodos. Barrido 2026-06-23: modelados el requerimiento de información financiera PSOE/PSC (04-jun), la citación como investigada de Leticia de la Hoz y como testigo de Cristina Narbona (08-jun), y el levantamiento del secreto de la pieza SEPI/Tubos (15-jun); actualizado el hito de Ferraz con el expurgo acordado el 22-jun."
-  fecha_actualizacion: "2026-06-23"
+  notas: "PR1+PR2: 4 hitos, 5 hechos, 10 roles investigados + 1 juez. Vínculos institucionales: 16 vínculos creados (3 afectación, 13 cargos/nombramientos), incluyendo BOE-A-2018-8601 (RD 616/2018, nombramiento Fernández Guerrero SEPI) descargado con hash_sha256 y nota FESOFI (N3) + Newtral (N4) para el cargo de Leire Díez en Correos. Faltan, para próximas pasadas: nota oficial CGPJ del auto Pedraz cuando aparezca; auto JI 9 con número exacto; cargo previo de Zarrías como Consejero de Presidencia de la Junta de Andalucía (1996-2008); BOE-A-2019-14254 de cese de Fernández Guerrero en SEPI (opcional); nombramiento BORME de Leire Díez como apoderada de Correos (acto registral 01-04-2022). Barrido 2026-06-03: levantamiento parcial del secreto (auto 01-jun) catalogado como hito; localizada y catalogada la nota oficial CGPJ del 27-may (N1, documentos_primarios reforzados: respaldo oficial del marco de delitos); delitos ampliados con organización criminal y prevaricación (CGPJ N1). Barrido 2026-06-06: catalogado el auto del 04-jun de rechazo (por el momento) de la personación del magistrado jubilado García-Castellón como acusación particular (hito auto_diligencias, N4 Confilegal+Público+The Objective). Anotados en NOTES sin modelar: recurso de Cerdán contra la petición de inhibición, petición de la Fiscalía de declaración testifical de Cristina Narbona, y contenido del sumario ya parcialmente público (libretas UCO; pieza de contratos SEPI/Tubos Reunidos que sigue secreta hasta julio). Piloto 2026-06-12: añadida sección pública contenido_no_modelado con 3 decisiones editoriales atribuidas y sin crear personas, roles ni nodos. Barrido 2026-06-23: modelados el requerimiento de información financiera PSOE/PSC (04-jun), la citación como investigada de Leticia de la Hoz y como testigo de Cristina Narbona (08-jun), y el levantamiento del secreto de la pieza SEPI/Tubos (15-jun); actualizado el hito de Ferraz con el expurgo acordado el 22-jun. Barrido 2026-06-29: modelada la declaración de Teijelo (25-jun) y la ampliación de la derivada SEPI/Tubos con María Belén Gualda como investigada (29-jun); declaración testifical de Carmen Pano queda en NOTES por prudencia V-17."
+  fecha_actualizacion: "2026-06-29"
 
 contenido_no_modelado:
   - id: referencias-one-presidente-informes-uco

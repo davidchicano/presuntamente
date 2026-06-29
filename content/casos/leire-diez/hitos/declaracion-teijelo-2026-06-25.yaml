@@ -1,0 +1,26 @@
+id: declaracion-teijelo-2026-06-25
+caso_id: leire-diez
+tipo: declaracion_imputado
+fecha: "2026-06-25"
+fecha_precision: dia
+titulo: "Jacobo Teijelo declara como investigado ante el juez Pedraz en el caso Leire"
+descripcion: |
+  El 25 de junio de 2026 Jacobo Teijelo declara como investigado ante el magistrado
+  Santiago Pedraz en el JCI nº 5 de la Audiencia Nacional. La cobertura cruzada sitúa la
+  comparecencia dentro de la investigación sobre pagos, reuniones y trabajos atribuidos a
+  la red de Leire Díez.
+
+  El hito no introduce por sí solo un hecho nuevo: las manifestaciones realizadas en una
+  declaración de investigado son posición de parte y deben contrastarse con las resoluciones
+  o documentos primarios que las incorporen a la causa. Rige el principio de presunción de
+  inocencia.
+personas_afectadas:
+  - jacobo-teijelo
+  - santiago-pedraz
+organizaciones_afectadas:
+  - juzgado-central-instruccion-5
+documento_principal_id: lasexta-declaracion-teijelo-leire-2026-06-25
+documentos_relacionados:
+  - eldiario-declaracion-teijelo-leire-2026-06-25
+hechos_introducidos: []
+fase_resultante: instruccion

@@ -154,6 +154,25 @@ curl -s 'https://www.poderjudicial.es/search/search.action' \
 
 Parsear los `data-roj` y `<a href>` del HTML resultante con `grep -oE`.
 
+### CENDOJ — PDF oficial de una resolución
+
+La URL `openDocument` devuelve HTML de visor. Dentro aparece un `<object>` con el PDF oficial:
+
+```text
+/search/contenidos.action?action=accessToPDF&publicinterface=true&tab=<DB>&reference=<hash>&encode=true&optimize=<YYYYMMDD>&databasematch=<DB>
+```
+
+Ese endpoint devuelve `Content-Type: application/pdf`. Para descargarlo de forma reproducible:
+
+```bash
+curl -sSL 'https://www.poderjudicial.es/search/contenidos.action?action=accessToPDF&publicinterface=true&tab=TS&reference=<hash>&encode=true&optimize=<YYYYMMDD>&databasematch=TS' \
+  -H 'User-Agent: Mozilla/5.0' \
+  -H 'Referer: https://www.poderjudicial.es/search/TS/openDocument/<hash>/<YYYYMMDD>' \
+  -o resolucion-cendoj.pdf
+```
+
+El PDF puede no ser byte a byte idéntico a copias oficiales obtenidas por sede judicial o a mirrors periodísticos: CENDOJ regenera una versión propia, con metadatos `Author: CENDOJ` y productor habitual `Apache FOP`. Para el inventario, si el texto corresponde a la misma resolución y el dominio es oficial, esta copia es preferente como `ruta_local` N1; conservar hashes históricos de mirrors anteriores en `NOTES.md`.
+
 ### Buscador interno del CGPJ — Acuerdos de la Comisión Permanente
 
 **Método**: `POST https://www.poderjudicial.es/cgpj/es/Servicios/Acuerdos-del-CGPJ/Acuerdos-de-la-Comision-Permanente/`.
@@ -169,7 +188,7 @@ Parsear los `data-roj` y `<a href>` del HTML resultante con `grep -oE`.
 | Recurso | Cobertura declarada | Cobertura real verificada |
 |---|---|---|
 | CENDOJ — Tribunal Supremo | "Desde mediados 90" | Cubre desde finales 90 sin lagunas relevantes; ROJ accesible por API completa |
-| CENDOJ — Audiencia Nacional | "Histórico completo" | Cubre Sala Penal, Sala Apelación, Salas Cont-Admon/Social; los Juzgados Centrales son irregulares |
+| CENDOJ — Audiencia Nacional | "Histórico completo" | Cubre Sala Penal, Sala Apelación, Salas Cont-Admon/Social; los Juzgados Centrales son irregulares, especialmente en autos de instrucción vivos |
 | CENDOJ — TSJ y AP | "Por convenio" | **Cobertura recortada y aleatoria** entre Comunidades; muchas resoluciones recientes no se publican. Los autos de instrucción de procedimientos vivos **no se publican** aunque sean de AP (verificado con dos autos del caso Begoña Gómez del 23-feb-2026 y 13-may-2025, ambos públicos por prensa, 0 hits en CENDOJ el 2026-05-27) |
 | Buscador interno acuerdos CP CGPJ | "Histórico" | **Sólo desde 2024**. Anteriores en el histórico estático URL-by-date |
 | Notas de prensa CGPJ/TS/AN | "Archivo completo" | Histórico aparentemente completo, no se ha encontrado laguna |
@@ -202,7 +221,7 @@ Si los tres pasan, el catálogo está vivo.
 
 ## Cuándo NO usar este portal
 
-- **Para autos de instrucción de procedimientos vivos**, aunque sean de Juzgado Central o de la AP. CENDOJ no los publica mientras la causa esté en marcha — probado con dos autos del caso Begoña Gómez ya públicos por prensa (anulación jurado popular 23-feb-2026 + desimputación Goyache 13-may-2025): 0 hits en CENDOJ el 2026-05-27. Modelar el hito con cobertura N4 cruzada (V-13) y anotar `pendiente_primario` en `NOTES.md` del caso.
+- **Para autos de instrucción de procedimientos vivos**, aunque sean de Juzgado Central o de la AP. CENDOJ no los publica mientras la causa esté en marcha — probado con dos autos del caso Begoña Gómez ya públicos por prensa (anulación jurado popular 23-feb-2026 + desimputación Goyache 13-may-2025): 0 hits en CENDOJ el 2026-05-27. Reconfirmado el 29-jun-2026 con búsquedas `TIPOORGANOPUB=27` para JCI nº 4 Plus Ultra (Calama, filtraciones 25-jun) y JCI nº 5 Leire/SEPI/Gualda (29-jun): 0 hits. Modelar el hito con nota CGPJ N1 si existe o cobertura N4 cruzada (V-13) si no, y anotar `pendiente_primario` en `NOTES.md` del caso.
 
 - **Para escritos de parte** (querella, recurso de la defensa, escrito de Fiscalía). CENDOJ publica resoluciones de órgano judicial, no escritos de las partes. Si el hito depende de un escrito, modelar como N3 `filtrado_verificado` con mirror periodístico identificable o N4 cruzado.
 
@@ -213,3 +232,7 @@ Si los tres pasan, el catálogo está vivo.
 - **2026-05-27 (noche, 3)** — Caso `lezo`, pendiente_primario García-Castellón → JCI 6. Maintainer aportó el curl del formulario de búsqueda del CGPJ. Descubrimientos: (a) buscador interno del CGPJ sólo indexa desde 2024; (b) acuerdos previos en histórico estático con URL directa por fecha; (c) PDFs íntegros en endpoint estable `stfls/.../FICHERO/<YYYYMMDD>...pdf`; (d) la fecha del acuerdo de reingreso de García-Castellón es 22-jun-2017, no 6-jun como suponía la cobertura periodística.
 
 - **2026-05-27 (noche, 3, continuación)** — Caso `begona-gomez`, pendiente_primario auto Cristina Álvarez. Maintainer aportó el curl del buscador AJAX CENDOJ. Descubrimientos: (a) endpoint `/search/search.action`, parámetros, tabla de `TIPOORGANOPUB`; (b) `databasematch=AN` es contenedor genérico de AP/TSJ/JI, no sólo Audiencia Nacional; (c) `VALUESCOMUNIDAD`/`ccaa` no filtran de verdad; (d) CENDOJ no publica autos de procedimientos en instrucción aunque sean de AP, verificado con dos autos del caso BG ya públicos por prensa (0 hits).
+
+- **2026-06-29** — Caso `koldo`, Sentencia TS 418/2026. Búsqueda CENDOJ `databasematch=TS&TIPOORGANOPUB=12&TEXT=Sentencia+418%2F2026` devuelve `ROJ: STS 2553/2026`, `ECLI:ES:TS:2026:2553`, referencia interna `11767153` y URL `openDocument`. El PDF oficial no está en el `href` principal sino en el `<object>` `accessToPDF`; descarga validada con `Content-Type: application/pdf`, 84 páginas y hash local.
+
+- **2026-06-29 (continuación)** — Casos `plus-ultra` y `leire-diez`: CENDOJ devuelve 0 hits para autos recientes de Juzgados Centrales de Instrucción vivos, incluso cuando el CGPJ sí publica nota institucional del auto de Calama sobre filtraciones en Plus Ultra. Aprendizaje operativo: antes de resignarse a N4, buscar también en notas CGPJ/AN por slug de titular; CENDOJ y notas institucionales no cubren lo mismo.

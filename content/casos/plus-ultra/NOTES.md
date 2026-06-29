@@ -2,9 +2,40 @@
 
 Anotaciones internas. **No se publica.** Vive en el repo para humanos y agentes LLM que iteren sobre este caso. Convención en [AGENTS.md → "NOTES.md por caso"](AGENTS.md#notesmd-por-caso).
 
-Última actualización: 2026-06-23 (barrido actualidad — declaración de Zapatero, rechazo de cautelares y revisión editorial de junio). Antes: 2026-06-06 (ventana procesalmente tranquila; sin hito nuevo; refuerzo del nexo SEPI/Hirurok con `leire-diez`, pero en pieza secreta hasta julio).
+Última actualización: 2026-06-29 (barrido actualidad — filtraciones en Plus Ultra, ampliación SEPI/Tubos en Leire, sin hito nuevo en Koldo). Antes: 2026-06-23 (declaración de Zapatero, rechazo de cautelares y revisión editorial de junio).
 
 ---
+
+## Barrido actualidad 2026-06-29
+
+**Ventana:** 2026-06-23 → 2026-06-29. Barrido sobre Plus Ultra, Koldo y Leire Díez por petición del maintainer.
+
+### Novedad MODELADA
+
+- **Hito nuevo:** `auto-calama-investiga-filtraciones-2026-06-25` (`tipo: auto_diligencias`). La cobertura cruzada de elDiario.es e Infobae informa de una actuación del magistrado Calama ante filtraciones de documentación y datos de la causa. Se modela sólo la incidencia procesal; no se incorporan contenidos filtrados, datos personales ni personas privadas.
+- **Primario oficial localizado durante la pasada:** la nota CGPJ `cgpj-auto-calama-filtraciones-plus-ultra-2026-06-25` confirma el auto del 25-jun-2026, sustituye a elDiario.es como `documento_principal_id` del hito y queda archivada localmente como HTML con hash. Los N4 se conservan como contexto de apoyo.
+
+### Novedades NO modeladas
+
+- **Escritos de nulidad de la defensa de Zapatero.** Son escritos de parte pendientes de resolución. Se dejan en seguimiento; si Calama resuelve sobre la nulidad o licitud de la prueba, entonces sí procede hito.
+- **Material filtrado del sumario.** Sigue fuera del modelo como Hecho por falta de primario estable y por cautela de privacidad.
+
+### Cruce con otros casos
+
+- **`leire-diez`**: el 29-jun la cobertura sitúa la ampliación de investigados en la derivada SEPI/Tubos, con la presidenta de SEPI como investigada. Refuerza el hilo SEPI ya conocido, pero no transforma por sí solo la relación `leire-diez-conexion-factual-plus-ultra` porque no aparece nexo formal directo con el préstamo Plus Ultra. Mantener la relación existente y reevaluar con el auto íntegro de la pieza SEPI/Tubos.
+- **`koldo`**: sin primario nuevo que permita convertir la candidata Plus Ultra↔Koldo en `RelacionEntreCasos`; el nexo Apamate/Aldama sigue pendiente de documento estable.
+
+### Cascada aplicada
+
+- `sintesis_caso.estado_actual`: actualizado con la incidencia de filtraciones y los escritos de nulidad pendientes.
+- `ultima_revision_editorial` y `estado_ficha.fecha_actualizacion`: 2026-06-29.
+- Sin tocar `que_se_investiga`, `hechos_clave`, `cifras_clave`, `fase_actual`, delitos ni roles.
+
+### Pendientes
+
+- [x] ~~Localizar respaldo oficial de Calama sobre filtraciones.~~ **Resuelto 2026-06-29:** nota CGPJ N1 localizada y archivada; sigue pendiente el auto íntegro si aparece.
+- [ ] Vigilar resolución de los escritos de nulidad/licitud de prueba.
+- [ ] Reevaluar Plus Ultra↔Leire cuando esté disponible el auto íntegro de la ampliación SEPI/Tubos.
 
 ## Barrido actualidad 2026-06-23
 

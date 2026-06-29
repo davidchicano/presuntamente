@@ -7,8 +7,8 @@ nivel_fuente_justificacion: |
   Segunda del Tribunal Supremo en la pieza inicial del caso Koldo. Informa de condenas a
   José Luis Ábalos, Koldo García y Víctor de Aldama por delitos de organización criminal,
   cohecho, malversación y tráfico de influencias. Dominio oficial en lista blanca. Se cruza
-  con la copia íntegra local de la Sentencia TS 418/2026 catalogada como N3
-  `filtrado_verificado`; pendiente localizar copia oficial en CENDOJ/Poder Judicial.
+  con la copia íntegra oficial de la Sentencia TS 418/2026 localizada en CENDOJ/Poder
+  Judicial el 29-jun-2026.
 productor_organizacion_id: tribunal-supremo
 fecha_documento: "2026-06-22"
 fecha_publicacion: "2026-06-22"
@@ -17,4 +17,4 @@ estado_acceso: publico
 idioma: es
 caso_principal_id: koldo
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-06-23"
+ultima_revision_editorial: "2026-06-29"

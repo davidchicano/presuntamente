@@ -235,3 +235,38 @@ La nota CGPJ enumera: organización criminal, cohecho, revelación de secretos, 
 - [ ] Localizar el **auto** del 15-jun-2026 que levanta el secreto de la pieza `JG 150/2025-01` para decidir si algún detalle cuantitativo de la derivada SEPI/Tubos puede pasar de NOTES a `Hecho`.
 - [ ] Valorar en Reconciliación la actualización de `leire-diez-conexion-factual-plus-ultra` y `leire-diez-comparte-actor-koldo`.
 - [ ] Vigilar el resultado efectivo de las declaraciones señaladas para el 25-jun (Teijelo), 10-jul (Narbona) y 14-jul (De la Hoz): si se celebran o se suspenden, decidir si merecen Hito propio o simple actualización de notas/roles.
+
+---
+
+## Barrido de actualidad — 2026-06-29 (`/actualizar-caso`)
+
+**Ventana revisada:** 2026-06-23 → 2026-06-29. Última fecha procesal previa catalogada antes de esta pasada: 22-jun-2026 (expurgo de documentación ajena a la causa intervenida en Ferraz).
+
+### Novedades MODELADAS
+
+1. **Hito nuevo** `declaracion-teijelo-2026-06-25` (`tipo: declaracion_imputado`). Jacobo Teijelo declaró como investigado ante Pedraz el 25-jun. Se modela la comparecencia, pero no las manifestaciones de parte como Hecho nuevo.
+2. **Hito nuevo** `auto-pedraz-imputacion-belen-gualda-sepi-2026-06-29` (`tipo: imputacion`). La cobertura cruzada informa de que Pedraz amplía la derivada SEPI/Tubos e incorpora como investigada a María Belén Gualda González, presidenta de SEPI, junto a otras personas. Se crea persona y rol sólo para Gualda por cargo público actual y rol formal; el resto queda pendiente de auto íntegro o decisión humana antes de fichar nombres.
+
+### Novedades NO modeladas
+
+- **Declaración testifical de Carmen Pano (29-jun).** Catalogado el documento `eldiario-declaracion-carmen-pano-leire-2026-06-29` para seguimiento, pero no se crea persona/rol ni se actualiza el importe del hecho de obstrucción. Motivo: testigo/persona privada, cobertura N4 y discrepancia de cuantía respecto al auto ya modelado (50.000 € en el hecho actual frente a 250.000 € en la declaración cubierta por prensa). Esperar primario o decisión humana V-17.
+- **Cifras de la derivada SEPI/Tubos.** La cobertura menciona importes y contratos, pero esta pasada no estructura nuevas cuantías hasta localizar el auto íntegro o informe primario.
+- **Recurso/oposición de Cerdán a la inhibición.** Sigue siendo escrito de parte pendiente de resolución; no hito.
+
+### Cruces
+
+- **`plus-ultra`**: la ampliación SEPI/Tubos refuerza la conexión institucional SEPI, pero no añade por sí sola un nexo formal con el préstamo Plus Ultra. Mantener `leire-diez-conexion-factual-plus-ultra` y reevaluar al localizar el auto íntegro.
+- **`koldo`**: la declaración de Teijelo y la derivada de De la Hoz refuerzan el contexto común, pero la relación `leire-diez-comparte-actor-koldo` ya cubre los actores formales modelados. Sin cambio.
+
+### Cascada aplicada
+
+- `sintesis_caso.estado_actual`: actualizado con declaración Teijelo (25-jun) y ampliación SEPI/Tubos con Gualda investigada (29-jun).
+- `estado_ficha.notas`: actualizada con resumen de esta pasada.
+- `ultima_revision_editorial` y `estado_ficha.fecha_actualizacion`: 2026-06-29.
+- Sin tocar `que_se_investiga`, `hechos_clave`, `cifras_clave`, `resumen_cifras`, `fase_actual` ni `delitos_atribuidos_en_la_causa`.
+
+### Pendientes nuevos / actualizados
+
+- [ ] Localizar el auto íntegro de 29-jun-2026 de ampliación de investigados en la derivada SEPI/Tubos y verificar delitos, lista de personas y cuantías antes de modelar más roles/hechos.
+- [ ] Decidir si la declaración testifical de Carmen Pano debe tener tratamiento público propio o quedarse en NOTES hasta primario.
+- [ ] `pnpm archive:catchup -- --caso=leire-diez` para N4 nuevos.
