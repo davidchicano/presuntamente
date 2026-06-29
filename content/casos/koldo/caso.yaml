@@ -63,8 +63,9 @@ resumen_cifras: |
   inicial: 43.950,54 euros de responsabilidad civil solidaria a favor de INECO y TRAGSATEC,
   y 430.298 euros de decomiso de ganancias provenientes del cohecho. Estas cifras se
   modelan como consecuencias de sentencia no verificada como firme, no como importe total
-  del objeto investigado ni como total económico del caso. Las cifras de contratos y piezas
-  conexas quedan pendientes de primarios completos para evitar doble conteo.
+  del objeto investigado ni como total económico del caso. El inventario no publica todavía
+  un total agregado de contratos, comisiones o piezas conexas: esas cifras quedan pendientes
+  de primarios completos para evitar doble conteo.
 
 estado_publicacion: beta_publica
 ultima_revision_editorial: "2026-06-29"

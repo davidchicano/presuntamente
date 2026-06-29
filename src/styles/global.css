@@ -3695,6 +3695,7 @@ body.has-page-toc .main > .ficha-detail {
 @media (min-width: 1280px) {
   body.has-page-toc .main {
     display: grid;
+    max-width: 1360px;
     grid-template-columns: minmax(0, 1fr) var(--page-toc-width, 220px);
     column-gap: var(--space-5);
     align-items: start;

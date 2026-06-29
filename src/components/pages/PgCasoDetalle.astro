@@ -1662,7 +1662,7 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
   .ficha-mast__aka em { font-style: italic; color: var(--color-fg-muted); }
   .ficha-mast__grid {
     display: grid;
-    grid-template-columns: max-content minmax(180px, 1fr) max-content;
+    grid-template-columns: max-content minmax(180px, 0.8fr) minmax(220px, 1.2fr);
     align-items: flex-start;
     gap: 12px clamp(16px, 2.4vw, 28px);
     margin: 0;
@@ -1677,7 +1677,7 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
   }
   .ficha-mast__grid-item--phase,
   .ficha-mast__grid-item--procedure {
-    width: max-content;
+    width: auto;
   }
   .ficha-mast__grid-item--procedure {
     grid-column: 3;
@@ -1700,6 +1700,10 @@ const graphHref = `/conexiones?focus=caso&id=${data.id}&depth=2&layout=cose`;
     color: var(--color-fg);
   }
   .ficha-mast__grid .mono { font-family: var(--font-mono); font-size: 12px; }
+  .ficha-mast__grid-item--procedure dd {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
 
   /* === Síntesis dentro de la cabecera de ficha (2.1) === */
   /* Bloque externo de síntesis del caso — vuelve a ser sección

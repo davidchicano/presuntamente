@@ -87,6 +87,8 @@ Mismo patrón (dot + label, fondo suave sin borde) pero para los 4 estados del c
 
 **Ajuste visual 2026-05-25**: la grid de metadatos de la cara A pasa de columnas igualadas a una grid explícita `Fase | Órgano flexible | Nº procedimiento`, con `Último hito` ocupando toda la fila inferior. Así el badge de fase no reserva una columna artificialmente ancha, pero la línea de metadatos sigue ocupando todo el ancho útil.
 
+**Ajuste visual 2026-06-29**: el campo `Nº procedimiento` deja de usar ancho `max-content` y permite partir cadenas largas dentro de la celda. El layout de fichas con TOC aumenta su ancho máximo en desktop ancho para evitar que procedimientos complejos, títulos largos y metadatos judiciales empujen la masthead fuera del contenedor.
+
 **Ajuste tipográfico 2026-05-25**: el grupo de acción del flip abandona el patrón `uppercase + 800` y el título del reverso baja a peso `600`. El botón se trata como acción secundaria aislada arriba a la derecha.
 
 **Ajuste de composición 2026-05-26**: el `EstadoPublicacionBadge` se mueve del grupo de acciones (junto al botón) al eyebrow «Ficha de caso» en la cara A y al título «Estado de esta ficha» en la cara B. El botón «Ver detalles de desarrollo» queda solo en la esquina superior derecha.

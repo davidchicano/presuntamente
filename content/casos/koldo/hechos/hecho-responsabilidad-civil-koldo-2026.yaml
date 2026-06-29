@@ -20,7 +20,7 @@ organizaciones_implicadas:
 documentos_respaldo:
   - documento_id: sentencia-ts-418-2026-koldo
     pasaje: "FALLO, p. 223: responsabilidad civil solidaria a favor de INECO (34.450 euros) y TRAGSATEC (9.500,54 euros)."
-nivel_fuente_efectivo: 3
+nivel_fuente_efectivo: 1
 importe: 43950.54
 importe_moneda: EUR
 importe_alcance: componente
@@ -50,4 +50,4 @@ importe_atribucion:
 vigencia: vigente
 redaccion_neutra_revisada: true
 estado_publicacion: borrador
-ultima_revision_editorial: "2026-06-23"
+ultima_revision_editorial: "2026-06-29"

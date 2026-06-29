@@ -8,6 +8,7 @@
 
 - **Sin hito procesal nuevo** posterior a la Sentencia TS 418/2026 del 22-jun-2026. La cobertura posterior detectada se centra en consecuencias políticas, reacciones, recursos anunciados o material no procesal; no se modela.
 - **Primario oficial resuelto:** CENDOJ publica la sentencia como ROJ `STS 2553/2026`, ECLI `ES:TS:2026:2553`, referencia interna `11767153`, URL `openDocument` oficial y PDF `accessToPDF`. Se descarga copia oficial en `/public/documentos/koldo/sentencia-ts-418-2026-cendoj.pdf` (sha256 `c9e074c9f015e92645d25e3a3129a5dd79073bb8dbe53b2007626b774ff5f1d7`) y el Documento `sentencia-ts-418-2026-koldo` sube de N3 `filtrado_verificado` a N1 `publico`.
+- **Cifras económicas publicables:** quedan estructuradas sólo las consecuencias de sentencia con soporte CENDOJ N1 (responsabilidad civil y decomiso). No se modela todavía un total agregado de contratos, comisiones o piezas conexas; requiere primarios completos y revisión anti-doble-conteo.
 - Se mantiene la cascada prudente de la beta urgente: roles `condenado_no_firme`, hechos de sentencia como `atribuido` y pendiente de firmeza/revisión humana.
 
 ### Cruces
